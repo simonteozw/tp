@@ -17,6 +17,7 @@ import seedu.address.model.tag.Tag;
  * A utility class for Person.
  */
 public class PersonUtil {
+    static final String DEFAULT_ADRESS = "Sesame Street";
 
     /**
      * Returns an add command string for adding the {@code person}.
@@ -33,6 +34,7 @@ public class PersonUtil {
         sb.append(PREFIX_NAME + person.getName().fullName + " ");
         sb.append(PREFIX_PHONE + person.getPhone().value + " ");
         sb.append(PREFIX_EMAIL + person.getEmail().value + " ");
+        sb.append(PREFIX_ADDRESS + DEFAULT_ADRESS + " ");
         person.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
