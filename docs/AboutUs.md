@@ -9,15 +9,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Simon Teo
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/SimonTeoNUSPhoto.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[homepage](https://www.linkedin.com/in/simon-teo-94a4a158/)]
+[[github](https://github.com/simonteozw)]
+[[portfolio](https://github.com/simonteozw/tp)]
 
-* Role: Project Advisor
+* Role: Documentation Master
 
 ### Jane Doe
 
