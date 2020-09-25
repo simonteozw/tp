@@ -19,15 +19,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Documentation Master
 
-### Jane Doe
+### Ng Wei Hong
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/NgWeiHong.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/justweihong)]
+[[portfolio](https://github.com/justweihong/tp)]
 
-* Role: Team Lead
-* Responsibilities: UI
+* Role: UI
 
 ### Tiffany Chan
 
