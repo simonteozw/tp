@@ -29,14 +29,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Team Lead
 * Responsibilities: UI
 
-### Johnny Doe
+### Tiffany Chan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/TiffanyChan.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/nottiffchan)] [[portfolio](https://github.com/nottiffchan/tp)]
 
-* Role: Developer
-* Responsibilities: Data
+* Role: Deliverables and Deadlines
 
 ### Jean Doe
 
