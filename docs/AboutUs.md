@@ -11,7 +11,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Simon Teo
 
-<img src="images/SimonTeoNUSPhoto.png" width="200px">
+<img src="images/simonteozw.png" width="200px">
 
 [[homepage](https://www.linkedin.com/in/simon-teo-94a4a158/)]
 [[github](https://github.com/simonteozw)]
@@ -21,7 +21,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Ng Wei Hong
 
-<img src="images/NgWeiHong.png" width="200px">
+<img src="images/justweihong.png" width="200px">
 
 [[github](http://github.com/justweihong)]
 [[portfolio](https://github.com/justweihong/tp)]
@@ -30,11 +30,19 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Tiffany Chan
 
-<img src="images/TiffanyChan.png" width="200px">
+<img src="images/nottiffchan.png" width="200px">
 
 [[github](http://github.com/nottiffchan)] [[portfolio](https://github.com/nottiffchan/tp)]
 
 * Role: Deliverables and Deadlines
+
+### Vuong Hoang Long 
+
+<img src="images/unclegrandpa925.png" width="200px">
+
+[[github](https://github.com/UncleGrandpa925)] [[portfolio](https://github.com/UncleGrandpa925)]
+
+* Role: Team Leader
 
 ### Nguyen Dinh Quang Minh
 
@@ -43,15 +51,4 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/nguyendqminh)]
 [[portfolio](https://github.com/nguyendqminh/tp)]
 
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
-
-### James Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: UI
+* Role: Testing Master
