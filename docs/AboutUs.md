@@ -11,7 +11,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Simon Teo
 
-<img src="images/SimonTeoNUSPhoto.png" width="200px">
+<img src="images/simonteozw.png" width="200px">
 
 [[homepage](https://www.linkedin.com/in/simon-teo-94a4a158/)]
 [[github](https://github.com/simonteozw)]
@@ -21,7 +21,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Ng Wei Hong
 
-<img src="images/NgWeiHong.png" width="200px">
+<img src="images/justweihong.png" width="200px">
 
 [[github](http://github.com/justweihong)]
 [[portfolio](https://github.com/justweihong/tp)]
@@ -30,7 +30,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Tiffany Chan
 
-<img src="images/TiffanyChan.png" width="200px">
+<img src="images/nottiffchan.png" width="200px">
 
 [[github](http://github.com/nottiffchan)] [[portfolio](https://github.com/nottiffchan/tp)]
 
