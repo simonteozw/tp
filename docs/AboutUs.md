@@ -36,12 +36,12 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Deliverables and Deadlines
 
-### Jean Doe
+### Nguyen Dinh Quang Minh
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/nguyendqminh.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/nguyendqminh)]
+[[portfolio](https://github.com/nguyendqminh/tp)]
 
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
