@@ -46,7 +46,9 @@ TrackIt@NUS is a **desktop app for managing tasks and contacts, tailored to NUS 
 </div>
 
 ## Module
-###View 
+
+### View 
+
 For: Shows the information about a module.
 
 Format: `M info {module_code}`
@@ -54,6 +56,7 @@ Format: `M info {module_code}`
 Examples: `M info CS1231S`
 
 ### Add
+
 For: Add a new module. 
 
 Format: `M add {module_code} t/{title} d/{description}`
@@ -75,6 +78,7 @@ Format: `M delete {module_code}`
 Examples: `M delete CS1231S`
 
 ## Event
+
 ### View 
 Description: Shows the information about an event.
 
@@ -111,6 +115,7 @@ Format: `E list`
 Examples: `E list`
 
 ## Lesson
+
 ### View 
 For: Shows the information about a lesson 
 
@@ -128,7 +133,9 @@ Format: `L add m/{module_code} n/{type} t/{time} v/{venue or Zoom link}`
 `{time}` : the time of the first lesson of that type in this semester
 
 Examples: `L add m/CS2103T n/tutorial t/01/08/2019 4pm-6pm v/COM1`
+
 ### Edit 
+
 For: Edit the detail of a lesson
 
 Format: `L edit m/{module_code} [n/{type}] [t/{time}] [v/{venue or Zoom link}]`
@@ -150,7 +157,7 @@ Format: `L list m/{module_code}`
 
 Examples: `L list m/CS2103T`
 
-##Contact 
+## Contact 
 
 ### View
 
@@ -169,7 +176,7 @@ Examples:
 * `C add n/John Doe p/98765432 e/jon@jon.com a/Sesame Street t/Brother`
 * `C add n/Rajesh Kumar p/98762342 e/raj@law.com a/UOB Tower t/criminal lawyer`
 
-###Edit
+### Edit
 
 For: Edits the contact with the specified index. 
 * Index must be positive and must be within range of number of contacts in listing
@@ -184,7 +191,7 @@ Examples:
 * `C edit 1 n/Johnny Depp p/98999899`
 * `C edit 2 n/Batman e/batman@justiceleague.com`
 
-###Delete
+### Delete
 
 For: Deletes the contact with the specified index. 
 
