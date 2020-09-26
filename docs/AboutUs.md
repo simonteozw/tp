@@ -36,15 +36,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Deliverables and Deadlines
 
-### Jean Doe
+### Vuong Hoang Long 
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/unclegrandpa925.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/UncleGrandpa925)] [[portfolio](https://github.com/UncleGrandpa925)]
 
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Role: Team Leader
 
 ### James Doe
 
