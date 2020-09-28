@@ -14,7 +14,7 @@ TrackIt@NUS is an all-in-one desktop application for NUS students to manage thei
 * As a task manager for module-related work
 * As a contacts manager for school-related contacts
 
-For more details about usage, refer to the user guide at `doc/user_guide.md`.
+For more details about usage, refer to the user guide at `docs/UserGuide.md`.
 
 This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
 
