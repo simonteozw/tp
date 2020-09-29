@@ -61,8 +61,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | student              | have all the module descriptions in one place                          | read them if I need to                                                 |
 | `*`      | struggling student   | access the contact information of my TA/Prof                           | ask question or schedule a consultation                                |
 
-*{More to be added}*
-
 ### Use cases
 
 (For all use cases below, the **System** is the `TrackIt@NUS` application and the **Actor** is the `user`, unless specified otherwise)
@@ -84,14 +82,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3a. The given index is invalid.
+* 3a. The given index (or module name) is invalid.
 
     * 3a1. TrackIt@NUS shows an error message.
 
       Use case resumes at step 2.
       
-
-*{More to be added}*
 
 ### Non-Functional Requirements
 
