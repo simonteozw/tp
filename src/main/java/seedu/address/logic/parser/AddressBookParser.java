@@ -17,7 +17,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Contact;
 
 /**
  * Parses user input.
@@ -48,7 +48,7 @@ public class AddressBookParser {
         final String arguments = matcher.group("arguments");
 
         switch(type) {
-        case Person.TYPE:
+        case Contact.TYPE:
             switch (commandWord) {
             case AddCommand.COMMAND_WORD:
                 return new AddCommandParser().parse(arguments);
