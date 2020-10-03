@@ -19,7 +19,6 @@ public class Lesson {
 
     /**
      * Every field must be present and not null.
-     *
      * @param type
      * @param time
      * @param location
