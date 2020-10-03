@@ -182,7 +182,7 @@ For: Edits the contact with the specified index.
 * Index must be positive and must be within range of number of contacts in listing
 * At least 1 of the optional arguments show above must be present
 * Arguments not present will remain unchanged
-* When editing tags, existing tags of person will be removed (i.e. adding tags is not cumulative
+* When editing tags, existing tags of contact will be removed (i.e. adding tags is not cumulative
 * Can remove all tags by typing t/ without any tags following it
 
 Format: `C edit {index} [n/{name}] [p/{phone_number}] [e/{email}] [a/{address}] [t/{tag}]s...`
