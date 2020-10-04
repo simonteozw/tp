@@ -50,7 +50,7 @@ public class TrackIterTest {
     public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
         // Two contacts with the same identity fields
         Contact editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
-                .build();
+            .build();
         List<Contact> newContacts = Arrays.asList(ALICE, editedAlice);
         TrackIterStub newData = new TrackIterStub(newContacts);
 
@@ -77,7 +77,7 @@ public class TrackIterTest {
     public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
         trackIter.addPerson(ALICE);
         Contact editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
-                .build();
+            .build();
         assertTrue(trackIter.hasPerson(editedAlice));
     }
 

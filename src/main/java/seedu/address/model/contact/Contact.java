@@ -73,8 +73,8 @@ public class Contact {
         }
 
         return otherContact != null
-                && otherContact.getName().equals(getName())
-                && (otherContact.getPhone().equals(getPhone()) || otherContact.getEmail().equals(getEmail()));
+            && otherContact.getName().equals(getName())
+            && (otherContact.getPhone().equals(getPhone()) || otherContact.getEmail().equals(getEmail()));
     }
 
     /**
@@ -93,10 +93,10 @@ public class Contact {
 
         Contact otherContact = (Contact) other;
         return otherContact.getName().equals(getName())
-                && otherContact.getPhone().equals(getPhone())
-                && otherContact.getEmail().equals(getEmail())
-                && otherContact.getAddress().equals(getAddress())
-                && otherContact.getTags().equals(getTags());
+            && otherContact.getPhone().equals(getPhone())
+            && otherContact.getEmail().equals(getEmail())
+            && otherContact.getAddress().equals(getAddress())
+            && otherContact.getTags().equals(getTags());
     }
 
     @Override
@@ -109,13 +109,13 @@ public class Contact {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
-                .append(" Phone: ")
-                .append(getPhone())
-                .append(" Email: ")
-                .append(getEmail())
-                .append(" Address: ")
-                .append(getAddress())
-                .append(" Tags: ");
+            .append(" Phone: ")
+            .append(getPhone())
+            .append(" Email: ")
+            .append(getEmail())
+            .append(" Address: ")
+            .append(getAddress())
+            .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
     }

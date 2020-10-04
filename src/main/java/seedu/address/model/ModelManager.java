@@ -221,9 +221,9 @@ public class ModelManager implements Model {
     //=========== Lesson ================================================================================
 
     @Override
-    public boolean hasLesson(Lesson Lesson) {
-        requireNonNull(Lesson);
-        return trackIter.hasLesson(Lesson);
+    public boolean hasLesson(Lesson lesson) {
+        requireNonNull(lesson);
+        return trackIter.hasLesson(lesson);
     }
 
     @Override

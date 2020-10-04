@@ -28,7 +28,7 @@ public class AddressBookParser {
      * Used for initial separation of command word and args.
      */
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<type>[A-Z]\\s+)?"
-            + "(?<commandWord>\\S+)(?<arguments>.*)");
+        + "(?<commandWord>\\S+)(?<arguments>.*)");
 
     /**
      * Parses user input into command for execution.
@@ -47,7 +47,7 @@ public class AddressBookParser {
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
 
-        switch(type) {
+        switch (type) {
         case Contact.TYPE:
             switch (commandWord) {
             case AddCommand.COMMAND_WORD:
