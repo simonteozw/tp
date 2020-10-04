@@ -5,6 +5,8 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import seedu.address.model.commons.Address;
+
 /**
  * Represents a Lesson in the address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
@@ -14,17 +16,18 @@ public class Lesson {
 
     private final Type type;
     private final LocalDate time;
-    private final Location location;
+    private final Address location;
     private final double weightage;
 
     /**
      * Every field must be present and not null.
+     *
      * @param type
      * @param time
      * @param location
      * @param weightage
      */
-    public Lesson(Type type, LocalDate time, Location location, double weightage) {
+    public Lesson(Type type, LocalDate time, Address location, double weightage) {
         requireAllNonNull(type, time, location, weightage);
         this.time = time;
         this.location = location;
@@ -70,7 +73,7 @@ public class Lesson {
         return time;
     }
 
-    public Location getLocation() {
+    public Address getLocation() {
         return location;
     }
 

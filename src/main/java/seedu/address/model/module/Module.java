@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import seedu.address.model.commons.Name;
 import seedu.address.model.lesson.Lesson;
 import seedu.address.model.task.Task;
 
@@ -17,7 +18,7 @@ public class Module {
     public static final String TYPE = "M";
 
     private final Code code;
-    private final Title title;
+    private final Name title;
     private final String gradeDist;
     private final List<Lesson> lessons;
     private final List<Task> tasks;
@@ -26,15 +27,13 @@ public class Module {
      * Every field must be present and not null.
      *
      * @param code
-     * @param title
+     * @param name
      * @param gradeDist
-     * @param lessons
-     * @param tasks
      */
-    public Module(Code code, Title title, String gradeDist) {
-        requireAllNonNull(code, title, gradeDist);
+    public Module(Code code, Name name, String gradeDist) {
+        requireAllNonNull(code, name, gradeDist);
         this.code = code;
-        this.title = title;
+        this.title = name;
         this.gradeDist = gradeDist;
         this.lessons = new ArrayList<>();
         this.tasks = new ArrayList<>();
@@ -48,7 +47,7 @@ public class Module {
         return code;
     }
 
-    public Title getTitle() {
+    public Name getTitle() {
         return title;
     }
 

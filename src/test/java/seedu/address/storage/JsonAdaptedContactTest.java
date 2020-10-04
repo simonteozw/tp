@@ -12,9 +12,9 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.contact.Address;
+import seedu.address.model.commons.Address;
+import seedu.address.model.commons.Name;
 import seedu.address.model.contact.Email;
-import seedu.address.model.contact.Name;
 import seedu.address.model.contact.Phone;
 
 public class JsonAdaptedContactTest {
