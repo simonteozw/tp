@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 import seedu.address.model.commons.Address;
+import seedu.address.model.commons.Name;
 
 
 /**
