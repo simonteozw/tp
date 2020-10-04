@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.contact.Contact;
+import seedu.address.model.lesson.Lesson;
 import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
 
@@ -26,6 +27,7 @@ public class ModelManager implements Model {
     private final FilteredList<Contact> filteredContacts;
     private final FilteredList<Module> filteredModules;
     private final FilteredList<Task> filteredTasks;
+    private final FilteredList<Lesson> filteredLessons;
 
     /**
      * Initializes a ModelManager with the given trackIter and userPrefs.
@@ -41,6 +43,7 @@ public class ModelManager implements Model {
         filteredContacts = new FilteredList<>(this.trackIter.getPersonList());
         filteredModules = new FilteredList<>(this.trackIter.getModuleList());
         filteredTasks = new FilteredList<>(this.trackIter.getTaskList());
+        filteredLessons = new FilteredList<>(this.trackIter.getLessonList());
     }
 
     public ModelManager() {
@@ -189,8 +192,8 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void addTask(Task module) {
-        trackIter.addTask(module);
+    public void addTask(Task task) {
+        trackIter.addTask(task);
         updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
     }
 
@@ -214,6 +217,46 @@ public class ModelManager implements Model {
         filteredTasks.setPredicate(predicate);
     }
 
+
+    //=========== Lesson ================================================================================
+
+    @Override
+    public boolean hasLesson(Lesson Lesson) {
+        requireNonNull(Lesson);
+        return trackIter.hasLesson(Lesson);
+    }
+
+    @Override
+    public void deleteLesson(Lesson target) {
+        trackIter.removeLesson(target);
+    }
+
+    @Override
+    public void addLesson(Lesson module) {
+        trackIter.addLesson(module);
+        updateFilteredLessonList(PREDICATE_SHOW_ALL_LESSONS);
+    }
+
+    @Override
+    public void setLesson(Lesson target, Lesson editedLesson) {
+        requireAllNonNull(target, editedLesson);
+
+        trackIter.setLesson(target, editedLesson);
+    }
+
+    //=========== Filtered Lesson List Accessors =============================================================
+
+    @Override
+    public ObservableList<Lesson> getFilteredLessonList() {
+        return filteredLessons;
+    }
+
+    @Override
+    public void updateFilteredLessonList(Predicate<Lesson> predicate) {
+        requireNonNull(predicate);
+        filteredLessons.setPredicate(predicate);
+    }
+
     @Override
     public boolean equals(Object obj) {
         // short circuit if same object
@@ -231,7 +274,9 @@ public class ModelManager implements Model {
         return trackIter.equals(other.trackIter)
             && userPrefs.equals(other.userPrefs)
             && filteredContacts.equals(other.filteredContacts)
-            && filteredModules.equals(other.filteredModules);
+            && filteredModules.equals(other.filteredModules)
+            && filteredTasks.equals(other.filteredTasks)
+            && filteredLessons.equals(other.filteredLessons);
     }
 
 }
