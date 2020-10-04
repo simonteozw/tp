@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.contact.Contact;
+import seedu.address.model.module.Module;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -22,6 +23,7 @@ public class ModelManager implements Model {
     private final TrackIter trackIter;
     private final UserPrefs userPrefs;
     private final FilteredList<Contact> filteredContacts;
+    private final FilteredList<Module> filteredModules;
 
     /**
      * Initializes a ModelManager with the given trackIter and userPrefs.
@@ -35,6 +37,7 @@ public class ModelManager implements Model {
         this.trackIter = new TrackIter(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredContacts = new FilteredList<>(this.trackIter.getPersonList());
+        filteredModules = new FilteredList<>(this.trackIter.getModuleList());
     }
 
     public ModelManager() {
@@ -44,14 +47,14 @@ public class ModelManager implements Model {
     //=========== UserPrefs ==================================================================================
 
     @Override
-    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
-        requireNonNull(userPrefs);
-        this.userPrefs.resetData(userPrefs);
+    public ReadOnlyUserPrefs getUserPrefs() {
+        return userPrefs;
     }
 
     @Override
-    public ReadOnlyUserPrefs getUserPrefs() {
-        return userPrefs;
+    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+        requireNonNull(userPrefs);
+        this.userPrefs.resetData(userPrefs);
     }
 
     @Override
@@ -88,6 +91,7 @@ public class ModelManager implements Model {
         this.trackIter.resetData(trackIt);
     }
 
+    //=========== Contact ================================================================================
     @Override
     public boolean hasContact(Contact contact) {
         requireNonNull(contact);
@@ -129,6 +133,45 @@ public class ModelManager implements Model {
         filteredContacts.setPredicate(predicate);
     }
 
+    //=========== Module ================================================================================
+
+    @Override
+    public boolean hasModule(Module module) {
+        requireNonNull(module);
+        return trackIter.hasModule(module);
+    }
+
+    @Override
+    public void deleteModule(Module target) {
+        trackIter.removeModule(target);
+    }
+
+    @Override
+    public void addModule(Module module) {
+        trackIter.addModule(module);
+        updateFilteredModuleList(PREDICATE_SHOW_ALL_MODULES);
+    }
+
+    @Override
+    public void setModule(Module target, Module editedModule) {
+        requireAllNonNull(target, editedModule);
+
+        trackIter.setModule(target, editedModule);
+    }
+
+    //=========== Filtered Module List Accessors =============================================================
+
+    @Override
+    public ObservableList<Module> getFilteredModuleList() {
+        return filteredModules;
+    }
+
+    @Override
+    public void updateFilteredModuleList(Predicate<Module> predicate) {
+        requireNonNull(predicate);
+        filteredModules.setPredicate(predicate);
+    }
+
     @Override
     public boolean equals(Object obj) {
         // short circuit if same object
@@ -145,7 +188,8 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return trackIter.equals(other.trackIter)
             && userPrefs.equals(other.userPrefs)
-            && filteredContacts.equals(other.filteredContacts);
+            && filteredContacts.equals(other.filteredContacts)
+            && filteredModules.equals(other.filteredModules);
     }
 
 }

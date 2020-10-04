@@ -58,7 +58,7 @@ public interface Model {
      */
     void setTrackIter(ReadOnlyTrackIter trackIt);
 
-    /* Start of Contact's method */
+    //=========== Contact ================================================================================
 
     /**
      * Returns true if a contact with the same identity as {@code contact} exists in the TrackIter.
@@ -97,9 +97,7 @@ public interface Model {
      */
     void updateFilteredContactList(Predicate<Contact> predicate);
 
-    /* End of Contact's method */
-
-    /* Start of Module's method */
+    //=========== Module ================================================================================
 
     /**
      * Returns true if a module with the same identity as {@code module} exists in the TrackIter.
@@ -137,6 +135,4 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredModuleList(Predicate<Module> predicate);
-
-    /* End of Module's method */
 }
