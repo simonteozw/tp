@@ -3,6 +3,7 @@ package seedu.address.model;
 import javafx.collections.ObservableList;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.module.Module;
+import seedu.address.model.task.Task;
 
 /**
  * Unmodifiable view of an address book
@@ -20,4 +21,12 @@ public interface ReadOnlyTrackIter {
      * This list will not contain any duplicate modules.
      */
     ObservableList<Module> getModuleList();
+
+    /**
+     * Returns an unmodifiable view of the tasks list.
+     * This list will not contain any duplicate tasks.
+     *
+     * @return
+     */
+    ObservableList<Task> getTaskList();
 }
