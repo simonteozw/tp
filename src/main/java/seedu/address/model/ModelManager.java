@@ -19,12 +19,12 @@ import seedu.address.model.contact.Contact;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final TrackIter trackIter;
     private final UserPrefs userPrefs;
     private final FilteredList<Contact> filteredContacts;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given trackIter and userPrefs.
      */
     public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
         super();
@@ -32,13 +32,13 @@ public class ModelManager implements Model {
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.trackIter = new TrackIter(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredContacts = new FilteredList<>(this.addressBook.getPersonList());
+        filteredContacts = new FilteredList<>(this.trackIter.getPersonList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new TrackIter(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -76,32 +76,32 @@ public class ModelManager implements Model {
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
 
-    //=========== AddressBook ================================================================================
-
-    @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
-    }
+    //=========== TrackIter ================================================================================
 
     @Override
     public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+        return trackIter;
+    }
+
+    @Override
+    public void setAddressBook(ReadOnlyAddressBook addressBook) {
+        this.trackIter.resetData(addressBook);
     }
 
     @Override
     public boolean hasPerson(Contact contact) {
         requireNonNull(contact);
-        return addressBook.hasPerson(contact);
+        return trackIter.hasPerson(contact);
     }
 
     @Override
     public void deletePerson(Contact target) {
-        addressBook.removePerson(target);
+        trackIter.removePerson(target);
     }
 
     @Override
     public void addPerson(Contact contact) {
-        addressBook.addPerson(contact);
+        trackIter.addPerson(contact);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
@@ -109,7 +109,7 @@ public class ModelManager implements Model {
     public void setPerson(Contact target, Contact editedContact) {
         requireAllNonNull(target, editedContact);
 
-        addressBook.setPerson(target, editedContact);
+        trackIter.setPerson(target, editedContact);
     }
 
     //=========== Filtered Contact List Accessors =============================================================
@@ -143,9 +143,9 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
-                && userPrefs.equals(other.userPrefs)
-                && filteredContacts.equals(other.filteredContacts);
+        return trackIter.equals(other.trackIter)
+            && userPrefs.equals(other.userPrefs)
+            && filteredContacts.equals(other.filteredContacts);
     }
 
 }
