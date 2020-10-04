@@ -5,6 +5,8 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import seedu.address.model.commons.Address;
+
 
 /**
  * Represents a Lesson in the address book.
@@ -15,7 +17,7 @@ public class Task {
 
     private final Name name;
     private final LocalDate time;
-    private final Location location;
+    private final Address location;
     private final double weightage;
     private final String note;
 
@@ -28,7 +30,7 @@ public class Task {
      * @param weightage
      * @param note
      */
-    public Task(Name name, LocalDate time, Location location, double weightage, String note) {
+    public Task(Name name, LocalDate time, Address location, double weightage, String note) {
         requireAllNonNull(name, time, location, weightage, note);
         this.name = name;
         this.time = time;
