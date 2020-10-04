@@ -84,7 +84,7 @@ public class Module {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(code, title, gradeDist, lessons,tasks);
+        return Objects.hash(code, title, gradeDist, lessons, tasks);
     }
 
     @Override
@@ -94,4 +94,11 @@ public class Module {
         return "Module's toString hasn't been implemented";
     }
 
+    /**
+     * Returns true if the two modules are the same
+     * This methods is here for to act as a compatibility layer for UniqueModuleList
+     */
+    public boolean isSameModule(Module module) {
+        return this.equals(module);
+    }
 }
