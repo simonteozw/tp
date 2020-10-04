@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyTrackIter;
 import seedu.address.model.TrackIter;
 import seedu.address.model.UserPrefs;
 
@@ -56,7 +56,7 @@ public class StorageManagerTest {
          */
         TrackIter original = getTypicalAddressBook();
         storageManager.saveAddressBook(original);
-        ReadOnlyAddressBook retrieved = storageManager.readAddressBook().get();
+        ReadOnlyTrackIter retrieved = storageManager.readAddressBook().get();
         assertEquals(original, new TrackIter(retrieved));
     }
 

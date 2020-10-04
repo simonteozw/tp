@@ -49,7 +49,7 @@ public class TrackIterTest {
         Contact editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
         List<Contact> newContacts = Arrays.asList(ALICE, editedAlice);
-        AddressBookStub newData = new AddressBookStub(newContacts);
+        TrackIterStub newData = new TrackIterStub(newContacts);
 
         assertThrows(DuplicatePersonException.class, () -> trackIter.resetData(newData));
     }
@@ -84,12 +84,12 @@ public class TrackIterTest {
     }
 
     /**
-     * A stub ReadOnlyAddressBook whose contacts list can violate interface constraints.
+     * A stub ReadOnlyTrackIter whose contacts list can violate interface constraints.
      */
-    private static class AddressBookStub implements ReadOnlyAddressBook {
+    private static class TrackIterStub implements ReadOnlyTrackIter {
         private final ObservableList<Contact> contacts = FXCollections.observableArrayList();
 
-        AddressBookStub(Collection<Contact> contacts) {
+        TrackIterStub(Collection<Contact> contacts) {
             this.contacts.setAll(contacts);
         }
 

@@ -39,22 +39,22 @@ public interface Model {
     /**
      * Returns the user prefs' address book file path.
      */
-    Path getAddressBookFilePath();
+    Path getTrackIterFilePath();
 
     /**
      * Sets the user prefs' address book file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
-
-    /**
-     * Replaces address book data with the data in {@code addressBook}.
-     */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setTrackIterFilePath(Path trackIterFilePath);
 
     /**
      * Returns the TrackIter
      */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyTrackIter getTrackIter();
+
+    /**
+     * Replaces TrackIter data with the data in {@code trackIt}.
+     */
+    void setTrackIter(ReadOnlyTrackIter trackIt);
 
     /**
      * Returns true if a contact with the same identity as {@code contact} exists in the address book.

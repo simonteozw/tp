@@ -26,7 +26,7 @@ public class ModelManager implements Model {
     /**
      * Initializes a ModelManager with the given trackIter and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyTrackIter addressBook, ReadOnlyUserPrefs userPrefs) {
         super();
         requireAllNonNull(addressBook, userPrefs);
 
@@ -66,26 +66,26 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
+    public Path getTrackIterFilePath() {
         return userPrefs.getAddressBookFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setTrackIterFilePath(Path trackIterFilePath) {
+        requireNonNull(trackIterFilePath);
+        userPrefs.setAddressBookFilePath(trackIterFilePath);
     }
 
     //=========== TrackIter ================================================================================
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
+    public ReadOnlyTrackIter getTrackIter() {
         return trackIter;
     }
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.trackIter.resetData(addressBook);
+    public void setTrackIter(ReadOnlyTrackIter trackIt) {
+        this.trackIter.resetData(trackIt);
     }
 
     @Override

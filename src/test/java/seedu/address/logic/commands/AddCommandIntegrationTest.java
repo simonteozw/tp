@@ -29,7 +29,7 @@ public class AddCommandIntegrationTest {
     public void execute_newPerson_success() {
         Contact validContact = new PersonBuilder().build();
 
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getTrackIter(), new UserPrefs());
         expectedModel.addContact(validContact);
 
         assertCommandSuccess(new AddCommand(validContact), model,
@@ -38,7 +38,7 @@ public class AddCommandIntegrationTest {
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
-        Contact contactInList = model.getAddressBook().getPersonList().get(0);
+        Contact contactInList = model.getTrackIter().getPersonList().get(0);
         assertCommandFailure(new AddCommand(contactInList), model, AddCommand.MESSAGE_DUPLICATE_PERSON);
     }
 

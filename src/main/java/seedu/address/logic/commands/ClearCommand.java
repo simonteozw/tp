@@ -17,7 +17,7 @@ public class ClearCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.setAddressBook(new TrackIter());
+        model.setTrackIter(new TrackIter());
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

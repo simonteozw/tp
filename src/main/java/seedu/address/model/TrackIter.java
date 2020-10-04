@@ -12,7 +12,7 @@ import seedu.address.model.contact.UniquePersonList;
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
-public class TrackIter implements ReadOnlyAddressBook {
+public class TrackIter implements ReadOnlyTrackIter {
 
     private final UniquePersonList persons;
 
@@ -33,7 +33,7 @@ public class TrackIter implements ReadOnlyAddressBook {
     /**
      * Creates an TrackIter using the Persons in the {@code toBeCopied}
      */
-    public TrackIter(ReadOnlyAddressBook toBeCopied) {
+    public TrackIter(ReadOnlyTrackIter toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -51,7 +51,7 @@ public class TrackIter implements ReadOnlyAddressBook {
     /**
      * Resets the existing data of this {@code TrackIter} with {@code newData}.
      */
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyTrackIter newData) {
         requireNonNull(newData);
 
         setPersons(newData.getPersonList());
