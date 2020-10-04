@@ -18,7 +18,7 @@ import seedu.address.model.contact.exceptions.PersonNotFoundException;
  * the contact being added or updated is unique in terms of identity in the UniquePersonList.
  * However, the removal of a contact uses Contact#equals(Object) so
  * as to ensure that the contact with exactly the same fields will be removed.
- *
+ * <p>
  * Supports a minimal set of list operations.
  *
  * @see Contact#isSamePerson(Contact)
@@ -27,7 +27,7 @@ public class UniquePersonList implements Iterable<Contact> {
 
     private final ObservableList<Contact> internalList = FXCollections.observableArrayList();
     private final ObservableList<Contact> internalUnmodifiableList =
-            FXCollections.unmodifiableObservableList(internalList);
+        FXCollections.unmodifiableObservableList(internalList);
 
     /**
      * Returns true if the list contains an equivalent contact as the given argument.
@@ -113,8 +113,8 @@ public class UniquePersonList implements Iterable<Contact> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof UniquePersonList // instanceof handles nulls
-                        && internalList.equals(((UniquePersonList) other).internalList));
+            || (other instanceof UniquePersonList // instanceof handles nulls
+            && internalList.equals(((UniquePersonList) other).internalList));
     }
 
     @Override

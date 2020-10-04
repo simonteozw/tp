@@ -7,6 +7,8 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.contact.UniquePersonList;
+import seedu.address.model.lesson.Lesson;
+import seedu.address.model.lesson.UniqueLessonList;
 import seedu.address.model.module.Module;
 import seedu.address.model.module.UniqueModuleList;
 import seedu.address.model.task.Task;
@@ -21,6 +23,7 @@ public class TrackIter implements ReadOnlyTrackIter {
     private final UniquePersonList contacts;
     private final UniqueModuleList modules;
     private final UniqueTaskList tasks;
+    private final UniqueLessonList lessons;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -32,6 +35,7 @@ public class TrackIter implements ReadOnlyTrackIter {
         contacts = new UniquePersonList();
         modules = new UniqueModuleList();
         tasks = new UniqueTaskList();
+        lessons = new UniqueLessonList();
     }
 
     public TrackIter() {
@@ -189,6 +193,44 @@ public class TrackIter implements ReadOnlyTrackIter {
         tasks.remove(key);
     }
 
+    //=========== Lesson ================================================================================
+
+    /**
+     * Returns true if a lesson with the same identity as {@code lesson} exists in the address book.
+     */
+    public boolean hasLesson(Lesson lesson) {
+        requireNonNull(lesson);
+        return lessons.contains(lesson);
+    }
+
+    /**
+     * Adds a lesson to the address book.
+     * The lesson must not already exist in the address book.
+     */
+    public void addLesson(Lesson p) {
+        lessons.add(p);
+    }
+
+    /**
+     * Replaces the given lesson {@code target} in the list with {@code editedLesson}.
+     * {@code target} must exist in the address book.
+     * The lesson identity of {@code editedLesson} must not
+     * be the same as another existing lesson in the address book.
+     */
+    public void setLesson(Lesson target, Lesson editedLesson) {
+        requireNonNull(editedLesson);
+
+        lessons.setLesson(target, editedLesson);
+    }
+
+    /**
+     * Removes {@code key} from this {@code TrackIter}.
+     * {@code key} must exist in the address book.
+     */
+    public void removeLesson(Lesson key) {
+        lessons.remove(key);
+    }
+
     //// util methods
 
     @Override
@@ -213,10 +255,18 @@ public class TrackIter implements ReadOnlyTrackIter {
     }
 
     @Override
+    public ObservableList<Lesson> getLessonList() {
+        return lessons.asUnmodifiableObservableList();
+    }
+
+    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
             || (other instanceof TrackIter // instanceof handles nulls
-            && contacts.equals(((TrackIter) other).contacts));
+            && contacts.equals(((TrackIter) other).contacts)
+            && modules.equals(((TrackIter) other).modules)
+            && tasks.equals(((TrackIter) other).tasks)
+            && lessons.equals(((TrackIter) other).lessons));
     }
 
     @Override
@@ -224,5 +274,6 @@ public class TrackIter implements ReadOnlyTrackIter {
         return contacts.hashCode();
         // TODO: refine later
     }
+
 
 }

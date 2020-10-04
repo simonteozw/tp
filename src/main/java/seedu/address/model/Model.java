@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.contact.Contact;
+import seedu.address.model.lesson.Lesson;
 import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
 
@@ -19,16 +20,17 @@ public interface Model {
     Predicate<Contact> PREDICATE_SHOW_ALL_CONTACTS = unused -> true;
     Predicate<Module> PREDICATE_SHOW_ALL_MODULES = unused -> true;
     Predicate<Task> PREDICATE_SHOW_ALL_TASKS = unused -> true;
-
-    /**
-     * Replaces user prefs data with the data in {@code userPrefs}.
-     */
-    void setUserPrefs(ReadOnlyUserPrefs userPrefs);
+    Predicate<Lesson> PREDICATE_SHOW_ALL_LESSONS = unused -> true;
 
     /**
      * Returns the user prefs.
      */
     ReadOnlyUserPrefs getUserPrefs();
+
+    /**
+     * Replaces user prefs data with the data in {@code userPrefs}.
+     */
+    void setUserPrefs(ReadOnlyUserPrefs userPrefs);
 
     /**
      * Returns the user prefs' GUI settings.
@@ -176,4 +178,43 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredTaskList(Predicate<Task> predicate);
+
+    //=========== Lesson ================================================================================
+
+    /**
+     * Returns true if a lesson with the same identity as {@code lesson} exists in the TrackIter.
+     */
+    boolean hasLesson(Lesson lesson);
+
+    /**
+     * Deletes the given lesson.
+     * The lesson must exist in the TrackIter.
+     */
+    void deleteLesson(Lesson target);
+
+    /**
+     * Adds the given lesson.
+     * {@code lesson} must not already exist in the TrackIter.
+     */
+    void addLesson(Lesson lesson);
+
+    /**
+     * Replaces the given lesson {@code target} with {@code editedLesson}.
+     * {@code target} must exist in the TrackIter.
+     * The lesson identity of {@code editedLesson} must not
+     * be the same as another existing lesson in the TrackIter.
+     */
+    void setLesson(Lesson target, Lesson editedLesson);
+
+    /**
+     * Returns an unmodifiable view of the filtered lesson list
+     */
+    ObservableList<Lesson> getFilteredLessonList();
+
+    /**
+     * Updates the filter of the filtered lesson list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredLessonList(Predicate<Lesson> predicate);
 }

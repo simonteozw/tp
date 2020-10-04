@@ -80,4 +80,12 @@ public class Lesson {
     public double getWeightage() {
         return weightage;
     }
+
+    /**
+     * Returns true if the two lessons are the same
+     * This methods is here for to act as a compatibility layer for UniqueModuleList
+     */
+    public boolean isSameLesson(Lesson lesson) {
+        return this.equals(lesson);
+    }
 }

@@ -20,6 +20,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.contact.exceptions.DuplicatePersonException;
+import seedu.address.model.lesson.Lesson;
 import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
 import seedu.address.testutil.PersonBuilder;
@@ -49,7 +50,7 @@ public class TrackIterTest {
     public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
         // Two contacts with the same identity fields
         Contact editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
-                .build();
+            .build();
         List<Contact> newContacts = Arrays.asList(ALICE, editedAlice);
         TrackIterStub newData = new TrackIterStub(newContacts);
 
@@ -76,7 +77,7 @@ public class TrackIterTest {
     public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
         trackIter.addPerson(ALICE);
         Contact editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
-                .build();
+            .build();
         assertTrue(trackIter.hasPerson(editedAlice));
     }
 
@@ -92,6 +93,7 @@ public class TrackIterTest {
         private final ObservableList<Contact> contacts = FXCollections.observableArrayList();
         private final ObservableList<Module> modules = FXCollections.observableArrayList();
         private final ObservableList<Task> tasks = FXCollections.observableArrayList();
+        private final ObservableList<Lesson> lessons = FXCollections.observableArrayList();
 
         TrackIterStub(Collection<Contact> contacts) {
             this.contacts.setAll(contacts);
@@ -110,6 +112,11 @@ public class TrackIterTest {
         @Override
         public ObservableList<Task> getTaskList() {
             return tasks;
+        }
+
+        @Override
+        public ObservableList<Lesson> getLessonList() {
+            return lessons;
         }
     }
 

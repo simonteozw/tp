@@ -53,8 +53,8 @@ public class PersonCard extends UiPart<Region> {
         address.setText(contact.getAddress().value);
         email.setText(contact.getEmail().value);
         contact.getTags().stream()
-                .sorted(Comparator.comparing(tag -> tag.tagName))
-                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+            .sorted(Comparator.comparing(tag -> tag.tagName))
+            .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
     @Override
@@ -72,6 +72,6 @@ public class PersonCard extends UiPart<Region> {
         // state check
         PersonCard card = (PersonCard) other;
         return id.getText().equals(card.id.getText())
-                && contact.equals(card.contact);
+            && contact.equals(card.contact);
     }
 }

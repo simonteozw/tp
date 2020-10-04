@@ -3,6 +3,10 @@ package seedu.address.model.module;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents a module code. Has form of AB1234 or ABC1234
+ * Guarantees: immutable; is valid as declared in {@link #isValidCode(String)} (String)}
+ */
 public class Code {
     public static final String MESSAGE_CONSTRAINTS =
         "Module code should start with 2 or 3 upper-case letters, follow by 4 numeric digits";
@@ -15,7 +19,9 @@ public class Code {
 
     public final String code;
 
-
+    /**
+     * Every field must be present and not null.
+     */
     public Code(String code) {
         requireNonNull(code);
         checkArgument(isValidCode(code), MESSAGE_CONSTRAINTS);

@@ -31,10 +31,6 @@ public class Module {
         this.gradeDist = gradeDist;
     }
 
-    public static String getTYPE() {
-        return TYPE;
-    }
-
     public Code getCode() {
         return code;
     }
