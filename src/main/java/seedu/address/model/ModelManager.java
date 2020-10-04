@@ -131,7 +131,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredContactList(Predicate<Contact> predicate) {
+    public void updateFilteredContactList(Predicate<Contact> predicate) throws NullPointerException {
         requireNonNull(predicate);
         filteredContacts.setPredicate(predicate);
     }
@@ -170,7 +170,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredModuleList(Predicate<Module> predicate) {
+    public void updateFilteredModuleList(Predicate<Module> predicate) throws NullPointerException {
         requireNonNull(predicate);
         filteredModules.setPredicate(predicate);
     }

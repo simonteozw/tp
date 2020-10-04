@@ -19,8 +19,6 @@ public interface ReadOnlyTrackIter {
     /**
      * Returns an unmodifiable view of the modules list.
      * This list will not contain any duplicate modules.
-     *
-     * @return
      */
     ObservableList<Module> getModuleList();
 
