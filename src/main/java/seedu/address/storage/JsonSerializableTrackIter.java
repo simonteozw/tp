@@ -17,27 +17,27 @@ import seedu.address.model.contact.Contact;
  * An Immutable TrackIter that is serializable to JSON format.
  */
 @JsonRootName(value = "addressbook")
-class JsonSerializableAddressBook {
+class JsonSerializableTrackIter {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate contact(s).";
 
-    private final List<JsonAdaptedPerson> persons = new ArrayList<>();
+    private final List<JsonAdaptedContact> persons = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
+     * Constructs a {@code JsonSerializableTrackIter} with the given persons.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
+    public JsonSerializableTrackIter(@JsonProperty("persons") List<JsonAdaptedContact> persons) {
         this.persons.addAll(persons);
     }
 
     /**
      * Converts a given {@code ReadOnlyTrackIter} into this class for Jackson use.
      *
-     * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
+     * @param source future changes to this will not affect the created {@code JsonSerializableTrackIter}.
      */
-    public JsonSerializableAddressBook(ReadOnlyTrackIter source) {
-        persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
+    public JsonSerializableTrackIter(ReadOnlyTrackIter source) {
+        persons.addAll(source.getPersonList().stream().map(JsonAdaptedContact::new).collect(Collectors.toList()));
     }
 
     /**
@@ -47,12 +47,12 @@ class JsonSerializableAddressBook {
      */
     public TrackIter toModelType() throws IllegalValueException {
         TrackIter trackIter = new TrackIter();
-        for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
-            Contact contact = jsonAdaptedPerson.toModelType();
-            if (trackIter.hasPerson(contact)) {
+        for (JsonAdaptedContact jsonAdaptedContact : persons) {
+            Contact contact = jsonAdaptedContact.toModelType();
+            if (trackIter.hasContact(contact)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
             }
-            trackIter.addPerson(contact);
+            trackIter.addContact(contact);
         }
         return trackIter;
     }

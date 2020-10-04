@@ -24,7 +24,7 @@ public class StorageManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonAddressBookStorage addressBookStorage = new JsonAddressBookStorage(getTempFilePath("ab"));
+        JsonTrackIterStorage addressBookStorage = new JsonTrackIterStorage(getTempFilePath("ab"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
         storageManager = new StorageManager(addressBookStorage, userPrefsStorage);
     }
@@ -51,18 +51,18 @@ public class StorageManagerTest {
     public void addressBookReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
-         * {@link JsonAddressBookStorage} class.
+         * {@link JsonTrackIterStorage} class.
          * More extensive testing of UserPref saving/reading is done in {@link JsonTrackIterStorageTest} class.
          */
         TrackIter original = getTypicalAddressBook();
-        storageManager.saveAddressBook(original);
-        ReadOnlyTrackIter retrieved = storageManager.readAddressBook().get();
+        storageManager.saveTrackIter(original);
+        ReadOnlyTrackIter retrieved = storageManager.readTrackIter().get();
         assertEquals(original, new TrackIter(retrieved));
     }
 
     @Test
     public void getAddressBookFilePath() {
-        assertNotNull(storageManager.getAddressBookFilePath());
+        assertNotNull(storageManager.getTrackIterFilePath());
     }
 
 }

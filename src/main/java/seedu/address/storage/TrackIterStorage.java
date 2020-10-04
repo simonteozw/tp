@@ -11,12 +11,12 @@ import seedu.address.model.TrackIter;
 /**
  * Represents a storage for {@link TrackIter}.
  */
-public interface AddressBookStorage {
+public interface TrackIterStorage {
 
     /**
      * Returns the file path of the data file.
      */
-    Path getAddressBookFilePath();
+    Path getTrackIterFilePath();
 
     /**
      * Returns TrackIter data as a {@link ReadOnlyTrackIter}.
@@ -25,12 +25,12 @@ public interface AddressBookStorage {
      * @throws DataConversionException if the data in storage is not in the expected format.
      * @throws IOException             if there was any problem when reading from the storage.
      */
-    Optional<ReadOnlyTrackIter> readAddressBook() throws DataConversionException, IOException;
+    Optional<ReadOnlyTrackIter> readTrackIter() throws DataConversionException, IOException;
 
     /**
-     * @see #getAddressBookFilePath()
+     * @see #getTrackIterFilePath()
      */
-    Optional<ReadOnlyTrackIter> readAddressBook(Path filePath) throws DataConversionException, IOException;
+    Optional<ReadOnlyTrackIter> readTrackIter(Path filePath) throws DataConversionException, IOException;
 
     /**
      * Saves the given {@link ReadOnlyTrackIter} to the storage.
@@ -38,11 +38,11 @@ public interface AddressBookStorage {
      * @param addressBook cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveAddressBook(ReadOnlyTrackIter addressBook) throws IOException;
+    void saveTrackIter(ReadOnlyTrackIter addressBook) throws IOException;
 
     /**
-     * @see #saveAddressBook(ReadOnlyTrackIter)
+     * @see #saveTrackIter(ReadOnlyTrackIter)
      */
-    void saveAddressBook(ReadOnlyTrackIter addressBook, Path filePath) throws IOException;
+    void saveTrackIter(ReadOnlyTrackIter addressBook, Path filePath) throws IOException;
 
 }

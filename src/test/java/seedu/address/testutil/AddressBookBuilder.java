@@ -24,7 +24,7 @@ public class AddressBookBuilder {
      * Adds a new {@code Contact} to the {@code TrackIter} that we are building.
      */
     public AddressBookBuilder withPerson(Contact contact) {
-        trackIter.addPerson(contact);
+        trackIter.addContact(contact);
         return this;
     }
 

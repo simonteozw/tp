@@ -46,7 +46,7 @@ public class LogicManager implements Logic {
         commandResult = command.execute(model);
 
         try {
-            storage.saveAddressBook(model.getTrackIter());
+            storage.saveTrackIter(model.getTrackIter());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
@@ -55,17 +55,17 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ReadOnlyTrackIter getAddressBook() {
+    public ReadOnlyTrackIter getTrackIter() {
         return model.getTrackIter();
     }
 
     @Override
-    public ObservableList<Contact> getFilteredPersonList() {
+    public ObservableList<Contact> getFilteredContactList() {
         return model.getFilteredContactList();
     }
 
     @Override
-    public Path getAddressBookFilePath() {
+    public Path getTrackIterFilePath() {
         return model.getTrackIterFilePath();
     }
 
