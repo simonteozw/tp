@@ -11,8 +11,10 @@ import seedu.address.model.contact.Contact;
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
-    Predicate<Contact> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
+    Predicate<Contact> PREDICATE_SHOW_ALL_CONTACTS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -37,37 +39,39 @@ public interface Model {
     /**
      * Returns the user prefs' address book file path.
      */
-    Path getAddressBookFilePath();
+    Path getTrackIterFilePath();
 
     /**
      * Sets the user prefs' address book file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setTrackIterFilePath(Path trackIterFilePath);
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Returns the TrackIter
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    ReadOnlyTrackIter getTrackIter();
 
-    /** Returns the AddressBook */
-    ReadOnlyAddressBook getAddressBook();
+    /**
+     * Replaces TrackIter data with the data in {@code trackIt}.
+     */
+    void setTrackIter(ReadOnlyTrackIter trackIt);
 
     /**
      * Returns true if a contact with the same identity as {@code contact} exists in the address book.
      */
-    boolean hasPerson(Contact contact);
+    boolean hasContact(Contact contact);
 
     /**
      * Deletes the given contact.
      * The contact must exist in the address book.
      */
-    void deletePerson(Contact target);
+    void deleteContact(Contact target);
 
     /**
      * Adds the given contact.
      * {@code contact} must not already exist in the address book.
      */
-    void addPerson(Contact contact);
+    void addContact(Contact contact);
 
     /**
      * Replaces the given contact {@code target} with {@code editedContact}.
@@ -75,14 +79,17 @@ public interface Model {
      * The contact identity of {@code editedContact} must not
      * be the same as another existing contact in the address book.
      */
-    void setPerson(Contact target, Contact editedContact);
+    void setContact(Contact target, Contact editedContact);
 
-    /** Returns an unmodifiable view of the filtered contact list */
-    ObservableList<Contact> getFilteredPersonList();
+    /**
+     * Returns an unmodifiable view of the filtered contact list
+     */
+    ObservableList<Contact> getFilteredContactList();
 
     /**
      * Updates the filter of the filtered contact list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredPersonList(Predicate<Contact> predicate);
+    void updateFilteredContactList(Predicate<Contact> predicate);
 }

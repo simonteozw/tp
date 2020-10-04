@@ -19,26 +19,26 @@ import seedu.address.model.contact.Contact;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final TrackIter trackIter;
     private final UserPrefs userPrefs;
     private final FilteredList<Contact> filteredContacts;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given trackIter and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyTrackIter addressBook, ReadOnlyUserPrefs userPrefs) {
         super();
         requireAllNonNull(addressBook, userPrefs);
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.trackIter = new TrackIter(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredContacts = new FilteredList<>(this.addressBook.getPersonList());
+        filteredContacts = new FilteredList<>(this.trackIter.getPersonList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new TrackIter(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -66,50 +66,50 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
+    public Path getTrackIterFilePath() {
         return userPrefs.getAddressBookFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setTrackIterFilePath(Path trackIterFilePath) {
+        requireNonNull(trackIterFilePath);
+        userPrefs.setAddressBookFilePath(trackIterFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== TrackIter ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
-    }
-
-    @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+    public ReadOnlyTrackIter getTrackIter() {
+        return trackIter;
     }
 
     @Override
-    public boolean hasPerson(Contact contact) {
+    public void setTrackIter(ReadOnlyTrackIter trackIt) {
+        this.trackIter.resetData(trackIt);
+    }
+
+    @Override
+    public boolean hasContact(Contact contact) {
         requireNonNull(contact);
-        return addressBook.hasPerson(contact);
+        return trackIter.hasPerson(contact);
     }
 
     @Override
-    public void deletePerson(Contact target) {
-        addressBook.removePerson(target);
+    public void deleteContact(Contact target) {
+        trackIter.removePerson(target);
     }
 
     @Override
-    public void addPerson(Contact contact) {
-        addressBook.addPerson(contact);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    public void addContact(Contact contact) {
+        trackIter.addPerson(contact);
+        updateFilteredContactList(PREDICATE_SHOW_ALL_CONTACTS);
     }
 
     @Override
-    public void setPerson(Contact target, Contact editedContact) {
+    public void setContact(Contact target, Contact editedContact) {
         requireAllNonNull(target, editedContact);
 
-        addressBook.setPerson(target, editedContact);
+        trackIter.setPerson(target, editedContact);
     }
 
     //=========== Filtered Contact List Accessors =============================================================
@@ -119,12 +119,12 @@ public class ModelManager implements Model {
      * {@code versionedAddressBook}
      */
     @Override
-    public ObservableList<Contact> getFilteredPersonList() {
+    public ObservableList<Contact> getFilteredContactList() {
         return filteredContacts;
     }
 
     @Override
-    public void updateFilteredPersonList(Predicate<Contact> predicate) {
+    public void updateFilteredContactList(Predicate<Contact> predicate) {
         requireNonNull(predicate);
         filteredContacts.setPredicate(predicate);
     }
@@ -143,9 +143,9 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
-                && userPrefs.equals(other.userPrefs)
-                && filteredContacts.equals(other.filteredContacts);
+        return trackIter.equals(other.trackIter)
+            && userPrefs.equals(other.userPrefs)
+            && filteredContacts.equals(other.filteredContacts);
     }
 
 }

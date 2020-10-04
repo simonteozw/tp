@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.model.AddressBook;
+import seedu.address.model.TrackIter;
 import seedu.address.model.contact.Contact;
 
 /**
@@ -60,10 +60,10 @@ public class TypicalPersons {
     private TypicalPersons() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical persons.
+     * Returns an {@code TrackIter} with all the typical persons.
      */
-    public static AddressBook getTypicalAddressBook() {
-        AddressBook ab = new AddressBook();
+    public static TrackIter getTypicalAddressBook() {
+        TrackIter ab = new TrackIter();
         for (Contact contact : getTypicalPersons()) {
             ab.addPerson(contact);
         }

@@ -16,10 +16,10 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyTrackIter;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.TrackIter;
 import seedu.address.model.contact.Contact;
 import seedu.address.testutil.PersonBuilder;
 
@@ -99,52 +99,52 @@ public class AddCommandTest {
         }
 
         @Override
-        public Path getAddressBookFilePath() {
+        public Path getTrackIterFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setAddressBookFilePath(Path addressBookFilePath) {
+        public void setTrackIterFilePath(Path trackIterFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void addPerson(Contact contact) {
+        public void addContact(Contact contact) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setAddressBook(ReadOnlyAddressBook newData) {
+        public ReadOnlyTrackIter getTrackIter() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
+        public void setTrackIter(ReadOnlyTrackIter trackIt) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public boolean hasPerson(Contact contact) {
+        public boolean hasContact(Contact contact) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void deletePerson(Contact target) {
+        public void deleteContact(Contact target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setPerson(Contact target, Contact editedContact) {
+        public void setContact(Contact target, Contact editedContact) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ObservableList<Contact> getFilteredPersonList() {
+        public ObservableList<Contact> getFilteredContactList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateFilteredPersonList(Predicate<Contact> predicate) {
+        public void updateFilteredContactList(Predicate<Contact> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }
@@ -161,7 +161,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasPerson(Contact contact) {
+        public boolean hasContact(Contact contact) {
             requireNonNull(contact);
             return this.contact.isSamePerson(contact);
         }
@@ -174,20 +174,20 @@ public class AddCommandTest {
         final ArrayList<Contact> personsAdded = new ArrayList<>();
 
         @Override
-        public boolean hasPerson(Contact contact) {
+        public boolean hasContact(Contact contact) {
             requireNonNull(contact);
             return personsAdded.stream().anyMatch(contact::isSamePerson);
         }
 
         @Override
-        public void addPerson(Contact contact) {
+        public void addContact(Contact contact) {
             requireNonNull(contact);
             personsAdded.add(contact);
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
-            return new AddressBook();
+        public ReadOnlyTrackIter getTrackIter() {
+            return new TrackIter();
         }
     }
 

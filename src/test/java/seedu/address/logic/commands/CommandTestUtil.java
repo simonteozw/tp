@@ -15,8 +15,8 @@ import java.util.List;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
+import seedu.address.model.TrackIter;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.contact.NameContainsKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
@@ -104,25 +104,25 @@ public class CommandTestUtil {
     public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
-        AddressBook expectedAddressBook = new AddressBook(actualModel.getAddressBook());
-        List<Contact> expectedFilteredList = new ArrayList<>(actualModel.getFilteredPersonList());
+        TrackIter expectedTrackIter = new TrackIter(actualModel.getTrackIter());
+        List<Contact> expectedFilteredList = new ArrayList<>(actualModel.getFilteredContactList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
-        assertEquals(expectedAddressBook, actualModel.getAddressBook());
-        assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());
+        assertEquals(expectedTrackIter, actualModel.getTrackIter());
+        assertEquals(expectedFilteredList, actualModel.getFilteredContactList());
     }
     /**
      * Updates {@code model}'s filtered list to show only the contact at the given {@code targetIndex} in the
      * {@code model}'s address book.
      */
     public static void showPersonAtIndex(Model model, Index targetIndex) {
-        assertTrue(targetIndex.getZeroBased() < model.getFilteredPersonList().size());
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredContactList().size());
 
-        Contact contact = model.getFilteredPersonList().get(targetIndex.getZeroBased());
+        Contact contact = model.getFilteredContactList().get(targetIndex.getZeroBased());
         final String[] splitName = contact.getName().fullName.split("\\s+");
-        model.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        model.updateFilteredContactList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
-        assertEquals(1, model.getFilteredPersonList().size());
+        assertEquals(1, model.getFilteredContactList().size());
     }
 
 }
