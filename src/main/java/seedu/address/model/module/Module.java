@@ -2,13 +2,9 @@ package seedu.address.model.module;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import seedu.address.model.commons.Name;
-import seedu.address.model.lesson.Lesson;
-import seedu.address.model.task.Task;
 
 /**
  * Represents a Lesson in the address book.
@@ -20,8 +16,6 @@ public class Module {
     private final Code code;
     private final Name title;
     private final String gradeDist;
-    private final List<Lesson> lessons;
-    private final List<Task> tasks;
 
     /**
      * Every field must be present and not null.
@@ -35,8 +29,6 @@ public class Module {
         this.code = code;
         this.title = name;
         this.gradeDist = gradeDist;
-        this.lessons = new ArrayList<>();
-        this.tasks = new ArrayList<>();
     }
 
     public static String getTYPE() {
@@ -55,14 +47,6 @@ public class Module {
         return gradeDist;
     }
 
-    public List<Lesson> getLessons() {
-        return lessons;
-    }
-
-    public List<Task> getTasks() {
-        return tasks;
-    }
-
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -76,15 +60,13 @@ public class Module {
         Module otherLesson = (Module) other;
         return otherLesson.code.equals(code)
             && otherLesson.title.equals(title)
-            && otherLesson.gradeDist.equals(gradeDist)
-            && otherLesson.lessons.equals(lessons)
-            && otherLesson.tasks.equals(tasks);
+            && otherLesson.gradeDist.equals(gradeDist);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(code, title, gradeDist, lessons, tasks);
+        return Objects.hash(code, title, gradeDist);
     }
 
     @Override
