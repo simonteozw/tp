@@ -95,7 +95,7 @@ public interface Model {
      *
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredContactList(Predicate<Contact> predicate);
+    void updateFilteredContactList(Predicate<Contact> predicate) throws NullPointerException;
 
     //=========== Module ================================================================================
 
@@ -134,5 +134,5 @@ public interface Model {
      *
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredModuleList(Predicate<Module> predicate);
+    void updateFilteredModuleList(Predicate<Module> predicate) throws NullPointerException;
 }
