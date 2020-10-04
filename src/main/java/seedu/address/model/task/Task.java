@@ -70,4 +70,11 @@ public class Task {
         return "Task's toString hasn't been implemented";
     }
 
+    /**
+     * Returns true if the two tasks are the same
+     * This methods is here for to act as a compatibility layer for UniqueTaskList
+     */
+    public boolean isSameTask(Task task) {
+        return this.equals(task);
+    }
 }

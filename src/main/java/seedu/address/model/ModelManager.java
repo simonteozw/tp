@@ -13,6 +13,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.module.Module;
+import seedu.address.model.task.Task;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -24,6 +25,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Contact> filteredContacts;
     private final FilteredList<Module> filteredModules;
+    private final FilteredList<Task> filteredTasks;
 
     /**
      * Initializes a ModelManager with the given trackIter and userPrefs.
@@ -38,6 +40,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredContacts = new FilteredList<>(this.trackIter.getPersonList());
         filteredModules = new FilteredList<>(this.trackIter.getModuleList());
+        filteredTasks = new FilteredList<>(this.trackIter.getTaskList());
     }
 
     public ModelManager() {
@@ -136,9 +139,9 @@ public class ModelManager implements Model {
     //=========== Module ================================================================================
 
     @Override
-    public boolean hasModule(Module module) {
-        requireNonNull(module);
-        return trackIter.hasModule(module);
+    public boolean hasModule(Module task) {
+        requireNonNull(task);
+        return trackIter.hasModule(task);
     }
 
     @Override
@@ -153,10 +156,10 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void setModule(Module target, Module editedModule) {
-        requireAllNonNull(target, editedModule);
+    public void setModule(Module target, Module editedTask) {
+        requireAllNonNull(target, editedTask);
 
-        trackIter.setModule(target, editedModule);
+        trackIter.setModule(target, editedTask);
     }
 
     //=========== Filtered Module List Accessors =============================================================
@@ -170,6 +173,45 @@ public class ModelManager implements Model {
     public void updateFilteredModuleList(Predicate<Module> predicate) {
         requireNonNull(predicate);
         filteredModules.setPredicate(predicate);
+    }
+
+    //=========== Task ================================================================================
+
+    @Override
+    public boolean hasTask(Task task) {
+        requireNonNull(task);
+        return trackIter.hasTask(task);
+    }
+
+    @Override
+    public void deleteTask(Task target) {
+        trackIter.removeTask(target);
+    }
+
+    @Override
+    public void addTask(Task module) {
+        trackIter.addTask(module);
+        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+    }
+
+    @Override
+    public void setTask(Task target, Task editedTask) {
+        requireAllNonNull(target, editedTask);
+
+        trackIter.setTask(target, editedTask);
+    }
+
+    //=========== Filtered Task List Accessors =============================================================
+
+    @Override
+    public ObservableList<Task> getFilteredTaskList() {
+        return filteredTasks;
+    }
+
+    @Override
+    public void updateFilteredTaskList(Predicate<Task> predicate) {
+        requireNonNull(predicate);
+        filteredTasks.setPredicate(predicate);
     }
 
     @Override

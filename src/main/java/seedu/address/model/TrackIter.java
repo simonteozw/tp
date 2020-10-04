@@ -9,6 +9,8 @@ import seedu.address.model.contact.Contact;
 import seedu.address.model.contact.UniquePersonList;
 import seedu.address.model.module.Module;
 import seedu.address.model.module.UniqueModuleList;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.UniqueTaskList;
 
 /**
  * Wraps all data at the address-book level
@@ -18,6 +20,7 @@ public class TrackIter implements ReadOnlyTrackIter {
 
     private final UniquePersonList contacts;
     private final UniqueModuleList modules;
+    private final UniqueTaskList tasks;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -28,6 +31,7 @@ public class TrackIter implements ReadOnlyTrackIter {
      */ {
         contacts = new UniquePersonList();
         modules = new UniqueModuleList();
+        tasks = new UniqueTaskList();
     }
 
     public TrackIter() {
@@ -70,7 +74,7 @@ public class TrackIter implements ReadOnlyTrackIter {
     }
 
 
-    //// module-level operations
+    //=========== Module ================================================================================
 
     /**
      * Returns true if a module with the same identity as {@code module} exists in the address book.
@@ -108,7 +112,7 @@ public class TrackIter implements ReadOnlyTrackIter {
         modules.remove(key);
     }
 
-    //// contact-level operations
+    //=========== Contact ================================================================================
 
     /**
      * Returns true if a contact with the same identity as {@code contact} exists in the address book.
@@ -146,6 +150,45 @@ public class TrackIter implements ReadOnlyTrackIter {
         contacts.remove(key);
     }
 
+
+    //=========== Task ================================================================================
+
+    /**
+     * Returns true if a task with the same identity as {@code task} exists in the address book.
+     */
+    public boolean hasTask(Task task) {
+        requireNonNull(task);
+        return tasks.contains(task);
+    }
+
+    /**
+     * Adds a task to the address book.
+     * The task must not already exist in the address book.
+     */
+    public void addTask(Task p) {
+        tasks.add(p);
+    }
+
+    /**
+     * Replaces the given task {@code target} in the list with {@code editedTask}.
+     * {@code target} must exist in the address book.
+     * The task identity of {@code editedTask} must not
+     * be the same as another existing task in the address book.
+     */
+    public void setTask(Task target, Task editedTask) {
+        requireNonNull(editedTask);
+
+        tasks.setTask(target, editedTask);
+    }
+
+    /**
+     * Removes {@code key} from this {@code TrackIter}.
+     * {@code key} must exist in the address book.
+     */
+    public void removeTask(Task key) {
+        tasks.remove(key);
+    }
+
     //// util methods
 
     @Override
@@ -165,6 +208,11 @@ public class TrackIter implements ReadOnlyTrackIter {
     }
 
     @Override
+    public ObservableList<Task> getTaskList() {
+        return tasks.asUnmodifiableObservableList();
+    }
+
+    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
             || (other instanceof TrackIter // instanceof handles nulls
@@ -176,7 +224,5 @@ public class TrackIter implements ReadOnlyTrackIter {
         return contacts.hashCode();
         // TODO: refine later
     }
-
-
 
 }
