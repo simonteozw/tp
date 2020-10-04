@@ -109,7 +109,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void addPerson(Contact contact) {
+        public void addContact(Contact contact) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -124,27 +124,27 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasPerson(Contact contact) {
+        public boolean hasContact(Contact contact) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void deletePerson(Contact target) {
+        public void deleteContact(Contact target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setPerson(Contact target, Contact editedContact) {
+        public void setContact(Contact target, Contact editedContact) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ObservableList<Contact> getFilteredPersonList() {
+        public ObservableList<Contact> getFilteredContactList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateFilteredPersonList(Predicate<Contact> predicate) {
+        public void updateFilteredContactList(Predicate<Contact> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }
@@ -161,7 +161,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasPerson(Contact contact) {
+        public boolean hasContact(Contact contact) {
             requireNonNull(contact);
             return this.contact.isSamePerson(contact);
         }
@@ -174,13 +174,13 @@ public class AddCommandTest {
         final ArrayList<Contact> personsAdded = new ArrayList<>();
 
         @Override
-        public boolean hasPerson(Contact contact) {
+        public boolean hasContact(Contact contact) {
             requireNonNull(contact);
             return personsAdded.stream().anyMatch(contact::isSamePerson);
         }
 
         @Override
-        public void addPerson(Contact contact) {
+        public void addContact(Contact contact) {
             requireNonNull(contact);
             personsAdded.add(contact);
         }
