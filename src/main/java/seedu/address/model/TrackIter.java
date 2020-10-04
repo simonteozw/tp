@@ -249,6 +249,7 @@ public class TrackIter implements ReadOnlyTrackIter {
         return modules.asUnmodifiableObservableList();
     }
 
+    @Override
     public ObservableList<Task> getTaskList() {
         return tasks.asUnmodifiableObservableList();
     }
