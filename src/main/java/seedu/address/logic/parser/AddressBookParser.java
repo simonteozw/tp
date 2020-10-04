@@ -7,15 +7,19 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.contact.AddCommand;
+import seedu.address.logic.commands.contact.ClearCommand;
+import seedu.address.logic.commands.contact.DeleteCommand;
+import seedu.address.logic.commands.contact.EditCommand;
+import seedu.address.logic.commands.contact.FindCommand;
+import seedu.address.logic.commands.contact.ListCommand;
+import seedu.address.logic.parser.contact.AddCommandParser;
+import seedu.address.logic.parser.contact.DeleteCommandParser;
+import seedu.address.logic.parser.contact.EditCommandParser;
+import seedu.address.logic.parser.contact.FindCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.contact.Contact;
 
