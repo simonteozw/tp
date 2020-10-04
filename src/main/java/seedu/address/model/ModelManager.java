@@ -100,7 +100,7 @@ public class ModelManager implements Model {
 
     @Override
     public void deleteContact(Contact target) {
-        trackIter.removePerson(target);
+        trackIter.removeContact(target);
     }
 
     @Override

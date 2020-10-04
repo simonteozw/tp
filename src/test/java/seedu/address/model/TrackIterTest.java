@@ -20,6 +20,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.contact.exceptions.DuplicatePersonException;
+import seedu.address.model.module.Module;
 import seedu.address.testutil.PersonBuilder;
 
 public class TrackIterTest {
@@ -88,6 +89,7 @@ public class TrackIterTest {
      */
     private static class TrackIterStub implements ReadOnlyTrackIter {
         private final ObservableList<Contact> contacts = FXCollections.observableArrayList();
+        private final ObservableList<Module> modules = FXCollections.observableArrayList();
 
         TrackIterStub(Collection<Contact> contacts) {
             this.contacts.setAll(contacts);
@@ -96,6 +98,11 @@ public class TrackIterTest {
         @Override
         public ObservableList<Contact> getPersonList() {
             return contacts;
+        }
+
+        @Override
+        public ObservableList<Module> getModuleList() {
+            return modules;
         }
     }
 
