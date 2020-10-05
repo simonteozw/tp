@@ -31,7 +31,7 @@ public class TrackIterTest {
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), trackIter.getPersonList());
+        assertEquals(Collections.emptyList(), trackIter.getContactList());
     }
 
     @Test
@@ -83,7 +83,7 @@ public class TrackIterTest {
 
     @Test
     public void getPersonList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> trackIter.getPersonList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> trackIter.getContactList().remove(0));
     }
 
     /**
@@ -100,7 +100,7 @@ public class TrackIterTest {
         }
 
         @Override
-        public ObservableList<Contact> getPersonList() {
+        public ObservableList<Contact> getContactList() {
             return contacts;
         }
 

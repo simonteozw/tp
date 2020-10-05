@@ -73,7 +73,7 @@ public class TrackIter implements ReadOnlyTrackIter {
     public void resetData(ReadOnlyTrackIter newData) {
         requireNonNull(newData);
 
-        setContacts(newData.getPersonList());
+        setContacts(newData.getContactList());
         setModules(newData.getModuleList());
     }
 
@@ -240,7 +240,7 @@ public class TrackIter implements ReadOnlyTrackIter {
     }
 
     @Override
-    public ObservableList<Contact> getPersonList() {
+    public ObservableList<Contact> getContactList() {
         return contacts.asUnmodifiableObservableList();
     }
 

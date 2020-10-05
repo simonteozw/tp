@@ -39,7 +39,7 @@ public class AddCommandIntegrationTest {
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
-        Contact contactInList = model.getTrackIter().getPersonList().get(0);
+        Contact contactInList = model.getTrackIter().getContactList().get(0);
         assertCommandFailure(new AddCommand(contactInList), model, AddCommand.MESSAGE_DUPLICATE_CONTACT);
     }
 
