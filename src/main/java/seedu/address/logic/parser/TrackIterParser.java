@@ -65,8 +65,8 @@ public class TrackIterParser {
             case FindContactCommand.COMMAND_WORD:
                 return new FindCommandParser().parse(arguments);
 
-            case ListCommand.COMMAND_WORD:
-                return new ListCommand();
+            case ListContactCommand.COMMAND_WORD:
+                return new ListContactCommand();
 
             default:
                 throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
