@@ -76,13 +76,13 @@ public class ModelManager implements Model {
 
     @Override
     public Path getTrackIterFilePath() {
-        return userPrefs.getAddressBookFilePath();
+        return userPrefs.getTrackIterFilePath();
     }
 
     @Override
     public void setTrackIterFilePath(Path trackIterFilePath) {
         requireNonNull(trackIterFilePath);
-        userPrefs.setAddressBookFilePath(trackIterFilePath);
+        userPrefs.setTrackIterFilePath(trackIterFilePath);
     }
 
     //=========== TrackIter ================================================================================
