@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.contact.NameContainsKeywordsPredicate;
-import seedu.address.testutil.AddressBookBuilder;
+import seedu.address.testutil.TrackIterBuilder;
 
 public class ModelManagerTest {
 
@@ -95,7 +95,7 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        TrackIter trackIter = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
+        TrackIter trackIter = new TrackIterBuilder().withContact(ALICE).withContact(BENSON).build();
         TrackIter differentTrackIter = new TrackIter();
         UserPrefs userPrefs = new UserPrefs();
 
