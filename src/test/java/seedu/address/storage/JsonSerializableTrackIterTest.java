@@ -40,7 +40,7 @@ public class JsonSerializableTrackIterTest {
     public void toModelType_duplicatePersons_throwsIllegalValueException() throws Exception {
         JsonSerializableTrackIter dataFromFile = JsonUtil.readJsonFile(DUPLICATE_PERSON_FILE,
             JsonSerializableTrackIter.class).get();
-        assertThrows(IllegalValueException.class, JsonSerializableTrackIter.MESSAGE_DUPLICATE_PERSON,
+        assertThrows(IllegalValueException.class, JsonSerializableTrackIter.MESSAGE_DUPLICATE_CONTACT,
             dataFromFile::toModelType);
     }
 
