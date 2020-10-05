@@ -10,7 +10,7 @@ import seedu.address.model.commons.Name;
 
 
 /**
- * Represents a Lesson in the address book.
+ * Represents a Task in the address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Task {

@@ -18,13 +18,15 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.EditCommand.EditContactDescriptor;
+import seedu.address.logic.commands.contact.ClearCommand;
+import seedu.address.logic.commands.contact.EditCommand;
+import seedu.address.logic.commands.contact.EditCommand.EditContactDescriptor;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.TrackIter;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.contact.Contact;
-import seedu.address.testutil.EditPersonDescriptorBuilder;
+import seedu.address.testutil.EditContactDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 
 /**
@@ -37,7 +39,7 @@ public class EditCommandTest {
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         Contact editedContact = new PersonBuilder().build();
-        EditContactDescriptor descriptor = new EditPersonDescriptorBuilder(editedContact).build();
+        EditContactDescriptor descriptor = new EditContactDescriptorBuilder(editedContact).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedContact);
@@ -57,7 +59,7 @@ public class EditCommandTest {
         Contact editedContact = personInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
             .withTags(VALID_TAG_HUSBAND).build();
 
-        EditContactDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
+        EditContactDescriptor descriptor = new EditContactDescriptorBuilder().withName(VALID_NAME_BOB)
             .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_HUSBAND).build();
         EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
 
@@ -71,7 +73,7 @@ public class EditCommandTest {
 
     @Test
     public void execute_noFieldSpecifiedUnfilteredList_success() {
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, new EditCommand.EditContactDescriptor());
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, new EditContactDescriptor());
         Contact editedContact = model.getFilteredContactList().get(INDEX_FIRST_PERSON.getZeroBased());
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedContact);
@@ -88,7 +90,7 @@ public class EditCommandTest {
         Contact contactInFilteredList = model.getFilteredContactList().get(INDEX_FIRST_PERSON.getZeroBased());
         Contact editedContact = new PersonBuilder(contactInFilteredList).withName(VALID_NAME_BOB).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
-            new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build());
+            new EditContactDescriptorBuilder().withName(VALID_NAME_BOB).build());
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedContact);
 
@@ -101,7 +103,7 @@ public class EditCommandTest {
     @Test
     public void execute_duplicatePersonUnfilteredList_failure() {
         Contact firstContact = model.getFilteredContactList().get(INDEX_FIRST_PERSON.getZeroBased());
-        EditCommand.EditContactDescriptor descriptor = new EditPersonDescriptorBuilder(firstContact).build();
+        EditContactDescriptor descriptor = new EditContactDescriptorBuilder(firstContact).build();
         EditCommand editCommand = new EditCommand(INDEX_SECOND_PERSON, descriptor);
 
         assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_PERSON);
@@ -114,7 +116,7 @@ public class EditCommandTest {
         // edit contact in filtered list into a duplicate in address book
         Contact contactInList = model.getTrackIter().getPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
-            new EditPersonDescriptorBuilder(contactInList).build());
+            new EditContactDescriptorBuilder(contactInList).build());
 
         assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_PERSON);
     }
@@ -122,7 +124,7 @@ public class EditCommandTest {
     @Test
     public void execute_invalidPersonIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredContactList().size() + 1);
-        EditContactDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build();
+        EditContactDescriptor descriptor = new EditContactDescriptorBuilder().withName(VALID_NAME_BOB).build();
         EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
@@ -140,7 +142,7 @@ public class EditCommandTest {
         assertTrue(outOfBoundIndex.getZeroBased() < model.getTrackIter().getPersonList().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,
-            new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build());
+            new EditContactDescriptorBuilder().withName(VALID_NAME_BOB).build());
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
@@ -150,7 +152,7 @@ public class EditCommandTest {
         final EditCommand standardCommand = new EditCommand(INDEX_FIRST_PERSON, DESC_AMY);
 
         // same values -> returns true
-        EditCommand.EditContactDescriptor copyDescriptor = new EditCommand.EditContactDescriptor(DESC_AMY);
+        EditContactDescriptor copyDescriptor = new EditContactDescriptor(DESC_AMY);
         EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST_PERSON, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
