@@ -10,12 +10,12 @@ import java.util.regex.Pattern;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.contact.AddCommand;
-import seedu.address.logic.commands.contact.ClearCommand;
-import seedu.address.logic.commands.contact.DeleteCommand;
-import seedu.address.logic.commands.contact.EditCommand;
-import seedu.address.logic.commands.contact.FindCommand;
-import seedu.address.logic.commands.contact.ListCommand;
+import seedu.address.logic.commands.contact.AddContactCommand;
+import seedu.address.logic.commands.contact.ClearContactCommand;
+import seedu.address.logic.commands.contact.DeleteContactCommand;
+import seedu.address.logic.commands.contact.EditContactCommand;
+import seedu.address.logic.commands.contact.FindContactCommand;
+import seedu.address.logic.commands.contact.ListContactCommand;
 import seedu.address.logic.parser.contact.AddCommandParser;
 import seedu.address.logic.parser.contact.DeleteCommandParser;
 import seedu.address.logic.parser.contact.EditCommandParser;
@@ -54,23 +54,23 @@ public class TrackIterParser {
         switch (type) {
         case Contact.TYPE:
             switch (commandWord) {
-            case AddCommand.COMMAND_WORD:
+            case AddContactCommand.COMMAND_WORD:
                 return new AddCommandParser().parse(arguments);
 
-            case EditCommand.COMMAND_WORD:
+            case EditContactCommand.COMMAND_WORD:
                 return new EditCommandParser().parse(arguments);
 
-            case DeleteCommand.COMMAND_WORD:
+            case DeleteContactCommand.COMMAND_WORD:
                 return new DeleteCommandParser().parse(arguments);
 
-            case ClearCommand.COMMAND_WORD:
-                return new ClearCommand();
+            case ClearContactCommand.COMMAND_WORD:
+                return new ClearContactCommand();
 
-            case FindCommand.COMMAND_WORD:
+            case FindContactCommand.COMMAND_WORD:
                 return new FindCommandParser().parse(arguments);
 
-            case ListCommand.COMMAND_WORD:
-                return new ListCommand();
+            case ListContactCommand.COMMAND_WORD:
+                return new ListContactCommand();
 
             default:
                 throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
