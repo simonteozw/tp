@@ -16,7 +16,7 @@ import seedu.address.logic.commands.contact.DeleteContactCommand;
 import seedu.address.logic.commands.contact.EditContactCommand;
 import seedu.address.logic.commands.contact.FindContactCommand;
 import seedu.address.logic.commands.contact.ListContactCommand;
-import seedu.address.logic.parser.contact.AddCommandParser;
+import seedu.address.logic.parser.contact.AddContactCommandParser;
 import seedu.address.logic.parser.contact.DeleteCommandParser;
 import seedu.address.logic.parser.contact.EditCommandParser;
 import seedu.address.logic.parser.contact.FindCommandParser;
@@ -55,7 +55,7 @@ public class TrackIterParser {
         case Contact.TYPE:
             switch (commandWord) {
             case AddContactCommand.COMMAND_WORD:
-                return new AddCommandParser().parse(arguments);
+                return new AddContactCommandParser().parse(arguments);
 
             case EditContactCommand.COMMAND_WORD:
                 return new EditCommandParser().parse(arguments);

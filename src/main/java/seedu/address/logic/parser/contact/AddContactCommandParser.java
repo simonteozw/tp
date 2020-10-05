@@ -27,7 +27,7 @@ import seedu.address.model.tag.Tag;
 /**
  * Parses input arguments and creates a new AddContactCommand object
  */
-public class AddCommandParser implements Parser<AddContactCommand> {
+public class AddContactCommandParser implements Parser<AddContactCommand> {
 
     /**
      * Returns true if none of the prefixes contains empty {@code Optional} values in the given
