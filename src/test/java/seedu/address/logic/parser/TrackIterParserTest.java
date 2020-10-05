@@ -44,9 +44,9 @@ public class TrackIterParserTest {
 
     @Test
     public void parseCommand_delete() throws Exception {
-        DeleteCommand command = (DeleteCommand) parser.parseCommand(
-            Contact.TYPE + " " + DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
-        assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
+        DeleteContactCommand command = (DeleteContactCommand) parser.parseCommand(
+            Contact.TYPE + " " + DeleteContactCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        assertEquals(new DeleteContactCommand(INDEX_FIRST_PERSON), command);
     }
 
     @Test
