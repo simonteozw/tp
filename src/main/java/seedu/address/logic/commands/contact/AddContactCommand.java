@@ -16,7 +16,7 @@ import seedu.address.model.contact.Contact;
 /**
  * Adds a contact to the address book.
  */
-public class AddCommand extends Command {
+public class AddContactCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
@@ -41,9 +41,9 @@ public class AddCommand extends Command {
     private final Contact toAdd;
 
     /**
-     * Creates an AddCommand to add the specified {@code Contact}
+     * Creates an AddContactCommand to add the specified {@code Contact}
      */
-    public AddCommand(Contact contact) {
+    public AddContactCommand(Contact contact) {
         requireNonNull(contact);
         toAdd = contact;
     }
@@ -63,7 +63,7 @@ public class AddCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof AddCommand // instanceof handles nulls
-            && toAdd.equals(((AddCommand) other).toAdd));
+            || (other instanceof AddContactCommand // instanceof handles nulls
+            && toAdd.equals(((AddContactCommand) other).toAdd));
     }
 }

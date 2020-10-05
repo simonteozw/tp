@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.contact.AddCommand;
+import seedu.address.logic.commands.contact.AddContactCommand;
 import seedu.address.logic.commands.contact.ListCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -77,7 +77,7 @@ public class LogicManagerTest {
         logic = new LogicManager(model, storage);
 
         // Execute add command
-        String addCommand = Contact.TYPE + " " + AddCommand.COMMAND_WORD + NAME_DESC_AMY
+        String addCommand = Contact.TYPE + " " + AddContactCommand.COMMAND_WORD + NAME_DESC_AMY
             + PHONE_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY;
         Contact expectedContact = new PersonBuilder(AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
