@@ -29,17 +29,17 @@ public interface Logic {
      *
      * @see seedu.address.model.Model#getTrackIter()
      */
-    ReadOnlyTrackIter getAddressBook();
+    ReadOnlyTrackIter getTrackIter();
 
     /**
-     * Returns an unmodifiable view of the filtered list of persons
+     * Returns an unmodifiable view of the filtered list of contacts
      */
-    ObservableList<Contact> getFilteredPersonList();
+    ObservableList<Contact> getFilteredContactList();
 
     /**
      * Returns the user prefs' address book file path.
      */
-    Path getAddressBookFilePath();
+    Path getTrackIterFilePath();
 
     /**
      * Returns the user prefs' GUI settings.

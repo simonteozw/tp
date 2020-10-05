@@ -6,7 +6,7 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.contact.Contact;
-import seedu.address.model.contact.UniquePersonList;
+import seedu.address.model.contact.UniqueContactList;
 import seedu.address.model.lesson.Lesson;
 import seedu.address.model.lesson.UniqueLessonList;
 import seedu.address.model.module.Module;
@@ -16,11 +16,11 @@ import seedu.address.model.task.UniqueTaskList;
 
 /**
  * Wraps all data at the address-book level
- * Duplicates are not allowed (by .isSamePerson comparison)
+ * Duplicates are not allowed (by .isSameContact comparison)
  */
 public class TrackIter implements ReadOnlyTrackIter {
 
-    private final UniquePersonList contacts;
+    private final UniqueContactList contacts;
     private final UniqueModuleList modules;
     private final UniqueTaskList tasks;
     private final UniqueLessonList lessons;
@@ -32,7 +32,7 @@ public class TrackIter implements ReadOnlyTrackIter {
      * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
      *   among constructors.
      */ {
-        contacts = new UniquePersonList();
+        contacts = new UniqueContactList();
         modules = new UniqueModuleList();
         tasks = new UniqueTaskList();
         lessons = new UniqueLessonList();
@@ -56,7 +56,7 @@ public class TrackIter implements ReadOnlyTrackIter {
      * {@code contacts} must not contain duplicate contacts.
      */
     public void setContacts(List<Contact> contacts) {
-        this.contacts.setPersons(contacts);
+        this.contacts.setContacts(contacts);
     }
 
     /**
@@ -121,7 +121,7 @@ public class TrackIter implements ReadOnlyTrackIter {
     /**
      * Returns true if a contact with the same identity as {@code contact} exists in the address book.
      */
-    public boolean hasPerson(Contact contact) {
+    public boolean hasContact(Contact contact) {
         requireNonNull(contact);
         return contacts.contains(contact);
     }
@@ -130,7 +130,7 @@ public class TrackIter implements ReadOnlyTrackIter {
      * Adds a module to the address book.
      * The module must not already exist in the address book.
      */
-    public void addPerson(Contact p) {
+    public void addContact(Contact p) {
         contacts.add(p);
     }
 
@@ -140,10 +140,10 @@ public class TrackIter implements ReadOnlyTrackIter {
      * The contact identity of {@code editedContact} must not
      * be the same as another existing contact in the address book.
      */
-    public void setPerson(Contact target, Contact editedContact) {
+    public void setContact(Contact target, Contact editedContact) {
         requireNonNull(editedContact);
 
-        contacts.setPerson(target, editedContact);
+        contacts.setContact(target, editedContact);
     }
 
     /**

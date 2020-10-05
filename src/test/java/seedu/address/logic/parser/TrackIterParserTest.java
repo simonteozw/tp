@@ -19,15 +19,15 @@ import seedu.address.logic.commands.contact.AddCommand;
 import seedu.address.logic.commands.contact.ClearCommand;
 import seedu.address.logic.commands.contact.DeleteCommand;
 import seedu.address.logic.commands.contact.EditCommand;
-import seedu.address.logic.commands.contact.EditCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.contact.EditCommand.EditContactDescriptor;
 import seedu.address.logic.commands.contact.FindCommand;
 import seedu.address.logic.commands.contact.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.contact.NameContainsKeywordsPredicate;
-import seedu.address.testutil.EditPersonDescriptorBuilder;
+import seedu.address.testutil.ContactUtil;
+import seedu.address.testutil.EditContactDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
-import seedu.address.testutil.PersonUtil;
 
 public class TrackIterParserTest {
 
@@ -36,7 +36,7 @@ public class TrackIterParserTest {
     @Test
     public void parseCommand_add() throws Exception {
         Contact contact = new PersonBuilder().build();
-        AddCommand command = (AddCommand) parser.parseCommand(Contact.TYPE + " " + PersonUtil.getAddCommand(contact));
+        AddCommand command = (AddCommand) parser.parseCommand(Contact.TYPE + " " + ContactUtil.getAddCommand(contact));
         assertEquals(new AddCommand(contact), command);
     }
 
@@ -56,9 +56,9 @@ public class TrackIterParserTest {
     @Test
     public void parseCommand_edit() throws Exception {
         Contact contact = new PersonBuilder().build();
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(contact).build();
+        EditContactDescriptor descriptor = new EditContactDescriptorBuilder(contact).build();
         EditCommand command = (EditCommand) parser.parseCommand(Contact.TYPE + " " + EditCommand.COMMAND_WORD + " "
-            + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
+            + INDEX_FIRST_PERSON.getOneBased() + " " + ContactUtil.getEditContactDescriptorDetails(descriptor));
         assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
     }
 

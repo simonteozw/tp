@@ -43,7 +43,7 @@ public class SampleDataUtil {
     public static ReadOnlyTrackIter getSampleAddressBook() {
         TrackIter sampleAb = new TrackIter();
         for (Contact sampleContact : getSamplePersons()) {
-            sampleAb.addPerson(sampleContact);
+            sampleAb.addContact(sampleContact);
         }
         return sampleAb;
     }

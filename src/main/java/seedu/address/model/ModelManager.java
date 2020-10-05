@@ -101,7 +101,7 @@ public class ModelManager implements Model {
     @Override
     public boolean hasContact(Contact contact) {
         requireNonNull(contact);
-        return trackIter.hasPerson(contact);
+        return trackIter.hasContact(contact);
     }
 
     @Override
@@ -111,7 +111,7 @@ public class ModelManager implements Model {
 
     @Override
     public void addContact(Contact contact) {
-        trackIter.addPerson(contact);
+        trackIter.addContact(contact);
         updateFilteredContactList(PREDICATE_SHOW_ALL_CONTACTS);
     }
 
@@ -119,7 +119,7 @@ public class ModelManager implements Model {
     public void setContact(Contact target, Contact editedContact) {
         requireAllNonNull(target, editedContact);
 
-        trackIter.setPerson(target, editedContact);
+        trackIter.setContact(target, editedContact);
     }
 
     //=========== Filtered Contact List Accessors =============================================================

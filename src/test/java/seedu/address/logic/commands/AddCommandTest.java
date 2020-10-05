@@ -51,7 +51,7 @@ public class AddCommandTest {
         AddCommand addCommand = new AddCommand(validContact);
         ModelStub modelStub = new ModelStubWithPerson(validContact);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_CONTACT, () -> addCommand.execute(modelStub));
     }
 
     @Test
@@ -258,7 +258,7 @@ public class AddCommandTest {
         @Override
         public boolean hasContact(Contact contact) {
             requireNonNull(contact);
-            return this.contact.isSamePerson(contact);
+            return this.contact.isSameContact(contact);
         }
     }
 
@@ -271,7 +271,7 @@ public class AddCommandTest {
         @Override
         public boolean hasContact(Contact contact) {
             requireNonNull(contact);
-            return personsAdded.stream().anyMatch(contact::isSamePerson);
+            return personsAdded.stream().anyMatch(contact::isSameContact);
         }
 
         @Override

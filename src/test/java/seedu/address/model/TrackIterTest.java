@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.contact.Contact;
-import seedu.address.model.contact.exceptions.DuplicatePersonException;
+import seedu.address.model.contact.exceptions.DuplicateContactException;
 import seedu.address.model.lesson.Lesson;
 import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
@@ -54,31 +54,31 @@ public class TrackIterTest {
         List<Contact> newContacts = Arrays.asList(ALICE, editedAlice);
         TrackIterStub newData = new TrackIterStub(newContacts);
 
-        assertThrows(DuplicatePersonException.class, () -> trackIter.resetData(newData));
+        assertThrows(DuplicateContactException.class, () -> trackIter.resetData(newData));
     }
 
     @Test
     public void hasPerson_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> trackIter.hasPerson(null));
+        assertThrows(NullPointerException.class, () -> trackIter.hasContact(null));
     }
 
     @Test
     public void hasPerson_personNotInAddressBook_returnsFalse() {
-        assertFalse(trackIter.hasPerson(ALICE));
+        assertFalse(trackIter.hasContact(ALICE));
     }
 
     @Test
     public void hasPerson_personInAddressBook_returnsTrue() {
-        trackIter.addPerson(ALICE);
-        assertTrue(trackIter.hasPerson(ALICE));
+        trackIter.addContact(ALICE);
+        assertTrue(trackIter.hasContact(ALICE));
     }
 
     @Test
     public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        trackIter.addPerson(ALICE);
+        trackIter.addContact(ALICE);
         Contact editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
             .build();
-        assertTrue(trackIter.hasPerson(editedAlice));
+        assertTrue(trackIter.hasContact(editedAlice));
     }
 
     @Test

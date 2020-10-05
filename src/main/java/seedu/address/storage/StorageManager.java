@@ -17,15 +17,15 @@ import seedu.address.model.UserPrefs;
 public class StorageManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
-    private final AddressBookStorage addressBookStorage;
+    private final TrackIterStorage trackIterStorage;
     private final UserPrefsStorage userPrefsStorage;
 
     /**
-     * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
+     * Creates a {@code StorageManager} with the given {@code TrackIterStorage} and {@code UserPrefStorage}.
      */
-    public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage) {
+    public StorageManager(TrackIterStorage trackIterStorage, UserPrefsStorage userPrefsStorage) {
         super();
-        this.addressBookStorage = addressBookStorage;
+        this.trackIterStorage = trackIterStorage;
         this.userPrefsStorage = userPrefsStorage;
     }
 
@@ -50,30 +50,30 @@ public class StorageManager implements Storage {
     // ================ TrackIter methods ==============================
 
     @Override
-    public Path getAddressBookFilePath() {
-        return addressBookStorage.getAddressBookFilePath();
+    public Path getTrackIterFilePath() {
+        return trackIterStorage.getTrackIterFilePath();
     }
 
     @Override
-    public Optional<ReadOnlyTrackIter> readAddressBook() throws DataConversionException, IOException {
-        return readAddressBook(addressBookStorage.getAddressBookFilePath());
+    public Optional<ReadOnlyTrackIter> readTrackIter() throws DataConversionException, IOException {
+        return readTrackIter(trackIterStorage.getTrackIterFilePath());
     }
 
     @Override
-    public Optional<ReadOnlyTrackIter> readAddressBook(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyTrackIter> readTrackIter(Path filePath) throws DataConversionException, IOException {
         logger.fine("Attempting to read data from file: " + filePath);
-        return addressBookStorage.readAddressBook(filePath);
+        return trackIterStorage.readTrackIter(filePath);
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyTrackIter addressBook) throws IOException {
-        saveAddressBook(addressBook, addressBookStorage.getAddressBookFilePath());
+    public void saveTrackIter(ReadOnlyTrackIter addressBook) throws IOException {
+        saveTrackIter(addressBook, trackIterStorage.getTrackIterFilePath());
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyTrackIter addressBook, Path filePath) throws IOException {
+    public void saveTrackIter(ReadOnlyTrackIter addressBook, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
-        addressBookStorage.saveAddressBook(addressBook, filePath);
+        trackIterStorage.saveTrackIter(addressBook, filePath);
     }
 
 }
