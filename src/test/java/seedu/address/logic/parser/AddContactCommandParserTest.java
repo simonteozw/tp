@@ -32,7 +32,7 @@ import static seedu.address.testutil.TypicalPersons.BOB;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.contact.AddContactCommand;
-import seedu.address.logic.parser.contact.AddCommandParser;
+import seedu.address.logic.parser.contact.AddContactCommandParser;
 import seedu.address.model.commons.Address;
 import seedu.address.model.commons.Name;
 import seedu.address.model.contact.Contact;
@@ -42,7 +42,7 @@ import seedu.address.model.tag.Tag;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddContactCommandParserTest {
-    private final AddCommandParser parser = new AddCommandParser();
+    private final AddContactCommandParser parser = new AddContactCommandParser();
 
     @Test
     public void parse_allFieldsPresent_success() {

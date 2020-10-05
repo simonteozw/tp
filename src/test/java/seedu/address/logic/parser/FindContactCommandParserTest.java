@@ -9,12 +9,12 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.contact.FindContactCommand;
-import seedu.address.logic.parser.contact.FindCommandParser;
+import seedu.address.logic.parser.contact.FindContactCommandParser;
 import seedu.address.model.contact.NameContainsKeywordsPredicate;
 
 public class FindContactCommandParserTest {
 
-    private final FindCommandParser parser = new FindCommandParser();
+    private final FindContactCommandParser parser = new FindContactCommandParser();
 
     @Test
     public void parse_emptyArg_throwsParseException() {

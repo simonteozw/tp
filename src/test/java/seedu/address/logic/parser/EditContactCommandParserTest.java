@@ -36,7 +36,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.contact.EditContactCommand;
 import seedu.address.logic.commands.contact.EditContactCommand.EditContactDescriptor;
-import seedu.address.logic.parser.contact.EditCommandParser;
+import seedu.address.logic.parser.contact.EditContactCommandParser;
 import seedu.address.model.commons.Address;
 import seedu.address.model.commons.Name;
 import seedu.address.model.contact.Email;
@@ -51,7 +51,7 @@ public class EditContactCommandParserTest {
     private static final String MESSAGE_INVALID_FORMAT =
         String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditContactCommand.MESSAGE_USAGE);
 
-    private final EditCommandParser parser = new EditCommandParser();
+    private final EditContactCommandParser parser = new EditContactCommandParser();
 
     @Test
     public void parse_missingParts_failure() {
