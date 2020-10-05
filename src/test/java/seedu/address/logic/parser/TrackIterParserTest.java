@@ -38,8 +38,8 @@ public class TrackIterParserTest {
 
     @Test
     public void parseCommand_clear() throws Exception {
-        assertTrue(parser.parseCommand(Contact.TYPE + " " + ClearCommand.COMMAND_WORD) instanceof ClearCommand);
-        assertTrue(parser.parseCommand(Contact.TYPE + " " + ClearCommand.COMMAND_WORD + " 3") instanceof ClearCommand);
+        assertTrue(parser.parseCommand(Contact.TYPE + " " + ClearContactCommand.COMMAND_WORD) instanceof ClearContactCommand);
+        assertTrue(parser.parseCommand(Contact.TYPE + " " + ClearContactCommand.COMMAND_WORD + " 3") instanceof ClearContactCommand);
     }
 
     @Test
