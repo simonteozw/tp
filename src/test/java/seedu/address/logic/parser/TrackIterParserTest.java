@@ -17,7 +17,7 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.contact.*;
 import seedu.address.logic.commands.contact.AddContactCommand;
-import seedu.address.logic.commands.contact.EditCommand.EditContactDescriptor;
+import seedu.address.logic.commands.contact.EditContactCommand.EditContactDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.contact.NameContainsKeywordsPredicate;
@@ -53,9 +53,9 @@ public class TrackIterParserTest {
     public void parseCommand_edit() throws Exception {
         Contact contact = new PersonBuilder().build();
         EditContactDescriptor descriptor = new EditContactDescriptorBuilder(contact).build();
-        EditCommand command = (EditCommand) parser.parseCommand(Contact.TYPE + " " + EditCommand.COMMAND_WORD + " "
+        EditContactCommand command = (EditContactCommand) parser.parseCommand(Contact.TYPE + " " + EditContactCommand.COMMAND_WORD + " "
             + INDEX_FIRST_PERSON.getOneBased() + " " + ContactUtil.getEditContactDescriptorDetails(descriptor));
-        assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
+        assertEquals(new EditContactCommand(INDEX_FIRST_PERSON, descriptor), command);
     }
 
     @Test

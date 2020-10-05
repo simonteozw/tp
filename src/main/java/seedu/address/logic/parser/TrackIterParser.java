@@ -53,7 +53,7 @@ public class TrackIterParser {
             case AddContactCommand.COMMAND_WORD:
                 return new AddCommandParser().parse(arguments);
 
-            case EditCommand.COMMAND_WORD:
+            case EditContactCommand.COMMAND_WORD:
                 return new EditCommandParser().parse(arguments);
 
             case DeleteContactCommand.COMMAND_WORD:
