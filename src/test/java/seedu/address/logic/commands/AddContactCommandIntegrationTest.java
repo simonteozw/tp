@@ -7,7 +7,7 @@ import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.contact.AddCommand;
+import seedu.address.logic.commands.contact.AddContactCommand;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -15,9 +15,9 @@ import seedu.address.model.contact.Contact;
 import seedu.address.testutil.PersonBuilder;
 
 /**
- * Contains integration tests (interaction with the Model) for {@code AddCommand}.
+ * Contains integration tests (interaction with the Model) for {@code AddContactCommand}.
  */
-public class AddCommandIntegrationTest {
+public class AddContactCommandIntegrationTest {
 
     private Model model;
 
@@ -33,14 +33,14 @@ public class AddCommandIntegrationTest {
         Model expectedModel = new ModelManager(model.getTrackIter(), new UserPrefs());
         expectedModel.addContact(validContact);
 
-        assertCommandSuccess(new AddCommand(validContact), model,
-            String.format(AddCommand.MESSAGE_SUCCESS, validContact), expectedModel);
+        assertCommandSuccess(new AddContactCommand(validContact), model,
+            String.format(AddContactCommand.MESSAGE_SUCCESS, validContact), expectedModel);
     }
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
         Contact contactInList = model.getTrackIter().getContactList().get(0);
-        assertCommandFailure(new AddCommand(contactInList), model, AddCommand.MESSAGE_DUPLICATE_CONTACT);
+        assertCommandFailure(new AddContactCommand(contactInList), model, AddContactCommand.MESSAGE_DUPLICATE_CONTACT);
     }
 
 }

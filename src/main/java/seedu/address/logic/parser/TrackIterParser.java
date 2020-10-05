@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.contact.AddCommand;
+import seedu.address.logic.commands.contact.AddContactCommand;
 import seedu.address.logic.commands.contact.ClearCommand;
 import seedu.address.logic.commands.contact.DeleteCommand;
 import seedu.address.logic.commands.contact.EditCommand;
@@ -54,7 +54,7 @@ public class TrackIterParser {
         switch (type) {
         case Contact.TYPE:
             switch (commandWord) {
-            case AddCommand.COMMAND_WORD:
+            case AddContactCommand.COMMAND_WORD:
                 return new AddCommandParser().parse(arguments);
 
             case EditCommand.COMMAND_WORD:
