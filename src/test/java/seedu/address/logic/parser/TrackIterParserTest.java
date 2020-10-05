@@ -15,9 +15,13 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.contact.*;
 import seedu.address.logic.commands.contact.AddContactCommand;
+import seedu.address.logic.commands.contact.ClearContactCommand;
+import seedu.address.logic.commands.contact.DeleteContactCommand;
+import seedu.address.logic.commands.contact.EditContactCommand;
 import seedu.address.logic.commands.contact.EditContactCommand.EditContactDescriptor;
+import seedu.address.logic.commands.contact.FindContactCommand;
+import seedu.address.logic.commands.contact.ListContactCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.contact.NameContainsKeywordsPredicate;
@@ -32,14 +36,17 @@ public class TrackIterParserTest {
     @Test
     public void parseCommand_add() throws Exception {
         Contact contact = new PersonBuilder().build();
-        AddContactCommand command = (AddContactCommand) parser.parseCommand(Contact.TYPE + " " + ContactUtil.getAddCommand(contact));
+        AddContactCommand command = (AddContactCommand) parser.parseCommand(Contact.TYPE
+                + " " + ContactUtil.getAddCommand(contact));
         assertEquals(new AddContactCommand(contact), command);
     }
 
     @Test
     public void parseCommand_clear() throws Exception {
-        assertTrue(parser.parseCommand(Contact.TYPE + " " + ClearContactCommand.COMMAND_WORD) instanceof ClearContactCommand);
-        assertTrue(parser.parseCommand(Contact.TYPE + " " + ClearContactCommand.COMMAND_WORD + " 3") instanceof ClearContactCommand);
+        assertTrue(parser.parseCommand(Contact.TYPE + " "
+                + ClearContactCommand.COMMAND_WORD) instanceof ClearContactCommand);
+        assertTrue(parser.parseCommand(Contact.TYPE + " "
+                + ClearContactCommand.COMMAND_WORD + " 3") instanceof ClearContactCommand);
     }
 
     @Test
@@ -53,8 +60,9 @@ public class TrackIterParserTest {
     public void parseCommand_edit() throws Exception {
         Contact contact = new PersonBuilder().build();
         EditContactDescriptor descriptor = new EditContactDescriptorBuilder(contact).build();
-        EditContactCommand command = (EditContactCommand) parser.parseCommand(Contact.TYPE + " " + EditContactCommand.COMMAND_WORD + " "
-            + INDEX_FIRST_PERSON.getOneBased() + " " + ContactUtil.getEditContactDescriptorDetails(descriptor));
+        EditContactCommand command = (EditContactCommand) parser.parseCommand(Contact.TYPE + " "
+                + EditContactCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + " "
+                + ContactUtil.getEditContactDescriptorDetails(descriptor));
         assertEquals(new EditContactCommand(INDEX_FIRST_PERSON, descriptor), command);
     }
 
@@ -81,8 +89,10 @@ public class TrackIterParserTest {
 
     @Test
     public void parseCommand_list() throws Exception {
-        assertTrue(parser.parseCommand(Contact.TYPE + " " + ListContactCommand.COMMAND_WORD) instanceof ListContactCommand);
-        assertTrue(parser.parseCommand(Contact.TYPE + " " + ListContactCommand.COMMAND_WORD + " 3") instanceof ListContactCommand);
+        assertTrue(parser.parseCommand(Contact.TYPE + " "
+                + ListContactCommand.COMMAND_WORD) instanceof ListContactCommand);
+        assertTrue(parser.parseCommand(Contact.TYPE + " "
+                + ListContactCommand.COMMAND_WORD + " 3") instanceof ListContactCommand);
     }
 
     @Test
