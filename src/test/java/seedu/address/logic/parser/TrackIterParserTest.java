@@ -67,10 +67,10 @@ public class TrackIterParserTest {
     @Test
     public void parseCommand_find() throws Exception {
         List<String> keywords = Arrays.asList("foo", "bar", "baz");
-        FindCommand command = (FindCommand) parser.parseCommand(
-            Contact.TYPE + " " + FindCommand.COMMAND_WORD + " "
+        FindContactCommand command = (FindContactCommand) parser.parseCommand(
+            Contact.TYPE + " " + FindContactCommand.COMMAND_WORD + " "
                 + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
+        assertEquals(new FindContactCommand(new NameContainsKeywordsPredicate(keywords)), command);
     }
 
     @Test

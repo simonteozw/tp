@@ -62,7 +62,7 @@ public class TrackIterParser {
             case ClearContactCommand.COMMAND_WORD:
                 return new ClearContactCommand();
 
-            case FindCommand.COMMAND_WORD:
+            case FindContactCommand.COMMAND_WORD:
                 return new FindCommandParser().parse(arguments);
 
             case ListCommand.COMMAND_WORD:
