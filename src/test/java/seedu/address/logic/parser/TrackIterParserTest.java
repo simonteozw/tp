@@ -31,7 +31,7 @@ import seedu.address.testutil.PersonBuilder;
 
 public class TrackIterParserTest {
 
-    private final AddressBookParser parser = new AddressBookParser();
+    private final TrackIterParser parser = new TrackIterParser();
 
     @Test
     public void parseCommand_add() throws Exception {

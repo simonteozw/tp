@@ -26,7 +26,7 @@ import seedu.address.model.contact.Contact;
 /**
  * Parses user input.
  */
-public class AddressBookParser {
+public class TrackIterParser {
 
     /**
      * Used for initial separation of command word and args.
