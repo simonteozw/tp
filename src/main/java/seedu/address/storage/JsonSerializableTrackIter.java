@@ -37,7 +37,7 @@ class JsonSerializableTrackIter {
      * @param source future changes to this will not affect the created {@code JsonSerializableTrackIter}.
      */
     public JsonSerializableTrackIter(ReadOnlyTrackIter source) {
-        contacts.addAll(source.getPersonList().stream().map(JsonAdaptedContact::new).collect(Collectors.toList()));
+        contacts.addAll(source.getContactList().stream().map(JsonAdaptedContact::new).collect(Collectors.toList()));
     }
 
     /**

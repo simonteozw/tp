@@ -40,7 +40,7 @@ public class ModelManager implements Model {
 
         this.trackIter = new TrackIter(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredContacts = new FilteredList<>(this.trackIter.getPersonList());
+        filteredContacts = new FilteredList<>(this.trackIter.getContactList());
         filteredModules = new FilteredList<>(this.trackIter.getModuleList());
         filteredTasks = new FilteredList<>(this.trackIter.getTaskList());
         filteredLessons = new FilteredList<>(this.trackIter.getLessonList());
