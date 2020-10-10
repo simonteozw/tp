@@ -51,68 +51,68 @@ TrackIt@NUS is a **desktop app for managing tasks and contacts, tailored to NUS 
 
 For: Shows the information about a module.
 
-Format: `M info {module_code}`
+Format: `M info m/{module_code}`
 
-Examples: `M info CS1231S`
+Examples: `M info m/CS1231S`
 
 ### Add
 
 For: Add a new module. 
 
-Format: `M add {module_code} t/{title} d/{description}`
+Format: `M add m.{module_code} n/{name} d/{description}`
 
-Examples: `M add CS1231S t/Discrete Structures d/Introductory mathematical tools required for computer science`
+Examples: `M add m/CS1231S n/Discrete Structures d/Introductory mathematical tools required for computer science`
 
 ### Edit
 For: Edit a module.
 
 Format: `M edit `
 
-Examples: `M edit CS1231S  t/Discrete Structures d/Introductory mathematical tools`
+Examples: `M edit m/CS1231S  n/Discrete Structures d/Introductory mathematical tools`
 
 ### Delete
 For: Delete a module
 
-Format: `M delete {module_code}`
+Format: `M delete m/{module_code}`
 
-Examples: `M delete CS1231S`
+Examples: `M delete m/CS1231S`
 
-## Event
+## Task
 
 ### View 
-Description: Shows the information about an event.
+Description: Shows the information about a task.
 
-Format: `E info {event_id}`
+Format: `T info n/{name}`
 
-Examples: `E info 4`
+Examples: `T info n/CS2100 midterm`
 
 ### Add
-Description: Adds an event to a module. The module needs to be existing prior to adding.
+Description: Adds a task to TrackIt@NUS
 
-Format: `E add n/{event name} t/{event time} m/{module code}`
+Format: `T add n/{task name} d/{task date} a/{location} w/{weightage} r/{remark}`
 
-Examples: `E add n/Assignment 1 dues t/20/11/2020 11:59am m/CS2106`
+Examples: `T add n/Assignment 1 due d/20/11/2020 a/NUS w/20 r/Focus on Chapters 1-3`
 
 ### Edit 
-Description: Edits the detail of an event.
+Description: Edits the detail of a task.
 
-Format: `E edit {event_id} n/{event name} t/{event time} m/{module code}`
+Format: `T edit {event_index} n/{event name} d/{event date}`
 
-Examples: `L edit 1 n/Assignment 1 due t/22/11/2020 11:59pm m/CS2106`
+Examples: `T edit 1 n/Assignment 1 due t/22/11/2020`
 
 ### Delete
-Description: Deletes an event from the list.
+Description: Deletes a task from the list.
 
-Format: `E delete {event_id}`
+Format: `T delete {event_index}`
 
-Examples: `E delete 2`
+Examples: `T delete 2`
 
 ### List
 Description: Lists all events.
 
-Format: `E list`
+Format: `T list`
 
-Examples: `E list`
+Examples: `T list`
 
 ## Lesson
 
