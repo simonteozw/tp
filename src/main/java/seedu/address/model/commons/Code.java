@@ -15,7 +15,7 @@ public class Code {
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "^[A-Z]{2,3}[0-9]{4}$";
+    public static final String VALIDATION_REGEX = "^[A-Z]{2,3}[0-9]{4}[A-Z]?$]";
 
     public final String code;
 
