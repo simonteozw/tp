@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -11,8 +13,10 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.commons.Code;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.lesson.Lesson;
+import seedu.address.model.lesson.Type;
 import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
 
@@ -255,6 +259,17 @@ public class ModelManager implements Model {
     public void updateFilteredLessonList(Predicate<Lesson> predicate) {
         requireNonNull(predicate);
         filteredLessons.setPredicate(predicate);
+    }
+
+    @Override
+    public Optional<Lesson> getLesson(Code code, Type type) {
+        List<Lesson> allLessons = trackIter.getLessonList();
+        for (Lesson lesson : allLessons) {
+            if (lesson.getCode().equals(code) && lesson.getType().equals(type)) {
+                return Optional.of(lesson);
+            }
+        }
+        return Optional.empty();
     }
 
     @Override

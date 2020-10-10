@@ -66,8 +66,17 @@ public class Lesson {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        // TODO: Implement this toString
-        return "Lesson's toString hasn't been implemented";
+        builder.append("Module: ")
+                .append(getCode())
+                .append(" Type: ")
+                .append(getType())
+                .append(" Time: ")
+                .append(getTime())
+                .append(" Location: ")
+                .append(getLocation())
+                .append(" Weightage: ")
+                .append(getWeightage());
+        return builder.toString();
     }
 
     public Code getCode() {
