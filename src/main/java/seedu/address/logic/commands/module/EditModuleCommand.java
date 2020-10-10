@@ -13,8 +13,8 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.commons.Code;
 import seedu.address.model.commons.Name;
-import seedu.address.model.module.Code;
 import seedu.address.model.module.Module;
 
 public class EditModuleCommand extends Command {
@@ -51,9 +51,9 @@ public class EditModuleCommand extends Command {
 
         Code updatedCode = editModuleDescriptor.getCode().orElse(moduleToEdit.getCode());
         Name updatedName = editModuleDescriptor.getName().orElse(moduleToEdit.getName());
-        String updatedGradeDist = editModuleDescriptor.getGradeDist().orElse(moduleToEdit.getGradeDist());
+        String updatedDesc = editModuleDescriptor.getDesc().orElse(moduleToEdit.getDesc());
 
-        return new Module(updatedCode, updatedName, updatedGradeDist);
+        return new Module(updatedCode, updatedName, updatedDesc);
     }
 
     @Override
@@ -103,7 +103,7 @@ public class EditModuleCommand extends Command {
 
         private Code code;
         private Name name;
-        private String gradeDist;
+        private String desc;
 
         public EditModuleDescriptor() {
         }
@@ -114,14 +114,14 @@ public class EditModuleCommand extends Command {
         public EditModuleDescriptor(EditModuleDescriptor toCopy) {
             setCode(toCopy.code);
             setName(toCopy.name);
-            setGradeDist(toCopy.gradeDist);
+            setDesc(toCopy.desc);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(code, name, gradeDist);
+            return CollectionUtil.isAnyNonNull(code, name, desc);
         }
 
         @Override
@@ -141,7 +141,7 @@ public class EditModuleCommand extends Command {
 
             return getCode().equals(e.getCode())
                 && getName().equals(e.getName())
-                && getGradeDist().equals(e.getGradeDist());
+                && getDesc().equals(e.getDesc());
         }
 
         public Optional<Code> getCode() {
@@ -160,12 +160,12 @@ public class EditModuleCommand extends Command {
             this.name = name;
         }
 
-        public Optional<String> getGradeDist() {
-            return Optional.ofNullable(gradeDist);
+        public Optional<String> getDesc() {
+            return Optional.ofNullable(desc);
         }
 
-        public void setGradeDist(String gradeDist) {
-            this.gradeDist = gradeDist;
+        public void setDesc(String desc) {
+            this.desc = desc;
         }
     }
 }

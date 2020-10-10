@@ -16,20 +16,20 @@ public class Module {
 
     private final Code code;
     private final Name name;
-    private final String gradeDist;
+    private final String desc;
 
     /**
      * Every field must be present and not null.
      *
      * @param code
      * @param name
-     * @param gradeDist
+     * @param desc
      */
-    public Module(Code code, Name name, String gradeDist) {
-        requireAllNonNull(code, name, gradeDist);
+    public Module(Code code, Name name, String desc) {
+        requireAllNonNull(code, name, desc);
         this.code = code;
         this.name = name;
-        this.gradeDist = gradeDist;
+        this.desc = desc;
     }
 
     public Code getCode() {
@@ -40,8 +40,8 @@ public class Module {
         return name;
     }
 
-    public String getGradeDist() {
-        return gradeDist;
+    public String getDesc() {
+        return desc;
     }
 
     @Override
@@ -57,13 +57,13 @@ public class Module {
         Module otherLesson = (Module) other;
         return otherLesson.code.equals(code)
             && otherLesson.name.equals(name)
-            && otherLesson.gradeDist.equals(gradeDist);
+            && otherLesson.desc.equals(desc);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(code, name, gradeDist);
+        return Objects.hash(code, name, desc);
     }
 
     @Override

@@ -9,7 +9,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.module.Code;
+import seedu.address.model.commons.Code;
 import seedu.address.model.module.Module;
 
 public class ViewModuleCommand extends Command {

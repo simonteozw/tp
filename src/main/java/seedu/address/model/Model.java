@@ -6,9 +6,9 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.commons.Code;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.lesson.Lesson;
-import seedu.address.model.module.Code;
 import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
 
