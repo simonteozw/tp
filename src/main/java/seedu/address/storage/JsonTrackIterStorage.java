@@ -45,14 +45,14 @@ public class JsonTrackIterStorage implements TrackIterStorage {
     public Optional<ReadOnlyTrackIter> readTrackIter(Path filePath) throws DataConversionException {
         requireNonNull(filePath);
 
-        Optional<JsonSerializableTrackIter> jsonAddressBook = JsonUtil.readJsonFile(
+        Optional<JsonSerializableTrackIter> jsonTrackIter = JsonUtil.readJsonFile(
             filePath, JsonSerializableTrackIter.class);
-        if (!jsonAddressBook.isPresent()) {
+        if (!jsonTrackIter.isPresent()) {
             return Optional.empty();
         }
 
         try {
-            return Optional.of(jsonAddressBook.get().toModelType());
+            return Optional.of(jsonTrackIter.get().toModelType());
         } catch (IllegalValueException ive) {
             logger.info("Illegal values found in " + filePath + ": " + ive.getMessage());
             throw new DataConversionException(ive);

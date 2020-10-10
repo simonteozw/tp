@@ -63,7 +63,7 @@ public class TypicalPersons {
     /**
      * Returns an {@code TrackIter} with all the typical persons.
      */
-    public static TrackIter getTypicalAddressBook() {
+    public static TrackIter getTypicalTrackIter() {
         TrackIter ab = new TrackIter();
         for (Contact contact : getTypicalPersons()) {
             ab.addContact(contact);
