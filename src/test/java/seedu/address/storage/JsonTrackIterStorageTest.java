@@ -6,7 +6,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.HOON;
 import static seedu.address.testutil.TypicalPersons.IDA;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalPersons.getTypicalTrackIter;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -63,7 +63,7 @@ public class JsonTrackIterStorageTest {
     @Test
     public void readAndSaveAddressBook_allInOrder_success() throws Exception {
         Path filePath = testFolder.resolve("TempAddressBook.json");
-        TrackIter original = getTypicalAddressBook();
+        TrackIter original = getTypicalTrackIter();
         JsonTrackIterStorage jsonTrackIterStorage = new JsonTrackIterStorage(filePath);
 
         // Save in new file and read back
