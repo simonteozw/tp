@@ -25,6 +25,7 @@ import seedu.address.logic.commands.task.AddTaskCommand;
 import seedu.address.logic.commands.task.DeleteTaskCommand;
 import seedu.address.logic.commands.task.EditTaskCommand;
 import seedu.address.logic.commands.task.ListTaskCommand;
+import seedu.address.logic.commands.task.ViewTaskCommand;
 import seedu.address.logic.parser.contact.AddContactCommandParser;
 import seedu.address.logic.parser.contact.DeleteContactCommandParser;
 import seedu.address.logic.parser.contact.EditContactCommandParser;
@@ -37,6 +38,7 @@ import seedu.address.logic.parser.module.ViewModuleCommandParser;
 import seedu.address.logic.parser.task.AddTaskCommandParser;
 import seedu.address.logic.parser.task.DeleteTaskCommandParser;
 import seedu.address.logic.parser.task.EditTaskCommandParser;
+import seedu.address.logic.parser.task.ViewTaskCommandParser;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
@@ -126,6 +128,9 @@ public class TrackIterParser {
 
             case ListTaskCommand.COMMAND_WORD:
                 return new ListTaskCommand();
+
+            case ViewTaskCommand.COMMAND_WORD:
+                return new ViewTaskCommandParser().parse(arguments);
 
             default:
                 throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
