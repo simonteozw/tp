@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.contact;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -18,8 +18,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.contact.ClearContactCommand;
-import seedu.address.logic.commands.contact.EditContactCommand;
 import seedu.address.logic.commands.contact.EditContactCommand.EditContactDescriptor;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
