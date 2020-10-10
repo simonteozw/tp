@@ -17,6 +17,7 @@ import seedu.address.logic.commands.contact.EditContactCommand;
 import seedu.address.logic.commands.contact.FindContactCommand;
 import seedu.address.logic.commands.contact.ListContactCommand;
 import seedu.address.logic.commands.module.AddModuleCommand;
+import seedu.address.logic.commands.module.DeleteModuleCommand;
 import seedu.address.logic.commands.module.EditModuleCommand;
 import seedu.address.logic.parser.contact.AddContactCommandParser;
 import seedu.address.logic.parser.contact.DeleteContactCommandParser;
@@ -24,6 +25,7 @@ import seedu.address.logic.parser.contact.EditContactCommandParser;
 import seedu.address.logic.parser.contact.FindContactCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.module.AddModuleCommandParser;
+import seedu.address.logic.parser.module.DeleteModuleCommandParser;
 import seedu.address.logic.parser.module.EditModuleCommandParser;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.module.Module;
@@ -88,8 +90,8 @@ public class TrackIterParser {
             case EditModuleCommand.COMMAND_WORD:
                 return new EditModuleCommandParser().parse(arguments);
 
-//            case DeleteModuleCommand.COMMAND_WORD:
-//                return new DeleteModuleCommandParser().parse(arguments);
+            case DeleteModuleCommand.COMMAND_WORD:
+                return new DeleteModuleCommandParser().parse(arguments);
 //
 //            case ViewModuleCommand.COMMAND_WORD:
 //                return new ViewModuleCommandParser().parse(arguments);
