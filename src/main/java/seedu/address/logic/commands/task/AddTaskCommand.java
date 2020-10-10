@@ -28,7 +28,7 @@ public class AddTaskCommand extends Command {
         + PREFIX_NAME + "CS2103T Final "
         + PREFIX_DATE + "22/12/2020 "
         + PREFIX_ADDRESS + "COM2 NUS "
-        + PREFIX_WEIGHTAGE + "50% "
+        + PREFIX_WEIGHTAGE + "50 "
         + PREFIX_REMARK + "Favourite module!";
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
