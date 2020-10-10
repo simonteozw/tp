@@ -14,7 +14,7 @@ import seedu.address.model.lesson.Lesson;
 import seedu.address.model.lesson.Type;
 
 public class ViewLessonCommand extends Command {
-    public static final String COMMAND_WORD = "view";
+    public static final String COMMAND_WORD = "info";
 
     // TODO: edit these messages
     public static final String MESSAGE_USAGE = "L " + COMMAND_WORD + ": sample";

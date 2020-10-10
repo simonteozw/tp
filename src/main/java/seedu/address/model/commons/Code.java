@@ -1,5 +1,8 @@
 package seedu.address.model.commons;
 
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.lesson.Lesson;
+
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
@@ -51,5 +54,14 @@ public class Code {
     @Override
     public int hashCode() {
         return code.hashCode();
+    }
+
+    static public Code parseCode(String rawCode) throws ParseException {
+        if (!Code.isValidCode(rawCode)) {
+            throw new ParseException(Lesson.CODE_MESSAGE_CONSTRAINTS);
+        }
+        else {
+            return new Code(rawCode);
+        }
     }
 }

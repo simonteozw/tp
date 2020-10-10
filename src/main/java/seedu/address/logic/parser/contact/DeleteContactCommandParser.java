@@ -25,7 +25,7 @@ public class DeleteContactCommandParser implements Parser<DeleteContactCommand> 
             return new DeleteContactCommand(index);
         } catch (ParseException pe) {
             throw new ParseException(
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteContactCommand.MESSAGE_USAGE), pe);
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteContactCommand.MESSAGE_USAGE), pe);
         }
     }
 

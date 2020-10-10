@@ -2,6 +2,8 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,9 +12,12 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.commons.Address;
+import seedu.address.model.commons.Code;
 import seedu.address.model.commons.Name;
 import seedu.address.model.contact.Email;
 import seedu.address.model.contact.Phone;
+import seedu.address.model.lesson.Lesson;
+import seedu.address.model.lesson.Type;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -121,5 +126,69 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String date} into a {@code LocalDate}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code date} is invalid.
+     */
+    public static LocalDate parseTime(String time) throws ParseException {
+        requireNonNull(time);
+        String trimmedTime = time.trim();
+        try {
+            return LocalDate.parse(trimmedTime, Lesson.FORMATTER);
+        } catch (DateTimeParseException e) {
+            throw new ParseException(Lesson.DATE_MESSAGE_CONSTRAINTS);
+        }
+    }
+
+    /**
+     * Parses a {@code String weightage} into a {@code double}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code weightage} is invalid.
+     */
+    public static double parseWeightage(String weightage) throws ParseException {
+        requireNonNull(weightage);
+        String trimmedWeightage = weightage.trim();
+        try {
+            return Double.parseDouble(trimmedWeightage);
+        } catch (NumberFormatException e) {
+            throw new ParseException(Lesson.WEIGHTAGE_MESSAGE_CONSTRAINTS);
+        }
+    }
+
+    /**
+     * Parses a {@code String code} into a {@code Code}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code code} is invalid.
+     */
+    public static Code parseCode(String code) throws ParseException {
+        requireNonNull(code);
+        String trimmedCode = code.trim();
+        try {
+            return Code.parseCode(trimmedCode);
+        } catch (ParseException e) {
+            throw new ParseException(Lesson.CODE_MESSAGE_CONSTRAINTS);
+        }
+    }
+
+    /**
+     * Parses a {@code String type} into a {@code Type}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code type} is invalid.
+     */
+    public static Type parseType(String type) throws ParseException {
+        requireNonNull(type);
+        String trimmedType = type.trim();
+        try {
+            return Type.parseType(trimmedType);
+        } catch (ParseException e) {
+            throw new ParseException(Lesson.TYPE_MESSAGE_CONSTRAINTS);
+        }
     }
 }

@@ -3,6 +3,7 @@ package seedu.address.model.lesson;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 import seedu.address.model.commons.Address;
@@ -14,6 +15,11 @@ import seedu.address.model.commons.Code;
  */
 public class Lesson {
     public static final String TYPE = "L";
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("d/MM/yyyy");
+    public static final String DATE_MESSAGE_CONSTRAINTS = "Date should be in the format d/MM/yyyy";
+    public static final String WEIGHTAGE_MESSAGE_CONSTRAINTS = "Weightage should be in the form of a floating point number";
+    public static final String TYPE_MESSAGE_CONSTRAINTS = "Type should be either 'lecture', 'tutorial', 'lab', 'recitation', or 'sectional'";
+    public static final String CODE_MESSAGE_CONSTRAINTS = "Module code is invalid";
 
     private final Code code;
     private final Type type;
