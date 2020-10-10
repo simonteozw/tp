@@ -59,7 +59,7 @@ Examples: `M info m/CS1231S`
 
 For: Add a new module. 
 
-Format: `M add m.{module_code} n/{name} d/{description}`
+Format: `M add m/{module_code} n/{name} d/{description}`
 
 Examples: `M add m/CS1231S n/Discrete Structures d/Introductory mathematical tools required for computer science`
 
