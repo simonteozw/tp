@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 import seedu.address.model.commons.Address;
+import seedu.address.model.commons.Code;
 
 /**
  * Represents a Lesson in the address book.
@@ -14,6 +15,7 @@ import seedu.address.model.commons.Address;
 public class Lesson {
     public static final String TYPE = "L";
 
+    private final Code code;
     private final Type type;
     private final LocalDate time;
     private final Address location;
@@ -22,13 +24,15 @@ public class Lesson {
     /**
      * Every field must be present and not null.
      *
+     * @param code
      * @param type
      * @param time
      * @param location
      * @param weightage
      */
-    public Lesson(Type type, LocalDate time, Address location, double weightage) {
-        requireAllNonNull(type, time, location, weightage);
+    public Lesson(Code code, Type type, LocalDate time, Address location, double weightage) {
+        requireAllNonNull(code, type, time, location, weightage);
+        this.code = code;
         this.time = time;
         this.location = location;
         this.weightage = weightage;
@@ -46,7 +50,8 @@ public class Lesson {
         }
 
         Lesson otherLesson = (Lesson) other;
-        return otherLesson.type.equals(type)
+        return otherLesson.code.equals(code)
+            && otherLesson.type.equals(type)
             && otherLesson.time.equals(time)
             && otherLesson.location.equals(location)
             && (otherLesson.weightage == weightage);
@@ -55,7 +60,7 @@ public class Lesson {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(type, time, location, weightage);
+        return Objects.hash(code, type, time, location, weightage);
     }
 
     @Override
@@ -63,6 +68,10 @@ public class Lesson {
         final StringBuilder builder = new StringBuilder();
         // TODO: Implement this toString
         return "Lesson's toString hasn't been implemented";
+    }
+
+    public Code getCode() {
+        return code;
     }
 
     public Type getType() {
