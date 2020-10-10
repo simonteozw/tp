@@ -6,13 +6,13 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_CODE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
-import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.module.EditModuleCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.commons.Code;
 
 /**
  * Parses input arguments and creates a new EditModuleCommand object
@@ -30,10 +30,10 @@ public class EditModuleCommandParser implements Parser<EditModuleCommand> {
         ArgumentMultimap argMultimap =
             ArgumentTokenizer.tokenize(args, PREFIX_CODE, PREFIX_NAME, PREFIX_DESC);
 
-        Index index;
+        Code code;
 
         try {
-            index = ParserUtil.parseIndex(argMultimap.getPreamble());
+            code = ParserUtil.parseCode(argMultimap.getValue(PREFIX_CODE).get());
         } catch (ParseException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 EditModuleCommand.MESSAGE_USAGE), pe);
@@ -54,7 +54,7 @@ public class EditModuleCommandParser implements Parser<EditModuleCommand> {
             throw new ParseException(EditModuleCommand.MESSAGE_NOT_EDITED);
         }
 
-        return new EditModuleCommand(index, editModuleDescriptor);
+        return new EditModuleCommand(code, editModuleDescriptor);
     }
 
 }

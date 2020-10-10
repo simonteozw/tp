@@ -5,11 +5,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MODULES;
 
-import java.util.List;
 import java.util.Optional;
 
 import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -34,18 +32,18 @@ public class EditModuleCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_MODULE = "This module already exists";
 
-    private final Index index;
+    private final Code code;
     private final EditModuleDescriptor editModuleDescriptor;
 
     /**
-     * @param index                of the contact in the filtered module list to edit
+     * @param code                 of the contact in the filtered module list to edit
      * @param editModuleDescriptor details to edit the module with
      */
-    public EditModuleCommand(Index index, EditModuleDescriptor editModuleDescriptor) {
-        requireNonNull(index);
+    public EditModuleCommand(Code code, EditModuleDescriptor editModuleDescriptor) {
+        requireNonNull(code);
         requireNonNull(editModuleDescriptor);
 
-        this.index = index;
+        this.code = code;
         this.editModuleDescriptor = new EditModuleDescriptor(editModuleDescriptor);
     }
 
@@ -67,20 +65,18 @@ public class EditModuleCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Module> lastShownList = model.getFilteredModuleList();
-
-        if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_MODULE_DISPLAYED_INDEX);
+        Optional<Module> moduleToEdit = model.getModule(code);
+        if (moduleToEdit.isEmpty()) {
+            throw new CommandException(Messages.MESSAGE_MODULE_DOES_NOT_EXIST);
         }
 
-        Module moduleToEdit = lastShownList.get(index.getZeroBased());
-        Module editedModule = createEditedModule(moduleToEdit, editModuleDescriptor);
+        Module editedModule = createEditedModule(moduleToEdit.get(), editModuleDescriptor);
 
-        if (!moduleToEdit.isSameModule(editedModule) && model.hasModule(editedModule)) {
+        if (!moduleToEdit.get().isSameModule(editedModule) && model.hasModule(editedModule)) {
             throw new CommandException(MESSAGE_DUPLICATE_MODULE);
         }
 
-        model.setModule(moduleToEdit, editedModule);
+        model.setModule(moduleToEdit.get(), editedModule);
         model.updateFilteredModuleList(PREDICATE_SHOW_ALL_MODULES);
         return new CommandResult(String.format(MESSAGE_EDIT_MODULE_SUCCESS, editedModule));
     }
@@ -99,7 +95,7 @@ public class EditModuleCommand extends Command {
 
         // state check
         EditModuleCommand e = (EditModuleCommand) other;
-        return index.equals(e.index)
+        return code.equals(e.code)
             && editModuleDescriptor.equals(e.editModuleDescriptor);
     }
 
