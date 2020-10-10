@@ -14,13 +14,10 @@ public class AddModuleCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        AddModuleCommand expectedCommand = new AddModuleCommand(new Module(new Code("CS1231S"), new Name("Discrete " +
-            "Structures"), "Introductory mathematical tools required for computer science"));
+        AddModuleCommand expectedCommand = new AddModuleCommand(new Module(new Code("CS1231S"), new Name("Discrete "
+            + "Structures"), "Sample"));
 
-        assertParseSuccess(parser, " n/Discrete Structures m/CS1231S d/Introductory mathematical" +
-            " " +
-            "tools " +
-            "required" + " " + "for " + "computer science", expectedCommand);
+        assertParseSuccess(parser, " n/Discrete Structures m/CS1231S d/Sample", expectedCommand);
     }
 
 }

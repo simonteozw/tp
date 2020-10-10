@@ -9,8 +9,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Code {
     public static final String MESSAGE_CONSTRAINTS =
-        "Module code should start with 2 or 3 upper-case letters, follow by 4 numeric digits and optionally a single " +
-            "letter";
+        "Module code should start with 2 or 3 upper-case letters, follow by 4 numeric digits and optionally a single "
+            + "letter";
 
     /*
      * The first character of the address must not be a whitespace,
