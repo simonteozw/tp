@@ -13,9 +13,12 @@ import seedu.address.model.commons.Code;
 import seedu.address.model.module.Module;
 
 public class ViewModuleCommand extends Command {
-    public static final String COMMAND_WORD = "view";
+    public static final String COMMAND_WORD = "info";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + "sample";
+    public static final String MESSAGE_USAGE = "M " + COMMAND_WORD
+        + ": View all the info of a module by its code.\n"
+        + "Parameters: m/CODE (must be an existing code)\n"
+        + "Example: M info m/CS1231S";
 
     public static final String MESSAGE_DELETE_MODULE_SUCCESS = "Deleted Module: %1$s";
     private static final String MESSAGE_VIEW_MODULE_SUCCESS = "Here is the module you requested: %1$s";

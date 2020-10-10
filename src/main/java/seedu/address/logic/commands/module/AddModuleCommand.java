@@ -1,6 +1,9 @@
 package seedu.address.logic.commands.module;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CODE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -12,7 +15,11 @@ public class AddModuleCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
     // TODO: edit these messages
-    public static final String MESSAGE_USAGE = "M" + COMMAND_WORD + ": sample";
+    public static final String MESSAGE_USAGE = "M " + COMMAND_WORD + ": Adds a module to the app "
+        + "Parameters: "
+        + PREFIX_CODE + "CODE "
+        + PREFIX_NAME + "NAME "
+        + PREFIX_DESC + "DESCRIPTION ";
 
     public static final String MESSAGE_SUCCESS = "New module added: %1$s";
     public static final String MESSAGE_DUPLICATE_MODULE = "This module already exists";

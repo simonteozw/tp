@@ -1,6 +1,8 @@
 package seedu.address.logic.commands.module;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MODULES;
 
 import java.util.List;
@@ -20,7 +22,13 @@ import seedu.address.model.module.Module;
 public class EditModuleCommand extends Command {
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": sample";
+    public static final String MESSAGE_USAGE = "M " + COMMAND_WORD + ": Edits the details of the contact identified "
+        + "by the module code "
+        + "Existing values will be overwritten by the input values.\n"
+        + "Parameters: m/CODE (must be an existing code) "
+        + "[" + PREFIX_NAME + "NAME] "
+        + "[" + PREFIX_DESC + "DESC] "
+        + "Example: M edit m/CS1231S n/Discrete Structures d/Introductory mathematical tools";
 
     public static final String MESSAGE_EDIT_MODULE_SUCCESS = "Edited Module: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
