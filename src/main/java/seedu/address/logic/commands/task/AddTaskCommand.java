@@ -24,7 +24,7 @@ public class AddTaskCommand extends Command {
         + PREFIX_ADDRESS + "ADDRESS "
         + PREFIX_WEIGHTAGE + "WEIGHTAGE "
         + PREFIX_REMARK + "REMARK\n"
-        + "Example: " + COMMAND_WORD + " "
+        + "Example: " + Task.TYPE + " " + COMMAND_WORD + " "
         + PREFIX_NAME + "CS2103T Final "
         + PREFIX_DATE + "22/12/2020 "
         + PREFIX_ADDRESS + "COM2 NUS "

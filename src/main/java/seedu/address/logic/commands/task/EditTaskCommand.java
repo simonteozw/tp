@@ -37,7 +37,7 @@ public class EditTaskCommand extends Command {
         + "[" + PREFIX_ADDRESS + "ADDRESS] "
         + "[" + PREFIX_WEIGHTAGE + "WEIGHTAGE] "
         + "[" + PREFIX_REMARK + "REMARK]...\n"
-        + "Example: " + COMMAND_WORD + " 1 "
+        + "Example: " + Task.TYPE + " " + COMMAND_WORD + " 1 "
         + PREFIX_WEIGHTAGE + "25 "
         + PREFIX_REMARK + "New remark";
 
