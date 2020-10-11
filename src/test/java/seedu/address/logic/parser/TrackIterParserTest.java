@@ -37,16 +37,16 @@ public class TrackIterParserTest {
     public void parseCommand_add() throws Exception {
         Contact contact = new PersonBuilder().build();
         AddContactCommand command = (AddContactCommand) parser.parseCommand(Contact.TYPE
-                + " " + ContactUtil.getAddCommand(contact));
+            + " " + ContactUtil.getAddCommand(contact));
         assertEquals(new AddContactCommand(contact), command);
     }
 
     @Test
     public void parseCommand_clear() throws Exception {
         assertTrue(parser.parseCommand(Contact.TYPE + " "
-                + ClearContactCommand.COMMAND_WORD) instanceof ClearContactCommand);
+            + ClearContactCommand.COMMAND_WORD) instanceof ClearContactCommand);
         assertTrue(parser.parseCommand(Contact.TYPE + " "
-                + ClearContactCommand.COMMAND_WORD + " 3") instanceof ClearContactCommand);
+            + ClearContactCommand.COMMAND_WORD + " 3") instanceof ClearContactCommand);
     }
 
     @Test
@@ -61,8 +61,8 @@ public class TrackIterParserTest {
         Contact contact = new PersonBuilder().build();
         EditContactDescriptor descriptor = new EditContactDescriptorBuilder(contact).build();
         EditContactCommand command = (EditContactCommand) parser.parseCommand(Contact.TYPE + " "
-                + EditContactCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + " "
-                + ContactUtil.getEditContactDescriptorDetails(descriptor));
+            + EditContactCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + " "
+            + ContactUtil.getEditContactDescriptorDetails(descriptor));
         assertEquals(new EditContactCommand(INDEX_FIRST_PERSON, descriptor), command);
     }
 
@@ -90,9 +90,9 @@ public class TrackIterParserTest {
     @Test
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(Contact.TYPE + " "
-                + ListContactCommand.COMMAND_WORD) instanceof ListContactCommand);
+            + ListContactCommand.COMMAND_WORD) instanceof ListContactCommand);
         assertTrue(parser.parseCommand(Contact.TYPE + " "
-                + ListContactCommand.COMMAND_WORD + " 3") instanceof ListContactCommand);
+            + ListContactCommand.COMMAND_WORD + " 3") instanceof ListContactCommand);
     }
 
     @Test

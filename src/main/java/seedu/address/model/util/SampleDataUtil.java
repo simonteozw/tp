@@ -40,7 +40,7 @@ public class SampleDataUtil {
         };
     }
 
-    public static ReadOnlyTrackIter getSampleAddressBook() {
+    public static ReadOnlyTrackIter getSampleTrackIter() {
         TrackIter sampleAb = new TrackIter();
         for (Contact sampleContact : getSampleContacts()) {
             sampleAb.addContact(sampleContact);
