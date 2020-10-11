@@ -36,7 +36,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Deliverables and Deadlines
 
-### Vuong Hoang Long 
+### Vuong Hoang Long
 
 <img src="images/unclegrandpa925.png" width="200px">
 
