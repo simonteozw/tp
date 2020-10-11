@@ -20,7 +20,9 @@ public class ListLessonCommand extends Command {
             + ": Lists all lessons of a module. "
             + "If MODULE_CODE is not specified, it will list all lessons of all modules instead. "
             + "Parameters: "
-            + "[" + PREFIX_CODE + "MODULE_CODE]\n ";
+            + "[" + PREFIX_CODE + "MODULE_CODE]\n "
+            + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
+            + PREFIX_CODE + "CS3233\n";
 
     private final Optional<Code> codeOptional;
 

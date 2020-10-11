@@ -24,7 +24,13 @@ public class AddLessonCommand extends Command {
             + PREFIX_TYPE + "TYPE "
             + PREFIX_DATE + "DATE "
             + PREFIX_ADDRESS + "LOCATION "
-            + PREFIX_WEIGHTAGE + "WEIGHTAGE\n";
+            + PREFIX_WEIGHTAGE + "WEIGHTAGE\n"
+            + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
+            + PREFIX_CODE + "CS3233 "
+            + PREFIX_TYPE + "lecture "
+            + PREFIX_DATE + "25/01/2021 "
+            + PREFIX_ADDRESS + "COM1 PL2 "
+            + PREFIX_WEIGHTAGE + "4\n";
 
     public static final String MESSAGE_SUCCESS = "New lesson added: %1$s";
     public static final String MESSAGE_DUPLICATE_LESSON = "This lesson already exists";

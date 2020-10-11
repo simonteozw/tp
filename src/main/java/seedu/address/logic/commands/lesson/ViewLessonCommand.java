@@ -22,7 +22,10 @@ public class ViewLessonCommand extends Command {
             + ": Shows the details of a lesson. "
             + "Parameters: "
             + PREFIX_CODE + "MODULE_CODE "
-            + PREFIX_TYPE + "TYPE\n";
+            + PREFIX_TYPE + "TYPE\n"
+            + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
+            + PREFIX_CODE + "CS3233 "
+            + PREFIX_TYPE + "lecture\n";
 
     private static final String MESSAGE_VIEW_MODULE_SUCCESS = "Here is the module you requested: %1$s";
 

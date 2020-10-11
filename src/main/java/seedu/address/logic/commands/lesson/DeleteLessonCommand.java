@@ -23,7 +23,10 @@ public class DeleteLessonCommand extends Command {
             + ": Deletes a lesson from TrackIt@NUS. "
             + "Parameters: "
             + PREFIX_CODE + "MODULE_CODE "
-            + PREFIX_TYPE + "TYPE\n";
+            + PREFIX_TYPE + "TYPE\n"
+            + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
+            + PREFIX_CODE + "CS3233 "
+            + PREFIX_TYPE + "tutorial\n";
 
     public static final String MESSAGE_DELETE_LESSON_SUCCESS = "Deleted Lesson: %1$s";
 

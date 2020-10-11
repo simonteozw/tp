@@ -34,7 +34,13 @@ public class EditLessonCommand extends Command {
             + PREFIX_TYPE + "TYPE "
             + "[" + PREFIX_DATE + "DATE] "
             + "[" + PREFIX_ADDRESS + "LOCATION] "
-            + "[" + PREFIX_WEIGHTAGE + "WEIGHTAGE]\n";
+            + "[" + PREFIX_WEIGHTAGE + "WEIGHTAGE]\n"
+            + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
+            + PREFIX_CODE + "CS3233 "
+            + PREFIX_TYPE + "lecture "
+            + PREFIX_DATE + "27/01/2021 "
+            + PREFIX_ADDRESS + "COM1 PL5 "
+            + PREFIX_WEIGHTAGE + "3.5\n";
 
     public static final String MESSAGE_EDIT_LESSON_SUCCESS = "Edited Lesson: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
