@@ -32,6 +32,15 @@
                     </Menu>
                 </MenuBar>
 
+
+                <VBox fx:id="contactList" styleClass="pane-with-border" minWidth="340" prefWidth="340"
+                      VBox.vgrow="ALWAYS">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <StackPane fx:id="contactListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+                </VBox>
+
                 <StackPane VBox.vgrow="NEVER" fx:id="commandBoxPlaceholder" styleClass="pane-with-border">
                     <padding>
                         <Insets top="5" right="10" bottom="5" left="10"/>
@@ -44,14 +53,6 @@
                         <Insets top="5" right="10" bottom="5" left="10"/>
                     </padding>
                 </StackPane>
-
-                <VBox fx:id="contactList" styleClass="pane-with-border" minWidth="340" prefWidth="340"
-                      VBox.vgrow="ALWAYS">
-                    <padding>
-                        <Insets top="10" right="10" bottom="10" left="10"/>
-                    </padding>
-                    <StackPane fx:id="contactListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
-                </VBox>
 
                 <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER"/>
             </VBox>
