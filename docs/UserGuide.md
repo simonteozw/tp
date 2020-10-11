@@ -20,7 +20,6 @@ TrackIt@NUS is a **desktop app for managing tasks and contacts, tailored to NUS 
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
-   
 1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -47,8 +46,7 @@ TrackIt@NUS is a **desktop app for managing tasks and contacts, tailored to NUS 
 
 ## Module
 
-### View 
-
+### View
 For: Shows the information about a module.
 
 Format: `M info m/{module_code}`
@@ -60,7 +58,6 @@ Examples: `M info m/CS1231S`
 For: Add a new module. 
 
 Format: `M add m/{module_code} n/{name} d/{description}`
-
 Examples: `M add m/CS1231S n/Discrete Structures d/Introductory mathematical tools required for computer science`
 
 ### Edit
@@ -93,7 +90,7 @@ Format: `T add n/{task name} d/{task date} a/{location} w/{weightage} r/{remark}
 
 Examples: `T add n/Assignment 1 due d/20/11/2020 a/NUS w/20 r/Focus on Chapters 1-3`
 
-### Edit 
+### Edit
 Description: Edits the detail of a task.
 
 Format: `T edit {event_index} n/{event name} d/{event date}`
@@ -121,8 +118,8 @@ For: Shows the information about a lesson
 
 Format: `L info m/{module_code} t/{type}`
 
-Examples: 
-* `L info m/CS2103T t/tutorial` 
+Examples:
+* `L info m/CS2103T t/tutorial`
 * `L info m/CS2103T t/lesson`
 
 ### Add
@@ -134,7 +131,7 @@ Format: `L add m/{module_code} n/{type} t/{time} v/{venue or Zoom link}`
 
 Examples: `L add m/CS2103T n/tutorial t/01/08/2019 4pm-6pm v/COM1`
 
-### Edit 
+### Edit
 
 For: Edit the detail of a lesson
 
@@ -157,7 +154,7 @@ Format: `L list m/{module_code}`
 
 Examples: `L list m/CS2103T`
 
-## Contact 
+## Contact
 
 ### View
 
@@ -178,7 +175,7 @@ Examples:
 
 ### Edit
 
-For: Edits the contact with the specified index. 
+For: Edits the contact with the specified index.
 * Index must be positive and must be within range of number of contacts in listing
 * At least 1 of the optional arguments show above must be present
 * Arguments not present will remain unchanged
@@ -193,7 +190,7 @@ Examples:
 
 ### Delete
 
-For: Deletes the contact with the specified index. 
+For: Deletes the contact with the specified index.
 
 Format: `C delete {index}} `
 
