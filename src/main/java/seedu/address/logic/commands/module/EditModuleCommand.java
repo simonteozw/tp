@@ -21,7 +21,7 @@ import seedu.address.model.module.Module;
 public class EditModuleCommand extends Command {
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = Module.TYPE + COMMAND_WORD + ": Edits the details of the contact "
+    public static final String MESSAGE_USAGE = Module.TYPE + COMMAND_WORD + ": Edits the details of the module "
         + "identified "
         + "by the module code "
         + "Existing values will be overwritten by the input values.\n"
@@ -40,7 +40,7 @@ public class EditModuleCommand extends Command {
     private final EditModuleDescriptor editModuleDescriptor;
 
     /**
-     * @param code                 of the contact in the filtered module list to edit
+     * @param code                 of the module in the filtered module list to edit
      * @param editModuleDescriptor details to edit the module with
      */
     public EditModuleCommand(Code code, EditModuleDescriptor editModuleDescriptor) {
