@@ -33,7 +33,7 @@ public class MainWindow extends UiPart<Stage> {
     private final Logic logic;
     private final HelpWindow helpWindow;
     // Independent Ui parts residing in this Ui container
-    private ModuleListPanel moduleListPanel;  //TODO: to be replaced by Module List Panel
+    private ModuleListPanel moduleListPanel; //TODO: to be replaced by Module List Panel
     private ContactListPanel contactListPanel; // TODO: Not rly in use, remove soon.
     private ContactListPanel contactListPanel2; //TODO: to be replaced by Lesson List Panel
     private ContactListPanel contactListPanel3; //TODO: to be replaced by Task List Panel
