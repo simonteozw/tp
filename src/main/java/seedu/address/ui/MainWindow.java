@@ -32,7 +32,10 @@ public class MainWindow extends UiPart<Stage> {
     private final Logic logic;
     private final HelpWindow helpWindow;
     // Independent Ui parts residing in this Ui container
-    private ContactListPanel contactListPanel;
+    private ContactListPanel contactListPanel;  //TODO: to be replaced by Module List Panel
+    private ContactListPanel contactListPanel2; //TODO: to be replaced by Lesson List Panel
+    private ContactListPanel contactListPanel3; //TODO: to be replaced by Task List Panel
+
     private ResultDisplay resultDisplay;
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -41,7 +44,16 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
+    // TODO: to be replaced by Modules
     private StackPane contactListPanelPlaceholder;
+
+    @FXML
+    // TODO: to be replaced by Lessons
+    private StackPane contactListPanelPlaceholder2;
+
+    @FXML
+    // TODO: to be replaced by Tasks
+    private StackPane contactListPanelPlaceholder3;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -110,8 +122,18 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
+
+        //TODO: to be replaced by modules
         contactListPanel = new ContactListPanel(logic.getFilteredContactList());
         contactListPanelPlaceholder.getChildren().add(contactListPanel.getRoot());
+
+        //TODO: to be replaced by lessons
+        contactListPanel2 = new ContactListPanel(logic.getFilteredContactList());
+        contactListPanelPlaceholder2.getChildren().add(contactListPanel2.getRoot());
+
+        //TODO: to be replaced by tasks
+        contactListPanel3 = new ContactListPanel(logic.getFilteredContactList());
+        contactListPanelPlaceholder3.getChildren().add(contactListPanel3.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
