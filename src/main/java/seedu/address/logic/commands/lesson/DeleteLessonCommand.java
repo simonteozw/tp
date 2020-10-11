@@ -1,6 +1,8 @@
 package seedu.address.logic.commands.lesson;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CODE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 
 import java.util.Optional;
 
@@ -17,8 +19,11 @@ public class DeleteLessonCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 
-    // TODO: edit these messages
-    public static final String MESSAGE_USAGE = "L " + COMMAND_WORD + ": sample";
+    public static final String MESSAGE_USAGE = Lesson.TYPE + " " + COMMAND_WORD
+            + ": Deletes a lesson from TrackIt@NUS. "
+            + "Parameters: "
+            + PREFIX_CODE + "MODULE_CODE "
+            + PREFIX_TYPE + "TYPE\n";
 
     public static final String MESSAGE_DELETE_LESSON_SUCCESS = "Deleted Lesson: %1$s";
 

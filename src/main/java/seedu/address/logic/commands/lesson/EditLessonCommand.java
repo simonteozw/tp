@@ -1,6 +1,11 @@
 package seedu.address.logic.commands.lesson;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CODE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_WEIGHTAGE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
 
 import java.time.LocalDate;
@@ -21,8 +26,15 @@ public class EditLessonCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    // TODO: edit these messages
-    public static final String MESSAGE_USAGE = "L " + COMMAND_WORD + ": sample";
+    public static final String MESSAGE_USAGE = Lesson.TYPE + " " + COMMAND_WORD
+            + ": Edits the details of a lesson."
+            + " At least one of the details has to be specified. "
+            + "Parameters: "
+            + PREFIX_CODE + "MODULE_CODE "
+            + PREFIX_TYPE + "TYPE "
+            + "[" + PREFIX_TIME + "DATE] "
+            + "[" + PREFIX_ADDRESS + "LOCATION] "
+            + "[" + PREFIX_WEIGHTAGE + "WEIGHTAGE]\n";
 
     public static final String MESSAGE_EDIT_LESSON_SUCCESS = "Edited Lesson: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
