@@ -54,7 +54,8 @@
                                       <RowConstraints maxHeight="148.33331298828125" minHeight="10.0" prefHeight="137.66665649414062" vgrow="SOMETIMES" />
                                    </rowConstraints>
                                    <children>
-                                       <StackPane fx:id="contactListPanelPlaceholder" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                       <StackPane fx:id="moduleListPanelPlaceholder" GridPane.columnIndex="0"
+                                                  GridPane.rowIndex="0">
                                            <padding>
                                                <Insets bottom="10" left="10" right="10" top="10" />
                                            </padding>

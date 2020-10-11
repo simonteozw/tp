@@ -17,6 +17,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.contact.ContactListPanel;
+import seedu.address.ui.module.ModuleListPanel;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -32,7 +33,8 @@ public class MainWindow extends UiPart<Stage> {
     private final Logic logic;
     private final HelpWindow helpWindow;
     // Independent Ui parts residing in this Ui container
-    private ContactListPanel contactListPanel;  //TODO: to be replaced by Module List Panel
+    private ModuleListPanel moduleListPanel;  //TODO: to be replaced by Module List Panel
+    private ContactListPanel contactListPanel; // TODO: Not rly in use, remove soon.
     private ContactListPanel contactListPanel2; //TODO: to be replaced by Lesson List Panel
     private ContactListPanel contactListPanel3; //TODO: to be replaced by Task List Panel
 
@@ -45,7 +47,7 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     // TODO: to be replaced by Modules
-    private StackPane contactListPanelPlaceholder;
+    private StackPane moduleListPanelPlaceholder;
 
     @FXML
     // TODO: to be replaced by Lessons
@@ -123,13 +125,16 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
 
-        //TODO: to be replaced by modules
-        contactListPanel = new ContactListPanel(logic.getFilteredContactList());
-        contactListPanelPlaceholder.getChildren().add(contactListPanel.getRoot());
 
         //TODO: to be replaced by lessons
         contactListPanel2 = new ContactListPanel(logic.getFilteredContactList());
         contactListPanelPlaceholder2.getChildren().add(contactListPanel2.getRoot());
+
+        //TODO: to be replaced by modules
+        moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList());
+        moduleListPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
+
+
 
         //TODO: to be replaced by tasks
         contactListPanel3 = new ContactListPanel(logic.getFilteredContactList());
