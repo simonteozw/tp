@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.module;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CODE;
 
 import java.util.Optional;
 
@@ -16,10 +17,10 @@ public class DeleteModuleCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 
-    public static final String MESSAGE_USAGE = "M " + COMMAND_WORD
+    public static final String MESSAGE_USAGE = Module.TYPE + " " + COMMAND_WORD
         + ": Deletes the module identified by the module code.\n"
-        + "Parameters: m/CODE (must be an existing code)\n"
-        + "Example: M " + COMMAND_WORD + " m/CS1231S";
+        + "Parameters: " + PREFIX_CODE + "CODE (must be an existing code)\n"
+        + String.format("Example: %s %s %s CS1231S", Module.TYPE, COMMAND_WORD, PREFIX_CODE);
 
     public static final String MESSAGE_DELETE_MODULE_SUCCESS = "Deleted Module: %1$s";
 

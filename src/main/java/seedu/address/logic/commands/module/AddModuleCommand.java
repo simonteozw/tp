@@ -14,8 +14,7 @@ import seedu.address.model.module.Module;
 public class AddModuleCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
-    // TODO: edit these messages
-    public static final String MESSAGE_USAGE = "M " + COMMAND_WORD + ": Adds a module to the app "
+    public static final String MESSAGE_USAGE = Module.TYPE + " " + COMMAND_WORD + ": Adds a module to the app "
         + "Parameters: "
         + PREFIX_CODE + "CODE "
         + PREFIX_NAME + "NAME "
