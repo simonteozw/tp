@@ -3,7 +3,7 @@ package seedu.address.logic.commands.lesson;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CODE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WEIGHTAGE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
@@ -32,7 +32,7 @@ public class EditLessonCommand extends Command {
             + "Parameters: "
             + PREFIX_CODE + "MODULE_CODE "
             + PREFIX_TYPE + "TYPE "
-            + "[" + PREFIX_TIME + "DATE] "
+            + "[" + PREFIX_DATE + "DATE] "
             + "[" + PREFIX_ADDRESS + "LOCATION] "
             + "[" + PREFIX_WEIGHTAGE + "WEIGHTAGE]\n";
 
@@ -69,11 +69,11 @@ public class EditLessonCommand extends Command {
 
         Code updatedCode = editLessonDescriptor.getCode().orElse(lessonToEdit.getCode());
         Type updatedType = editLessonDescriptor.getType().orElse(lessonToEdit.getType());
-        LocalDate updatedTime = editLessonDescriptor.getTime().orElse(lessonToEdit.getTime());
+        LocalDate updatedDate = editLessonDescriptor.getDate().orElse(lessonToEdit.getDate());
         Address updatedLocation = editLessonDescriptor.getLocation().orElse(lessonToEdit.getLocation());
         Double updatedWeightage = editLessonDescriptor.getWeightage().orElse(lessonToEdit.getWeightage());
 
-        return new Lesson(updatedCode, updatedType, updatedTime, updatedLocation, updatedWeightage);
+        return new Lesson(updatedCode, updatedType, updatedDate, updatedLocation, updatedWeightage);
     }
 
     @Override
@@ -128,7 +128,7 @@ public class EditLessonCommand extends Command {
     public static class EditLessonDescriptor {
         private Code code;
         private Type type;
-        private LocalDate time;
+        private LocalDate date;
         private Address location;
         private double weightage;
 
@@ -142,7 +142,7 @@ public class EditLessonCommand extends Command {
         public EditLessonDescriptor(EditLessonDescriptor toCopy) {
             setCode(toCopy.code);
             setType(toCopy.type);
-            setTime(toCopy.time);
+            setDate(toCopy.date);
             setLocation(toCopy.location);
             setWeightage(toCopy.weightage);
         }
@@ -151,7 +151,7 @@ public class EditLessonCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(code, type, time, location, weightage);
+            return CollectionUtil.isAnyNonNull(code, type, date, location, weightage);
         }
 
         public Optional<Code> getCode() {
@@ -170,12 +170,12 @@ public class EditLessonCommand extends Command {
             this.type = type;
         }
 
-        public Optional<LocalDate> getTime() {
-            return Optional.ofNullable(time);
+        public Optional<LocalDate> getDate() {
+            return Optional.ofNullable(date);
         }
 
-        public void setTime(LocalDate time) {
-            this.time = time;
+        public void setDate(LocalDate date) {
+            this.date = date;
         }
 
         public Optional<Address> getLocation() {
@@ -211,7 +211,7 @@ public class EditLessonCommand extends Command {
 
             return getCode().equals(e.getCode())
                     && getType().equals(e.getType())
-                    && getTime().equals(e.getTime())
+                    && getDate().equals(e.getDate())
                     && getLocation().equals(e.getLocation())
                     && getWeightage().equals(e.getWeightage());
         }

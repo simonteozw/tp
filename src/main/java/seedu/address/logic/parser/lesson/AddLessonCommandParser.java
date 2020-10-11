@@ -3,7 +3,7 @@ package seedu.address.logic.parser.lesson;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CODE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WEIGHTAGE;
 
@@ -44,20 +44,20 @@ public class AddLessonCommandParser implements Parser<AddLessonCommand> {
     public AddLessonCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args,
-                        PREFIX_CODE, PREFIX_TYPE, PREFIX_TIME, PREFIX_ADDRESS, PREFIX_WEIGHTAGE);
+                        PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE, PREFIX_ADDRESS, PREFIX_WEIGHTAGE);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_CODE, PREFIX_TYPE, PREFIX_TIME, PREFIX_ADDRESS, PREFIX_WEIGHTAGE)
+        if (!arePrefixesPresent(argMultimap, PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE, PREFIX_ADDRESS, PREFIX_WEIGHTAGE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddLessonCommand.MESSAGE_USAGE));
         }
 
         Code code = ParserUtil.parseCode(argMultimap.getValue(PREFIX_CODE).get());
         Type type = ParserUtil.parseType(argMultimap.getValue(PREFIX_TYPE).get());
-        LocalDate time = ParserUtil.parseTime(argMultimap.getValue(PREFIX_TIME).get());
+        LocalDate date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
         Address location = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         double weightage = ParserUtil.parseWeightage(argMultimap.getValue(PREFIX_WEIGHTAGE).get());
 
-        Lesson lesson = new Lesson(code, type, time, location, weightage);
+        Lesson lesson = new Lesson(code, type, date, location, weightage);
 
         return new AddLessonCommand(lesson);
     }

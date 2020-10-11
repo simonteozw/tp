@@ -134,11 +134,11 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code date} is invalid.
      */
-    public static LocalDate parseTime(String time) throws ParseException {
-        requireNonNull(time);
-        String trimmedTime = time.trim();
+    public static LocalDate parseDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
         try {
-            return LocalDate.parse(trimmedTime, Lesson.FORMATTER);
+            return LocalDate.parse(trimmedDate, Lesson.FORMATTER);
         } catch (DateTimeParseException e) {
             throw new ParseException(Lesson.DATE_MESSAGE_CONSTRAINTS);
         }

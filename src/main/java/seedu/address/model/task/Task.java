@@ -17,7 +17,7 @@ public class Task {
     public static final String TYPE = "T";
 
     private final Name name;
-    private final LocalDate time;
+    private final LocalDate date;
     private final Address location;
     private final double weightage;
     private final String note;
@@ -26,15 +26,15 @@ public class Task {
      * Every field must be present and not null.
      *
      * @param name
-     * @param time
+     * @param date
      * @param location
      * @param weightage
      * @param note
      */
-    public Task(Name name, LocalDate time, Address location, double weightage, String note) {
-        requireAllNonNull(name, time, location, weightage, note);
+    public Task(Name name, LocalDate date, Address location, double weightage, String note) {
+        requireAllNonNull(name, date, location, weightage, note);
         this.name = name;
-        this.time = time;
+        this.date = date;
         this.location = location;
         this.weightage = weightage;
         this.note = note;
@@ -52,7 +52,7 @@ public class Task {
 
         Task otherLesson = (Task) other;
         return otherLesson.name.equals(name)
-            && otherLesson.time.equals(time)
+            && otherLesson.date.equals(date)
             && otherLesson.location.equals(location)
             && (otherLesson.weightage == weightage)
             && otherLesson.note.equals(note);
@@ -61,7 +61,7 @@ public class Task {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, time, location, weightage, note);
+        return Objects.hash(name, date, location, weightage, note);
     }
 
     @Override

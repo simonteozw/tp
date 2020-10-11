@@ -3,7 +3,7 @@ package seedu.address.logic.commands.lesson;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CODE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WEIGHTAGE;
 
@@ -22,7 +22,7 @@ public class AddLessonCommand extends Command {
             + "Parameters: "
             + PREFIX_CODE + "MODULE_CODE "
             + PREFIX_TYPE + "TYPE "
-            + PREFIX_TIME + "DATE "
+            + PREFIX_DATE + "DATE "
             + PREFIX_ADDRESS + "LOCATION "
             + PREFIX_WEIGHTAGE + "WEIGHTAGE\n";
 
