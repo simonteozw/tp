@@ -55,7 +55,7 @@ Examples: `M info m/CS1231S`
 
 ### Add
 
-For: Add a new module. 
+For: Add a new module.
 
 Format: `M add m/{module_code} n/{name} d/{description}`
 Examples: `M add m/CS1231S n/Discrete Structures d/Introductory mathematical tools required for computer science`
@@ -76,7 +76,7 @@ Examples: `M delete m/CS1231S`
 
 ## Task
 
-### View 
+### View
 Description: Shows the information about a task.
 
 Format: `T info n/{name}`
@@ -113,8 +113,8 @@ Examples: `T list`
 
 ## Lesson
 
-### View 
-For: Shows the information about a lesson 
+### View
+For: Shows the information about a lesson
 
 Format: `L info m/{module_code} t/{type}`
 
