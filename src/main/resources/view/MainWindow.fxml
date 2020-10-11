@@ -18,7 +18,7 @@
 
 <fx:root minHeight="600" minWidth="450" onCloseRequest="#handleExit" title="Address App" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <icons>
-        <Image url="@/images/address_book_32.png" />
+        <Image url="@/images/trackitlion.png" />
     </icons>
     <scene>
         <Scene>
@@ -41,41 +41,40 @@
                          VBox.vgrow="ALWAYS">
                     <tabs>
 
-                        <Tab fx:id="ModuleTab" text="CS2103T">
+                        <Tab fx:id="UpcomingTab" text="Upcoming">
                             <content>
                                 <GridPane prefHeight="276.0" prefWidth="343.0" VBox.vgrow="ALWAYS">
                                    <columnConstraints>
-                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" />
-                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"  />
-<!--                                       prefWidth="100.0"-->
+                                      <ColumnConstraints hgrow="ALWAYS" minWidth="0.0" />
                                    </columnConstraints>
                                    <rowConstraints>
                                       <RowConstraints maxHeight="145.66668701171875" minHeight="0.0" prefHeight="138.33334350585938" vgrow="SOMETIMES" />
                                       <RowConstraints maxHeight="148.33331298828125" minHeight="10.0" prefHeight="137.66665649414062" vgrow="SOMETIMES" />
                                    </rowConstraints>
                                    <children>
-                                       <StackPane fx:id="moduleListPanelPlaceholder" GridPane.columnIndex="0"
+                                       <StackPane fx:id="contactListPanelPlaceholder2" GridPane.columnIndex="0"
                                                   GridPane.rowIndex="0">
                                            <padding>
                                                <Insets bottom="10" left="10" right="10" top="10" />
                                            </padding>
                                        </StackPane>
-                                       <StackPane fx:id="contactListPanelPlaceholder2" GridPane.columnIndex="0"
+                                       <StackPane fx:id="contactListPanelPlaceholder3" GridPane.columnIndex="0"
                                                   GridPane.rowIndex="1">
                                            <padding>
                                                <Insets bottom="10" left="10" right="10" top="10" />
                                            </padding>
                                        </StackPane>
-                                       <StackPane fx:id="contactListPanelPlaceholder3" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.rowSpan="2">
-                                           <padding>
-                                               <Insets bottom="10" left="10" right="10" top="10" />
-                                           </padding>
-                                       </StackPane>
-
-
                                    </children>
                                 </GridPane>
                             </content>
+                        </Tab>
+                        <Tab fx:id="ModuleTab" text="Modules">
+                            <StackPane fx:id="moduleListPanelPlaceholder" GridPane.columnIndex="0"
+                                       GridPane.rowIndex="0">
+                                <padding>
+                                    <Insets bottom="10" left="10" right="10" top="10" />
+                                </padding>
+                            </StackPane>
                         </Tab>
 
 
