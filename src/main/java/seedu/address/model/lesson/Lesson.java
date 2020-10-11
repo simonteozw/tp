@@ -78,7 +78,7 @@ public class Lesson {
                 .append(getCode())
                 .append(" Type: ")
                 .append(getType())
-                .append(" Time: ")
+                .append(" Date: ")
                 .append(getDate())
                 .append(" Location: ")
                 .append(getLocation())
