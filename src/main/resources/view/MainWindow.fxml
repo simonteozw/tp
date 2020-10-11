@@ -16,8 +16,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.stage.Stage?>
 
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.Label?>
 <fx:root xmlns:fx="http://javafx.com/fxml/1" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8"
          title="TrackIt@NUS" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
     <icons>
