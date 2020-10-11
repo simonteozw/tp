@@ -32,6 +32,12 @@ public class EditLessonCommand extends Command {
     private final Type type;
     private final EditLessonDescriptor editLessonDescriptor;
 
+    /**
+     * Creates a EditLessonCommand to edit the specified {@code Lesson}
+     * @param code
+     * @param type
+     * @param editLessonDescriptor
+     */
     public EditLessonCommand(Code code, Type type, EditLessonDescriptor editLessonDescriptor) {
         requireNonNull(code);
         requireNonNull(type);

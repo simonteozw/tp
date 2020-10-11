@@ -21,7 +21,7 @@ public class AddLessonCommand extends Command {
     private final Lesson toAdd;
 
     /**
-     * Creates an AddContactCommand to add the specified {@code Contact}
+     * Creates an AddLessonCommand to add the specified {@code Lesson}
      */
     public AddLessonCommand(Lesson lesson) {
         requireNonNull(lesson);

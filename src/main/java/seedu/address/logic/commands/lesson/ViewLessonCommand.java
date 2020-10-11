@@ -24,6 +24,11 @@ public class ViewLessonCommand extends Command {
     private final Code code;
     private final Type type;
 
+    /**
+     * Creates a ViewLessonCommand to view the specified {@code Lesson}
+     * @param code
+     * @param type
+     */
     public ViewLessonCommand(Code code, Type type) {
         this.code = code;
         this.type = type;

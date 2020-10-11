@@ -1,10 +1,10 @@
 package seedu.address.model.commons;
 
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.lesson.Lesson;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
+
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.lesson.Lesson;
 
 /**
  * Represents a module code. Has form of AB1234 or ABC1234
@@ -56,11 +56,14 @@ public class Code {
         return code.hashCode();
     }
 
-    static public Code parseCode(String rawCode) throws ParseException {
+    /**
+     * Parses the given {@code String} and returns a {@code Code}
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public static Code parseCode(String rawCode) throws ParseException {
         if (!Code.isValidCode(rawCode)) {
             throw new ParseException(Lesson.CODE_MESSAGE_CONSTRAINTS);
-        }
-        else {
+        } else {
             return new Code(rawCode);
         }
     }

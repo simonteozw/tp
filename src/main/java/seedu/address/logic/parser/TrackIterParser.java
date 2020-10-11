@@ -16,13 +16,21 @@ import seedu.address.logic.commands.contact.DeleteContactCommand;
 import seedu.address.logic.commands.contact.EditContactCommand;
 import seedu.address.logic.commands.contact.FindContactCommand;
 import seedu.address.logic.commands.contact.ListContactCommand;
-import seedu.address.logic.commands.lesson.*;
+import seedu.address.logic.commands.lesson.AddLessonCommand;
+import seedu.address.logic.commands.lesson.DeleteLessonCommand;
+import seedu.address.logic.commands.lesson.EditLessonCommand;
+import seedu.address.logic.commands.lesson.ListLessonCommand;
+import seedu.address.logic.commands.lesson.ViewLessonCommand;
 import seedu.address.logic.parser.contact.AddContactCommandParser;
 import seedu.address.logic.parser.contact.DeleteContactCommandParser;
 import seedu.address.logic.parser.contact.EditContactCommandParser;
 import seedu.address.logic.parser.contact.FindContactCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.logic.parser.lesson.*;
+import seedu.address.logic.parser.lesson.AddLessonCommandParser;
+import seedu.address.logic.parser.lesson.DeleteLessonCommandParser;
+import seedu.address.logic.parser.lesson.EditLessonCommandParser;
+import seedu.address.logic.parser.lesson.ListLessonCommandParser;
+import seedu.address.logic.parser.lesson.ViewLessonCommandParser;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.lesson.Lesson;
 
@@ -80,23 +88,23 @@ public class TrackIterParser {
             }
         case Lesson.TYPE:
             switch (commandWord) {
-                case AddLessonCommand.COMMAND_WORD:
-                    return new AddLessonCommandParser().parse(arguments);
+            case AddLessonCommand.COMMAND_WORD:
+                return new AddLessonCommandParser().parse(arguments);
 
-                case EditLessonCommand.COMMAND_WORD:
-                    return new EditLessonCommandParser().parse(arguments);
+            case EditLessonCommand.COMMAND_WORD:
+                return new EditLessonCommandParser().parse(arguments);
 
-                case DeleteLessonCommand.COMMAND_WORD:
-                    return new DeleteLessonCommandParser().parse(arguments);
+            case DeleteLessonCommand.COMMAND_WORD:
+                return new DeleteLessonCommandParser().parse(arguments);
 
-                case ListLessonCommand.COMMAND_WORD:
-                    return new ListLessonCommandParser().parse(arguments);
+            case ListLessonCommand.COMMAND_WORD:
+                return new ListLessonCommandParser().parse(arguments);
 
-                case ViewLessonCommand.COMMAND_WORD:
-                    return new ViewLessonCommandParser().parse(arguments);
+            case ViewLessonCommand.COMMAND_WORD:
+                return new ViewLessonCommandParser().parse(arguments);
 
-                default:
-                    throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+            default:
+                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
             }
         case "":
             switch (commandWord) {

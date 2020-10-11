@@ -17,8 +17,10 @@ public class Lesson {
     public static final String TYPE = "L";
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("d/MM/yyyy");
     public static final String DATE_MESSAGE_CONSTRAINTS = "Date should be in the format d/MM/yyyy";
-    public static final String WEIGHTAGE_MESSAGE_CONSTRAINTS = "Weightage should be in the form of a floating point number";
-    public static final String TYPE_MESSAGE_CONSTRAINTS = "Type should be either 'lecture', 'tutorial', 'lab', 'recitation', or 'sectional'";
+    public static final String WEIGHTAGE_MESSAGE_CONSTRAINTS =
+            "Weightage should be in the form of a floating point number";
+    public static final String TYPE_MESSAGE_CONSTRAINTS =
+            "Type should be either 'lecture', 'tutorial', 'lab', 'recitation', or 'sectional'";
     public static final String CODE_MESSAGE_CONSTRAINTS = "Module code is invalid";
 
     private final Code code;

@@ -2,13 +2,21 @@ package seedu.address.logic.parser.lesson;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CODE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_WEIGHTAGE;
 
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.lesson.EditLessonCommand;
 import seedu.address.logic.commands.lesson.EditLessonCommand.EditLessonDescriptor;
-import seedu.address.logic.parser.*;
+import seedu.address.logic.parser.ArgumentMultimap;
+import seedu.address.logic.parser.ArgumentTokenizer;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.commons.Code;
 import seedu.address.model.lesson.Type;
@@ -34,7 +42,8 @@ public class EditLessonCommandParser implements Parser<EditLessonCommand> {
     public EditLessonCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args,
+                        PREFIX_CODE, PREFIX_TYPE, PREFIX_TIME, PREFIX_ADDRESS, PREFIX_WEIGHTAGE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_CODE, PREFIX_TYPE)
                 || !argMultimap.getPreamble().isEmpty()) {

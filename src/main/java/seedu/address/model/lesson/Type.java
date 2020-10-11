@@ -8,6 +8,12 @@ public enum Type {
     LAB,
     REC,
     SEC;
+
+    /**
+     * Parses the given {@code String} and returns a Type object.
+     *
+     * @throws ParseException if the user input does not conform the expected format
+     */
     public static Type parseType(String rawType) throws ParseException {
         switch (rawType) {
         case "lecture":

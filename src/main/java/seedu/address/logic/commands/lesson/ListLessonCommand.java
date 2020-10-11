@@ -3,14 +3,14 @@ package seedu.address.logic.commands.lesson;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_LESSONS;
 
+import java.util.Optional;
+import java.util.function.Predicate;
+
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
 import seedu.address.model.commons.Code;
 import seedu.address.model.lesson.Lesson;
-
-import java.util.Optional;
-import java.util.function.Predicate;
 
 public class ListLessonCommand extends Command {
     public static final String COMMAND_WORD = "list";
@@ -20,6 +20,10 @@ public class ListLessonCommand extends Command {
 
     private final Optional<Code> codeOptional;
 
+    /**
+     * Creates a ListLessonCommand to list all {@code Lesson}s of the specified module
+     * @param codeOptional
+     */
     public ListLessonCommand(Optional<Code> codeOptional) {
         this.codeOptional = codeOptional;
     }

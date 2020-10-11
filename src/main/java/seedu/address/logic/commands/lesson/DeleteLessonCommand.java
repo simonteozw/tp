@@ -2,6 +2,8 @@ package seedu.address.logic.commands.lesson;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Optional;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -10,8 +12,6 @@ import seedu.address.model.Model;
 import seedu.address.model.commons.Code;
 import seedu.address.model.lesson.Lesson;
 import seedu.address.model.lesson.Type;
-
-import java.util.Optional;
 
 public class DeleteLessonCommand extends Command {
 
@@ -25,6 +25,11 @@ public class DeleteLessonCommand extends Command {
     private final Code targetCode;
     private final Type targetType;
 
+    /**
+     * Creates a DeleteLessonCommand to delete the specified {@code Lesson}
+     * @param code
+     * @param type
+     */
     public DeleteLessonCommand(Code code, Type type) {
         this.targetCode = code;
         this.targetType = type;
