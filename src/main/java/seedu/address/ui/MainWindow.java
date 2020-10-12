@@ -18,6 +18,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.contact.ContactListPanel;
 import seedu.address.ui.module.ModuleListPanel;
+import seedu.address.ui.task.TaskListPanel;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -34,9 +35,9 @@ public class MainWindow extends UiPart<Stage> {
     private final HelpWindow helpWindow;
     // Independent Ui parts residing in this Ui container
     private ModuleListPanel moduleListPanel; //TODO: to be replaced by Module List Panel
-    private ContactListPanel contactListPanel; // TODO: Not rly in use, remove soon.
+//    private ContactListPanel contactListPanel; // TODO: Not rly in use, remove soon.
     private ContactListPanel contactListPanel2; //TODO: to be replaced by Lesson List Panel
-    private ContactListPanel contactListPanel3; //TODO: to be replaced by Task List Panel
+    private TaskListPanel taskListPanel; //TODO: to be replaced by Task List Panel
 
     private ResultDisplay resultDisplay;
     @FXML
@@ -53,9 +54,9 @@ public class MainWindow extends UiPart<Stage> {
     // TODO: to be replaced by Lessons
     private StackPane contactListPanelPlaceholder2;
 
-//    @FXML
+    @FXML
     // TODO: to be replaced by Tasks
-//    private StackPane contactListPanelPlaceholder3;
+    private StackPane taskListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -134,8 +135,8 @@ public class MainWindow extends UiPart<Stage> {
         moduleListPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
 
         //TODO: to be replaced by tasks
-//        contactListPanel3 = new ContactListPanel(logic.getFilteredContactList());
-//        contactListPanelPlaceholder3.getChildren().add(contactListPanel3.getRoot());
+        taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
+        taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -187,9 +188,9 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-    public ContactListPanel getContactListPanel() {
-        return contactListPanel;
-    }
+//    public ContactListPanel getContactListPanel() {
+//        return contactListPanel;
+//    }
 
     /**
      * Executes the command and returns the result.

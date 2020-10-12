@@ -18,6 +18,17 @@ public class AddModuleCommandParserTest {
             + "Structures"), "Sample"));
 
         assertParseSuccess(parser, " n/Discrete Structures m/CS1231S d/Sample", expectedCommand);
+//        assertParseSuccess(parser, " 1 n/Discrete Structures m/CS1231S d/Sample", expectedCommand);
     }
 
+//    @Test
+//    public void parse_leadingIndex_failure() {
+//        AddModuleCommand expectedCommand = new AddModuleCommand(new Module(new Code("CS1231S"), new Name("Discrete "
+//            + "Structures"), "Sample"));
+//
+//        assertParseFailure(parser, "1 n/Discrete Structures m/CS1231S d/Sample",
+//            String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddModuleCommand.MESSAGE_USAGE));
+//
+//
+//    }
 }

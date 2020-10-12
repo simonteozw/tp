@@ -65,7 +65,7 @@ public class EditTaskCommand extends Command {
 
         Name updatedName = editTaskDescriptor.getName().orElse(taskToEdit.getName());
         LocalDate updatedDate = editTaskDescriptor.getDate().orElse(taskToEdit.getDate());
-        Address updatedLocation = editTaskDescriptor.getLocation().orElse(taskToEdit.getLocation());
+        Address updatedLocation = editTaskDescriptor.getLocation().orElse(taskToEdit.getAddress());
         double updatedWeightage = editTaskDescriptor.getWeightage().orElse(taskToEdit.getWeightage());
         String updatedRemarks = editTaskDescriptor.getRemark().orElse(taskToEdit.getRemark());
 

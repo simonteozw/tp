@@ -37,7 +37,7 @@ public class ModuleCard extends UiPart<Region> {
 
 
     /**
-     * Creates a {@code PersonCode} with the given {@code Module} and index to display.
+     * Creates a {@code ModuleCard} with the given {@code Module} and index to display.
      */
     public ModuleCard(Module module, int displayedIndex) {
         super(FXML);

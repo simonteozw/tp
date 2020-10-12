@@ -68,6 +68,22 @@ public class TrackIter implements ReadOnlyTrackIter {
     }
 
     /**
+     * Replaces the contents of the task list with {@code tasks}.
+     * {@code tasks} must not contain duplicate tasks.
+     */
+    public void setTasks(List<Task> tasks) {
+        this.tasks.setTasks(tasks);
+    }
+
+    /**
+     * Replaces the contents of the lessons list with {@code lessons}.
+     * {@code lessons} must not contain duplicate lessons.
+     */
+    public void setLessons(List<Lesson> lessons) {
+        this.lessons.setLessons(lessons);
+    }
+
+    /**
      * Resets the existing data of this {@code TrackIter} with {@code newData}.
      */
     public void resetData(ReadOnlyTrackIter newData) {
@@ -75,6 +91,8 @@ public class TrackIter implements ReadOnlyTrackIter {
 
         setContacts(newData.getContactList());
         setModules(newData.getModuleList());
+        setTasks(newData.getTaskList());
+        setLessons(newData.getLessonList());
     }
 
 
