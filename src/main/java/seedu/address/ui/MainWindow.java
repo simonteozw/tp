@@ -17,6 +17,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.contact.ContactListPanel;
+import seedu.address.ui.lesson.LessonListPanel;
 import seedu.address.ui.module.ModuleListPanel;
 import seedu.address.ui.task.TaskListPanel;
 
@@ -33,11 +34,12 @@ public class MainWindow extends UiPart<Stage> {
     private final Stage primaryStage;
     private final Logic logic;
     private final HelpWindow helpWindow;
+
     // Independent Ui parts residing in this Ui container
-    private ModuleListPanel moduleListPanel; //TODO: to be replaced by Module List Panel
-//    private ContactListPanel contactListPanel; // TODO: Not rly in use, remove soon.
-    private ContactListPanel contactListPanel2; //TODO: to be replaced by Lesson List Panel
-    private TaskListPanel taskListPanel; //TODO: to be replaced by Task List Panel
+    private LessonListPanel lessonListPanel;
+    private TaskListPanel taskListPanel;
+    private ModuleListPanel moduleListPanel;
+    private ContactListPanel contactListPanel;
 
     private ResultDisplay resultDisplay;
     @FXML
@@ -47,16 +49,16 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    // TODO: to be replaced by Modules
+    private StackPane lessonListPanelPlaceholder;
+
+    @FXML
+    private StackPane taskListPanelPlaceholder;
+
+    @FXML
     private StackPane moduleListPanelPlaceholder;
 
     @FXML
-    // TODO: to be replaced by Lessons
-    private StackPane contactListPanelPlaceholder2;
-
-    @FXML
-    // TODO: to be replaced by Tasks
-    private StackPane taskListPanelPlaceholder;
+    private StackPane contactListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -126,17 +128,17 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
 
-        //TODO: to be replaced by lessons
-        contactListPanel2 = new ContactListPanel(logic.getFilteredContactList());
-        contactListPanelPlaceholder2.getChildren().add(contactListPanel2.getRoot());
+        lessonListPanel = new LessonListPanel(logic.getFilteredLessonList());
+        lessonListPanelPlaceholder.getChildren().add(lessonListPanel.getRoot());
 
-        //TODO: to be replaced by modules
+        taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
+        taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+
         moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList());
         moduleListPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
 
-        //TODO: to be replaced by tasks
-        taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
-        taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+        contactListPanel = new ContactListPanel(logic.getFilteredContactList());
+        contactListPanelPlaceholder.getChildren().add(contactListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());

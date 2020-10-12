@@ -7,12 +7,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 <HBox xmlns:fx="http://javafx.com/fxml/1" id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8">
     <GridPane HBox.hgrow="ALWAYS">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150"/>
         </columnConstraints>
-        <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0">
+        <VBox alignment="CENTER_LEFT" minHeight="30" GridPane.columnIndex="0">
             <padding>
                 <Insets top="5" right="5" bottom="5" left="15"/>
             </padding>
@@ -23,12 +24,17 @@
                         <Region fx:constant="USE_PREF_SIZE"/>
                     </minWidth>
                 </Label>
+                <Label fx:id="date" styleClass="cell_big_label" text="\$date"/>
+                <Text fx:id="hyphen" styleClass="cell_big_label">  -  </Text>
                 <Label fx:id="code" text="\$first" styleClass="cell_big_label"/>
+                <Label fx:id="type" styleClass="cell_big_label" text="\$type"/>
+                <Text fx:id="at" styleClass="cell_big_label"> at </Text>
+                <Label fx:id="address" styleClass="cell_big_label" text="\$address"/>
+                <Text fx:id="open" styleClass="cell_big_label"> ( </Text>
+                <Label fx:id="weightage" styleClass="cell_big_label" text="\$weightage"/>
+                <Text fx:id="close" styleClass="cell_big_label"> % ) </Text>
             </HBox>
-            <Label fx:id="type" styleClass="cell_small_label" text="\$type"/>
-            <Label fx:id="time" styleClass="cell_small_label" text="\$time"/>
-            <Label fx:id="location" styleClass="cell_small_label" text="\$location"/>
-            <Label fx:id="weightage" styleClass="cell_small_label" text="\$weightage"/>
+
         </VBox>
     </GridPane>
 </HBox>

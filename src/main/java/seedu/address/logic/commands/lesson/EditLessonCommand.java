@@ -77,7 +77,7 @@ public class EditLessonCommand extends Command {
         Code updatedCode = editLessonDescriptor.getCode().orElse(lessonToEdit.getCode());
         Type updatedType = editLessonDescriptor.getType().orElse(lessonToEdit.getType());
         LocalDate updatedDate = editLessonDescriptor.getDate().orElse(lessonToEdit.getDate());
-        Address updatedLocation = editLessonDescriptor.getLocation().orElse(lessonToEdit.getLocation());
+        Address updatedLocation = editLessonDescriptor.getLocation().orElse(lessonToEdit.getAddress());
         Double updatedWeightage = editLessonDescriptor.getWeightage().orElse(lessonToEdit.getWeightage());
 
         return new Lesson(updatedCode, updatedType, updatedDate, updatedLocation, updatedWeightage);

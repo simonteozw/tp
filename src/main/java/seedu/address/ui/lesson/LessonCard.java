@@ -1,21 +1,18 @@
 package seedu.address.ui.lesson;
 
-import java.util.Comparator;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.lesson.Lesson;
 import seedu.address.ui.UiPart;
 
 /**
- * An UI component that displays information of a {@code Contact}.
+ * An UI component that displays information of a {@code Lesson}.
  */
 public class LessonCard extends UiPart<Region> {
 
-    private static final String FXML = "ContactListCard.fxml";
+    private static final String FXML = "LessonListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -36,9 +33,9 @@ public class LessonCard extends UiPart<Region> {
     @FXML
     private Label type;
     @FXML
-    private Label time;
+    private Label date;
     @FXML
-    private Label location;
+    private Label address;
     @FXML
     private Label weightage;
 
@@ -52,8 +49,9 @@ public class LessonCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         code.setText(lesson.getCode().code);
         type.setText(lesson.getType().name());
-        time.setText(lesson.getTime().toString());
-        location.setText(String.valueOf(lesson.getWeightage()));
+        date.setText(lesson.getDate().toString());
+        address.setText(lesson.getAddress().toString());
+        weightage.setText(String.valueOf(lesson.getWeightage()));
     }
 
     @Override
