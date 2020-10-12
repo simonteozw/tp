@@ -209,10 +209,19 @@ public class ParserUtil {
      */
     public static Type parseType(String type) throws ParseException {
         requireNonNull(type);
-        String trimmedType = type.trim();
-        try {
-            return Type.parseType(trimmedType);
-        } catch (ParseException e) {
+        String rawType = type.trim();
+        switch (rawType) {
+        case "lecture":
+            return Type.LEC;
+        case "tutorial":
+            return Type.TUT;
+        case "lab":
+            return Type.LAB;
+        case "recitation":
+            return Type.REC;
+        case "sectional":
+            return Type.SEC;
+        default:
             throw new ParseException(Lesson.TYPE_MESSAGE_CONSTRAINTS);
         }
     }
