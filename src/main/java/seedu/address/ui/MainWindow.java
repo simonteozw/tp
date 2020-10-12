@@ -53,9 +53,9 @@ public class MainWindow extends UiPart<Stage> {
     // TODO: to be replaced by Lessons
     private StackPane contactListPanelPlaceholder2;
 
-    @FXML
+//    @FXML
     // TODO: to be replaced by Tasks
-    private StackPane contactListPanelPlaceholder3;
+//    private StackPane contactListPanelPlaceholder3;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -125,7 +125,6 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
 
-
         //TODO: to be replaced by lessons
         contactListPanel2 = new ContactListPanel(logic.getFilteredContactList());
         contactListPanelPlaceholder2.getChildren().add(contactListPanel2.getRoot());
@@ -134,11 +133,9 @@ public class MainWindow extends UiPart<Stage> {
         moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList());
         moduleListPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
 
-
-
         //TODO: to be replaced by tasks
-        contactListPanel3 = new ContactListPanel(logic.getFilteredContactList());
-        contactListPanelPlaceholder3.getChildren().add(contactListPanel3.getRoot());
+//        contactListPanel3 = new ContactListPanel(logic.getFilteredContactList());
+//        contactListPanelPlaceholder3.getChildren().add(contactListPanel3.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
