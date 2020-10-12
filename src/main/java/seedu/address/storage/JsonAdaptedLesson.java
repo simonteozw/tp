@@ -88,7 +88,7 @@ public class JsonAdaptedLesson {
         if (!Address.isValidAddress(address)) {
             throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
         }
-        final Address modelLocation = new Address(address);
+        final Address modelAddress = new Address(address);
 
         if (weightage == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Weightage"));
@@ -100,6 +100,6 @@ public class JsonAdaptedLesson {
         }
         final double modelWeightage = Double.parseDouble(weightage);
 
-        return new Lesson(modelCode, modelType, modelTime, modelLocation, modelWeightage);
+        return new Lesson(modelCode, modelType, modelTime, modelAddress, modelWeightage);
     }
 }

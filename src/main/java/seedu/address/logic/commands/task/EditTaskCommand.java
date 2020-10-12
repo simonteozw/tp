@@ -65,11 +65,11 @@ public class EditTaskCommand extends Command {
 
         Name updatedName = editTaskDescriptor.getName().orElse(taskToEdit.getName());
         LocalDate updatedDate = editTaskDescriptor.getDate().orElse(taskToEdit.getDate());
-        Address updatedLocation = editTaskDescriptor.getLocation().orElse(taskToEdit.getAddress());
+        Address updatedAddress = editTaskDescriptor.getAddress().orElse(taskToEdit.getAddress());
         double updatedWeightage = editTaskDescriptor.getWeightage().orElse(taskToEdit.getWeightage());
         String updatedRemarks = editTaskDescriptor.getRemark().orElse(taskToEdit.getRemark());
 
-        return new Task(updatedName, updatedDate, updatedLocation, updatedWeightage, updatedRemarks);
+        return new Task(updatedName, updatedDate, updatedAddress, updatedWeightage, updatedRemarks);
     }
 
     @Override
@@ -118,7 +118,7 @@ public class EditTaskCommand extends Command {
     public static class EditTaskDescriptor {
         private Name name;
         private LocalDate date;
-        private Address location;
+        private Address address;
         private double weightage;
         private String remark;
 
@@ -132,7 +132,7 @@ public class EditTaskCommand extends Command {
         public EditTaskDescriptor(EditTaskCommand.EditTaskDescriptor toCopy) {
             setName(toCopy.name);
             setDate(toCopy.date);
-            setLocation(toCopy.location);
+            setAddress(toCopy.address);
             setWeightage(toCopy.weightage);
             setRemark(toCopy.remark);
         }
@@ -141,7 +141,7 @@ public class EditTaskCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, date, location, weightage, remark);
+            return CollectionUtil.isAnyNonNull(name, date, address, weightage, remark);
         }
 
         public Optional<Name> getName() {
@@ -176,12 +176,12 @@ public class EditTaskCommand extends Command {
             this.remark = remark;
         }
 
-        public Optional<Address> getLocation() {
-            return Optional.ofNullable(location);
+        public Optional<Address> getAddress() {
+            return Optional.ofNullable(address);
         }
 
-        public void setLocation(Address location) {
-            this.location = location;
+        public void setAddress(Address address) {
+            this.address = address;
         }
 
 
@@ -202,7 +202,7 @@ public class EditTaskCommand extends Command {
 
             return getName().equals(e.getName())
                 && getDate().equals(e.getDate())
-                && getLocation().equals(e.getLocation())
+                && getAddress().equals(e.getAddress())
                 && getWeightage().equals(e.getWeightage())
                 && getRemark().equals(e.getRemark());
         }

@@ -16,13 +16,13 @@ public class AddTaskCommandParserTest {
 
     private final Name name = new Name("Sample");
     private final LocalDate date = LocalDate.parse("12/12/2020", Task.FORMATTER);
-    private final Address location = new Address("NUS");
+    private final Address address = new Address("NUS");
     private final double weightage = 25.5;
     private final String remark = "Test";
 
     @Test
     public void parse_allFieldsPresent_success() {
-        AddTaskCommand expectedCommand = new AddTaskCommand(new Task(name, date, location, weightage, remark));
+        AddTaskCommand expectedCommand = new AddTaskCommand(new Task(name, date, address, weightage, remark));
 
         assertParseSuccess(parser, " n/Sample d/12/12/2020 a/NUS w/25.5 r/Test", expectedCommand);
     }
