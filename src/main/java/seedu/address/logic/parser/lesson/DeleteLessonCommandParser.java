@@ -36,10 +36,10 @@ public class DeleteLessonCommandParser implements Parser<DeleteLessonCommand> {
      */
     public DeleteLessonCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_CODE, PREFIX_TYPE);
+            ArgumentTokenizer.tokenize(args, PREFIX_CODE, PREFIX_TYPE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_CODE, PREFIX_TYPE)
-                || !argMultimap.getPreamble().isEmpty()) {
+            || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteLessonCommand.MESSAGE_USAGE));
         }
 

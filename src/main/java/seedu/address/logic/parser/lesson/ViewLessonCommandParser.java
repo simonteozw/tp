@@ -36,10 +36,10 @@ public class ViewLessonCommandParser implements Parser<ViewLessonCommand> {
      */
     public ViewLessonCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_CODE, PREFIX_TYPE);
+            ArgumentTokenizer.tokenize(args, PREFIX_CODE, PREFIX_TYPE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_CODE, PREFIX_TYPE)
-                || !argMultimap.getPreamble().isEmpty()) {
+            || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewLessonCommand.MESSAGE_USAGE));
         }
 

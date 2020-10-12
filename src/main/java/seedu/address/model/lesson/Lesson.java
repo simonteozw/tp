@@ -18,9 +18,9 @@ public class Lesson {
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("d/MM/yyyy");
     public static final String DATE_MESSAGE_CONSTRAINTS = "Date should be in the format d/MM/yyyy";
     public static final String WEIGHTAGE_MESSAGE_CONSTRAINTS =
-            "Weightage should be in the form of a floating point number";
+        "Weightage should be in the form of a floating point number";
     public static final String TYPE_MESSAGE_CONSTRAINTS =
-            "Type should be either 'lecture', 'tutorial', 'lab', 'recitation', or 'sectional'";
+        "Type should be either 'lecture', 'tutorial', 'lab', 'recitation', or 'sectional'";
     public static final String CODE_MESSAGE_CONSTRAINTS = "Module code is invalid";
 
     private final Code code;
@@ -73,18 +73,16 @@ public class Lesson {
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("Module: ")
-                .append(getCode())
-                .append(" Type: ")
-                .append(getType())
-                .append(" Date: ")
-                .append(getDate())
-                .append(" Location: ")
-                .append(getLocation())
-                .append(" Weightage: ")
-                .append(getWeightage());
-        return builder.toString();
+        return getCode()
+            + " "
+            + getTypeStr()
+            + " at: "
+            + getDate()
+            + " "
+            + getLocation()
+            + "with weightage of: "
+            + getWeightage()
+            + "%";
     }
 
     public Code getCode() {
@@ -93,6 +91,10 @@ public class Lesson {
 
     public Type getType() {
         return type;
+    }
+
+    public String getTypeStr() {
+        return type.name();
     }
 
     public LocalDate getDate() {

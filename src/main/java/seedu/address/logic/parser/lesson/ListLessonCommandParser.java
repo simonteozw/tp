@@ -34,7 +34,7 @@ public class ListLessonCommandParser implements Parser<ListLessonCommand> {
      */
     public ListLessonCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_CODE);
+            ArgumentTokenizer.tokenize(args, PREFIX_CODE);
 
         Optional<Code> codeOptional;
         if (argMultimap.getValue(PREFIX_CODE).isPresent()) {

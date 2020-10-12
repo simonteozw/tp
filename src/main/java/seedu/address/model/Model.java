@@ -112,6 +112,11 @@ public interface Model {
     boolean hasModule(Module module);
 
     /**
+     * Returns the Module with the provided code, wraps in an Optional
+     */
+    Optional<Module> getModule(Code code);
+
+    /**
      * Deletes the given module.
      * The module must exist in the TrackIter.
      */

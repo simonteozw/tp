@@ -17,17 +17,18 @@ public class ListLessonCommand extends Command {
     public static final String COMMAND_WORD = "list";
     public static final String MESSAGE_SUCCESS = "Listed all lessons";
     public static final String MESSAGE_USAGE = Lesson.TYPE + " " + COMMAND_WORD
-            + ": Lists all lessons of a module. "
-            + "If MODULE_CODE is not specified, it will list all lessons of all modules instead. "
-            + "Parameters: "
-            + "[" + PREFIX_CODE + "MODULE_CODE]\n "
-            + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
-            + PREFIX_CODE + "CS3233\n";
+        + ": Lists all lessons of a module. "
+        + "If MODULE_CODE is not specified, it will list all lessons of all modules instead. "
+        + "Parameters: "
+        + "[" + PREFIX_CODE + "MODULE_CODE]\n "
+        + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
+        + PREFIX_CODE + "CS3233\n";
 
     private final Optional<Code> codeOptional;
 
     /**
      * Creates a ListLessonCommand to list all {@code Lesson}s of the specified module
+     *
      * @param codeOptional
      */
     public ListLessonCommand(Optional<Code> codeOptional) {

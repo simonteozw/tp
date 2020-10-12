@@ -12,13 +12,14 @@ import seedu.address.model.lesson.Lesson;
  */
 public class Code {
     public static final String MESSAGE_CONSTRAINTS =
-        "Module code should start with 2 or 3 upper-case letters, follow by 4 numeric digits";
+        "Module code should start with 2 or 3 upper-case letters, follow by 4 numeric digits and optionally a single "
+            + "letter";
 
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "^[A-Z]{2,3}[0-9]{4}$";
+    public static final String VALIDATION_REGEX = "^[A-Z]{2,3}[0-9]{4}[A-Z]?$";
 
     public final String code;
 
@@ -38,6 +39,18 @@ public class Code {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Parses the given {@code String} and returns a {@code Code}
+     *
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public static Code parseCode(String rawCode) throws ParseException {
+        if (!Code.isValidCode(rawCode)) {
+            throw new ParseException(Lesson.CODE_MESSAGE_CONSTRAINTS);
+        } else {
+            return new Code(rawCode);
+        }
+    }
 
     @Override
     public String toString() {
@@ -54,17 +67,5 @@ public class Code {
     @Override
     public int hashCode() {
         return code.hashCode();
-    }
-
-    /**
-     * Parses the given {@code String} and returns a {@code Code}
-     * @throws ParseException if the user input does not conform the expected format
-     */
-    public static Code parseCode(String rawCode) throws ParseException {
-        if (!Code.isValidCode(rawCode)) {
-            throw new ParseException(Lesson.CODE_MESSAGE_CONSTRAINTS);
-        } else {
-            return new Code(rawCode);
-        }
     }
 }

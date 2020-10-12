@@ -43,11 +43,11 @@ public class AddLessonCommandParser implements Parser<AddLessonCommand> {
      */
     public AddLessonCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args,
-                        PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE, PREFIX_ADDRESS, PREFIX_WEIGHTAGE);
+            ArgumentTokenizer.tokenize(args,
+                PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE, PREFIX_ADDRESS, PREFIX_WEIGHTAGE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE, PREFIX_ADDRESS, PREFIX_WEIGHTAGE)
-                || !argMultimap.getPreamble().isEmpty()) {
+            || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddLessonCommand.MESSAGE_USAGE));
         }
 

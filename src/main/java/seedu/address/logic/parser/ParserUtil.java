@@ -19,6 +19,7 @@ import seedu.address.model.contact.Phone;
 import seedu.address.model.lesson.Lesson;
 import seedu.address.model.lesson.Type;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.task.Task;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -129,6 +130,31 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String code} into an {@code Code}.
+     *
+     * @throws ParseException if the given {@code code} is invalid.
+     */
+    public static Code parseCode(String code) throws ParseException {
+        requireNonNull(code);
+        String trimmedCode = code.trim();
+        if (!Code.isValidCode(trimmedCode)) {
+            throw new ParseException(Code.MESSAGE_CONSTRAINTS);
+        }
+        return new Code(trimmedCode);
+    }
+
+    /**
+     * Parses a {@code String str} into a {@code String}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code str} is invalid.
+     */
+    public static String parseString(String str) {
+        requireNonNull(str);
+        return str.trim();
+    }
+
+    /**
      * Parses a {@code String date} into a {@code LocalDate}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -138,9 +164,9 @@ public class ParserUtil {
         requireNonNull(date);
         String trimmedDate = date.trim();
         try {
-            return LocalDate.parse(trimmedDate, Lesson.FORMATTER);
+            return LocalDate.parse(trimmedDate, Task.FORMATTER);
         } catch (DateTimeParseException e) {
-            throw new ParseException(Lesson.DATE_MESSAGE_CONSTRAINTS);
+            throw new ParseException(Task.DATE_MESSAGE_CONSTRAINTS);
         }
     }
 
@@ -156,24 +182,23 @@ public class ParserUtil {
         try {
             return Double.parseDouble(trimmedWeightage);
         } catch (NumberFormatException e) {
-            throw new ParseException(Lesson.WEIGHTAGE_MESSAGE_CONSTRAINTS);
+            throw new ParseException(Task.WEIGHTAGE_MESSAGE_CONSTRAINTS);
         }
     }
 
     /**
-     * Parses a {@code String code} into a {@code Code}.
+     * Parses a {@code String remark} into a {@code String}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code code} is invalid.
+     * @throws ParseException if the given {@code remark} is invalid.
      */
-    public static Code parseCode(String code) throws ParseException {
-        requireNonNull(code);
-        String trimmedCode = code.trim();
-        try {
-            return Code.parseCode(trimmedCode);
-        } catch (ParseException e) {
-            throw new ParseException(Lesson.CODE_MESSAGE_CONSTRAINTS);
+    public static String parseRemark(String remark) throws ParseException {
+        requireNonNull(remark);
+        String trimmedRemark = remark.trim();
+        if (!Address.isValidAddress(trimmedRemark)) {
+            throw new ParseException(Task.REMARK_MESSAGE_CONSTRAINTS);
         }
+        return trimmedRemark;
     }
 
     /**

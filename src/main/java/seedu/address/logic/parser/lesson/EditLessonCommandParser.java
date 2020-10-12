@@ -42,11 +42,11 @@ public class EditLessonCommandParser implements Parser<EditLessonCommand> {
     public EditLessonCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args,
-                        PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE, PREFIX_ADDRESS, PREFIX_WEIGHTAGE);
+            ArgumentTokenizer.tokenize(args,
+                PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE, PREFIX_ADDRESS, PREFIX_WEIGHTAGE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_CODE, PREFIX_TYPE)
-                || !argMultimap.getPreamble().isEmpty()) {
+            || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditLessonCommand.MESSAGE_USAGE));
         }
 

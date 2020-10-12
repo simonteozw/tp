@@ -152,6 +152,17 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public Optional<Module> getModule(Code code) {
+        List<Module> allModules = trackIter.getModuleList();
+        for (Module module : allModules) {
+            if (module.getCode().equals(code)) {
+                return Optional.of(module);
+            }
+        }
+        return Optional.empty();
+    }
+
+    @Override
     public void deleteModule(Module target) {
         trackIter.removeModule(target);
     }

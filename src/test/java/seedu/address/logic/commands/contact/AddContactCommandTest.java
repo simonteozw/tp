@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.contact;
 
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.logic.commands.contact.AddContactCommand;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyTrackIter;
@@ -55,7 +55,7 @@ public class AddContactCommandTest {
         ModelStub modelStub = new ModelStubWithPerson(validContact);
 
         assertThrows(CommandException.class,
-                AddContactCommand.MESSAGE_DUPLICATE_CONTACT, () -> addContactCommand.execute(modelStub));
+            AddContactCommand.MESSAGE_DUPLICATE_CONTACT, () -> addContactCommand.execute(modelStub));
     }
 
     @Test
@@ -158,6 +158,11 @@ public class AddContactCommandTest {
 
         @Override
         public boolean hasModule(Module task) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Optional<Module> getModule(Code code) {
             throw new AssertionError("This method should not be called.");
         }
 

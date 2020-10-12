@@ -20,13 +20,13 @@ public class DeleteLessonCommand extends Command {
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = Lesson.TYPE + " " + COMMAND_WORD
-            + ": Deletes a lesson from TrackIt@NUS. "
-            + "Parameters: "
-            + PREFIX_CODE + "MODULE_CODE "
-            + PREFIX_TYPE + "TYPE\n"
-            + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
-            + PREFIX_CODE + "CS3233 "
-            + PREFIX_TYPE + "tutorial\n";
+        + ": Deletes a lesson from TrackIt@NUS. "
+        + "Parameters: "
+        + PREFIX_CODE + "MODULE_CODE "
+        + PREFIX_TYPE + "TYPE\n"
+        + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
+        + PREFIX_CODE + "CS3233 "
+        + PREFIX_TYPE + "tutorial\n";
 
     public static final String MESSAGE_DELETE_LESSON_SUCCESS = "Deleted Lesson: %1$s";
 
@@ -35,6 +35,7 @@ public class DeleteLessonCommand extends Command {
 
     /**
      * Creates a DeleteLessonCommand to delete the specified {@code Lesson}
+     *
      * @param code
      * @param type
      */
@@ -61,8 +62,8 @@ public class DeleteLessonCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeleteLessonCommand // instanceof handles nulls
-                && targetCode.equals(((DeleteLessonCommand) other).targetCode)
-                && targetType.equals(((DeleteLessonCommand) other).targetType)); // state check
+            || (other instanceof DeleteLessonCommand // instanceof handles nulls
+            && targetCode.equals(((DeleteLessonCommand) other).targetCode)
+            && targetType.equals(((DeleteLessonCommand) other).targetType)); // state check
     }
 }

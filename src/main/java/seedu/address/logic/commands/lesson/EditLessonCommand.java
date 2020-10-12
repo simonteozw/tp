@@ -27,20 +27,20 @@ public class EditLessonCommand extends Command {
     public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = Lesson.TYPE + " " + COMMAND_WORD
-            + ": Edits the details of a lesson."
-            + " At least one of the details has to be specified. "
-            + "Parameters: "
-            + PREFIX_CODE + "MODULE_CODE "
-            + PREFIX_TYPE + "TYPE "
-            + "[" + PREFIX_DATE + "DATE] "
-            + "[" + PREFIX_ADDRESS + "LOCATION] "
-            + "[" + PREFIX_WEIGHTAGE + "WEIGHTAGE]\n"
-            + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
-            + PREFIX_CODE + "CS3233 "
-            + PREFIX_TYPE + "lecture "
-            + PREFIX_DATE + "27/01/2021 "
-            + PREFIX_ADDRESS + "COM1 PL5 "
-            + PREFIX_WEIGHTAGE + "3.5\n";
+        + ": Edits the details of a lesson."
+        + " At least one of the details has to be specified. "
+        + "Parameters: "
+        + PREFIX_CODE + "MODULE_CODE "
+        + PREFIX_TYPE + "TYPE "
+        + "[" + PREFIX_DATE + "DATE] "
+        + "[" + PREFIX_ADDRESS + "LOCATION] "
+        + "[" + PREFIX_WEIGHTAGE + "WEIGHTAGE]\n"
+        + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
+        + PREFIX_CODE + "CS3233 "
+        + PREFIX_TYPE + "lecture "
+        + PREFIX_DATE + "27/01/2021 "
+        + PREFIX_ADDRESS + "COM1 PL5 "
+        + PREFIX_WEIGHTAGE + "3.5\n";
 
     public static final String MESSAGE_EDIT_LESSON_SUCCESS = "Edited Lesson: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -52,6 +52,7 @@ public class EditLessonCommand extends Command {
 
     /**
      * Creates a EditLessonCommand to edit the specified {@code Lesson}
+     *
      * @param code
      * @param type
      * @param editLessonDescriptor
@@ -123,8 +124,8 @@ public class EditLessonCommand extends Command {
         // state check
         EditLessonCommand e = (EditLessonCommand) other;
         return code.equals(e.code)
-                && type.equals(e.type)
-                && editLessonDescriptor.equals(e.editLessonDescriptor);
+            && type.equals(e.type)
+            && editLessonDescriptor.equals(e.editLessonDescriptor);
     }
 
     /**
@@ -216,10 +217,10 @@ public class EditLessonCommand extends Command {
             EditLessonDescriptor e = (EditLessonDescriptor) other;
 
             return getCode().equals(e.getCode())
-                    && getType().equals(e.getType())
-                    && getDate().equals(e.getDate())
-                    && getLocation().equals(e.getLocation())
-                    && getWeightage().equals(e.getWeightage());
+                && getType().equals(e.getType())
+                && getDate().equals(e.getDate())
+                && getLocation().equals(e.getLocation())
+                && getWeightage().equals(e.getWeightage());
         }
     }
 }
