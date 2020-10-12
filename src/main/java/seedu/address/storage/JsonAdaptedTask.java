@@ -44,7 +44,7 @@ public class JsonAdaptedTask {
     public JsonAdaptedTask(Task source) {
         name = source.getName().fullName;
         date = source.getDate().format(Task.FORMATTER);
-        location = source.getLocation().value;
+        location = source.getAddress().value;
         weightage = Double.toString(source.getWeightage());
         remark = source.getRemark();
     }

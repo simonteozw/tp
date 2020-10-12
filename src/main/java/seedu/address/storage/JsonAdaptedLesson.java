@@ -23,7 +23,7 @@ public class JsonAdaptedLesson {
     private final String code;
     private final String type;
     private final String date;
-    private final String location;
+    private final String address;
     private final String weightage;
 
     /**
@@ -31,12 +31,12 @@ public class JsonAdaptedLesson {
      */
     @JsonCreator
     public JsonAdaptedLesson(@JsonProperty("code") String code, @JsonProperty("type") String type,
-                             @JsonProperty("date") String date, @JsonProperty("location") String location,
+                             @JsonProperty("date") String date, @JsonProperty("address") String address,
                              @JsonProperty("weightage") String weightage) {
         this.code = code;
         this.type = type;
         this.date = date;
-        this.location = location;
+        this.address = address;
         this.weightage = weightage;
     }
 
@@ -47,7 +47,7 @@ public class JsonAdaptedLesson {
         code = source.getCode().code;
         type = source.getTypeStr();
         date = source.getDate().format(Task.FORMATTER);
-        location = source.getLocation().value;
+        address = source.getAddress().value;
         weightage = Double.toString(source.getWeightage());
     }
 
@@ -82,13 +82,13 @@ public class JsonAdaptedLesson {
         }
         final LocalDate modelTime = LocalDate.parse(date, Task.FORMATTER);
 
-        if (location == null) {
+        if (address == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
         }
-        if (!Address.isValidAddress(location)) {
+        if (!Address.isValidAddress(address)) {
             throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
         }
-        final Address modelLocation = new Address(location);
+        final Address modelLocation = new Address(address);
 
         if (weightage == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Weightage"));

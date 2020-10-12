@@ -26,7 +26,7 @@ public class Lesson {
     private final Code code;
     private final Type type;
     private final LocalDate date;
-    private final Address location;
+    private final Address address;
     private final double weightage;
 
     /**
@@ -35,14 +35,14 @@ public class Lesson {
      * @param code
      * @param type
      * @param date
-     * @param location
+     * @param address
      * @param weightage
      */
-    public Lesson(Code code, Type type, LocalDate date, Address location, double weightage) {
-        requireAllNonNull(code, type, date, location, weightage);
+    public Lesson(Code code, Type type, LocalDate date, Address address, double weightage) {
+        requireAllNonNull(code, type, date, address, weightage);
         this.code = code;
         this.date = date;
-        this.location = location;
+        this.address = address;
         this.weightage = weightage;
         this.type = type;
     }
@@ -61,14 +61,14 @@ public class Lesson {
         return otherLesson.code.equals(code)
             && otherLesson.type.equals(type)
             && otherLesson.date.equals(date)
-            && otherLesson.location.equals(location)
+            && otherLesson.address.equals(address)
             && (otherLesson.weightage == weightage);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(code, type, date, location, weightage);
+        return Objects.hash(code, type, date, address, weightage);
     }
 
     @Override
@@ -79,7 +79,7 @@ public class Lesson {
             + " at: "
             + getDate()
             + " "
-            + getLocation()
+            + getAddress()
             + "with weightage of: "
             + getWeightage()
             + "%";
@@ -101,8 +101,8 @@ public class Lesson {
         return date;
     }
 
-    public Address getLocation() {
-        return location;
+    public Address getAddress() {
+        return address;
     }
 
     public double getWeightage() {

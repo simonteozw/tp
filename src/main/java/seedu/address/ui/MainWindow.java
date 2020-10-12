@@ -16,6 +16,10 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.ui.contact.ContactListPanel;
+import seedu.address.ui.lesson.LessonListPanel;
+import seedu.address.ui.module.ModuleListPanel;
+import seedu.address.ui.task.TaskListPanel;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -30,14 +34,28 @@ public class MainWindow extends UiPart<Stage> {
     private final Stage primaryStage;
     private final Logic logic;
     private final HelpWindow helpWindow;
+
     // Independent Ui parts residing in this Ui container
+    private LessonListPanel lessonListPanel;
+    private TaskListPanel taskListPanel;
+    private ModuleListPanel moduleListPanel;
     private ContactListPanel contactListPanel;
+
     private ResultDisplay resultDisplay;
     @FXML
     private StackPane commandBoxPlaceholder;
 
     @FXML
     private MenuItem helpMenuItem;
+
+    @FXML
+    private StackPane lessonListPanelPlaceholder;
+
+    @FXML
+    private StackPane taskListPanelPlaceholder;
+
+    @FXML
+    private StackPane moduleListPanelPlaceholder;
 
     @FXML
     private StackPane contactListPanelPlaceholder;
@@ -109,6 +127,16 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
+
+        lessonListPanel = new LessonListPanel(logic.getFilteredLessonList());
+        lessonListPanelPlaceholder.getChildren().add(lessonListPanel.getRoot());
+
+        taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
+        taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+
+        moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList());
+        moduleListPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
+
         contactListPanel = new ContactListPanel(logic.getFilteredContactList());
         contactListPanelPlaceholder.getChildren().add(contactListPanel.getRoot());
 
@@ -162,9 +190,9 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-    public ContactListPanel getContactListPanel() {
-        return contactListPanel;
-    }
+//    public ContactListPanel getContactListPanel() {
+//        return contactListPanel;
+//    }
 
     /**
      * Executes the command and returns the result.

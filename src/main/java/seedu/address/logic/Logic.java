@@ -9,6 +9,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyTrackIter;
 import seedu.address.model.contact.Contact;
+import seedu.address.model.lesson.Lesson;
+import seedu.address.model.module.Module;
+import seedu.address.model.task.Task;
 
 /**
  * API of the Logic component
@@ -36,6 +39,19 @@ public interface Logic {
      */
     ObservableList<Contact> getFilteredContactList();
 
+    /**
+     * Returns an unmodifiable view of the filtered list of modules
+     */
+    ObservableList<Module> getFilteredModuleList();
+
+    /**
+     * Returns an unmodifiable view of the filtered list of tasks
+     */
+    ObservableList<Task> getFilteredTaskList();
+    /**
+     * Returns an unmodifiable view of the filtered list of lessons
+     */
+    ObservableList<Lesson> getFilteredLessonList();
     /**
      * Returns the user prefs' address book file path.
      */

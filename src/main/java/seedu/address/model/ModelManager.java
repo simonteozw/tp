@@ -229,6 +229,8 @@ public class ModelManager implements Model {
     @Override
     public void updateFilteredTaskList(Predicate<Task> predicate) {
         requireNonNull(predicate);
+        System.out.println(filteredTasks.size());
+        System.out.println(filteredTasks.get(0).getName());
         filteredTasks.setPredicate(predicate);
     }
 
@@ -269,6 +271,8 @@ public class ModelManager implements Model {
     @Override
     public void updateFilteredLessonList(Predicate<Lesson> predicate) {
         requireNonNull(predicate);
+        System.out.println(filteredLessons.size());
+        System.out.println(filteredLessons.get(0).getType());
         filteredLessons.setPredicate(predicate);
     }
 

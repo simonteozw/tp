@@ -45,7 +45,7 @@ This section describes some noteworthy details on how certain features are imple
 * is reasonably comfortable using CLI apps
 
 **Value proposition**
-* able to integrate personal todos/events into the weekly academic calendar. 
+* able to integrate personal todos/events into the weekly academic calendar.
 * able to manage modules' information (module's knowledge coverage, grading scheme) & related contacts in one app
 
 ### User stories
@@ -87,7 +87,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. TrackIt@NUS shows an error message.
 
       Use case resumes at step 2.
-      
 
 ### Non-Functional Requirements
 
