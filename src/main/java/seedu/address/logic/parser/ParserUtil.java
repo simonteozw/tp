@@ -16,6 +16,8 @@ import seedu.address.model.commons.Code;
 import seedu.address.model.commons.Name;
 import seedu.address.model.contact.Email;
 import seedu.address.model.contact.Phone;
+import seedu.address.model.lesson.Lesson;
+import seedu.address.model.lesson.Type;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Task;
 
@@ -147,7 +149,7 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code str} is invalid.
      */
-    public static String parseString(String str) throws ParseException {
+    public static String parseString(String str) {
         requireNonNull(str);
         return str.trim();
     }
@@ -197,5 +199,30 @@ public class ParserUtil {
             throw new ParseException(Task.REMARK_MESSAGE_CONSTRAINTS);
         }
         return trimmedRemark;
+    }
+
+    /**
+     * Parses a {@code String type} into a {@code Type}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code type} is invalid.
+     */
+    public static Type parseType(String type) throws ParseException {
+        requireNonNull(type);
+        String rawType = type.trim();
+        switch (rawType) {
+        case "lecture":
+            return Type.LEC;
+        case "tutorial":
+            return Type.TUT;
+        case "lab":
+            return Type.LAB;
+        case "recitation":
+            return Type.REC;
+        case "sectional":
+            return Type.SEC;
+        default:
+            throw new ParseException(Lesson.TYPE_MESSAGE_CONSTRAINTS);
+        }
     }
 }
