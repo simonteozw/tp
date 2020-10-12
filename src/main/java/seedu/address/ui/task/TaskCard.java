@@ -1,11 +1,11 @@
 package seedu.address.ui.task;
 
-        import javafx.fxml.FXML;
-        import javafx.scene.control.Label;
-        import javafx.scene.layout.HBox;
-        import javafx.scene.layout.Region;
-        import seedu.address.model.task.Task;
-        import seedu.address.ui.UiPart;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
+import seedu.address.model.task.Task;
+import seedu.address.ui.UiPart;
 
 /**
  * An UI component that displays information of a {@code task}.
@@ -30,6 +30,9 @@ public class TaskCard extends UiPart<Region> {
     @FXML
     private Label remark;
 
+    /**
+     * Creates a {@code TaskCard} with the given {@code Task} and index to display.
+     */
     public TaskCard(Task task, int displayedIndex) {
         super(FXML);
         this.task = task;
