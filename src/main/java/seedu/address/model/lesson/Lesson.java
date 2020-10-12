@@ -3,6 +3,7 @@ package seedu.address.model.lesson;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 import seedu.address.model.commons.Address;
@@ -14,11 +15,18 @@ import seedu.address.model.commons.Code;
  */
 public class Lesson {
     public static final String TYPE = "L";
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("d/MM/yyyy");
+    public static final String DATE_MESSAGE_CONSTRAINTS = "Date should be in the format d/MM/yyyy";
+    public static final String WEIGHTAGE_MESSAGE_CONSTRAINTS =
+        "Weightage should be in the form of a floating point number";
+    public static final String TYPE_MESSAGE_CONSTRAINTS =
+        "Type should be either 'lecture', 'tutorial', 'lab', 'recitation', or 'sectional'";
+    public static final String CODE_MESSAGE_CONSTRAINTS = "Module code is invalid";
 
     private final Code code;
     private final Type type;
-    private final LocalDate time;
-    private final Address location;
+    private final LocalDate date;
+    private final Address address;
     private final double weightage;
 
     /**
@@ -26,15 +34,15 @@ public class Lesson {
      *
      * @param code
      * @param type
-     * @param time
-     * @param location
+     * @param date
+     * @param address
      * @param weightage
      */
-    public Lesson(Code code, Type type, LocalDate time, Address location, double weightage) {
-        requireAllNonNull(code, type, time, location, weightage);
+    public Lesson(Code code, Type type, LocalDate date, Address address, double weightage) {
+        requireAllNonNull(code, type, date, address, weightage);
         this.code = code;
-        this.time = time;
-        this.location = location;
+        this.date = date;
+        this.address = address;
         this.weightage = weightage;
         this.type = type;
     }
@@ -52,22 +60,29 @@ public class Lesson {
         Lesson otherLesson = (Lesson) other;
         return otherLesson.code.equals(code)
             && otherLesson.type.equals(type)
-            && otherLesson.time.equals(time)
-            && otherLesson.location.equals(location)
+            && otherLesson.date.equals(date)
+            && otherLesson.address.equals(address)
             && (otherLesson.weightage == weightage);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(code, type, time, location, weightage);
+        return Objects.hash(code, type, date, address, weightage);
     }
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        // TODO: Implement this toString
-        return "Lesson's toString hasn't been implemented";
+        return getCode()
+            + " "
+            + getTypeStr()
+            + " at: "
+            + getDate()
+            + " "
+            + getAddress()
+            + "with weightage of: "
+            + getWeightage()
+            + "%";
     }
 
     public Code getCode() {
@@ -78,12 +93,16 @@ public class Lesson {
         return type;
     }
 
-    public LocalDate getTime() {
-        return time;
+    public String getTypeStr() {
+        return type.name();
     }
 
-    public Address getLocation() {
-        return location;
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public Address getAddress() {
+        return address;
     }
 
     public double getWeightage() {

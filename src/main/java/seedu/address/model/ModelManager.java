@@ -16,6 +16,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.commons.Code;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.lesson.Lesson;
+import seedu.address.model.lesson.Type;
 import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
 
@@ -270,7 +271,20 @@ public class ModelManager implements Model {
     @Override
     public void updateFilteredLessonList(Predicate<Lesson> predicate) {
         requireNonNull(predicate);
+        System.out.println(filteredLessons.size());
+        System.out.println(filteredLessons.get(0).getType());
         filteredLessons.setPredicate(predicate);
+    }
+
+    @Override
+    public Optional<Lesson> getLesson(Code code, Type type) {
+        List<Lesson> allLessons = trackIter.getLessonList();
+        for (Lesson lesson : allLessons) {
+            if (lesson.getCode().equals(code) && lesson.getType().equals(type)) {
+                return Optional.of(lesson);
+            }
+        }
+        return Optional.empty();
     }
 
     @Override

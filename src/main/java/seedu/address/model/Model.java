@@ -9,6 +9,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.commons.Code;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.lesson.Lesson;
+import seedu.address.model.lesson.Type;
 import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
 
@@ -224,4 +225,6 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredLessonList(Predicate<Lesson> predicate);
+
+    Optional<Lesson> getLesson(Code code, Type type);
 }

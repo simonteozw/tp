@@ -14,11 +14,11 @@ import seedu.address.model.task.Task;
 public class AddTaskCommandParserTest {
     private final AddTaskCommandParser parser = new AddTaskCommandParser();
 
-    private Name name = new Name("Sample");
-    private LocalDate date = LocalDate.parse("12/12/2020", Task.FORMATTER);
-    private Address location = new Address("NUS");
-    private double weightage = 25.5;
-    private String remark = "Test";
+    private final Name name = new Name("Sample");
+    private final LocalDate date = LocalDate.parse("12/12/2020", Task.FORMATTER);
+    private final Address location = new Address("NUS");
+    private final double weightage = 25.5;
+    private final String remark = "Test";
 
     @Test
     public void parse_allFieldsPresent_success() {
