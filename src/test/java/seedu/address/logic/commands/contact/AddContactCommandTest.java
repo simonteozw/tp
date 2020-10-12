@@ -25,6 +25,7 @@ import seedu.address.model.TrackIter;
 import seedu.address.model.commons.Code;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.lesson.Lesson;
+import seedu.address.model.lesson.Type;
 import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
 import seedu.address.testutil.PersonBuilder;
@@ -247,6 +248,11 @@ public class AddContactCommandTest {
 
         @Override
         public void updateFilteredLessonList(Predicate<Lesson> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Optional<Lesson> getLesson(Code code, Type type) {
             throw new AssertionError("This method should not be called.");
         }
 

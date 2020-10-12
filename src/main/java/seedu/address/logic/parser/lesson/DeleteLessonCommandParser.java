@@ -1,11 +1,12 @@
-package seedu.address.logic.parser.module;
+package seedu.address.logic.parser.lesson;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CODE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.module.ViewModuleCommand;
+import seedu.address.logic.commands.lesson.DeleteLessonCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
@@ -13,12 +14,12 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.commons.Code;
+import seedu.address.model.lesson.Type;
 
 /**
- * Parses input arguments and creates a new ViewModuleCommand object
+ * Parses input arguments and creates a new DeleteLessonCommand object
  */
-public class ViewModuleCommandParser implements Parser<ViewModuleCommand> {
-
+public class DeleteLessonCommandParser implements Parser<DeleteLessonCommand> {
     /**
      * Returns true if none of the prefixes contains empty {@code Optional} values in the given
      * {@code ArgumentMultimap}.
@@ -28,22 +29,24 @@ public class ViewModuleCommandParser implements Parser<ViewModuleCommand> {
     }
 
     /**
-     * Parses the given {@code String} of arguments in the context of the ViewModuleCommand
-     * and returns an ViewModuleCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the DeleteLessonCommand
+     * and returns a DeleteLessonCommand object for execution.
      *
      * @throws ParseException if the user input does not conform the expected format
      */
-    public ViewModuleCommand parse(String args) throws ParseException {
+    public DeleteLessonCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-            ArgumentTokenizer.tokenize(args, PREFIX_CODE);
+            ArgumentTokenizer.tokenize(args, PREFIX_CODE, PREFIX_TYPE);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_CODE)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewModuleCommand.MESSAGE_USAGE));
+        if (!arePrefixesPresent(argMultimap, PREFIX_CODE, PREFIX_TYPE)
+            || !argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteLessonCommand.MESSAGE_USAGE));
         }
 
         Code code = ParserUtil.parseCode(argMultimap.getValue(PREFIX_CODE).get());
+        Type type = ParserUtil.parseType(argMultimap.getValue(PREFIX_TYPE).get());
 
-        return new ViewModuleCommand(code);
+        return new DeleteLessonCommand(code, type);
     }
 
 }

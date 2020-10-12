@@ -36,7 +36,6 @@ public class Code {
         return test.matches(VALIDATION_REGEX);
     }
 
-
     @Override
     public String toString() {
         return code;
