@@ -16,6 +16,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.stage.Stage?>
 
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
 <fx:root xmlns:fx="http://javafx.com/fxml/1" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8"
          title="TrackIt@NUS" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
     <icons>
@@ -29,52 +31,54 @@
             </stylesheets>
 
             <VBox>
-                <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
-                    <Menu mnemonicParsing="false" text="File">
-                        <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
-                    </Menu>
-                    <Menu mnemonicParsing="false" text="Help">
-                        <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
-                    </Menu>
-                </MenuBar>
+                    <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
+                        <Menu mnemonicParsing="false">
+                            <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
+                        </Menu>
+                        <Menu mnemonicParsing="false" >
+                            <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
+                        </Menu>
+                    </MenuBar>
 
                 <TabPane fx:id="tabPane" prefHeight="300.0" prefWidth="200.0" styleClass="pane-with-border" tabClosingPolicy="UNAVAILABLE"
                          VBox.vgrow="ALWAYS">
                     <tabs>
 
                         <Tab fx:id="UpcomingTab" text="Upcoming">
-                            <content>
-                                <GridPane prefHeight="276.0" prefWidth="343.0" VBox.vgrow="ALWAYS">
-                                   <columnConstraints>
-                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" />
-                                   </columnConstraints>
-                                   <rowConstraints>
-                                      <RowConstraints maxHeight="145.66668701171875" minHeight="0.0" prefHeight="138.33334350585938" vgrow="SOMETIMES" />
-                                      <RowConstraints maxHeight="148.33331298828125" minHeight="10.0" prefHeight="137.66665649414062" vgrow="SOMETIMES" />
-                                   </rowConstraints>
-                                   <children>
-
-                                       <StackPane fx:id="contactListPanelPlaceholder2" GridPane.columnIndex="0"
-                                                  GridPane.rowIndex="0">
-                                           <padding>
-                                               <Insets bottom="10" left="10" right="10" top="10" />
-                                           </padding>
-                                       </StackPane>
-                                       <StackPane fx:id="contactListPanelPlaceholder3" GridPane.columnIndex="0" GridPane.rowIndex="1" >
-                                           <padding>
-                                               <Insets bottom="10" left="10" right="10" top="10" />
-                                           </padding>
-                                       </StackPane>
-
-
-                                   </children>
-                                </GridPane>
-                            </content>
-                        </Tab>
-                        <Tab fx:id="ModuleTab" text="Modules">
-                            <StackPane fx:id="moduleListPanelPlaceholder" >
+<!--                            <content>-->
+<!--                                <GridPane prefHeight="276.0" prefWidth="343.0" VBox.vgrow="SOMETIMES">-->
+<!--                                   <columnConstraints>-->
+<!--                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" />-->
+<!--                                   </columnConstraints>-->
+<!--                                   <rowConstraints>-->
+<!--                                      <RowConstraints maxHeight="60" minHeight="0.0" prefHeight="50" vgrow="SOMETIMES" />-->
+<!--                                      <RowConstraints maxHeight="230" minHeight="10.0" prefHeight="220" vgrow="SOMETIMES" />-->
+<!--                                   </rowConstraints>-->
+<!--                                   <children>-->
+<!--                                       <StackPane fx:id="contactListPanelPlaceholder2" GridPane.columnIndex="0"-->
+<!--                                                  GridPane.rowIndex="0">-->
+<!--                                           <padding>-->
+<!--                                               <Insets bottom="10" left="10" right="10" top="10" />-->
+<!--                                           </padding>-->
+<!--                                       </StackPane>-->
+<!--                                       <StackPane fx:id="contactListPanelPlaceholder3" GridPane.columnIndex="0" GridPane.rowIndex="1" >-->
+<!--                                           <padding>-->
+<!--                                               <Insets bottom="10" left="10" right="10" top="10" />-->
+<!--                                           </padding>-->
+<!--                                       </StackPane>-->
+<!--                                   </children>-->
+<!--                                </GridPane>-->
+<!--                            </content>-->
+                            <StackPane fx:id="contactListPanelPlaceholder2">
                                 <padding>
                                     <Insets bottom="10" left="10" right="10" top="10" />
+                                </padding>
+                            </StackPane>
+                        </Tab>
+                        <Tab fx:id="ModuleTab" text="Modules">
+                            <StackPane fx:id="moduleListPanelPlaceholder">
+                                <padding>
+                                    <Insets bottom="10" left="10" right="10" top="0" />
                                 </padding>
                             </StackPane>
                         </Tab>
