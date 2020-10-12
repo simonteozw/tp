@@ -31,14 +31,14 @@
             </stylesheets>
 
             <VBox>
-                <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
-                    <Menu mnemonicParsing="false" text="File">
-                        <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit"/>
-                    </Menu>
-                    <Menu mnemonicParsing="false" text="Help">
-                        <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help"/>
-                    </Menu>
-                </MenuBar>
+                    <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
+                        <Menu mnemonicParsing="false">
+                            <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
+                        </Menu>
+                        <Menu mnemonicParsing="false" >
+                            <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
+                        </Menu>
+                    </MenuBar>
 
                 <TabPane fx:id="tabPane" prefHeight="300.0" prefWidth="200.0" styleClass="pane-with-border" tabClosingPolicy="UNAVAILABLE"
                          VBox.vgrow="ALWAYS">
@@ -71,13 +71,6 @@
 <!--                            </content>-->
 
 <!--                        </Tab>-->
-                        <Tab fx:id="Contacts" text="Contacts">
-                            <StackPane fx:id="contactListPanelPlaceholder2">
-                                <padding>
-                                    <Insets bottom="10" left="10" right="10" top="10" />
-                                </padding>
-                            </StackPane>
-                        </Tab>
                         <Tab fx:id="ModuleTab" text="Modules">
                             <StackPane fx:id="moduleListPanelPlaceholder">
                                 <padding>
@@ -85,14 +78,20 @@
                                 </padding>
                             </StackPane>
                         </Tab>
-                        <Tab fx:id="Tasktab" text="Tasks">
+                        <Tab fx:id="Tasktab" text="tasks">
                             <StackPane fx:id="taskListPanelPlaceholder">
                                 <padding>
                                     <Insets bottom="10" left="10" right="10" top="10" />
                                 </padding>
                             </StackPane>
                         </Tab>
-
+                        <Tab fx:id="Contacts" text="contatcs">
+                            <StackPane fx:id="contactListPanelPlaceholder2">
+                               <padding>
+                                   <Insets bottom="10" left="10" right="10" top="10" />
+                               </padding>
+                           </StackPane>
+                        </Tab>
                     </tabs>
                 </TabPane>
 
