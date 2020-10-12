@@ -37,8 +37,7 @@ public class ViewModuleCommandParser implements Parser<ViewModuleCommand> {
         ArgumentMultimap argMultimap =
             ArgumentTokenizer.tokenize(args, PREFIX_CODE);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_CODE)
-            || !argMultimap.getPreamble().isEmpty()) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_CODE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewModuleCommand.MESSAGE_USAGE));
         }
 

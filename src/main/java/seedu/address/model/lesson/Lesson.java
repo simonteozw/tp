@@ -65,9 +65,16 @@ public class Lesson {
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        // TODO: Implement this toString
-        return "Lesson's toString hasn't been implemented";
+        return getCode()
+            + " "
+            + getTypeStr()
+            + " at: "
+            + getTime()
+            + " "
+            + getLocation()
+            + "with weightage of: "
+            + getWeightage()
+            + "%";
     }
 
     public Code getCode() {
@@ -76,6 +83,10 @@ public class Lesson {
 
     public Type getType() {
         return type;
+    }
+
+    public String getTypeStr() {
+        return type.name();
     }
 
     public LocalDate getTime() {
