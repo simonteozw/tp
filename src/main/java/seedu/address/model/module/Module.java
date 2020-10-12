@@ -68,9 +68,12 @@ public class Module {
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        // TODO: Implement this toString
-        return "Module's toString hasn't been implemented";
+        return " Code: "
+            + getCode()
+            + " Name: "
+            + getName()
+            + " Desc: "
+            + getDesc();
     }
 
     /**
