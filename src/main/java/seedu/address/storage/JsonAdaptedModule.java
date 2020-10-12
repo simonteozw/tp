@@ -1,23 +1,12 @@
 package seedu.address.storage;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.commons.Address;
 import seedu.address.model.commons.Code;
 import seedu.address.model.commons.Name;
-import seedu.address.model.contact.Contact;
-import seedu.address.model.contact.Email;
-import seedu.address.model.contact.Phone;
 import seedu.address.model.module.Module;
-import seedu.address.model.tag.Tag;
 
 /**
  * Jackson-friendly version of {@link Module}.
