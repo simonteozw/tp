@@ -59,6 +59,6 @@ public class TaskCard extends UiPart<Region> {
         // state check
         TaskCard card = (TaskCard) other;
         return id.getText().equals(card.id.getText())
-                && name.equals(card.name);
+            && name.equals(card.name);
     }
 }

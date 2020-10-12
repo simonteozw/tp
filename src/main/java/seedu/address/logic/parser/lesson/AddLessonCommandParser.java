@@ -54,10 +54,10 @@ public class AddLessonCommandParser implements Parser<AddLessonCommand> {
         Code code = ParserUtil.parseCode(argMultimap.getValue(PREFIX_CODE).get());
         Type type = ParserUtil.parseType(argMultimap.getValue(PREFIX_TYPE).get());
         LocalDate date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
-        Address location = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
+        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         double weightage = ParserUtil.parseWeightage(argMultimap.getValue(PREFIX_WEIGHTAGE).get());
 
-        Lesson lesson = new Lesson(code, type, date, location, weightage);
+        Lesson lesson = new Lesson(code, type, date, address, weightage);
 
         return new AddLessonCommand(lesson);
     }
