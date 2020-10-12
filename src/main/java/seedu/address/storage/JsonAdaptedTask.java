@@ -35,7 +35,7 @@ public class JsonAdaptedTask {
     private final String remark;
 
     /**
-     * Constructs a {@code JsonAdaptedTask} with the given contact details.
+     * Constructs a {@code JsonAdaptedTask} with the given task details.
      */
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("date") String date,

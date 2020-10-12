@@ -69,7 +69,7 @@ public class TrackIter implements ReadOnlyTrackIter {
 
     /**
      * Replaces the contents of the task list with {@code tasks}.
-     * {@code modules} must not contain duplicate tasks.
+     * {@code tasks} must not contain duplicate tasks.
      */
     public void setTasks(List<Task> tasks) {
         this.tasks.setTasks(tasks);
