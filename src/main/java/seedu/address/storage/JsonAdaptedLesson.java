@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.commons.Address;
 import seedu.address.model.commons.Code;
-import seedu.address.model.contact.Email;
 import seedu.address.model.lesson.Lesson;
 import seedu.address.model.lesson.Type;
 import seedu.address.model.task.Task;
@@ -92,7 +91,7 @@ public class JsonAdaptedLesson {
         final Address modelLocation = new Address(location);
 
         if (weightage == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Double.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Weightage"));
         }
         try {
             Double.parseDouble(weightage);

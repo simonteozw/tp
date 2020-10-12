@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.commons.Address;
 import seedu.address.model.commons.Name;
-import seedu.address.model.contact.Email;
 import seedu.address.model.task.Task;
 
 /**
@@ -77,7 +76,7 @@ public class JsonAdaptedTask {
         final LocalDate modelDate = LocalDate.parse(date, Task.FORMATTER);
 
         if (location == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
         }
         if (!Address.isValidAddress(location)) {
             throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
@@ -85,7 +84,7 @@ public class JsonAdaptedTask {
         final Address modelLocation = new Address(location);
 
         if (weightage == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Double.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Weightage"));
         }
         try {
             Double.parseDouble(weightage);
@@ -95,7 +94,7 @@ public class JsonAdaptedTask {
         final double modelWeightage = Double.parseDouble(weightage);
 
         if (remark == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, String.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Remark"));
         }
         final String modelRemark = remark;
         return new Task(modelName, modelDate, modelLocation, modelWeightage, modelRemark);

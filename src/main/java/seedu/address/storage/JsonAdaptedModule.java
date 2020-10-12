@@ -63,7 +63,7 @@ public class JsonAdaptedModule {
         final Name modelName = new Name(name);
 
         if (desc == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, String.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Description"));
         }
         final String modelDesc = desc;
 
