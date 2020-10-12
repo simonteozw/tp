@@ -4,6 +4,11 @@
 }
 
 @font-face {
+    font-family: "QuicksandBold";
+    src: url("/fonts/Quicksand-Bold.ttf");
+}
+
+@font-face {
     font-family: "Baloo";
     src: url("/fonts/Baloo2-ExtraBold.ttf");
 }
@@ -14,7 +19,7 @@
 }
 
 .label {
-    -fx-font-size: 11pt;
+    -fx-font-size: 10pt;
     -fx-font-family: "Quicksand";
     -fx-text-fill: #555555;
     -fx-opacity: 0.9;
@@ -45,9 +50,15 @@
     -fx-background-insets: 0;
 }
 
+.tab:selected .tab-label {
+    -fx-text-fill: #E6B918;
+}
+
 .tab:selected .focus-indicator {
     -fx-focus-color: #e6b918;
+    -fx-text-fill: #e6b918;
 }
+
 .tab-pane {
     -fx-background-color: #232c3d;
     -fx-tab-min-height: 3em;
@@ -83,7 +94,6 @@
     -fx-background-color: #313543;
     -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;
-    -fx-padding: 5;
 }
 
 .table-view .column-header-background {
@@ -92,7 +102,7 @@
 
 .table-view .column-header, .table-view .filler {
     -fx-size: 35;
-    -fx-border-width: 0 0 1 0;
+    /*-fx-border-width: 0 0 1 0;*/
     -fx-background-color: transparent;
     -fx-border-color: transparent transparent derive(-fx-base, 80%) transparent;
     -fx-border-insets: 0 10 1 0;
@@ -111,44 +121,50 @@
 }
 
 .split-pane:horizontal .split-pane-divider {
-    -fx-background-color: derive(#1d1d1d, 20%);
-    -fx-border-color: transparent transparent transparent #4d4d4d;
+    /*-fx-background-color: #4E5F78;*/
+    -fx-background-color: #59687C;
 }
 
 .split-pane {
-    -fx-border-radius: 1;
-    -fx-border-width: 1;
-    -fx-background-color: derive(#1d1d1d, 20%);
+    /*-fx-background-color: #4E5F78;*/
+    -fx-background-color: #59687C;
+
 }
 
 .list-view {
     -fx-background-insets: 0;
-    -fx-padding: 0;
-    /*-fx-background-color: derive(#1d1d1d, 20%);*/
-    -fx-background-color: #4E5F78;
+    -fx-background-color: #59687C;
+
+    /*-fx-background-color: #4E5F78;*/
+    -fx-background-radius: 10;
 }
 
 .list-cell {
-    -fx-label-padding: 0 0 0 0;
-    -fx-graphic-text-gap: 0;
-    -fx-padding: 0 0 0 0;
+    /*-fx-background-color: #4E5F78;*/
+    -fx-background-color: #59687C;
+    -fx-background-radius: 10;
 }
 
 .list-cell:filled:even {
-    -fx-background-color: #3c3e3f;
+    -fx-background-color: #7A8AA0;
 }
 
 .list-cell:filled:odd {
-    -fx-background-color: #515658;
-}
-
-.list-cell:filled:selected {
-    -fx-background-color: #424d5f;
+    -fx-background-color: #4E5F78;
 }
 
 .list-cell:filled:selected #cardPane {
-    -fx-border-color: #3e7b91;
-    -fx-border-width: 1;
+    /*-fx-border-color: #000000;*/
+    /*-fx-background-color: #000000;*/
+}
+
+.list-cell:filled:selected .label {
+    -fx-text-fill: #E6B918;
+}
+
+.module_big_label {
+    -fx-font-family: "QuicksandBold";
+    -fx-font-size: 17px;
 }
 
 .list-cell .label {
@@ -157,13 +173,13 @@
 
 .cell_big_label {
     -fx-font-family: "Quicksand";
-    -fx-font-size: 16px;
+    -fx-font-size: 13px;
     -fx-text-fill: #010504;
 }
 
 .cell_small_label {
     -fx-font-family: "Quicksand";
-    -fx-font-size: 13px;
+    -fx-font-size: 10px;
     -fx-text-fill: #010504;
 }
 
@@ -193,7 +209,7 @@
     -fx-background-radius: 5, 5, 5, 5;
     -fx-border-radius: 5, 5, 5, 5;
     -fx-padding: 0 0 0 0;
-    -fx-border-color: #59687C;
+    -fx-border-color: #44495B;
 }
 
 .result-display .label {
@@ -222,8 +238,6 @@
 }
 
 .grid-pane {
-    /*-fx-background-color: derive(#1d1d1d, 30%);*/
-    /*-fx-border-color: derive(#1d1d1d, 30%);*/
     -fx-background-color: #313543;
 }
 
@@ -251,7 +265,7 @@
 }
 
 .menu .left-container {
-    -fx-background-color: black;
+    -fx-background-color: #black;
 }
 
 /*
@@ -336,11 +350,11 @@
 }
 
 .scroll-bar {
-    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-background-color: #59687C;
 }
 
 .scroll-bar .thumb {
-    -fx-background-color: derive(#1d1d1d, 50%);
+    -fx-background-color: #7A8AA0;
     -fx-background-insets: 3;
 }
 
@@ -372,19 +386,16 @@
 }
 
 #commandTextField {
-    -fx-background-color: #7A8AA0;
+    -fx-background-color: #454B5F;
     -fx-background-radius: 5, 5, 5, 5;
     -fx-font-family: "Quicksand";
     -fx-font-size: 13pt;
     -fx-text-fill: white;
 }
 
-#filterField, #contactListPanel, #contactWebpage {
-    -fx-effect: innershadow(gaussian, black, 10, 0, 0, 0);
-}
-
 #resultDisplay .content {
-    -fx-background-color: #59687C;
+    /*-fx-background-color: #59687C;*/
+    -fx-background-color: #44495B;
 }
 
 #tags {
