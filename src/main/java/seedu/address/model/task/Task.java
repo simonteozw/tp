@@ -3,6 +3,7 @@ package seedu.address.model.task;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 import seedu.address.model.commons.Address;
@@ -16,28 +17,54 @@ import seedu.address.model.commons.Name;
 public class Task {
     public static final String TYPE = "T";
 
+    public static final String DATE_MESSAGE_CONSTRAINTS = "Date should be in the format d/MM/yyyy";
+    public static final String WEIGHTAGE_MESSAGE_CONSTRAINTS = "Weightage should be in the"
+        + " form of a floating point number";
+    public static final String REMARK_MESSAGE_CONSTRAINTS = "Remarks can take any values, and it should not be blank";
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("d/MM/yyyy");
+
     private final Name name;
-    private final LocalDate time;
-    private final Address location;
+    private final LocalDate date;
+    private final Address address;
     private final double weightage;
-    private final String note;
+    private final String remark;
 
     /**
      * Every field must be present and not null.
      *
      * @param name
-     * @param time
-     * @param location
+     * @param date
+     * @param address
      * @param weightage
-     * @param note
+     * @param remark
      */
-    public Task(Name name, LocalDate time, Address location, double weightage, String note) {
-        requireAllNonNull(name, time, location, weightage, note);
+    public Task(Name name, LocalDate date, Address address, double weightage, String remark) {
+        requireAllNonNull(name, date, address, weightage, remark);
         this.name = name;
-        this.time = time;
-        this.location = location;
+        this.date = date;
+        this.address = address;
         this.weightage = weightage;
-        this.note = note;
+        this.remark = remark;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public Name getName() {
+        return name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public double getWeightage() {
+        return weightage;
     }
 
     @Override
@@ -52,23 +79,31 @@ public class Task {
 
         Task otherLesson = (Task) other;
         return otherLesson.name.equals(name)
-            && otherLesson.time.equals(time)
-            && otherLesson.location.equals(location)
+            && otherLesson.date.equals(date)
+            && otherLesson.address.equals(address)
             && (otherLesson.weightage == weightage)
-            && otherLesson.note.equals(note);
+            && otherLesson.remark.equals(remark);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, time, location, weightage, note);
+        return Objects.hash(name, date, address, weightage, remark);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        // TODO: Implement this toString
-        return "Task's toString hasn't been implemented";
+        builder.append(getName())
+            .append(" Date: ")
+            .append(getDate())
+            .append(" Location: ")
+            .append(getAddress())
+            .append(" Weightage: ")
+            .append(getWeightage())
+            .append(" Remarks: ")
+            .append(getRemark());
+        return builder.toString();
     }
 
     /**
