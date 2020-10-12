@@ -84,7 +84,7 @@ public class JsonAdaptedLesson {
         final LocalDate modelTime = LocalDate.parse(date, Task.FORMATTER);
 
         if (location == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
         }
         if (!Address.isValidAddress(location)) {
             throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
