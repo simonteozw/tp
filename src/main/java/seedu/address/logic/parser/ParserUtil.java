@@ -2,6 +2,8 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +17,7 @@ import seedu.address.model.commons.Name;
 import seedu.address.model.contact.Email;
 import seedu.address.model.contact.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.task.Task;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -147,5 +150,51 @@ public class ParserUtil {
     public static String parseString(String str) throws ParseException {
         requireNonNull(str);
         return str.trim();
+    }
+
+     /** Parses a {@code String date} into a {@code LocalDate}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code date} is invalid.
+     */
+    public static LocalDate parseDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        try {
+            return LocalDate.parse(trimmedDate, Task.FORMATTER);
+        } catch (DateTimeParseException e) {
+            throw new ParseException(Task.DATE_MESSAGE_CONSTRAINTS);
+        }
+    }
+
+    /**
+     * Parses a {@code String weightage} into a {@code double}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code weightage} is invalid.
+     */
+    public static double parseWeightage(String weightage) throws ParseException {
+        requireNonNull(weightage);
+        String trimmedWeightage = weightage.trim();
+        try {
+            return Double.parseDouble(trimmedWeightage);
+        } catch (NumberFormatException e) {
+            throw new ParseException(Task.WEIGHTAGE_MESSAGE_CONSTRAINTS);
+        }
+    }
+
+    /**
+     * Parses a {@code String remark} into a {@code String}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code remark} is invalid.
+     */
+    public static String parseRemark(String remark) throws ParseException {
+        requireNonNull(remark);
+        String trimmedRemark = remark.trim();
+        if (!Address.isValidAddress(trimmedRemark)) {
+            throw new ParseException(Task.REMARK_MESSAGE_CONSTRAINTS);
+        }
+        return trimmedRemark;
     }
 }
