@@ -25,7 +25,7 @@ public class Task {
 
     private final Name name;
     private final LocalDate date;
-    private final Address location;
+    private final Address address;
     private final double weightage;
     private final String remark;
 
@@ -34,37 +34,37 @@ public class Task {
      *
      * @param name
      * @param date
-     * @param location
+     * @param address
      * @param weightage
      * @param remark
      */
-    public Task(Name name, LocalDate date, Address location, double weightage, String remark) {
-        requireAllNonNull(name, date, location, weightage, remark);
+    public Task(Name name, LocalDate date, Address address, double weightage, String remark) {
+        requireAllNonNull(name, date, address, weightage, remark);
         this.name = name;
         this.date = date;
-        this.location = location;
+        this.address = address;
         this.weightage = weightage;
         this.remark = remark;
-    }
-
-    public Name getName() {
-        return name;
     }
 
     public LocalDate getDate() {
         return date;
     }
 
-    public Address getLocation() {
-        return location;
+    public String getRemark() {
+        return remark;
+    }
+
+    public Name getName() {
+        return name;
+    }
+
+    public Address getAddress() {
+        return address;
     }
 
     public double getWeightage() {
         return weightage;
-    }
-
-    public String getRemark() {
-        return remark;
     }
 
     @Override
@@ -80,7 +80,7 @@ public class Task {
         Task otherLesson = (Task) other;
         return otherLesson.name.equals(name)
             && otherLesson.date.equals(date)
-            && otherLesson.location.equals(location)
+            && otherLesson.address.equals(address)
             && (otherLesson.weightage == weightage)
             && otherLesson.remark.equals(remark);
     }
@@ -88,7 +88,7 @@ public class Task {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, date, location, weightage, remark);
+        return Objects.hash(name, date, address, weightage, remark);
     }
 
     @Override
@@ -98,7 +98,7 @@ public class Task {
             .append(" Date: ")
             .append(getDate())
             .append(" Location: ")
-            .append(getLocation())
+            .append(getAddress())
             .append(" Weightage: ")
             .append(getWeightage())
             .append(" Remarks: ")
