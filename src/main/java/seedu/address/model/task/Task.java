@@ -97,7 +97,7 @@ public class Task {
         builder.append(getName())
             .append(" Date: ")
             .append(getDate())
-            .append(" Location: ")
+            .append(" Address: ")
             .append(getAddress())
             .append(" Weightage: ")
             .append(getWeightage())
