@@ -23,6 +23,4 @@ public class EditModuleCommandParserTest {
         assertParseFailure(parser, "m/CS1231S", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
             EditModuleCommand.MESSAGE_USAGE));
     }
-
-
 }

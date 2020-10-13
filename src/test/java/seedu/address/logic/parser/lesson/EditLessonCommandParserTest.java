@@ -23,6 +23,4 @@ public class EditLessonCommandParserTest {
         assertParseFailure(parser, "m/CS1231S n/lecture", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
             EditLessonCommand.MESSAGE_USAGE));
     }
-
-
 }
