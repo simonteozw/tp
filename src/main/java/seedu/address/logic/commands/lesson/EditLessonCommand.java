@@ -137,7 +137,7 @@ public class EditLessonCommand extends Command {
         private Type type;
         private LocalDate date;
         private Address address;
-        private double weightage;
+        private Double weightage;
 
         public EditLessonDescriptor() {
         }
@@ -197,7 +197,7 @@ public class EditLessonCommand extends Command {
             return Optional.ofNullable(weightage);
         }
 
-        public void setWeightage(double weightage) {
+        public void setWeightage(Double weightage) {
             this.weightage = weightage;
         }
 

@@ -27,7 +27,7 @@ public class Lesson {
     private final Type type;
     private final LocalDate date;
     private final Address address;
-    private final double weightage;
+    private final Double weightage;
 
     /**
      * Every field must be present and not null.
@@ -38,7 +38,7 @@ public class Lesson {
      * @param address
      * @param weightage
      */
-    public Lesson(Code code, Type type, LocalDate date, Address address, double weightage) {
+    public Lesson(Code code, Type type, LocalDate date, Address address, Double weightage) {
         requireAllNonNull(code, type, date, address, weightage);
         this.code = code;
         this.date = date;
@@ -62,7 +62,7 @@ public class Lesson {
             && otherLesson.type.equals(type)
             && otherLesson.date.equals(date)
             && otherLesson.address.equals(address)
-            && (otherLesson.weightage == weightage);
+            && otherLesson.weightage.equals(weightage);
     }
 
     @Override
@@ -80,7 +80,7 @@ public class Lesson {
             + getDate()
             + " "
             + getAddress()
-            + "with weightage of: "
+            + " with weightage of: "
             + getWeightage()
             + "%";
     }
@@ -105,7 +105,7 @@ public class Lesson {
         return address;
     }
 
-    public double getWeightage() {
+    public Double getWeightage() {
         return weightage;
     }
 
