@@ -33,6 +33,9 @@ public class EditModuleCommandParser implements Parser<EditModuleCommand> {
         Code code;
 
         try {
+            if (argMultimap.getValue(PREFIX_CODE).isEmpty()) {
+                throw new ParseException("");
+            }
             code = ParserUtil.parseCode(argMultimap.getValue(PREFIX_CODE).get());
         } catch (ParseException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
@@ -40,9 +43,6 @@ public class EditModuleCommandParser implements Parser<EditModuleCommand> {
         }
 
         EditModuleCommand.EditModuleDescriptor editModuleDescriptor = new EditModuleCommand.EditModuleDescriptor();
-        if (argMultimap.getValue(PREFIX_CODE).isPresent()) {
-            editModuleDescriptor.setCode(ParserUtil.parseCode(argMultimap.getValue(PREFIX_CODE).get()));
-        }
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
             editModuleDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
         }
