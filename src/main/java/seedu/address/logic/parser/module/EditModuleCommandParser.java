@@ -34,7 +34,7 @@ public class EditModuleCommandParser implements Parser<EditModuleCommand> {
 
         try {
             if (argMultimap.getValue(PREFIX_CODE).isEmpty()) {
-                throw new ParseException("");
+                throw new ParseException("No module code is provided");
             }
             code = ParserUtil.parseCode(argMultimap.getValue(PREFIX_CODE).get());
         } catch (ParseException pe) {

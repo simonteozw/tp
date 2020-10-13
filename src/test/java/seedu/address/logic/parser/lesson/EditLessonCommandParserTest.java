@@ -14,8 +14,6 @@ public class EditLessonCommandParserTest {
     public void parse_noFieldsProvided_failure() {
         assertParseFailure(parser, "", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
             EditLessonCommand.MESSAGE_USAGE));
-
-
     }
 
     @Test
