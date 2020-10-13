@@ -25,14 +25,14 @@
                     </minWidth>
                 </Label>
                 <Label fx:id="date" styleClass="cell_big_label" text="\$date"/>
-                <Text fx:id="hyphen" styleClass="cell_big_label">  -  </Text>
+                <Text fx:id="hyphen" styleClass="cell_big_label">-</Text>
                 <Label fx:id="code" text="\$first" styleClass="cell_big_label"/>
                 <Label fx:id="type" styleClass="cell_big_label" text="\$type"/>
-                <Text fx:id="at" styleClass="cell_big_label"> at </Text>
+                <Text fx:id="at" styleClass="cell_big_label">at</Text>
                 <Label fx:id="address" styleClass="cell_big_label" text="\$address"/>
-                <Text fx:id="open" styleClass="cell_big_label"> ( </Text>
+                <Text fx:id="open" styleClass="cell_big_label">(</Text>
                 <Label fx:id="weightage" styleClass="cell_big_label" text="\$weightage"/>
-                <Text fx:id="close" styleClass="cell_big_label"> % ) </Text>
+                <Text fx:id="close" styleClass="cell_big_label">% )</Text>
             </HBox>
 
         </VBox>

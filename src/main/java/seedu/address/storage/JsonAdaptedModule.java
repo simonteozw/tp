@@ -24,7 +24,7 @@ public class JsonAdaptedModule {
      */
     @JsonCreator
     public JsonAdaptedModule(@JsonProperty("code") String code, @JsonProperty("name") String name,
-                              @JsonProperty("desc") String desc) {
+                             @JsonProperty("desc") String desc) {
         this.code = code;
         this.name = name;
         this.desc = desc;

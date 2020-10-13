@@ -2,7 +2,6 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Scene?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -14,10 +13,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.Scene?>
 <?import javafx.stage.Stage?>
-
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.Label?>
 <fx:root xmlns:fx="http://javafx.com/fxml/1" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8"
          title="TrackIt@NUS" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
     <icons>
@@ -26,8 +23,8 @@
     <scene>
         <Scene>
             <stylesheets>
-                <URL value="@DarkTheme.css" />
-                <URL value="@Extensions.css" />
+                <URL value="@DarkTheme.css"/>
+                <URL value="@Extensions.css"/>
             </stylesheets>
 
             <VBox>
@@ -40,36 +37,37 @@
                     </Menu>
                 </MenuBar>
 
-                <TabPane fx:id="tabPane" prefHeight="300.0" prefWidth="200.0" styleClass="pane-with-border" tabClosingPolicy="UNAVAILABLE"
+                <TabPane fx:id="tabPane" prefHeight="300.0" prefWidth="200.0" styleClass="pane-with-border"
+                         tabClosingPolicy="UNAVAILABLE"
                          VBox.vgrow="ALWAYS">
                     <tabs>
 
                         <Tab fx:id="UpcomingTab" text="Upcoming">
                             <content>
                                 <GridPane prefHeight="276.0" prefWidth="343.0" VBox.vgrow="SOMETIMES">
-                                   <columnConstraints>
-                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" />
-                                   </columnConstraints>
-                                   <rowConstraints>
-                                      <RowConstraints maxHeight="80" minHeight="0.0" prefHeight="100"
-                                                      vgrow="SOMETIMES" />
-                                      <RowConstraints maxHeight="230" minHeight="10.0" prefHeight="200"
-                                                      vgrow="SOMETIMES" />
-                                   </rowConstraints>
-                                   <children>
-                                       <StackPane fx:id="lessonListPanelPlaceholder" GridPane.columnIndex="0"
-                                                  GridPane.rowIndex="0">
-                                           <padding>
-                                               <Insets bottom="10" left="10" right="10" top="0" />
-                                           </padding>
-                                       </StackPane>
-                                       <StackPane fx:id="taskListPanelPlaceholder" GridPane.columnIndex="0"
-                                                  GridPane.rowIndex="1">
-                                           <padding>
-                                               <Insets bottom="10" left="10" right="10" top="10" />
-                                           </padding>
-                                       </StackPane>
-                                   </children>
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0"/>
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints maxHeight="80" minHeight="0.0" prefHeight="100"
+                                                        vgrow="SOMETIMES"/>
+                                        <RowConstraints maxHeight="230" minHeight="10.0" prefHeight="200"
+                                                        vgrow="SOMETIMES"/>
+                                    </rowConstraints>
+                                    <children>
+                                        <StackPane fx:id="lessonListPanelPlaceholder" GridPane.columnIndex="0"
+                                                   GridPane.rowIndex="0">
+                                            <padding>
+                                                <Insets bottom="10" left="10" right="10" top="0"/>
+                                            </padding>
+                                        </StackPane>
+                                        <StackPane fx:id="taskListPanelPlaceholder" GridPane.columnIndex="0"
+                                                   GridPane.rowIndex="1">
+                                            <padding>
+                                                <Insets bottom="10" left="10" right="10" top="10"/>
+                                            </padding>
+                                        </StackPane>
+                                    </children>
                                 </GridPane>
                             </content>
 
@@ -77,33 +75,34 @@
                         <Tab fx:id="ModuleTab" text="Modules">
                             <StackPane fx:id="moduleListPanelPlaceholder">
                                 <padding>
-                                    <Insets bottom="10" left="10" right="10" top="0" />
+                                    <Insets bottom="10" left="10" right="10" top="0"/>
                                 </padding>
                             </StackPane>
                         </Tab>
                         <Tab fx:id="ContactTab" text="contacts">
                             <StackPane fx:id="contactListPanelPlaceholder">
-                               <padding>
-                                   <Insets bottom="10" left="10" right="10" top="10" />
-                               </padding>
-                           </StackPane>
+                                <padding>
+                                    <Insets bottom="10" left="10" right="10" top="10"/>
+                                </padding>
+                            </StackPane>
                         </Tab>
                     </tabs>
                 </TabPane>
 
                 <StackPane fx:id="commandBoxPlaceholder" styleClass="pane-with-border" VBox.vgrow="NEVER">
                     <padding>
-                        <Insets bottom="5" left="10" right="10" top="5" />
+                        <Insets bottom="5" left="10" right="10" top="5"/>
                     </padding>
                 </StackPane>
 
-                <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="100" styleClass="pane-with-border" VBox.vgrow="NEVER">
+                <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="100"
+                           styleClass="pane-with-border" VBox.vgrow="NEVER">
                     <padding>
-                        <Insets bottom="5" left="10" right="10" top="5" />
+                        <Insets bottom="5" left="10" right="10" top="5"/>
                     </padding>
                 </StackPane>
 
-                <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
+                <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER"/>
             </VBox>
         </Scene>
     </scene>

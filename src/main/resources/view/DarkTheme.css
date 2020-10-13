@@ -72,6 +72,7 @@
     -fx-min-height: 0;
     -fx-max-height: 0;
 }
+
 .tab-pane .tab-header-area .tab {
     -fx-background-color: #313543;
 }
