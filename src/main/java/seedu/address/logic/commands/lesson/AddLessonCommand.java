@@ -23,7 +23,7 @@ public class AddLessonCommand extends Command {
         + PREFIX_CODE + "MODULE_CODE "
         + PREFIX_TYPE + "TYPE "
         + PREFIX_DATE + "DATE "
-        + PREFIX_ADDRESS + "LOCATION "
+        + PREFIX_ADDRESS + "ADDRESS "
         + PREFIX_WEIGHTAGE + "WEIGHTAGE\n"
         + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
         + PREFIX_CODE + "CS3233 "

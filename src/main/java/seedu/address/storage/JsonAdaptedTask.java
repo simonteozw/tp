@@ -20,7 +20,7 @@ public class JsonAdaptedTask {
 
     private final String name;
     private final String date;
-    private final String location;
+    private final String address;
     private final String weightage;
     private final String remark;
 
@@ -29,11 +29,11 @@ public class JsonAdaptedTask {
      */
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("date") String date,
-                              @JsonProperty("location") String location, @JsonProperty("weightage") String weightage,
-                              @JsonProperty("remark") String remark) {
+                           @JsonProperty("address") String address, @JsonProperty("weightage") String weightage,
+                           @JsonProperty("remark") String remark) {
         this.name = name;
         this.date = date;
-        this.location = location;
+        this.address = address;
         this.weightage = weightage;
         this.remark = remark;
     }
@@ -44,7 +44,7 @@ public class JsonAdaptedTask {
     public JsonAdaptedTask(Task source) {
         name = source.getName().fullName;
         date = source.getDate().format(Task.FORMATTER);
-        location = source.getAddress().value;
+        address = source.getAddress().value;
         weightage = Double.toString(source.getWeightage());
         remark = source.getRemark();
     }
@@ -75,13 +75,13 @@ public class JsonAdaptedTask {
         }
         final LocalDate modelDate = LocalDate.parse(date, Task.FORMATTER);
 
-        if (location == null) {
+        if (address == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
         }
-        if (!Address.isValidAddress(location)) {
+        if (!Address.isValidAddress(address)) {
             throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
         }
-        final Address modelLocation = new Address(location);
+        final Address modelAddress = new Address(address);
 
         if (weightage == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Weightage"));
@@ -97,6 +97,6 @@ public class JsonAdaptedTask {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Remark"));
         }
         final String modelRemark = remark;
-        return new Task(modelName, modelDate, modelLocation, modelWeightage, modelRemark);
+        return new Task(modelName, modelDate, modelAddress, modelWeightage, modelRemark);
     }
 }

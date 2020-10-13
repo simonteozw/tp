@@ -65,6 +65,7 @@
     -fx-min-height: 0;
     -fx-max-height: 0;
 }
+
 .tab-pane .tab-header-area .tab {
     -fx-background-color: #313543;
 }
@@ -114,12 +115,10 @@
 }
 
 .split-pane:horizontal .split-pane-divider {
-    /*-fx-background-color: #4E5F78;*/
     -fx-background-color: #59687C;
 }
 
 .split-pane {
-    /*-fx-background-color: #4E5F78;*/
     -fx-background-color: #59687C;
 
 }
@@ -127,13 +126,10 @@
 .list-view {
     -fx-background-insets: 0;
     -fx-background-color: #59687C;
-
-    /*-fx-background-color: #4E5F78;*/
     -fx-background-radius: 10;
 }
 
 .list-cell {
-    /*-fx-background-color: #4E5F78;*/
     -fx-background-color: #59687C;
     -fx-background-radius: 10;
 }
