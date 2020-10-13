@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -65,6 +66,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private TabPane tabPane;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -190,9 +194,18 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-//    public ContactListPanel getContactListPanel() {
-//        return contactListPanel;
-//    }
+    private void changeTabOnCommandEntered(String commandText) {
+        int typeLetter = commandText.charAt(0);
+        if (typeLetter == 'T' || typeLetter == 'L') {
+            tabPane.getSelectionModel().select(0);
+        }
+        if (typeLetter == 'M') {
+            tabPane.getSelectionModel().select(1);
+        }
+        if (typeLetter == 'C') {
+            tabPane.getSelectionModel().select(2);
+        }
+    }
 
     /**
      * Executes the command and returns the result.
@@ -201,6 +214,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
+            changeTabOnCommandEntered(commandText);
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
