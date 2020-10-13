@@ -66,7 +66,7 @@ public class EditTaskCommand extends Command {
         Name updatedName = editTaskDescriptor.getName().orElse(taskToEdit.getName());
         LocalDate updatedDate = editTaskDescriptor.getDate().orElse(taskToEdit.getDate());
         Address updatedAddress = editTaskDescriptor.getAddress().orElse(taskToEdit.getAddress());
-        double updatedWeightage = editTaskDescriptor.getWeightage().orElse(taskToEdit.getWeightage());
+        Double updatedWeightage = editTaskDescriptor.getWeightage().orElse(taskToEdit.getWeightage());
         String updatedRemarks = editTaskDescriptor.getRemark().orElse(taskToEdit.getRemark());
 
         return new Task(updatedName, updatedDate, updatedAddress, updatedWeightage, updatedRemarks);
@@ -119,7 +119,7 @@ public class EditTaskCommand extends Command {
         private Name name;
         private LocalDate date;
         private Address address;
-        private double weightage;
+        private Double weightage;
         private String remark;
 
         public EditTaskDescriptor() {
@@ -164,7 +164,7 @@ public class EditTaskCommand extends Command {
             return Optional.ofNullable(weightage);
         }
 
-        public void setWeightage(double weightage) {
+        public void setWeightage(Double weightage) {
             this.weightage = weightage;
         }
 

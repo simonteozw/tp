@@ -189,8 +189,9 @@
 .result-display {
     -fx-background-color: transparent;
     -fx-font-family: "Quicksand";
-    -fx-font-size: 13pt;
+    -fx-font-size: 11pt;
     -fx-text-fill: white;
+    -fx-wrap-text: true;
 }
 
 .result-container {
