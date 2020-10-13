@@ -211,6 +211,8 @@ public class MainWindow extends UiPart<Stage> {
         case Contact.TYPE: //Go to Contacts tab
             tabPane.getSelectionModel().select(2);
             break;
+        default:
+            break;
         }
     }
 
