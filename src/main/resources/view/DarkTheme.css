@@ -44,20 +44,19 @@
     -fx-font-family: 'Quicksand';
 }
 
-.tab:selected .tab-label {
-    -fx-text-fill: #E6B918;
-}
-
-.tab:selected .focus-indicator {
-    -fx-focus-color: #e6b918;
-    -fx-text-fill: #e6b918;
-}
-
 .tab-pane {
     -fx-background-color: #232c3d;
     -fx-tab-min-height: 3em;
     -fx-tab-max-height: 3em;
     -fx-tab-min-width: 8em;
+}
+
+#tabPane .tab:selected .focus-indicator {
+    -fx-border-color: #E6B918 #E6B918 transparent #E6B918;
+}
+
+#tabPane .tab:selected .tab-label {
+    -fx-text-fill: #E6B918;
 }
 
 .tab-pane .tab-header-area {
