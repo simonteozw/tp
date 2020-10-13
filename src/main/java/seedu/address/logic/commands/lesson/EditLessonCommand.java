@@ -74,13 +74,13 @@ public class EditLessonCommand extends Command {
     private static Lesson createEditedLesson(Lesson lessonToEdit, EditLessonDescriptor editLessonDescriptor) {
         assert lessonToEdit != null;
 
-        Code updatedCode = editLessonDescriptor.getCode().orElse(lessonToEdit.getCode());
-        Type updatedType = editLessonDescriptor.getType().orElse(lessonToEdit.getType());
+        Code originalCode = lessonToEdit.getCode();
+        Type originalType = lessonToEdit.getType();
         LocalDate updatedDate = editLessonDescriptor.getDate().orElse(lessonToEdit.getDate());
         Address updatedAddress = editLessonDescriptor.getAddress().orElse(lessonToEdit.getAddress());
         Double updatedWeightage = editLessonDescriptor.getWeightage().orElse(lessonToEdit.getWeightage());
 
-        return new Lesson(updatedCode, updatedType, updatedDate, updatedAddress, updatedWeightage);
+        return new Lesson(originalCode, originalType, updatedDate, updatedAddress, updatedWeightage);
     }
 
     @Override
@@ -158,7 +158,7 @@ public class EditLessonCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(code, type, date, address, weightage);
+            return CollectionUtil.isAnyNonNull(date, address, weightage);
         }
 
         public Optional<Code> getCode() {

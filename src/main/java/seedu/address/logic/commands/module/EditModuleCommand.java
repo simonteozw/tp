@@ -59,11 +59,11 @@ public class EditModuleCommand extends Command {
                                              EditModuleDescriptor editModuleDescriptor) {
         assert moduleToEdit != null;
 
-        Code updatedCode = editModuleDescriptor.getCode().orElse(moduleToEdit.getCode());
+        Code originalCode = moduleToEdit.getCode();
         Name updatedName = editModuleDescriptor.getName().orElse(moduleToEdit.getName());
         String updatedDesc = editModuleDescriptor.getDesc().orElse(moduleToEdit.getDesc());
 
-        return new Module(updatedCode, updatedName, updatedDesc);
+        return new Module(originalCode, updatedName, updatedDesc);
     }
 
     @Override
@@ -129,7 +129,7 @@ public class EditModuleCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(code, name, desc);
+            return CollectionUtil.isAnyNonNull(name, desc);
         }
 
         @Override
