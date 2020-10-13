@@ -17,6 +17,10 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.contact.Contact;
+import seedu.address.model.lesson.Lesson;
+import seedu.address.model.task.Task;
+import seedu.address.model.module.Module;
 import seedu.address.ui.contact.ContactListPanel;
 import seedu.address.ui.lesson.LessonListPanel;
 import seedu.address.ui.module.ModuleListPanel;
@@ -195,15 +199,18 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void changeTabOnCommandEntered(String commandText) {
-        int typeLetter = commandText.charAt(0);
-        if (typeLetter == 'T' || typeLetter == 'L') {
+        String type = String.valueOf(commandText.charAt(0));
+        switch (type) {
+        case Task.TYPE: //Go to Task tab
+        case Lesson.TYPE: //Go to Lessons tab
             tabPane.getSelectionModel().select(0);
-        }
-        if (typeLetter == 'M') {
+            break;
+        case Module.TYPE: //Go to Modules tab
             tabPane.getSelectionModel().select(1);
-        }
-        if (typeLetter == 'C') {
+            break;
+        case Contact.TYPE: //Go to Contacts tab
             tabPane.getSelectionModel().select(2);
+            break;
         }
     }
 
