@@ -121,12 +121,10 @@
 }
 
 .split-pane:horizontal .split-pane-divider {
-    /*-fx-background-color: #4E5F78;*/
     -fx-background-color: #59687C;
 }
 
 .split-pane {
-    /*-fx-background-color: #4E5F78;*/
     -fx-background-color: #59687C;
 
 }
@@ -134,13 +132,10 @@
 .list-view {
     -fx-background-insets: 0;
     -fx-background-color: #59687C;
-
-    /*-fx-background-color: #4E5F78;*/
     -fx-background-radius: 10;
 }
 
 .list-cell {
-    /*-fx-background-color: #4E5F78;*/
     -fx-background-color: #59687C;
     -fx-background-radius: 10;
 }
@@ -265,7 +260,7 @@
 }
 
 .menu .left-container {
-    -fx-background-color: #black;
+    -fx-background-color: black;
 }
 
 /*
