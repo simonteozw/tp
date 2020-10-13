@@ -47,11 +47,11 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         LocalDate date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
-        Address location = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
+        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         double weightage = ParserUtil.parseWeightage(argMultimap.getValue(PREFIX_WEIGHTAGE).get());
         String remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get());
 
-        Task task = new Task(name, date, location, weightage, remark);
+        Task task = new Task(name, date, address, weightage, remark);
 
         return new AddTaskCommand(task);
     }

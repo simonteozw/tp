@@ -45,8 +45,7 @@ public class EditLessonCommandParser implements Parser<EditLessonCommand> {
             ArgumentTokenizer.tokenize(args,
                 PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE, PREFIX_ADDRESS, PREFIX_WEIGHTAGE);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_CODE, PREFIX_TYPE)
-            || !argMultimap.getPreamble().isEmpty()) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_CODE, PREFIX_TYPE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditLessonCommand.MESSAGE_USAGE));
         }
 
@@ -62,7 +61,7 @@ public class EditLessonCommandParser implements Parser<EditLessonCommand> {
             editLessonDescriptor.setDate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()));
         }
         if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
-            editLessonDescriptor.setLocation(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
+            editLessonDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
         }
         if (argMultimap.getValue(PREFIX_WEIGHTAGE).isPresent()) {
             editLessonDescriptor.setWeightage(ParserUtil.parseWeightage(argMultimap.getValue(PREFIX_WEIGHTAGE).get()));

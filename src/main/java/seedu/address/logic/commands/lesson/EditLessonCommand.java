@@ -33,7 +33,7 @@ public class EditLessonCommand extends Command {
         + PREFIX_CODE + "MODULE_CODE "
         + PREFIX_TYPE + "TYPE "
         + "[" + PREFIX_DATE + "DATE] "
-        + "[" + PREFIX_ADDRESS + "LOCATION] "
+        + "[" + PREFIX_ADDRESS + "ADDRESS] "
         + "[" + PREFIX_WEIGHTAGE + "WEIGHTAGE]\n"
         + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
         + PREFIX_CODE + "CS3233 "
@@ -74,13 +74,13 @@ public class EditLessonCommand extends Command {
     private static Lesson createEditedLesson(Lesson lessonToEdit, EditLessonDescriptor editLessonDescriptor) {
         assert lessonToEdit != null;
 
-        Code updatedCode = editLessonDescriptor.getCode().orElse(lessonToEdit.getCode());
-        Type updatedType = editLessonDescriptor.getType().orElse(lessonToEdit.getType());
+        Code originalCode = lessonToEdit.getCode();
+        Type originalType = lessonToEdit.getType();
         LocalDate updatedDate = editLessonDescriptor.getDate().orElse(lessonToEdit.getDate());
-        Address updatedLocation = editLessonDescriptor.getLocation().orElse(lessonToEdit.getAddress());
+        Address updatedAddress = editLessonDescriptor.getAddress().orElse(lessonToEdit.getAddress());
         Double updatedWeightage = editLessonDescriptor.getWeightage().orElse(lessonToEdit.getWeightage());
 
-        return new Lesson(updatedCode, updatedType, updatedDate, updatedLocation, updatedWeightage);
+        return new Lesson(originalCode, originalType, updatedDate, updatedAddress, updatedWeightage);
     }
 
     @Override
@@ -136,7 +136,7 @@ public class EditLessonCommand extends Command {
         private Code code;
         private Type type;
         private LocalDate date;
-        private Address location;
+        private Address address;
         private double weightage;
 
         public EditLessonDescriptor() {
@@ -150,7 +150,7 @@ public class EditLessonCommand extends Command {
             setCode(toCopy.code);
             setType(toCopy.type);
             setDate(toCopy.date);
-            setLocation(toCopy.location);
+            setAddress(toCopy.address);
             setWeightage(toCopy.weightage);
         }
 
@@ -158,7 +158,7 @@ public class EditLessonCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(code, type, date, location, weightage);
+            return CollectionUtil.isAnyNonNull(date, address, weightage);
         }
 
         public Optional<Code> getCode() {
@@ -185,12 +185,12 @@ public class EditLessonCommand extends Command {
             this.date = date;
         }
 
-        public Optional<Address> getLocation() {
-            return Optional.ofNullable(location);
+        public Optional<Address> getAddress() {
+            return Optional.ofNullable(address);
         }
 
-        public void setLocation(Address location) {
-            this.location = location;
+        public void setAddress(Address address) {
+            this.address = address;
         }
 
         public Optional<Double> getWeightage() {
@@ -219,7 +219,7 @@ public class EditLessonCommand extends Command {
             return getCode().equals(e.getCode())
                 && getType().equals(e.getType())
                 && getDate().equals(e.getDate())
-                && getLocation().equals(e.getLocation())
+                && getAddress().equals(e.getAddress())
                 && getWeightage().equals(e.getWeightage());
         }
     }
