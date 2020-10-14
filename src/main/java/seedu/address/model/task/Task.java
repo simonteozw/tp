@@ -26,7 +26,7 @@ public class Task {
     private final Name name;
     private final LocalDate date;
     private final Address address;
-    private final double weightage;
+    private final Double weightage;
     private final String remark;
 
     /**
@@ -38,7 +38,7 @@ public class Task {
      * @param weightage
      * @param remark
      */
-    public Task(Name name, LocalDate date, Address address, double weightage, String remark) {
+    public Task(Name name, LocalDate date, Address address, Double weightage, String remark) {
         requireAllNonNull(name, date, address, weightage, remark);
         this.name = name;
         this.date = date;
@@ -63,7 +63,7 @@ public class Task {
         return address;
     }
 
-    public double getWeightage() {
+    public Double getWeightage() {
         return weightage;
     }
 
@@ -81,7 +81,7 @@ public class Task {
         return otherLesson.name.equals(name)
             && otherLesson.date.equals(date)
             && otherLesson.address.equals(address)
-            && (otherLesson.weightage == weightage)
+            && otherLesson.weightage.equals(weightage)
             && otherLesson.remark.equals(remark);
     }
 

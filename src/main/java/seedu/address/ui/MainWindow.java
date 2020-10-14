@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -16,6 +17,10 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.contact.Contact;
+import seedu.address.model.lesson.Lesson;
+import seedu.address.model.module.Module;
+import seedu.address.model.task.Task;
 import seedu.address.ui.contact.ContactListPanel;
 import seedu.address.ui.lesson.LessonListPanel;
 import seedu.address.ui.module.ModuleListPanel;
@@ -65,6 +70,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private TabPane tabPane;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -190,9 +198,23 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-//    public ContactListPanel getContactListPanel() {
-//        return contactListPanel;
-//    }
+    private void changeTabOnCommandEntered(String commandText) {
+        String type = String.valueOf(commandText.charAt(0));
+        switch (type) {
+        case Task.TYPE: //Go to Task tab
+        case Lesson.TYPE: //Go to Lessons tab
+            tabPane.getSelectionModel().select(0);
+            break;
+        case Module.TYPE: //Go to Modules tab
+            tabPane.getSelectionModel().select(1);
+            break;
+        case Contact.TYPE: //Go to Contacts tab
+            tabPane.getSelectionModel().select(2);
+            break;
+        default:
+            break;
+        }
+    }
 
     /**
      * Executes the command and returns the result.
@@ -201,6 +223,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
+            changeTabOnCommandEntered(commandText);
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
