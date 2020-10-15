@@ -36,13 +36,13 @@ public class ModelManager implements Model {
     /**
      * Initializes a ModelManager with the given trackIter and userPrefs.
      */
-    public ModelManager(ReadOnlyTrackIter addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyTrackIter trackIter, ReadOnlyUserPrefs userPrefs) {
         super();
-        CollectionUtil.requireAllNonNull(addressBook, userPrefs);
+        CollectionUtil.requireAllNonNull(trackIter, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with TrackIter: " + trackIter + " and user prefs " + userPrefs);
 
-        this.trackIter = new TrackIter(addressBook);
+        this.trackIter = new TrackIter(trackIter);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredContacts = new FilteredList<>(this.trackIter.getContactList());
         filteredModules = new FilteredList<>(this.trackIter.getModuleList());
@@ -130,7 +130,7 @@ public class ModelManager implements Model {
 
     /**
      * Returns an unmodifiable view of the list of {@code Contact} backed by the internal list of
-     * {@code versionedAddressBook}
+     * {@code versionedTrackIter}
      */
     @Override
     public ObservableList<Contact> getFilteredContactList() {

@@ -4,7 +4,7 @@ import trackitnus.model.TrackIter;
 import trackitnus.model.contact.Contact;
 
 /**
- * A utility class to help with building Addressbook objects.
+ * A utility class to help with building TrackIter objects.
  * Example usage: <br>
  * {@code TrackIter ab = new TrackIterBuilder().withContact("John", "Doe").build();}
  */

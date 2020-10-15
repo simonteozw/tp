@@ -19,7 +19,7 @@ import trackitnus.model.task.Task;
 /**
  * An Immutable TrackIter that is serializable to JSON format.gi
  */
-@JsonRootName(value = "addressbook")
+@JsonRootName(value = "trackIter")
 class JsonSerializableTrackIter {
 
     public static final String MESSAGE_DUPLICATE_CONTACT = "Contact list contains duplicate contact(s).";

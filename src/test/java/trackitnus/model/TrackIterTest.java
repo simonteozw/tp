@@ -38,7 +38,7 @@ public class TrackIterTest {
     }
 
     @Test
-    public void resetData_withValidReadOnlyAddressBook_replacesData() {
+    public void resetData_withValidReadOnlyTrackIter_replacesData() {
         TrackIter newData = TypicalPersons.getTypicalTrackIter();
         trackIter.resetData(newData);
         assertEquals(newData, trackIter);
@@ -63,18 +63,18 @@ public class TrackIterTest {
     }
 
     @Test
-    public void hasPerson_personNotInAddressBook_returnsFalse() {
+    public void hasPerson_personNotInTrackIter_returnsFalse() {
         assertFalse(trackIter.hasContact(TypicalPersons.ALICE));
     }
 
     @Test
-    public void hasPerson_personInAddressBook_returnsTrue() {
+    public void hasPerson_personInTrackIter_returnsTrue() {
         trackIter.addContact(TypicalPersons.ALICE);
         assertTrue(trackIter.hasContact(TypicalPersons.ALICE));
     }
 
     @Test
-    public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
+    public void hasPerson_personWithSameIdentityFieldsInTrackIter_returnsTrue() {
         trackIter.addContact(TypicalPersons.ALICE);
         Contact editedAlice =
             new PersonBuilder(TypicalPersons.ALICE).withAddress(ContactCommandTestUtil.VALID_ADDRESS_BOB)
