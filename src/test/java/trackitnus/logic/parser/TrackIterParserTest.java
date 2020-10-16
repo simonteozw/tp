@@ -22,9 +22,9 @@ import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.contact.NameContainsKeywordsPredicate;
 import trackitnus.testutil.Assert;
+import trackitnus.testutil.ContactBuilder;
 import trackitnus.testutil.ContactUtil;
 import trackitnus.testutil.EditContactDescriptorBuilder;
-import trackitnus.testutil.PersonBuilder;
 import trackitnus.testutil.TypicalIndexes;
 
 public class TrackIterParserTest {
@@ -33,7 +33,7 @@ public class TrackIterParserTest {
 
     @Test
     public void parseCommand_add() throws Exception {
-        Contact contact = new PersonBuilder().build();
+        Contact contact = new ContactBuilder().build();
         AddContactCommand command = (AddContactCommand) parser.parseCommand(Contact.TYPE
             + " " + ContactUtil.getAddCommand(contact));
         assertEquals(new AddContactCommand(contact), command);
@@ -50,19 +50,19 @@ public class TrackIterParserTest {
     @Test
     public void parseCommand_delete() throws Exception {
         DeleteContactCommand command = (DeleteContactCommand) parser.parseCommand(
-            Contact.TYPE + " " + DeleteContactCommand.COMMAND_WORD + " " + TypicalIndexes.INDEX_FIRST_PERSON
+            Contact.TYPE + " " + DeleteContactCommand.COMMAND_WORD + " " + TypicalIndexes.INDEX_FIRST_CONTACT
                 .getOneBased());
-        assertEquals(new DeleteContactCommand(TypicalIndexes.INDEX_FIRST_PERSON), command);
+        assertEquals(new DeleteContactCommand(TypicalIndexes.INDEX_FIRST_CONTACT), command);
     }
 
     @Test
     public void parseCommand_edit() throws Exception {
-        Contact contact = new PersonBuilder().build();
+        Contact contact = new ContactBuilder().build();
         EditContactCommand.EditContactDescriptor descriptor = new EditContactDescriptorBuilder(contact).build();
         EditContactCommand command = (EditContactCommand) parser.parseCommand(Contact.TYPE + " "
-            + EditContactCommand.COMMAND_WORD + " " + TypicalIndexes.INDEX_FIRST_PERSON.getOneBased() + " "
+            + EditContactCommand.COMMAND_WORD + " " + TypicalIndexes.INDEX_FIRST_CONTACT.getOneBased() + " "
             + ContactUtil.getEditContactDescriptorDetails(descriptor));
-        assertEquals(new EditContactCommand(TypicalIndexes.INDEX_FIRST_PERSON, descriptor), command);
+        assertEquals(new EditContactCommand(TypicalIndexes.INDEX_FIRST_CONTACT, descriptor), command);
     }
 
     @Test

@@ -20,8 +20,8 @@ import trackitnus.model.lesson.Lesson;
 import trackitnus.model.module.Module;
 import trackitnus.model.task.Task;
 import trackitnus.testutil.Assert;
-import trackitnus.testutil.PersonBuilder;
-import trackitnus.testutil.TypicalPersons;
+import trackitnus.testutil.ContactBuilder;
+import trackitnus.testutil.TypicalContacts;
 
 public class TrackIterTest {
 
@@ -39,52 +39,52 @@ public class TrackIterTest {
 
     @Test
     public void resetData_withValidReadOnlyTrackIter_replacesData() {
-        TrackIter newData = TypicalPersons.getTypicalTrackIter();
+        TrackIter newData = TypicalContacts.getTypicalTrackIter();
         trackIter.resetData(newData);
         assertEquals(newData, trackIter);
     }
 
     @Test
-    public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
+    public void resetData_withDuplicateContacts_throwsDuplicateContactException() {
         // Two contacts with the same identity fields
         Contact editedAlice =
-            new PersonBuilder(TypicalPersons.ALICE).withAddress(ContactCommandTestUtil.VALID_ADDRESS_BOB)
+            new ContactBuilder(TypicalContacts.ALICE).withAddress(ContactCommandTestUtil.VALID_ADDRESS_BOB)
                 .withTags(ContactCommandTestUtil.VALID_TAG_HUSBAND)
                 .build();
-        List<Contact> newContacts = Arrays.asList(TypicalPersons.ALICE, editedAlice);
+        List<Contact> newContacts = Arrays.asList(TypicalContacts.ALICE, editedAlice);
         TrackIterStub newData = new TrackIterStub(newContacts);
 
         Assert.assertThrows(DuplicateContactException.class, () -> trackIter.resetData(newData));
     }
 
     @Test
-    public void hasPerson_nullPerson_throwsNullPointerException() {
+    public void hasContact_nullContact_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> trackIter.hasContact(null));
     }
 
     @Test
-    public void hasPerson_personNotInTrackIter_returnsFalse() {
-        assertFalse(trackIter.hasContact(TypicalPersons.ALICE));
+    public void hasContact_contactNotInTrackIter_returnsFalse() {
+        assertFalse(trackIter.hasContact(TypicalContacts.ALICE));
     }
 
     @Test
-    public void hasPerson_personInTrackIter_returnsTrue() {
-        trackIter.addContact(TypicalPersons.ALICE);
-        assertTrue(trackIter.hasContact(TypicalPersons.ALICE));
+    public void hasContact_contactInTrackIter_returnsTrue() {
+        trackIter.addContact(TypicalContacts.ALICE);
+        assertTrue(trackIter.hasContact(TypicalContacts.ALICE));
     }
 
     @Test
-    public void hasPerson_personWithSameIdentityFieldsInTrackIter_returnsTrue() {
-        trackIter.addContact(TypicalPersons.ALICE);
+    public void hasContact_contactWithSameIdentityFieldsInTrackIter_returnsTrue() {
+        trackIter.addContact(TypicalContacts.ALICE);
         Contact editedAlice =
-            new PersonBuilder(TypicalPersons.ALICE).withAddress(ContactCommandTestUtil.VALID_ADDRESS_BOB)
+            new ContactBuilder(TypicalContacts.ALICE).withAddress(ContactCommandTestUtil.VALID_ADDRESS_BOB)
                 .withTags(ContactCommandTestUtil.VALID_TAG_HUSBAND)
                 .build();
         assertTrue(trackIter.hasContact(editedAlice));
     }
 
     @Test
-    public void getPersonList_modifyList_throwsUnsupportedOperationException() {
+    public void getContactList_modifyList_throwsUnsupportedOperationException() {
         Assert.assertThrows(UnsupportedOperationException.class, () -> trackIter.getContactList().remove(0));
     }
 

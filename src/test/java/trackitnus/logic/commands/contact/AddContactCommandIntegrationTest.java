@@ -2,7 +2,7 @@ package trackitnus.logic.commands.contact;
 
 import static trackitnus.logic.commands.CommandTestUtil.assertCommandFailure;
 import static trackitnus.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static trackitnus.testutil.TypicalPersons.getTypicalTrackIter;
+import static trackitnus.testutil.TypicalContacts.getTypicalTrackIter;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ import trackitnus.model.Model;
 import trackitnus.model.ModelManager;
 import trackitnus.model.UserPrefs;
 import trackitnus.model.contact.Contact;
-import trackitnus.testutil.PersonBuilder;
+import trackitnus.testutil.ContactBuilder;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code AddContactCommand}.
@@ -26,8 +26,8 @@ public class AddContactCommandIntegrationTest {
     }
 
     @Test
-    public void execute_newPerson_success() {
-        Contact validContact = new PersonBuilder().build();
+    public void execute_newContact_success() {
+        Contact validContact = new ContactBuilder().build();
 
         Model expectedModel = new ModelManager(model.getTrackIter(), new UserPrefs());
         expectedModel.addContact(validContact);
@@ -37,7 +37,7 @@ public class AddContactCommandIntegrationTest {
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() {
+    public void execute_duplicateContact_throwsCommandException() {
         Contact contactInList = model.getTrackIter().getContactList().get(0);
         assertCommandFailure(new AddContactCommand(contactInList), model, AddContactCommand.MESSAGE_DUPLICATE_CONTACT);
     }

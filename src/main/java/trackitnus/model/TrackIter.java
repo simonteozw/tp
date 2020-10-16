@@ -42,7 +42,7 @@ public class TrackIter implements ReadOnlyTrackIter {
     }
 
     /**
-     * Creates an TrackIter using the Persons in the {@code toBeCopied}
+     * Creates an TrackIter using the Contacts in the {@code toBeCopied}
      */
     public TrackIter(ReadOnlyTrackIter toBeCopied) {
         this();
@@ -253,7 +253,7 @@ public class TrackIter implements ReadOnlyTrackIter {
 
     @Override
     public String toString() {
-        return contacts.asUnmodifiableObservableList().size() + " persons";
+        return contacts.asUnmodifiableObservableList().size() + " contacts";
         // TODO: refine later
     }
 

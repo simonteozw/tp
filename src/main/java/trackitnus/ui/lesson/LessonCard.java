@@ -41,7 +41,7 @@ public class LessonCard extends UiPart<Region> {
 
 
     /**
-     * Creates a {@code PersonCode} with the given {@code Lesson} and index to display.
+     * Creates a {@code ContactCode} with the given {@code Lesson} and index to display.
      */
     public LessonCard(Lesson lesson, int displayedIndex) {
         super(FXML);

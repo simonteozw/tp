@@ -14,7 +14,7 @@ import trackitnus.commons.exceptions.DataConversionException;
 import trackitnus.model.ReadOnlyTrackIter;
 import trackitnus.model.TrackIter;
 import trackitnus.testutil.Assert;
-import trackitnus.testutil.TypicalPersons;
+import trackitnus.testutil.TypicalContacts;
 
 public class JsonTrackIterStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonTrackIterStorageTest");
@@ -48,20 +48,20 @@ public class JsonTrackIterStorageTest {
     }
 
     @Test
-    public void readTrackIter_invalidPersonTrackIter_throwDataConversionException() {
-        Assert.assertThrows(DataConversionException.class, () -> readTrackIter("invalidPersonTrackIter.json"));
+    public void readTrackIter_invalidContactTrackIter_throwDataConversionException() {
+        Assert.assertThrows(DataConversionException.class, () -> readTrackIter("invalidContactTrackIter.json"));
     }
 
     @Test
-    public void readTrackIter_invalidAndValidPersonTrackIter_throwDataConversionException() {
-        Assert.assertThrows(DataConversionException.class, () -> readTrackIter("invalidAndValidPersonTrackIter"
+    public void readTrackIter_invalidAndValidContactTrackIter_throwDataConversionException() {
+        Assert.assertThrows(DataConversionException.class, () -> readTrackIter("invalidAndValidContactTrackIter"
             + ".json"));
     }
 
     @Test
     public void readAndSaveTrackIter_allInOrder_success() throws Exception {
         Path filePath = testFolder.resolve("TempTrackIter.json");
-        TrackIter original = TypicalPersons.getTypicalTrackIter();
+        TrackIter original = TypicalContacts.getTypicalTrackIter();
         JsonTrackIterStorage jsonTrackIterStorage = new JsonTrackIterStorage(filePath);
 
         // Save in new file and read back
@@ -70,14 +70,14 @@ public class JsonTrackIterStorageTest {
         assertEquals(original, new TrackIter(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addContact(TypicalPersons.HOON);
-        original.removeContact(TypicalPersons.ALICE);
+        original.addContact(TypicalContacts.HOON);
+        original.removeContact(TypicalContacts.ALICE);
         jsonTrackIterStorage.saveTrackIter(original, filePath);
         readBack = jsonTrackIterStorage.readTrackIter(filePath).get();
         assertEquals(original, new TrackIter(readBack));
 
         // Save and read without specifying file path
-        original.addContact(TypicalPersons.IDA);
+        original.addContact(TypicalContacts.IDA);
         jsonTrackIterStorage.saveTrackIter(original); // file path not specified
         readBack = jsonTrackIterStorage.readTrackIter().get(); // file path not specified
         assertEquals(original, new TrackIter(readBack));

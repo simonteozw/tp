@@ -28,31 +28,31 @@ import trackitnus.model.lesson.Type;
 import trackitnus.model.module.Module;
 import trackitnus.model.task.Task;
 import trackitnus.testutil.Assert;
-import trackitnus.testutil.PersonBuilder;
+import trackitnus.testutil.ContactBuilder;
 
 public class AddContactCommandTest {
 
     @Test
-    public void constructor_nullPerson_throwsNullPointerException() {
+    public void constructor_nullContact_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> new AddContactCommand(null));
     }
 
     @Test
-    public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
-        Contact validContact = new PersonBuilder().build();
+    public void execute_contactAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingContactAdded modelStub = new ModelStubAcceptingContactAdded();
+        Contact validContact = new ContactBuilder().build();
 
         CommandResult commandResult = new AddContactCommand(validContact).execute(modelStub);
 
         assertEquals(String.format(AddContactCommand.MESSAGE_SUCCESS, validContact), commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validContact), modelStub.personsAdded);
+        assertEquals(Arrays.asList(validContact), modelStub.contactsAdded);
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() {
-        Contact validContact = new PersonBuilder().build();
+    public void execute_duplicateContact_throwsCommandException() {
+        Contact validContact = new ContactBuilder().build();
         AddContactCommand addContactCommand = new AddContactCommand(validContact);
-        ModelStub modelStub = new ModelStubWithPerson(validContact);
+        ModelStub modelStub = new ModelStubWithContact(validContact);
 
         Assert.assertThrows(CommandException.class,
             AddContactCommand.MESSAGE_DUPLICATE_CONTACT, () -> addContactCommand.execute(modelStub));
@@ -60,8 +60,8 @@ public class AddContactCommandTest {
 
     @Test
     public void equals() {
-        Contact alice = new PersonBuilder().withName("Alice").build();
-        Contact bob = new PersonBuilder().withName("Bob").build();
+        Contact alice = new ContactBuilder().withName("Alice").build();
+        Contact bob = new ContactBuilder().withName("Bob").build();
         AddContactCommand addAliceCommand = new AddContactCommand(alice);
         AddContactCommand addBobCommand = new AddContactCommand(bob);
 
@@ -261,10 +261,10 @@ public class AddContactCommandTest {
     /**
      * A Model stub that contains a single contact.
      */
-    private class ModelStubWithPerson extends ModelStub {
+    private class ModelStubWithContact extends ModelStub {
         private final Contact contact;
 
-        ModelStubWithPerson(Contact contact) {
+        ModelStubWithContact(Contact contact) {
             requireNonNull(contact);
             this.contact = contact;
         }
@@ -279,19 +279,19 @@ public class AddContactCommandTest {
     /**
      * A Model stub that always accept the contact being added.
      */
-    private class ModelStubAcceptingPersonAdded extends ModelStub {
-        final ArrayList<Contact> personsAdded = new ArrayList<>();
+    private class ModelStubAcceptingContactAdded extends ModelStub {
+        final ArrayList<Contact> contactsAdded = new ArrayList<>();
 
         @Override
         public boolean hasContact(Contact contact) {
             requireNonNull(contact);
-            return personsAdded.stream().anyMatch(contact::isSameContact);
+            return contactsAdded.stream().anyMatch(contact::isSameContact);
         }
 
         @Override
         public void addContact(Contact contact) {
             requireNonNull(contact);
-            personsAdded.add(contact);
+            contactsAdded.add(contact);
         }
 
         @Override

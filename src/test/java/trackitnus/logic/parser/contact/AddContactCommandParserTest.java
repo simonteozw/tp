@@ -2,8 +2,8 @@ package trackitnus.logic.parser.contact;
 
 import static trackitnus.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static trackitnus.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static trackitnus.testutil.TypicalPersons.AMY;
-import static trackitnus.testutil.TypicalPersons.BOB;
+import static trackitnus.testutil.TypicalContacts.AMY;
+import static trackitnus.testutil.TypicalContacts.BOB;
 
 import org.junit.jupiter.api.Test;
 
@@ -16,14 +16,14 @@ import trackitnus.model.contact.Contact;
 import trackitnus.model.contact.Email;
 import trackitnus.model.contact.Phone;
 import trackitnus.model.tag.Tag;
-import trackitnus.testutil.PersonBuilder;
+import trackitnus.testutil.ContactBuilder;
 
 public class AddContactCommandParserTest {
     private final AddContactCommandParser parser = new AddContactCommandParser();
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Contact expectedContact = new PersonBuilder(BOB).withTags(ContactCommandTestUtil.VALID_TAG_FRIEND).build();
+        Contact expectedContact = new ContactBuilder(BOB).withTags(ContactCommandTestUtil.VALID_TAG_FRIEND).build();
 
         // whitespace only preamble
         assertParseSuccess(parser,
@@ -61,7 +61,7 @@ public class AddContactCommandParserTest {
             new AddContactCommand(expectedContact));
 
         // multiple tags - all accepted
-        Contact expectedContactMultipleTags = new PersonBuilder(BOB).withTags(ContactCommandTestUtil.VALID_TAG_FRIEND,
+        Contact expectedContactMultipleTags = new ContactBuilder(BOB).withTags(ContactCommandTestUtil.VALID_TAG_FRIEND,
             ContactCommandTestUtil.VALID_TAG_HUSBAND)
             .build();
         assertParseSuccess(parser,
@@ -74,7 +74,7 @@ public class AddContactCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero tags
-        Contact expectedContact = new PersonBuilder(AMY).withTags().build();
+        Contact expectedContact = new ContactBuilder(AMY).withTags().build();
         assertParseSuccess(parser,
             ContactCommandTestUtil.NAME_DESC_AMY + ContactCommandTestUtil.PHONE_DESC_AMY
                 + ContactCommandTestUtil.EMAIL_DESC_AMY + ContactCommandTestUtil.ADDRESS_DESC_AMY,

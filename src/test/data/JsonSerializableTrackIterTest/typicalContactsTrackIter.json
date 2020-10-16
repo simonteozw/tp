@@ -1,5 +1,5 @@
 {
-  "_comment": "TrackIter save file which contains the same Person values as in TypicalPersons#getTypicalTrackIter()",
+  "_comment": "TrackIter save file which contains the same Contact values as in TypicalContacts#getTypicalTrackIter()",
   "contacts": [
     {
       "name": "Alice Pauline",

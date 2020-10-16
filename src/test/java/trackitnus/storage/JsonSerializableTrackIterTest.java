@@ -11,34 +11,34 @@ import trackitnus.commons.exceptions.IllegalValueException;
 import trackitnus.commons.util.JsonUtil;
 import trackitnus.model.TrackIter;
 import trackitnus.testutil.Assert;
-import trackitnus.testutil.TypicalPersons;
+import trackitnus.testutil.TypicalContacts;
 
 public class JsonSerializableTrackIterTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableTrackIterTest");
-    private static final Path TYPICAL_PERSONS_FILE = TEST_DATA_FOLDER.resolve("typicalPersonsTrackIter.json");
-    private static final Path INVALID_PERSON_FILE = TEST_DATA_FOLDER.resolve("invalidPersonTrackIter.json");
-    private static final Path DUPLICATE_PERSON_FILE = TEST_DATA_FOLDER.resolve("duplicatePersonTrackIter.json");
+    private static final Path TYPICAL_CONTACTS_FILE = TEST_DATA_FOLDER.resolve("typicalContactsTrackIter.json");
+    private static final Path INVALID_CONTACT_FILE = TEST_DATA_FOLDER.resolve("invalidContactTrackIter.json");
+    private static final Path DUPLICATE_CONTACT_FILE = TEST_DATA_FOLDER.resolve("duplicateContactTrackIter.json");
 
     @Test
-    public void toModelType_typicalPersonsFile_success() throws Exception {
-        JsonSerializableTrackIter dataFromFile = JsonUtil.readJsonFile(TYPICAL_PERSONS_FILE,
+    public void toModelType_typicalContactsFile_success() throws Exception {
+        JsonSerializableTrackIter dataFromFile = JsonUtil.readJsonFile(TYPICAL_CONTACTS_FILE,
             JsonSerializableTrackIter.class).get();
         TrackIter trackIterFromFile = dataFromFile.toModelType();
-        TrackIter typicalPersonsTrackIter = TypicalPersons.getTypicalTrackIter();
-        assertEquals(trackIterFromFile, typicalPersonsTrackIter);
+        TrackIter typicalContactsTrackIter = TypicalContacts.getTypicalTrackIter();
+        assertEquals(trackIterFromFile, typicalContactsTrackIter);
     }
 
     @Test
-    public void toModelType_invalidPersonFile_throwsIllegalValueException() throws Exception {
-        JsonSerializableTrackIter dataFromFile = JsonUtil.readJsonFile(INVALID_PERSON_FILE,
+    public void toModelType_invalidContactFile_throwsIllegalValueException() throws Exception {
+        JsonSerializableTrackIter dataFromFile = JsonUtil.readJsonFile(INVALID_CONTACT_FILE,
             JsonSerializableTrackIter.class).get();
         Assert.assertThrows(IllegalValueException.class, dataFromFile::toModelType);
     }
 
     @Test
-    public void toModelType_duplicatePersons_throwsIllegalValueException() throws Exception {
-        JsonSerializableTrackIter dataFromFile = JsonUtil.readJsonFile(DUPLICATE_PERSON_FILE,
+    public void toModelType_duplicateContacts_throwsIllegalValueException() throws Exception {
+        JsonSerializableTrackIter dataFromFile = JsonUtil.readJsonFile(DUPLICATE_CONTACT_FILE,
             JsonSerializableTrackIter.class).get();
         Assert.assertThrows(IllegalValueException.class, JsonSerializableTrackIter.MESSAGE_DUPLICATE_CONTACT,
             dataFromFile::toModelType);

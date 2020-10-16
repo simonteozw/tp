@@ -2,7 +2,7 @@ package trackitnus.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static trackitnus.testutil.TypicalPersons.getTypicalTrackIter;
+import static trackitnus.testutil.TypicalContacts.getTypicalTrackIter;
 
 import java.nio.file.Path;
 

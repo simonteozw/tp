@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static trackitnus.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
 import static trackitnus.testutil.Assert.assertThrows;
-import static trackitnus.testutil.TypicalPersons.ALICE;
-import static trackitnus.testutil.TypicalPersons.BENSON;
+import static trackitnus.testutil.TypicalContacts.ALICE;
+import static trackitnus.testutil.TypicalContacts.BENSON;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -73,23 +73,23 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void hasPerson_nullPerson_throwsNullPointerException() {
+    public void hasContact_nullContact_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> modelManager.hasContact(null));
     }
 
     @Test
-    public void hasPerson_personNotInTrackIter_returnsFalse() {
+    public void hasContact_contactNotInTrackIter_returnsFalse() {
         assertFalse(modelManager.hasContact(ALICE));
     }
 
     @Test
-    public void hasPerson_personInTrackIter_returnsTrue() {
+    public void hasContact_contactInTrackIter_returnsTrue() {
         modelManager.addContact(ALICE);
         assertTrue(modelManager.hasContact(ALICE));
     }
 
     @Test
-    public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
+    public void getFilteredContactList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredContactList().remove(0));
     }
 

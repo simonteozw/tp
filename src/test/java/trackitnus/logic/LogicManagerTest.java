@@ -2,7 +2,7 @@ package trackitnus.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static trackitnus.testutil.Assert.assertThrows;
-import static trackitnus.testutil.TypicalPersons.AMY;
+import static trackitnus.testutil.TypicalContacts.AMY;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -26,7 +26,7 @@ import trackitnus.model.contact.Contact;
 import trackitnus.storage.JsonTrackIterStorage;
 import trackitnus.storage.JsonUserPrefsStorage;
 import trackitnus.storage.StorageManager;
-import trackitnus.testutil.PersonBuilder;
+import trackitnus.testutil.ContactBuilder;
 
 public class LogicManagerTest {
     private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy exception");
@@ -53,7 +53,7 @@ public class LogicManagerTest {
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
         String deleteCommand = Contact.TYPE + " " + "delete 9";
-        assertCommandException(deleteCommand, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandException(deleteCommand, Messages.MESSAGE_INVALID_CONTACT_DISPLAYED_INDEX);
     }
 
     @Test
@@ -76,7 +76,7 @@ public class LogicManagerTest {
         String addCommand = Contact.TYPE + " " + AddContactCommand.COMMAND_WORD + ContactCommandTestUtil.NAME_DESC_AMY
             + ContactCommandTestUtil.PHONE_DESC_AMY + ContactCommandTestUtil.EMAIL_DESC_AMY
             + ContactCommandTestUtil.ADDRESS_DESC_AMY;
-        Contact expectedContact = new PersonBuilder(AMY).withTags().build();
+        Contact expectedContact = new ContactBuilder(AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addContact(expectedContact);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
@@ -84,7 +84,7 @@ public class LogicManagerTest {
     }
 
     @Test
-    public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
+    public void getFilteredContactList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredContactList().remove(0));
     }
 

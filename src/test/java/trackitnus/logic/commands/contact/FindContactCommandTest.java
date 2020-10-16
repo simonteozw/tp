@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static trackitnus.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static trackitnus.testutil.TypicalPersons.CARL;
-import static trackitnus.testutil.TypicalPersons.ELLE;
-import static trackitnus.testutil.TypicalPersons.FIONA;
-import static trackitnus.testutil.TypicalPersons.getTypicalTrackIter;
+import static trackitnus.testutil.TypicalContacts.CARL;
+import static trackitnus.testutil.TypicalContacts.ELLE;
+import static trackitnus.testutil.TypicalContacts.FIONA;
+import static trackitnus.testutil.TypicalContacts.getTypicalTrackIter;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -55,8 +55,8 @@ public class FindContactCommandTest {
     }
 
     @Test
-    public void execute_zeroKeywords_noPersonFound() {
-        String expectedMessage = String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
+    public void execute_zeroKeywords_noContactFound() {
+        String expectedMessage = String.format(Messages.MESSAGE_CONTACTS_LISTED_OVERVIEW, 0);
         NameContainsKeywordsPredicate predicate = preparePredicate(" ");
         FindContactCommand command = new FindContactCommand(predicate);
         expectedModel.updateFilteredContactList(predicate);
@@ -65,8 +65,8 @@ public class FindContactCommandTest {
     }
 
     @Test
-    public void execute_multipleKeywords_multiplePersonsFound() {
-        String expectedMessage = String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, 3);
+    public void execute_multipleKeywords_multipleContactsFound() {
+        String expectedMessage = String.format(Messages.MESSAGE_CONTACTS_LISTED_OVERVIEW, 3);
         NameContainsKeywordsPredicate predicate = preparePredicate("Kurz Elle Kunz");
         FindContactCommand command = new FindContactCommand(predicate);
         expectedModel.updateFilteredContactList(predicate);
