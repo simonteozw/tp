@@ -15,6 +15,11 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     4. [Contact](#contact)
 5. [FAQ](#faq)
 6. [Command Summary](#command-summary)
+    1. [Module Commands](#module-commands)
+    2. [Task Commands](#task-commands)
+    3. [Lesson Commands](#lesson-commands)
+    4. [Contact Commands](#contact-commands)
+    5. [General Commands](#general-commands)
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -270,7 +275,15 @@ Format: `C clear`
 
 Examples: `C clear`
 
-## Exiting the program : `exit`
+## Getting help
+
+For: Getting help from the program.
+
+Format: `help`
+
+Examples: `help`
+
+## Exiting the program
 
 For: Exit the program.
 
@@ -291,3 +304,49 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
 
 ## Command Summary <a name="command-summary"></a>
+
+### Module <a name="module-commands"></a>
+
+| Command | Example |
+| ---- | ------ |
+| **View:** `M info INDEX` | `M info 1` |
+| **Add:** `M add m/MODULE_CODE n/NAME d/DESCRIPTION` | `M add m/CS2100 n/Computer Organisation d/Learning about hardware` |
+| **Edit:** `M edit INDEX [m/MODULE_CODE] [n/NAME] [d/DESCRIPTION]` | `M edit 1 n/Discrete Mathematics` |
+| **Delete:** `M delete INDEX` | `M delete 1` |
+
+### Task <a name="task-commands"></a>
+
+| Command | Example |
+| ---- | ------ |
+| **View:** `T info INDEX` | `T info 1` |
+| **Add:** `T add n/NAME d/DATE a/LOCATION w/WEIGHTAGE r/REMARK` | `T add n/Assignment 1 d/20/11/2020 a/NUS w/20 r/Focus on Chapters 1-3` |
+| **Edit:** `T edit [n/NAME] [d/DATE] [a/LOCATION] [w/WEIGHTAGE] [r/REMARK]` | `T edit 1 n/Finish Assignment` |
+| **Delete:** `T delete INDEX` | `T delete 1` |
+| **List:** `T list` | `T list` |
+
+### Lesson <a name="lesson-commands"></a>
+
+| Command | Example |
+| ---- | ------ |
+| **View:** `L info INDEX` | `L info 1` |
+| **Add:** `L add m/MODULE_CODE n/TYPE d/DATE a/LOCATION w/WEIGHTAGE` | `L add m/CS2103T n/tutorial t/01/08/2019 d/11/12/2020 a/COM1 w/25` |
+| **Edit:** `L edit [m/MODULE_CODE] [n/TYPE] [d/DATE] [a/LOCATION] [w/WEIGHTAGE]` | `L edit 1 d/12/12/2020` |
+| **Delete:** `L delete INDEX` | `L delete 1` |
+| **List:** `L list [m/MODULE_CODE]` | `L list` |
+
+### Contact <a name="contact-commands"></a>
+
+| Command | Example |
+| ------ | ---------- |
+| **Add:** `C add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` | `C add n/John Doe p/98765432 e/jon@jon.com a/Sesame Street t/Brother` |
+| **Edit:** `C edit INDEX n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` | `C edit 1 n/Johnny Depp p/98999899` |
+| **Delete:** `C delete INDEX` | `C delete 1` |
+| **List:** `C list` | `C list` |
+| **Clear:** `C clear` | `C clear` |
+
+### General <a name="general-commands"></a>
+
+| Command | Example |
+| ---- | ------ |
+| **Help:** `help` | `help` |
+| **Exit:** `exit` | `exit` |
