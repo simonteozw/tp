@@ -30,13 +30,13 @@ Welcome to the **TrackIt@NUS** user-guide!
 
 Do you want to balance schoolwork and having a social life, but dislike having to use 3 different
  apps to keep track of everything? Then look no further! TrackIt@NUS is a one-stop solution for busy students like you
-  and I. 
-  
+  and I.
+
 TrackIt@NUS is a desktop app for managing modules, lessons, tasks, and contacts, tailored to the needs of NUS students and
   optimized for use via a **Command Line Interface (CLI)** while still having the benefits of a **Graphical User
    Interface (GUI)**. If you can type fast, you will be able to manage your academic and social commitments much faster
     than by using other traditional GUI apps.
-    
+
 What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) to learn more!
 
 ## Quick start <a name="quick-start"></a>
@@ -47,7 +47,7 @@ What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) 
 
 1. Copy the file to the folder you want to use as the home folder for **TrackIt@NUS**.
 
-1. Double-click the file to start the app. The GUI shown below should appear in a few seconds. 
+1. Double-click the file to start the app. The GUI shown below should appear in a few seconds.
 
 ![Ui](images/Ui.png)
 
