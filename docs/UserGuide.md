@@ -1,16 +1,27 @@
----
-layout: page
-title: User Guide
----
+# TrackIt@NUS - User Guide
 
-TrackIt@NUS is a **desktop app for managing tasks and contacts, tailored to NUS students and optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, TrackIt@NUS can get your contact and task management tasks done faster than traditional GUI apps.
+By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 
-* Table of Contents
-{:toc}
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Quick Start](#quick-start)
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start
+## Introduction <a name="introduction"></a>
+
+Welcome to the **TrackIt@NUS** user-guide!
+
+Do you want to balance schoolwork and having a social life, but dislike having to use 3 different
+ apps to keep track of everything? Then look no further! TrackIt@NUS is a one-stop solution for busy students like you
+  and I. TrackIt@NUS is a desktop app for managing modules, lessons, tasks, and contacts, tailored to the needs of NUS students and
+  optimized for use via a **Command Line Interface (CLI)** while still having the benefits of a Graphical User
+   Interface (GUI). If you can type fast, you will be able to manage your academic and social commitments much faster
+    than other traditional GUI apps.
+    
+What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) to learn more!
+
+## Quick start <a name="quick-start"></a>
 
 1. Ensure you have Java 11 or above on your Computer.
 
