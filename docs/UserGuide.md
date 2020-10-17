@@ -5,6 +5,11 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Quick Start](#quick-start)
+3. [About](#about)
+    1. [Common Symbols](#common-symbols)
+    2. [Command Format](#command-format)
+4. [Features](#features)
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -14,46 +19,57 @@ Welcome to the **TrackIt@NUS** user-guide!
 
 Do you want to balance schoolwork and having a social life, but dislike having to use 3 different
  apps to keep track of everything? Then look no further! TrackIt@NUS is a one-stop solution for busy students like you
-  and I. TrackIt@NUS is a desktop app for managing modules, lessons, tasks, and contacts, tailored to the needs of NUS students and
-  optimized for use via a **Command Line Interface (CLI)** while still having the benefits of a Graphical User
-   Interface (GUI). If you can type fast, you will be able to manage your academic and social commitments much faster
-    than other traditional GUI apps.
+  and I. 
+  
+TrackIt@NUS is a desktop app for managing modules, lessons, tasks, and contacts, tailored to the needs of NUS students and
+  optimized for use via a **Command Line Interface (CLI)** while still having the benefits of a **Graphical User
+   Interface (GUI)**. If you can type fast, you will be able to manage your academic and social commitments much faster
+    than by using other traditional GUI apps.
     
 What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) to learn more!
 
 ## Quick start <a name="quick-start"></a>
 
-1. Ensure you have Java 11 or above on your Computer.
+1. Ensure you have **Java 11** or above on your Computer.
 
-1. Clone  repository onto your computer from [here](https://github.com/AY2021S1-CS2103T-W13-4/tp)
+1. Download the latest version of **TrackIt@NUS** from [here](https://github.com/AY2021S1-CS2103T-W13-4/tp/releases/tag/v1.2).
 
-1. Import the Project with Gradle and run. You should see this
+1. Copy the file to the folder you want to use as the home folder for **TrackIt@NUS**.
 
-1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
-1. Refer to the [Features](#features) below for details of each command.
+1. Double-click the file to start the app. The GUI shown below should appear in a few seconds. 
+
+![Ui](images/Ui.png)
+
+1. You are now on the home page of **TrackIt@NUS**.
+
+1. At the bottom of the screen, type your command in the Command Box (see [Features](#features) for more info) and
+ press `Enter` on your keyboard to execute it.
+
+## About <a name="about"></a>
+
+### Common Symbols <a name="common-symbols"></a>
+
+| Symbol | Description |
+| --- | ----------- |
+| :information_source: | Something important to take note of |
+| :bulb: | A tip is being mentioned |
+| :warning: | Something to be careful of |
+
+### Command Format <a name="command-format"></a>
+
+| **Format** | **Meaning** | **Example** |
+| ----- | -------- | -------------- |
+| `lower_case/` | These are **prefixes** and are used to separate the different parameters of a command | `n/`, `d/`, `t/` |
+| `UPPER_CASE` | These are **parameters** and need to be supplied to complete certain commands | `C add n/John ...` |
+| `[UPPER_CASE]` |  These are **optional parameters** | `C add n/John ...` or `C add n/John t/Friend ...` both work |
+| `…`​ | These are parameters that can be used **multiple times** or **none at all** | `C add n/John t/Brother-in-law t/Colleague t/Friend ...` |
+
+Parameters can be in any order.<br>
+  e.g. if the command specifies `n/{name} p/{phone_number}`, `p/{phone_number} n/{name}` is also acceptable.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
-
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Notes about the command format:**<br>
-
-* Words in `{}` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/{name}`, `name` is a parameter which can be used as `add n/John Doe`.
-
-* Items in square brackets are optional.<br>
-  e.g `n/{name} [t/{tag}]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/{tag}]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
-
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `n/{name} p/{phone_number}`, `p/{phone_number} n/{name}` is also acceptable.
-
-</div>
+## Features <a name="features"></a>
 
 ## Module
 
