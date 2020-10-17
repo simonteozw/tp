@@ -9,6 +9,12 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     1. [Common Symbols](#common-symbols)
     2. [Command Format](#command-format)
 4. [Features](#features)
+    1. [Module](#module)
+    2. [Task](#task)
+    3. [Lesson](#lesson)
+    4. [Contact](#contact)
+5. [FAQ](#faq)
+6. [Command Summary](#command-summary)
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -71,182 +77,217 @@ Parameters can be in any order.<br>
 
 ## Features <a name="features"></a>
 
-## Module
+## Module <a name="module"></a>
 
 ### View
-For: Shows the information about a module.
+For: Show the information about a module.
 
-Format: `M info m/{module_code}`
+Format: `M info INDEX`
 
-Examples: `M info m/CS1231S`
+Examples: `M info 1`
+
+Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Module list.
+
 
 ### Add
 
 For: Add a new module.
 
-Format: `M add m/{module_code} n/{name} d/{description}`
-Examples: `M add m/CS1231S n/Discrete Structures d/Introductory mathematical tools required for computer science`
+Format: `M add m/MODULE_CODE n/NAME d/DESCRIPTION`
+
+Examples: `M add m/CS1231S n/Discrete Structures d/Introductory mathematical tools required for Computer Science`
 
 ### Edit
-For: Edit a module.
+For: Edit the specified module.
 
-Format: `M edit `
+Format: `M edit INDEX [m/MODULE_CODE] [n/NAME] [d/DESCRIPTION]`
 
-Examples: `M edit m/CS1231S  n/Discrete Structures d/Introductory mathematical tools`
+Examples: `M edit 1 m/CS1231S n/Discrete Mathematics d/Introductory mathematical tools`
+
+Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Module list. At least 1
+ field must be provided for editing. i.e. `M edit 1` is not allowed.
 
 ### Delete
-For: Delete a module
+For: Delete a module.
 
-Format: `M delete m/{module_code}`
+Format: `M delete INDEX`
 
-Examples: `M delete m/CS1231S`
+Examples: `M delete 1`
 
-## Task
+Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Module list.
+
+## Task <a name="task"></a>
 
 ### View
-Description: Shows the information about a task.
+Description: Show the information about a task.
 
-Format: `T info n/{name}`
+Format: `T info INDEX`
 
-Examples: `T info n/CS2100 midterm`
+Examples: `T info 1`
+
+Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Module list.
 
 ### Add
-Description: Adds a task to TrackIt@NUS
+Description: Add a new task.
 
-Format: `T add n/{task name} d/{task date} a/{location} w/{weightage} r/{remark}`
+Format: `T add n/NAME d/DATE a/LOCATION w/WEIGHTAGE r/REMARK`
 
-Examples: `T add n/Assignment 1 due d/20/11/2020 a/NUS w/20 r/Focus on Chapters 1-3`
+Examples: `T add n/Assignment 1 d/20/11/2020 a/NUS w/20 r/Focus on Chapters 1-3`
+
+Remark: The `DATE` provided must be in the form `dd/MM/yyyy`. The `WEIGHTAGE` provided must be a number.
 
 ### Edit
-Description: Edits the detail of a task.
+Description: Edit the specified task.
 
-Format: `T edit {event_index} n/{event name} d/{event date}`
+Format: `T edit INDEX [n/NAME] [d/DATE] [a/LOCATION] [w/WEIGHTAGE] [r/REMARK]`
 
-Examples: `T edit 1 n/Assignment 1 due t/22/11/2020`
+Examples: `T edit 1 n/Assignment 1 s/22/11/2020`
+
+Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Task list. At least 1
+ field must be provided for editing. i.e. `T edit 1` is not allowed.
 
 ### Delete
-Description: Deletes a task from the list.
+Description: Deletes a task.
 
-Format: `T delete {event_index}`
+Format: `T delete INDEX`
 
 Examples: `T delete 2`
 
+Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Module list.
+
 ### List
-Description: Lists all events.
+Description: Lists all tasks.
 
 Format: `T list`
 
 Examples: `T list`
 
-## Lesson
+## Lesson <a name="lesson"></a>
 
 ### View
 For: Shows the information about a lesson
 
-Format: `L info m/{module_code} t/{type}`
+Format: `L info m/MODULE_CODE n/TYPE`
 
 Examples:
-* `L info m/CS2103T t/tutorial`
-* `L info m/CS2103T t/lesson`
+* `L info INDEX`
+* `L info 1`
+
+Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Lesson list.
 
 ### Add
-For: Add a lesson to a module. The module needs to be existing prior to adding.
+For: Add a lesson to a module.
 
-Format: `L add m/{module_code} n/{type} t/{time} v/{venue or Zoom link}`
+Format: `L add m/MODULE_CODE n/TYPE d/DATE a/LOCATION w/WEIGHTAGE`
 
-`{time}` : the time of the first lesson of that type in this semester
+Examples: `L add m/CS2103T n/tutorial t/01/08/2019 d/11/12/2020 a/COM1 w/25`
 
-Examples: `L add m/CS2103T n/tutorial t/01/08/2019 4pm-6pm v/COM1`
+Remark: The module needs to be existing prior to adding. `TYPE` must be one of the following:
+* `lecture`
+* `tutorial`
+* `lab`
+* `sectional`
 
 ### Edit
 
 For: Edit the detail of a lesson
 
-Format: `L edit m/{module_code} [n/{type}] [t/{time}] [v/{venue or Zoom link}]`
+Format: `L edit INDEX [m/MODULE_CODE] [n/TYPE] [d/DATE] [a/LOCATION] [w/WEIGHTAGE]`
 
-Examples: `L edit m/CS2103T n/tutorial t/02/08/2019 4pm-6pm v/COM1`
+Examples: `L edit 1 m/CS2103T n/tutorial t/02/08/2019`
+
+Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Lesson list. At least 1
+ field must be provided for editing. i.e. `L edit 1` is not allowed.
 
 ### Delete
 For: Delete all lessons of that type
 
-Format: `L delete m/{module_code} n/{type}`
+Format: `L delete INDEX`
 
-Examples: `L delete m/CS2103T n/tutorial`
+Examples: `L delete 1`
 
+Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Lesson list.
 
 ### List
 For: List all lessons (of all module or of a single module)
 
-Format: `L list m/{module_code}`
+Format: `L list [m/MODULE_CODE]`
 
-Examples: `L list m/CS2103T`
+Examples: `L list m/CS2103T` or `L list`
 
-## Contact
-
-### View
-
-For: Shows the specific details of the specified contact.
-
-Format: `C info n/{name}`
+## Contact <a name="contact"></a>
 
 ### Add
 
 For: Adds the contact to TrackIt@NUS.
 
-Format: `C add n/{name} p/{phone_number} e/{email} a/{address} [t/{tag}]...`
+Format: `C add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
 
 Examples:
 
 * `C add n/John Doe p/98765432 e/jon@jon.com a/Sesame Street t/Brother`
-* `C add n/Rajesh Kumar p/98762342 e/raj@law.com a/UOB Tower t/criminal lawyer`
+* `C add n/Rajesh Kumar p/98762342 e/raj@law.com a/UOB Tower t/Friend`
 
 ### Edit
 
-For: Edits the contact with the specified index.
-* Index must be positive and must be within range of number of contacts in listing
-* At least 1 of the optional arguments show above must be present
-* Arguments not present will remain unchanged
-* When editing tags, existing tags of contact will be removed (i.e. adding tags is not cumulative
-* Can remove all tags by typing t/ without any tags following it
+For: Edits the specified contact.
 
-Format: `C edit {index} [n/{name}] [p/{phone_number}] [e/{email}] [a/{address}] [t/{tag}]s...`
+Format: `C edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
 
 Examples:
 * `C edit 1 n/Johnny Depp p/98999899`
-* `C edit 2 n/Batman e/batman@justiceleague.com`
+* `C edit 2 n/Batman e/batman@justiceleague.com t/Superhero`
+
+Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Contact list. At least 1
+ field must be provided for editing. i.e. `L edit 1` is not allowed.
+ 
+:warning: When editing tags, existing tags of contact will be removed (i.e. adding tags is not cumulative)
+
+:bulb: Can remove all tags by typing t/ without any tags following it
 
 ### Delete
 
 For: Deletes the contact with the specified index.
 
-Format: `C delete {index}} `
+Format: `C delete INDEX`
 
-Examples: `C delete 1 `
+Examples: `C delete 1`
+
+Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Contact list.
 
 ### List
 For: Lists out all contacts.
 
 Format: `C list`
 
-## Clearing all contacts : `clear`
+Example: `C list`
 
-Clears all contacts from the address book.
+### Clear
 
-Format: `clear`
+For: Delete all contacts.
+
+Format: `C clear`
+
+Examples: `C clear`
 
 ## Exiting the program : `exit`
 
-Exits the program.
+For: Exit the program.
 
 Format: `exit`
 
+Examples: `exit`
+
 ## Saving the data
 
-TrackIt@NUS data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+TrackIt@NUS data is saved in the hard disk automatically after any command that changes the data. There is no need to
+ save manually.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## FAQ
+## FAQ <a name="faq"></a>
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+
+## Command Summary <a name="command-summary"></a>
