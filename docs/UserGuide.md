@@ -76,7 +76,7 @@ What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) 
 | `…`​ | These are parameters that can be used **multiple times** or **none at all** | `C add n/John t/Brother-in-law t/Colleague t/Friend ...` |
 
 Parameters can be in any order.<br>
-  e.g. if the command specifies `n/{name} p/{phone_number}`, `p/{phone_number} n/{name}` is also acceptable.
+  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -85,109 +85,92 @@ Parameters can be in any order.<br>
 ## Module <a name="module"></a>
 
 ### View
-For: Show the information about a module.
+For: Show information about the module with the specified `MODULE_CODE`.
 
-Format: `M info INDEX`
+Format: `M info m/MODULE_CODE`
 
-Examples: `M info 1`
+Examples: `M info m/CS2103T`
 
-Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Module list.
-
+Remark: The `MODULE_CODE` provided must be present in the Module list.
 
 ### Add
 
 For: Add a new module.
 
-Format: `M add m/MODULE_CODE n/NAME d/DESCRIPTION`
+Format: `M add m/MODULE_CODE n/NAME`
 
-Examples: `M add m/CS1231S n/Discrete Structures d/Introductory mathematical tools required for Computer Science`
+Examples: `M add m/CS1231S n/Discrete Structures`
 
 ### Edit
-For: Edit the specified module.
+For: Edit the module with the specified `MODULE_CODE`.
 
-Format: `M edit INDEX [m/MODULE_CODE] [n/NAME] [d/DESCRIPTION]`
+Format: `M edit m/MODULE_CODE [m/NEW_MODULE_CODE] [n/NAME]`
 
-Examples: `M edit 1 m/CS1231S n/Discrete Mathematics d/Introductory mathematical tools`
+Examples: `M edit m/CS1231S m/CS1101S n/Programming Methodology`
 
-Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Module list. At least 1
- field must be provided for editing. i.e. `M edit 1` is not allowed.
+Remark: The `MODULE_CODE` provided must be present in the Module list. At least 1
+ field must be provided for editing. i.e. `M edit m/CS2100` is not allowed.
 
 ### Delete
-For: Delete a module.
+For: Delete a module with the specified `MODULE_CODE`.
 
-Format: `M delete INDEX`
+Format: `M delete m/MODULE_CODE`
 
-Examples: `M delete 1`
+Examples: `M delete m/CS2100`
 
-Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Module list.
+Remark: The `MODULE_CODE` provided must be present in the Module list.
 
 ## Task <a name="task"></a>
 
 ### View
-Description: Show the information about a task.
+For: Show the information about a task.
 
 Format: `T info INDEX`
 
 Examples: `T info 1`
 
-Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Module list.
+Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Task list.
 
 ### Add
-Description: Add a new task.
+For: Add a new task.
 
-Format: `T add n/NAME d/DATE a/LOCATION w/WEIGHTAGE r/REMARK`
+Format: `T add n/NAME d/DATE [m/MODULE_CODE] [r/REMARK]`
 
-Examples: `T add n/Assignment 1 d/20/11/2020 a/NUS w/20 r/Focus on Chapters 1-3`
+Examples: `T add n/Assignment 1 d/20/11/2020 r/Focus on Chapters 1-3`
 
-Remark: The `DATE` provided must be in the form `dd/MM/yyyy`. The `WEIGHTAGE` provided must be a number.
+Remark: A task can either belong to a module or not. Hence, the `MODULE_CODE` is optional. The `DATE` provided must
+ be in the form `dd/MM/yyyy`.
 
 ### Edit
-Description: Edit the specified task.
+For: Edit the task with the specified `INDEX`.
 
-Format: `T edit INDEX [n/NAME] [d/DATE] [a/LOCATION] [w/WEIGHTAGE] [r/REMARK]`
+Format: `T edit INDEX [n/NAME] [d/DATE] [m/MODULE_CODE] [r/REMARK]`
 
-Examples: `T edit 1 n/Assignment 1 s/22/11/2020`
+Examples: `T edit 1 n/Assignment 1 d/22/11/2020`
 
 Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Task list. At least 1
  field must be provided for editing. i.e. `T edit 1` is not allowed.
 
 ### Delete
-Description: Deletes a task.
+For: Delete the task with the specified `INDEX`.
 
 Format: `T delete INDEX`
 
 Examples: `T delete 2`
 
-Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Module list.
-
-### List
-Description: Lists all tasks.
-
-Format: `T list`
-
-Examples: `T list`
+Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Task list.
 
 ## Lesson <a name="lesson"></a>
-
-### View
-For: Shows the information about a lesson
-
-Format: `L info m/MODULE_CODE n/TYPE`
-
-Examples:
-* `L info INDEX`
-* `L info 1`
-
-Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Lesson list.
 
 ### Add
 For: Add a lesson to a module.
 
-Format: `L add m/MODULE_CODE n/TYPE d/DATE a/LOCATION w/WEIGHTAGE`
+Format: `L add m/MODULE_CODE n/TYPE d/DATE a/LOCATION`
 
-Examples: `L add m/CS2103T n/tutorial t/01/08/2019 d/11/12/2020 a/COM1 w/25`
+Examples: `L add m/CS2103T n/tutorial d/2pm - 3pm Wed a/COM1`
 
-Remark: The module needs to be existing prior to adding. `TYPE` must be one of the following:
+Remark: The module must exist prior to adding a lesson. `DATE` must be of the form `START_TIME - END_TIME DAY_OF_WEEK`.`TYPE` must be one of
+ the following:
 * `lecture`
 * `tutorial`
 * `lab`
@@ -197,9 +180,9 @@ Remark: The module needs to be existing prior to adding. `TYPE` must be one of t
 
 For: Edit the detail of a lesson
 
-Format: `L edit INDEX [m/MODULE_CODE] [n/TYPE] [d/DATE] [a/LOCATION] [w/WEIGHTAGE]`
+Format: `L edit INDEX [m/MODULE_CODE] [n/TYPE] [d/DATE] [a/LOCATION]`
 
-Examples: `L edit 1 m/CS2103T n/tutorial t/02/08/2019`
+Examples: `L edit 1 m/CS2103T n/tutorial d/2pm - 3pm Monday`
 
 Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Lesson list. At least 1
  field must be provided for editing. i.e. `L edit 1` is not allowed.
@@ -213,38 +196,31 @@ Examples: `L delete 1`
 
 Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Lesson list.
 
-### List
-For: List all lessons (of all module or of a single module)
-
-Format: `L list [m/MODULE_CODE]`
-
-Examples: `L list m/CS2103T` or `L list`
-
 ## Contact <a name="contact"></a>
 
 ### Add
 
-For: Adds the contact to TrackIt@NUS.
+For: Add a new contact.
 
-Format: `C add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
+Format: `C add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]...`
 
 Examples:
 
-* `C add n/John Doe p/98765432 e/jon@jon.com a/Sesame Street t/Brother`
-* `C add n/Rajesh Kumar p/98762342 e/raj@law.com a/UOB Tower t/Friend`
+* `C add n/John Doe p/98765432 e/jon@jon.com t/Brother`
+* `C add n/Rajesh Kumar p/98762342 e/raj@law.com t/Friend`
 
 ### Edit
 
 For: Edits the specified contact.
 
-Format: `C edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
+Format: `C edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...`
 
 Examples:
 * `C edit 1 n/Johnny Depp p/98999899`
-* `C edit 2 n/Batman e/batman@justiceleague.com t/Superhero`
+* `C edit 2 n/Sam e/sam@gmail.com t/Colleague`
 
 Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Contact list. At least 1
- field must be provided for editing. i.e. `L edit 1` is not allowed.
+ field must be provided for editing. i.e. `C edit 1` is not allowed.
  
 :warning: When editing tags, existing tags of contact will be removed (i.e. adding tags is not cumulative)
 
@@ -259,21 +235,6 @@ Format: `C delete INDEX`
 Examples: `C delete 1`
 
 Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Contact list.
-
-### List
-For: Lists out all contacts.
-
-Format: `C list`
-
-Example: `C list`
-
-### Clear
-
-For: Delete all contacts.
-
-Format: `C clear`
-
-Examples: `C clear`
 
 ## Getting help
 
@@ -301,7 +262,8 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 ## FAQ <a name="faq"></a>
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
+ the data of your previous TrackIt@NUS home folder.
 
 ## Command Summary <a name="command-summary"></a>
 
@@ -309,40 +271,35 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 
 | Command | Example |
 | ---- | ------ |
-| **View:** `M info INDEX` | `M info 1` |
-| **Add:** `M add m/MODULE_CODE n/NAME d/DESCRIPTION` | `M add m/CS2100 n/Computer Organisation d/Learning about hardware` |
-| **Edit:** `M edit INDEX [m/MODULE_CODE] [n/NAME] [d/DESCRIPTION]` | `M edit 1 n/Discrete Mathematics` |
-| **Delete:** `M delete INDEX` | `M delete 1` |
+| **View:** `M info m/MODULE_CODE` | `M info m/CS2100` |
+| **Add:** `M add m/MODULE_CODE n/NAME` | `M add m/CS2100 n/Computer Organisation` |
+| **Edit:** `M edit m/MODULE_CODE [m/NEW_MODULE_CODE] [n/NAME]` | `M edit m/CS1231S n/Discrete Mathematics` |
+| **Delete:** `M delete m/MODULE_CODE` | `M delete m/CS1101S` |
 
 ### Task <a name="task-commands"></a>
 
 | Command | Example |
 | ---- | ------ |
 | **View:** `T info INDEX` | `T info 1` |
-| **Add:** `T add n/NAME d/DATE a/LOCATION w/WEIGHTAGE r/REMARK` | `T add n/Assignment 1 d/20/11/2020 a/NUS w/20 r/Focus on Chapters 1-3` |
-| **Edit:** `T edit [n/NAME] [d/DATE] [a/LOCATION] [w/WEIGHTAGE] [r/REMARK]` | `T edit 1 n/Finish Assignment` |
+| **Add:** `T add n/NAME d/DATE [m/MODULE_CODE] [r/REMARK]` | `T add n/Assignment 1 d/20/11/2020 r/Focus on Chapters 1-3` |
+| **Edit:** `T edit INDEX [n/NAME] [d/DATE] [m/MODULE_CODE] [r/REMARK]` | `T edit 1 n/Finish Assignment` |
 | **Delete:** `T delete INDEX` | `T delete 1` |
-| **List:** `T list` | `T list` |
 
 ### Lesson <a name="lesson-commands"></a>
 
 | Command | Example |
 | ---- | ------ |
-| **View:** `L info INDEX` | `L info 1` |
-| **Add:** `L add m/MODULE_CODE n/TYPE d/DATE a/LOCATION w/WEIGHTAGE` | `L add m/CS2103T n/tutorial t/01/08/2019 d/11/12/2020 a/COM1 w/25` |
-| **Edit:** `L edit [m/MODULE_CODE] [n/TYPE] [d/DATE] [a/LOCATION] [w/WEIGHTAGE]` | `L edit 1 d/12/12/2020` |
+| **Add:** `L add m/MODULE_CODE n/TYPE d/DATE a/LOCATION` | `L add m/CS2103T n/tutorial d/2pm - 3pm Wed a/COM1` |
+| **Edit:** `L edit INDEX [m/MODULE_CODE] [n/TYPE] [d/DATE] [a/LOCATION]` | `L edit 1 a/LT17` |
 | **Delete:** `L delete INDEX` | `L delete 1` |
-| **List:** `L list [m/MODULE_CODE]` | `L list` |
 
 ### Contact <a name="contact-commands"></a>
 
 | Command | Example |
 | ------ | ---------- |
-| **Add:** `C add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` | `C add n/John Doe p/98765432 e/jon@jon.com a/Sesame Street t/Brother` |
-| **Edit:** `C edit INDEX n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` | `C edit 1 n/Johnny Depp p/98999899` |
+| **Add:** `C add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]...` | `C add n/John Doe p/98765432 e/jon@jon.com t/Brother` |
+| **Edit:** `C edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...` | `C edit 1 n/Johnny Depp p/98999899` |
 | **Delete:** `C delete INDEX` | `C delete 1` |
-| **List:** `C list` | `C list` |
-| **Clear:** `C clear` | `C clear` |
 
 ### General <a name="general-commands"></a>
 
