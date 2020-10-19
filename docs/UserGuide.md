@@ -97,6 +97,12 @@ What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) 
 
 ## Features <a name="features"></a>
 
+![Module](images/Module.png)
+
+A sample of CS2030's module page in TrackIt@NUS. The relevant lessons, tasks, and contacts are all shown as well. 
+
+:information_source: Lessons, tasks, and contacts are all linked closely to a module
+
 ## Module <a name="module"></a>
 
 ### View
@@ -128,7 +134,7 @@ Remark: The `MODULE_CODE` provided must be present in the Module list. At least 
  field must be provided for editing. i.e. `M edit m/CS2100` is not allowed.
 
 ### Delete
-For: Delete a module with the specified `MODULE_CODE`.
+For: Delete the module with the specified `MODULE_CODE`.
 
 Format: `M delete m/MODULE_CODE`
 
@@ -161,17 +167,17 @@ Format: `L edit INDEX [m/MODULE_CODE] [n/TYPE] [d/DATE] [a/LOCATION]`
 
 Examples: `L edit 1 m/CS2103T n/tutorial d/2pm - 3pm Monday`
 
-Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Lesson list. At least 1
+Remark: The `INDEX` provided must be positive and cannot be larger than the number of Lessons. At least 1
  field must be provided for editing. i.e. `L edit 1` is not allowed.
 
 ### Delete
-For: Delete all lessons of that type
+For: Delete the lesson with the specified `INDEX`
 
 Format: `L delete INDEX`
 
 Examples: `L delete 1`
 
-Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Lesson list.
+Remark: The `INDEX` provided must be positive and cannot be larger than number of Lessons.
 
 ## Task <a name="task"></a>
 
@@ -183,7 +189,7 @@ Format: `T view INDEX`
 
 Examples: `T view 1`
 
-Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Task list.
+Remark: The `INDEX` provided must be positive and cannot be larger than the number of Tasks.
 
 ### Add
 For: Add a new task.
@@ -202,7 +208,7 @@ Format: `T edit INDEX [n/NAME] [d/DATE] [m/MODULE_CODE] [r/REMARK]`
 
 Examples: `T edit 1 n/Assignment 1 d/22/11/2020`
 
-Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Task list. At least 1
+Remark: The `INDEX` provided must be positive and cannot be larger than number of Tasks. At least 1
  field must be provided for editing. i.e. `T edit 1` is not allowed.
 
 ### Delete
@@ -212,7 +218,7 @@ Format: `T delete INDEX`
 
 Examples: `T delete 2`
 
-Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Task list.
+Remark: The `INDEX` provided must be positive and cannot be larger than the number of Tasks.
 
 ## Contact <a name="contact"></a>
 
@@ -229,7 +235,7 @@ Examples:
 
 ### Edit
 
-For: Edits the specified contact.
+For: Edit the contact with the specified index.
 
 Format: `C edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...`
 
@@ -237,7 +243,7 @@ Examples:
 * `C edit 1 n/Johnny Depp p/98999899`
 * `C edit 2 n/Sam e/sam@gmail.com t/Colleague`
 
-Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Contact list. At least 1
+Remark: The `INDEX` provided must be positive and cannot be larger than the number of Contacts. At least 1
  field must be provided for editing. i.e. `C edit 1` is not allowed.
  
 :warning: When editing tags, existing tags of contact will be removed (i.e. adding tags is not cumulative)
@@ -246,13 +252,13 @@ Remark: The `INDEX` provided must be positive and cannot be larger than the leng
 
 ### Delete
 
-For: Deletes the contact with the specified index.
+For: Delete the contact with the specified index.
 
 Format: `C delete INDEX`
 
 Examples: `C delete 1`
 
-Remark: The `INDEX` provided must be positive and cannot be larger than the length of the Contact list.
+Remark: The `INDEX` provided must be positive and cannot be larger than the number of Contacts.
 
 ## Searching the app <a name="search"></a>
 
