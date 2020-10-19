@@ -1,15 +1,21 @@
 package trackitnus.ui;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Box;
 import javafx.stage.Stage;
 import trackitnus.commons.core.GuiSettings;
 import trackitnus.commons.core.LogsCenter;
@@ -38,23 +44,25 @@ public class MainWindow extends UiPart<Stage> {
 
     private final Stage primaryStage;
     private final Logic logic;
-    private final HelpWindow helpWindow;
+//    private final HelpWindow helpWindow;
 
     // Independent Ui parts residing in this Ui container
-    private LessonListPanel lessonListPanel;
+
+//    private LessonListPanel lessonListPanel;
     private TaskListPanel taskListPanel;
     private ModuleListPanel moduleListPanel;
     private ContactListPanel contactListPanel;
 
     private ResultDisplay resultDisplay;
+
     @FXML
     private StackPane commandBoxPlaceholder;
 
-    @FXML
-    private MenuItem helpMenuItem;
+//    @FXML
+//    private MenuItem helpMenuItem;
 
-    @FXML
-    private StackPane lessonListPanelPlaceholder;
+//    @FXML
+//    private StackPane lessonListPanelPlaceholder;
 
     @FXML
     private StackPane taskListPanelPlaceholder;
@@ -72,7 +80,13 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane statusbarPlaceholder;
 
     @FXML
-    private TabPane tabPane;
+    private BorderPane borderPane;
+
+    @FXML
+    private StackPane sidePanelPlaceholder;
+
+    @FXML
+    private StackPane tabPanelPlaceholder;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -87,18 +101,18 @@ public class MainWindow extends UiPart<Stage> {
         // Configure the UI
         setWindowDefaultSize(logic.getGuiSettings());
 
-        setAccelerators();
+//        setAccelerators();
 
-        helpWindow = new HelpWindow();
+//        helpWindow = new HelpWindow();
     }
 
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
-    private void setAccelerators() {
-        setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
-    }
+//    private void setAccelerators() {
+//        setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
+//    }
 
     /**
      * Sets the accelerator of a MenuItem.
@@ -136,17 +150,17 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
 
-        lessonListPanel = new LessonListPanel(logic.getFilteredLessonList());
-        lessonListPanelPlaceholder.getChildren().add(lessonListPanel.getRoot());
+//        lessonListPanel = new LessonListPanel(logic.getFilteredLessonList());
+//        lessonListPanelPlaceholder.getChildren().add(lessonListPanel.getRoot());
 
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
-        taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
 
         moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList());
-        moduleListPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
 
         contactListPanel = new ContactListPanel(logic.getFilteredContactList());
-        contactListPanelPlaceholder.getChildren().add(contactListPanel.getRoot());
+
+        switchTab("C");
+        sidePanelPlaceholder.getChildren().add(new SidePanel(this::switchTab).getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -156,6 +170,21 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+    }
+
+    private void switchTab(String tabName) {
+        logger.info("Switching tab to: " + tabName);
+        tabPanelPlaceholder.getChildren().clear();
+
+        if (tabName.equals("M")) {
+            tabPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
+        }
+        if (tabName.equals("C")) {
+            tabPanelPlaceholder.getChildren().add(contactListPanel.getRoot());
+        }
+        if (tabName.equals("T")) {
+            tabPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+        }
     }
 
     /**
@@ -170,17 +199,17 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
-    /**
-     * Opens the help window or focuses on it if it's already opened.
-     */
-    @FXML
-    public void handleHelp() {
-        if (!helpWindow.isShowing()) {
-            helpWindow.show();
-        } else {
-            helpWindow.focus();
-        }
-    }
+//    /**
+//     * Opens the help window or focuses on it if it's already opened.
+//     */
+//    @FXML
+//    public void handleHelp() {
+//        if (!helpWindow.isShowing()) {
+//            helpWindow.show();
+//        } else {
+//            helpWindow.focus();
+//        }
+//    }
 
     void show() {
         primaryStage.show();
@@ -194,27 +223,28 @@ public class MainWindow extends UiPart<Stage> {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
             (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
-        helpWindow.hide();
+//        helpWindow.hide();
         primaryStage.hide();
     }
 
-    private void changeTabOnCommandEntered(String commandText) {
-        String type = String.valueOf(commandText.charAt(0));
-        switch (type) {
-        case Task.TYPE: //Go to Task tab
-        case Lesson.TYPE: //Go to Lessons tab
-            tabPane.getSelectionModel().select(0);
-            break;
-        case Module.TYPE: //Go to Modules tab
-            tabPane.getSelectionModel().select(1);
-            break;
-        case Contact.TYPE: //Go to Contacts tab
-            tabPane.getSelectionModel().select(2);
-            break;
-        default:
-            break;
-        }
-    }
+
+//    private void changeTabOnCommandEntered(String commandText) {
+//        String type = String.valueOf(commandText.charAt(0));
+//        switch (type) {
+//        case Task.TYPE: //Go to Task tab
+//        case Lesson.TYPE: //Go to Lessons tab
+//            tabPane.getSelectionModel().select(0);
+//            break;
+//        case Module.TYPE: //Go to Modules tab
+//            tabPane.getSelectionModel().select(1);
+//            break;
+//        case Contact.TYPE: //Go to Contacts tab
+//            tabPane.getSelectionModel().select(2);
+//            break;
+//        default:
+//            break;
+//        }
+//    }
 
     /**
      * Executes the command and returns the result.
@@ -223,18 +253,18 @@ public class MainWindow extends UiPart<Stage> {
      */
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
-            changeTabOnCommandEntered(commandText);
+//            changeTabOnCommandEntered(commandText);
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
-            if (commandResult.isShowHelp()) {
-                handleHelp();
-            }
-
-            if (commandResult.isExit()) {
-                handleExit();
-            }
+//            if (commandResult.isShowHelp()) {
+//                handleHelp();
+//            }
+//
+//            if (commandResult.isExit()) {
+//                handleExit();
+//            }
 
             return commandResult;
         } catch (CommandException | ParseException e) {
