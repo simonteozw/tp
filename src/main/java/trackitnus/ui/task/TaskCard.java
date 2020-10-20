@@ -26,8 +26,6 @@ public class TaskCard extends UiPart<Region> {
     @FXML
     private Label address;
     @FXML
-    private Label weightage;
-    @FXML
     private Label remark;
 
     /**
@@ -40,7 +38,6 @@ public class TaskCard extends UiPart<Region> {
         name.setText(task.getName().toString());
         date.setText(task.getDate().toString());
         address.setText(task.getAddress().toString());
-        weightage.setText(String.valueOf(task.getWeightage()));
         remark.setText(task.getRemark());
     }
 

@@ -21,7 +21,6 @@ public class JsonAdaptedTask {
     private final String name;
     private final String date;
     private final String address;
-    private final String weightage;
     private final String remark;
 
     /**
@@ -29,12 +28,10 @@ public class JsonAdaptedTask {
      */
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("date") String date,
-                           @JsonProperty("address") String address, @JsonProperty("weightage") String weightage,
-                           @JsonProperty("remark") String remark) {
+                           @JsonProperty("address") String address, @JsonProperty("remark") String remark) {
         this.name = name;
         this.date = date;
         this.address = address;
-        this.weightage = weightage;
         this.remark = remark;
     }
 
@@ -45,7 +42,6 @@ public class JsonAdaptedTask {
         name = source.getName().fullName;
         date = source.getDate().format(Task.FORMATTER);
         address = source.getAddress().value;
-        weightage = Double.toString(source.getWeightage());
         remark = source.getRemark();
     }
 
@@ -83,20 +79,10 @@ public class JsonAdaptedTask {
         }
         final Address modelAddress = new Address(address);
 
-        if (weightage == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Weightage"));
-        }
-        try {
-            Double.parseDouble(weightage);
-        } catch (NumberFormatException e) {
-            throw new IllegalValueException(Task.WEIGHTAGE_MESSAGE_CONSTRAINTS);
-        }
-        final double modelWeightage = Double.parseDouble(weightage);
-
         if (remark == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Remark"));
         }
         final String modelRemark = remark;
-        return new Task(modelName, modelDate, modelAddress, modelWeightage, modelRemark);
+        return new Task(modelName, modelDate, modelAddress, modelRemark);
     }
 }

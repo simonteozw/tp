@@ -16,16 +16,15 @@ import trackitnus.model.commons.Name;
 public class Task {
     public static final String TYPE = "T";
 
-    public static final String DATE_MESSAGE_CONSTRAINTS = "Date should be in the format d/MM/yyyy";
+    public static final String DATE_MESSAGE_CONSTRAINTS = "Date should be in the format dd/MM/yyyy or dd/MM/yyyy hh:mm";
     public static final String WEIGHTAGE_MESSAGE_CONSTRAINTS = "Weightage should be in the"
         + " form of a floating point number";
     public static final String REMARK_MESSAGE_CONSTRAINTS = "Remarks can take any values, and it should not be blank";
-    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("d/MM/yyyy");
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     private final Name name;
     private final LocalDate date;
     private final Address address;
-    private final Double weightage;
     private final String remark;
 
     /**
@@ -34,15 +33,13 @@ public class Task {
      * @param name
      * @param date
      * @param address
-     * @param weightage
      * @param remark
      */
-    public Task(Name name, LocalDate date, Address address, Double weightage, String remark) {
-        CollectionUtil.requireAllNonNull(name, date, address, weightage, remark);
+    public Task(Name name, LocalDate date, Address address, String remark) {
+        CollectionUtil.requireAllNonNull(name, date, address, remark);
         this.name = name;
         this.date = date;
         this.address = address;
-        this.weightage = weightage;
         this.remark = remark;
     }
 
@@ -62,10 +59,6 @@ public class Task {
         return address;
     }
 
-    public Double getWeightage() {
-        return weightage;
-    }
-
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -76,18 +69,17 @@ public class Task {
             return false;
         }
 
-        Task otherLesson = (Task) other;
-        return otherLesson.name.equals(name)
-            && otherLesson.date.equals(date)
-            && otherLesson.address.equals(address)
-            && otherLesson.weightage.equals(weightage)
-            && otherLesson.remark.equals(remark);
+        Task otherTask = (Task) other;
+        return otherTask.name.equals(name)
+            && otherTask.date.equals(date)
+            && otherTask.address.equals(address)
+            && otherTask.remark.equals(remark);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, date, address, weightage, remark);
+        return Objects.hash(name, date, address, remark);
     }
 
     @Override
@@ -98,8 +90,6 @@ public class Task {
             .append(getDate())
             .append(" Address: ")
             .append(getAddress())
-            .append(" Weightage: ")
-            .append(getWeightage())
             .append(" Remarks: ")
             .append(getRemark());
         return builder.toString();

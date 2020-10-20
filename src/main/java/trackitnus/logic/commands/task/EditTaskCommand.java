@@ -35,10 +35,8 @@ public class EditTaskCommand extends Command {
         + "[" + PREFIX_NAME + "NAME] "
         + "[" + PREFIX_DATE + "DATE] "
         + "[" + PREFIX_ADDRESS + "ADDRESS] "
-        + "[" + PREFIX_WEIGHTAGE + "WEIGHTAGE] "
         + "[" + PREFIX_REMARK + "REMARK]...\n"
         + "Example: " + Task.TYPE + " " + COMMAND_WORD + " 1 "
-        + PREFIX_WEIGHTAGE + "25 "
         + PREFIX_REMARK + "New remark";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
@@ -66,10 +64,9 @@ public class EditTaskCommand extends Command {
         Name updatedName = editTaskDescriptor.getName().orElse(taskToEdit.getName());
         LocalDate updatedDate = editTaskDescriptor.getDate().orElse(taskToEdit.getDate());
         Address updatedAddress = editTaskDescriptor.getAddress().orElse(taskToEdit.getAddress());
-        Double updatedWeightage = editTaskDescriptor.getWeightage().orElse(taskToEdit.getWeightage());
         String updatedRemarks = editTaskDescriptor.getRemark().orElse(taskToEdit.getRemark());
 
-        return new Task(updatedName, updatedDate, updatedAddress, updatedWeightage, updatedRemarks);
+        return new Task(updatedName, updatedDate, updatedAddress, updatedRemarks);
     }
 
     @Override
@@ -119,7 +116,6 @@ public class EditTaskCommand extends Command {
         private Name name;
         private LocalDate date;
         private Address address;
-        private Double weightage;
         private String remark;
 
         public EditTaskDescriptor() {
@@ -133,7 +129,6 @@ public class EditTaskCommand extends Command {
             setName(toCopy.name);
             setDate(toCopy.date);
             setAddress(toCopy.address);
-            setWeightage(toCopy.weightage);
             setRemark(toCopy.remark);
         }
 
@@ -141,7 +136,7 @@ public class EditTaskCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, date, address, weightage, remark);
+            return CollectionUtil.isAnyNonNull(name, date, address, remark);
         }
 
         public Optional<Name> getName() {
@@ -158,14 +153,6 @@ public class EditTaskCommand extends Command {
 
         public void setDate(LocalDate date) {
             this.date = date;
-        }
-
-        public Optional<Double> getWeightage() {
-            return Optional.ofNullable(weightage);
-        }
-
-        public void setWeightage(Double weightage) {
-            this.weightage = weightage;
         }
 
         public Optional<String> getRemark() {
@@ -203,7 +190,6 @@ public class EditTaskCommand extends Command {
             return getName().equals(e.getName())
                 && getDate().equals(e.getDate())
                 && getAddress().equals(e.getAddress())
-                && getWeightage().equals(e.getWeightage())
                 && getRemark().equals(e.getRemark());
         }
     }

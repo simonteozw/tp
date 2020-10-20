@@ -22,17 +22,15 @@ public class AddTaskCommand extends Command {
         + PREFIX_NAME + "NAME "
         + PREFIX_DATE + "DATE "
         + PREFIX_ADDRESS + "ADDRESS "
-        + PREFIX_WEIGHTAGE + "WEIGHTAGE "
         + PREFIX_REMARK + "REMARK\n"
         + "Example: " + Task.TYPE + " " + COMMAND_WORD + " "
         + PREFIX_NAME + "CS2103T Final "
         + PREFIX_DATE + "22/12/2020 "
         + PREFIX_ADDRESS + "COM2 NUS "
-        + PREFIX_WEIGHTAGE + "50 "
         + PREFIX_REMARK + "Favourite module!";
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
-    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the app";
 
     private final Task toAdd;
 
