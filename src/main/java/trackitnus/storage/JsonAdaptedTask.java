@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import trackitnus.commons.exceptions.IllegalValueException;
 import trackitnus.model.commons.Address;
+import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 import trackitnus.model.task.Task;
 
@@ -20,6 +21,7 @@ public class JsonAdaptedTask {
 
     private final String name;
     private final String date;
+    private final String code;
     private final String remark;
 
     /**
@@ -27,9 +29,10 @@ public class JsonAdaptedTask {
      */
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("date") String date,
-                           @JsonProperty("remark") String remark) {
+                           @JsonProperty("code") String code, @JsonProperty("remark") String remark) {
         this.name = name;
         this.date = date;
+        this.code = code;
         this.remark = remark;
     }
 
@@ -39,6 +42,7 @@ public class JsonAdaptedTask {
     public JsonAdaptedTask(Task source) {
         name = source.getName().fullName;
         date = source.getDate().format(Task.FORMATTER);
+        code = source.getCode().isPresent() ? source.getCode().get().code : null;
         remark = source.getRemark().orElse(null);
     }
 
@@ -69,6 +73,8 @@ public class JsonAdaptedTask {
         final LocalDate modelDate = LocalDate.parse(date, Task.FORMATTER);
 
         final String modelRemark = remark;
-        return new Task(modelName, modelDate, modelRemark);
+
+        final Code modelCode = code == null ? null : new Code(code);
+        return new Task(modelName, modelDate, modelCode, modelRemark);
     }
 }

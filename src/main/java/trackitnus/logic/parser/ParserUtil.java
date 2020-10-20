@@ -144,6 +144,20 @@ public class ParserUtil {
         return new Code(trimmedCode);
     }
 
+    public static Code parseOptionalCode(Optional<String> code) throws ParseException {
+        if (code.isEmpty()) {
+            return null;
+        }
+        String trimmedCode = code.get().trim();
+        if (!Address.isValidAddress(trimmedCode)) {
+            return null;
+        }
+        if (!Code.isValidCode(trimmedCode)) {
+            throw new ParseException(Code.MESSAGE_CONSTRAINTS);
+        }
+        return new Code(trimmedCode);
+    }
+
     /**
      * Parses a {@code String str} into a {@code String}.
      * Leading and trailing whitespaces will be trimmed.

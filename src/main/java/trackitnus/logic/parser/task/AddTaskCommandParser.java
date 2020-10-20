@@ -1,6 +1,7 @@
 package trackitnus.logic.parser.task;
 
 import static trackitnus.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_REMARK;
@@ -18,6 +19,7 @@ import trackitnus.logic.parser.ParserUtil;
 import trackitnus.logic.parser.Prefix;
 import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.model.commons.Address;
+import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 import trackitnus.model.task.Task;
 
@@ -38,7 +40,7 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
      */
     public AddTaskCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-            ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_DATE, PREFIX_REMARK);
+            ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_DATE, PREFIX_CODE, PREFIX_REMARK);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_DATE)
             || !argMultimap.getPreamble().isEmpty()) {
@@ -48,9 +50,10 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         LocalDate date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
+        Code code = ParserUtil.parseOptionalCode(argMultimap.getValue(PREFIX_CODE));
         String remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK));
 
-        Task task = new Task(name, date, remark);
+        Task task = new Task(name, date, code, remark);
 
         return new AddTaskCommand(task);
     }

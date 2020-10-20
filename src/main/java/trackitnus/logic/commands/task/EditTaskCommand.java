@@ -2,6 +2,7 @@ package trackitnus.logic.commands.task;
 
 import static java.util.Objects.requireNonNull;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_REMARK;
@@ -20,6 +21,7 @@ import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.Model;
 import trackitnus.model.commons.Address;
+import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 import trackitnus.model.task.Task;
 
@@ -34,6 +36,7 @@ public class EditTaskCommand extends Command {
         + "Parameters: INDEX (must be a positive integer) "
         + "[" + PREFIX_NAME + "NAME] "
         + "[" + PREFIX_DATE + "DATE] "
+        + "[" + PREFIX_CODE + "MODULE_CODE] "
         + "[" + PREFIX_REMARK + "REMARK]...\n"
         + "Example: " + Task.TYPE + " " + COMMAND_WORD + " 1 "
         + PREFIX_REMARK + "New remark";
@@ -62,11 +65,14 @@ public class EditTaskCommand extends Command {
 
         Name updatedName = editTaskDescriptor.getName().orElse(taskToEdit.getName());
         LocalDate updatedDate = editTaskDescriptor.getDate().orElse(taskToEdit.getDate());
+        Code updatedCode = editTaskDescriptor.getIsCodeChanged()
+            ? editTaskDescriptor.getCode().orElse(null)
+            : taskToEdit.getCode().orElse(null);
         String updatedRemarks = editTaskDescriptor.getIsRemarkChanged()
             ? editTaskDescriptor.getRemark().orElse(null)
             : taskToEdit.getRemark().orElse(null);
 
-        return new Task(updatedName, updatedDate, updatedRemarks);
+        return new Task(updatedName, updatedDate, updatedCode, updatedRemarks);
     }
 
     @Override
@@ -115,10 +121,13 @@ public class EditTaskCommand extends Command {
     public static class EditTaskDescriptor {
         private Name name;
         private LocalDate date;
+        private Code code;
         private String remark;
+        private boolean isCodeChanged;
         private boolean isRemarkChanged;
 
         public EditTaskDescriptor() {
+            isCodeChanged = false;
             isRemarkChanged = false;
         }
 
@@ -129,15 +138,17 @@ public class EditTaskCommand extends Command {
         public EditTaskDescriptor(EditTaskCommand.EditTaskDescriptor toCopy) {
             setName(toCopy.name);
             setDate(toCopy.date);
+            setCode(toCopy.code);
             setRemark(toCopy.remark);
-            isRemarkChanged = toCopy.getIsRemarkChanged();
+            isCodeChanged = toCopy.isCodeChanged;
+            isRemarkChanged = toCopy.isRemarkChanged;
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, date) || isRemarkChanged;
+            return CollectionUtil.isAnyNonNull(name, date) || isRemarkChanged || isCodeChanged;
         }
 
         public Optional<Name> getName() {
@@ -156,6 +167,15 @@ public class EditTaskCommand extends Command {
             this.date = date;
         }
 
+        public Optional<Code> getCode() {
+            return Optional.ofNullable(code);
+        }
+
+        public void setCode(Code code) {
+            this.code = code;
+            this.isCodeChanged = true;
+        }
+
         public Optional<String> getRemark() {
             return Optional.ofNullable(remark);
         }
@@ -163,6 +183,10 @@ public class EditTaskCommand extends Command {
         public void setRemark(String remark) {
             this.remark = remark;
             this.isRemarkChanged = true;
+        }
+
+        public boolean getIsCodeChanged() {
+            return isCodeChanged;
         }
 
         public boolean getIsRemarkChanged() {

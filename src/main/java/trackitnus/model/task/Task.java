@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 import trackitnus.commons.util.CollectionUtil;
+import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 
 
@@ -23,6 +24,7 @@ public class Task {
 
     private final Name name;
     private final LocalDate date;
+    private final Code code;
     private final String remark;
 
     /**
@@ -32,10 +34,11 @@ public class Task {
      * @param date
      * @param remark
      */
-    public Task(Name name, LocalDate date, String remark) {
+    public Task(Name name, LocalDate date, Code code, String remark) {
         CollectionUtil.requireAllNonNull(name, date);
         this.name = name;
         this.date = date;
+        this.code = code;
         this.remark = remark;
     }
 
@@ -45,6 +48,10 @@ public class Task {
 
     public Optional<String> getRemark() {
         return Optional.ofNullable(remark);
+    }
+
+    public Optional<Code> getCode() {
+        return Optional.ofNullable(code);
     }
 
     public Name getName() {
@@ -64,13 +71,14 @@ public class Task {
         Task otherTask = (Task) other;
         return otherTask.name.equals(name)
             && otherTask.date.equals(date)
+            && otherTask.getCode().equals(getCode())
             && otherTask.getRemark().equals(getRemark());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, date, remark);
+        return Objects.hash(name, date, code, remark);
     }
 
     @Override
@@ -78,9 +86,13 @@ public class Task {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
             .append(" Date: ")
-            .append(getDate())
-            .append(" Remarks: ")
-            .append(getRemark().orElse(""));
+            .append(getDate());
+        if (getCode().isPresent()) {
+            builder.append(" Code: ").append(getCode().get());
+        }
+        if (getRemark().isPresent()) {
+            builder.append(" Remark: ").append(getRemark().get());
+        }
         return builder.toString();
     }
 
