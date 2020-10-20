@@ -13,6 +13,7 @@ public class SidePanel extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(SidePanel.class);
 
     private Consumer<String> consumer;
+    private final HelpWindow helpWindow;
 
     /**
      * Constructor for SidePanel
@@ -21,7 +22,21 @@ public class SidePanel extends UiPart<Region> {
      */
     public SidePanel(Consumer<String> consumer) {
         super(FXML);
+
         this.consumer = consumer;
+        helpWindow = new HelpWindow();
+    }
+
+    /**
+     * Opens the help window or focuses on it if it's already opened.
+     */
+    @FXML
+    public void handleHelp() {
+        if (!helpWindow.isShowing()) {
+            helpWindow.show();
+        } else {
+            helpWindow.focus();
+        }
     }
 
     @FXML
