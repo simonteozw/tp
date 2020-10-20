@@ -1,11 +1,9 @@
 package trackitnus.logic.parser.task;
 
-import static trackitnus.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_REMARK;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_WEIGHTAGE;
 
 import java.time.LocalDate;
 import java.util.stream.Stream;
@@ -18,7 +16,6 @@ import trackitnus.logic.parser.Parser;
 import trackitnus.logic.parser.ParserUtil;
 import trackitnus.logic.parser.Prefix;
 import trackitnus.logic.parser.exceptions.ParseException;
-import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 import trackitnus.model.task.Task;

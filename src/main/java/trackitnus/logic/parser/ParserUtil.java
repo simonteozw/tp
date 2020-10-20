@@ -144,6 +144,11 @@ public class ParserUtil {
         return new Code(trimmedCode);
     }
 
+    /**
+     * Parses an {@code Optional<String> code} into an {@code Code}.
+     *
+     * @throws ParseException if the given {@code code} is invalid.
+     */
     public static Code parseOptionalCode(Optional<String> code) throws ParseException {
         if (code.isEmpty()) {
             return null;

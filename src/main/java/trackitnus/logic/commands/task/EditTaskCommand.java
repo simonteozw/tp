@@ -1,12 +1,10 @@
 package trackitnus.logic.commands.task;
 
 import static java.util.Objects.requireNonNull;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_REMARK;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_WEIGHTAGE;
 import static trackitnus.model.Model.PREDICATE_SHOW_ALL_TASKS;
 
 import java.time.LocalDate;
@@ -20,7 +18,6 @@ import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.Model;
-import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 import trackitnus.model.task.Task;
@@ -126,6 +123,9 @@ public class EditTaskCommand extends Command {
         private boolean isCodeChanged;
         private boolean isRemarkChanged;
 
+        /**
+         * Constructor for EditTaskDescriptor.
+         */
         public EditTaskDescriptor() {
             isCodeChanged = false;
             isRemarkChanged = false;

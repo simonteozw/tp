@@ -1,12 +1,10 @@
 package trackitnus.logic.parser.task;
 
 import static java.util.Objects.requireNonNull;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_REMARK;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_WEIGHTAGE;
 
 import trackitnus.commons.core.Messages;
 import trackitnus.commons.core.index.Index;

@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import trackitnus.commons.exceptions.IllegalValueException;
-import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 import trackitnus.model.task.Task;
