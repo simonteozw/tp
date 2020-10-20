@@ -34,7 +34,6 @@ public class EditTaskCommand extends Command {
         + "Parameters: INDEX (must be a positive integer) "
         + "[" + PREFIX_NAME + "NAME] "
         + "[" + PREFIX_DATE + "DATE] "
-        + "[" + PREFIX_ADDRESS + "ADDRESS] "
         + "[" + PREFIX_REMARK + "REMARK]...\n"
         + "Example: " + Task.TYPE + " " + COMMAND_WORD + " 1 "
         + PREFIX_REMARK + "New remark";
@@ -63,10 +62,9 @@ public class EditTaskCommand extends Command {
 
         Name updatedName = editTaskDescriptor.getName().orElse(taskToEdit.getName());
         LocalDate updatedDate = editTaskDescriptor.getDate().orElse(taskToEdit.getDate());
-        Address updatedAddress = editTaskDescriptor.getAddress().orElse(taskToEdit.getAddress());
         String updatedRemarks = editTaskDescriptor.getRemark().orElse(taskToEdit.getRemark());
 
-        return new Task(updatedName, updatedDate, updatedAddress, updatedRemarks);
+        return new Task(updatedName, updatedDate, updatedRemarks);
     }
 
     @Override
@@ -115,7 +113,6 @@ public class EditTaskCommand extends Command {
     public static class EditTaskDescriptor {
         private Name name;
         private LocalDate date;
-        private Address address;
         private String remark;
 
         public EditTaskDescriptor() {
@@ -128,7 +125,6 @@ public class EditTaskCommand extends Command {
         public EditTaskDescriptor(EditTaskCommand.EditTaskDescriptor toCopy) {
             setName(toCopy.name);
             setDate(toCopy.date);
-            setAddress(toCopy.address);
             setRemark(toCopy.remark);
         }
 
@@ -136,7 +132,7 @@ public class EditTaskCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, date, address, remark);
+            return CollectionUtil.isAnyNonNull(name, date, remark);
         }
 
         public Optional<Name> getName() {
@@ -163,14 +159,6 @@ public class EditTaskCommand extends Command {
             this.remark = remark;
         }
 
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
-        }
-
-        public void setAddress(Address address) {
-            this.address = address;
-        }
-
 
         @Override
         public boolean equals(Object other) {
@@ -189,7 +177,6 @@ public class EditTaskCommand extends Command {
 
             return getName().equals(e.getName())
                 && getDate().equals(e.getDate())
-                && getAddress().equals(e.getAddress())
                 && getRemark().equals(e.getRemark());
         }
     }

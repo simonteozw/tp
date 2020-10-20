@@ -20,7 +20,6 @@ public class JsonAdaptedTask {
 
     private final String name;
     private final String date;
-    private final String address;
     private final String remark;
 
     /**
@@ -28,10 +27,9 @@ public class JsonAdaptedTask {
      */
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("date") String date,
-                           @JsonProperty("address") String address, @JsonProperty("remark") String remark) {
+                           @JsonProperty("remark") String remark) {
         this.name = name;
         this.date = date;
-        this.address = address;
         this.remark = remark;
     }
 
@@ -41,7 +39,6 @@ public class JsonAdaptedTask {
     public JsonAdaptedTask(Task source) {
         name = source.getName().fullName;
         date = source.getDate().format(Task.FORMATTER);
-        address = source.getAddress().value;
         remark = source.getRemark();
     }
 
@@ -71,18 +68,10 @@ public class JsonAdaptedTask {
         }
         final LocalDate modelDate = LocalDate.parse(date, Task.FORMATTER);
 
-        if (address == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
-        }
-        if (!Address.isValidAddress(address)) {
-            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
-        }
-        final Address modelAddress = new Address(address);
-
         if (remark == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Remark"));
         }
         final String modelRemark = remark;
-        return new Task(modelName, modelDate, modelAddress, modelRemark);
+        return new Task(modelName, modelDate, modelRemark);
     }
 }

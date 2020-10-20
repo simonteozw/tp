@@ -5,7 +5,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 import trackitnus.commons.util.CollectionUtil;
-import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Name;
 
 
@@ -24,7 +23,6 @@ public class Task {
 
     private final Name name;
     private final LocalDate date;
-    private final Address address;
     private final String remark;
 
     /**
@@ -32,14 +30,12 @@ public class Task {
      *
      * @param name
      * @param date
-     * @param address
      * @param remark
      */
-    public Task(Name name, LocalDate date, Address address, String remark) {
-        CollectionUtil.requireAllNonNull(name, date, address, remark);
+    public Task(Name name, LocalDate date, String remark) {
+        CollectionUtil.requireAllNonNull(name, date, remark);
         this.name = name;
         this.date = date;
-        this.address = address;
         this.remark = remark;
     }
 
@@ -55,10 +51,6 @@ public class Task {
         return name;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -72,14 +64,13 @@ public class Task {
         Task otherTask = (Task) other;
         return otherTask.name.equals(name)
             && otherTask.date.equals(date)
-            && otherTask.address.equals(address)
             && otherTask.remark.equals(remark);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, date, address, remark);
+        return Objects.hash(name, date, remark);
     }
 
     @Override
@@ -88,8 +79,6 @@ public class Task {
         builder.append(getName())
             .append(" Date: ")
             .append(getDate())
-            .append(" Address: ")
-            .append(getAddress())
             .append(" Remarks: ")
             .append(getRemark());
         return builder.toString();
