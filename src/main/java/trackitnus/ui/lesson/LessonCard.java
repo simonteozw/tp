@@ -46,7 +46,7 @@ public class LessonCard extends UiPart<Region> {
     public LessonCard(Lesson lesson, int displayedIndex) {
         super(FXML);
         this.lesson = lesson;
-        id.setText(displayedIndex + ". ");
+        id.setText("[" + displayedIndex + "] ");
         code.setText(lesson.getCode().code);
         type.setText(lesson.getType().name());
         date.setText(lesson.getDate().toString());

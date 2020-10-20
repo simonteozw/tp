@@ -48,7 +48,7 @@ public class ContactCard extends UiPart<Region> {
     public ContactCard(Contact contact, int displayedIndex) {
         super(FXML);
         this.contact = contact;
-        id.setText(displayedIndex + ". ");
+        id.setText("[" + displayedIndex + "] ");
         name.setText(contact.getName().fullName);
         phone.setText(contact.getPhone().value);
         address.setText(contact.getAddress().value);

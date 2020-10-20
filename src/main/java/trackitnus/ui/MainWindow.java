@@ -43,6 +43,7 @@ public class MainWindow extends UiPart<Stage> {
     private ContactListPanel contactListPanel;
 
     private ResultDisplay resultDisplay;
+    private SidePanel sidePanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -235,13 +236,9 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
-//            if (commandResult.isShowHelp()) {
-//                handleHelp();
-//            }
-//
-//            if (commandResult.isExit()) {
-//                handleExit();
-//            }
+            if (commandResult.isExit()) {
+                handleExit();
+            }
 
             return commandResult;
         } catch (CommandException | ParseException e) {
