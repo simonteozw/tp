@@ -1,21 +1,15 @@
 package trackitnus.ui;
 
-import java.io.IOException;
-import java.net.URL;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Box;
 import javafx.stage.Stage;
 import trackitnus.commons.core.GuiSettings;
 import trackitnus.commons.core.LogsCenter;
@@ -23,12 +17,8 @@ import trackitnus.logic.Logic;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.logic.parser.exceptions.ParseException;
-import trackitnus.model.contact.Contact;
-import trackitnus.model.lesson.Lesson;
-import trackitnus.model.module.Module;
-import trackitnus.model.task.Task;
 import trackitnus.ui.contact.ContactListPanel;
-import trackitnus.ui.lesson.LessonListPanel;
+//import trackitnus.ui.lesson.LessonListPanel;
 import trackitnus.ui.module.ModuleListPanel;
 import trackitnus.ui.task.TaskListPanel;
 

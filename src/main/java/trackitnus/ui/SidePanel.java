@@ -1,11 +1,11 @@
 package trackitnus.ui;
 
+import java.util.function.Consumer;
+import java.util.logging.Logger;
+
 import javafx.fxml.FXML;
 import javafx.scene.layout.Region;
 import trackitnus.commons.core.LogsCenter;
-
-import java.util.function.Consumer;
-import java.util.logging.Logger;
 
 public class SidePanel extends UiPart<Region> {
     private static final String FXML = "SidePanel.fxml";
