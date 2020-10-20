@@ -39,7 +39,7 @@ public class JsonAdaptedTask {
     public JsonAdaptedTask(Task source) {
         name = source.getName().fullName;
         date = source.getDate().format(Task.FORMATTER);
-        remark = source.getRemark();
+        remark = source.getRemark().orElse(null);
     }
 
     /**
@@ -68,9 +68,6 @@ public class JsonAdaptedTask {
         }
         final LocalDate modelDate = LocalDate.parse(date, Task.FORMATTER);
 
-        if (remark == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Remark"));
-        }
         final String modelRemark = remark;
         return new Task(modelName, modelDate, modelRemark);
     }

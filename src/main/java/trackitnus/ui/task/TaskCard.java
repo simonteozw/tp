@@ -35,7 +35,7 @@ public class TaskCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(task.getName().toString());
         date.setText(task.getDate().toString());
-        remark.setText(task.getRemark());
+        remark.setText(task.getRemark().orElse(""));
     }
 
     @Override

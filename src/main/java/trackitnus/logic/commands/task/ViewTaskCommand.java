@@ -37,7 +37,6 @@ public class ViewTaskCommand extends Command {
         }
 
         Task taskToShow = lastShownList.get(targetIndex.getZeroBased());
-        model.deleteTask(taskToShow);
         return new CommandResult(String.format(MESSAGE_VIEW_TASK_SUCCESS, taskToShow));
     }
 

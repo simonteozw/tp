@@ -3,6 +3,7 @@ package trackitnus.model.task;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
+import java.util.Optional;
 
 import trackitnus.commons.util.CollectionUtil;
 import trackitnus.model.commons.Name;
@@ -18,7 +19,6 @@ public class Task {
     public static final String DATE_MESSAGE_CONSTRAINTS = "Date should be in the format dd/MM/yyyy or dd/MM/yyyy hh:mm";
     public static final String WEIGHTAGE_MESSAGE_CONSTRAINTS = "Weightage should be in the"
         + " form of a floating point number";
-    public static final String REMARK_MESSAGE_CONSTRAINTS = "Remarks can take any values, and it should not be blank";
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     private final Name name;
@@ -33,7 +33,7 @@ public class Task {
      * @param remark
      */
     public Task(Name name, LocalDate date, String remark) {
-        CollectionUtil.requireAllNonNull(name, date, remark);
+        CollectionUtil.requireAllNonNull(name, date);
         this.name = name;
         this.date = date;
         this.remark = remark;
@@ -43,8 +43,8 @@ public class Task {
         return date;
     }
 
-    public String getRemark() {
-        return remark;
+    public Optional<String> getRemark() {
+        return Optional.ofNullable(remark);
     }
 
     public Name getName() {
@@ -64,7 +64,7 @@ public class Task {
         Task otherTask = (Task) other;
         return otherTask.name.equals(name)
             && otherTask.date.equals(date)
-            && otherTask.remark.equals(remark);
+            && otherTask.getRemark().equals(getRemark());
     }
 
     @Override
@@ -80,7 +80,7 @@ public class Task {
             .append(" Date: ")
             .append(getDate())
             .append(" Remarks: ")
-            .append(getRemark());
+            .append(getRemark().orElse(""));
         return builder.toString();
     }
 

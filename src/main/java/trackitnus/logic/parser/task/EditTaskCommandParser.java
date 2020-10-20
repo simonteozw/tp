@@ -49,7 +49,7 @@ public class EditTaskCommandParser implements Parser<EditTaskCommand> {
             editTaskDescriptor.setDate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()));
         }
         if (argMultimap.getValue(PREFIX_REMARK).isPresent()) {
-            editTaskDescriptor.setRemark(ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get()));
+            editTaskDescriptor.setRemark(ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK)));
         }
 
         if (!editTaskDescriptor.isAnyFieldEdited()) {

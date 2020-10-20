@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import trackitnus.commons.core.index.Index;
@@ -192,11 +193,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code remark} is invalid.
      */
-    public static String parseRemark(String remark) throws ParseException {
-        requireNonNull(remark);
-        String trimmedRemark = remark.trim();
+    public static String parseRemark(Optional<String> remark) {
+        if (remark.isEmpty()) {
+            return null;
+        }
+        String trimmedRemark = remark.get().trim();
         if (!Address.isValidAddress(trimmedRemark)) {
-            throw new ParseException(Task.REMARK_MESSAGE_CONSTRAINTS);
+            return null;
         }
         return trimmedRemark;
     }

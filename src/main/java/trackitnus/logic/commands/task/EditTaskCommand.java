@@ -62,7 +62,9 @@ public class EditTaskCommand extends Command {
 
         Name updatedName = editTaskDescriptor.getName().orElse(taskToEdit.getName());
         LocalDate updatedDate = editTaskDescriptor.getDate().orElse(taskToEdit.getDate());
-        String updatedRemarks = editTaskDescriptor.getRemark().orElse(taskToEdit.getRemark());
+        String updatedRemarks = editTaskDescriptor.getIsRemarkChanged()
+            ? editTaskDescriptor.getRemark().orElse(null)
+            : taskToEdit.getRemark().orElse(null);
 
         return new Task(updatedName, updatedDate, updatedRemarks);
     }
@@ -114,8 +116,10 @@ public class EditTaskCommand extends Command {
         private Name name;
         private LocalDate date;
         private String remark;
+        private boolean isRemarkChanged;
 
         public EditTaskDescriptor() {
+            isRemarkChanged = false;
         }
 
         /**
@@ -126,13 +130,14 @@ public class EditTaskCommand extends Command {
             setName(toCopy.name);
             setDate(toCopy.date);
             setRemark(toCopy.remark);
+            isRemarkChanged = toCopy.getIsRemarkChanged();
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, date, remark);
+            return CollectionUtil.isAnyNonNull(name, date) || isRemarkChanged;
         }
 
         public Optional<Name> getName() {
@@ -157,6 +162,11 @@ public class EditTaskCommand extends Command {
 
         public void setRemark(String remark) {
             this.remark = remark;
+            this.isRemarkChanged = true;
+        }
+
+        public boolean getIsRemarkChanged() {
+            return isRemarkChanged;
         }
 
 

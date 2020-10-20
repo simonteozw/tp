@@ -21,7 +21,7 @@ public class AddTaskCommand extends Command {
         + "Parameters: "
         + PREFIX_NAME + "NAME "
         + PREFIX_DATE + "DATE "
-        + PREFIX_REMARK + "REMARK\n"
+        + "[" + PREFIX_REMARK + "REMARK]\n"
         + "Example: " + Task.TYPE + " " + COMMAND_WORD + " "
         + PREFIX_NAME + "CS2103T Final "
         + PREFIX_DATE + "22/12/2020 "
