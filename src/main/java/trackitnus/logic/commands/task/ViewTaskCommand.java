@@ -14,7 +14,7 @@ import trackitnus.model.task.Task;
 
 public class ViewTaskCommand extends Command {
 
-    public static final String COMMAND_WORD = "info";
+    public static final String COMMAND_WORD = "view";
 
     public static final String MESSAGE_USAGE = Task.TYPE + " " + COMMAND_WORD
         + ": Views the info of the task with the specified index.\n"
