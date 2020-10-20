@@ -34,7 +34,6 @@ public class MainWindow extends UiPart<Stage> {
 
     private final Stage primaryStage;
     private final Logic logic;
-//    private final HelpWindow helpWindow;
 
     // Independent Ui parts residing in this Ui container
 
@@ -44,6 +43,7 @@ public class MainWindow extends UiPart<Stage> {
     private ContactListPanel contactListPanel;
 
     private ResultDisplay resultDisplay;
+    private SidePanel sidePanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -93,7 +93,6 @@ public class MainWindow extends UiPart<Stage> {
 
 //        setAccelerators();
 
-//        helpWindow = new HelpWindow();
     }
 
     public Stage getPrimaryStage() {
@@ -149,6 +148,7 @@ public class MainWindow extends UiPart<Stage> {
 
         contactListPanel = new ContactListPanel(logic.getFilteredContactList());
 
+        //Default tab open
         switchTab("C");
         sidePanelPlaceholder.getChildren().add(new SidePanel(this::switchTab).getRoot());
 
@@ -188,18 +188,6 @@ public class MainWindow extends UiPart<Stage> {
             primaryStage.setY(guiSettings.getWindowCoordinates().getY());
         }
     }
-
-//    /**
-//     * Opens the help window or focuses on it if it's already opened.
-//     */
-//    @FXML
-//    public void handleHelp() {
-//        if (!helpWindow.isShowing()) {
-//            helpWindow.show();
-//        } else {
-//            helpWindow.focus();
-//        }
-//    }
 
     void show() {
         primaryStage.show();
@@ -248,13 +236,9 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
-//            if (commandResult.isShowHelp()) {
-//                handleHelp();
-//            }
-//
-//            if (commandResult.isExit()) {
-//                handleExit();
-//            }
+            if (commandResult.isExit()) {
+                handleExit();
+            }
 
             return commandResult;
         } catch (CommandException | ParseException e) {

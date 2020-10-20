@@ -12,10 +12,7 @@
 <?import javafx.stage.Stage?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.shape.Box?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.control.skin.ColorPalette.ColorSquare?>
-<?import com.sun.javafx.scene.control.CustomColorDialog.ColorRectPane?>
+
 <?import javafx.scene.layout.Region?>
 <fx:root xmlns:fx="http://javafx.com/fxml/1" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8"
          title="TrackIt@NUS" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
