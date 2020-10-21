@@ -26,7 +26,7 @@ public class Task {
     private final LocalDate date;
     private final Code code;
     private final String remark;
-    private boolean isComplete;
+    private boolean isDone;
 
     /**
      * Every field must be present and not null.
@@ -41,7 +41,7 @@ public class Task {
         this.date = date;
         this.code = code;
         this.remark = remark;
-        this.isComplete = false;
+        this.isDone = false;
     }
 
     /**
@@ -50,15 +50,15 @@ public class Task {
      * @param name
      * @param date
      * @param remark
-     * @param isComplete
+     * @param isDone
      */
-    public Task(Name name, LocalDate date, Code code, String remark, boolean isComplete) {
+    public Task(Name name, LocalDate date, Code code, String remark, boolean isDone) {
         CollectionUtil.requireAllNonNull(name, date);
         this.name = name;
         this.date = date;
         this.code = code;
         this.remark = remark;
-        this.isComplete = isComplete;
+        this.isDone = isDone;
     }
 
     public LocalDate getDate() {
@@ -81,12 +81,12 @@ public class Task {
         return name;
     }
 
-    public boolean getIsComplete() {
-        return isComplete;
+    public boolean getIsDone() {
+        return isDone;
     }
 
-    public void changeCompletionStatus() {
-        this.isComplete = !this.isComplete;
+    public void flipDoneStatus() {
+        this.isDone = !this.isDone;
     }
 
     @Override

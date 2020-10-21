@@ -22,7 +22,7 @@ public class JsonAdaptedTask {
     private final String date;
     private final String code;
     private final String remark;
-    private boolean isComplete;
+    private boolean isDone;
 
     /**
      * Constructs a {@code JsonAdaptedTask} with the given task details.
@@ -30,12 +30,12 @@ public class JsonAdaptedTask {
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("date") String date,
                            @JsonProperty("code") String code, @JsonProperty("remark") String remark,
-                           @JsonProperty("isComplete") boolean isComplete) {
+                           @JsonProperty("isDone") boolean isDone) {
         this.name = name;
         this.date = date;
         this.code = code;
         this.remark = remark;
-        this.isComplete = isComplete;
+        this.isDone = isDone;
     }
 
     /**
@@ -46,7 +46,7 @@ public class JsonAdaptedTask {
         date = source.getDate().format(Task.FORMATTER);
         code = source.getCode().isPresent() ? source.getCode().get().code : null;
         remark = source.getRemark().orElse(null);
-        isComplete = source.getIsComplete();
+        isDone = source.getIsDone();
     }
 
     /**
@@ -79,7 +79,7 @@ public class JsonAdaptedTask {
 
         final Code modelCode = code == null ? null : new Code(code);
 
-        final boolean modelIsComplete = isComplete;
-        return new Task(modelName, modelDate, modelCode, modelRemark, modelIsComplete);
+        final boolean modelIsDone = isDone;
+        return new Task(modelName, modelDate, modelCode, modelRemark, modelIsDone);
     }
 }
