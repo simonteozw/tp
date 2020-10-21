@@ -21,6 +21,7 @@ import trackitnus.ui.contact.ContactListPanel;
 //import trackitnus.ui.lesson.LessonListPanel;
 import trackitnus.ui.module.ModuleListPanel;
 import trackitnus.ui.task.TaskListPanel;
+import trackitnus.ui.upcoming.UpcomingPanel;
 
 /**
  * The Main Window. Provides the basic application layout containing

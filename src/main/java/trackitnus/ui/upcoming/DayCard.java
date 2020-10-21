@@ -1,13 +1,14 @@
-package trackitnus.ui;
+package trackitnus.ui.upcoming;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import trackitnus.ui.UiPart;
 
 public class DayCard extends UiPart<Region> {
 
-    private static final String FXML = "DayCard.fxml";
+    private static final String FXML = "/Upcoming/DayCard.fxml";
 
     public final Day day;
 

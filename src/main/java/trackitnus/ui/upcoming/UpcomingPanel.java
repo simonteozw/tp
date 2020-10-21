@@ -1,4 +1,4 @@
-package trackitnus.ui;
+package trackitnus.ui.upcoming;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -13,10 +13,11 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import trackitnus.commons.core.LogsCenter;
+import trackitnus.ui.UiPart;
 
 public class UpcomingPanel extends UiPart<Region> {
 
-    private static final String FXML = "UpcomingPanel.fxml";
+    private static final String FXML = "/Upcoming/UpcomingPanel.fxml";
 
     private final Logger logger = LogsCenter.getLogger(UpcomingPanel.class);
 
@@ -43,7 +44,6 @@ public class UpcomingPanel extends UiPart<Region> {
 
         for (LocalDate date : list) {
             String datestring = date.format(formatter);
-            System.out.println(datestring + ", ");
             calendarDates.add(new Day(datestring));
         }
     }

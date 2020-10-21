@@ -1,4 +1,4 @@
-package trackitnus.ui;
+package trackitnus.ui.upcoming;
 
 import java.util.Objects;
 
