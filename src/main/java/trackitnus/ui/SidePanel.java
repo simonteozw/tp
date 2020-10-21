@@ -40,6 +40,11 @@ public class SidePanel extends UiPart<Region> {
     }
 
     @FXML
+    private void handleSwitchToUpcoming() {
+        consumer.accept("U");
+    }
+
+    @FXML
     private void handleSwitchToContact() {
         consumer.accept("C");
     }

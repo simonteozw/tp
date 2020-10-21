@@ -43,7 +43,7 @@ public class MainWindow extends UiPart<Stage> {
     private ContactListPanel contactListPanel;
 
     private ResultDisplay resultDisplay;
-    private SidePanel sidePanel;
+    private UpcomingPanel upcomingPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -77,6 +77,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane tabPanelPlaceholder;
+
+    @FXML
+    private StackPane upcomingPanelPlaceholder;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -148,8 +151,10 @@ public class MainWindow extends UiPart<Stage> {
 
         contactListPanel = new ContactListPanel(logic.getFilteredContactList());
 
+        upcomingPanel = new UpcomingPanel();
+
         //Default tab open
-        switchTab("C");
+        switchTab("U");
         sidePanelPlaceholder.getChildren().add(new SidePanel(this::switchTab).getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -166,6 +171,9 @@ public class MainWindow extends UiPart<Stage> {
         logger.info("Switching tab to: " + tabName);
         tabPanelPlaceholder.getChildren().clear();
 
+        if (tabName.equals("U")) {
+            tabPanelPlaceholder.getChildren().add(upcomingPanel.getRoot());
+        }
         if (tabName.equals("M")) {
             tabPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
         }
