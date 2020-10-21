@@ -26,6 +26,7 @@ public class Task {
     private final LocalDate date;
     private final Code code;
     private final String remark;
+    private boolean isComplete;
 
     /**
      * Every field must be present and not null.
@@ -40,6 +41,24 @@ public class Task {
         this.date = date;
         this.code = code;
         this.remark = remark;
+        this.isComplete = false;
+    }
+
+    /**
+     * Overloaded constructor for Task. Every field must be present and not null.
+     *
+     * @param name
+     * @param date
+     * @param remark
+     * @param isComplete
+     */
+    public Task(Name name, LocalDate date, Code code, String remark, boolean isComplete) {
+        CollectionUtil.requireAllNonNull(name, date);
+        this.name = name;
+        this.date = date;
+        this.code = code;
+        this.remark = remark;
+        this.isComplete = isComplete;
     }
 
     public LocalDate getDate() {
@@ -56,6 +75,14 @@ public class Task {
 
     public Name getName() {
         return name;
+    }
+
+    public boolean getIsComplete() {
+        return isComplete;
+    }
+
+    public void changeCompletionStatus() {
+        this.isComplete = !this.isComplete;
     }
 
     @Override
