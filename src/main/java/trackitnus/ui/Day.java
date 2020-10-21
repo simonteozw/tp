@@ -1,12 +1,20 @@
 package trackitnus.ui;
 
-import trackitnus.commons.util.CollectionUtil;
-
 import java.util.Objects;
 
+import trackitnus.commons.util.CollectionUtil;
+
+/**
+ * Represents a Day in the Calendar view.
+ */
 public class Day {
     private final String date;
 
+    /**
+     * Every field must be present and not null.
+     *
+     * @param date
+     */
     public Day(String date) {
         CollectionUtil.requireAllNonNull(date);
         this.date = date;

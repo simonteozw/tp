@@ -16,6 +16,11 @@ public class DayCard extends UiPart<Region> {
     @FXML
     private Label date;
 
+    /**
+     * Constructor for DayCard
+     *
+     * @param day
+     */
     public DayCard(Day day) {
         super(FXML);
         this.day = day;

@@ -1,5 +1,11 @@
 package trackitnus.ui;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -7,12 +13,6 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import trackitnus.commons.core.LogsCenter;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 public class UpcomingPanel extends UiPart<Region> {
 
@@ -26,6 +26,9 @@ public class UpcomingPanel extends UiPart<Region> {
     @FXML
     private ListView<Day> calendarView;
 
+    /**
+     * Constructor for Upcoming Panel
+     */
     public UpcomingPanel() {
         super(FXML);
 
