@@ -42,10 +42,14 @@ public class UpcomingPanel extends UiPart<Region> {
         List<LocalDate> list = startDate.datesUntil(endDate).collect(Collectors.toList());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM EEEE");
 
+        calendarDates.add(new Day("Overdue")); //TODO: Add implementation for overdue tasks
+
         for (LocalDate date : list) {
             String datestring = date.format(formatter);
             calendarDates.add(new Day(datestring));
         }
+
+        calendarDates.add(new Day("Future")); //TODO: Add implementation for tasks after the current week
     }
 
     class DateListViewCell extends ListCell<Day> {
