@@ -154,7 +154,7 @@ public class ParserUtil {
             return null;
         }
         String trimmedCode = code.get().trim();
-        if (!Address.isValidAddress(trimmedCode)) {
+        if (!Task.isValidString(trimmedCode)) {
             return null;
         }
         if (!Code.isValidCode(trimmedCode)) {
@@ -217,7 +217,7 @@ public class ParserUtil {
             return null;
         }
         String trimmedRemark = remark.get().trim();
-        if (!Address.isValidAddress(trimmedRemark)) {
+        if (!Task.isValidString(trimmedRemark)) {
             return null;
         }
         return trimmedRemark;
