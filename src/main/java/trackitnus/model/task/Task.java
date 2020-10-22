@@ -69,8 +69,8 @@ public class Task {
         return test.matches(VALIDATION_REGEX);
     }
 
-    public Optional<String> getRemark() {
-        return Optional.ofNullable(remark);
+    public String getRemark() {
+        return remark;
     }
 
     public Optional<Code> getCode() {
@@ -121,8 +121,8 @@ public class Task {
         if (getCode().isPresent()) {
             builder.append(" Code: ").append(getCode().get());
         }
-        if (getRemark().isPresent()) {
-            builder.append(" Remark: ").append(getRemark().get());
+        if (!getRemark().equals("")) {
+            builder.append(" Remark: ").append(getRemark());
         }
         return builder.toString();
     }

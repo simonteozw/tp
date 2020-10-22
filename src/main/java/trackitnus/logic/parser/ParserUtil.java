@@ -214,12 +214,9 @@ public class ParserUtil {
      */
     public static String parseRemark(Optional<String> remark) {
         if (remark.isEmpty()) {
-            return null;
+            return "";
         }
         String trimmedRemark = remark.get().trim();
-        if (!Task.isValidString(trimmedRemark)) {
-            return null;
-        }
         return trimmedRemark;
     }
 

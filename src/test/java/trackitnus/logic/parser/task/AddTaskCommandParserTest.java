@@ -35,14 +35,14 @@ public class AddTaskCommandParserTest {
 
     @Test
     public void parse_remarkNotPresent_success() {
-        AddTaskCommand expectedCommand = new AddTaskCommand(new Task(name, date, code, null));
+        AddTaskCommand expectedCommand = new AddTaskCommand(new Task(name, date, code, ""));
 
         assertParseSuccess(parser, " n/Sample d/12/12/2020 m/CS1100", expectedCommand);
     }
 
     @Test
     public void parse_codeAndRemarkNotPresent_success() {
-        AddTaskCommand expectedCommand = new AddTaskCommand(new Task(name, date, null, null));
+        AddTaskCommand expectedCommand = new AddTaskCommand(new Task(name, date, null, ""));
 
         assertParseSuccess(parser, " n/Sample d/12/12/2020", expectedCommand);
     }

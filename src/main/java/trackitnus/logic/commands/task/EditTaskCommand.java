@@ -66,8 +66,8 @@ public class EditTaskCommand extends Command {
             ? editTaskDescriptor.getCode().orElse(null)
             : taskToEdit.getCode().orElse(null);
         String updatedRemarks = editTaskDescriptor.getIsRemarkChanged()
-            ? editTaskDescriptor.getRemark().orElse(null)
-            : taskToEdit.getRemark().orElse(null);
+            ? editTaskDescriptor.getRemark().orElse("")
+            : taskToEdit.getRemark();
 
         return new Task(updatedName, updatedDate, updatedCode, updatedRemarks);
     }
