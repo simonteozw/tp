@@ -15,7 +15,7 @@ import trackitnus.ui.UiPart;
  * Panel containing the list of modules.
  */
 public class ModuleListPanel extends UiPart<Region> {
-    private static final String FXML = "ModuleListPanel.fxml";
+    private static final String FXML = "/Module/ModuleListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ModuleListPanel.class);
 
     @FXML

@@ -11,7 +11,7 @@ import trackitnus.ui.UiPart;
  * An UI component that displays information of a {@code task}.
  */
 public class TaskCard extends UiPart<Region> {
-    private static final String FXML = "TaskListCard.fxml";
+    private static final String FXML = "/Task/TaskListCard.fxml";
 
     public final Task task;
 

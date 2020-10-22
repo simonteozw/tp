@@ -1,19 +1,4 @@
 @font-face {
-    font-family: "Quicksand";
-    src: url("/fonts/Quicksand-Regular.ttf");
-}
-
-@font-face {
-    font-family: "QuicksandBold";
-    src: url("/fonts/Quicksand-Bold.ttf");
-}
-
-@font-face {
-    font-family: "Baloo";
-    src: url("/fonts/Baloo2-ExtraBold.ttf");
-}
-
-@font-face {
     font-family: "Poppins";
     src: url("/fonts/Poppins-Regular.ttf");
 }
@@ -160,7 +145,6 @@
 }
 
 .stack-pane {
-    /*-fx-background-color: #313543;*/
     -fx-background-color: #434754;
 }
 
@@ -184,12 +168,10 @@
 }
 
 .result-container {
-    /*-fx-background-color: #59687C;*/
     -fx-background-color: #8C8C89;
     -fx-background-radius: 5, 5, 5, 5;
     -fx-border-radius: 5, 5, 5, 5;
     -fx-padding: 0 0 0 0;
-    /*-fx-border-color: #44495B;*/
 }
 
 .result-display .label {
@@ -350,7 +332,6 @@
 }
 
 #commandTextField {
-    /*-fx-background-color: #454B5F;*/
     -fx-background-color: #8C8C89;
     -fx-background-radius: 5, 5, 5, 5;
     -fx-font-family: "Poppins";
@@ -363,7 +344,6 @@
 }
 
 #resultDisplay .content {
-    /*-fx-background-color: #59687C;*/
     -fx-background-color: #8C8C89;
 }
 
