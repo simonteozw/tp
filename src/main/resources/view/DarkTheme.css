@@ -332,7 +332,6 @@
 }
 
 #commandTextField {
-    /*-fx-background-color: #454B5F;*/
     -fx-background-color: #8C8C89;
     -fx-background-radius: 5, 5, 5, 5;
     -fx-font-family: "Poppins";
@@ -345,7 +344,6 @@
 }
 
 #resultDisplay .content {
-    /*-fx-background-color: #59687C;*/
     -fx-background-color: #8C8C89;
 }
 

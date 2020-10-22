@@ -13,12 +13,15 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import trackitnus.commons.core.LogsCenter;
+import trackitnus.logic.Logic;
+import trackitnus.model.module.Module;
 import trackitnus.ui.UiPart;
 
 public class UpcomingPanel extends UiPart<Region> {
 
     private static final String FXML = "/Upcoming/UpcomingPanel.fxml";
 
+    private final Logic logic;
     private final Logger logger = LogsCenter.getLogger(UpcomingPanel.class);
 
     private LocalDate today = LocalDate.now();
@@ -30,8 +33,9 @@ public class UpcomingPanel extends UiPart<Region> {
     /**
      * Constructor for Upcoming Panel
      */
-    public UpcomingPanel() {
+    public UpcomingPanel(Logic logic) {
         super(FXML);
+        this.logic = logic;
 
         getDatesBetween(today, today.plusDays(7));
         calendarView.setItems(calendarDates);
@@ -61,7 +65,7 @@ public class UpcomingPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new DayCard(day).getRoot());
+                setGraphic(new DayCard(day, logic.getFilteredTaskList()).getRoot());
             }
         }
     }

@@ -1,10 +1,15 @@
 package trackitnus.ui.upcoming;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import trackitnus.model.task.Task;
 import trackitnus.ui.UiPart;
+import trackitnus.ui.task.TaskCard;
 
 public class DayCard extends UiPart<Region> {
 
@@ -12,6 +17,8 @@ public class DayCard extends UiPart<Region> {
 
     public final Day day;
 
+    @FXML
+    private ListView<Task> taskListView;
     @FXML
     private HBox cardPane;
     @FXML
@@ -22,10 +29,13 @@ public class DayCard extends UiPart<Region> {
      *
      * @param day
      */
-    public DayCard(Day day) {
+    public DayCard(Day day, ObservableList<Task> taskList) {
         super(FXML);
         this.day = day;
         date.setText(day.getDate());
+
+        taskListView.setItems(taskList);
+        taskListView.setCellFactory(listView -> new TaskListViewCell());
     }
 
     @Override
@@ -44,4 +54,20 @@ public class DayCard extends UiPart<Region> {
         DayCard card = (DayCard) other;
         return date.getText().equals(card.date.getText());
     }
+
+    class TaskListViewCell extends ListCell<Task> {
+        @Override
+        protected void updateItem(Task task, boolean empty) {
+            super.updateItem(task, empty);
+
+            if (empty || task == null) {
+                setGraphic(null);
+                setText(null);
+            } else {
+                setGraphic(new TaskCard(task, getIndex() + 1).getRoot());
+            }
+        }
+    }
 }
+
+

@@ -152,7 +152,7 @@ public class MainWindow extends UiPart<Stage> {
 
         contactListPanel = new ContactListPanel(logic.getFilteredContactList());
 
-        upcomingPanel = new UpcomingPanel();
+        upcomingPanel = new UpcomingPanel(logic);
 
         //Default tab open
         switchTab("U");
