@@ -156,7 +156,7 @@ public class MainWindow extends UiPart<Stage> {
 
         //Default tab open
         switchTab("U");
-        sidePanelPlaceholder.getChildren().add(new SidePanel(this::switchTab).getRoot());
+        sidePanelPlaceholder.getChildren().add(new SidePanel(this::switchTab, logic).getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
