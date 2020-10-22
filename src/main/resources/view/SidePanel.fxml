@@ -6,10 +6,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox>
-    <Button text="Upcoming" onAction="#handleSwitchToUpcoming"/>
-    <Button text="Contact" onAction="#handleSwitchToContact"/>
-    <Button text="Module" onAction="#handleSwitchToModule"/>
-    <Button text="Tasks" onAction="#handleSwitchToTask"/>
-    <Button text="Help" onAction="#handleHelp"/>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="tabContainer">
+<!--    <Button text="Upcoming" onAction="#handleSwitchToUpcoming"/>-->
+<!--    <Button text="Contact" onAction="#handleSwitchToContact"/>-->
+<!--    <Button text="Module" onAction="#handleSwitchToModule"/>-->
+<!--    <Button text="Tasks" onAction="#handleSwitchToTask"/>-->
+<!--    <Button text="Help" onAction="#handleHelp"/>-->
 </VBox>
+<!--<VBox xmlns:fx="http://javafx.com/fxml/1">-->
+<!--    <Button text="Upcoming" onAction="#handleSwitchToUpcoming"/>-->
+<!--    <Button text="Contact" onAction="#handleSwitchToContact"/>-->
+<!--    <Button text="Module" onAction="#handleSwitchToModule"/>-->
+<!--    <Button text="Tasks" onAction="#handleSwitchToTask"/>-->
+<!--    <Button text="Help" onAction="#handleHelp"/>-->
+<!--</VBox>-->
+
+
