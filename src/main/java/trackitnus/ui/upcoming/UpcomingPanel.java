@@ -14,7 +14,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import trackitnus.commons.core.LogsCenter;
 import trackitnus.logic.Logic;
-import trackitnus.model.module.Module;
 import trackitnus.ui.UiPart;
 
 public class UpcomingPanel extends UiPart<Region> {
