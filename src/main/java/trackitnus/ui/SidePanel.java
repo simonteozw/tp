@@ -16,9 +16,7 @@ import trackitnus.model.module.Module;
 
 public class SidePanel extends UiPart<Region> {
     private static final String FXML = "SidePanel.fxml";
-
     private final Logger logger = LogsCenter.getLogger(SidePanel.class);
-
     private Consumer<String> consumer;
     private Logic logic;
     private final HelpWindow helpWindow;
@@ -36,7 +34,6 @@ public class SidePanel extends UiPart<Region> {
         helpWindow = new HelpWindow();
         this.initialize();
     }
-
 
     @FXML
     private VBox tabContainer;
@@ -79,28 +76,31 @@ public class SidePanel extends UiPart<Region> {
 
     public Button getUpcomingButton() {
         Button button = new Button("Upcoming");
-        button.setOnAction(actionEvent ->  {
+        button.setOnAction(actionEvent -> {
             consumer.accept("U");
         });
         return button;
     }
+
     public Button getContactButton() {
         Button button = new Button("Contact");
-        button.setOnAction(actionEvent ->  {
+        button.setOnAction(actionEvent -> {
             consumer.accept("C");
         });
         return button;
     }
+
     public Button getModuleButton(Module module) {
         Button button = new Button(module.getCode().code);
-        button.setOnAction(actionEvent ->  {
+        button.setOnAction(actionEvent -> {
             consumer.accept("M");
         });
         return button;
     }
+
     public Button getTaskButton() {
         Button button = new Button("Task");
-        button.setOnAction(actionEvent ->  {
+        button.setOnAction(actionEvent -> {
             consumer.accept("T");
         });
         return button;
@@ -113,7 +113,7 @@ public class SidePanel extends UiPart<Region> {
      */
     public Button getHelpButton() {
         Button button = new Button("Help");
-        button.setOnAction(actionEvent ->  {
+        button.setOnAction(actionEvent -> {
             if (!helpWindow.isShowing()) {
                 helpWindow.show();
             } else {
