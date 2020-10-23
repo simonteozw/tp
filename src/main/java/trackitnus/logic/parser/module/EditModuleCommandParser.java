@@ -2,7 +2,6 @@ package trackitnus.logic.parser.module;
 
 import static java.util.Objects.requireNonNull;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_DESC;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 
 import trackitnus.commons.core.Messages;
@@ -28,7 +27,7 @@ public class EditModuleCommandParser implements Parser<EditModuleCommand> {
     public EditModuleCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-            ArgumentTokenizer.tokenize(args, PREFIX_CODE, PREFIX_NAME, PREFIX_DESC);
+            ArgumentTokenizer.tokenize(args, PREFIX_CODE, PREFIX_NAME);
 
         Code code;
 
@@ -45,9 +44,6 @@ public class EditModuleCommandParser implements Parser<EditModuleCommand> {
         EditModuleCommand.EditModuleDescriptor editModuleDescriptor = new EditModuleCommand.EditModuleDescriptor();
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
             editModuleDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
-        }
-        if (argMultimap.getValue(PREFIX_DESC).isPresent()) {
-            editModuleDescriptor.setDesc(ParserUtil.parseString(argMultimap.getValue(PREFIX_DESC).get()));
         }
 
         if (!editModuleDescriptor.isAnyFieldEdited()) {
