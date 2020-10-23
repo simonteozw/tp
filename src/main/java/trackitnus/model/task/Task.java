@@ -29,7 +29,7 @@ public class Task {
     private boolean isDone;
 
     /**
-     * Every field must be present and not null.
+     * name, date & remark must be present and not null
      *
      * @param name
      * @param date
