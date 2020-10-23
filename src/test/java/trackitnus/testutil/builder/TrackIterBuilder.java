@@ -1,4 +1,4 @@
-package trackitnus.testutil;
+package trackitnus.testutil.builder;
 
 import trackitnus.model.TrackIter;
 import trackitnus.model.contact.Contact;

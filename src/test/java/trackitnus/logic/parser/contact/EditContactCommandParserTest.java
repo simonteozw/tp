@@ -14,8 +14,8 @@ import trackitnus.model.commons.Name;
 import trackitnus.model.contact.Email;
 import trackitnus.model.contact.Phone;
 import trackitnus.model.tag.Tag;
-import trackitnus.testutil.EditContactDescriptorBuilder;
 import trackitnus.testutil.TypicalIndexes;
+import trackitnus.testutil.builder.EditContactDescriptorBuilder;
 
 public class EditContactCommandParserTest {
 
@@ -96,7 +96,7 @@ public class EditContactCommandParserTest {
 
     @Test
     public void parse_allFieldsSpecified_success() {
-        Index targetIndex = TypicalIndexes.INDEX_SECOND_CONTACT;
+        Index targetIndex = TypicalIndexes.INDEX_SECOND;
         String userInput =
             targetIndex.getOneBased() + ContactCommandTestUtil.PHONE_DESC_BOB + ContactCommandTestUtil.TAG_DESC_HUSBAND
                 + ContactCommandTestUtil.EMAIL_DESC_AMY + ContactCommandTestUtil.NAME_DESC_AMY
@@ -113,7 +113,7 @@ public class EditContactCommandParserTest {
 
     @Test
     public void parse_someFieldsSpecified_success() {
-        Index targetIndex = TypicalIndexes.INDEX_FIRST_CONTACT;
+        Index targetIndex = TypicalIndexes.INDEX_FIRST;
         String userInput =
             targetIndex.getOneBased() + ContactCommandTestUtil.PHONE_DESC_BOB + ContactCommandTestUtil.EMAIL_DESC_AMY;
 
@@ -128,7 +128,7 @@ public class EditContactCommandParserTest {
     @Test
     public void parse_oneFieldSpecified_success() {
         // name
-        Index targetIndex = TypicalIndexes.INDEX_THIRD_CONTACT;
+        Index targetIndex = TypicalIndexes.INDEX_THIRD;
         String userInput = targetIndex.getOneBased() + ContactCommandTestUtil.NAME_DESC_AMY;
         EditContactCommand.EditContactDescriptor descriptor =
             new EditContactDescriptorBuilder().withName(ContactCommandTestUtil.VALID_NAME_AMY).build();
@@ -156,7 +156,7 @@ public class EditContactCommandParserTest {
 
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
-        Index targetIndex = TypicalIndexes.INDEX_FIRST_CONTACT;
+        Index targetIndex = TypicalIndexes.INDEX_FIRST;
         String userInput =
             targetIndex
                 .getOneBased() + ContactCommandTestUtil.PHONE_DESC_AMY + ContactCommandTestUtil.ADDRESS_DESC_AMY
@@ -180,7 +180,7 @@ public class EditContactCommandParserTest {
     @Test
     public void parse_invalidValueFollowedByValidValue_success() {
         // no other valid values specified
-        Index targetIndex = TypicalIndexes.INDEX_FIRST_CONTACT;
+        Index targetIndex = TypicalIndexes.INDEX_FIRST;
         String userInput =
             targetIndex
                 .getOneBased() + ContactCommandTestUtil.INVALID_PHONE_DESC + ContactCommandTestUtil.PHONE_DESC_BOB;
@@ -204,7 +204,7 @@ public class EditContactCommandParserTest {
 
     @Test
     public void parse_resetTags_success() {
-        Index targetIndex = TypicalIndexes.INDEX_THIRD_CONTACT;
+        Index targetIndex = TypicalIndexes.INDEX_THIRD;
         String userInput = targetIndex.getOneBased() + TAG_EMPTY;
 
         EditContactCommand.EditContactDescriptor descriptor = new EditContactDescriptorBuilder().withTags().build();

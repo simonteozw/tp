@@ -2,7 +2,7 @@ package trackitnus.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static trackitnus.testutil.Assert.assertThrows;
-import static trackitnus.testutil.TypicalContacts.AMY;
+import static trackitnus.testutil.typical.TypicalContacts.AMY;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -26,7 +26,7 @@ import trackitnus.model.contact.Contact;
 import trackitnus.storage.JsonTrackIterStorage;
 import trackitnus.storage.JsonUserPrefsStorage;
 import trackitnus.storage.StorageManager;
-import trackitnus.testutil.ContactBuilder;
+import trackitnus.testutil.builder.ContactBuilder;
 
 public class LogicManagerTest {
     private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy exception");
