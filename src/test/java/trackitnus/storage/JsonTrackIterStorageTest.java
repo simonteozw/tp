@@ -64,7 +64,6 @@ public class JsonTrackIterStorageTest {
         Path filePath = testFolder.resolve("TempTrackIter.json");
         TrackIter original = TypicalTrackIter.getTypicalTrackIter();
         JsonTrackIterStorage jsonTrackIterStorage = new JsonTrackIterStorage(filePath);
-
         // Save in new file and read back
         jsonTrackIterStorage.saveTrackIter(original, filePath);
         ReadOnlyTrackIter readBack = jsonTrackIterStorage.readTrackIter(filePath).get();
