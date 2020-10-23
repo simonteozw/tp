@@ -59,6 +59,27 @@
     }
   ],
   "tasks": [],
-  "modules": [],
+  "modules": [
+    {
+      "code": "CS1231S",
+      "name": "Discrete Structures"
+    },
+    {
+      "code": "MA1101R",
+      "name": "Linear Algebra I"
+    },
+    {
+      "code": "CS2030",
+      "name": "Programming Methodology II"
+    },
+    {
+      "code": "CS3233",
+      "name": "Competitive Programming"
+    },
+    {
+      "code": "CFG1002",
+      "name": "Career Catalyst"
+    }
+  ],
   "lessons": []
 }

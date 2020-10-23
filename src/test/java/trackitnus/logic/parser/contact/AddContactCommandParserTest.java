@@ -2,8 +2,8 @@ package trackitnus.logic.parser.contact;
 
 import static trackitnus.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static trackitnus.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static trackitnus.testutil.TypicalContacts.AMY;
-import static trackitnus.testutil.TypicalContacts.BOB;
+import static trackitnus.testutil.typical.TypicalContacts.AMY;
+import static trackitnus.testutil.typical.TypicalContacts.BOB;
 
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +15,7 @@ import trackitnus.model.contact.Contact;
 import trackitnus.model.contact.Email;
 import trackitnus.model.contact.Phone;
 import trackitnus.model.tag.Tag;
-import trackitnus.testutil.ContactBuilder;
+import trackitnus.testutil.builder.ContactBuilder;
 
 public class AddContactCommandParserTest {
     private final AddContactCommandParser parser = new AddContactCommandParser();

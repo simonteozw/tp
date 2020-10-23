@@ -14,7 +14,7 @@ import trackitnus.commons.core.index.Index;
 import trackitnus.model.Model;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.contact.NameContainsKeywordsPredicate;
-import trackitnus.testutil.EditContactDescriptorBuilder;
+import trackitnus.testutil.builder.EditContactDescriptorBuilder;
 
 public class ContactCommandTestUtil {
     public static final String VALID_NAME_AMY = "Amy Bee";

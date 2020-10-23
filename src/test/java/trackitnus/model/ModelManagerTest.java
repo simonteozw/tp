@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static trackitnus.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
 import static trackitnus.testutil.Assert.assertThrows;
-import static trackitnus.testutil.TypicalContacts.ALICE;
-import static trackitnus.testutil.TypicalContacts.BENSON;
+import static trackitnus.testutil.typical.TypicalContacts.ALICE;
+import static trackitnus.testutil.typical.TypicalContacts.BENSON;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import trackitnus.commons.core.GuiSettings;
 import trackitnus.model.contact.NameContainsKeywordsPredicate;
-import trackitnus.testutil.TrackIterBuilder;
+import trackitnus.testutil.builder.TrackIterBuilder;
 
 public class ModelManagerTest {
 

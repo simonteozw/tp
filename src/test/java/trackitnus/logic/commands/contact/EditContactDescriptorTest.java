@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import trackitnus.logic.commands.contact.EditContactCommand.EditContactDescriptor;
-import trackitnus.testutil.EditContactDescriptorBuilder;
+import trackitnus.testutil.builder.EditContactDescriptorBuilder;
 
 public class EditContactDescriptorTest {
 
