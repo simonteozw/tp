@@ -29,14 +29,14 @@ public class Task {
     private boolean isDone;
 
     /**
-     * Every field must be present and not null.
+     * name, date & remark must be present and not null
      *
      * @param name
      * @param date
      * @param remark
      */
     public Task(Name name, LocalDate date, Code code, String remark) {
-        CollectionUtil.requireAllNonNull(name, date);
+        CollectionUtil.requireAllNonNull(name, date, remark);
         this.name = name;
         this.date = date;
         this.code = code;
@@ -45,7 +45,7 @@ public class Task {
     }
 
     /**
-     * Overloaded constructor for Task. Every field must be present and not null.
+     * Overloaded constructor for Task. name, date & remark must be present and not null
      *
      * @param name
      * @param date
@@ -53,7 +53,7 @@ public class Task {
      * @param isDone
      */
     public Task(Name name, LocalDate date, Code code, String remark, boolean isDone) {
-        CollectionUtil.requireAllNonNull(name, date);
+        CollectionUtil.requireAllNonNull(name, date, remark);
         this.name = name;
         this.date = date;
         this.code = code;
