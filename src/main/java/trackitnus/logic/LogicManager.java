@@ -108,6 +108,7 @@ public class LogicManager implements Logic {
 
     @Override
     public ObservableList<Task> getUpcomingTasks() {
+        model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
         return model.getFilteredTaskList();
     }
 
