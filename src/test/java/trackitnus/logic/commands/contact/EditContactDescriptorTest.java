@@ -46,12 +46,6 @@ public class EditContactDescriptorTest {
                 .withEmail(ContactCommandTestUtil.VALID_EMAIL_BOB).build();
         assertFalse(ContactCommandTestUtil.DESC_AMY.equals(editedAmy));
 
-        // different address -> returns false
-        editedAmy =
-            new EditContactDescriptorBuilder(ContactCommandTestUtil.DESC_AMY)
-                .withAddress(ContactCommandTestUtil.VALID_ADDRESS_BOB).build();
-        assertFalse(ContactCommandTestUtil.DESC_AMY.equals(editedAmy));
-
         // different tags -> returns false
         editedAmy =
             new EditContactDescriptorBuilder(ContactCommandTestUtil.DESC_AMY)

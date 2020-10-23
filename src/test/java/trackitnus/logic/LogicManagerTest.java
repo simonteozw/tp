@@ -74,8 +74,7 @@ public class LogicManagerTest {
 
         // Execute add command
         String addCommand = Contact.TYPE + " " + AddContactCommand.COMMAND_WORD + ContactCommandTestUtil.NAME_DESC_AMY
-            + ContactCommandTestUtil.PHONE_DESC_AMY + ContactCommandTestUtil.EMAIL_DESC_AMY
-            + ContactCommandTestUtil.ADDRESS_DESC_AMY;
+            + ContactCommandTestUtil.PHONE_DESC_AMY + ContactCommandTestUtil.EMAIL_DESC_AMY;
         Contact expectedContact = new ContactBuilder(AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addContact(expectedContact);

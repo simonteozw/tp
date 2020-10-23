@@ -10,7 +10,6 @@ import trackitnus.commons.core.Messages;
 import trackitnus.commons.core.index.Index;
 import trackitnus.logic.commands.contact.ContactCommandTestUtil;
 import trackitnus.logic.commands.contact.EditContactCommand;
-import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Name;
 import trackitnus.model.contact.Email;
 import trackitnus.model.contact.Phone;
@@ -62,8 +61,6 @@ public class EditContactCommandParserTest {
         // invalid phone
         assertParseFailure(parser, "1" + ContactCommandTestUtil.INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS); //
         // invalid email
-        assertParseFailure(parser, "1" + ContactCommandTestUtil.INVALID_ADDRESS_DESC, Address.MESSAGE_CONSTRAINTS);
-        // invalid address
         assertParseFailure(parser, "1" + ContactCommandTestUtil.INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); //
         // invalid tag
 
@@ -102,13 +99,12 @@ public class EditContactCommandParserTest {
         Index targetIndex = TypicalIndexes.INDEX_SECOND_CONTACT;
         String userInput =
             targetIndex.getOneBased() + ContactCommandTestUtil.PHONE_DESC_BOB + ContactCommandTestUtil.TAG_DESC_HUSBAND
-                + ContactCommandTestUtil.EMAIL_DESC_AMY + ContactCommandTestUtil.ADDRESS_DESC_AMY
-                + ContactCommandTestUtil.NAME_DESC_AMY + ContactCommandTestUtil.TAG_DESC_FRIEND;
+                + ContactCommandTestUtil.EMAIL_DESC_AMY + ContactCommandTestUtil.NAME_DESC_AMY
+                + ContactCommandTestUtil.TAG_DESC_FRIEND;
 
         EditContactCommand.EditContactDescriptor descriptor =
             new EditContactDescriptorBuilder().withName(ContactCommandTestUtil.VALID_NAME_AMY)
                 .withPhone(ContactCommandTestUtil.VALID_PHONE_BOB).withEmail(ContactCommandTestUtil.VALID_EMAIL_AMY)
-                .withAddress(ContactCommandTestUtil.VALID_ADDRESS_AMY)
                 .withTags(ContactCommandTestUtil.VALID_TAG_HUSBAND, ContactCommandTestUtil.VALID_TAG_FRIEND).build();
         EditContactCommand expectedCommand = new EditContactCommand(targetIndex, descriptor);
 
@@ -151,12 +147,6 @@ public class EditContactCommandParserTest {
         expectedCommand = new EditContactCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
-        // address
-        userInput = targetIndex.getOneBased() + ContactCommandTestUtil.ADDRESS_DESC_AMY;
-        descriptor = new EditContactDescriptorBuilder().withAddress(ContactCommandTestUtil.VALID_ADDRESS_AMY).build();
-        expectedCommand = new EditContactCommand(targetIndex, descriptor);
-        assertParseSuccess(parser, userInput, expectedCommand);
-
         // tags
         userInput = targetIndex.getOneBased() + ContactCommandTestUtil.TAG_DESC_FRIEND;
         descriptor = new EditContactDescriptorBuilder().withTags(ContactCommandTestUtil.VALID_TAG_FRIEND).build();
@@ -172,14 +162,14 @@ public class EditContactCommandParserTest {
                 .getOneBased() + ContactCommandTestUtil.PHONE_DESC_AMY + ContactCommandTestUtil.ADDRESS_DESC_AMY
                 + ContactCommandTestUtil.EMAIL_DESC_AMY
                 + ContactCommandTestUtil.TAG_DESC_FRIEND + ContactCommandTestUtil.PHONE_DESC_AMY
-                + ContactCommandTestUtil.ADDRESS_DESC_AMY + ContactCommandTestUtil.EMAIL_DESC_AMY
+                + ContactCommandTestUtil.EMAIL_DESC_AMY
                 + ContactCommandTestUtil.TAG_DESC_FRIEND
-                + ContactCommandTestUtil.PHONE_DESC_BOB + ContactCommandTestUtil.ADDRESS_DESC_BOB
+                + ContactCommandTestUtil.PHONE_DESC_BOB
                 + ContactCommandTestUtil.EMAIL_DESC_BOB + ContactCommandTestUtil.TAG_DESC_HUSBAND;
 
         EditContactCommand.EditContactDescriptor descriptor =
             new EditContactDescriptorBuilder().withPhone(ContactCommandTestUtil.VALID_PHONE_BOB)
-                .withEmail(ContactCommandTestUtil.VALID_EMAIL_BOB).withAddress(ContactCommandTestUtil.VALID_ADDRESS_BOB)
+                .withEmail(ContactCommandTestUtil.VALID_EMAIL_BOB)
                 .withTags(ContactCommandTestUtil.VALID_TAG_FRIEND, ContactCommandTestUtil.VALID_TAG_HUSBAND)
                 .build();
         EditContactCommand expectedCommand = new EditContactCommand(targetIndex, descriptor);
@@ -207,8 +197,7 @@ public class EditContactCommandParserTest {
                 + ContactCommandTestUtil.PHONE_DESC_BOB;
         descriptor =
             new EditContactDescriptorBuilder().withPhone(ContactCommandTestUtil.VALID_PHONE_BOB)
-                .withEmail(ContactCommandTestUtil.VALID_EMAIL_BOB)
-                .withAddress(ContactCommandTestUtil.VALID_ADDRESS_BOB).build();
+                .withEmail(ContactCommandTestUtil.VALID_EMAIL_BOB).build();
         expectedCommand = new EditContactCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }
