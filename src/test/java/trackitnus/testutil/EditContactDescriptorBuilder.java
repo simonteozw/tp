@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import trackitnus.logic.commands.contact.EditContactCommand;
-import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Name;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.contact.Email;
@@ -35,7 +34,6 @@ public class EditContactDescriptorBuilder {
         descriptor.setName(contact.getName());
         descriptor.setPhone(contact.getPhone());
         descriptor.setEmail(contact.getEmail());
-        descriptor.setAddress(contact.getAddress());
         descriptor.setTags(contact.getTags());
     }
 
@@ -60,14 +58,6 @@ public class EditContactDescriptorBuilder {
      */
     public EditContactDescriptorBuilder withEmail(String email) {
         descriptor.setEmail(new Email(email));
-        return this;
-    }
-
-    /**
-     * Sets the {@code Address} of the {@code EditContactDescriptor} that we are building.
-     */
-    public EditContactDescriptorBuilder withAddress(String address) {
-        descriptor.setAddress(new Address(address));
         return this;
     }
 

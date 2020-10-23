@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import trackitnus.commons.core.Messages;
 import trackitnus.logic.commands.contact.AddContactCommand;
 import trackitnus.logic.commands.contact.ContactCommandTestUtil;
-import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Name;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.contact.Email;
@@ -29,35 +28,34 @@ public class AddContactCommandParserTest {
         assertParseSuccess(parser,
             ContactCommandTestUtil.PREAMBLE_WHITESPACE + ContactCommandTestUtil.NAME_DESC_BOB
                 + ContactCommandTestUtil.PHONE_DESC_BOB + ContactCommandTestUtil.EMAIL_DESC_BOB
-                + ContactCommandTestUtil.ADDRESS_DESC_BOB + ContactCommandTestUtil.TAG_DESC_FRIEND,
+                + ContactCommandTestUtil.TAG_DESC_FRIEND,
             new AddContactCommand(expectedContact));
 
         // multiple names - last name accepted
         assertParseSuccess(parser,
             ContactCommandTestUtil.NAME_DESC_AMY + ContactCommandTestUtil.NAME_DESC_BOB
                 + ContactCommandTestUtil.PHONE_DESC_BOB + ContactCommandTestUtil.EMAIL_DESC_BOB
-                + ContactCommandTestUtil.ADDRESS_DESC_BOB + ContactCommandTestUtil.TAG_DESC_FRIEND,
+                + ContactCommandTestUtil.TAG_DESC_FRIEND,
             new AddContactCommand(expectedContact));
 
         // multiple phones - last phone accepted
         assertParseSuccess(parser,
             ContactCommandTestUtil.NAME_DESC_BOB + ContactCommandTestUtil.PHONE_DESC_AMY
                 + ContactCommandTestUtil.PHONE_DESC_BOB + ContactCommandTestUtil.EMAIL_DESC_BOB
-                + ContactCommandTestUtil.ADDRESS_DESC_BOB + ContactCommandTestUtil.TAG_DESC_FRIEND,
+                + ContactCommandTestUtil.TAG_DESC_FRIEND,
             new AddContactCommand(expectedContact));
 
         // multiple emails - last email accepted
         assertParseSuccess(parser,
             ContactCommandTestUtil.NAME_DESC_BOB + ContactCommandTestUtil.PHONE_DESC_BOB
                 + ContactCommandTestUtil.EMAIL_DESC_AMY + ContactCommandTestUtil.EMAIL_DESC_BOB
-                + ContactCommandTestUtil.ADDRESS_DESC_BOB + ContactCommandTestUtil.TAG_DESC_FRIEND,
+                + ContactCommandTestUtil.TAG_DESC_FRIEND,
             new AddContactCommand(expectedContact));
 
         // multiple addresses - last address accepted
         assertParseSuccess(parser,
             ContactCommandTestUtil.NAME_DESC_BOB + ContactCommandTestUtil.PHONE_DESC_BOB
-                + ContactCommandTestUtil.EMAIL_DESC_BOB + ContactCommandTestUtil.ADDRESS_DESC_AMY
-                + ContactCommandTestUtil.ADDRESS_DESC_BOB + ContactCommandTestUtil.TAG_DESC_FRIEND,
+                + ContactCommandTestUtil.EMAIL_DESC_BOB + ContactCommandTestUtil.TAG_DESC_FRIEND,
             new AddContactCommand(expectedContact));
 
         // multiple tags - all accepted
@@ -66,7 +64,7 @@ public class AddContactCommandParserTest {
             .build();
         assertParseSuccess(parser,
             ContactCommandTestUtil.NAME_DESC_BOB + ContactCommandTestUtil.PHONE_DESC_BOB
-                + ContactCommandTestUtil.EMAIL_DESC_BOB + ContactCommandTestUtil.ADDRESS_DESC_BOB
+                + ContactCommandTestUtil.EMAIL_DESC_BOB
                 + ContactCommandTestUtil.TAG_DESC_HUSBAND + ContactCommandTestUtil.TAG_DESC_FRIEND,
             new AddContactCommand(expectedContactMultipleTags));
     }
@@ -77,7 +75,7 @@ public class AddContactCommandParserTest {
         Contact expectedContact = new ContactBuilder(AMY).withTags().build();
         assertParseSuccess(parser,
             ContactCommandTestUtil.NAME_DESC_AMY + ContactCommandTestUtil.PHONE_DESC_AMY
-                + ContactCommandTestUtil.EMAIL_DESC_AMY + ContactCommandTestUtil.ADDRESS_DESC_AMY,
+                + ContactCommandTestUtil.EMAIL_DESC_AMY,
             new AddContactCommand(expectedContact));
     }
 
@@ -102,12 +100,6 @@ public class AddContactCommandParserTest {
         assertParseFailure(parser,
             ContactCommandTestUtil.NAME_DESC_BOB + ContactCommandTestUtil.PHONE_DESC_BOB
                 + ContactCommandTestUtil.VALID_EMAIL_BOB + ContactCommandTestUtil.ADDRESS_DESC_BOB,
-            expectedMessage);
-
-        // missing address prefix
-        assertParseFailure(parser,
-            ContactCommandTestUtil.NAME_DESC_BOB + ContactCommandTestUtil.PHONE_DESC_BOB
-                + ContactCommandTestUtil.EMAIL_DESC_BOB + ContactCommandTestUtil.VALID_ADDRESS_BOB,
             expectedMessage);
 
         // all prefixes missing
@@ -140,17 +132,10 @@ public class AddContactCommandParserTest {
                 + ContactCommandTestUtil.TAG_DESC_HUSBAND + ContactCommandTestUtil.TAG_DESC_FRIEND,
             Email.MESSAGE_CONSTRAINTS);
 
-        // invalid address
-        assertParseFailure(parser,
-            ContactCommandTestUtil.NAME_DESC_BOB + ContactCommandTestUtil.PHONE_DESC_BOB
-                + ContactCommandTestUtil.EMAIL_DESC_BOB + ContactCommandTestUtil.INVALID_ADDRESS_DESC
-                + ContactCommandTestUtil.TAG_DESC_HUSBAND + ContactCommandTestUtil.TAG_DESC_FRIEND,
-            Address.MESSAGE_CONSTRAINTS);
-
         // invalid tag
         assertParseFailure(parser,
             ContactCommandTestUtil.NAME_DESC_BOB + ContactCommandTestUtil.PHONE_DESC_BOB
-                + ContactCommandTestUtil.EMAIL_DESC_BOB + ContactCommandTestUtil.ADDRESS_DESC_BOB
+                + ContactCommandTestUtil.EMAIL_DESC_BOB
                 + ContactCommandTestUtil.INVALID_TAG_DESC + ContactCommandTestUtil.VALID_TAG_FRIEND,
             Tag.MESSAGE_CONSTRAINTS);
 
