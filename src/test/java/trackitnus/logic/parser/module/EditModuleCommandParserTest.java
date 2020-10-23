@@ -1,5 +1,6 @@
 package trackitnus.logic.parser.module;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static trackitnus.logic.parser.CommandParserTestUtil.assertParseFailure;
 
 import org.junit.jupiter.api.Test;
@@ -10,11 +11,11 @@ import trackitnus.logic.commands.module.EditModuleCommand;
 public class EditModuleCommandParserTest {
     private final EditModuleCommandParser parser = new EditModuleCommandParser();
 
+    // note for Module: all user input needs leading space
     @Test
     public void parse_allFieldsPresent_success() {
-//        EditModuleCommand expected = new EditModuleCommand(new Code("CS1231S"),new EditModuleCommand
-//        .EditModuleDescriptor())
-//        assertParseSuccess(parser, "m/CS1231S n/Sample d/Sample", new Edi);
+        assertDoesNotThrow(() -> parser.parse(" m/CS1231S n/Sample"));
+        assertDoesNotThrow(() -> parser.parse(" m/CS2030S n/Sample"));
     }
 
     @Test
@@ -25,7 +26,6 @@ public class EditModuleCommandParserTest {
 
     @Test
     public void parse_justModuleProvided_failure() {
-        assertParseFailure(parser, "m/CS1231S", String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-            EditModuleCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, " m/CS1231S", EditModuleCommand.MESSAGE_NOT_EDITED);
     }
 }
