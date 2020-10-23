@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import trackitnus.commons.core.index.Index;
@@ -144,6 +145,25 @@ public class ParserUtil {
     }
 
     /**
+     * Parses an {@code Optional<String> code} into an {@code Code}.
+     *
+     * @throws ParseException if the given {@code code} is invalid.
+     */
+    public static Code parseOptionalCode(Optional<String> code) throws ParseException {
+        if (code.isEmpty()) {
+            return null;
+        }
+        String trimmedCode = code.get().trim();
+        if (!Task.isValidString(trimmedCode)) {
+            return null;
+        }
+        if (!Code.isValidCode(trimmedCode)) {
+            throw new ParseException(Code.MESSAGE_CONSTRAINTS);
+        }
+        return new Code(trimmedCode);
+    }
+
+    /**
      * Parses a {@code String str} into a {@code String}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -192,12 +212,11 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code remark} is invalid.
      */
-    public static String parseRemark(String remark) throws ParseException {
-        requireNonNull(remark);
-        String trimmedRemark = remark.trim();
-        if (!Address.isValidAddress(trimmedRemark)) {
-            throw new ParseException(Task.REMARK_MESSAGE_CONSTRAINTS);
+    public static String parseRemark(Optional<String> remark) {
+        if (remark.isEmpty()) {
+            return "";
         }
+        String trimmedRemark = remark.get().trim();
         return trimmedRemark;
     }
 

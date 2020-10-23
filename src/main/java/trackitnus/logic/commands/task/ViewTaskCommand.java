@@ -14,7 +14,7 @@ import trackitnus.model.task.Task;
 
 public class ViewTaskCommand extends Command {
 
-    public static final String COMMAND_WORD = "info";
+    public static final String COMMAND_WORD = "view";
 
     public static final String MESSAGE_USAGE = Task.TYPE + " " + COMMAND_WORD
         + ": Views the info of the task with the specified index.\n"
@@ -37,7 +37,6 @@ public class ViewTaskCommand extends Command {
         }
 
         Task taskToShow = lastShownList.get(targetIndex.getZeroBased());
-        model.deleteTask(taskToShow);
         return new CommandResult(String.format(MESSAGE_VIEW_TASK_SUCCESS, taskToShow));
     }
 
