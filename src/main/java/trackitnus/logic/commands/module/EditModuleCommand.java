@@ -100,13 +100,20 @@ public class EditModuleCommand extends Command {
             && editModuleDescriptor.equals(e.editModuleDescriptor);
     }
 
+    @Override
+    public String toString() {
+        return "EditModuleCommand{" +
+            "code=" + code +
+            ", editModuleDescriptor=" + editModuleDescriptor +
+            '}';
+    }
+
     /**
      * Stores the details to edit the module with. Each non-empty field value will replace the
      * corresponding field value of the module.
      */
     public static class EditModuleDescriptor {
 
-        private Code code;
         private Name name;
 
         public EditModuleDescriptor() {
@@ -116,7 +123,6 @@ public class EditModuleCommand extends Command {
          * Copy constructor.
          */
         public EditModuleDescriptor(EditModuleDescriptor toCopy) {
-            setCode(toCopy.code);
             setName(toCopy.name);
         }
 
@@ -142,16 +148,7 @@ public class EditModuleCommand extends Command {
             // state check
             EditModuleDescriptor e = (EditModuleDescriptor) other;
 
-            return getCode().equals(e.getCode())
-                && getName().equals(e.getName());
-        }
-
-        public Optional<Code> getCode() {
-            return Optional.ofNullable(code);
-        }
-
-        public void setCode(Code code) {
-            this.code = code;
+            return getName().equals(e.getName());
         }
 
         public Optional<Name> getName() {
@@ -162,5 +159,11 @@ public class EditModuleCommand extends Command {
             this.name = name;
         }
 
+        @Override
+        public String toString() {
+            return "EditModuleDescriptor{" +
+                "name=" + name +
+                '}';
+        }
     }
 }
