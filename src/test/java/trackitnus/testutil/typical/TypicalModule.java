@@ -14,7 +14,6 @@ public class TypicalModule {
     public static final Module CS2030 = new Module(new Code("CS2030"), new Name("Programming Methodology II"));
     public static final Module CS3233 = new Module(new Code("CS3233"), new Name("Competitive Programming"));
     public static final Module CFG1002 = new Module(new Code("CFG1002"), new Name("Career Catalyst"));
-
     public static List<Module> getTypicalModules() {
         return new ArrayList<>(Arrays.asList(CS1231S, MA1101R, CS2030, CS3233, CFG1002));
     }

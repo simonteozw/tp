@@ -1,12 +1,10 @@
-package trackitnus.model.contact;
+package trackitnus.model.commons;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static trackitnus.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
-
-import trackitnus.model.commons.Name;
 
 public class NameTest {
 
