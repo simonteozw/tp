@@ -32,8 +32,6 @@ public class ModuleCard extends UiPart<Region> {
     private Label name;
     @FXML
     private Label id;
-    @FXML
-    private Label desc;
 
 
     /**
