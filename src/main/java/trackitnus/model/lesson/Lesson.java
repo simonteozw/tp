@@ -1,11 +1,10 @@
 package trackitnus.model.lesson;
 
-import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 import trackitnus.commons.util.CollectionUtil;
-import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Code;
 
 /**
@@ -15,7 +14,8 @@ import trackitnus.model.commons.Code;
 public class Lesson {
     public static final String TYPE = "L";
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("d/MM/yyyy");
-    public static final String DATE_MESSAGE_CONSTRAINTS = "Date should be in the format d/MM/yyyy";
+    public static final String DATE_MESSAGE_CONSTRAINTS =
+        "Date should be in the format \"ddd H:mm-H:mm\" (in 24-hour format), e.g. Mon 8:00-13:00";
     public static final String WEIGHTAGE_MESSAGE_CONSTRAINTS =
         "Weightage should be in the form of a floating point number";
     public static final String TYPE_MESSAGE_CONSTRAINTS =
@@ -24,9 +24,7 @@ public class Lesson {
 
     private final Code code;
     private final Type type;
-    private final LocalDate date;
-    private final Address address;
-    private final Double weightage;
+    private final LessonDateTime date;
 
     /**
      * Every field must be present and not null.
@@ -34,15 +32,11 @@ public class Lesson {
      * @param code
      * @param type
      * @param date
-     * @param address
-     * @param weightage
      */
-    public Lesson(Code code, Type type, LocalDate date, Address address, Double weightage) {
-        CollectionUtil.requireAllNonNull(code, type, date, address, weightage);
+    public Lesson(Code code, Type type, LessonDateTime date) {
+        CollectionUtil.requireAllNonNull(code, type, date);
         this.code = code;
         this.date = date;
-        this.address = address;
-        this.weightage = weightage;
         this.type = type;
     }
 
@@ -59,15 +53,13 @@ public class Lesson {
         Lesson otherLesson = (Lesson) other;
         return otherLesson.code.equals(code)
             && otherLesson.type.equals(type)
-            && otherLesson.date.equals(date)
-            && otherLesson.address.equals(address)
-            && otherLesson.weightage.equals(weightage);
+            && otherLesson.date.equals(date);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(code, type, date, address, weightage);
+        return Objects.hash(code, type, date);
     }
 
     @Override
@@ -76,12 +68,7 @@ public class Lesson {
             + " "
             + getTypeStr()
             + " at: "
-            + getDate()
-            + " "
-            + getAddress()
-            + " with weightage of: "
-            + getWeightage()
-            + "%";
+            + getDate();
     }
 
     public Code getCode() {
@@ -96,16 +83,20 @@ public class Lesson {
         return type.name();
     }
 
-    public LocalDate getDate() {
+    public LessonDateTime getDate() {
         return date;
     }
 
-    public Address getAddress() {
-        return address;
+    public LessonWeekday getWeekday() {
+        return date.getWeekday();
     }
 
-    public Double getWeightage() {
-        return weightage;
+    public LocalTime getStartTime() {
+        return date.getStartTime();
+    }
+
+    public LocalTime getEndTime() {
+        return date.getEndTime();
     }
 
     /**

@@ -1,14 +1,11 @@
 package trackitnus.logic.commands.lesson;
 
 import static java.util.Objects.requireNonNull;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_TYPE;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_WEIGHTAGE;
 import static trackitnus.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
 import trackitnus.commons.core.Messages;
@@ -17,9 +14,9 @@ import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.Model;
-import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Code;
 import trackitnus.model.lesson.Lesson;
+import trackitnus.model.lesson.LessonDateTime;
 import trackitnus.model.lesson.Type;
 
 public class EditLessonCommand extends Command {
@@ -32,15 +29,11 @@ public class EditLessonCommand extends Command {
         + "Parameters: "
         + PREFIX_CODE + "MODULE_CODE "
         + PREFIX_TYPE + "TYPE "
-        + "[" + PREFIX_DATE + "DATE] "
-        + "[" + PREFIX_ADDRESS + "ADDRESS] "
-        + "[" + PREFIX_WEIGHTAGE + "WEIGHTAGE]\n"
+        + "[" + PREFIX_DATE + "DATE]\n"
         + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
         + PREFIX_CODE + "CS3233 "
         + PREFIX_TYPE + "lecture "
-        + PREFIX_DATE + "27/01/2021 "
-        + PREFIX_ADDRESS + "COM1 PL5 "
-        + PREFIX_WEIGHTAGE + "3.5\n";
+        + PREFIX_DATE + "Mon 17:45-21:00\n";
 
     public static final String MESSAGE_EDIT_LESSON_SUCCESS = "Edited Lesson: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -76,11 +69,9 @@ public class EditLessonCommand extends Command {
 
         Code originalCode = lessonToEdit.getCode();
         Type originalType = lessonToEdit.getType();
-        LocalDate updatedDate = editLessonDescriptor.getDate().orElse(lessonToEdit.getDate());
-        Address updatedAddress = editLessonDescriptor.getAddress().orElse(lessonToEdit.getAddress());
-        Double updatedWeightage = editLessonDescriptor.getWeightage().orElse(lessonToEdit.getWeightage());
+        LessonDateTime updatedDate = editLessonDescriptor.getDate().orElse(lessonToEdit.getDate());
 
-        return new Lesson(originalCode, originalType, updatedDate, updatedAddress, updatedWeightage);
+        return new Lesson(originalCode, originalType, updatedDate);
     }
 
     @Override
@@ -135,9 +126,7 @@ public class EditLessonCommand extends Command {
     public static class EditLessonDescriptor {
         private Code code;
         private Type type;
-        private LocalDate date;
-        private Address address;
-        private Double weightage;
+        private LessonDateTime date;
 
         public EditLessonDescriptor() {
         }
@@ -150,15 +139,13 @@ public class EditLessonCommand extends Command {
             setCode(toCopy.code);
             setType(toCopy.type);
             setDate(toCopy.date);
-            setAddress(toCopy.address);
-            setWeightage(toCopy.weightage);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(date, address, weightage);
+            return CollectionUtil.isAnyNonNull(date);
         }
 
         public Optional<Code> getCode() {
@@ -177,28 +164,12 @@ public class EditLessonCommand extends Command {
             this.type = type;
         }
 
-        public Optional<LocalDate> getDate() {
+        public Optional<LessonDateTime> getDate() {
             return Optional.ofNullable(date);
         }
 
-        public void setDate(LocalDate date) {
+        public void setDate(LessonDateTime date) {
             this.date = date;
-        }
-
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
-        }
-
-        public void setAddress(Address address) {
-            this.address = address;
-        }
-
-        public Optional<Double> getWeightage() {
-            return Optional.ofNullable(weightage);
-        }
-
-        public void setWeightage(Double weightage) {
-            this.weightage = weightage;
         }
 
         @Override
@@ -218,9 +189,7 @@ public class EditLessonCommand extends Command {
 
             return getCode().equals(e.getCode())
                 && getType().equals(e.getType())
-                && getDate().equals(e.getDate())
-                && getAddress().equals(e.getAddress())
-                && getWeightage().equals(e.getWeightage());
+                && getDate().equals(e.getDate());
         }
     }
 }

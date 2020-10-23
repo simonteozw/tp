@@ -1,11 +1,9 @@
 package trackitnus.logic.parser.lesson;
 
 import static java.util.Objects.requireNonNull;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_TYPE;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_WEIGHTAGE;
 
 import java.util.stream.Stream;
 
@@ -43,7 +41,7 @@ public class EditLessonCommandParser implements Parser<EditLessonCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
             ArgumentTokenizer.tokenize(args,
-                PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE, PREFIX_ADDRESS, PREFIX_WEIGHTAGE);
+                PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_CODE, PREFIX_TYPE)) {
             throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
@@ -59,13 +57,7 @@ public class EditLessonCommandParser implements Parser<EditLessonCommand> {
         editLessonDescriptor.setType(type);
 
         if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
-            editLessonDescriptor.setDate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()));
-        }
-        if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
-            editLessonDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
-        }
-        if (argMultimap.getValue(PREFIX_WEIGHTAGE).isPresent()) {
-            editLessonDescriptor.setWeightage(ParserUtil.parseWeightage(argMultimap.getValue(PREFIX_WEIGHTAGE).get()));
+            editLessonDescriptor.setDate(ParserUtil.parseLessonDateTime(argMultimap.getValue(PREFIX_DATE).get()));
         }
 
         if (!editLessonDescriptor.isAnyFieldEdited()) {
