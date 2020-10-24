@@ -48,7 +48,6 @@ public class UpcomingPanel extends UiPart<Region> {
 //        calendarDates.add(new Day("Overdue")); //TODO: Add implementation for overdue tasks
 
         for (LocalDate date : list) {
-//            String datestring = date.format(formatter);
             calendarDates.add(new Day(date));
         }
 

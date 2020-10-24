@@ -17,8 +17,8 @@ public class DayCard extends UiPart<Region> {
     private static final String FXML = "/Upcoming/DayCard.fxml";
 
     public final Day day;
-    private final int lessonRowHeight = 45;
-    private final int taskRowHeight = 85;
+    private final int lessonRowHeight = 27;
+    private final int taskRowHeight = 45;
 
     @FXML
     private ListView<Task> taskListView;
@@ -39,11 +39,11 @@ public class DayCard extends UiPart<Region> {
         this.day = day;
         date.setText(day.getStringDate());
 
-        lessonListView.setPrefHeight(lessonList.size() * lessonRowHeight);
+        lessonListView.setPrefHeight(lessonList.size() * lessonRowHeight + lessonRowHeight);
         lessonListView.setItems(lessonList);
         lessonListView.setCellFactory(listView -> new LessonListViewCell());
 
-        taskListView.setPrefHeight(taskList.size() * taskRowHeight);
+        taskListView.setPrefHeight(taskList.size() * taskRowHeight + taskRowHeight);
         taskListView.setItems(taskList);
         taskListView.setCellFactory(listView -> new TaskListViewCell());
     }
