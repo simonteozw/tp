@@ -2,14 +2,14 @@ package trackitnus.model.contact;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static trackitnus.testutil.TypicalContacts.ALICE;
-import static trackitnus.testutil.TypicalContacts.BOB;
+import static trackitnus.testutil.typical.TypicalContacts.ALICE;
+import static trackitnus.testutil.typical.TypicalContacts.BOB;
 
 import org.junit.jupiter.api.Test;
 
 import trackitnus.logic.commands.contact.ContactCommandTestUtil;
 import trackitnus.testutil.Assert;
-import trackitnus.testutil.ContactBuilder;
+import trackitnus.testutil.builder.ContactBuilder;
 
 public class ContactTest {
 
@@ -40,21 +40,18 @@ public class ContactTest {
         // same name, same phone, different attributes -> returns true
         editedAlice =
             new ContactBuilder(ALICE).withEmail(ContactCommandTestUtil.VALID_EMAIL_BOB)
-                .withAddress(ContactCommandTestUtil.VALID_ADDRESS_BOB)
                 .withTags(ContactCommandTestUtil.VALID_TAG_HUSBAND).build();
         assertTrue(ALICE.isSameContact(editedAlice));
 
         // same name, same email, different attributes -> returns true
         editedAlice =
             new ContactBuilder(ALICE).withPhone(ContactCommandTestUtil.VALID_PHONE_BOB)
-                .withAddress(ContactCommandTestUtil.VALID_ADDRESS_BOB)
                 .withTags(ContactCommandTestUtil.VALID_TAG_HUSBAND).build();
         assertTrue(ALICE.isSameContact(editedAlice));
 
         // same name, same phone, same email, different attributes -> returns true
         editedAlice =
-            new ContactBuilder(ALICE).withAddress(ContactCommandTestUtil.VALID_ADDRESS_BOB)
-                .withTags(ContactCommandTestUtil.VALID_TAG_HUSBAND).build();
+            new ContactBuilder(ALICE).withTags(ContactCommandTestUtil.VALID_TAG_HUSBAND).build();
         assertTrue(ALICE.isSameContact(editedAlice));
     }
 
@@ -86,10 +83,6 @@ public class ContactTest {
 
         // different email -> returns false
         editedAlice = new ContactBuilder(ALICE).withEmail(ContactCommandTestUtil.VALID_EMAIL_BOB).build();
-        assertFalse(ALICE.equals(editedAlice));
-
-        // different address -> returns false
-        editedAlice = new ContactBuilder(ALICE).withAddress(ContactCommandTestUtil.VALID_ADDRESS_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different tags -> returns false

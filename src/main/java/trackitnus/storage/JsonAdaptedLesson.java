@@ -11,7 +11,6 @@ import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Code;
 import trackitnus.model.lesson.Lesson;
 import trackitnus.model.lesson.Type;
-import trackitnus.model.task.Task;
 
 /**
  * Jackson-friendly version of {@link Lesson}.
@@ -46,7 +45,7 @@ public class JsonAdaptedLesson {
     public JsonAdaptedLesson(Lesson source) {
         code = source.getCode().code;
         type = source.getTypeStr();
-        date = source.getDate().format(Task.FORMATTER);
+        date = source.getDate().format(Lesson.FORMATTER);
         address = source.getAddress().value;
         weightage = Double.toString(source.getWeightage());
     }
@@ -76,11 +75,11 @@ public class JsonAdaptedLesson {
                 LocalDate.class.getSimpleName()));
         }
         try {
-            LocalDate.parse(date, Task.FORMATTER);
+            LocalDate.parse(date, Lesson.FORMATTER);
         } catch (DateTimeParseException e) {
-            throw new IllegalValueException(Task.DATE_MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Lesson.DATE_MESSAGE_CONSTRAINTS);
         }
-        final LocalDate modelTime = LocalDate.parse(date, Task.FORMATTER);
+        final LocalDate modelTime = LocalDate.parse(date, Lesson.FORMATTER);
 
         if (address == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
@@ -96,7 +95,7 @@ public class JsonAdaptedLesson {
         try {
             Double.parseDouble(weightage);
         } catch (NumberFormatException e) {
-            throw new IllegalValueException(Task.WEIGHTAGE_MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Lesson.WEIGHTAGE_MESSAGE_CONSTRAINTS);
         }
         final double modelWeightage = Double.parseDouble(weightage);
 

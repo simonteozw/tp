@@ -153,11 +153,11 @@ Examples: `L add m/CS2103T n/tutorial d/2pm - 3pm Wed a/COM1`
 
 Remark: The module must exist prior to adding a lesson. `DATE` must be of the form `START_TIME - END_TIME DAY_OF_WEEK`.`TYPE` must be one of
  the following:
-* `lecture`
-* `tutorial`
-* `lab`
-* `sectional`
-* `recitation`
+* `LEC` (for lecture)
+* `TUT` (for tutorial)
+* `LAB` (for laboratory)
+* `SEC` (for sectional teaching)
+* `REC` (for recitation)
 
 ### Edit
 
