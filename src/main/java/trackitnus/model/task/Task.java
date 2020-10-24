@@ -103,7 +103,8 @@ public class Task {
         return otherTask.name.equals(name)
             && otherTask.date.equals(date)
             && otherTask.getCode().equals(getCode())
-            && otherTask.getRemark().equals(getRemark());
+            && otherTask.getRemark().equals(getRemark())
+            && otherTask.getIsDone() == getIsDone();
     }
 
     @Override

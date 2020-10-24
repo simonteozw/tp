@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 import javafx.collections.ObservableList;
 import trackitnus.commons.core.GuiSettings;
+import trackitnus.commons.core.index.Index;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.logic.parser.exceptions.ParseException;
@@ -88,6 +89,15 @@ public interface Logic {
      * @return the list of all tasks that take place on that specific day
      */
     ObservableList<Task> getDayUpcomingTasks(LocalDate date);
+
+    /**
+     * Returns the Index of the task in the current last shown list.
+     *
+     * @param task The task to query.
+     * @return an Index object representing the task object.
+     * @throws CommandException If the index is invalid.
+     */
+    Index getTaskIndex(Task task) throws CommandException;
 
     /**
      * Returns the user prefs' address book file path.

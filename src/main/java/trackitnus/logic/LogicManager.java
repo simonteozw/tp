@@ -9,6 +9,8 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import trackitnus.commons.core.GuiSettings;
 import trackitnus.commons.core.LogsCenter;
+import trackitnus.commons.core.Messages;
+import trackitnus.commons.core.index.Index;
 import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
@@ -117,6 +119,16 @@ public class LogicManager implements Logic {
         Predicate<Task> p = task -> task.getDate().equals(date);
         ObservableList<Task> tasklist = model.getFilteredTaskList();
         return tasklist.filtered(p);
+    }
+
+    @Override
+    public Index getTaskIndex(Task task) throws CommandException {
+        ObservableList<Task> tasklist = model.getFilteredTaskList();
+        int index = tasklist.indexOf(task);
+        if (index == -1) {
+            throw new CommandException(Messages.MESSAGE_TASK_DOES_NOT_EXIST);
+        }
+        return Index.fromZeroBased(index);
     }
 
     //--------------------------------END of V1.3's new functions--------------------------------
