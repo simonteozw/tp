@@ -7,14 +7,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 <HBox xmlns:fx="http://javafx.com/fxml/1" id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8">
     <GridPane HBox.hgrow="ALWAYS">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150"/>
         </columnConstraints>
-        <VBox alignment="CENTER_LEFT" minHeight="75" GridPane.columnIndex="0">
+        <VBox alignment="CENTER_LEFT" minHeight="30" GridPane.columnIndex="0">
             <padding>
-                <Insets right="5" left="15"/>
+                <Insets top="5" right="5" bottom="5" left="15"/>
             </padding>
             <HBox spacing="5" alignment="CENTER_LEFT">
                 <Label fx:id="id" styleClass="cell_big_label">
@@ -23,10 +24,9 @@
                         <Region fx:constant="USE_PREF_SIZE"/>
                     </minWidth>
                 </Label>
-                <Label fx:id="name" text="\$name" styleClass="cell_big_label"/>
+                <Label fx:id="code" text="\$first" styleClass="cell_big_label"/>
+                <Label fx:id="type" styleClass="cell_big_label" text="\$type"/>
             </HBox>
-            <Label fx:id="remark" styleClass="cell_small_label" text="\$remark"/>
-<!--            <Label fx:id="date" styleClass="cell_small_label" text="\$date"/>-->
         </VBox>
     </GridPane>
 </HBox>

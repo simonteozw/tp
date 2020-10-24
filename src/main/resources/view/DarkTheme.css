@@ -101,8 +101,6 @@
 }
 
 .list-cell {
-    /*-fx-background-color: #59687C;*/
-    /*-fx-background-radius: 10;*/
     -fx-background-color: transparent;
 }
 
@@ -114,14 +112,9 @@
 /*    -fx-background-color: #4E5F78;*/
 /*}*/
 
-.list-cell:filled:selected #cardPane {
-    /*-fx-border-color: #000000;*/
-    /*-fx-background-color: #000000;*/
-}
-
-.list-cell:filled:selected .label {
-    -fx-text-fill: #68C2E8;
-}
+/*.list-cell:filled:selected .label {*/
+/*    -fx-text-fill: #68C2E8;*/
+/*}*/
 
 #modulePanel {
     -fx-background-color: #434754;

@@ -1,26 +1,30 @@
 package trackitnus.ui.upcoming;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
-
-import trackitnus.commons.util.CollectionUtil;
 
 /**
  * Represents a Day in the Calendar view.
  */
 public class Day {
-    private final String date;
+    private LocalDate date;
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM EEEE");
 
     /**
      * Every field must be present and not null.
      *
      * @param date
      */
-    public Day(String date) {
-        CollectionUtil.requireAllNonNull(date);
+    public Day(LocalDate date) {
         this.date = date;
     }
 
-    public String getDate() {
+    public String getStringDate() {
+        return date.format(formatter);
+    }
+
+    public LocalDate getDate() {
         return date;
     }
 
@@ -46,8 +50,7 @@ public class Day {
 
     @Override
     public String toString() {
-        return " Desc: "
-                + getDate();
+        return getStringDate();
     }
 
 }
