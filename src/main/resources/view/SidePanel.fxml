@@ -7,12 +7,12 @@
 <VBox xmlns:fx="http://javafx.com/fxml/1" styleClass="side-panel">
     <Button fx:id="upcomingButton" styleClass="side-panel-button" onAction="#toggleUpcomingTab">
         <padding>
-            <Insets top="20" right="5" bottom="10" left="20"/>
+            <Insets top="20" right="5" bottom="5" left="18"/>
         </padding>Upcoming</Button>
     <ListView fx:id="moduleListView" prefWidth="20" styleClass="side-panel" VBox.vgrow="ALWAYS"/>
     <Button fx:id="helpButton" onAction="#toggleHelpTab" >
         <padding>
-            <Insets top="20" right="5" bottom="10" left="20"/>
+            <Insets top="0" right="5" bottom="0" left="18"/>
         </padding>Help</Button>
 </VBox>
 

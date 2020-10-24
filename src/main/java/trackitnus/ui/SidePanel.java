@@ -118,6 +118,7 @@ public class SidePanel extends UiPart<Region> {
     public Button getModuleButton(Module module) {
         Button button = new Button(module.getCode().code);
         ArrayList<Object> moduleValues = new ArrayList<>(Arrays.asList(Module.TYPE, module));
+        button.setStyle("-fx-padding: 2 2 2 10");
         button.setOnAction(actionEvent -> {
             tabConsumer.accept(moduleValues);
         });
