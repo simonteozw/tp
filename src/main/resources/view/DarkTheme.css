@@ -122,7 +122,14 @@
 
 .module_big_label {
     -fx-font-family: "Poppins";
+    -fx-font-weight: bold;
     -fx-font-size: 25px;
+}
+
+.date_label {
+    -fx-font-family: "Poppins";
+    -fx-font-weight: bold;
+    -fx-font-size: 17px;
 }
 
 .list-cell .label {

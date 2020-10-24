@@ -17,8 +17,8 @@ public class DayCard extends UiPart<Region> {
     private static final String FXML = "/Upcoming/DayCard.fxml";
 
     public final Day day;
-    private final int lessonRowHeight = 45;
-    private final int taskRowHeight = 85;
+    private final int lessonRowHeight = 40;
+    private final int taskRowHeight = 50;
 
     @FXML
     private ListView<Task> taskListView;

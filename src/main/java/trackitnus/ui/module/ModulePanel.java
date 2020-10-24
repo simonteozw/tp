@@ -44,7 +44,7 @@ public class ModulePanel extends UiPart<Region> {
     private StackPane contactListPanelPlaceholder;
 
     /**
-     * Creates a {@code ContactListPanel} with the given {@code ObservableList}.
+     * Creates a {@code ModuleListPanel} with the given {@code ObservableList}.
      */
     public ModulePanel(Module module, Logic logic) {
         super(FXML);

@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="modulePanel" xmlns="http://javafx.com/javafx/8">
     <HBox spacing="10" id="moduleHeader" fx:id="moduleHeader">
         <padding>
@@ -17,6 +18,7 @@
         </Label>
         <Label fx:id="name" text="\$name" styleClass="module_big_label"/>
     </HBox>
+    <Line startX="400" endX="700" style="-fx-stroke: #8C8C89"/>
     <StackPane fx:id="lessonListPanelPlaceholder" styleClass="pane-with-border" VBox.vgrow="ALWAYS"/>
     <StackPane fx:id="taskListPanelPlaceholder" styleClass="pane-with-border" VBox.vgrow="ALWAYS"/>
     <StackPane fx:id="contactListPanelPlaceholder" styleClass="pane-with-border" VBox.vgrow="ALWAYS"/>
