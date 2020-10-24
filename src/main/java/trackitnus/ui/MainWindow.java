@@ -23,8 +23,7 @@ import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.ui.contact.ContactListPanel;
-//import trackitnus.ui.lesson.LessonListPanel;
-import trackitnus.ui.module.ModuleListPanel;
+import trackitnus.ui.module.ModulePanel;
 import trackitnus.ui.task.TaskListPanel;
 import trackitnus.ui.upcoming.UpcomingPanel;
 
@@ -45,7 +44,7 @@ public class MainWindow extends UiPart<Stage> {
 
 //    private LessonListPanel lessonListPanel;
     private TaskListPanel taskListPanel;
-    private ModuleListPanel moduleListPanel;
+    private ModulePanel modulePanel;
     private ContactListPanel contactListPanel;
 
     private ResultDisplay resultDisplay;
@@ -64,7 +63,7 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane taskListPanelPlaceholder;
 
     @FXML
-    private StackPane moduleListPanelPlaceholder;
+    private StackPane modulePanelPlaceholder;
 
     @FXML
     private StackPane contactListPanelPlaceholder;
@@ -153,8 +152,6 @@ public class MainWindow extends UiPart<Stage> {
 
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
 
-//        moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList());
-
         contactListPanel = new ContactListPanel(logic.getFilteredContactList());
 
         upcomingPanel = new UpcomingPanel(logic);
@@ -186,8 +183,8 @@ public class MainWindow extends UiPart<Stage> {
         if (tabName.equals("M")) {
             assert(tabValues.size() == 2);
             Module tabModule = (Module) tabValues.get(1);
-            moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList(), tabModule);
-            tabPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
+            modulePanel = new ModulePanel(tabModule);
+            tabPanelPlaceholder.getChildren().add(modulePanel.getRoot());
         }
         if (tabName.equals("C")) {
             tabPanelPlaceholder.getChildren().add(contactListPanel.getRoot());
@@ -196,24 +193,6 @@ public class MainWindow extends UiPart<Stage> {
             tabPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
         }
     }
-
-//    private void switchTab(String tabName) {
-//        logger.info("Switching tab to: " + tabName);
-//        tabPanelPlaceholder.getChildren().clear();
-//
-//        if (tabName.equals("U")) {
-//            tabPanelPlaceholder.getChildren().add(upcomingPanel.getRoot());
-//        }
-//        if (tabName.equals("M")) {
-//            tabPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
-//        }
-//        if (tabName.equals("C")) {
-//            tabPanelPlaceholder.getChildren().add(contactListPanel.getRoot());
-//        }
-//        if (tabName.equals("T")) {
-//            tabPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
-//        }
-//    }
 
     /**
      * Sets the default size based on {@code guiSettings}.
