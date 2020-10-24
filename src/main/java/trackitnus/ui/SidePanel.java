@@ -15,6 +15,7 @@ import javafx.util.Pair;
 import trackitnus.commons.core.LogsCenter;
 import trackitnus.logic.Logic;
 import trackitnus.model.module.Module;
+import trackitnus.ui.upcoming.UpcomingPanel;
 
 public class SidePanel extends UiPart<Region> {
     private static final String FXML = "SidePanel.fxml";
@@ -69,7 +70,7 @@ public class SidePanel extends UiPart<Region> {
 
     public Button getUpcomingButton() {
         Button button = new Button("Upcoming");
-        ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList((Object) "U"));
+        ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList((Object) UpcomingPanel.TYPE));
         button.setOnAction(actionEvent -> {
             tabConsumer.accept(upcomingValues);
         });
@@ -78,7 +79,7 @@ public class SidePanel extends UiPart<Region> {
 
     public Button getModuleButton(Module module) {
         Button button = new Button(module.getCode().code);
-        ArrayList<Object> moduleValues = new ArrayList<>(Arrays.asList((Object) "M", (Object) module));
+        ArrayList<Object> moduleValues = new ArrayList<>(Arrays.asList((Object) Module.TYPE, (Object) module));
         button.setOnAction(actionEvent -> {
             tabConsumer.accept(moduleValues);
         });

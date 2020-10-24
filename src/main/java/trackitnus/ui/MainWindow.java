@@ -2,7 +2,6 @@ package trackitnus.ui;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.function.Consumer;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -14,7 +13,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.util.Pair;
 import trackitnus.commons.core.GuiSettings;
 import trackitnus.commons.core.LogsCenter;
 import trackitnus.model.module.Module;
@@ -22,9 +20,7 @@ import trackitnus.logic.Logic;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.logic.parser.exceptions.ParseException;
-import trackitnus.ui.contact.ContactListPanel;
 import trackitnus.ui.module.ModulePanel;
-import trackitnus.ui.task.TaskListPanel;
 import trackitnus.ui.upcoming.UpcomingPanel;
 
 /**
@@ -41,11 +37,7 @@ public class MainWindow extends UiPart<Stage> {
     private final Logic logic;
 
     // Independent Ui parts residing in this Ui container
-
-//    private LessonListPanel lessonListPanel;
-    private TaskListPanel taskListPanel;
     private ModulePanel modulePanel;
-    private ContactListPanel contactListPanel;
 
     private ResultDisplay resultDisplay;
     private UpcomingPanel upcomingPanel;
@@ -53,20 +45,8 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane commandBoxPlaceholder;
 
-//    @FXML
-//    private MenuItem helpMenuItem;
-
-//    @FXML
-//    private StackPane lessonListPanelPlaceholder;
-
-    @FXML
-    private StackPane taskListPanelPlaceholder;
-
     @FXML
     private StackPane modulePanelPlaceholder;
-
-    @FXML
-    private StackPane contactListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -147,13 +127,6 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
 
-//        lessonListPanel = new LessonListPanel(logic.getFilteredLessonList());
-//        lessonListPanelPlaceholder.getChildren().add(lessonListPanel.getRoot());
-
-        taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
-
-        contactListPanel = new ContactListPanel(logic.getFilteredContactList());
-
         upcomingPanel = new UpcomingPanel(logic);
 
         //Default tab open
@@ -177,20 +150,14 @@ public class MainWindow extends UiPart<Stage> {
         tabPanelPlaceholder.getChildren().clear();
         String tabName = String.valueOf(tabValues.get(0));
 
-        if (tabName.equals("U")) {
+        if (tabName.equals(UpcomingPanel.TYPE)) {
             tabPanelPlaceholder.getChildren().add(upcomingPanel.getRoot());
         }
-        if (tabName.equals("M")) {
+        if (tabName.equals(Module.TYPE)) {
             assert(tabValues.size() == 2);
             Module tabModule = (Module) tabValues.get(1);
             modulePanel = new ModulePanel(tabModule, logic);
             tabPanelPlaceholder.getChildren().add(modulePanel.getRoot());
-        }
-        if (tabName.equals("C")) {
-            tabPanelPlaceholder.getChildren().add(contactListPanel.getRoot());
-        }
-        if (tabName.equals("T")) {
-            tabPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
         }
     }
 
