@@ -36,9 +36,7 @@ public class ModulePanel extends UiPart<Region> {
     @FXML
     private HBox moduleHeader;
     @FXML
-    private Label code;
-    @FXML
-    private Label name;
+    private Label header;
     @FXML
     private StackPane lessonListPanelPlaceholder;
     @FXML
@@ -51,10 +49,9 @@ public class ModulePanel extends UiPart<Region> {
      */
     public ModulePanel(Module module, Logic logic) {
         super(FXML);
-        code.setText(module.getCode().code);
-        name.setWrapText(true);
-        name.setMaxWidth(400);
-        name.setText(module.getName().fullName);
+        header.setWrapText(true);
+        header.setMaxWidth(500);
+        header.setText(module.getCode().code + " " + module.getName().fullName);
 
         ObservableList<Lesson> lessons = logic.getModuleLessons(module.getCode());
         ObservableList<Task> tasks = logic.getModuleTasks(module.getCode());

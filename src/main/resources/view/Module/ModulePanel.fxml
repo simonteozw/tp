@@ -20,12 +20,7 @@
                 <padding>
                     <Insets bottom="5"/>
                 </padding>
-                <Label fx:id="code" text="\$code" styleClass="module_big_label">
-                    <padding>
-                        <Insets right="3"/>
-                    </padding>
-                </Label>
-                <Label fx:id="name" text="\$name" styleClass="module_big_label"/>
+                <Label fx:id="header" text="\$header" styleClass="module_big_label"/>
             </HBox>
             <Line startX="0" endX="500" style="-fx-stroke: #8C8C89"/>
             <StackPane fx:id="lessonListPanelPlaceholder" styleClass="pane-with-border"/>
