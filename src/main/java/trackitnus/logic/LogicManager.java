@@ -104,6 +104,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ObservableList<Contact> getModuleContacts(Code code) {
+        return model.getFilteredContactList();
+    }
+
+    @Override
     public ObservableList<Task> getUpcomingTasks() {
         return model.getFilteredTaskList();
     }

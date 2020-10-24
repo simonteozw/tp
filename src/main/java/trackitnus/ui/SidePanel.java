@@ -1,6 +1,7 @@
 package trackitnus.ui;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
@@ -13,23 +14,23 @@ import javafx.scene.layout.VBox;
 import trackitnus.commons.core.LogsCenter;
 import trackitnus.logic.Logic;
 import trackitnus.model.module.Module;
+import trackitnus.ui.upcoming.UpcomingPanel;
 
 public class SidePanel extends UiPart<Region> {
     private static final String FXML = "SidePanel.fxml";
     private final Logger logger = LogsCenter.getLogger(SidePanel.class);
-    private Consumer<String> consumer;
+    private Consumer<ArrayList<Object>> tabConsumer;
     private Logic logic;
     private final HelpWindow helpWindow;
 
     /**
      * Constructor for SidePanel
      *
-     * @param consumer
+     * @param tabConsumer
      */
-    public SidePanel(Consumer<String> consumer, Logic logic) {
+    public SidePanel(Consumer<ArrayList<Object>> tabConsumer, Logic logic) {
         super(FXML);
-
-        this.consumer = consumer;
+        this.tabConsumer = tabConsumer;
         this.logic = logic;
         helpWindow = new HelpWindow();
         this.initialize();
@@ -46,7 +47,7 @@ public class SidePanel extends UiPart<Region> {
         if (logic != null) {
             tabButtons = new ArrayList<>();
 
-            // Get upcoming tab button.
+            // Get upcoming button.
             Button upcomingButton = getUpcomingButton();
             tabButtons.add(upcomingButton);
             tabContainer.getChildren().add(upcomingButton);
@@ -59,15 +60,7 @@ public class SidePanel extends UiPart<Region> {
                 tabContainer.getChildren().add(moduleButton);
             }
 
-            //TODO: next time not so many tabs already, so don't worry long method.
-            Button contactButton = getContactButton();
-            tabButtons.add(contactButton);
-            tabContainer.getChildren().add(contactButton);
-
-            Button taskButton = getTaskButton();
-            tabButtons.add(taskButton);
-            tabContainer.getChildren().add(taskButton);
-
+            // Get help button.
             Button helpButton = getHelpButton();
             tabButtons.add(helpButton);
             tabContainer.getChildren().add(helpButton);
@@ -76,32 +69,18 @@ public class SidePanel extends UiPart<Region> {
 
     public Button getUpcomingButton() {
         Button button = new Button("Upcoming");
+        ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList((Object) UpcomingPanel.TYPE));
         button.setOnAction(actionEvent -> {
-            consumer.accept("U");
-        });
-        return button;
-    }
-
-    public Button getContactButton() {
-        Button button = new Button("Contact");
-        button.setOnAction(actionEvent -> {
-            consumer.accept("C");
+            tabConsumer.accept(upcomingValues);
         });
         return button;
     }
 
     public Button getModuleButton(Module module) {
         Button button = new Button(module.getCode().code);
+        ArrayList<Object> moduleValues = new ArrayList<>(Arrays.asList((Object) Module.TYPE, (Object) module));
         button.setOnAction(actionEvent -> {
-            consumer.accept("M");
-        });
-        return button;
-    }
-
-    public Button getTaskButton() {
-        Button button = new Button("Task");
-        button.setOnAction(actionEvent -> {
-            consumer.accept("T");
+            tabConsumer.accept(moduleValues);
         });
         return button;
     }

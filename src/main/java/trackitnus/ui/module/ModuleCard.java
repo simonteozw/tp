@@ -30,8 +30,6 @@ public class ModuleCard extends UiPart<Region> {
     private Label code;
     @FXML
     private Label name;
-    @FXML
-    private Label id;
 
 
     /**
@@ -40,7 +38,6 @@ public class ModuleCard extends UiPart<Region> {
     public ModuleCard(Module module, int displayedIndex) {
         super(FXML);
         this.module = module;
-        id.setText("[" + displayedIndex + "] ");
         code.setText(module.getCode().code);
         name.setText(module.getName().fullName);
     }
@@ -59,7 +56,6 @@ public class ModuleCard extends UiPart<Region> {
 
         // state check
         ModuleCard card = (ModuleCard) other;
-        return id.getText().equals(card.id.getText())
-            && module.equals(card.module);
+        return module.equals(card.module);
     }
 }

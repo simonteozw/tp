@@ -1,5 +1,7 @@
 package trackitnus.ui;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -13,14 +15,13 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import trackitnus.commons.core.GuiSettings;
 import trackitnus.commons.core.LogsCenter;
+import trackitnus.commons.core.Messages;
 import trackitnus.logic.Logic;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.logic.parser.exceptions.ParseException;
-import trackitnus.ui.contact.ContactListPanel;
-//import trackitnus.ui.lesson.LessonListPanel;
-import trackitnus.ui.module.ModuleListPanel;
-import trackitnus.ui.task.TaskListPanel;
+import trackitnus.model.module.Module;
+import trackitnus.ui.module.ModulePanel;
 import trackitnus.ui.upcoming.UpcomingPanel;
 
 /**
@@ -37,11 +38,7 @@ public class MainWindow extends UiPart<Stage> {
     private final Logic logic;
 
     // Independent Ui parts residing in this Ui container
-
-//    private LessonListPanel lessonListPanel;
-    private TaskListPanel taskListPanel;
-    private ModuleListPanel moduleListPanel;
-    private ContactListPanel contactListPanel;
+    private ModulePanel modulePanel;
 
     private ResultDisplay resultDisplay;
     private UpcomingPanel upcomingPanel;
@@ -49,20 +46,8 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane commandBoxPlaceholder;
 
-//    @FXML
-//    private MenuItem helpMenuItem;
-
-//    @FXML
-//    private StackPane lessonListPanelPlaceholder;
-
     @FXML
-    private StackPane taskListPanelPlaceholder;
-
-    @FXML
-    private StackPane moduleListPanelPlaceholder;
-
-    @FXML
-    private StackPane contactListPanelPlaceholder;
+    private StackPane modulePanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -143,19 +128,12 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
 
-//        lessonListPanel = new LessonListPanel(logic.getFilteredLessonList());
-//        lessonListPanelPlaceholder.getChildren().add(lessonListPanel.getRoot());
-
-        taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
-
-        moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList());
-
-        contactListPanel = new ContactListPanel(logic.getFilteredContactList());
-
         upcomingPanel = new UpcomingPanel(logic);
 
         //Default tab open
-        switchTab("U");
+        ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList((Object) "U"));
+        switchTab(upcomingValues);
+
         sidePanelPlaceholder.getChildren().add(new SidePanel(this::switchTab, logic).getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -167,22 +145,24 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
-
-    private void switchTab(String tabName) {
-        logger.info("Switching tab to: " + tabName);
+    private void switchTab(ArrayList<Object> tabValues) {
+        assert(tabValues.size() >= 1);
+        logger.info("Switching tab to: " + String.valueOf(tabValues.get(0)));
         tabPanelPlaceholder.getChildren().clear();
+        String tabName = String.valueOf(tabValues.get(0));
 
-        if (tabName.equals("U")) {
+        switch(tabName) {
+        case UpcomingPanel.TYPE:
             tabPanelPlaceholder.getChildren().add(upcomingPanel.getRoot());
-        }
-        if (tabName.equals("M")) {
-            tabPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
-        }
-        if (tabName.equals("C")) {
-            tabPanelPlaceholder.getChildren().add(contactListPanel.getRoot());
-        }
-        if (tabName.equals("T")) {
-            tabPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+            break;
+        case Module.TYPE:
+            assert(tabValues.size() == 2);
+            Module tabModule = (Module) tabValues.get(1);
+            modulePanel = new ModulePanel(tabModule, logic);
+            tabPanelPlaceholder.getChildren().add(modulePanel.getRoot());
+            break;
+        default:
+            throw new IllegalArgumentException(Messages.MESSAGE_INVALID_TAB_VALUE);
         }
     }
 
@@ -213,25 +193,6 @@ public class MainWindow extends UiPart<Stage> {
 //        helpWindow.hide();
         primaryStage.hide();
     }
-
-
-//    private void changeTabOnCommandEntered(String commandText) {
-//        String type = String.valueOf(commandText.charAt(0));
-//        switch (type) {
-//        case Task.TYPE: //Go to Task tab
-//        case Lesson.TYPE: //Go to Lessons tab
-//            tabPane.getSelectionModel().select(0);
-//            break;
-//        case Module.TYPE: //Go to Modules tab
-//            tabPane.getSelectionModel().select(1);
-//            break;
-//        case Contact.TYPE: //Go to Contacts tab
-//            tabPane.getSelectionModel().select(2);
-//            break;
-//        default:
-//            break;
-//        }
-//    }
 
     /**
      * Executes the command and returns the result.

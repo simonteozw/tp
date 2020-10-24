@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.StackPane?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="modulePanel" xmlns="http://javafx.com/javafx/8">
+    <HBox spacing="10" id="moduleHeader" fx:id="moduleHeader">
+        <padding>
+            <Insets top="5" right="5" left="30"/>
+        </padding>
+        <Label fx:id="code" text="\$code" styleClass="module_big_label">
+            <padding>
+                <Insets right="3"/>
+            </padding>
+        </Label>
+        <Label fx:id="name" text="\$name" styleClass="module_big_label"/>
+    </HBox>
+    <StackPane fx:id="lessonListPanelPlaceholder" styleClass="pane-with-border" VBox.vgrow="ALWAYS"/>
+    <StackPane fx:id="taskListPanelPlaceholder" styleClass="pane-with-border" VBox.vgrow="ALWAYS"/>
+    <StackPane fx:id="contactListPanelPlaceholder" styleClass="pane-with-border" VBox.vgrow="ALWAYS"/>
+</VBox>

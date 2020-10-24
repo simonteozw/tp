@@ -17,7 +17,7 @@ import trackitnus.logic.Logic;
 import trackitnus.ui.UiPart;
 
 public class UpcomingPanel extends UiPart<Region> {
-
+    public static final String TYPE = "U";
     private static final String FXML = "/Upcoming/UpcomingPanel.fxml";
 
     private final Logic logic;
