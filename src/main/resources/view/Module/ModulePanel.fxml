@@ -17,5 +17,7 @@
         </Label>
         <Label fx:id="name" text="\$name" styleClass="module_big_label"/>
     </HBox>
-    <StackPane fx:id="lessonListPanelPlaceholder" styleClass="pane-with-border" VBox.vgrow="NEVER"/>
+    <StackPane fx:id="lessonListPanelPlaceholder" styleClass="pane-with-border" VBox.vgrow="ALWAYS"/>
+    <StackPane fx:id="taskListPanelPlaceholder" styleClass="pane-with-border" VBox.vgrow="ALWAYS"/>
+    <StackPane fx:id="contactListPanelPlaceholder" styleClass="pane-with-border" VBox.vgrow="ALWAYS"/>
 </VBox>
