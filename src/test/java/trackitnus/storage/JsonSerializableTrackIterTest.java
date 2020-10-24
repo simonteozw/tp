@@ -11,12 +11,12 @@ import trackitnus.commons.exceptions.IllegalValueException;
 import trackitnus.commons.util.JsonUtil;
 import trackitnus.model.TrackIter;
 import trackitnus.testutil.Assert;
-import trackitnus.testutil.TypicalContacts;
+import trackitnus.testutil.TypicalTrackIter;
 
 public class JsonSerializableTrackIterTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableTrackIterTest");
-    private static final Path TYPICAL_CONTACTS_FILE = TEST_DATA_FOLDER.resolve("typicalContactsTrackIter.json");
+    private static final Path TYPICAL_CONTACTS_FILE = TEST_DATA_FOLDER.resolve("typicalTrackIter.json");
     private static final Path INVALID_CONTACT_FILE = TEST_DATA_FOLDER.resolve("invalidContactTrackIter.json");
     private static final Path DUPLICATE_CONTACT_FILE = TEST_DATA_FOLDER.resolve("duplicateContactTrackIter.json");
 
@@ -25,7 +25,7 @@ public class JsonSerializableTrackIterTest {
         JsonSerializableTrackIter dataFromFile = JsonUtil.readJsonFile(TYPICAL_CONTACTS_FILE,
             JsonSerializableTrackIter.class).get();
         TrackIter trackIterFromFile = dataFromFile.toModelType();
-        TrackIter typicalContactsTrackIter = TypicalContacts.getTypicalTrackIter();
+        TrackIter typicalContactsTrackIter = TypicalTrackIter.getTypicalTrackIter();
         assertEquals(trackIterFromFile, typicalContactsTrackIter);
     }
 

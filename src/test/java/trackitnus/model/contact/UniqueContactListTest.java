@@ -3,8 +3,8 @@ package trackitnus.model.contact;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static trackitnus.testutil.TypicalContacts.ALICE;
-import static trackitnus.testutil.TypicalContacts.BOB;
+import static trackitnus.testutil.typical.TypicalContacts.ALICE;
+import static trackitnus.testutil.typical.TypicalContacts.BOB;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -16,7 +16,7 @@ import trackitnus.logic.commands.contact.ContactCommandTestUtil;
 import trackitnus.model.contact.exceptions.ContactNotFoundException;
 import trackitnus.model.contact.exceptions.DuplicateContactException;
 import trackitnus.testutil.Assert;
-import trackitnus.testutil.ContactBuilder;
+import trackitnus.testutil.builder.ContactBuilder;
 
 public class UniqueContactListTest {
 
@@ -42,7 +42,7 @@ public class UniqueContactListTest {
     public void contains_contactWithSameIdentityFieldsInList_returnsTrue() {
         uniqueContactList.add(ALICE);
         Contact editedAlice =
-            new ContactBuilder(ALICE).withAddress(ContactCommandTestUtil.VALID_ADDRESS_BOB)
+            new ContactBuilder(ALICE)
                 .withTags(ContactCommandTestUtil.VALID_TAG_HUSBAND)
                 .build();
         assertTrue(uniqueContactList.contains(editedAlice));
@@ -87,8 +87,7 @@ public class UniqueContactListTest {
     public void setContact_editedContactHasSameIdentity_success() {
         uniqueContactList.add(ALICE);
         Contact editedAlice =
-            new ContactBuilder(ALICE).withAddress(ContactCommandTestUtil.VALID_ADDRESS_BOB)
-                .withTags(ContactCommandTestUtil.VALID_TAG_HUSBAND)
+            new ContactBuilder(ALICE).withTags(ContactCommandTestUtil.VALID_TAG_HUSBAND)
                 .build();
         uniqueContactList.setContact(ALICE, editedAlice);
         UniqueContactList expectedUniqueContactList = new UniqueContactList();

@@ -3,9 +3,10 @@ package trackitnus.model.task;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
+import java.util.Optional;
 
 import trackitnus.commons.util.CollectionUtil;
-import trackitnus.model.commons.Address;
+import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 
 
@@ -15,55 +16,77 @@ import trackitnus.model.commons.Name;
  */
 public class Task {
     public static final String TYPE = "T";
-
-    public static final String DATE_MESSAGE_CONSTRAINTS = "Date should be in the format d/MM/yyyy";
+    public static final String DATE_MESSAGE_CONSTRAINTS = "Date should be in the format dd/MM/yyyy or dd/MM/yyyy hh:mm";
     public static final String WEIGHTAGE_MESSAGE_CONSTRAINTS = "Weightage should be in the"
         + " form of a floating point number";
-    public static final String REMARK_MESSAGE_CONSTRAINTS = "Remarks can take any values, and it should not be blank";
-    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("d/MM/yyyy");
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public static final String VALIDATION_REGEX = "[^\\s].*";
 
     private final Name name;
     private final LocalDate date;
-    private final Address address;
-    private final Double weightage;
+    private final Code code;
     private final String remark;
+    private boolean isDone;
 
     /**
-     * Every field must be present and not null.
+     * name, date & remark must be present and not null
      *
      * @param name
      * @param date
-     * @param address
-     * @param weightage
      * @param remark
      */
-    public Task(Name name, LocalDate date, Address address, Double weightage, String remark) {
-        CollectionUtil.requireAllNonNull(name, date, address, weightage, remark);
+    public Task(Name name, LocalDate date, Code code, String remark) {
+        CollectionUtil.requireAllNonNull(name, date, remark);
         this.name = name;
         this.date = date;
-        this.address = address;
-        this.weightage = weightage;
+        this.code = code;
         this.remark = remark;
+        this.isDone = false;
+    }
+
+    /**
+     * Overloaded constructor for Task. name, date & remark must be present and not null
+     *
+     * @param name
+     * @param date
+     * @param remark
+     * @param isDone
+     */
+    public Task(Name name, LocalDate date, Code code, String remark, boolean isDone) {
+        CollectionUtil.requireAllNonNull(name, date, remark);
+        this.name = name;
+        this.date = date;
+        this.code = code;
+        this.remark = remark;
+        this.isDone = isDone;
     }
 
     public LocalDate getDate() {
         return date;
     }
 
+    public static boolean isValidString(String test) {
+        return test.matches(VALIDATION_REGEX);
+    }
+
     public String getRemark() {
         return remark;
+    }
+
+    public Optional<Code> getCode() {
+        return Optional.ofNullable(code);
     }
 
     public Name getName() {
         return name;
     }
 
-    public Address getAddress() {
-        return address;
+    public boolean getIsDone() {
+        return isDone;
     }
 
-    public Double getWeightage() {
-        return weightage;
+    public void flipDoneStatus() {
+        this.isDone = !this.isDone;
     }
 
     @Override
@@ -76,18 +99,17 @@ public class Task {
             return false;
         }
 
-        Task otherLesson = (Task) other;
-        return otherLesson.name.equals(name)
-            && otherLesson.date.equals(date)
-            && otherLesson.address.equals(address)
-            && otherLesson.weightage.equals(weightage)
-            && otherLesson.remark.equals(remark);
+        Task otherTask = (Task) other;
+        return otherTask.name.equals(name)
+            && otherTask.date.equals(date)
+            && otherTask.getCode().equals(getCode())
+            && otherTask.getRemark().equals(getRemark());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, date, address, weightage, remark);
+        return Objects.hash(name, date, code, remark);
     }
 
     @Override
@@ -95,13 +117,13 @@ public class Task {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
             .append(" Date: ")
-            .append(getDate())
-            .append(" Address: ")
-            .append(getAddress())
-            .append(" Weightage: ")
-            .append(getWeightage())
-            .append(" Remarks: ")
-            .append(getRemark());
+            .append(getDate());
+        if (getCode().isPresent()) {
+            builder.append(" Code: ").append(getCode().get());
+        }
+        if (!getRemark().equals("")) {
+            builder.append(" Remark: ").append(getRemark());
+        }
         return builder.toString();
     }
 

@@ -26,7 +26,6 @@ import trackitnus.logic.commands.module.ViewModuleCommand;
 import trackitnus.logic.commands.task.AddTaskCommand;
 import trackitnus.logic.commands.task.DeleteTaskCommand;
 import trackitnus.logic.commands.task.EditTaskCommand;
-import trackitnus.logic.commands.task.ListTaskCommand;
 import trackitnus.logic.commands.task.ViewTaskCommand;
 import trackitnus.logic.parser.contact.AddContactCommandParser;
 import trackitnus.logic.parser.contact.DeleteContactCommandParser;
@@ -133,9 +132,6 @@ public class TrackIterParser {
 
             case DeleteTaskCommand.COMMAND_WORD:
                 return new DeleteTaskCommandParser().parse(arguments);
-
-            case ListTaskCommand.COMMAND_WORD:
-                return new ListTaskCommand();
 
             case ViewTaskCommand.COMMAND_WORD:
                 return new ViewTaskCommandParser().parse(arguments);

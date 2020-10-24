@@ -22,10 +22,10 @@ import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.contact.NameContainsKeywordsPredicate;
 import trackitnus.testutil.Assert;
-import trackitnus.testutil.ContactBuilder;
 import trackitnus.testutil.ContactUtil;
-import trackitnus.testutil.EditContactDescriptorBuilder;
 import trackitnus.testutil.TypicalIndexes;
+import trackitnus.testutil.builder.ContactBuilder;
+import trackitnus.testutil.builder.EditContactDescriptorBuilder;
 
 public class TrackIterParserTest {
 
@@ -50,9 +50,9 @@ public class TrackIterParserTest {
     @Test
     public void parseCommand_delete() throws Exception {
         DeleteContactCommand command = (DeleteContactCommand) parser.parseCommand(
-            Contact.TYPE + " " + DeleteContactCommand.COMMAND_WORD + " " + TypicalIndexes.INDEX_FIRST_CONTACT
+            Contact.TYPE + " " + DeleteContactCommand.COMMAND_WORD + " " + TypicalIndexes.INDEX_FIRST
                 .getOneBased());
-        assertEquals(new DeleteContactCommand(TypicalIndexes.INDEX_FIRST_CONTACT), command);
+        assertEquals(new DeleteContactCommand(TypicalIndexes.INDEX_FIRST), command);
     }
 
     @Test
@@ -60,9 +60,9 @@ public class TrackIterParserTest {
         Contact contact = new ContactBuilder().build();
         EditContactCommand.EditContactDescriptor descriptor = new EditContactDescriptorBuilder(contact).build();
         EditContactCommand command = (EditContactCommand) parser.parseCommand(Contact.TYPE + " "
-            + EditContactCommand.COMMAND_WORD + " " + TypicalIndexes.INDEX_FIRST_CONTACT.getOneBased() + " "
+            + EditContactCommand.COMMAND_WORD + " " + TypicalIndexes.INDEX_FIRST.getOneBased() + " "
             + ContactUtil.getEditContactDescriptorDetails(descriptor));
-        assertEquals(new EditContactCommand(TypicalIndexes.INDEX_FIRST_CONTACT, descriptor), command);
+        assertEquals(new EditContactCommand(TypicalIndexes.INDEX_FIRST, descriptor), command);
     }
 
     @Test

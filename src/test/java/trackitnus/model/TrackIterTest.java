@@ -3,6 +3,7 @@ package trackitnus.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static trackitnus.testutil.TypicalTrackIter.getTypicalTrackIter;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -20,8 +21,8 @@ import trackitnus.model.lesson.Lesson;
 import trackitnus.model.module.Module;
 import trackitnus.model.task.Task;
 import trackitnus.testutil.Assert;
-import trackitnus.testutil.ContactBuilder;
-import trackitnus.testutil.TypicalContacts;
+import trackitnus.testutil.builder.ContactBuilder;
+import trackitnus.testutil.typical.TypicalContacts;
 
 public class TrackIterTest {
 
@@ -39,7 +40,7 @@ public class TrackIterTest {
 
     @Test
     public void resetData_withValidReadOnlyTrackIter_replacesData() {
-        TrackIter newData = TypicalContacts.getTypicalTrackIter();
+        TrackIter newData = getTypicalTrackIter();
         trackIter.resetData(newData);
         assertEquals(newData, trackIter);
     }
@@ -48,8 +49,7 @@ public class TrackIterTest {
     public void resetData_withDuplicateContacts_throwsDuplicateContactException() {
         // Two contacts with the same identity fields
         Contact editedAlice =
-            new ContactBuilder(TypicalContacts.ALICE).withAddress(ContactCommandTestUtil.VALID_ADDRESS_BOB)
-                .withTags(ContactCommandTestUtil.VALID_TAG_HUSBAND)
+            new ContactBuilder(TypicalContacts.ALICE).withTags(ContactCommandTestUtil.VALID_TAG_HUSBAND)
                 .build();
         List<Contact> newContacts = Arrays.asList(TypicalContacts.ALICE, editedAlice);
         TrackIterStub newData = new TrackIterStub(newContacts);
@@ -77,8 +77,7 @@ public class TrackIterTest {
     public void hasContact_contactWithSameIdentityFieldsInTrackIter_returnsTrue() {
         trackIter.addContact(TypicalContacts.ALICE);
         Contact editedAlice =
-            new ContactBuilder(TypicalContacts.ALICE).withAddress(ContactCommandTestUtil.VALID_ADDRESS_BOB)
-                .withTags(ContactCommandTestUtil.VALID_TAG_HUSBAND)
+            new ContactBuilder(TypicalContacts.ALICE).withTags(ContactCommandTestUtil.VALID_TAG_HUSBAND)
                 .build();
         assertTrue(trackIter.hasContact(editedAlice));
     }

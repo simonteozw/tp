@@ -2,7 +2,7 @@ package trackitnus.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static trackitnus.testutil.Assert.assertThrows;
-import static trackitnus.testutil.TypicalContacts.AMY;
+import static trackitnus.testutil.typical.TypicalContacts.AMY;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -26,7 +26,7 @@ import trackitnus.model.contact.Contact;
 import trackitnus.storage.JsonTrackIterStorage;
 import trackitnus.storage.JsonUserPrefsStorage;
 import trackitnus.storage.StorageManager;
-import trackitnus.testutil.ContactBuilder;
+import trackitnus.testutil.builder.ContactBuilder;
 
 public class LogicManagerTest {
     private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy exception");
@@ -74,8 +74,7 @@ public class LogicManagerTest {
 
         // Execute add command
         String addCommand = Contact.TYPE + " " + AddContactCommand.COMMAND_WORD + ContactCommandTestUtil.NAME_DESC_AMY
-            + ContactCommandTestUtil.PHONE_DESC_AMY + ContactCommandTestUtil.EMAIL_DESC_AMY
-            + ContactCommandTestUtil.ADDRESS_DESC_AMY;
+            + ContactCommandTestUtil.PHONE_DESC_AMY + ContactCommandTestUtil.EMAIL_DESC_AMY;
         Contact expectedContact = new ContactBuilder(AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addContact(expectedContact);

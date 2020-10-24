@@ -2,6 +2,7 @@ package trackitnus.logic;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -14,6 +15,7 @@ import trackitnus.logic.parser.TrackIterParser;
 import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.model.Model;
 import trackitnus.model.ReadOnlyTrackIter;
+import trackitnus.model.commons.Code;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.lesson.Lesson;
 import trackitnus.model.module.Module;
@@ -82,6 +84,36 @@ public class LogicManager implements Logic {
         return model.getFilteredLessonList();
     }
 
+    //--------------------------------START of V1.3's new functions--------------------------------
+    // TODO:
+    // All the current functions are just dummy implementations
+    // All functions should only generate new predicates and use the corresponding getFilteredList to return
+    @Override
+    public ObservableList<Lesson> getDayUpcomingLessons(LocalDate date) {
+        return model.getFilteredLessonList();
+    }
+
+    @Override
+    public ObservableList<Lesson> getModuleLessons(Code code) {
+        return model.getFilteredLessonList();
+    }
+
+    @Override
+    public ObservableList<Task> getModuleTasks(Code code) {
+        return model.getFilteredTaskList();
+    }
+
+    @Override
+    public ObservableList<Task> getUpcomingTasks() {
+        return model.getFilteredTaskList();
+    }
+
+    @Override
+    public ObservableList<Task> getDayUpcomingTasks(LocalDate date) {
+        return model.getFilteredTaskList();
+    }
+
+    //--------------------------------END of V1.3's new functions--------------------------------
     @Override
     public Path getTrackIterFilePath() {
         return model.getTrackIterFilePath();
