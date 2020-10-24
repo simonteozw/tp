@@ -51,7 +51,6 @@ public class LessonCard extends UiPart<Region> {
         type.setText(lesson.getType().name());
         date.setText(lesson.getDate().toString());
         address.setText(lesson.getAddress().toString());
-//        weightage.setText(String.valueOf(lesson.getWeightage()));
     }
 
     @Override
