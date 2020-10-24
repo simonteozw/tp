@@ -183,7 +183,7 @@ public class MainWindow extends UiPart<Stage> {
         if (tabName.equals("M")) {
             assert(tabValues.size() == 2);
             Module tabModule = (Module) tabValues.get(1);
-            modulePanel = new ModulePanel(tabModule);
+            modulePanel = new ModulePanel(tabModule, logic);
             tabPanelPlaceholder.getChildren().add(modulePanel.getRoot());
         }
         if (tabName.equals("C")) {
@@ -221,25 +221,6 @@ public class MainWindow extends UiPart<Stage> {
 //        helpWindow.hide();
         primaryStage.hide();
     }
-
-
-//    private void changeTabOnCommandEntered(String commandText) {
-//        String type = String.valueOf(commandText.charAt(0));
-//        switch (type) {
-//        case Task.TYPE: //Go to Task tab
-//        case Lesson.TYPE: //Go to Lessons tab
-//            tabPane.getSelectionModel().select(0);
-//            break;
-//        case Module.TYPE: //Go to Modules tab
-//            tabPane.getSelectionModel().select(1);
-//            break;
-//        case Contact.TYPE: //Go to Contacts tab
-//            tabPane.getSelectionModel().select(2);
-//            break;
-//        default:
-//            break;
-//        }
-//    }
 
     /**
      * Executes the command and returns the result.
