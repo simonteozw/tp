@@ -1,5 +1,6 @@
 package trackitnus.ui.upcoming;
 
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -10,6 +11,7 @@ import javafx.scene.layout.Region;
 import trackitnus.model.lesson.Lesson;
 import trackitnus.model.task.Task;
 import trackitnus.ui.UiPart;
+import trackitnus.ui.lesson.LessonCard;
 import trackitnus.ui.task.TaskCard;
 
 public class DayCard extends UiPart<Region> {
@@ -17,6 +19,7 @@ public class DayCard extends UiPart<Region> {
     private static final String FXML = "/Upcoming/DayCard.fxml";
 
     public final Day day;
+    final int ROW_HEIGHT = 24;
 
     @FXML
     private ListView<Task> taskListView;
