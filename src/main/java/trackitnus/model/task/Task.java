@@ -69,6 +69,10 @@ public class Task {
         return test.matches(VALIDATION_REGEX);
     }
 
+    public boolean belongsToModule(Code code) {
+        return getCode().isPresent() && getCode().get().equals(code);
+    }
+
     public String getRemark() {
         return remark;
     }

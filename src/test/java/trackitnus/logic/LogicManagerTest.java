@@ -1,7 +1,6 @@
 package trackitnus.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static trackitnus.testutil.Assert.assertThrows;
 import static trackitnus.testutil.typical.TypicalContacts.AMY;
 
@@ -9,13 +8,11 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.time.LocalDate;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import trackitnus.commons.core.Messages;
-import trackitnus.commons.core.index.Index;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.contact.AddContactCommand;
 import trackitnus.logic.commands.contact.ContactCommandTestUtil;
@@ -33,7 +30,6 @@ import trackitnus.storage.JsonTrackIterStorage;
 import trackitnus.storage.JsonUserPrefsStorage;
 import trackitnus.storage.StorageManager;
 import trackitnus.testutil.builder.ContactBuilder;
-import trackitnus.testutil.typical.TypicalTask;
 
 public class LogicManagerTest {
     private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy exception");
@@ -113,45 +109,6 @@ public class LogicManagerTest {
     public void getDayUpcomingTasks_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, ()
             -> logic.getDayUpcomingTasks(LocalDate.parse("12/12/2020", Task.FORMATTER)).remove(0));
-    }
-
-    @Test
-    public void getTaskIndex_invalidIndex_throwsCommandException() {
-        assertThrows(CommandException.class, () -> logic.getTaskIndex(TypicalTask.TASK_FULL));
-    }
-
-    @Test
-    public void getTaskIndex_validIndex_success() {
-        try {
-            model.addTask(TypicalTask.TASK_FULL);
-            assertEquals(Index.fromOneBased(1), logic.getTaskIndex(TypicalTask.TASK_FULL));
-        } catch (CommandException e) {
-            Assertions.fail();
-        }
-    }
-
-    @Test
-    public void getTaskIndex_rightIndex_success() {
-        try {
-            model.addTask(TypicalTask.TASK_FULL);
-            model.addTask(TypicalTask.TASK_FULL_DONE);
-            Task toCheck = logic.getDayUpcomingTasks(TypicalTask.TASK_FULL_DONE.getDate()).get(0);
-            assertEquals(Index.fromOneBased(2), logic.getTaskIndex(toCheck));
-        } catch (CommandException e) {
-            Assertions.fail();
-        }
-    }
-
-    @Test
-    public void getTaskIndex_wrongIndex_failure() {
-        try {
-            model.addTask(TypicalTask.TASK_FULL);
-            model.addTask(TypicalTask.TASK_FULL_DONE);
-            Task toCheck = logic.getDayUpcomingTasks(TypicalTask.TASK_FULL_DONE.getDate()).get(0);
-            assertNotEquals(Index.fromOneBased(1), logic.getTaskIndex(toCheck));
-        } catch (CommandException e) {
-            Assertions.fail();
-        }
     }
 
     /**

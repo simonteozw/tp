@@ -102,7 +102,8 @@ public class UniqueTaskList implements Iterable<Task> {
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */
     public ObservableList<Task> asUnmodifiableObservableList() {
-        return internalUnmodifiableList.sorted(new SortTask());
+        internalList.sort(new TaskComparator());
+        return internalUnmodifiableList;
     }
 
     @Override

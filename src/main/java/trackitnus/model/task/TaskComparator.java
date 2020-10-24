@@ -2,7 +2,7 @@ package trackitnus.model.task;
 
 import java.util.Comparator;
 
-public class SortTask implements Comparator<Task> {
+public class TaskComparator implements Comparator<Task> {
     /**
      * Compares 2 tasks to faciliate sorting.
      *
