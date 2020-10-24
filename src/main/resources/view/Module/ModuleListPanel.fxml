@@ -2,6 +2,20 @@
 
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.VBox?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="modulePanel" xmlns="http://javafx.com/javafx/8">
+    <HBox id="moduleHeader" fx:id="moduleHeader">
+        <padding>
+            <Insets top="1" right="5" bottom="1" left="15"/>
+        </padding>
+        <Label fx:id="code" text="\$code" styleClass="module_big_label">
+            <padding>
+                <Insets right="5"/>
+            </padding>
+        </Label>
+        <Label fx:id="name" text="\$name" styleClass="module_big_label"/>
+    </HBox>
     <ListView fx:id="moduleListView" VBox.vgrow="ALWAYS"/>
 </VBox>

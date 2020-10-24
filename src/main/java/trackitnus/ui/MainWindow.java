@@ -1,5 +1,8 @@
 package trackitnus.ui;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.function.Consumer;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -11,8 +14,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 import trackitnus.commons.core.GuiSettings;
 import trackitnus.commons.core.LogsCenter;
+import trackitnus.model.module.Module;
 import trackitnus.logic.Logic;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
@@ -148,14 +153,16 @@ public class MainWindow extends UiPart<Stage> {
 
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
 
-        moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList());
+//        moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList());
 
         contactListPanel = new ContactListPanel(logic.getFilteredContactList());
 
         upcomingPanel = new UpcomingPanel(logic);
 
         //Default tab open
-        switchTab("U");
+        ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList((Object) "U"));
+        switchTab(upcomingValues);
+
         sidePanelPlaceholder.getChildren().add(new SidePanel(this::switchTab, logic).getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -167,15 +174,19 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
-
-    private void switchTab(String tabName) {
-        logger.info("Switching tab to: " + tabName);
+    private void switchTab(ArrayList<Object> tabValues) {
+        assert(tabValues.size() >= 1);
+        logger.info("Switching tab to: " + String.valueOf(tabValues.get(0)));
         tabPanelPlaceholder.getChildren().clear();
+        String tabName = String.valueOf(tabValues.get(0));
 
         if (tabName.equals("U")) {
             tabPanelPlaceholder.getChildren().add(upcomingPanel.getRoot());
         }
         if (tabName.equals("M")) {
+            assert(tabValues.size() == 2);
+            Module tabModule = (Module) tabValues.get(1);
+            moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList(), tabModule);
             tabPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
         }
         if (tabName.equals("C")) {
@@ -185,6 +196,24 @@ public class MainWindow extends UiPart<Stage> {
             tabPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
         }
     }
+
+//    private void switchTab(String tabName) {
+//        logger.info("Switching tab to: " + tabName);
+//        tabPanelPlaceholder.getChildren().clear();
+//
+//        if (tabName.equals("U")) {
+//            tabPanelPlaceholder.getChildren().add(upcomingPanel.getRoot());
+//        }
+//        if (tabName.equals("M")) {
+//            tabPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
+//        }
+//        if (tabName.equals("C")) {
+//            tabPanelPlaceholder.getChildren().add(contactListPanel.getRoot());
+//        }
+//        if (tabName.equals("T")) {
+//            tabPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+//        }
+//    }
 
     /**
      * Sets the default size based on {@code guiSettings}.
