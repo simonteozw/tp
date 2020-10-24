@@ -19,7 +19,6 @@ import trackitnus.model.module.Module;
 public class SidePanel extends UiPart<Region> {
     private static final String FXML = "SidePanel.fxml";
     private final Logger logger = LogsCenter.getLogger(SidePanel.class);
-//    private Consumer<String> consumer;
     private Consumer<ArrayList<Object>> tabConsumer;
     private Logic logic;
     private final HelpWindow helpWindow;
@@ -48,7 +47,7 @@ public class SidePanel extends UiPart<Region> {
         if (logic != null) {
             tabButtons = new ArrayList<>();
 
-            // Get upcoming tab button.
+            // Get upcoming button.
             Button upcomingButton = getUpcomingButton();
             tabButtons.add(upcomingButton);
             tabContainer.getChildren().add(upcomingButton);
@@ -61,15 +60,7 @@ public class SidePanel extends UiPart<Region> {
                 tabContainer.getChildren().add(moduleButton);
             }
 
-            //TODO: next time not so many tabs already, so don't worry long method.
-            Button contactButton = getContactButton();
-            tabButtons.add(contactButton);
-            tabContainer.getChildren().add(contactButton);
-
-            Button taskButton = getTaskButton();
-            tabButtons.add(taskButton);
-            tabContainer.getChildren().add(taskButton);
-
+            // Get help button.
             Button helpButton = getHelpButton();
             tabButtons.add(helpButton);
             tabContainer.getChildren().add(helpButton);
@@ -85,29 +76,11 @@ public class SidePanel extends UiPart<Region> {
         return button;
     }
 
-    public Button getContactButton() {
-        Button button = new Button("Contact");
-        ArrayList<Object> contactValues = new ArrayList<>(Arrays.asList((Object) "C"));
-        button.setOnAction(actionEvent -> {
-            tabConsumer.accept(contactValues);
-        });
-        return button;
-    }
-
     public Button getModuleButton(Module module) {
         Button button = new Button(module.getCode().code);
         ArrayList<Object> moduleValues = new ArrayList<>(Arrays.asList((Object) "M", (Object) module));
         button.setOnAction(actionEvent -> {
             tabConsumer.accept(moduleValues);
-        });
-        return button;
-    }
-
-    public Button getTaskButton() {
-        Button button = new Button("Task");
-        ArrayList<Object> taskValues = new ArrayList<>(Arrays.asList((Object) "T"));
-        button.setOnAction(actionEvent -> {
-            tabConsumer.accept(taskValues);
         });
         return button;
     }
