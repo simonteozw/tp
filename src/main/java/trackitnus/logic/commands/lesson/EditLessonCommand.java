@@ -6,9 +6,11 @@ import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_TYPE;
 import static trackitnus.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
 
+import java.util.List;
 import java.util.Optional;
 
 import trackitnus.commons.core.Messages;
+import trackitnus.commons.core.index.Index;
 import trackitnus.commons.util.CollectionUtil;
 import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
@@ -26,11 +28,11 @@ public class EditLessonCommand extends Command {
     public static final String MESSAGE_USAGE = Lesson.TYPE + " " + COMMAND_WORD
         + ": Edits the details of a lesson."
         + " At least one of the details has to be specified. "
-        + "Parameters: "
-        + PREFIX_CODE + "MODULE_CODE "
-        + PREFIX_TYPE + "TYPE "
+        + "Parameters: INDEX (must be a positive integer) "
+        + "[" + PREFIX_CODE + "MODULE_CODE] "
+        + "[" + PREFIX_TYPE + "TYPE] "
         + "[" + PREFIX_DATE + "DATE]\n"
-        + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
+        + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " 2 "
         + PREFIX_CODE + "CS3233 "
         + PREFIX_TYPE + "lecture "
         + PREFIX_DATE + "Mon 17:45-21:00\n";
@@ -39,24 +41,20 @@ public class EditLessonCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_LESSON = "This lesson already exists.";
 
-    private final Code code;
-    private final Type type;
+    private final Index index;
     private final EditLessonDescriptor editLessonDescriptor;
 
     /**
      * Creates a EditLessonCommand to edit the specified {@code Lesson}
      *
-     * @param code
-     * @param type
+     * @param index
      * @param editLessonDescriptor
      */
-    public EditLessonCommand(Code code, Type type, EditLessonDescriptor editLessonDescriptor) {
-        requireNonNull(code);
-        requireNonNull(type);
+    public EditLessonCommand(Index index, EditLessonDescriptor editLessonDescriptor) {
+        requireNonNull(index);
         requireNonNull(editLessonDescriptor);
 
-        this.code = code;
-        this.type = type;
+        this.index = index;
         this.editLessonDescriptor = new EditLessonDescriptor(editLessonDescriptor);
     }
 
@@ -67,28 +65,27 @@ public class EditLessonCommand extends Command {
     private static Lesson createEditedLesson(Lesson lessonToEdit, EditLessonDescriptor editLessonDescriptor) {
         assert lessonToEdit != null;
 
-        Code originalCode = lessonToEdit.getCode();
-        Type originalType = lessonToEdit.getType();
+        Code updatedCode = editLessonDescriptor.getCode().orElse(lessonToEdit.getCode());
+        Type updatedType = editLessonDescriptor.getType().orElse(lessonToEdit.getType());;
         LessonDateTime updatedDate = editLessonDescriptor.getDate().orElse(lessonToEdit.getDate());
 
-        return new Lesson(originalCode, originalType, updatedDate);
+        return new Lesson(updatedCode, updatedType, updatedDate);
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        List<Lesson> lastShownList = model.getFilteredLessonList();
+
+        if (index.getZeroBased() >= lastShownList.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_DISPLAYED_INDEX);
+        }
 
         if (!editLessonDescriptor.isAnyFieldEdited()) {
             throw new CommandException(MESSAGE_NOT_EDITED);
         }
 
-        Optional<Lesson> lessonToEditOptional = model.getLesson(code, type);
-
-        if (lessonToEditOptional.isEmpty()) {
-            throw new CommandException(Messages.MESSAGE_LESSON_DOES_NOT_EXIST);
-        }
-
-        Lesson lessonToEdit = lessonToEditOptional.get();
+        Lesson lessonToEdit = lastShownList.get(index.getZeroBased());
         Lesson editedLesson = createEditedLesson(lessonToEdit, editLessonDescriptor);
 
         if (!lessonToEdit.isSameLesson(editedLesson) && model.hasLesson(editedLesson)) {
@@ -114,8 +111,7 @@ public class EditLessonCommand extends Command {
 
         // state check
         EditLessonCommand e = (EditLessonCommand) other;
-        return code.equals(e.code)
-            && type.equals(e.type)
+        return index.equals(e.index)
             && editLessonDescriptor.equals(e.editLessonDescriptor);
     }
 
@@ -145,7 +141,7 @@ public class EditLessonCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(date);
+            return CollectionUtil.isAnyNonNull(code, type, date);
         }
 
         public Optional<Code> getCode() {
