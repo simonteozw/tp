@@ -20,6 +20,7 @@
             </padding>
             <Label fx:id="date" text="\$date" styleClass="module_big_label"/>
             <Line startX="0" startY="200" endX="500" endY="200" style="-fx-stroke: #8C8C89"/>
+            <ListView fx:id="lessonListView" VBox.vgrow="ALWAYS"/>
             <ListView fx:id="taskListView" VBox.vgrow="ALWAYS"/>
         </VBox>
     </GridPane>
