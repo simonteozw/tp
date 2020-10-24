@@ -17,7 +17,7 @@
 <fx:root xmlns:fx="http://javafx.com/fxml/1" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8"
          title="TrackIt@NUS" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
     <icons>
-        <Image url="@/images/newLogo.png"/>
+        <Image url="@/images/logo.png"/>
     </icons>
     <scene>
         <Scene>

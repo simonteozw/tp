@@ -26,7 +26,6 @@
                 <Label fx:id="code" text="\$first" styleClass="module_big_label"/>
                 <Label fx:id="name" styleClass="module_big_label" text="\$name"/>
             </HBox>
-            <Label fx:id="desc" styleClass="cell_small_label" text="\$desc"/>
         </VBox>
     </GridPane>
 </HBox>
