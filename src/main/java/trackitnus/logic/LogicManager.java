@@ -91,11 +91,18 @@ public class LogicManager implements Logic {
     // All the current functions are just dummy implementations
     // All functions should only generate new predicates and use the corresponding getFilteredList to return
     @Override
+    public ObservableList<Lesson> getUpcomingLessons() {
+        model.sortLesson();
+        model.updateFilteredLessonList(Model.PREDICATE_SHOW_ALL_LESSONS);
+        return model.getFilteredLessonList();
+    }
+
+    @Override
     public ObservableList<Lesson> getDayUpcomingLessons(LocalDate date) {
         LessonWeekday weekday = LessonWeekday.getLessonWeekDay(date);
         Predicate<Lesson> predicate = lesson -> (lesson.getWeekday().equals(weekday));
-        model.updateFilteredLessonList(predicate);
-        return model.getFilteredLessonList();
+        ObservableList<Lesson> allUpcomingLessons = getUpcomingLessons();
+        return allUpcomingLessons.filtered(predicate);
     }
 
     @Override

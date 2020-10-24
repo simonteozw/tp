@@ -11,6 +11,7 @@ public enum LessonWeekday {
     Thu,
     Fri,
     Sat;
+    private static final int SIZE = 7;
     public static LessonWeekday getLessonWeekDay(LocalDate date) {
         DayOfWeek dayOfWeek = date.getDayOfWeek();
         switch (dayOfWeek) {
@@ -31,5 +32,9 @@ public enum LessonWeekday {
         default:
             return null;
         }
+    }
+
+    public static Integer distanceTo(LessonWeekday from, LessonWeekday to) {
+        return (to.ordinal() - from.ordinal() + SIZE) % SIZE;
     }
 }

@@ -256,6 +256,10 @@ public class AddContactCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public void sortLesson() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

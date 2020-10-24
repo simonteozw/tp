@@ -58,6 +58,11 @@ public interface Logic {
     ObservableList<Lesson> getFilteredLessonList();
 
     /**
+     * @return the list of all lessons that will take place on and up to a week after the current day
+     */
+    ObservableList<Lesson> getUpcomingLessons();
+
+    /**
      * @param date The date to query
      * @return all lessons happens on that date
      */

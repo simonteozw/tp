@@ -1,5 +1,6 @@
 package trackitnus.model.lesson;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
@@ -37,6 +38,27 @@ public class LessonDateTime {
 
     public LocalTime getEndTime() {
         return this.endTime;
+    }
+
+    /**
+     * Compares this LessonDateTime with another LessonDateTime in chronological order.
+     *
+     * @param other The other LessonDateTime to compare.
+     * @return an int < 0 if this is "less than" other.
+     */
+    public int compareTo(LessonDateTime other) {
+        if (equals(other)) {
+            return 0;
+        } else {
+            LocalDate currentDate = LocalDate.now(Lesson.DEFAULT_TIME_ZONE);
+            LessonWeekday currentWeekday = LessonWeekday.getLessonWeekDay(currentDate);
+            Integer currentToThis = LessonWeekday.distanceTo(currentWeekday, this.getWeekday());
+            Integer currentToOther = LessonWeekday.distanceTo(currentWeekday, other.getWeekday());
+            int result = currentToThis.compareTo(currentToOther);
+            return result == 0
+                    ? this.getStartTime().compareTo(other.getStartTime())
+                    : result;
+        }
     }
 
     @Override

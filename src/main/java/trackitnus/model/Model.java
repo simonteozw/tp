@@ -227,4 +227,6 @@ public interface Model {
     void updateFilteredLessonList(Predicate<Lesson> predicate);
 
     Optional<Lesson> getLesson(Code code, Type type);
+
+    void sortLesson();
 }

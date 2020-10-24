@@ -259,6 +259,11 @@ public class ModelManager implements Model {
         trackIter.setLesson(target, editedLesson);
     }
 
+    @Override
+    public void sortLesson() {
+        trackIter.sortLesson();
+    }
+
     //=========== Filtered Lesson List Accessors =============================================================
 
     @Override
