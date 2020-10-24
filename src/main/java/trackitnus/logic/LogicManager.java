@@ -3,6 +3,7 @@ package trackitnus.logic;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -18,6 +19,7 @@ import trackitnus.model.ReadOnlyTrackIter;
 import trackitnus.model.commons.Code;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.lesson.Lesson;
+import trackitnus.model.lesson.LessonWeekday;
 import trackitnus.model.module.Module;
 import trackitnus.model.task.Task;
 import trackitnus.storage.Storage;
@@ -90,11 +92,16 @@ public class LogicManager implements Logic {
     // All functions should only generate new predicates and use the corresponding getFilteredList to return
     @Override
     public ObservableList<Lesson> getDayUpcomingLessons(LocalDate date) {
+        LessonWeekday weekday = LessonWeekday.getLessonWeekDay(date);
+        Predicate<Lesson> predicate = lesson -> (lesson.getWeekday().equals(weekday));
+        model.updateFilteredLessonList(predicate);
         return model.getFilteredLessonList();
     }
 
     @Override
     public ObservableList<Lesson> getModuleLessons(Code code) {
+        Predicate<Lesson> predicate = lesson -> (lesson.getCode().equals(code));
+        model.updateFilteredLessonList(predicate);
         return model.getFilteredLessonList();
     }
 
