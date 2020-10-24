@@ -124,6 +124,7 @@
     -fx-font-family: "Poppins";
     -fx-font-weight: bold;
     -fx-font-size: 25px;
+    -fx-wrap-text: true;
 }
 
 .date_label {
