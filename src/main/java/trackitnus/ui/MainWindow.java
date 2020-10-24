@@ -15,11 +15,12 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import trackitnus.commons.core.GuiSettings;
 import trackitnus.commons.core.LogsCenter;
-import trackitnus.model.module.Module;
+import trackitnus.commons.core.Messages;
 import trackitnus.logic.Logic;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.logic.parser.exceptions.ParseException;
+import trackitnus.model.module.Module;
 import trackitnus.ui.module.ModulePanel;
 import trackitnus.ui.upcoming.UpcomingPanel;
 
@@ -150,14 +151,18 @@ public class MainWindow extends UiPart<Stage> {
         tabPanelPlaceholder.getChildren().clear();
         String tabName = String.valueOf(tabValues.get(0));
 
-        if (tabName.equals(UpcomingPanel.TYPE)) {
+        switch(tabName) {
+        case UpcomingPanel.TYPE:
             tabPanelPlaceholder.getChildren().add(upcomingPanel.getRoot());
-        }
-        if (tabName.equals(Module.TYPE)) {
+            break;
+        case Module.TYPE:
             assert(tabValues.size() == 2);
             Module tabModule = (Module) tabValues.get(1);
             modulePanel = new ModulePanel(tabModule, logic);
             tabPanelPlaceholder.getChildren().add(modulePanel.getRoot());
+            break;
+        default:
+            throw new IllegalArgumentException(Messages.MESSAGE_INVALID_TAB_VALUE);
         }
     }
 

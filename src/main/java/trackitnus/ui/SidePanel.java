@@ -11,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import javafx.util.Pair;
 import trackitnus.commons.core.LogsCenter;
 import trackitnus.logic.Logic;
 import trackitnus.model.module.Module;

@@ -11,9 +11,9 @@ import trackitnus.commons.core.LogsCenter;
 import trackitnus.logic.Logic;
 import trackitnus.model.module.Module;
 import trackitnus.ui.UiPart;
+import trackitnus.ui.contact.ContactListPanel;
 import trackitnus.ui.lesson.LessonListPanel;
 import trackitnus.ui.task.TaskListPanel;
-import trackitnus.ui.contact.ContactListPanel;
 
 /**
  * Panel containing the list of modules.
