@@ -2,14 +2,14 @@ package trackitnus.model.contact;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static trackitnus.testutil.TypicalContacts.ALICE;
-import static trackitnus.testutil.TypicalContacts.BOB;
+import static trackitnus.testutil.typical.TypicalContacts.ALICE;
+import static trackitnus.testutil.typical.TypicalContacts.BOB;
 
 import org.junit.jupiter.api.Test;
 
 import trackitnus.logic.commands.contact.ContactCommandTestUtil;
 import trackitnus.testutil.Assert;
-import trackitnus.testutil.ContactBuilder;
+import trackitnus.testutil.builder.ContactBuilder;
 
 public class ContactTest {
 

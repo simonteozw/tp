@@ -2,7 +2,7 @@ package trackitnus.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static trackitnus.storage.JsonAdaptedContact.MISSING_FIELD_MESSAGE_FORMAT;
-import static trackitnus.testutil.TypicalContacts.BENSON;
+import static trackitnus.testutil.typical.TypicalContacts.BENSON;
 
 import java.util.ArrayList;
 import java.util.List;

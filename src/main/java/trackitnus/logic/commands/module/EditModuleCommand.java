@@ -2,7 +2,6 @@ package trackitnus.logic.commands.module;
 
 import static java.util.Objects.requireNonNull;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_DESC;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 import static trackitnus.model.Model.PREDICATE_SHOW_ALL_MODULES;
 
@@ -28,9 +27,8 @@ public class EditModuleCommand extends Command {
         + "Parameters: "
         + PREFIX_CODE + "CODE (must be an existing code) "
         + "[" + PREFIX_NAME + "NAME] "
-        + "[" + PREFIX_DESC + "DESC] "
-        + String.format("Example: %s %s %sCS1231S %sDiscrete Structures %sIntroductory mathematical tools",
-        Module.TYPE, COMMAND_WORD, PREFIX_CODE, PREFIX_NAME, PREFIX_DESC);
+        + String.format("Example: %s %s %sCS1231S %sDiscrete Structures",
+        Module.TYPE, COMMAND_WORD, PREFIX_CODE, PREFIX_NAME);
 
     public static final String MESSAGE_EDIT_MODULE_SUCCESS = "Edited Module: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -61,9 +59,8 @@ public class EditModuleCommand extends Command {
 
         Code originalCode = moduleToEdit.getCode();
         Name updatedName = editModuleDescriptor.getName().orElse(moduleToEdit.getName());
-        String updatedDesc = editModuleDescriptor.getDesc().orElse(moduleToEdit.getDesc());
 
-        return new Module(originalCode, updatedName, updatedDesc);
+        return new Module(originalCode, updatedName);
     }
 
     @Override
@@ -103,15 +100,21 @@ public class EditModuleCommand extends Command {
             && editModuleDescriptor.equals(e.editModuleDescriptor);
     }
 
+    @Override
+    public String toString() {
+        return "EditModuleCommand{" +
+            "code=" + code +
+            ", editModuleDescriptor=" + editModuleDescriptor +
+            '}';
+    }
+
     /**
      * Stores the details to edit the module with. Each non-empty field value will replace the
      * corresponding field value of the module.
      */
     public static class EditModuleDescriptor {
 
-        private Code code;
         private Name name;
-        private String desc;
 
         public EditModuleDescriptor() {
         }
@@ -120,16 +123,14 @@ public class EditModuleCommand extends Command {
          * Copy constructor.
          */
         public EditModuleDescriptor(EditModuleDescriptor toCopy) {
-            setCode(toCopy.code);
             setName(toCopy.name);
-            setDesc(toCopy.desc);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, desc);
+            return CollectionUtil.isAnyNonNull(name);
         }
 
         @Override
@@ -147,17 +148,7 @@ public class EditModuleCommand extends Command {
             // state check
             EditModuleDescriptor e = (EditModuleDescriptor) other;
 
-            return getCode().equals(e.getCode())
-                && getName().equals(e.getName())
-                && getDesc().equals(e.getDesc());
-        }
-
-        public Optional<Code> getCode() {
-            return Optional.ofNullable(code);
-        }
-
-        public void setCode(Code code) {
-            this.code = code;
+            return getName().equals(e.getName());
         }
 
         public Optional<Name> getName() {
@@ -168,12 +159,11 @@ public class EditModuleCommand extends Command {
             this.name = name;
         }
 
-        public Optional<String> getDesc() {
-            return Optional.ofNullable(desc);
-        }
-
-        public void setDesc(String desc) {
-            this.desc = desc;
+        @Override
+        public String toString() {
+            return "EditModuleDescriptor{" +
+                "name=" + name +
+                '}';
         }
     }
 }
