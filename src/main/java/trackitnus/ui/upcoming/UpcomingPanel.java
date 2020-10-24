@@ -36,23 +36,23 @@ public class UpcomingPanel extends UiPart<Region> {
         super(FXML);
         this.logic = logic;
 
-        getDatesBetween(today, today.plusDays(7));
+        getDatesForTheWeek(today);
         calendarView.setItems(calendarDates);
         calendarView.setCellFactory(listView -> new DateListViewCell());
     }
 
-    public void getDatesBetween(LocalDate startDate, LocalDate endDate) {
-        List<LocalDate> list = startDate.datesUntil(endDate).collect(Collectors.toList());
+    public void getDatesForTheWeek(LocalDate today) {
+        List<LocalDate> list = today.datesUntil(today.plusDays(7)).collect(Collectors.toList());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM EEEE");
 
-        calendarDates.add(new Day("Overdue")); //TODO: Add implementation for overdue tasks
+//        calendarDates.add(new Day("Overdue")); //TODO: Add implementation for overdue tasks
 
         for (LocalDate date : list) {
-            String datestring = date.format(formatter);
-            calendarDates.add(new Day(datestring));
+//            String datestring = date.format(formatter);
+            calendarDates.add(new Day(date));
         }
 
-        calendarDates.add(new Day("Future")); //TODO: Add implementation for tasks after the current week
+//        calendarDates.add(new Day("Future")); //TODO: Add implementation for tasks after the current week
     }
 
     class DateListViewCell extends ListCell<Day> {
@@ -64,8 +64,8 @@ public class UpcomingPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new DayCard(day, logic.getFilteredTaskList()).getRoot());
-            }
+                setGraphic(new DayCard(day, logic.getDayUpcomingTasks(day.getDate()), logic.getDayUpcomingLessons(day.getDate())).getRoot());
+            } //TODO: diff daycard for diff day?
         }
     }
 }

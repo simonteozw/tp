@@ -1,5 +1,6 @@
 package trackitnus.ui.upcoming;
 
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -7,8 +8,10 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import trackitnus.model.lesson.Lesson;
 import trackitnus.model.task.Task;
 import trackitnus.ui.UiPart;
+import trackitnus.ui.lesson.LessonCard;
 import trackitnus.ui.task.TaskCard;
 
 public class DayCard extends UiPart<Region> {
@@ -16,9 +19,12 @@ public class DayCard extends UiPart<Region> {
     private static final String FXML = "/Upcoming/DayCard.fxml";
 
     public final Day day;
+    final int ROW_HEIGHT = 24;
 
     @FXML
     private ListView<Task> taskListView;
+    @FXML
+    private ListView<Lesson> lessonListView;
     @FXML
     private HBox cardPane;
     @FXML
@@ -29,14 +35,20 @@ public class DayCard extends UiPart<Region> {
      *
      * @param day
      */
-    public DayCard(Day day, ObservableList<Task> taskList) {
+    public DayCard(Day day, ObservableList<Task> taskList, ObservableList<Lesson> lessonList) {
         super(FXML);
         this.day = day;
-        date.setText(day.getDate());
+        date.setText(day.getStringDate());
 
+        taskListView.setPrefHeight(taskList.size() * 90 + 2);
         taskListView.setItems(taskList);
         taskListView.setCellFactory(listView -> new TaskListViewCell());
+
+        lessonListView.setPrefHeight(lessonList.size() * 40 + 2);
+        lessonListView.setItems(lessonList);
+        lessonListView.setCellFactory(listView -> new LessonListViewCell());
     }
+
 
     @Override
     public boolean equals(Object other) {
@@ -65,6 +77,20 @@ public class DayCard extends UiPart<Region> {
                 setText(null);
             } else {
                 setGraphic(new TaskCard(task, getIndex() + 1).getRoot());
+            }
+        }
+    }
+
+    class LessonListViewCell extends ListCell<Lesson> {
+        @Override
+        protected void updateItem(Lesson lesson, boolean empty) {
+            super.updateItem(lesson, empty);
+
+            if (empty || lesson == null) {
+                setGraphic(null);
+                setText(null);
+            } else {
+                setGraphic(new UpcomingLessonCard(lesson, getIndex() + 1).getRoot());
             }
         }
     }
