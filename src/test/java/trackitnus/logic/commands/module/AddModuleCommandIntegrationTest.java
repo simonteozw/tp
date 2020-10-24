@@ -2,7 +2,7 @@ package trackitnus.logic.commands.module;
 
 import static trackitnus.logic.commands.CommandTestUtil.assertCommandFailure;
 import static trackitnus.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static trackitnus.testutil.TypicalTrackIter.getTypicalTrackIter;
+import static trackitnus.testutil.typical.TypicalTrackIter.getTypicalTrackIter;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static trackitnus.logic.commands.CommandTestUtil.assertCommandFailure;
 import static trackitnus.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static trackitnus.testutil.TypicalTrackIter.getTypicalTrackIter;
+import static trackitnus.testutil.typical.TypicalTrackIter.getTypicalTrackIter;
 
 import org.junit.jupiter.api.Test;
 
@@ -15,9 +15,9 @@ import trackitnus.model.ModelManager;
 import trackitnus.model.TrackIter;
 import trackitnus.model.UserPrefs;
 import trackitnus.model.contact.Contact;
-import trackitnus.testutil.TypicalIndexes;
 import trackitnus.testutil.builder.ContactBuilder;
 import trackitnus.testutil.builder.EditContactDescriptorBuilder;
+import trackitnus.testutil.typical.TypicalIndexes;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand)
