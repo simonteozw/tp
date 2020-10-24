@@ -28,18 +28,18 @@ public class ModuleCard extends UiPart<Region> {
     private HBox cardPane;
     @FXML
     private Label code;
-    @FXML
-    private Label name;
+//    @FXML
+//    private Label name;
 
 
     /**
      * Creates a {@code ModuleCard} with the given {@code Module} and index to display.
      */
-    public ModuleCard(Module module, int displayedIndex) {
+    public ModuleCard(Module module) {
         super(FXML);
         this.module = module;
         code.setText(module.getCode().code);
-        name.setText(module.getName().fullName);
+//        name.setText(module.getName().fullName);
     }
 
     @Override

@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <HBox xmlns:fx="http://javafx.com/fxml/1" id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8">
     <GridPane HBox.hgrow="ALWAYS">
@@ -16,16 +15,7 @@
             <padding>
                 <Insets top="1" right="5" bottom="1" left="15"/>
             </padding>
-            <HBox spacing="5" alignment="CENTER_LEFT">
-<!--                <Label fx:id="id" styleClass="module_big_label">-->
-<!--                    <minWidth>-->
-<!--                        &lt;!&ndash; Ensures that the label text is never truncated &ndash;&gt;-->
-<!--                        <Region fx:constant="USE_PREF_SIZE"/>-->
-<!--                    </minWidth>-->
-<!--                </Label>-->
-                <Label fx:id="code" text="\$first" styleClass="module_big_label"/>
-                <Label fx:id="name" styleClass="module_big_label" text="\$name"/>
-            </HBox>
+            <Label fx:id="code" text="\$first" styleClass="module_small_label"/>
         </VBox>
     </GridPane>
 </HBox>

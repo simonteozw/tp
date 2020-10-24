@@ -2,15 +2,15 @@ package trackitnus.ui;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
 import trackitnus.commons.core.LogsCenter;
 import trackitnus.logic.Logic;
 import trackitnus.model.module.Module;
@@ -22,6 +22,17 @@ public class SidePanel extends UiPart<Region> {
     private Consumer<ArrayList<Object>> tabConsumer;
     private Logic logic;
     private final HelpWindow helpWindow;
+    private final int moduleRowHeight = 32;
+
+    @FXML
+    private Button upcomingButton;
+
+    @FXML
+    private ListView<Module> moduleListView;
+
+    @FXML
+    private Button helpButton;
+
 
     /**
      * Constructor for SidePanel
@@ -36,37 +47,61 @@ public class SidePanel extends UiPart<Region> {
         this.initialize();
     }
 
-    @FXML
-    private VBox tabContainer;
-    private List<Button> tabButtons;
+
 
     /**
      * Initialises/reloads the tab buttons in the side panel.
      */
     public void initialize() {
         if (logic != null) {
-            tabButtons = new ArrayList<>();
-
-            // Get upcoming button.
-            Button upcomingButton = getUpcomingButton();
-            tabButtons.add(upcomingButton);
-            tabContainer.getChildren().add(upcomingButton);
-
             // Get modules buttons.
             ObservableList<Module> modules = logic.getFilteredModuleList();
-            for (int i = 0; i < modules.size(); i++) {
-                Button moduleButton = getModuleButton(modules.get(i));
-                tabButtons.add(moduleButton);
-                tabContainer.getChildren().add(moduleButton);
-            }
-
-            // Get help button.
-            Button helpButton = getHelpButton();
-            tabButtons.add(helpButton);
-            tabContainer.getChildren().add(helpButton);
+            moduleListView.setPrefHeight(modules.size() * moduleRowHeight);
+            moduleListView.setItems(modules);
+            moduleListView.setCellFactory(listView -> new ModuleListViewCell());
         }
     }
 
+    /**
+     * Sets the view of the module tab in the side panel.
+     */
+    class ModuleListViewCell extends ListCell<Module> {
+        @Override
+        protected void updateItem(Module module, boolean empty) {
+            super.updateItem(module, empty);
+
+            if (empty || module == null) {
+                setGraphic(null);
+                setText(null);
+            } else {
+                setGraphic(getModuleButton(module));
+            }
+        }
+    }
+
+    /**
+     * Relays message to MainWindow to get Upcoming panel information in TabPanel.
+     */
+    public void toggleUpcomingTab() {
+        ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList((Object) UpcomingPanel.TYPE));
+        tabConsumer.accept(upcomingValues);
+    }
+
+    /**
+     * Relays message to MainWindow to get Help window information in TabPanel.
+     */
+    public void toggleHelpTab() {
+        if (!helpWindow.isShowing()) {
+            helpWindow.show();
+        } else {
+            helpWindow.focus();
+        }
+    }
+
+    /**
+     * Configure the upcoming button tab in the side panel.
+     * @return upcomingButton The upcoming button.
+     */
     public Button getUpcomingButton() {
         Button button = new Button("Upcoming");
         ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList((Object) UpcomingPanel.TYPE));
@@ -76,9 +111,14 @@ public class SidePanel extends UiPart<Region> {
         return button;
     }
 
+    /**
+     * Configure the module button tab in the side panel.
+     * @return moduleButton The module button.
+     */
     public Button getModuleButton(Module module) {
         Button button = new Button(module.getCode().code);
-        ArrayList<Object> moduleValues = new ArrayList<>(Arrays.asList((Object) Module.TYPE, (Object) module));
+        ArrayList<Object> moduleValues = new ArrayList<>(Arrays.asList(Module.TYPE, module));
+        button.setStyle("-fx-padding: 2 2 2 10");
         button.setOnAction(actionEvent -> {
             tabConsumer.accept(moduleValues);
         });

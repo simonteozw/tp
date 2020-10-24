@@ -49,8 +49,9 @@
     -fx-font-family: 'Poppins';
 }
 
-.side_panel {
-    -fx-background-color: #313543;
+.side-panel {
+    -fx-background-color: #313543!important;
+    -fx-padding: 0px!important;
 }
 
 .table-view {
@@ -115,6 +116,9 @@
 /*.list-cell:filled:selected .label {*/
 /*    -fx-text-fill: #68C2E8;*/
 /*}*/
+#tabContainer {
+    -fx-background-color: #434754;
+}
 
 #modulePanel {
     -fx-background-color: #434754;
@@ -131,6 +135,11 @@
     -fx-font-family: "Poppins";
     -fx-font-weight: bold;
     -fx-font-size: 17px;
+}
+
+.module_small_label {
+    -fx-font-family: "Poppins";
+    -fx-font-size: 15px;
 }
 
 .list-cell .label {
