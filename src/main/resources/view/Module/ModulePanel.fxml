@@ -23,14 +23,26 @@
                 <Label fx:id="header" text="\$header" styleClass="module_big_label"/>
             </HBox>
             <Line startX="0" endX="500" style="-fx-stroke: #8C8C89"/>
-            <StackPane fx:id="lessonListPanelPlaceholder" styleClass="pane-with-border"/>
+            <StackPane fx:id="lessonListPanelPlaceholder" styleClass="pane-with-border">
+                <padding>
+                    <Insets bottom="10"/>
+                </padding>
+            </StackPane>
             <Label text="Tasks" styleClass="date_label"/>
             <Line startX="0" endX="500" style="-fx-stroke: #8C8C89"/>
 
-            <StackPane fx:id="taskListPanelPlaceholder" styleClass="pane-with-border" VBox.vgrow="ALWAYS"/>
+            <StackPane fx:id="taskListPanelPlaceholder" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="10"/>
+                </padding>
+            </StackPane>
             <Label text="Contacts" styleClass="date_label"/>
             <Line startX="0" endX="500" style="-fx-stroke: #8C8C89"/>
-            <StackPane fx:id="contactListPanelPlaceholder" styleClass="pane-with-border" VBox.vgrow="ALWAYS"/>
+            <StackPane fx:id="contactListPanelPlaceholder" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="10"/>
+                </padding>
+            </StackPane>
         </VBox>
     </ListView>
 <!--</HBox>-->
