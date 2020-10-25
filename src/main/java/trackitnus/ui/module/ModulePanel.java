@@ -2,6 +2,7 @@ package trackitnus.ui.module;
 
 import java.util.logging.Logger;
 
+import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -30,8 +31,7 @@ public class ModulePanel extends UiPart<Region> {
     private TaskListPanel taskListPanel;
     private ContactListPanel contactListPanel;
 
-    private final int rowHeight = 45;
-    private final int contactRowHeight = 50;
+    private final int defaultRowHeight = 50;
 
     @FXML
     private HBox moduleHeader;
@@ -43,6 +43,7 @@ public class ModulePanel extends UiPart<Region> {
     private StackPane taskListPanelPlaceholder;
     @FXML
     private StackPane contactListPanelPlaceholder;
+
 
     /**
      * Creates a {@code ModuleListPanel} with the given {@code ObservableList}.
@@ -57,17 +58,20 @@ public class ModulePanel extends UiPart<Region> {
         ObservableList<Task> tasks = logic.getModuleTasks(module.getCode());
         ObservableList<Contact> contacts = logic.getModuleContacts(module.getCode());
 
-        lessonListPanelPlaceholder.setPrefHeight(lessons.size() * rowHeight + rowHeight);
+        // Allow height of lists to update automatically
+        lessonListPanelPlaceholder.prefHeightProperty().bind(Bindings.size(lessons).multiply(55));
+        taskListPanelPlaceholder.prefHeightProperty().bind(Bindings.size(tasks).multiply(defaultRowHeight));
+        contactListPanelPlaceholder.prefHeightProperty().bind(Bindings.size(contacts).multiply(defaultRowHeight));
+
         lessonListPanel = new LessonListPanel(lessons);
         lessonListPanelPlaceholder.getChildren().add(lessonListPanel.getRoot());
 
-        taskListPanelPlaceholder.setPrefHeight(tasks.size() * rowHeight + rowHeight);
         taskListPanel = new TaskListPanel(tasks);
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
 
-        contactListPanelPlaceholder.setPrefHeight(contacts.size() * contactRowHeight + contactRowHeight);
         contactListPanel = new ContactListPanel(contacts);
         contactListPanelPlaceholder.getChildren().add(contactListPanel.getRoot());
     }
+
 
 }
