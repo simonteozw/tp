@@ -1,4 +1,4 @@
-package trackitnus.model.contact;
+package trackitnus.model.commons;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import trackitnus.model.contact.NameContainsKeywordsPredicate;
 import trackitnus.testutil.builder.ContactBuilder;
 
 public class NameContainsKeywordsPredicateTest {

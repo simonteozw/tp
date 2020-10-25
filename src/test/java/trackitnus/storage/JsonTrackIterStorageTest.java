@@ -14,8 +14,8 @@ import trackitnus.commons.exceptions.DataConversionException;
 import trackitnus.model.ReadOnlyTrackIter;
 import trackitnus.model.TrackIter;
 import trackitnus.testutil.Assert;
-import trackitnus.testutil.TypicalTrackIter;
 import trackitnus.testutil.typical.TypicalContacts;
+import trackitnus.testutil.typical.TypicalTrackIter;
 
 public class JsonTrackIterStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonTrackIterStorageTest");

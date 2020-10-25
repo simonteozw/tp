@@ -1,4 +1,4 @@
-package trackitnus.testutil;
+package trackitnus.testutil.typical;
 
 import trackitnus.commons.core.index.Index;
 
