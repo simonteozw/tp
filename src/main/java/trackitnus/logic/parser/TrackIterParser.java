@@ -26,6 +26,7 @@ import trackitnus.logic.commands.module.ViewModuleCommand;
 import trackitnus.logic.commands.task.AddTaskCommand;
 import trackitnus.logic.commands.task.DeleteTaskCommand;
 import trackitnus.logic.commands.task.EditTaskCommand;
+import trackitnus.logic.commands.task.ToggleTaskCommand;
 import trackitnus.logic.commands.task.ViewTaskCommand;
 import trackitnus.logic.parser.contact.AddContactCommandParser;
 import trackitnus.logic.parser.contact.DeleteContactCommandParser;
@@ -44,6 +45,7 @@ import trackitnus.logic.parser.module.ViewModuleCommandParser;
 import trackitnus.logic.parser.task.AddTaskCommandParser;
 import trackitnus.logic.parser.task.DeleteTaskCommandParser;
 import trackitnus.logic.parser.task.EditTaskCommandParser;
+import trackitnus.logic.parser.task.ToggleTaskCommandParser;
 import trackitnus.logic.parser.task.ViewTaskCommandParser;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.lesson.Lesson;
@@ -135,6 +137,9 @@ public class TrackIterParser {
 
             case ViewTaskCommand.COMMAND_WORD:
                 return new ViewTaskCommandParser().parse(arguments);
+
+            case ToggleTaskCommand.COMMAND_WORD:
+                return new ToggleTaskCommandParser().parse(arguments);
 
             default:
                 throw new ParseException(Messages.MESSAGE_UNKNOWN_COMMAND);
