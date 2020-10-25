@@ -66,10 +66,10 @@ public class Module {
     }
 
     /**
-     * Returns true if the two modules are the same
-     * This methods is here for to act as a compatibility layer for UniqueModuleList
+     * Returns true if both modules have the same code
+     * This defines a weaker notion of equality between two modules.
      */
     public boolean isSameModule(Module module) {
-        return this.equals(module);
+        return this.code.equals(module.code);
     }
 }

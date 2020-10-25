@@ -6,6 +6,7 @@ import static trackitnus.testutil.typical.TypicalContacts.AMY;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.time.LocalDate;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,9 @@ import trackitnus.model.Model;
 import trackitnus.model.ModelManager;
 import trackitnus.model.ReadOnlyTrackIter;
 import trackitnus.model.UserPrefs;
+import trackitnus.model.commons.Code;
 import trackitnus.model.contact.Contact;
+import trackitnus.model.task.Task;
 import trackitnus.storage.JsonTrackIterStorage;
 import trackitnus.storage.JsonUserPrefsStorage;
 import trackitnus.storage.StorageManager;
@@ -85,6 +88,27 @@ public class LogicManagerTest {
     @Test
     public void getFilteredContactList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredContactList().remove(0));
+    }
+
+    @Test
+    public void getFilteredTaskList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredTaskList().remove(0));
+    }
+
+    @Test
+    public void getUpcomingTasks_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> logic.getUpcomingTasks().remove(0));
+    }
+
+    @Test
+    public void getModuleTasks_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> logic.getModuleTasks(new Code("CS2345")).remove(0));
+    }
+
+    @Test
+    public void getDayUpcomingTasks_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, ()
+            -> logic.getDayUpcomingTasks(LocalDate.parse("12/12/2020", Task.FORMATTER)).remove(0));
     }
 
     /**

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import trackitnus.commons.core.Messages;
 import trackitnus.logic.commands.contact.DeleteContactCommand;
-import trackitnus.testutil.TypicalIndexes;
+import trackitnus.testutil.typical.TypicalIndexes;
 
 /**
  * As we are only doing white-box testing, our test cases do not cover path variations

@@ -20,7 +20,7 @@ public class TypicalTask {
         "Sample Remark", true);
     public static final Task TASK_NO_REMARK = new Task(new Name("Shizuka Minamoto"), DATE_THREE, new Code("CS2040"),
         "");
-    public static final Task TASK_NO_CODE = new Task(new Name("Takeshi Goda"), DATE_ONE, null,
+    public static final Task TASK_NO_CODE = new Task(new Name("Takeshi Goda"), DATE_THREE, null,
         "");
 
     public static List<Task> getTypicalTasks() {
