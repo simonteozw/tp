@@ -11,7 +11,7 @@ import trackitnus.commons.util.AppUtil;
 public class Name {
 
     public static final String MESSAGE_CONSTRAINTS =
-        "Names should be a non-empty string and don't contain '/'";
+        "Names should be a non-empty string and should not contain '/'";
 
     /*
      * The first character of the name must not be a whitespace,
