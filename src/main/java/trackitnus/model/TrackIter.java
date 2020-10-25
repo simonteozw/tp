@@ -249,6 +249,10 @@ public class TrackIter implements ReadOnlyTrackIter {
         lessons.remove(key);
     }
 
+    public void sortLesson() {
+        lessons.sort();
+    }
+
     //// util methods
 
     @Override

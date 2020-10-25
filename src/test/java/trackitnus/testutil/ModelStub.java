@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import trackitnus.commons.core.GuiSettings;
+import trackitnus.commons.core.index.Index;
 import trackitnus.model.Model;
 import trackitnus.model.ReadOnlyTrackIter;
 import trackitnus.model.ReadOnlyUserPrefs;
@@ -190,4 +191,13 @@ public class ModelStub implements Model {
         throw new AssertionError("This method should not be called.");
     }
 
+    @Override
+    public void sortLesson() {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public Index getTaskIndex(Task task) {
+        throw new AssertionError("This method should not be called.");
+    }
 }

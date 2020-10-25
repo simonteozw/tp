@@ -1,11 +1,9 @@
 package trackitnus.logic.commands.lesson;
 
 import static java.util.Objects.requireNonNull;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_TYPE;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_WEIGHTAGE;
 
 import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
@@ -22,15 +20,11 @@ public class AddLessonCommand extends Command {
         + "Parameters: "
         + PREFIX_CODE + "MODULE_CODE "
         + PREFIX_TYPE + "TYPE "
-        + PREFIX_DATE + "DATE "
-        + PREFIX_ADDRESS + "ADDRESS "
-        + PREFIX_WEIGHTAGE + "WEIGHTAGE\n"
+        + PREFIX_DATE + "DATE\n"
         + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
         + PREFIX_CODE + "CS3233 "
         + PREFIX_TYPE + "lecture "
-        + PREFIX_DATE + "25/01/2021 "
-        + PREFIX_ADDRESS + "COM1 PL2 "
-        + PREFIX_WEIGHTAGE + "4\n";
+        + PREFIX_DATE + "Wed 17:45-21:00\n";
 
     public static final String MESSAGE_SUCCESS = "New lesson added: %1$s";
     public static final String MESSAGE_DUPLICATE_LESSON = "This lesson already exists";
