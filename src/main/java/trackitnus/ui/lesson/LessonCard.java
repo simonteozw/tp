@@ -34,10 +34,7 @@ public class LessonCard extends UiPart<Region> {
     private Label type;
     @FXML
     private Label date;
-    @FXML
-    private Label address;
-    @FXML
-    private Label weightage;
+
 
 
     /**
