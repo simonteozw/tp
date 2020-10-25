@@ -50,7 +50,7 @@ public class EditLessonCommandParser implements Parser<EditLessonCommand> {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
             throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                    EditLessonCommand.MESSAGE_USAGE), pe);
+                EditLessonCommand.MESSAGE_USAGE), pe);
         }
 
         EditLessonDescriptor editLessonDescriptor = new EditLessonDescriptor();

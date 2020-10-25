@@ -56,8 +56,8 @@ public class LessonDateTime {
             Integer currentToOther = LessonWeekday.distanceTo(currentWeekday, other.getWeekday());
             int result = currentToThis.compareTo(currentToOther);
             return result == 0
-                    ? this.getStartTime().compareTo(other.getStartTime())
-                    : result;
+                ? this.getStartTime().compareTo(other.getStartTime())
+                : result;
         }
     }
 
@@ -73,14 +73,14 @@ public class LessonDateTime {
 
         LessonDateTime otherDate = (LessonDateTime) other;
         return otherDate.weekday.equals(weekday)
-                && otherDate.startTime.equals(startTime)
-                && otherDate.endTime.equals(endTime);
+            && otherDate.startTime.equals(startTime)
+            && otherDate.endTime.equals(endTime);
     }
 
     @Override
     public String toString() {
         return weekday.name() + " "
-                + startTime.format(FORMATTER) + "-"
-                + endTime.format(FORMATTER);
+            + startTime.format(FORMATTER) + "-"
+            + endTime.format(FORMATTER);
     }
 }

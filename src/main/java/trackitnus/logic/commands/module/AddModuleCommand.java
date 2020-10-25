@@ -16,7 +16,10 @@ public class AddModuleCommand extends Command {
     public static final String MESSAGE_USAGE = Module.TYPE + " " + COMMAND_WORD + ": Adds a module to the app "
         + "Parameters: "
         + PREFIX_CODE + "CODE "
-        + PREFIX_NAME + "NAME ";
+        + PREFIX_NAME + "NAME "
+        + "\nExample: " + Module.TYPE + " " + COMMAND_WORD + " "
+        + PREFIX_CODE + "CS1231S"
+        + PREFIX_NAME + "Discrete Structures";
 
     public static final String MESSAGE_SUCCESS = "New module added: %1$s";
     public static final String MESSAGE_DUPLICATE_MODULE = "This module already exists";

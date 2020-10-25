@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static trackitnus.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static trackitnus.testutil.TypicalTrackIter.getTypicalTrackIter;
 import static trackitnus.testutil.typical.TypicalContacts.CARL;
 import static trackitnus.testutil.typical.TypicalContacts.ELLE;
 import static trackitnus.testutil.typical.TypicalContacts.FIONA;
+import static trackitnus.testutil.typical.TypicalTrackIter.getTypicalTrackIter;
 
 import java.util.Arrays;
 import java.util.Collections;

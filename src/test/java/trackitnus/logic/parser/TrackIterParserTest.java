@@ -23,9 +23,9 @@ import trackitnus.model.contact.Contact;
 import trackitnus.model.contact.NameContainsKeywordsPredicate;
 import trackitnus.testutil.Assert;
 import trackitnus.testutil.ContactUtil;
-import trackitnus.testutil.TypicalIndexes;
 import trackitnus.testutil.builder.ContactBuilder;
 import trackitnus.testutil.builder.EditContactDescriptorBuilder;
+import trackitnus.testutil.typical.TypicalIndexes;
 
 public class TrackIterParserTest {
 

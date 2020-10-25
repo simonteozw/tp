@@ -11,7 +11,7 @@ import trackitnus.commons.exceptions.IllegalValueException;
 import trackitnus.commons.util.JsonUtil;
 import trackitnus.model.TrackIter;
 import trackitnus.testutil.Assert;
-import trackitnus.testutil.TypicalTrackIter;
+import trackitnus.testutil.typical.TypicalTrackIter;
 
 public class JsonSerializableTrackIterTest {
 

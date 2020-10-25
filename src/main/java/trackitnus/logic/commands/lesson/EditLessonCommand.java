@@ -66,7 +66,7 @@ public class EditLessonCommand extends Command {
         assert lessonToEdit != null;
 
         Code updatedCode = editLessonDescriptor.getCode().orElse(lessonToEdit.getCode());
-        Type updatedType = editLessonDescriptor.getType().orElse(lessonToEdit.getType());;
+        Type updatedType = editLessonDescriptor.getType().orElse(lessonToEdit.getType());
         LessonDateTime updatedDate = editLessonDescriptor.getDate().orElse(lessonToEdit.getDate());
 
         return new Lesson(updatedCode, updatedType, updatedDate);

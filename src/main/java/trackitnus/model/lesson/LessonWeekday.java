@@ -12,6 +12,7 @@ public enum LessonWeekday {
     Fri,
     Sat;
     private static final int SIZE = 7;
+
     public static LessonWeekday getLessonWeekDay(LocalDate date) {
         DayOfWeek dayOfWeek = date.getDayOfWeek();
         switch (dayOfWeek) {
@@ -31,7 +32,7 @@ public enum LessonWeekday {
             return Sat;
         default:
             throw new AssertionError(
-                    "Unexpected error: Unable to retrieve weekday from LocalDate.");
+                "Unexpected error: Unable to retrieve weekday from LocalDate.");
         }
     }
 
