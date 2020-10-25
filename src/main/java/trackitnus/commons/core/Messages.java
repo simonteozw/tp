@@ -15,5 +15,6 @@ public class Messages {
     public static final String MESSAGE_TASKS_LISTED_OVERVIEW = "%1$d tasks listed!";
 
     public static final String MESSAGE_INVALID_MODULE_DISPLAYED_INDEX = "The module index provided is invalid";
-    public static final String MESSAGE_MODULE_DOES_NOT_EXIST = "There is no module matched the given module code";
+    public static final String MESSAGE_MODULE_DOES_NOT_EXIST = "There is no module that matches the given module code";
+    public static final String MESSAGE_TASK_DOES_NOT_EXIST = "There is no such task in the app";
 }

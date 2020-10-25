@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import trackitnus.commons.core.GuiSettings;
+import trackitnus.commons.core.index.Index;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.Model;
@@ -253,6 +254,11 @@ public class AddContactCommandTest {
 
         @Override
         public Optional<Lesson> getLesson(Code code, Type type) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Index getTaskIndex(Task task) {
             throw new AssertionError("This method should not be called.");
         }
 

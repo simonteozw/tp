@@ -3,6 +3,7 @@ package trackitnus.logic;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -100,17 +101,21 @@ public class LogicManager implements Logic {
 
     @Override
     public ObservableList<Task> getModuleTasks(Code code) {
+        Predicate<Task> p = task -> task.belongsToModule(code);
+        model.updateFilteredTaskList(p);
         return model.getFilteredTaskList();
     }
 
     @Override
     public ObservableList<Task> getUpcomingTasks() {
+        model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
         return model.getFilteredTaskList();
     }
 
     @Override
     public ObservableList<Task> getDayUpcomingTasks(LocalDate date) {
-        return model.getFilteredTaskList();
+        Predicate<Task> p = task -> task.getDate().equals(date);
+        return model.getFilteredTaskList().filtered(p);
     }
 
     //--------------------------------END of V1.3's new functions--------------------------------
