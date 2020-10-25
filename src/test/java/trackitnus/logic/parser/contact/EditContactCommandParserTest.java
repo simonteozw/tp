@@ -14,8 +14,8 @@ import trackitnus.model.commons.Name;
 import trackitnus.model.contact.Email;
 import trackitnus.model.contact.Phone;
 import trackitnus.model.tag.Tag;
-import trackitnus.testutil.TypicalIndexes;
 import trackitnus.testutil.builder.EditContactDescriptorBuilder;
+import trackitnus.testutil.typical.TypicalIndexes;
 
 public class EditContactCommandParserTest {
 

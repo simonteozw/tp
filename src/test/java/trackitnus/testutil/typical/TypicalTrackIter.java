@@ -1,4 +1,4 @@
-package trackitnus.testutil;
+package trackitnus.testutil.typical;
 
 import static trackitnus.testutil.typical.TypicalContacts.getTypicalContacts;
 import static trackitnus.testutil.typical.TypicalModule.getTypicalModules;

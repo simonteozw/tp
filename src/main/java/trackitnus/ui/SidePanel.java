@@ -75,7 +75,7 @@ public class SidePanel extends UiPart<Region> {
                 setText(null);
             } else {
                 setGraphic(getModuleButton(module));
-                ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList( Module.TYPE,
+                ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList(Module.TYPE,
                     module));
                 tabConsumer.accept(upcomingValues);
             }

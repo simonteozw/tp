@@ -1,12 +1,10 @@
-package trackitnus.model.contact;
+package trackitnus.model.commons;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static trackitnus.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
-
-import trackitnus.model.commons.Name;
 
 public class NameTest {
 
@@ -29,9 +27,7 @@ public class NameTest {
         // invalid name
         assertFalse(Name.isValidName("")); // empty string
         assertFalse(Name.isValidName(" ")); // spaces only
-        assertFalse(Name.isValidName("^")); // only non-alphanumeric characters
-        assertFalse(Name.isValidName("peter*")); // contains non-alphanumeric characters
-
+        assertFalse(Name.isValidName("abc/def")); // contains slash
         // valid name
         assertTrue(Name.isValidName("peter jack")); // alphabets only
         assertTrue(Name.isValidName("12345")); // numbers only
