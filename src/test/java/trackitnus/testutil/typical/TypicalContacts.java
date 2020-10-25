@@ -1,12 +1,12 @@
-package trackitnus.testutil;
+package trackitnus.testutil.typical;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import trackitnus.logic.commands.contact.ContactCommandTestUtil;
-import trackitnus.model.TrackIter;
 import trackitnus.model.contact.Contact;
+import trackitnus.testutil.builder.ContactBuilder;
 
 /**
  * A utility class containing a list of {@code Contact} objects to be used in tests.
@@ -55,16 +55,6 @@ public class TypicalContacts {
     private TypicalContacts() {
     } // prevents instantiation
 
-    /**
-     * Returns an {@code TrackIter} with all the typical contacts.
-     */
-    public static TrackIter getTypicalTrackIter() {
-        TrackIter ab = new TrackIter();
-        for (Contact contact : getTypicalContacts()) {
-            ab.addContact(contact);
-        }
-        return ab;
-    }
 
     public static List<Contact> getTypicalContacts() {
         return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));

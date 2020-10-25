@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static trackitnus.logic.commands.CommandTestUtil.assertCommandFailure;
 import static trackitnus.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static trackitnus.testutil.TypicalContacts.getTypicalTrackIter;
+import static trackitnus.testutil.TypicalTrackIter.getTypicalTrackIter;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,8 +26,8 @@ public class DeleteContactCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        Contact contactToDelete = model.getFilteredContactList().get(TypicalIndexes.INDEX_FIRST_CONTACT.getZeroBased());
-        DeleteContactCommand deleteContactCommand = new DeleteContactCommand(TypicalIndexes.INDEX_FIRST_CONTACT);
+        Contact contactToDelete = model.getFilteredContactList().get(TypicalIndexes.INDEX_FIRST.getZeroBased());
+        DeleteContactCommand deleteContactCommand = new DeleteContactCommand(TypicalIndexes.INDEX_FIRST);
 
         String expectedMessage = String.format(DeleteContactCommand.MESSAGE_DELETE_CONTACT_SUCCESS, contactToDelete);
 
@@ -47,10 +47,10 @@ public class DeleteContactCommandTest {
 
     @Test
     public void execute_validIndexFilteredList_success() {
-        ContactCommandTestUtil.showContactAtIndex(model, TypicalIndexes.INDEX_FIRST_CONTACT);
+        ContactCommandTestUtil.showContactAtIndex(model, TypicalIndexes.INDEX_FIRST);
 
-        Contact contactToDelete = model.getFilteredContactList().get(TypicalIndexes.INDEX_FIRST_CONTACT.getZeroBased());
-        DeleteContactCommand deleteContactCommand = new DeleteContactCommand(TypicalIndexes.INDEX_FIRST_CONTACT);
+        Contact contactToDelete = model.getFilteredContactList().get(TypicalIndexes.INDEX_FIRST.getZeroBased());
+        DeleteContactCommand deleteContactCommand = new DeleteContactCommand(TypicalIndexes.INDEX_FIRST);
 
         String expectedMessage = String.format(DeleteContactCommand.MESSAGE_DELETE_CONTACT_SUCCESS, contactToDelete);
 
@@ -63,9 +63,9 @@ public class DeleteContactCommandTest {
 
     @Test
     public void execute_invalidIndexFilteredList_throwsCommandException() {
-        ContactCommandTestUtil.showContactAtIndex(model, TypicalIndexes.INDEX_FIRST_CONTACT);
+        ContactCommandTestUtil.showContactAtIndex(model, TypicalIndexes.INDEX_FIRST);
 
-        Index outOfBoundIndex = TypicalIndexes.INDEX_SECOND_CONTACT;
+        Index outOfBoundIndex = TypicalIndexes.INDEX_SECOND;
         // ensures that outOfBoundIndex is still in bounds of address book list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getTrackIter().getContactList().size());
 
@@ -76,14 +76,14 @@ public class DeleteContactCommandTest {
 
     @Test
     public void equals() {
-        DeleteContactCommand deleteFirstCommand = new DeleteContactCommand(TypicalIndexes.INDEX_FIRST_CONTACT);
-        DeleteContactCommand deleteSecondCommand = new DeleteContactCommand(TypicalIndexes.INDEX_SECOND_CONTACT);
+        DeleteContactCommand deleteFirstCommand = new DeleteContactCommand(TypicalIndexes.INDEX_FIRST);
+        DeleteContactCommand deleteSecondCommand = new DeleteContactCommand(TypicalIndexes.INDEX_SECOND);
 
         // same object -> returns true
         assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
 
         // same values -> returns true
-        DeleteContactCommand deleteFirstCommandCopy = new DeleteContactCommand(TypicalIndexes.INDEX_FIRST_CONTACT);
+        DeleteContactCommand deleteFirstCommandCopy = new DeleteContactCommand(TypicalIndexes.INDEX_FIRST);
         assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
 
         // different types -> returns false

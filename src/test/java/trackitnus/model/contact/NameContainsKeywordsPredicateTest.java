@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import trackitnus.testutil.ContactBuilder;
+import trackitnus.testutil.builder.ContactBuilder;
 
 public class NameContainsKeywordsPredicateTest {
 

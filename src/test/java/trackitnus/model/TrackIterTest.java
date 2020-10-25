@@ -3,6 +3,7 @@ package trackitnus.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static trackitnus.testutil.TypicalTrackIter.getTypicalTrackIter;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -20,8 +21,8 @@ import trackitnus.model.lesson.Lesson;
 import trackitnus.model.module.Module;
 import trackitnus.model.task.Task;
 import trackitnus.testutil.Assert;
-import trackitnus.testutil.ContactBuilder;
-import trackitnus.testutil.TypicalContacts;
+import trackitnus.testutil.builder.ContactBuilder;
+import trackitnus.testutil.typical.TypicalContacts;
 
 public class TrackIterTest {
 
@@ -39,7 +40,7 @@ public class TrackIterTest {
 
     @Test
     public void resetData_withValidReadOnlyTrackIter_replacesData() {
-        TrackIter newData = TypicalContacts.getTypicalTrackIter();
+        TrackIter newData = getTypicalTrackIter();
         trackIter.resetData(newData);
         assertEquals(newData, trackIter);
     }

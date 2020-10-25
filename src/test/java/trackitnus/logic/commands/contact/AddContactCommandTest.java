@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import trackitnus.commons.core.GuiSettings;
+import trackitnus.commons.core.index.Index;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.Model;
@@ -28,7 +29,7 @@ import trackitnus.model.lesson.Type;
 import trackitnus.model.module.Module;
 import trackitnus.model.task.Task;
 import trackitnus.testutil.Assert;
-import trackitnus.testutil.ContactBuilder;
+import trackitnus.testutil.builder.ContactBuilder;
 
 public class AddContactCommandTest {
 
@@ -260,6 +261,11 @@ public class AddContactCommandTest {
         public void sortLesson() {
             throw new AssertionError("This method should not be called.");
         }
+
+        public Index getTaskIndex(Task task) {
+            throw new AssertionError("This method should not be called.");
+        }
+
     }
 
     /**

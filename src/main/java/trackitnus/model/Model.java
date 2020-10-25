@@ -6,6 +6,8 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import trackitnus.commons.core.GuiSettings;
+import trackitnus.commons.core.index.Index;
+import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.commons.Code;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.lesson.Lesson;
@@ -186,6 +188,15 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredTaskList(Predicate<Task> predicate);
+
+    /**
+     * Returns the Index of the task in the current last shown list.
+     *
+     * @param task The task to query.
+     * @return an Index object representing the task object.
+     * @throws CommandException If the index is invalid.
+     */
+    Index getTaskIndex(Task task) throws CommandException;
 
     //=========== Lesson ================================================================================
 

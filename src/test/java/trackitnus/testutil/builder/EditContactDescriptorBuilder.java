@@ -1,4 +1,4 @@
-package trackitnus.testutil;
+package trackitnus.testutil.builder;
 
 import java.util.Set;
 import java.util.stream.Collectors;
