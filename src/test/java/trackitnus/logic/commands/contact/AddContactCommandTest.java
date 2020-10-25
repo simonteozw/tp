@@ -258,6 +258,10 @@ public class AddContactCommandTest {
         }
 
         @Override
+        public void sortLesson() {
+            throw new AssertionError("This method should not be called.");
+        }
+
         public Index getTaskIndex(Task task) {
             throw new AssertionError("This method should not be called.");
         }
