@@ -2,21 +2,26 @@ package trackitnus.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static trackitnus.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
 import static trackitnus.testutil.Assert.assertThrows;
-import static trackitnus.testutil.TypicalContacts.ALICE;
-import static trackitnus.testutil.TypicalContacts.BENSON;
+import static trackitnus.testutil.typical.TypicalContacts.ALICE;
+import static trackitnus.testutil.typical.TypicalContacts.BENSON;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import trackitnus.commons.core.GuiSettings;
+import trackitnus.commons.core.index.Index;
+import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.contact.NameContainsKeywordsPredicate;
-import trackitnus.testutil.TrackIterBuilder;
+import trackitnus.testutil.builder.TrackIterBuilder;
+import trackitnus.testutil.typical.TypicalTask;
 
 public class ModelManagerTest {
 
@@ -91,6 +96,43 @@ public class ModelManagerTest {
     @Test
     public void getFilteredContactList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredContactList().remove(0));
+    }
+
+    @Test
+    public void getTaskIndex_invalidIndex_throwsCommandException() {
+        assertThrows(CommandException.class, () -> modelManager.getTaskIndex(TypicalTask.TASK_FULL));
+    }
+
+    @Test
+    public void getTaskIndex_validIndex_success() {
+        try {
+            modelManager.addTask(TypicalTask.TASK_FULL);
+            assertEquals(Index.fromOneBased(1), modelManager.getTaskIndex(TypicalTask.TASK_FULL));
+        } catch (CommandException e) {
+            Assertions.fail();
+        }
+    }
+
+    @Test
+    public void getTaskIndex_rightIndex_success() {
+        try {
+            modelManager.addTask(TypicalTask.TASK_FULL);
+            modelManager.addTask(TypicalTask.TASK_FULL_DONE);
+            assertEquals(Index.fromOneBased(2), modelManager.getTaskIndex(TypicalTask.TASK_FULL_DONE));
+        } catch (CommandException e) {
+            Assertions.fail();
+        }
+    }
+
+    @Test
+    public void getTaskIndex_wrongIndex_failure() {
+        try {
+            modelManager.addTask(TypicalTask.TASK_FULL);
+            modelManager.addTask(TypicalTask.TASK_FULL_DONE);
+            assertNotEquals(Index.fromOneBased(1), modelManager.getTaskIndex(TypicalTask.TASK_FULL_DONE));
+        } catch (CommandException e) {
+            Assertions.fail();
+        }
     }
 
     @Test

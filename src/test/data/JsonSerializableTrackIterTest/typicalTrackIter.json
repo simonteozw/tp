@@ -1,11 +1,9 @@
 {
-  "_comment": "TrackIter save file which contains the same Contact values as in TypicalContacts#getTypicalTrackIter()",
   "contacts": [
     {
       "name": "Alice Pauline",
       "phone": "94351253",
       "email": "alice@example.com",
-      "address": "123, Jurong West Ave 6, #08-111",
       "tagged": [
         "friends"
       ]
@@ -14,7 +12,6 @@
       "name": "Benson Meier",
       "phone": "98765432",
       "email": "johnd@example.com",
-      "address": "311, Clementi Ave 2, #02-25",
       "tagged": [
         "owesMoney",
         "friends"
@@ -24,14 +21,12 @@
       "name": "Carl Kurz",
       "phone": "95352563",
       "email": "heinz@example.com",
-      "address": "wall street",
       "tagged": []
     },
     {
       "name": "Daniel Meier",
       "phone": "87652533",
       "email": "cornelia@example.com",
-      "address": "10th street",
       "tagged": [
         "friends"
       ]
@@ -40,25 +35,72 @@
       "name": "Elle Meyer",
       "phone": "9482224",
       "email": "werner@example.com",
-      "address": "michegan ave",
       "tagged": []
     },
     {
       "name": "Fiona Kunz",
       "phone": "9482427",
       "email": "lydia@example.com",
-      "address": "little tokyo",
       "tagged": []
     },
     {
       "name": "George Best",
       "phone": "9482442",
       "email": "anna@example.com",
-      "address": "4th street",
       "tagged": []
     }
   ],
-  "tasks": [],
-  "modules": [],
+  "modules": [
+    {
+      "code": "CS1231S",
+      "name": "Discrete Structures"
+    },
+    {
+      "code": "MA1101R",
+      "name": "Linear Algebra I"
+    },
+    {
+      "code": "CS2030",
+      "name": "Programming Methodology II"
+    },
+    {
+      "code": "CS3233",
+      "name": "Competitive Programming"
+    },
+    {
+      "code": "CFG1002",
+      "name": "Career Catalyst"
+    }
+  ],
+  "tasks": [
+    {
+      "name": "Doraemon",
+      "date": "23/10/2020",
+      "code": "CS1231S",
+      "remark": "Sample Remark",
+      "isDone": false
+    },
+    {
+      "name": "Nobita Nobi",
+      "date": "24/11/2020",
+      "code": "CS2030S",
+      "remark": "Sample Remark",
+      "isDone": true
+    },
+    {
+      "name": "Shizuka Minamoto",
+      "date": "09/12/2020",
+      "code": "CS2040",
+      "remark": "",
+      "isDone": false
+    },
+    {
+      "name": "Takeshi Goda",
+      "date": "09/12/2020",
+      "code": null,
+      "remark": "",
+      "isDone": false
+    }
+  ],
   "lessons": []
 }

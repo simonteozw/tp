@@ -1,9 +1,8 @@
-package trackitnus.testutil;
+package trackitnus.testutil.builder;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Name;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.contact.Email;
@@ -19,12 +18,10 @@ public class ContactBuilder {
     public static final String DEFAULT_NAME = "Alice Pauline";
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
-    public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
     private Name name;
     private Phone phone;
     private Email email;
-    private Address address;
     private Set<Tag> tags;
 
     /**
@@ -34,7 +31,6 @@ public class ContactBuilder {
         name = new Name(DEFAULT_NAME);
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
-        address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
     }
 
@@ -45,7 +41,6 @@ public class ContactBuilder {
         name = contactToCopy.getName();
         phone = contactToCopy.getPhone();
         email = contactToCopy.getEmail();
-        address = contactToCopy.getAddress();
         tags = new HashSet<>(contactToCopy.getTags());
     }
 
@@ -66,14 +61,6 @@ public class ContactBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code Contact} that we are building.
-     */
-    public ContactBuilder withAddress(String address) {
-        this.address = new Address(address);
-        return this;
-    }
-
-    /**
      * Sets the {@code Phone} of the {@code Contact} that we are building.
      */
     public ContactBuilder withPhone(String phone) {
@@ -90,7 +77,7 @@ public class ContactBuilder {
     }
 
     public Contact build() {
-        return new Contact(name, phone, email, address, tags);
+        return new Contact(name, phone, email, tags);
     }
 
 }

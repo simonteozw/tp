@@ -1,12 +1,9 @@
 package trackitnus.logic.parser.lesson;
 
-import static trackitnus.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_TYPE;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_WEIGHTAGE;
 
-import java.time.LocalDate;
 import java.util.stream.Stream;
 
 import trackitnus.commons.core.Messages;
@@ -17,9 +14,9 @@ import trackitnus.logic.parser.Parser;
 import trackitnus.logic.parser.ParserUtil;
 import trackitnus.logic.parser.Prefix;
 import trackitnus.logic.parser.exceptions.ParseException;
-import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Code;
 import trackitnus.model.lesson.Lesson;
+import trackitnus.model.lesson.LessonDateTime;
 import trackitnus.model.lesson.Type;
 
 /**
@@ -44,9 +41,9 @@ public class AddLessonCommandParser implements Parser<AddLessonCommand> {
     public AddLessonCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
             ArgumentTokenizer.tokenize(args,
-                PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE, PREFIX_ADDRESS, PREFIX_WEIGHTAGE);
+                PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE, PREFIX_ADDRESS, PREFIX_WEIGHTAGE)
+        if (!arePrefixesPresent(argMultimap, PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE)
             || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
                 AddLessonCommand.MESSAGE_USAGE));
@@ -54,11 +51,9 @@ public class AddLessonCommandParser implements Parser<AddLessonCommand> {
 
         Code code = ParserUtil.parseCode(argMultimap.getValue(PREFIX_CODE).get());
         Type type = ParserUtil.parseType(argMultimap.getValue(PREFIX_TYPE).get());
-        LocalDate date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
-        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
-        double weightage = ParserUtil.parseWeightage(argMultimap.getValue(PREFIX_WEIGHTAGE).get());
+        LessonDateTime date = ParserUtil.parseLessonDateTime(argMultimap.getValue(PREFIX_DATE).get());
 
-        Lesson lesson = new Lesson(code, type, date, address, weightage);
+        Lesson lesson = new Lesson(code, type, date);
 
         return new AddLessonCommand(lesson);
     }

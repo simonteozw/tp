@@ -1,15 +1,14 @@
 package trackitnus.logic.parser.lesson;
 
 import static java.util.Objects.requireNonNull;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_TYPE;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_WEIGHTAGE;
 
 import java.util.stream.Stream;
 
 import trackitnus.commons.core.Messages;
+import trackitnus.commons.core.index.Index;
 import trackitnus.logic.commands.lesson.EditLessonCommand;
 import trackitnus.logic.commands.lesson.EditLessonCommand.EditLessonDescriptor;
 import trackitnus.logic.parser.ArgumentMultimap;
@@ -19,6 +18,7 @@ import trackitnus.logic.parser.ParserUtil;
 import trackitnus.logic.parser.Prefix;
 import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.model.commons.Code;
+import trackitnus.model.lesson.LessonDateTime;
 import trackitnus.model.lesson.Type;
 
 /**
@@ -43,35 +43,37 @@ public class EditLessonCommandParser implements Parser<EditLessonCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
             ArgumentTokenizer.tokenize(args,
-                PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE, PREFIX_ADDRESS, PREFIX_WEIGHTAGE);
+                PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE);
+        Index index;
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_CODE, PREFIX_TYPE)) {
+        try {
+            index = ParserUtil.parseIndex(argMultimap.getPreamble());
+        } catch (ParseException pe) {
             throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                EditLessonCommand.MESSAGE_USAGE));
+                EditLessonCommand.MESSAGE_USAGE), pe);
         }
 
         EditLessonDescriptor editLessonDescriptor = new EditLessonDescriptor();
 
-        Code code = ParserUtil.parseCode(argMultimap.getValue(PREFIX_CODE).get());
-        editLessonDescriptor.setCode(code);
+        if (argMultimap.getValue(PREFIX_CODE).isPresent()) {
+            Code code = ParserUtil.parseCode(argMultimap.getValue(PREFIX_CODE).get());
+            editLessonDescriptor.setCode(code);
+        }
 
-        Type type = ParserUtil.parseType(argMultimap.getValue(PREFIX_TYPE).get());
-        editLessonDescriptor.setType(type);
+        if (argMultimap.getValue(PREFIX_TYPE).isPresent()) {
+            Type type = ParserUtil.parseType(argMultimap.getValue(PREFIX_TYPE).get());
+            editLessonDescriptor.setType(type);
+        }
 
         if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
-            editLessonDescriptor.setDate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()));
-        }
-        if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
-            editLessonDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
-        }
-        if (argMultimap.getValue(PREFIX_WEIGHTAGE).isPresent()) {
-            editLessonDescriptor.setWeightage(ParserUtil.parseWeightage(argMultimap.getValue(PREFIX_WEIGHTAGE).get()));
+            LessonDateTime date = ParserUtil.parseLessonDateTime(argMultimap.getValue(PREFIX_DATE).get());
+            editLessonDescriptor.setDate(date);
         }
 
         if (!editLessonDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditLessonCommand.MESSAGE_NOT_EDITED);
         }
 
-        return new EditLessonCommand(code, type, editLessonDescriptor);
+        return new EditLessonCommand(index, editLessonDescriptor);
     }
 }

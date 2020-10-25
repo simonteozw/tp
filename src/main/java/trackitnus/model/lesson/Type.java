@@ -6,6 +6,5 @@ public enum Type {
     LAB,
     REC,
     SEC
-
 }
 

@@ -3,9 +3,11 @@ package trackitnus.logic.parser;
 import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import trackitnus.commons.core.index.Index;
@@ -17,6 +19,8 @@ import trackitnus.model.commons.Name;
 import trackitnus.model.contact.Email;
 import trackitnus.model.contact.Phone;
 import trackitnus.model.lesson.Lesson;
+import trackitnus.model.lesson.LessonDateTime;
+import trackitnus.model.lesson.LessonWeekday;
 import trackitnus.model.lesson.Type;
 import trackitnus.model.tag.Tag;
 import trackitnus.model.task.Task;
@@ -144,6 +148,25 @@ public class ParserUtil {
     }
 
     /**
+     * Parses an {@code Optional<String> code} into an {@code Code}.
+     *
+     * @throws ParseException if the given {@code code} is invalid.
+     */
+    public static Code parseOptionalCode(Optional<String> code) throws ParseException {
+        if (code.isEmpty()) {
+            return null;
+        }
+        String trimmedCode = code.get().trim();
+        if (!Task.isValidString(trimmedCode)) {
+            return null;
+        }
+        if (!Code.isValidCode(trimmedCode)) {
+            throw new ParseException(Code.MESSAGE_CONSTRAINTS);
+        }
+        return new Code(trimmedCode);
+    }
+
+    /**
      * Parses a {@code String str} into a {@code String}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -192,12 +215,11 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code remark} is invalid.
      */
-    public static String parseRemark(String remark) throws ParseException {
-        requireNonNull(remark);
-        String trimmedRemark = remark.trim();
-        if (!Address.isValidAddress(trimmedRemark)) {
-            throw new ParseException(Task.REMARK_MESSAGE_CONSTRAINTS);
+    public static String parseRemark(Optional<String> remark) {
+        if (remark.isEmpty()) {
+            return "";
         }
+        String trimmedRemark = remark.get().trim();
         return trimmedRemark;
     }
 
@@ -223,6 +245,59 @@ public class ParserUtil {
             return Type.SEC;
         default:
             throw new ParseException(Lesson.TYPE_MESSAGE_CONSTRAINTS);
+        }
+    }
+
+    /**
+     * Parses a {@code String weekday} into a {@code LessonWeekday}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code weekday} is invalid.
+     */
+    private static LessonWeekday parseLessonWeekday(String weekday) throws ParseException {
+        requireNonNull(weekday);
+        String raw = weekday.trim().toLowerCase();
+        switch (raw) {
+        case "sun":
+            return LessonWeekday.Sun;
+        case "mon":
+            return LessonWeekday.Mon;
+        case "tue":
+            return LessonWeekday.Tue;
+        case "wed":
+            return LessonWeekday.Wed;
+        case "thu":
+            return LessonWeekday.Thu;
+        case "fri":
+            return LessonWeekday.Fri;
+        case "sat":
+            return LessonWeekday.Sat;
+        default:
+            throw new ParseException(Lesson.DATE_MESSAGE_CONSTRAINTS);
+        }
+    }
+
+    /**
+     * Parses a {@code String date} into a {@code LessonDateTime}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code date} is invalid.
+     */
+    public static LessonDateTime parseLessonDateTime(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        try {
+            String[] tokens = trimmedDate.split(" ", 2);
+            String[] startEndTime = tokens[1].split("-", 2);
+            LessonWeekday weekday = parseLessonWeekday(tokens[0]);
+            LocalTime startTime = LocalTime.parse(startEndTime[0], LessonDateTime.FORMATTER);
+            LocalTime endTime = LocalTime.parse(startEndTime[1], LessonDateTime.FORMATTER);
+            if (startTime.compareTo(endTime) < 0) {
+                throw new ParseException(Lesson.TIME_MESSAGE_CONSTRAINTS);
+            }
+            return new LessonDateTime(weekday, startTime, endTime);
+        } catch (Exception e) {
+            throw new ParseException(Lesson.DATE_MESSAGE_CONSTRAINTS);
         }
     }
 }
