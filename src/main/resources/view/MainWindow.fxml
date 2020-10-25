@@ -37,7 +37,7 @@
                     <bottom>
                         <HBox>
                             <Region minWidth="150" style="-fx-background-color: #313543"/>
-                            <VBox>
+                            <VBox VBox.vgrow="ALWAYS">
                                 <StackPane fx:id="commandBoxPlaceholder" styleClass="pane-with-border" VBox.vgrow="NEVER"/>
                                 <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" styleClass="pane-with-border" VBox.vgrow="NEVER"/>
                                 <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER"/>

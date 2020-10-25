@@ -105,17 +105,6 @@
     -fx-background-color: transparent;
 }
 
-/*.list-cell:filled:even {*/
-/*    -fx-background-color: #7A8AA0;*/
-/*}*/
-
-/*.list-cell:filled:odd {*/
-/*    -fx-background-color: #4E5F78;*/
-/*}*/
-
-/*.list-cell:filled:selected .label {*/
-/*    -fx-text-fill: #68C2E8;*/
-/*}*/
 #tabContainer {
     -fx-background-color: #434754;
 }
@@ -227,21 +216,6 @@
 
 .context-menu .label {
     -fx-text-fill: white;
-}
-
-.menu-bar {
-    -fx-background-color: #434754;
-}
-
-.menu-bar .label {
-    -fx-font-size: 14pt;
-    -fx-font-family: "Poppins";
-    -fx-text-fill: white;
-    -fx-opacity: 0.9;
-}
-
-.menu .left-container {
-    -fx-background-color: black;
 }
 
 .button {
