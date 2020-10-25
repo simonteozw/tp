@@ -16,6 +16,8 @@ public class Lesson {
     public static final ZoneId DEFAULT_TIME_ZONE = ZoneId.of("UTC+8");
     public static final String TYPE = "L";
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("d/MM/yyyy");
+    public static final String TIME_MESSAGE_CONSTRAINTS =
+        "Starting time should be earlier than finishing time";
     public static final String DATE_MESSAGE_CONSTRAINTS =
         "Date should be in the format \"ddd H:mm-H:mm\" (in 24-hour format), e.g. Mon 8:00-13:00";
     public static final String WEIGHTAGE_MESSAGE_CONSTRAINTS =
