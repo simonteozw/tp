@@ -30,7 +30,8 @@ public enum LessonWeekday {
         case SATURDAY:
             return Sat;
         default:
-            return null;
+            throw new AssertionError(
+                    "Unexpected error: Unable to retrieve weekday from LocalDate.");
         }
     }
 

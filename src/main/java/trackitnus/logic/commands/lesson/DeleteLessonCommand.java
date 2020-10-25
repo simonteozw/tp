@@ -19,7 +19,7 @@ public class DeleteLessonCommand extends Command {
     public static final String MESSAGE_USAGE = Lesson.TYPE + " " + COMMAND_WORD
         + ": Deletes a lesson from TrackIt@NUS. "
         + "Parameters: "
-        + "INDEX (must be a positive integer)\n"
+        + "INDEX\n"
         + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
         + "2\n";
 
@@ -42,7 +42,7 @@ public class DeleteLessonCommand extends Command {
         List<Lesson> lastShownList = model.getFilteredLessonList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);
         }
 
         Lesson lessonToDelete = lastShownList.get(targetIndex.getZeroBased());

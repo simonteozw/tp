@@ -28,7 +28,7 @@ public class EditLessonCommand extends Command {
     public static final String MESSAGE_USAGE = Lesson.TYPE + " " + COMMAND_WORD
         + ": Edits the details of a lesson."
         + " At least one of the details has to be specified. "
-        + "Parameters: INDEX (must be a positive integer) "
+        + "Parameters: INDEX "
         + "[" + PREFIX_CODE + "MODULE_CODE] "
         + "[" + PREFIX_TYPE + "TYPE] "
         + "[" + PREFIX_DATE + "DATE]\n"
@@ -78,7 +78,7 @@ public class EditLessonCommand extends Command {
         List<Lesson> lastShownList = model.getFilteredLessonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);
         }
 
         if (!editLessonDescriptor.isAnyFieldEdited()) {
