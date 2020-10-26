@@ -41,8 +41,8 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private ModulePanel modulePanel;
-
     private ContactPanel contactPanel;
+    private SidePanel sidePanel;
 
     private ResultDisplay resultDisplay;
     private UpcomingPanel upcomingPanel;
@@ -137,11 +137,13 @@ public class MainWindow extends UiPart<Stage> {
 
         upcomingPanel = new UpcomingPanel(logic);
 
+        sidePanel = new SidePanel(this::switchTab, logic);
+        sidePanelPlaceholder.getChildren().add(sidePanel.getRoot());
+//        sidePanelPlaceholder.getChildren().add(new SidePanel(this::switchTab, logic).getRoot());
+
         //Default tab open
         ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList((Object) "U"));
         switchTab(upcomingValues);
-
-        sidePanelPlaceholder.getChildren().add(new SidePanel(this::switchTab, logic).getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());

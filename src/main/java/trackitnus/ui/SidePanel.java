@@ -49,8 +49,6 @@ public class SidePanel extends UiPart<Region> {
         this.tabConsumer = tabConsumer;
         this.logic = logic;
         helpWindow = new HelpWindow();
-        selectedTabButton = upcomingButton;
-        updateButtonDetails(upcomingButton);
         this.initialize();
     }
 
@@ -66,6 +64,10 @@ public class SidePanel extends UiPart<Region> {
             moduleListView.setPrefHeight(modules.size() * moduleRowHeight);
             moduleListView.setItems(modules);
             moduleListView.setCellFactory(listView -> new ModuleListViewCell());
+
+            // Set Default tab as upcoming tab.
+            selectedTabButton = upcomingButton;
+            updateButtonDetails(upcomingButton);
         }
     }
 
@@ -85,8 +87,8 @@ public class SidePanel extends UiPart<Region> {
                 setGraphic(updatedButton);
                 ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList(Module.TYPE,
                     module));
-                tabConsumer.accept(upcomingValues);
-                updateButtonDetails(updatedButton);
+//                tabConsumer.accept(upcomingValues);
+//                updateButtonDetails(updatedButton);
             }
         }
     }
