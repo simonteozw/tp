@@ -22,11 +22,11 @@ public class EditModuleCommand extends Command {
 
     public static final String MESSAGE_USAGE = Module.TYPE + COMMAND_WORD + ": Edits the details of the module "
         + "identified "
-        + "by the module code "
+        + "by the module code. "
         + "Existing values will be overwritten by the input values.\n"
         + "Parameters: "
-        + PREFIX_CODE + "CODE (must be an existing code) "
-        + "[" + PREFIX_NAME + "NAME] "
+        + PREFIX_CODE + "MODULE_CODE (must be an existing code) "
+        + "[" + PREFIX_NAME + "NAME]\n"
         + String.format("Example: %s %s %sCS1231S %sDiscrete Structures",
         Module.TYPE, COMMAND_WORD, PREFIX_CODE, PREFIX_NAME);
 

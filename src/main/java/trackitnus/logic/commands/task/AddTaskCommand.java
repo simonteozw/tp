@@ -17,11 +17,12 @@ public class AddTaskCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = Task.TYPE + " " + COMMAND_WORD + ": Adds a task to the app. "
+    public static final String MESSAGE_USAGE = Task.TYPE + " " + COMMAND_WORD
+        + ": Adds a task to the app.\n"
         + "Parameters: "
         + PREFIX_NAME + "NAME "
         + PREFIX_DATE + "DATE "
-        + "[" + PREFIX_CODE + "REMARK] "
+        + "[" + PREFIX_CODE + "MODULE_CODE] "
         + "[" + PREFIX_REMARK + "REMARK]\n"
         + "Example: " + Task.TYPE + " " + COMMAND_WORD + " "
         + PREFIX_NAME + "CS2103T Final "

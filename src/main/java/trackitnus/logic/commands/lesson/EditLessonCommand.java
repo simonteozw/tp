@@ -27,8 +27,9 @@ public class EditLessonCommand extends Command {
     public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = Lesson.TYPE + " " + COMMAND_WORD
-        + ": Edits the details of a lesson."
-        + " At least one of the details has to be specified. "
+        + ": Edits the details of the lesson"
+        + " identified by the index number currently displayed on the screen."
+        + " At least one of the details has to be specified.\n"
         + "Parameters: INDEX "
         + "[" + PREFIX_CODE + "MODULE_CODE] "
         + "[" + PREFIX_TYPE + "TYPE] "
