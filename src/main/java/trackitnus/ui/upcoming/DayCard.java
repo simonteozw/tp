@@ -40,7 +40,7 @@ public class DayCard extends UiPart<Region> {
         this.day = day;
         date.setText(day.getStringDate());
 
-        lessonListView.prefHeightProperty().bind(Bindings.size(lessonList).multiply(lessonRowHeight).add(10));
+        lessonListView.prefHeightProperty().bind(Bindings.size(lessonList).multiply(lessonRowHeight).add(20));
         lessonListView.setItems(lessonList);
         lessonListView.setCellFactory(listView -> new LessonListViewCell());
 

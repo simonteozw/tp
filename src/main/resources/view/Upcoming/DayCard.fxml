@@ -22,7 +22,7 @@
             <Line startX="0" startY="200" endX="500" endY="200" style="-fx-stroke: #8C8C89"/>
             <ListView fx:id="lessonListView" VBox.vgrow="ALWAYS">
                 <padding>
-                    <Insets bottom="10"/>
+                    <Insets bottom="20"/>
                 </padding>
             </ListView>
             <ListView fx:id="taskListView" VBox.vgrow="ALWAYS">

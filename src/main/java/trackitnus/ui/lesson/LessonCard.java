@@ -28,8 +28,8 @@ public class LessonCard extends UiPart<Region> {
     private HBox cardPane;
     @FXML
     private Label id;
-    @FXML
-    private Label code;
+//    @FXML
+//    private Label code;
     @FXML
     private Label type;
     @FXML
@@ -44,7 +44,7 @@ public class LessonCard extends UiPart<Region> {
         super(FXML);
         this.lesson = lesson;
         id.setText(displayedIndex + ". ");
-        code.setText(lesson.getCode().code);
+//        code.setText(lesson.getCode().code);
         type.setText(lesson.getType().name());
         date.setText(lesson.getDate().toString());
     }
