@@ -18,7 +18,7 @@ public class ToggleTaskCommand extends Command {
     public static final String COMMAND_WORD = "toggle";
 
     public static final String MESSAGE_USAGE = Task.TYPE + " " + COMMAND_WORD
-        + ": Toggles completion status of the task identified by the index number used in the displayed task list.\n"
+        + ": Toggles completion status of the task identified by the index number currently displayed on the screen.\n"
         + "Parameters: INDEX (must be a positive integer)\n"
         + "Example: " + Task.TYPE + " " + COMMAND_WORD + " 1";
 

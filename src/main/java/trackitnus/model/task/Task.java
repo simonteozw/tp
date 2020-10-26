@@ -124,14 +124,11 @@ public class Task {
 
     @Override
     public String toString() {
+        String completionStatus = isDone ? "[DONE] " : "[NOT DONE] ";
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName());
-        if (isDone) {
-            builder.append("[DONE]");
-        } else {
-            builder.append("[NOT DONE]");
-        }
-        builder.append(" Date: ")
+        builder.append(completionStatus)
+            .append(getName())
+            .append(" Date: ")
             .append(getDate());
         if (getCode().isPresent()) {
             builder.append(" Code: ").append(getCode().get());
