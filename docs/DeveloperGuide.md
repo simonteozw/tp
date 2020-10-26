@@ -1,35 +1,96 @@
----
-layout: page
-title: Developer Guide
----
-* Table of Contents
-{:toc}
+# TrackIt@NUS - Developer Guide
 
+By: `Team W13-4` Since: `Aug 2020` License: `MIT`
+
+## Table of Contents
+1. [**Introduction**](#introduction)
+2. [**Setting up**](#setup)
+3. [**Design**](#design)
+    1. [Architecture](#architecture)
+    2. [UI Component](#ui)
+    3. [Logic Component](#logic)
+    4. [Model Component](#model)
+    5. [Common Classes](#common)
+4. [**Implementation**](#implementation)
+    1. [Module Manager](#module-manager)
+    2. [Lesson Manager](#lesson-manager)
+    3. [Task Manager](#task-manager)
+    4. [Contact Manager](#contact-manager)
+    5. [Upcoming Tab](#upcoming-tab)
+    6. [App-Wide Search](#app-wide-search)
+    7. [Logging](#logging)
+    8. [Configuration](#config)
+5. [**Documentation**](#documentation)
+6. [**Testing**](#testing)
+7. [**Dev Ops**](#devops)<br>
+[**Appendix A: Product Scope**](#appen-a) <br>
+[**Appendix B: User Stories**](#appen-b) <br>
+[**Appendix C: Use Cases**](#appen-c) <br>
+[**Appendix D: Non-Functional Requirements**](#appen-d) <br>
+[**Appendix E: Glossary**](#appen-e) <br>
+[**Appendix F: Instructions for Manual Testing**](#appen-f) <br>
+[**Appendix G: Effort**](#appen-g) <br>
 --------------------------------------------------------------------------------------------------------------------
 
-## **Setting up, getting started**
+## **Introduction** <a name="introduction"></a>
+
+## **Setting up, getting started** <a name="setup"></a>
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Design**
+## **Design** <a name="design"></a>
+
+### **Architecture** <a name="architecture"></a>
+
+### **UI Component** <a name="ui"></a>
+
+### **Logic Component** <a name="logic"></a>
+
+### **Model Component** <a name="model"></a>
+
+### **Common Classes** <a name="common"></a>
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+## **Implementation** <a name="implementation"></a>
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### **Module Manager** <a name="module-manager"></a>
+
+### **Lesson Manager** <a name="lesson-manager"></a>
+
+### **Task Manager** <a name="task-manager"></a>
+
+### **Contact Manager** <a name="contact-manager"></a>
+
+### **Upcoming Tab** <a name="upcoming-tab"></a>
+
+### **App-Wide Search** <a name="app-wide-search"></a>
+
+### **Logging** <a name="logging"></a>
+
+### **Configuration** <a name="config"></a>
+
 --------------------------------------------------------------------------------------------------------------------
 
-## **Documentation, logging, testing, configuration, dev-ops**
+## **Documentation** <a name="documentation"></a>
+
+Refer to the guide [here](./Documentation.md)
+
+## **Testing** <a name="testing"></a>
+
+Refer to the guide [here](./Testing.md)
+
+## **Dev Ops** <a name="devops"></a>
+
+Refer to the guide [here](./DevOps.md)
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
-
-### Product scope
+## **Appendix A: Product Scope** <a name="appen-a"></a>
 
 **Target user profile**:
 
@@ -48,7 +109,7 @@ This section describes some noteworthy details on how certain features are imple
 * able to integrate personal todos/events into the weekly academic calendar.
 * able to manage modules' information (module's knowledge coverage, grading scheme) & related contacts in one app
 
-### User stories
+## **Appendix B: User stories** <a name="appen-b"></a>
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -61,7 +122,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | student              | have all the module descriptions in one place                          | read them if I need to                                                 |
 | `*`      | struggling student   | access the contact information of my TA/Prof                           | ask question or schedule a consultation                                |
 
-### Use cases
+## **Appendix C: Use cases** <a name="appen-c"></a>
 
 (For all use cases below, the **System** is the `TrackIt@NUS` application and the **Actor** is the `user`, unless specified otherwise)
 
@@ -88,7 +149,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-### Non-Functional Requirements
+## **Appendix D: Non-Functional Requirements** <a name="appen-d"></a>
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2.  Should be able to hold up to 1000 tasks/contacts/classes without a noticeable sluggishness in performance for
@@ -99,10 +160,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 5. The UI of the app is attractive to the users
 *{More to be added}*
 
-### Glossary
+## **Appendix E: Glossary** <a name="appen-e"></a>
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 
---------------------------------------------------------------------------------------------------------------------
+## **Appendix F: Instructions for Manual Testing** <a name="appen-f"></a>
 
-## **Appendix: Instructions for manual testing**
+## **Appendix G: Effort** <a name="appen-g"></a>
