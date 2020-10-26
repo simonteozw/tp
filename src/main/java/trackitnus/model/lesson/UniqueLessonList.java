@@ -102,6 +102,7 @@ public class UniqueLessonList implements Iterable<Lesson> {
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */
     public ObservableList<Lesson> asUnmodifiableObservableList() {
+        sort();
         return internalUnmodifiableList;
     }
 
@@ -134,5 +135,9 @@ public class UniqueLessonList implements Iterable<Lesson> {
             }
         }
         return true;
+    }
+
+    public void sort() {
+        internalList.sort(new LessonComparator());
     }
 }

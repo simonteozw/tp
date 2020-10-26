@@ -231,11 +231,9 @@
 }
 
 .button:pressed, .button:default:hover:pressed {
-    -fx-text-fill: #68C2E8;
 }
 
 .button:focused {
-    -fx-text-fill: #68C2E8;
     -fx-font-family: "Poppins";
     -fx-font-weight: bold;
 }

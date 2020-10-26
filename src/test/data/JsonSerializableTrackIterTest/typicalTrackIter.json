@@ -82,21 +82,21 @@
     },
     {
       "name": "Nobita Nobi",
-      "date": "24/12/2020",
+      "date": "24/11/2020",
       "code": "CS2030S",
       "remark": "Sample Remark",
       "isDone": true
     },
     {
       "name": "Shizuka Minamoto",
-      "date": "09/08/2020",
+      "date": "09/12/2020",
       "code": "CS2040",
       "remark": "",
       "isDone": false
     },
     {
       "name": "Takeshi Goda",
-      "date": "23/10/2020",
+      "date": "09/12/2020",
       "code": null,
       "remark": "",
       "isDone": false

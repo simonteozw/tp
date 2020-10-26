@@ -32,6 +32,7 @@ public class ModulePanel extends UiPart<Region> {
     private ContactListPanel contactListPanel;
 
     private final int defaultRowHeight = 50;
+    private final int paddingHeight = 10;
 
     @FXML
     private HBox moduleHeader;
@@ -43,7 +44,6 @@ public class ModulePanel extends UiPart<Region> {
     private StackPane taskListPanelPlaceholder;
     @FXML
     private StackPane contactListPanelPlaceholder;
-
 
     /**
      * Creates a {@code ModuleListPanel} with the given {@code ObservableList}.
@@ -59,9 +59,12 @@ public class ModulePanel extends UiPart<Region> {
         ObservableList<Contact> contacts = logic.getModuleContacts(module.getCode());
 
         // Allow height of lists to update automatically
-        lessonListPanelPlaceholder.prefHeightProperty().bind(Bindings.size(lessons).multiply(55));
-        taskListPanelPlaceholder.prefHeightProperty().bind(Bindings.size(tasks).multiply(defaultRowHeight));
-        contactListPanelPlaceholder.prefHeightProperty().bind(Bindings.size(contacts).multiply(defaultRowHeight));
+        lessonListPanelPlaceholder.prefHeightProperty().bind(Bindings.size(lessons)
+                .multiply(defaultRowHeight).add(paddingHeight));
+        taskListPanelPlaceholder.prefHeightProperty().bind(Bindings.size(tasks)
+                .multiply(defaultRowHeight).add(paddingHeight));
+        contactListPanelPlaceholder.prefHeightProperty().bind(Bindings.size(contacts)
+                .multiply(defaultRowHeight).add(paddingHeight));
 
         lessonListPanel = new LessonListPanel(lessons);
         lessonListPanelPlaceholder.getChildren().add(lessonListPanel.getRoot());

@@ -10,6 +10,7 @@ class CodeTest {
     @Test
     void isValidCode() {
         assertTrue(Code.isValidCode("CS1231S"));
+        assertTrue(Code.isValidCode("MKT3761D"));
         assertTrue(Code.isValidCode("MA1101R"));
         assertTrue(Code.isValidCode("MA1102"));
         assertTrue(Code.isValidCode("CFG1101"));

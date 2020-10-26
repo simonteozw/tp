@@ -32,13 +32,8 @@ public class UpcomingLessonCard extends UiPart<Region> {
     private Label code;
     @FXML
     private Label type;
-//    @FXML
-//    private Label date;
-//    @FXML
-//    private Label address;
-//    @FXML
-//    private Label weightage;
-
+    @FXML
+    private Label date;
 
     /**
      * Creates a {@code ContactCode} with the given {@code Lesson} and index to display.
@@ -49,9 +44,7 @@ public class UpcomingLessonCard extends UiPart<Region> {
         id.setText("[" + displayedIndex + "] ");
         code.setText(lesson.getCode().code);
         type.setText(lesson.getType().name());
-//        date.setText(lesson.getDate().toString());
-//        address.setText(lesson.getAddress().toString());
-//        weightage.setText(String.valueOf(lesson.getWeightage()));
+        date.setText(lesson.getDate().toString().substring(4));
     }
 
     @Override

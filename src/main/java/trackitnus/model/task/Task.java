@@ -69,6 +69,10 @@ public class Task {
         return test.matches(VALIDATION_REGEX);
     }
 
+    public boolean belongsToModule(Code code) {
+        return getCode().isPresent() && getCode().get().equals(code);
+    }
+
     public String getRemark() {
         return remark;
     }
@@ -103,7 +107,8 @@ public class Task {
         return otherTask.name.equals(name)
             && otherTask.date.equals(date)
             && otherTask.getCode().equals(getCode())
-            && otherTask.getRemark().equals(getRemark());
+            && otherTask.getRemark().equals(getRemark())
+            && otherTask.getIsDone() == getIsDone();
     }
 
     @Override

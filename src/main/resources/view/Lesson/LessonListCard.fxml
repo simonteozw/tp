@@ -24,16 +24,10 @@
                         <Region fx:constant="USE_PREF_SIZE"/>
                     </minWidth>
                 </Label>
+<!--                <Label fx:id="code" styleClass="cell_big_label" text="\$code"/>-->
                 <Label fx:id="type" styleClass="cell_big_label" text="\$type"/>
-                <Text styleClass="cell_big_label"> </Text>
                 <Label fx:id="date" styleClass="cell_big_label" text="\$date"/>
-<!--                <Label fx:id="code" text="\$first" styleClass="cell_big_label"/>-->
-<!--                <Text fx:id="at" styleClass="cell_big_label">at</Text>-->
-<!--                <Text fx:id="open" styleClass="cell_big_label">(</Text>-->
-<!--                <Label fx:id="weightage" styleClass="cell_big_label" text="\$weightage"/>-->
-<!--                <Text fx:id="close" styleClass="cell_big_label">% )</Text>-->
             </HBox>
-            <Label fx:id="address" styleClass="cell_big_label" text="\$address"/>
 
         </VBox>
     </GridPane>
