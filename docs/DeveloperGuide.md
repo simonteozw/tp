@@ -15,11 +15,9 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     1. [Module Manager](#module-manager)
     2. [Lesson Manager](#lesson-manager)
     3. [Task Manager](#task-manager)
-    4. [Contact Manager](#contact-manager)
-    5. [Upcoming Tab](#upcoming-tab)
-    6. [App-Wide Search](#app-wide-search)
-    7. [Logging](#logging)
-    8. [Configuration](#config)
+    4. [Upcoming Tab](#upcoming-tab)
+    5. [Logging](#logging)
+    6. [Configuration](#config)
 5. [**Documentation**](#documentation)
 6. [**Testing**](#testing)
 7. [**Dev Ops**](#devops)<br>
@@ -34,9 +32,24 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 
 ## **Introduction** <a name="introduction"></a>
 
+**TrackIt@NUS** is a desktop application for managing modules, lessons, tasks, and contacts, tailored to the needs of
+ NUS students. It focuses on the _Command Line Interface (CLI)_ while providing users with a simple and clean
+  _Graphical User Interface (GUI)_. The main iteraction with **TrackIt@NUS** will be done via commands.
+  
+**TrackIt@NUS** is an all-in-one solution for busy NUS students. The information that can be managed by **TrackIt@NUS
+** includes:
+
+* Modules
+* Lessons (for each module)
+* Tasks
+* Contacts
+
+The purpose of this Developer Guide is to help you understand the design and implementation of **TrackIt@NUS** so
+ that you can get started on your contributions to the app.
+
 ## **Setting up, getting started** <a name="setup"></a>
 
-Refer to the guide [_Setting up and getting started_](SettingUp.md).
+Refer to the guide [here](./SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -67,8 +80,6 @@ This section describes some noteworthy details on how certain features are imple
 ### **Contact Manager** <a name="contact-manager"></a>
 
 ### **Upcoming Tab** <a name="upcoming-tab"></a>
-
-### **App-Wide Search** <a name="app-wide-search"></a>
 
 ### **Logging** <a name="logging"></a>
 
