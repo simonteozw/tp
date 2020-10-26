@@ -32,6 +32,7 @@ public class ModulePanel extends UiPart<Region> {
     private ContactListPanel contactListPanel;
 
     private final int defaultRowHeight = 50;
+    private final int lessonRowHeight = 40;
     private final int paddingHeight = 10;
 
     @FXML
@@ -60,7 +61,7 @@ public class ModulePanel extends UiPart<Region> {
 
         // Allow height of lists to update automatically
         lessonListPanelPlaceholder.prefHeightProperty().bind(Bindings.size(lessons)
-                .multiply(defaultRowHeight).add(paddingHeight));
+                .multiply(lessonRowHeight).add(paddingHeight));
         taskListPanelPlaceholder.prefHeightProperty().bind(Bindings.size(tasks)
                 .multiply(defaultRowHeight).add(paddingHeight));
         contactListPanelPlaceholder.prefHeightProperty().bind(Bindings.size(contacts)

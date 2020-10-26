@@ -8,6 +8,8 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import trackitnus.logic.Logic;
+import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.lesson.Lesson;
 import trackitnus.model.task.Task;
 import trackitnus.ui.UiPart;
@@ -20,6 +22,7 @@ public class DayCard extends UiPart<Region> {
     public final Day day;
     private final int lessonRowHeight = 30;
     private final int taskRowHeight = 45;
+    private final Logic logic;
 
     @FXML
     private ListView<Task> taskListView;
@@ -35,16 +38,20 @@ public class DayCard extends UiPart<Region> {
      *
      * @param day
      */
-    public DayCard(Day day, ObservableList<Task> taskList, ObservableList<Lesson> lessonList) {
+    public DayCard(Day day, ObservableList<Task> taskList, ObservableList<Lesson> lessonList, Logic logic) {
         super(FXML);
         this.day = day;
-        date.setText(day.getStringDate());
+        this.logic = logic;
+        date.setText(day.getSectionHeader());
 
-        lessonListView.prefHeightProperty().bind(Bindings.size(lessonList).multiply(lessonRowHeight).add(20));
+        if (lessonList.isEmpty()) {
+            lessonListView.setStyle("-fx-background-color: transparent");
+        }
+        lessonListView.prefHeightProperty().bind(Bindings.size(lessonList).multiply(lessonRowHeight).add(10));
         lessonListView.setItems(lessonList);
         lessonListView.setCellFactory(listView -> new LessonListViewCell());
 
-        taskListView.prefHeightProperty().bind(Bindings.size(taskList).multiply(taskRowHeight).add(10));
+        taskListView.prefHeightProperty().bind(Bindings.size(taskList).multiply(taskRowHeight).add(35));
         taskListView.setItems(taskList);
         taskListView.setCellFactory(listView -> new TaskListViewCell());
 
@@ -77,7 +84,11 @@ public class DayCard extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new TaskCard(task, getIndex() + 1).getRoot());
+                try {
+                    setGraphic(new TaskCard(task, logic.getTaskIndex(task).getOneBased()).getRoot());
+                } catch (CommandException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
