@@ -1,6 +1,7 @@
 package trackitnus.model;
 
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.function.Predicate;
 
@@ -234,6 +235,44 @@ public interface Model {
      * Returns an unmodifiable view of the filtered lesson list
      */
     ObservableList<Lesson> getFilteredLessonList();
+
+    //--------------------------------START of V1.3's new functions--------------------------------
+
+    /**
+     * @return the list of all lessons that will take place on and up to a week after the current day
+     */
+    ObservableList<Lesson> getUpcomingLessons();
+
+    /**
+     * @param date The date to query
+     * @return all lessons happens on that date
+     */
+    ObservableList<Lesson> getDayUpcomingLessons(LocalDate date);
+
+    /**
+     * @param code The module code to query
+     * @return the list of lesson for a specific module
+     */
+    ObservableList<Lesson> getModuleLessons(Code code);
+
+    /**
+     * @param code The module code to query
+     * @return the list of task for a specific module
+     */
+    ObservableList<Task> getModuleTasks(Code code);
+
+    /**
+     * @return the list of all tasks
+     */
+    ObservableList<Task> getUpcomingTasks();
+
+    /**
+     * @param date The date to query
+     * @return the list of all tasks that take place on the specified date
+     */
+    ObservableList<Task> getDayUpcomingTasks(LocalDate date);
+
+    //--------------------------------END of V1.3's new functions--------------------------------
 
     /**
      * Updates the filter of the filtered lesson list to filter by the given {@code predicate}.
