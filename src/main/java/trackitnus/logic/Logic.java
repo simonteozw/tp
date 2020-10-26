@@ -74,6 +74,12 @@ public interface Logic {
      */
     ObservableList<Lesson> getModuleLessons(Code code);
 
+    /**
+     * @param code The module code to query
+     * @return the list of contacts for a specific module
+     */
+    public ObservableList<Contact> getModuleContacts(Code code);
+
 //    ObservableList<Task> getOverdueTasks(LocalDate date);
 
     /**
