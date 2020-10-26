@@ -138,6 +138,11 @@ public class LogicManager implements Logic {
         return model.getFilteredTaskList().filtered(p);
     }
 
+    @Override
+    public int getTaskIndex(Task task) throws CommandException {
+        return model.getTaskIndex(task);
+    }
+
     //--------------------------------END of V1.3's new functions--------------------------------
     @Override
     public Path getTrackIterFilePath() {

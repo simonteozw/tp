@@ -35,6 +35,8 @@ public class UpcomingPanel extends UiPart<Region> {
     public UpcomingPanel(Logic logic) {
         super(FXML);
         this.logic = logic;
+        logic.getUpcomingTasks();
+        logic.getUpcomingLessons();
 
         getDatesForTheWeek(today);
         calendarView.setItems(calendarDates);
@@ -63,8 +65,10 @@ public class UpcomingPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
+//                setGraphic(new DayCard(day, logic.getUpcomingTasks(),
+//                        logic.getUpcomingLessons()).getRoot());
                 setGraphic(new DayCard(day, logic.getDayUpcomingTasks(day.getDate()),
-                        logic.getDayUpcomingLessons(day.getDate())).getRoot());
+                        logic.getDayUpcomingLessons(day.getDate()), logic).getRoot());
             }
         }
     }

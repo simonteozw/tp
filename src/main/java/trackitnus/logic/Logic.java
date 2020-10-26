@@ -102,6 +102,13 @@ public interface Logic {
     ObservableList<Task> getDayUpcomingTasks(LocalDate date);
 
     /**
+     * @param task The task to get index of
+     * @return the index of the task in all tasks
+     * @throws CommandException
+     */
+    int getTaskIndex(Task task) throws CommandException;
+
+    /**
      * Returns the user prefs' address book file path.
      */
     Path getTrackIterFilePath();

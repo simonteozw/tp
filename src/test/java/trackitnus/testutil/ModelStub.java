@@ -197,7 +197,7 @@ public class ModelStub implements Model {
     }
 
     @Override
-    public Index getTaskIndex(Task task) {
+    public int getTaskIndex(Task task) {
         throw new AssertionError("This method should not be called.");
     }
 }
