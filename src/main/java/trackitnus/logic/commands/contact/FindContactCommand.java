@@ -6,6 +6,7 @@ import trackitnus.commons.core.Messages;
 import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.model.Model;
+import trackitnus.model.contact.Contact;
 import trackitnus.model.contact.NameContainsKeywordsPredicate;
 
 /**
@@ -16,10 +17,11 @@ public class FindContactCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-    public static final String MESSAGE_USAGE = "C " + COMMAND_WORD + ": Finds all contacts whose names contain any of "
+    public static final String MESSAGE_USAGE = Contact.TYPE + " " + COMMAND_WORD
+        + ": Finds all contacts whose names contain any of "
         + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
         + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-        + "Example: C " + COMMAND_WORD + " alice bob charlie";
+        + "Example: " + Contact.TYPE + " " + COMMAND_WORD + " alice bob charlie";
 
     private final NameContainsKeywordsPredicate predicate;
 

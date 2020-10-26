@@ -1,11 +1,11 @@
 package trackitnus.logic.commands.task;
 
 import static java.util.Objects.requireNonNull;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static trackitnus.commons.core.Messages.MESSAGE_MODULE_DOES_NOT_EXIST;
+import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_REMARK;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_WEIGHTAGE;
 
 import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
@@ -17,22 +17,20 @@ public class AddTaskCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = Task.TYPE + " " + COMMAND_WORD + ": Adds a task to the app. "
+    public static final String MESSAGE_USAGE = Task.TYPE + " " + COMMAND_WORD
+        + ": Adds a task to the app.\n"
         + "Parameters: "
         + PREFIX_NAME + "NAME "
         + PREFIX_DATE + "DATE "
-        + PREFIX_ADDRESS + "ADDRESS "
-        + PREFIX_WEIGHTAGE + "WEIGHTAGE "
-        + PREFIX_REMARK + "REMARK\n"
+        + "[" + PREFIX_CODE + "MODULE_CODE] "
+        + "[" + PREFIX_REMARK + "REMARK]\n"
         + "Example: " + Task.TYPE + " " + COMMAND_WORD + " "
         + PREFIX_NAME + "CS2103T Final "
         + PREFIX_DATE + "22/12/2020 "
-        + PREFIX_ADDRESS + "COM2 NUS "
-        + PREFIX_WEIGHTAGE + "50 "
         + PREFIX_REMARK + "Favourite module!";
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
-    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the app";
 
     private final Task toAdd;
 
@@ -50,6 +48,10 @@ public class AddTaskCommand extends Command {
 
         if (model.hasTask(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
+        }
+
+        if (toAdd.getCode().isPresent() && !model.hasModule(toAdd.getCode().get())) {
+            throw new CommandException(MESSAGE_MODULE_DOES_NOT_EXIST);
         }
 
         model.addTask(toAdd);

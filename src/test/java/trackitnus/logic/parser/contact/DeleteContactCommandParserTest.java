@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import trackitnus.commons.core.Messages;
 import trackitnus.logic.commands.contact.DeleteContactCommand;
-import trackitnus.testutil.TypicalIndexes;
+import trackitnus.testutil.typical.TypicalIndexes;
 
 /**
  * As we are only doing white-box testing, our test cases do not cover path variations
@@ -22,7 +22,7 @@ public class DeleteContactCommandParserTest {
 
     @Test
     public void parse_validArgs_returnsDeleteCommand() {
-        assertParseSuccess(parser, "1", new DeleteContactCommand(TypicalIndexes.INDEX_FIRST_CONTACT));
+        assertParseSuccess(parser, "1", new DeleteContactCommand(TypicalIndexes.INDEX_FIRST));
     }
 
     @Test

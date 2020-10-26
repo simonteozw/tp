@@ -1,4 +1,4 @@
-package trackitnus.model.contact;
+package trackitnus.model.commons;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -9,7 +9,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import trackitnus.testutil.ContactBuilder;
+import trackitnus.model.contact.NameContainsKeywordsPredicate;
+import trackitnus.testutil.builder.ContactBuilder;
 
 public class NameContainsKeywordsPredicateTest {
 
@@ -70,6 +71,6 @@ public class NameContainsKeywordsPredicateTest {
         // Keywords match phone, email and address, but does not match name
         predicate = new NameContainsKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
         assertFalse(predicate.test(new ContactBuilder().withName("Alice").withPhone("12345")
-            .withEmail("alice@email.com").withAddress("Main Street").build()));
+            .withEmail("alice@email.com").build()));
     }
 }

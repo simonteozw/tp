@@ -1,11 +1,10 @@
 package trackitnus.logic.commands.task;
 
 import static java.util.Objects.requireNonNull;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_REMARK;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_WEIGHTAGE;
 import static trackitnus.model.Model.PREDICATE_SHOW_ALL_TASKS;
 
 import java.time.LocalDate;
@@ -19,7 +18,7 @@ import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.Model;
-import trackitnus.model.commons.Address;
+import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 import trackitnus.model.task.Task;
 
@@ -29,16 +28,14 @@ public class EditTaskCommand extends Command {
 
     public static final String MESSAGE_USAGE = Task.TYPE + " " + COMMAND_WORD
         + ": Edits the details of the task identified "
-        + "by the index number used in the displayed contact list. "
+        + "by the index number currently displayed on the screen. "
         + "Existing values will be overwritten by the input values.\n"
         + "Parameters: INDEX (must be a positive integer) "
         + "[" + PREFIX_NAME + "NAME] "
         + "[" + PREFIX_DATE + "DATE] "
-        + "[" + PREFIX_ADDRESS + "ADDRESS] "
-        + "[" + PREFIX_WEIGHTAGE + "WEIGHTAGE] "
+        + "[" + PREFIX_CODE + "MODULE_CODE] "
         + "[" + PREFIX_REMARK + "REMARK]...\n"
         + "Example: " + Task.TYPE + " " + COMMAND_WORD + " 1 "
-        + PREFIX_WEIGHTAGE + "25 "
         + PREFIX_REMARK + "New remark";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
@@ -65,11 +62,14 @@ public class EditTaskCommand extends Command {
 
         Name updatedName = editTaskDescriptor.getName().orElse(taskToEdit.getName());
         LocalDate updatedDate = editTaskDescriptor.getDate().orElse(taskToEdit.getDate());
-        Address updatedAddress = editTaskDescriptor.getAddress().orElse(taskToEdit.getAddress());
-        Double updatedWeightage = editTaskDescriptor.getWeightage().orElse(taskToEdit.getWeightage());
-        String updatedRemarks = editTaskDescriptor.getRemark().orElse(taskToEdit.getRemark());
+        Code updatedCode = editTaskDescriptor.getIsCodeChanged()
+            ? editTaskDescriptor.getCode().orElse(null)
+            : taskToEdit.getCode().orElse(null);
+        String updatedRemarks = editTaskDescriptor.getIsRemarkChanged()
+            ? editTaskDescriptor.getRemark().orElse("")
+            : taskToEdit.getRemark();
 
-        return new Task(updatedName, updatedDate, updatedAddress, updatedWeightage, updatedRemarks);
+        return new Task(updatedName, updatedDate, updatedCode, updatedRemarks);
     }
 
     @Override
@@ -118,11 +118,17 @@ public class EditTaskCommand extends Command {
     public static class EditTaskDescriptor {
         private Name name;
         private LocalDate date;
-        private Address address;
-        private Double weightage;
+        private Code code;
         private String remark;
+        private boolean isCodeChanged;
+        private boolean isRemarkChanged;
 
+        /**
+         * Constructor for EditTaskDescriptor.
+         */
         public EditTaskDescriptor() {
+            isCodeChanged = false;
+            isRemarkChanged = false;
         }
 
         /**
@@ -132,16 +138,17 @@ public class EditTaskCommand extends Command {
         public EditTaskDescriptor(EditTaskCommand.EditTaskDescriptor toCopy) {
             setName(toCopy.name);
             setDate(toCopy.date);
-            setAddress(toCopy.address);
-            setWeightage(toCopy.weightage);
+            setCode(toCopy.code);
             setRemark(toCopy.remark);
+            isCodeChanged = toCopy.isCodeChanged;
+            isRemarkChanged = toCopy.isRemarkChanged;
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, date, address, weightage, remark);
+            return CollectionUtil.isAnyNonNull(name, date) || isRemarkChanged || isCodeChanged;
         }
 
         public Optional<Name> getName() {
@@ -160,12 +167,13 @@ public class EditTaskCommand extends Command {
             this.date = date;
         }
 
-        public Optional<Double> getWeightage() {
-            return Optional.ofNullable(weightage);
+        public Optional<Code> getCode() {
+            return Optional.ofNullable(code);
         }
 
-        public void setWeightage(Double weightage) {
-            this.weightage = weightage;
+        public void setCode(Code code) {
+            this.code = code;
+            this.isCodeChanged = true;
         }
 
         public Optional<String> getRemark() {
@@ -174,14 +182,15 @@ public class EditTaskCommand extends Command {
 
         public void setRemark(String remark) {
             this.remark = remark;
+            this.isRemarkChanged = true;
         }
 
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
+        public boolean getIsCodeChanged() {
+            return isCodeChanged;
         }
 
-        public void setAddress(Address address) {
-            this.address = address;
+        public boolean getIsRemarkChanged() {
+            return isRemarkChanged;
         }
 
 
@@ -202,8 +211,6 @@ public class EditTaskCommand extends Command {
 
             return getName().equals(e.getName())
                 && getDate().equals(e.getDate())
-                && getAddress().equals(e.getAddress())
-                && getWeightage().equals(e.getWeightage())
                 && getRemark().equals(e.getRemark());
         }
     }

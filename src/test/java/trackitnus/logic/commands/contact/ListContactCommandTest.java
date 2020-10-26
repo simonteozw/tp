@@ -1,7 +1,7 @@
 package trackitnus.logic.commands.contact;
 
 import static trackitnus.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static trackitnus.testutil.TypicalContacts.getTypicalTrackIter;
+import static trackitnus.testutil.typical.TypicalTrackIter.getTypicalTrackIter;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import trackitnus.model.Model;
 import trackitnus.model.ModelManager;
 import trackitnus.model.UserPrefs;
-import trackitnus.testutil.TypicalIndexes;
+import trackitnus.testutil.typical.TypicalIndexes;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ListContactCommand.
@@ -32,7 +32,7 @@ public class ListContactCommandTest {
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
-        ContactCommandTestUtil.showContactAtIndex(model, TypicalIndexes.INDEX_FIRST_CONTACT);
+        ContactCommandTestUtil.showContactAtIndex(model, TypicalIndexes.INDEX_FIRST);
         assertCommandSuccess(new ListContactCommand(), model, ListContactCommand.MESSAGE_SUCCESS, expectedModel);
     }
 }

@@ -1,17 +1,16 @@
 package trackitnus.storage;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import trackitnus.commons.exceptions.IllegalValueException;
-import trackitnus.model.commons.Address;
+import trackitnus.logic.parser.ParserUtil;
 import trackitnus.model.commons.Code;
 import trackitnus.model.lesson.Lesson;
+import trackitnus.model.lesson.LessonDateTime;
 import trackitnus.model.lesson.Type;
-import trackitnus.model.task.Task;
 
 /**
  * Jackson-friendly version of {@link Lesson}.
@@ -23,21 +22,16 @@ public class JsonAdaptedLesson {
     private final String code;
     private final String type;
     private final String date;
-    private final String address;
-    private final String weightage;
 
     /**
      * Constructs a {@code JsonAdaptedLesson} with the given lesson details.
      */
     @JsonCreator
     public JsonAdaptedLesson(@JsonProperty("code") String code, @JsonProperty("type") String type,
-                             @JsonProperty("date") String date, @JsonProperty("address") String address,
-                             @JsonProperty("weightage") String weightage) {
+                             @JsonProperty("date") String date) {
         this.code = code;
         this.type = type;
         this.date = date;
-        this.address = address;
-        this.weightage = weightage;
     }
 
     /**
@@ -46,9 +40,7 @@ public class JsonAdaptedLesson {
     public JsonAdaptedLesson(Lesson source) {
         code = source.getCode().code;
         type = source.getTypeStr();
-        date = source.getDate().format(Task.FORMATTER);
-        address = source.getAddress().value;
-        weightage = Double.toString(source.getWeightage());
+        date = source.getDate().toString();
     }
 
     /**
@@ -76,30 +68,12 @@ public class JsonAdaptedLesson {
                 LocalDate.class.getSimpleName()));
         }
         try {
-            LocalDate.parse(date, Task.FORMATTER);
-        } catch (DateTimeParseException e) {
-            throw new IllegalValueException(Task.DATE_MESSAGE_CONSTRAINTS);
+            ParserUtil.parseLessonDateTime(date);
+        } catch (Exception e) {
+            throw new IllegalValueException(Lesson.DATE_MESSAGE_CONSTRAINTS);
         }
-        final LocalDate modelTime = LocalDate.parse(date, Task.FORMATTER);
+        final LessonDateTime modelTime = ParserUtil.parseLessonDateTime(date);
 
-        if (address == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
-        }
-        if (!Address.isValidAddress(address)) {
-            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
-        }
-        final Address modelAddress = new Address(address);
-
-        if (weightage == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Weightage"));
-        }
-        try {
-            Double.parseDouble(weightage);
-        } catch (NumberFormatException e) {
-            throw new IllegalValueException(Task.WEIGHTAGE_MESSAGE_CONSTRAINTS);
-        }
-        final double modelWeightage = Double.parseDouble(weightage);
-
-        return new Lesson(modelCode, modelType, modelTime, modelAddress, modelWeightage);
+        return new Lesson(modelCode, modelType, modelTime);
     }
 }

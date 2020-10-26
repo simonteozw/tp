@@ -1,7 +1,6 @@
 package trackitnus.logic.commands.contact;
 
 import static java.util.Objects.requireNonNull;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -21,7 +20,6 @@ import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.Model;
-import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Name;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.contact.Email;
@@ -35,16 +33,16 @@ public class EditContactCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = "C " + COMMAND_WORD + ": Edits the details of the contact identified "
-        + "by the index number used in the displayed contact list. "
+    public static final String MESSAGE_USAGE = Contact.TYPE + " " + COMMAND_WORD
+        + ": Edits the details of the contact identified "
+        + "by the index number currently displayed on the screen. "
         + "Existing values will be overwritten by the input values.\n"
         + "Parameters: INDEX (must be a positive integer) "
         + "[" + PREFIX_NAME + "NAME] "
         + "[" + PREFIX_PHONE + "PHONE] "
         + "[" + PREFIX_EMAIL + "EMAIL] "
-        + "[" + PREFIX_ADDRESS + "ADDRESS] "
         + "[" + PREFIX_TAG + "TAG]...\n"
-        + "Example: C " + COMMAND_WORD + " 1 "
+        + "Example: " + Contact.TYPE + " " + COMMAND_WORD + " 1 "
         + PREFIX_PHONE + "91234567 "
         + PREFIX_EMAIL + "johndoe@example.com";
 
@@ -77,10 +75,9 @@ public class EditContactCommand extends Command {
         Name updatedName = editContactDescriptor.getName().orElse(contactToEdit.getName());
         Phone updatedPhone = editContactDescriptor.getPhone().orElse(contactToEdit.getPhone());
         Email updatedEmail = editContactDescriptor.getEmail().orElse(contactToEdit.getEmail());
-        Address updatedAddress = editContactDescriptor.getAddress().orElse(contactToEdit.getAddress());
         Set<Tag> updatedTags = editContactDescriptor.getTags().orElse(contactToEdit.getTags());
 
-        return new Contact(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Contact(updatedName, updatedPhone, updatedEmail, updatedTags);
     }
 
     @Override
@@ -130,7 +127,6 @@ public class EditContactCommand extends Command {
         private Name name;
         private Phone phone;
         private Email email;
-        private Address address;
         private Set<Tag> tags;
 
         public EditContactDescriptor() {
@@ -144,7 +140,6 @@ public class EditContactCommand extends Command {
             setName(toCopy.name);
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
-            setAddress(toCopy.address);
             setTags(toCopy.tags);
         }
 
@@ -152,7 +147,7 @@ public class EditContactCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, tags);
         }
 
         public Optional<Name> getName() {
@@ -177,14 +172,6 @@ public class EditContactCommand extends Command {
 
         public void setEmail(Email email) {
             this.email = email;
-        }
-
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
-        }
-
-        public void setAddress(Address address) {
-            this.address = address;
         }
 
         /**
@@ -222,7 +209,6 @@ public class EditContactCommand extends Command {
             return getName().equals(e.getName())
                 && getPhone().equals(e.getPhone())
                 && getEmail().equals(e.getEmail())
-                && getAddress().equals(e.getAddress())
                 && getTags().equals(e.getTags());
         }
     }

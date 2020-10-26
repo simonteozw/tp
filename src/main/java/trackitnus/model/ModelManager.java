@@ -3,6 +3,7 @@ package trackitnus.model;
 import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -12,12 +13,18 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import trackitnus.commons.core.GuiSettings;
 import trackitnus.commons.core.LogsCenter;
+import trackitnus.commons.core.Messages;
+import trackitnus.commons.core.index.Index;
 import trackitnus.commons.util.CollectionUtil;
+import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.commons.Code;
+import trackitnus.model.commons.Name;
 import trackitnus.model.contact.Contact;
+import trackitnus.model.lesson.DayOfWeek;
 import trackitnus.model.lesson.Lesson;
 import trackitnus.model.lesson.Type;
 import trackitnus.model.module.Module;
+import trackitnus.model.tag.Tag;
 import trackitnus.model.task.Task;
 
 /**
@@ -152,6 +159,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean hasModule(Code code) {
+        requireNonNull(code);
+        return trackIter.hasModule(new Module(code, new Name("dummy")));
+    }
+
+    @Override
     public Optional<Module> getModule(Code code) {
         List<Module> allModules = trackIter.getModuleList();
         for (Module module : allModules) {
@@ -232,6 +245,15 @@ public class ModelManager implements Model {
         filteredTasks.setPredicate(predicate);
     }
 
+    @Override
+    public Index getTaskIndex(Task task) throws CommandException {
+        ObservableList<Task> tasklist = getFilteredTaskList();
+        int index = tasklist.indexOf(task);
+        if (index == -1) {
+            throw new CommandException(Messages.MESSAGE_TASK_DOES_NOT_EXIST);
+        }
+        return Index.fromZeroBased(index);
+    }
 
     //=========== Lesson ================================================================================
 
@@ -259,11 +281,65 @@ public class ModelManager implements Model {
         trackIter.setLesson(target, editedLesson);
     }
 
+    @Override
+    public void sortLesson() {
+        trackIter.sortLesson();
+    }
+
     //=========== Filtered Lesson List Accessors =============================================================
 
     @Override
     public ObservableList<Lesson> getFilteredLessonList() {
         return filteredLessons;
+    }
+
+    //--------------------------------START of V1.3's new functions--------------------------------
+    @Override
+    public ObservableList<Lesson> getUpcomingLessons() {
+        sortLesson();
+        updateFilteredLessonList(PREDICATE_SHOW_ALL_LESSONS);
+        return getFilteredLessonList();
+    }
+
+    @Override
+    public ObservableList<Lesson> getDayUpcomingLessons(LocalDate date) {
+        DayOfWeek weekday = DayOfWeek.getLessonWeekDay(date);
+        Predicate<Lesson> predicate = lesson -> (lesson.getWeekday().equals(weekday));
+        return getUpcomingLessons().filtered(predicate);
+    }
+
+    @Override
+    public ObservableList<Lesson> getModuleLessons(Code code) {
+        Predicate<Lesson> predicate = lesson -> (lesson.getCode().equals(code));
+        updateFilteredLessonList(predicate);
+        return getFilteredLessonList();
+    }
+
+    @Override
+    public ObservableList<Contact> getModuleContacts(Code code) {
+        Tag target = new Tag(code.toString());
+        Predicate<Contact> predicate = contact -> (contact.getTags().contains(target));
+        updateFilteredContactList(predicate);
+        return getFilteredContactList();
+    }
+
+    @Override
+    public ObservableList<Task> getModuleTasks(Code code) {
+        Predicate<Task> p = task -> task.belongsToModule(code);
+        updateFilteredTaskList(p);
+        return getFilteredTaskList();
+    }
+
+    @Override
+    public ObservableList<Task> getUpcomingTasks() {
+        updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
+        return getFilteredTaskList();
+    }
+
+    @Override
+    public ObservableList<Task> getDayUpcomingTasks(LocalDate date) {
+        Predicate<Task> p = task -> task.getDate().equals(date);
+        return getFilteredTaskList().filtered(p);
     }
 
     @Override

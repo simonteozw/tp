@@ -36,8 +36,6 @@ public class ContactCard extends UiPart<Region> {
     @FXML
     private Label phone;
     @FXML
-    private Label address;
-    @FXML
     private Label email;
     @FXML
     private FlowPane tags;
@@ -49,9 +47,8 @@ public class ContactCard extends UiPart<Region> {
         super(FXML);
         this.contact = contact;
         id.setText(displayedIndex + ". ");
-        name.setText(contact.getName().fullName);
+        name.setText(contact.getName().value);
         phone.setText(contact.getPhone().value);
-        address.setText(contact.getAddress().value);
         email.setText(contact.getEmail().value);
         contact.getTags().stream()
             .sorted(Comparator.comparing(tag -> tag.tagName))

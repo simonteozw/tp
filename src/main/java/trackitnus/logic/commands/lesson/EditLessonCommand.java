@@ -1,25 +1,25 @@
 package trackitnus.logic.commands.lesson;
 
 import static java.util.Objects.requireNonNull;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static trackitnus.commons.core.Messages.MESSAGE_MODULE_DOES_NOT_EXIST;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_TYPE;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_WEIGHTAGE;
 import static trackitnus.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
 
-import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import trackitnus.commons.core.Messages;
+import trackitnus.commons.core.index.Index;
 import trackitnus.commons.util.CollectionUtil;
 import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.Model;
-import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Code;
 import trackitnus.model.lesson.Lesson;
+import trackitnus.model.lesson.LessonDateTime;
 import trackitnus.model.lesson.Type;
 
 public class EditLessonCommand extends Command {
@@ -27,43 +27,36 @@ public class EditLessonCommand extends Command {
     public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = Lesson.TYPE + " " + COMMAND_WORD
-        + ": Edits the details of a lesson."
-        + " At least one of the details has to be specified. "
-        + "Parameters: "
-        + PREFIX_CODE + "MODULE_CODE "
-        + PREFIX_TYPE + "TYPE "
-        + "[" + PREFIX_DATE + "DATE] "
-        + "[" + PREFIX_ADDRESS + "ADDRESS] "
-        + "[" + PREFIX_WEIGHTAGE + "WEIGHTAGE]\n"
-        + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
+        + ": Edits the details of the lesson"
+        + " identified by the index number currently displayed on the screen."
+        + " At least one of the details has to be specified.\n"
+        + "Parameters: INDEX "
+        + "[" + PREFIX_CODE + "MODULE_CODE] "
+        + "[" + PREFIX_TYPE + "TYPE] "
+        + "[" + PREFIX_DATE + "DATE]\n"
+        + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " 2 "
         + PREFIX_CODE + "CS3233 "
         + PREFIX_TYPE + "lecture "
-        + PREFIX_DATE + "27/01/2021 "
-        + PREFIX_ADDRESS + "COM1 PL5 "
-        + PREFIX_WEIGHTAGE + "3.5\n";
+        + PREFIX_DATE + "Mon 17:45-21:00\n";
 
     public static final String MESSAGE_EDIT_LESSON_SUCCESS = "Edited Lesson: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_LESSON = "This lesson already exists.";
 
-    private final Code code;
-    private final Type type;
+    private final Index index;
     private final EditLessonDescriptor editLessonDescriptor;
 
     /**
      * Creates a EditLessonCommand to edit the specified {@code Lesson}
      *
-     * @param code
-     * @param type
+     * @param index
      * @param editLessonDescriptor
      */
-    public EditLessonCommand(Code code, Type type, EditLessonDescriptor editLessonDescriptor) {
-        requireNonNull(code);
-        requireNonNull(type);
+    public EditLessonCommand(Index index, EditLessonDescriptor editLessonDescriptor) {
+        requireNonNull(index);
         requireNonNull(editLessonDescriptor);
 
-        this.code = code;
-        this.type = type;
+        this.index = index;
         this.editLessonDescriptor = new EditLessonDescriptor(editLessonDescriptor);
     }
 
@@ -74,34 +67,35 @@ public class EditLessonCommand extends Command {
     private static Lesson createEditedLesson(Lesson lessonToEdit, EditLessonDescriptor editLessonDescriptor) {
         assert lessonToEdit != null;
 
-        Code originalCode = lessonToEdit.getCode();
-        Type originalType = lessonToEdit.getType();
-        LocalDate updatedDate = editLessonDescriptor.getDate().orElse(lessonToEdit.getDate());
-        Address updatedAddress = editLessonDescriptor.getAddress().orElse(lessonToEdit.getAddress());
-        Double updatedWeightage = editLessonDescriptor.getWeightage().orElse(lessonToEdit.getWeightage());
+        Code updatedCode = editLessonDescriptor.getCode().orElse(lessonToEdit.getCode());
+        Type updatedType = editLessonDescriptor.getType().orElse(lessonToEdit.getType());
+        LessonDateTime updatedDate = editLessonDescriptor.getDate().orElse(lessonToEdit.getDate());
 
-        return new Lesson(originalCode, originalType, updatedDate, updatedAddress, updatedWeightage);
+        return new Lesson(updatedCode, updatedType, updatedDate);
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        List<Lesson> lastShownList = model.getFilteredLessonList();
+
+        if (index.getZeroBased() >= lastShownList.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);
+        }
 
         if (!editLessonDescriptor.isAnyFieldEdited()) {
             throw new CommandException(MESSAGE_NOT_EDITED);
         }
 
-        Optional<Lesson> lessonToEditOptional = model.getLesson(code, type);
-
-        if (lessonToEditOptional.isEmpty()) {
-            throw new CommandException(Messages.MESSAGE_LESSON_DOES_NOT_EXIST);
-        }
-
-        Lesson lessonToEdit = lessonToEditOptional.get();
+        Lesson lessonToEdit = lastShownList.get(index.getZeroBased());
         Lesson editedLesson = createEditedLesson(lessonToEdit, editLessonDescriptor);
 
         if (!lessonToEdit.isSameLesson(editedLesson) && model.hasLesson(editedLesson)) {
             throw new CommandException(MESSAGE_DUPLICATE_LESSON);
+        }
+
+        if (!model.hasModule(editedLesson.getCode())) {
+            throw new CommandException(MESSAGE_MODULE_DOES_NOT_EXIST);
         }
 
         model.setLesson(lessonToEdit, editedLesson);
@@ -123,8 +117,7 @@ public class EditLessonCommand extends Command {
 
         // state check
         EditLessonCommand e = (EditLessonCommand) other;
-        return code.equals(e.code)
-            && type.equals(e.type)
+        return index.equals(e.index)
             && editLessonDescriptor.equals(e.editLessonDescriptor);
     }
 
@@ -135,9 +128,7 @@ public class EditLessonCommand extends Command {
     public static class EditLessonDescriptor {
         private Code code;
         private Type type;
-        private LocalDate date;
-        private Address address;
-        private Double weightage;
+        private LessonDateTime date;
 
         public EditLessonDescriptor() {
         }
@@ -150,15 +141,13 @@ public class EditLessonCommand extends Command {
             setCode(toCopy.code);
             setType(toCopy.type);
             setDate(toCopy.date);
-            setAddress(toCopy.address);
-            setWeightage(toCopy.weightage);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(date, address, weightage);
+            return CollectionUtil.isAnyNonNull(code, type, date);
         }
 
         public Optional<Code> getCode() {
@@ -177,28 +166,12 @@ public class EditLessonCommand extends Command {
             this.type = type;
         }
 
-        public Optional<LocalDate> getDate() {
+        public Optional<LessonDateTime> getDate() {
             return Optional.ofNullable(date);
         }
 
-        public void setDate(LocalDate date) {
+        public void setDate(LessonDateTime date) {
             this.date = date;
-        }
-
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
-        }
-
-        public void setAddress(Address address) {
-            this.address = address;
-        }
-
-        public Optional<Double> getWeightage() {
-            return Optional.ofNullable(weightage);
-        }
-
-        public void setWeightage(Double weightage) {
-            this.weightage = weightage;
         }
 
         @Override
@@ -218,9 +191,7 @@ public class EditLessonCommand extends Command {
 
             return getCode().equals(e.getCode())
                 && getType().equals(e.getType())
-                && getDate().equals(e.getDate())
-                && getAddress().equals(e.getAddress())
-                && getWeightage().equals(e.getWeightage());
+                && getDate().equals(e.getDate());
         }
     }
 }

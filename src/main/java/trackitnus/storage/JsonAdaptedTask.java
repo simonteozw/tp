@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import trackitnus.commons.exceptions.IllegalValueException;
-import trackitnus.model.commons.Address;
+import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 import trackitnus.model.task.Task;
 
@@ -20,33 +20,33 @@ public class JsonAdaptedTask {
 
     private final String name;
     private final String date;
-    private final String address;
-    private final String weightage;
+    private final String code;
     private final String remark;
+    private final boolean isDone;
 
     /**
      * Constructs a {@code JsonAdaptedTask} with the given task details.
      */
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("date") String date,
-                           @JsonProperty("address") String address, @JsonProperty("weightage") String weightage,
-                           @JsonProperty("remark") String remark) {
+                           @JsonProperty("code") String code, @JsonProperty("remark") String remark,
+                           @JsonProperty("isDone") boolean isDone) {
         this.name = name;
         this.date = date;
-        this.address = address;
-        this.weightage = weightage;
+        this.code = code;
         this.remark = remark;
+        this.isDone = isDone;
     }
 
     /**
      * Converts a given {@code Task} into this class for Jackson use.
      */
     public JsonAdaptedTask(Task source) {
-        name = source.getName().fullName;
+        name = source.getName().value;
         date = source.getDate().format(Task.FORMATTER);
-        address = source.getAddress().value;
-        weightage = Double.toString(source.getWeightage());
+        code = source.getCode().isPresent() ? source.getCode().get().code : null;
         remark = source.getRemark();
+        isDone = source.getIsDone();
     }
 
     /**
@@ -75,28 +75,14 @@ public class JsonAdaptedTask {
         }
         final LocalDate modelDate = LocalDate.parse(date, Task.FORMATTER);
 
-        if (address == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
-        }
-        if (!Address.isValidAddress(address)) {
-            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
-        }
-        final Address modelAddress = new Address(address);
-
-        if (weightage == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Weightage"));
-        }
-        try {
-            Double.parseDouble(weightage);
-        } catch (NumberFormatException e) {
-            throw new IllegalValueException(Task.WEIGHTAGE_MESSAGE_CONSTRAINTS);
-        }
-        final double modelWeightage = Double.parseDouble(weightage);
-
         if (remark == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Remark"));
         }
         final String modelRemark = remark;
-        return new Task(modelName, modelDate, modelAddress, modelWeightage, modelRemark);
+
+        final Code modelCode = code == null ? null : new Code(code);
+
+        final boolean modelIsDone = isDone;
+        return new Task(modelName, modelDate, modelCode, modelRemark, modelIsDone);
     }
 }

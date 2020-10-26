@@ -2,7 +2,7 @@ package trackitnus.logic.commands.contact;
 
 import static trackitnus.logic.commands.CommandTestUtil.assertCommandFailure;
 import static trackitnus.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static trackitnus.testutil.TypicalContacts.getTypicalTrackIter;
+import static trackitnus.testutil.typical.TypicalTrackIter.getTypicalTrackIter;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ import trackitnus.model.Model;
 import trackitnus.model.ModelManager;
 import trackitnus.model.UserPrefs;
 import trackitnus.model.contact.Contact;
-import trackitnus.testutil.ContactBuilder;
+import trackitnus.testutil.builder.ContactBuilder;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code AddContactCommand}.

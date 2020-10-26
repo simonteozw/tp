@@ -32,8 +32,6 @@ public class ModuleCard extends UiPart<Region> {
     private Label name;
     @FXML
     private Label id;
-    @FXML
-    private Label desc;
 
 
     /**
@@ -44,8 +42,7 @@ public class ModuleCard extends UiPart<Region> {
         this.module = module;
         id.setText(displayedIndex + ". ");
         code.setText(module.getCode().code);
-        name.setText(module.getName().fullName);
-        desc.setText(module.getDesc());
+        name.setText(module.getName().value);
     }
 
     @Override

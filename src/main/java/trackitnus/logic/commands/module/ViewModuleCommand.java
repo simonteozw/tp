@@ -17,8 +17,8 @@ public class ViewModuleCommand extends Command {
     public static final String COMMAND_WORD = "info";
 
     public static final String MESSAGE_USAGE = Module.TYPE + COMMAND_WORD
-        + ": View all the info of a module by its code.\n"
-        + "Parameters: " + PREFIX_CODE + "CODE (must be an existing code)\n"
+        + ": Views all the info of a module by its code.\n"
+        + "Parameters: " + PREFIX_CODE + "MODULE_CODE (must be an existing code)\n"
         + String.format("Example: %s %s %s/CS1231S", Module.TYPE, COMMAND_WORD, PREFIX_CODE);
 
     public static final String MESSAGE_DELETE_MODULE_SUCCESS = "Deleted Module: %1$s";

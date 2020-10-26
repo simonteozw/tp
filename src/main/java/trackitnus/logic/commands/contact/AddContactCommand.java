@@ -1,7 +1,6 @@
 package trackitnus.logic.commands.contact;
 
 import static java.util.Objects.requireNonNull;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -20,18 +19,17 @@ public class AddContactCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = "C " + COMMAND_WORD + ": Adds a contact to the address book. "
+    public static final String MESSAGE_USAGE = Contact.TYPE + " " + COMMAND_WORD
+        + ": Adds a contact to the app.\n"
         + "Parameters: "
         + PREFIX_NAME + "NAME "
         + PREFIX_PHONE + "PHONE "
         + PREFIX_EMAIL + "EMAIL "
-        + PREFIX_ADDRESS + "ADDRESS "
         + "[" + PREFIX_TAG + "TAG]...\n"
-        + "Example: " + COMMAND_WORD + " "
+        + "Example: " + Contact.TYPE + " " + COMMAND_WORD + " "
         + PREFIX_NAME + "John Doe "
         + PREFIX_PHONE + "98765432 "
         + PREFIX_EMAIL + "johnd@example.com "
-        + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
         + PREFIX_TAG + "friends "
         + PREFIX_TAG + "owesMoney";
 

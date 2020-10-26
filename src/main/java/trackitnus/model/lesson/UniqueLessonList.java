@@ -135,4 +135,8 @@ public class UniqueLessonList implements Iterable<Lesson> {
         }
         return true;
     }
+
+    public void sort(LessonComparator lessonComparator) {
+        internalList.sort(lessonComparator);
+    }
 }
