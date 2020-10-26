@@ -257,6 +257,12 @@ public interface Model {
 
     /**
      * @param code The module code to query
+     * @return the list of contacts for a specific module
+     */
+    public ObservableList<Contact> getModuleContacts(Code code);
+
+    /**
+     * @param code The module code to query
      * @return the list of task for a specific module
      */
     ObservableList<Task> getModuleTasks(Code code);
