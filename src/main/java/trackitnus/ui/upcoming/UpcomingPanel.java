@@ -65,7 +65,7 @@ public class UpcomingPanel extends UiPart<Region> {
             } else {
                 setGraphic(new DayCard(day, logic.getDayUpcomingTasks(day.getDate()),
                         logic.getDayUpcomingLessons(day.getDate())).getRoot());
-            } //TODO: diff daycard for diff day?
+            }
         }
     }
 }

@@ -108,15 +108,17 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<Lesson> getModuleLessons(Code code) {
         Predicate<Lesson> predicate = lesson -> (lesson.getCode().equals(code));
-        model.updateFilteredLessonList(predicate);
-        return model.getFilteredLessonList();
+//        model.updateFilteredLessonList(predicate);
+//        return model.getFilteredLessonList();
+        return model.getFilteredLessonList().filtered(predicate);
     }
 
     @Override
     public ObservableList<Task> getModuleTasks(Code code) {
         Predicate<Task> p = task -> task.belongsToModule(code);
-        model.updateFilteredTaskList(p);
-        return model.getFilteredTaskList();
+//        model.updateFilteredTaskList(p);
+//        return model.getFilteredTaskList();
+        return model.getFilteredTaskList().filtered(p);
     }
 
     @Override
