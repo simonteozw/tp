@@ -23,6 +23,7 @@ public class SidePanel extends UiPart<Region> {
     private Logic logic;
     private final HelpWindow helpWindow;
     private final int moduleRowHeight = 32;
+    private Button selectedTabButton;
 
     @FXML
     private Button upcomingButton;
@@ -44,6 +45,8 @@ public class SidePanel extends UiPart<Region> {
         this.tabConsumer = tabConsumer;
         this.logic = logic;
         helpWindow = new HelpWindow();
+        selectedTabButton = upcomingButton;
+        updateButtonDetails(upcomingButton);
         this.initialize();
     }
 
@@ -54,7 +57,7 @@ public class SidePanel extends UiPart<Region> {
      */
     public void initialize() {
         if (logic != null) {
-            // Get modules buttons.
+            // Get modules tab buttons.
             ObservableList<Module> modules = logic.getFilteredModuleList();
             moduleListView.setPrefHeight(modules.size() * moduleRowHeight);
             moduleListView.setItems(modules);
@@ -74,10 +77,12 @@ public class SidePanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(getModuleButton(module));
+                Button updatedButton = getModuleButton(module);
+                setGraphic(updatedButton);
                 ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList(Module.TYPE,
                     module));
                 tabConsumer.accept(upcomingValues);
+                updateButtonDetails(updatedButton);
             }
         }
     }
@@ -87,6 +92,7 @@ public class SidePanel extends UiPart<Region> {
      */
     public void toggleUpcomingTab() {
         ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList((Object) UpcomingPanel.TYPE));
+        updateButtonDetails(upcomingButton);
         tabConsumer.accept(upcomingValues);
     }
 
@@ -94,6 +100,7 @@ public class SidePanel extends UiPart<Region> {
      * Relays message to MainWindow to get Help window information in TabPanel.
      */
     public void toggleHelpTab() {
+        updateButtonDetails(helpButton);
         if (!helpWindow.isShowing()) {
             helpWindow.show();
         } else {
@@ -102,16 +109,13 @@ public class SidePanel extends UiPart<Region> {
     }
 
     /**
-     * Configure the upcoming button tab in the side panel.
-     * @return upcomingButton The upcoming button.
+     * Updates the details of the current selected tab button.
+     * @param button The new selected tab button.
      */
-    public Button getUpcomingButton() {
-        Button button = new Button("Upcoming");
-        ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList((Object) UpcomingPanel.TYPE));
-        button.setOnAction(actionEvent -> {
-            tabConsumer.accept(upcomingValues);
-        });
-        return button;
+    public void updateButtonDetails(Button button) {
+        selectedTabButton.setStyle("-fx-text-fill: white;");
+        selectedTabButton = button;
+        selectedTabButton.setStyle("-fx-text-fill: #68C2E8;");
     }
 
     /**
@@ -121,26 +125,9 @@ public class SidePanel extends UiPart<Region> {
     public Button getModuleButton(Module module) {
         Button button = new Button(module.getCode().code);
         ArrayList<Object> moduleValues = new ArrayList<>(Arrays.asList(Module.TYPE, module));
-        button.setStyle("-fx-padding: 2 2 2 10");
         button.setOnAction(actionEvent -> {
+            updateButtonDetails(button);
             tabConsumer.accept(moduleValues);
-        });
-        return button;
-    }
-
-    /**
-     * Create a button that when clicked,
-     * the help window or focuses on it if it's already opened.
-     * @return button Help button.
-     */
-    public Button getHelpButton() {
-        Button button = new Button("Help");
-        button.setOnAction(actionEvent -> {
-            if (!helpWindow.isShowing()) {
-                helpWindow.show();
-            } else {
-                helpWindow.focus();
-            }
         });
         return button;
     }
