@@ -17,7 +17,7 @@ public class AddLessonCommand extends Command {
     public static final String COMMAND_WORD = "add";
 
     public static final String MESSAGE_USAGE = Lesson.TYPE + " " + COMMAND_WORD
-        + ": Adds a lesson to TrackIt@NUS. "
+        + ": Adds a lesson to the app.\n"
         + "Parameters: "
         + PREFIX_CODE + "MODULE_CODE "
         + PREFIX_TYPE + "TYPE "

@@ -20,7 +20,7 @@ public class ListLessonCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Listed all lessons";
     public static final String MESSAGE_USAGE = Lesson.TYPE + " " + COMMAND_WORD
         + ": Lists all lessons of a module. "
-        + "If MODULE_CODE is not specified, it will list all lessons of all modules instead. "
+        + "If MODULE_CODE is not specified, it will list all lessons of all modules instead.\n"
         + "Parameters: "
         + "[" + PREFIX_CODE + "MODULE_CODE]\n "
         + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "

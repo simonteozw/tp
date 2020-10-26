@@ -35,7 +35,7 @@ public class EditContactCommand extends Command {
 
     public static final String MESSAGE_USAGE = Contact.TYPE + " " + COMMAND_WORD
         + ": Edits the details of the contact identified "
-        + "by the index number used in the displayed contact list. "
+        + "by the index number currently displayed on the screen. "
         + "Existing values will be overwritten by the input values.\n"
         + "Parameters: INDEX (must be a positive integer) "
         + "[" + PREFIX_NAME + "NAME] "

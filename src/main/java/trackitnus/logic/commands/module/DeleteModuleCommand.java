@@ -22,7 +22,7 @@ public class DeleteModuleCommand extends Command {
 
     public static final String MESSAGE_USAGE = Module.TYPE + " " + COMMAND_WORD
         + ": Deletes the module identified by the module code.\n"
-        + "Parameters: " + PREFIX_CODE + "CODE (must be an existing code)\n"
+        + "Parameters: " + PREFIX_CODE + "MODULE_CODE (must be an existing code)\n"
         + String.format("Example: %s %s %sCS1231S", Module.TYPE, COMMAND_WORD, PREFIX_CODE);
 
     public static final String MESSAGE_DELETE_MODULE_SUCCESS = "Deleted Module: %1$s";
