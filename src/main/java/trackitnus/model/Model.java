@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import trackitnus.commons.core.GuiSettings;
+import trackitnus.commons.core.index.Index;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.commons.Code;
 import trackitnus.model.contact.Contact;
@@ -195,7 +196,7 @@ public interface Model {
      * @return an Index object representing the task object.
      * @throws CommandException If the index is invalid.
      */
-    int getTaskIndex(Task task) throws CommandException;
+    Index getTaskIndex(Task task) throws CommandException;
 
     //=========== Lesson ================================================================================
 

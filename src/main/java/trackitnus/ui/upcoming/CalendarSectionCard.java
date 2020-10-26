@@ -71,7 +71,7 @@ public class CalendarSectionCard extends UiPart<Region> {
                 setText(null);
             } else {
                 try {
-                    setGraphic(new TaskCard(task, logic.getTaskIndex(task) + 1).getRoot());
+                    setGraphic(new TaskCard(task, logic.getTaskIndex(task).getOneBased()).getRoot());
                 } catch (CommandException e) {
                     e.printStackTrace();
                 }

@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import trackitnus.commons.core.GuiSettings;
 import trackitnus.commons.core.LogsCenter;
+import trackitnus.commons.core.index.Index;
 import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
@@ -139,7 +140,7 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public int getTaskIndex(Task task) throws CommandException {
+    public Index getTaskIndex(Task task) throws CommandException {
         return model.getTaskIndex(task);
     }
 
