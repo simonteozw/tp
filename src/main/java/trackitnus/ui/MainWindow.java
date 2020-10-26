@@ -20,7 +20,9 @@ import trackitnus.logic.Logic;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.logic.parser.exceptions.ParseException;
+import trackitnus.model.contact.Contact;
 import trackitnus.model.module.Module;
+import trackitnus.ui.contact.ContactPanel;
 import trackitnus.ui.module.ModulePanel;
 import trackitnus.ui.upcoming.UpcomingPanel;
 
@@ -40,6 +42,8 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private ModulePanel modulePanel;
 
+    private ContactPanel contactPanel;
+
     private ResultDisplay resultDisplay;
     private UpcomingPanel upcomingPanel;
 
@@ -48,6 +52,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane modulePanelPlaceholder;
+
+    @FXML
+    private StackPane contactPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -160,6 +167,10 @@ public class MainWindow extends UiPart<Stage> {
             Module tabModule = (Module) tabValues.get(1);
             modulePanel = new ModulePanel(tabModule, logic);
             tabPanelPlaceholder.getChildren().add(modulePanel.getRoot());
+            break;
+        case Contact.TYPE:
+            contactPanel = new ContactPanel(logic);
+            tabPanelPlaceholder.getChildren().add(contactPanel.getRoot());
             break;
         default:
             throw new IllegalArgumentException(Messages.MESSAGE_INVALID_TAB_VALUE);
