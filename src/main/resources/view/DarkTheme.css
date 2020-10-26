@@ -98,7 +98,12 @@
 .list-view {
     -fx-background-insets: 0;
     -fx-background-color: #434754;
-    /*-fx-background-radius: 10;*/
+}
+
+.lesson-list-view {
+    -fx-background-insets: 0;
+    -fx-background-color: #62687A;
+    -fx-background-radius: 5;
 }
 
 .list-cell {
