@@ -257,13 +257,13 @@ public interface Model {
     ObservableList<Task> getModuleTasks(Code code);
 
     /**
-     * @return the list of all tasks that take place on and after the current day
+     * @return the list of all tasks
      */
     ObservableList<Task> getUpcomingTasks();
 
     /**
      * @param date The date to query
-     * @return the list of all tasks that take place on that specific day
+     * @return the list of all tasks that take place on the specified date
      */
     ObservableList<Task> getDayUpcomingTasks(LocalDate date);
 
