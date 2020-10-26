@@ -11,7 +11,6 @@ import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.Model;
 import trackitnus.model.lesson.Lesson;
-import trackitnus.model.task.Task;
 
 public class ViewLessonCommand extends Command {
     public static final String COMMAND_WORD = "info";
@@ -38,13 +37,13 @@ public class ViewLessonCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Task> lastShownList = model.getFilteredTaskList();
+        List<Lesson> lastShownList = model.getFilteredLessonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);
         }
 
-        Task lessonToShow = lastShownList.get(index.getZeroBased());
+        Lesson lessonToShow = lastShownList.get(index.getZeroBased());
         return new CommandResult(String.format(MESSAGE_VIEW_LESSON_SUCCESS, lessonToShow));
     }
 
