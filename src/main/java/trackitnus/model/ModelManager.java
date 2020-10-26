@@ -24,6 +24,7 @@ import trackitnus.model.lesson.Lesson;
 import trackitnus.model.lesson.LessonWeekday;
 import trackitnus.model.lesson.Type;
 import trackitnus.model.module.Module;
+import trackitnus.model.tag.Tag;
 import trackitnus.model.task.Task;
 
 /**
@@ -315,6 +316,14 @@ public class ModelManager implements Model {
         Predicate<Lesson> predicate = lesson -> (lesson.getCode().equals(code));
         updateFilteredLessonList(predicate);
         return getFilteredLessonList();
+    }
+
+    @Override
+    public ObservableList<Contact> getModuleContacts(Code code) {
+        Tag target = new Tag(code.toString());
+        Predicate<Contact> predicate = contact -> (contact.getTags().contains(target));
+        updateFilteredContactList(predicate);
+        return getFilteredContactList();
     }
 
     @Override

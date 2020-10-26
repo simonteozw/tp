@@ -19,7 +19,6 @@ import trackitnus.model.commons.Code;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.lesson.Lesson;
 import trackitnus.model.module.Module;
-import trackitnus.model.tag.Tag;
 import trackitnus.model.task.Task;
 import trackitnus.storage.Storage;
 
@@ -106,10 +105,7 @@ public class LogicManager implements Logic {
 
     @Override
     public ObservableList<Contact> getModuleContacts(Code code) {
-        Tag target = new Tag(code.toString());
-        Predicate<Contact> predicate = contact -> (contact.getTags().contains(target));
-        model.updateFilteredContactList(predicate);
-        return model.getFilteredContactList();
+        return model.getModuleContacts(code);
     }
 
     @Override
