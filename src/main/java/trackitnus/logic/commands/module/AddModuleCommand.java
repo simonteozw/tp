@@ -18,7 +18,7 @@ public class AddModuleCommand extends Command {
         + PREFIX_CODE + "CODE "
         + PREFIX_NAME + "NAME "
         + "\nExample: " + Module.TYPE + " " + COMMAND_WORD + " "
-        + PREFIX_CODE + "CS1231S"
+        + PREFIX_CODE + "CS1231S "
         + PREFIX_NAME + "Discrete Structures";
 
     public static final String MESSAGE_SUCCESS = "New module added: %1$s";
