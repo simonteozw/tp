@@ -20,8 +20,8 @@ import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 import trackitnus.model.contact.Contact;
+import trackitnus.model.lesson.DayOfWeek;
 import trackitnus.model.lesson.Lesson;
-import trackitnus.model.lesson.LessonWeekday;
 import trackitnus.model.lesson.Type;
 import trackitnus.model.module.Module;
 import trackitnus.model.task.Task;
@@ -305,7 +305,7 @@ public class ModelManager implements Model {
 
     @Override
     public ObservableList<Lesson> getDayUpcomingLessons(LocalDate date) {
-        LessonWeekday weekday = LessonWeekday.getLessonWeekDay(date);
+        DayOfWeek weekday = DayOfWeek.getLessonWeekDay(date);
         Predicate<Lesson> predicate = lesson -> (lesson.getWeekday().equals(weekday));
         return getUpcomingLessons().filtered(predicate);
     }
