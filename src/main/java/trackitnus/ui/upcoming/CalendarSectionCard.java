@@ -6,54 +6,43 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import trackitnus.logic.Logic;
 import trackitnus.logic.commands.exceptions.CommandException;
-import trackitnus.model.lesson.Lesson;
 import trackitnus.model.task.Task;
 import trackitnus.ui.UiPart;
 import trackitnus.ui.task.TaskCard;
 
-public class DayCard extends UiPart<Region> {
+public class CalendarSectionCard extends UiPart<Region> {
+    private static final String FXML = "/Upcoming/CalendarSectionCard.fxml";
 
-    private static final String FXML = "/Upcoming/DayCard.fxml";
-
-    public final Day day;
-    private final int lessonRowHeight = 30;
+    public final CalendarSection calendarSection;
+    private Logic logic;
+    private String title;
     private final int taskRowHeight = 45;
-    private final Logic logic;
 
     @FXML
     private ListView<Task> taskListView;
     @FXML
-    private ListView<Lesson> lessonListView;
-    @FXML
-    private HBox cardPane;
-    @FXML
-    private Label date;
+    private Label sectionTitle;
 
     /**
-     * Constructor for DayCard
-     *
-     * @param day
+     * Constructor for a section in the calendar
+     * @param calendarSection
+     * @param taskList
+     * @param logic
      */
-    public DayCard(Day day, ObservableList<Task> taskList, ObservableList<Lesson> lessonList, Logic logic) {
+    public CalendarSectionCard(CalendarSection calendarSection, ObservableList<Task> taskList, Logic logic) {
         super(FXML);
-        this.day = day;
+        this.calendarSection = calendarSection;
         this.logic = logic;
-        date.setText(day.getSectionHeader());
-
-        lessonListView.prefHeightProperty().bind(Bindings.size(lessonList).multiply(lessonRowHeight).add(20));
-        lessonListView.setItems(lessonList);
-        lessonListView.setCellFactory(listView -> new LessonListViewCell());
+        sectionTitle.setText(calendarSection.getTitle());
 
         taskListView.prefHeightProperty().bind(Bindings.size(taskList).multiply(taskRowHeight).add(10));
         taskListView.setItems(taskList);
         taskListView.setCellFactory(listView -> new TaskListViewCell());
 
     }
-
 
     @Override
     public boolean equals(Object other) {
@@ -63,13 +52,13 @@ public class DayCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof DayCard)) {
+        if (!(other instanceof CalendarSectionCard)) {
             return false;
         }
 
         // state check
-        DayCard card = (DayCard) other;
-        return date.getText().equals(card.date.getText());
+        CalendarSectionCard card = (CalendarSectionCard) other;
+        return title.equals(card.title);
     }
 
     class TaskListViewCell extends ListCell<Task> {
@@ -89,20 +78,4 @@ public class DayCard extends UiPart<Region> {
             }
         }
     }
-
-    class LessonListViewCell extends ListCell<Lesson> {
-        @Override
-        protected void updateItem(Lesson lesson, boolean empty) {
-            super.updateItem(lesson, empty);
-
-            if (empty || lesson == null) {
-                setGraphic(null);
-                setText(null);
-            } else {
-                setGraphic(new UpcomingLessonCard(lesson, getIndex() + 1).getRoot());
-            }
-        }
-    }
 }
-
-

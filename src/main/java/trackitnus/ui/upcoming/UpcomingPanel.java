@@ -1,7 +1,6 @@
 package trackitnus.ui.upcoming;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -24,10 +23,10 @@ public class UpcomingPanel extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(UpcomingPanel.class);
 
     private LocalDate today = LocalDate.now();
-    private final ObservableList<Day> calendarDates = FXCollections.observableArrayList();
+    private final ObservableList<Object> calendarDates = FXCollections.observableArrayList();
 
     @FXML
-    private ListView<Day> calendarView;
+    private ListView<Object> calendarView;
 
     /**
      * Constructor for Upcoming Panel
@@ -35,40 +34,45 @@ public class UpcomingPanel extends UiPart<Region> {
     public UpcomingPanel(Logic logic) {
         super(FXML);
         this.logic = logic;
-        logic.getUpcomingTasks();
-        logic.getUpcomingLessons();
 
         getDatesForTheWeek(today);
         calendarView.setItems(calendarDates);
         calendarView.setCellFactory(listView -> new DateListViewCell());
+
     }
 
-    public void getDatesForTheWeek(LocalDate today) {
+    private void getDatesForTheWeek(LocalDate today) {
         List<LocalDate> list = today.datesUntil(today.plusDays(7)).collect(Collectors.toList());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM EEEE");
 
-//        calendarDates.add(new Day("Overdue")); //TODO: Add implementation for overdue tasks
+        calendarDates.add(new CalendarSection("Overdue"));
 
         for (LocalDate date : list) {
             calendarDates.add(new Day(date));
         }
 
-//        calendarDates.add(new Day("Future")); //TODO: Add implementation for tasks after the current week
+        calendarDates.add(new CalendarSection("Future"));
     }
 
-    class DateListViewCell extends ListCell<Day> {
+    class DateListViewCell extends ListCell<Object> {
         @Override
-        protected void updateItem(Day day, boolean empty) {
-            super.updateItem(day, empty);
+        protected void updateItem(Object object, boolean empty) {
+            super.updateItem(object, empty);
 
-            if (empty || day == null) {
+            if (empty || object == null) {
                 setGraphic(null);
                 setText(null);
             } else {
-//                setGraphic(new DayCard(day, logic.getUpcomingTasks(),
-//                        logic.getUpcomingLessons()).getRoot());
-                setGraphic(new DayCard(day, logic.getDayUpcomingTasks(day.getDate()),
-                        logic.getDayUpcomingLessons(day.getDate()), logic).getRoot());
+                if (object instanceof Day) {
+                    Day day = (Day) object;
+                    setGraphic(new DayCard(day, logic.getDayUpcomingTasks(day.getDate()),
+                            logic.getDayUpcomingLessons(day.getDate()), logic).getRoot());
+                } else {
+                    assert(object instanceof CalendarSection);
+                    CalendarSection calendarSection = (CalendarSection) object;
+
+                    //TODO: Replace with appropriate filtered TaskList for Overdue and Future sections
+                    setGraphic(new CalendarSectionCard(calendarSection, logic.getFilteredTaskList(), logic).getRoot());
+                }
             }
         }
     }
