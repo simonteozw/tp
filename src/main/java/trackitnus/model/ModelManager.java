@@ -294,9 +294,6 @@ public class ModelManager implements Model {
     }
 
     //--------------------------------START of V1.3's new functions--------------------------------
-    // TODO:
-    // All the current functions are just dummy implementations
-    // All functions should only generate new predicates and use the corresponding getFilteredList to return
     @Override
     public ObservableList<Lesson> getUpcomingLessons() {
         sortLesson();

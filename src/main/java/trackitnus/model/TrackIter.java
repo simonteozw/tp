@@ -3,6 +3,7 @@ package trackitnus.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Objects;
 
 import javafx.collections.ObservableList;
 import trackitnus.model.contact.Contact;
@@ -253,10 +254,15 @@ public class TrackIter implements ReadOnlyTrackIter {
 
     //// util methods
 
+
     @Override
     public String toString() {
-        return contacts.asUnmodifiableObservableList().size() + " contacts";
-        // TODO: refine later
+        return "TrackIter{" +
+            "contacts=" + contacts +
+            ", modules=" + modules +
+            ", tasks=" + tasks +
+            ", lessons=" + lessons +
+            '}';
     }
 
     @Override
@@ -307,8 +313,7 @@ public class TrackIter implements ReadOnlyTrackIter {
 
     @Override
     public int hashCode() {
-        return contacts.hashCode();
-        // TODO: refine later
+        return Objects.hash(contacts, modules, tasks, lessons);
     }
 
     public void sortLesson() {

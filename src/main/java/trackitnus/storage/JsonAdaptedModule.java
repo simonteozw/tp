@@ -32,7 +32,7 @@ public class JsonAdaptedModule {
      */
     public JsonAdaptedModule(Module source) {
         code = source.getCode().code;
-        name = source.getName().fullName;
+        name = source.getName().value;
     }
 
     /**

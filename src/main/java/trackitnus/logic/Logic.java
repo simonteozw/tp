@@ -78,7 +78,7 @@ public interface Logic {
      * @param code The module code to query
      * @return the list of contacts for a specific module
      */
-    public ObservableList<Contact> getModuleContacts(Code code);
+    ObservableList<Contact> getModuleContacts(Code code);
 
 //    ObservableList<Task> getOverdueTasks(LocalDate date);
 
@@ -86,8 +86,7 @@ public interface Logic {
      * @param code The module code to query
      * @return the list of task for a specific module
      */
-    ObservableList<Task> getModuleTasks(Code code); // TODO: check if the list of tasks has been sorted in the
-    // correct order
+    ObservableList<Task> getModuleTasks(Code code);
 
     /**
      * @return the list of all tasks that take place on and after the current day

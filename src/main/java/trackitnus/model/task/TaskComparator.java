@@ -13,7 +13,7 @@ public class TaskComparator implements Comparator<Task> {
     public int compare(Task t1, Task t2) {
         int res = t1.getDate().compareTo(t2.getDate());
         return res == 0
-            ? t1.getName().fullName.compareTo(t2.getName().fullName)
+            ? t1.getName().value.compareTo(t2.getName().value)
             : res;
     }
 }
