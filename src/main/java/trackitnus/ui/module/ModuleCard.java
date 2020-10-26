@@ -42,7 +42,7 @@ public class ModuleCard extends UiPart<Region> {
         this.module = module;
         id.setText(displayedIndex + ". ");
         code.setText(module.getCode().code);
-        name.setText(module.getName().fullName);
+        name.setText(module.getName().value);
     }
 
     @Override
