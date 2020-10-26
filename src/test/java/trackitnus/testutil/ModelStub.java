@@ -6,7 +6,6 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import trackitnus.commons.core.GuiSettings;
-import trackitnus.commons.core.index.Index;
 import trackitnus.model.Model;
 import trackitnus.model.ReadOnlyTrackIter;
 import trackitnus.model.ReadOnlyUserPrefs;

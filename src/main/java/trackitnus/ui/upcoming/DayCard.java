@@ -44,11 +44,14 @@ public class DayCard extends UiPart<Region> {
         this.logic = logic;
         date.setText(day.getSectionHeader());
 
-        lessonListView.prefHeightProperty().bind(Bindings.size(lessonList).multiply(lessonRowHeight).add(20));
+        if (lessonList.isEmpty()) {
+            lessonListView.setStyle("-fx-background-color: transparent");
+        }
+        lessonListView.prefHeightProperty().bind(Bindings.size(lessonList).multiply(lessonRowHeight).add(10));
         lessonListView.setItems(lessonList);
         lessonListView.setCellFactory(listView -> new LessonListViewCell());
 
-        taskListView.prefHeightProperty().bind(Bindings.size(taskList).multiply(taskRowHeight).add(10));
+        taskListView.prefHeightProperty().bind(Bindings.size(taskList).multiply(taskRowHeight).add(35));
         taskListView.setItems(taskList);
         taskListView.setCellFactory(listView -> new TaskListViewCell());
 
