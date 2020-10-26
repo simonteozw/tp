@@ -243,6 +243,7 @@ public class ModelManager implements Model {
             throw new CommandException(Messages.MESSAGE_TASK_DOES_NOT_EXIST);
         }
         return Index.fromZeroBased(index);
+//        return index;
     }
 
     //=========== Lesson ================================================================================

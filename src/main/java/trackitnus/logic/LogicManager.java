@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import trackitnus.commons.core.GuiSettings;
 import trackitnus.commons.core.LogsCenter;
+import trackitnus.commons.core.index.Index;
 import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
@@ -136,6 +137,11 @@ public class LogicManager implements Logic {
     public ObservableList<Task> getDayUpcomingTasks(LocalDate date) {
         Predicate<Task> p = task -> task.getDate().equals(date);
         return model.getFilteredTaskList().filtered(p);
+    }
+
+    @Override
+    public Index getTaskIndex(Task task) throws CommandException {
+        return model.getTaskIndex(task);
     }
 
     //--------------------------------END of V1.3's new functions--------------------------------

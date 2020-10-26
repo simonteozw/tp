@@ -20,7 +20,7 @@ public class Day {
         this.date = date;
     }
 
-    public String getStringDate() {
+    public String getSectionHeader() {
         return date.format(formatter);
     }
 
@@ -46,11 +46,6 @@ public class Day {
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(date);
-    }
-
-    @Override
-    public String toString() {
-        return getStringDate();
     }
 
 }
