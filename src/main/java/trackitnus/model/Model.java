@@ -114,6 +114,11 @@ public interface Model {
     boolean hasModule(Module module);
 
     /**
+     * another version of hasModule where only code need to be passed in
+     */
+    boolean hasModule(Code code);
+
+    /**
      * Returns the Module with the provided code, wraps in an Optional
      */
     Optional<Module> getModule(Code code);

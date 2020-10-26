@@ -17,6 +17,7 @@ import trackitnus.commons.core.index.Index;
 import trackitnus.commons.util.CollectionUtil;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.commons.Code;
+import trackitnus.model.commons.Name;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.lesson.Lesson;
 import trackitnus.model.lesson.Type;
@@ -152,6 +153,12 @@ public class ModelManager implements Model {
     public boolean hasModule(Module task) {
         requireNonNull(task);
         return trackIter.hasModule(task);
+    }
+
+    @Override
+    public boolean hasModule(Code code) {
+        requireNonNull(code);
+        return trackIter.hasModule(new Module(code, new Name("dummy")));
     }
 
     @Override
