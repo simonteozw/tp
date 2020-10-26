@@ -1,11 +1,8 @@
 package trackitnus.testutil.typical;
 
-import static trackitnus.testutil.typical.TypicalContacts.getTypicalContacts;
-import static trackitnus.testutil.typical.TypicalModule.getTypicalModules;
-import static trackitnus.testutil.typical.TypicalTask.getTypicalTasks;
-
 import trackitnus.model.TrackIter;
 import trackitnus.model.contact.Contact;
+import trackitnus.model.lesson.Lesson;
 import trackitnus.model.module.Module;
 import trackitnus.model.task.Task;
 
@@ -15,15 +12,19 @@ public class TypicalTrackIter {
      */
     public static TrackIter getTypicalTrackIter() {
         TrackIter track = new TrackIter();
-        for (Contact contact : getTypicalContacts()) {
+        for (Contact contact : TypicalContacts.get()) {
             track.addContact(contact);
         }
-        for (Module module : getTypicalModules()) {
+        for (Module module : TypicalModule.get()) {
             track.addModule(module);
         }
-        for (Task task : getTypicalTasks()) {
+        for (Task task : TypicalTask.get()) {
             track.addTask(task);
+        }
+        for (Lesson lesson : TypicalLessons.get()) {
+            track.addLesson(lesson);
         }
         return track;
     }
+
 }

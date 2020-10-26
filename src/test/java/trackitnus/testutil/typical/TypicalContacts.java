@@ -56,7 +56,7 @@ public class TypicalContacts {
     } // prevents instantiation
 
 
-    public static List<Contact> getTypicalContacts() {
+    public static List<Contact> get() {
         return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
     }
 }
