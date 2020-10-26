@@ -1,6 +1,7 @@
 package trackitnus.testutil;
 
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.function.Predicate;
 
@@ -97,6 +98,11 @@ public class ModelStub implements Model {
     }
 
     @Override
+    public boolean hasModule(Code code) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
     public Optional<Module> getModule(Code code) {
         throw new AssertionError("This method should not be called.");
     }
@@ -178,6 +184,36 @@ public class ModelStub implements Model {
 
     @Override
     public ObservableList<Lesson> getFilteredLessonList() {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public ObservableList<Lesson> getUpcomingLessons() {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public ObservableList<Lesson> getDayUpcomingLessons(LocalDate date) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public ObservableList<Lesson> getModuleLessons(Code code) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public ObservableList<Task> getModuleTasks(Code code) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public ObservableList<Task> getUpcomingTasks() {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public ObservableList<Task> getDayUpcomingTasks(LocalDate date) {
         throw new AssertionError("This method should not be called.");
     }
 
