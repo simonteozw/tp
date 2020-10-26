@@ -1,66 +1,57 @@
 package trackitnus.logic.commands.lesson;
 
 import static java.util.Objects.requireNonNull;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
-import static trackitnus.logic.parser.CliSyntax.PREFIX_TYPE;
 
-import java.util.Optional;
+import java.util.List;
 
 import trackitnus.commons.core.Messages;
+import trackitnus.commons.core.index.Index;
 import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.Model;
-import trackitnus.model.commons.Code;
 import trackitnus.model.lesson.Lesson;
-import trackitnus.model.lesson.Type;
+import trackitnus.model.task.Task;
 
 public class ViewLessonCommand extends Command {
     public static final String COMMAND_WORD = "info";
 
     public static final String MESSAGE_USAGE = Lesson.TYPE + " " + COMMAND_WORD
         + ": Shows the details of a lesson. "
-        + "Parameters: "
-        + PREFIX_CODE + "MODULE_CODE "
-        + PREFIX_TYPE + "TYPE\n"
+        + "Parameters: INDEX\n"
         + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
-        + PREFIX_CODE + "CS3233 "
-        + PREFIX_TYPE + "lecture\n";
+        + "1\n";
 
-    private static final String MESSAGE_VIEW_MODULE_SUCCESS = "Here is the module you requested: %1$s";
+    private static final String MESSAGE_VIEW_LESSON_SUCCESS = "Here is the lesson you requested: %1$s";
 
-    private final Code code;
-    private final Type type;
+    private final Index index;
 
     /**
      * Creates a ViewLessonCommand to view the specified {@code Lesson}
      *
-     * @param code
-     * @param type
+     * @param index
      */
-    public ViewLessonCommand(Code code, Type type) {
-        this.code = code;
-        this.type = type;
+    public ViewLessonCommand(Index index) {
+        this.index = index;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        Optional<Lesson> requestedLesson = model.getLesson(code, type);
+        List<Task> lastShownList = model.getFilteredTaskList();
 
-
-        if (requestedLesson.isEmpty()) {
-            throw new CommandException(Messages.MESSAGE_LESSON_DOES_NOT_EXIST);
+        if (index.getZeroBased() >= lastShownList.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);
         }
 
-        return new CommandResult(String.format(MESSAGE_VIEW_MODULE_SUCCESS, requestedLesson.get()));
+        Task lessonToShow = lastShownList.get(index.getZeroBased());
+        return new CommandResult(String.format(MESSAGE_VIEW_LESSON_SUCCESS, lessonToShow));
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
             || (other instanceof ViewLessonCommand // instanceof handles nulls
-            && code.equals(((ViewLessonCommand) other).code)
-            && type.equals(((ViewLessonCommand) other).type)); // state check
+            && index.equals(((ViewLessonCommand) other).index)); // state check
     }
 }
