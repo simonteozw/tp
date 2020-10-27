@@ -26,7 +26,6 @@ public class Task {
     private final LocalDate date;
     private final Code code;
     private final String remark;
-    private boolean isDone;
 
     /**
      * name, date & remark must be present and not null
@@ -41,24 +40,6 @@ public class Task {
         this.date = date;
         this.code = code;
         this.remark = remark;
-        this.isDone = false;
-    }
-
-    /**
-     * Overloaded constructor for Task. name, date & remark must be present and not null
-     *
-     * @param name
-     * @param date
-     * @param remark
-     * @param isDone
-     */
-    public Task(Name name, LocalDate date, Code code, String remark, boolean isDone) {
-        CollectionUtil.requireAllNonNull(name, date, remark);
-        this.name = name;
-        this.date = date;
-        this.code = code;
-        this.remark = remark;
-        this.isDone = isDone;
     }
 
     public LocalDate getDate() {
@@ -85,19 +66,6 @@ public class Task {
         return name;
     }
 
-    public boolean getIsDone() {
-        return isDone;
-    }
-
-    /**
-     *
-     * @return a new Task with the completion status flipped.
-     */
-    public Task toggleDoneStatus() {
-        boolean newIsDone = !this.isDone;
-        return new Task(name, date, code, remark, newIsDone);
-    }
-
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -112,8 +80,7 @@ public class Task {
         return otherTask.name.equals(name)
             && otherTask.date.equals(date)
             && otherTask.getCode().equals(getCode())
-            && otherTask.getRemark().equals(getRemark())
-            && otherTask.getIsDone() == getIsDone();
+            && otherTask.getRemark().equals(getRemark());
     }
 
     @Override
@@ -124,10 +91,8 @@ public class Task {
 
     @Override
     public String toString() {
-        String completionStatus = isDone ? "[DONE] " : "[NOT DONE] ";
         final StringBuilder builder = new StringBuilder();
-        builder.append(completionStatus)
-            .append(getName())
+        builder.append(getName())
             .append(" Date: ")
             .append(getDate());
         if (getCode().isPresent()) {
