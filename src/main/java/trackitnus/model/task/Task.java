@@ -89,8 +89,13 @@ public class Task {
         return isDone;
     }
 
-    public void flipDoneStatus() {
-        this.isDone = !this.isDone;
+    /**
+     *
+     * @return a new Task with the completion status flipped.
+     */
+    public Task toggleDoneStatus() {
+        boolean newIsDone = !this.isDone;
+        return new Task(name, date, code, remark, newIsDone);
     }
 
     @Override
@@ -119,8 +124,10 @@ public class Task {
 
     @Override
     public String toString() {
+        String completionStatus = isDone ? "[DONE] " : "[NOT DONE] ";
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
+        builder.append(completionStatus)
+            .append(getName())
             .append(" Date: ")
             .append(getDate());
         if (getCode().isPresent()) {
