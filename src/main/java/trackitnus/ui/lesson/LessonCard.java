@@ -12,7 +12,7 @@ import trackitnus.ui.UiPart;
  */
 public class LessonCard extends UiPart<Region> {
 
-    private static final String FXML = "LessonListCard.fxml";
+    private static final String FXML = "/Lesson/LessonListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -28,16 +28,13 @@ public class LessonCard extends UiPart<Region> {
     private HBox cardPane;
     @FXML
     private Label id;
-    @FXML
-    private Label code;
+//    @FXML
+//    private Label code;
     @FXML
     private Label type;
     @FXML
     private Label date;
-    @FXML
-    private Label address;
-    @FXML
-    private Label weightage;
+
 
 
     /**
@@ -47,7 +44,7 @@ public class LessonCard extends UiPart<Region> {
         super(FXML);
         this.lesson = lesson;
         id.setText(displayedIndex + ". ");
-        code.setText(lesson.getCode().code);
+//        code.setText(lesson.getCode().code);
         type.setText(lesson.getType().name());
         date.setText(lesson.getDate().toString());
     }

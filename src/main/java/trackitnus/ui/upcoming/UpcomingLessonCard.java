@@ -1,18 +1,18 @@
-package trackitnus.ui.module;
+package trackitnus.ui.upcoming;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import trackitnus.model.module.Module;
+import trackitnus.model.lesson.Lesson;
 import trackitnus.ui.UiPart;
 
 /**
- * An UI component that displays information of a {@code module}.
+ * An UI component that displays information of a {@code Lesson}.
  */
-public class ModuleCard extends UiPart<Region> {
+public class UpcomingLessonCard extends UiPart<Region> {
 
-    private static final String FXML = "/Module/ModuleListCard.fxml";
+    private static final String FXML = "/Upcoming/UpcomingLessonListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -22,27 +22,29 @@ public class ModuleCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on TrackIter level 4</a>
      */
 
-    public final Module module;
+    public final Lesson lesson;
 
     @FXML
     private HBox cardPane;
     @FXML
+    private Label id;
+    @FXML
     private Label code;
     @FXML
-    private Label name;
+    private Label type;
     @FXML
-    private Label id;
-
+    private Label date;
 
     /**
-     * Creates a {@code ModuleCard} with the given {@code Module} and index to display.
+     * Creates a {@code ContactCode} with the given {@code Lesson} and index to display.
      */
-    public ModuleCard(Module module, int displayedIndex) {
+    public UpcomingLessonCard(Lesson lesson, int displayedIndex) {
         super(FXML);
-        this.module = module;
-        id.setText(displayedIndex + ". ");
-        code.setText(module.getCode().code);
-        name.setText(module.getName().value);
+        this.lesson = lesson;
+        id.setText("[" + displayedIndex + "] ");
+        code.setText(lesson.getCode().code);
+        type.setText(lesson.getType().name());
+        date.setText(lesson.getDate().toString().substring(4));
     }
 
     @Override
@@ -53,13 +55,14 @@ public class ModuleCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof ModuleCard)) {
+        if (!(other instanceof UpcomingLessonCard)) {
             return false;
         }
 
         // state check
-        ModuleCard card = (ModuleCard) other;
+        UpcomingLessonCard card = (UpcomingLessonCard) other;
         return id.getText().equals(card.id.getText())
-            && module.equals(card.module);
+                && lesson.equals(card.lesson);
     }
 }
+
