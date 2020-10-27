@@ -13,7 +13,6 @@ import trackitnus.commons.core.Messages;
 import trackitnus.logic.commands.ExitCommand;
 import trackitnus.logic.commands.HelpCommand;
 import trackitnus.logic.commands.contact.AddContactCommand;
-import trackitnus.logic.commands.contact.ClearContactCommand;
 import trackitnus.logic.commands.contact.DeleteContactCommand;
 import trackitnus.logic.commands.contact.EditContactCommand;
 import trackitnus.logic.commands.contact.FindContactCommand;
@@ -36,14 +35,6 @@ public class TrackIterParserTest {
         AddContactCommand command = (AddContactCommand) parser.parseCommand(Contact.TYPE
             + " " + ContactUtil.getAddCommand(contact));
         assertEquals(new AddContactCommand(contact), command);
-    }
-
-    @Test
-    public void parseCommand_clear() throws Exception {
-        assertTrue(parser.parseCommand(Contact.TYPE + " "
-            + ClearContactCommand.COMMAND_WORD) instanceof ClearContactCommand);
-        assertTrue(parser.parseCommand(Contact.TYPE + " "
-            + ClearContactCommand.COMMAND_WORD + " 3") instanceof ClearContactCommand);
     }
 
     @Test
