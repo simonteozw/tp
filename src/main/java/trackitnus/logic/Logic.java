@@ -58,11 +58,6 @@ public interface Logic {
     ObservableList<Lesson> getFilteredLessonList();
 
     /**
-     * @return the list of all lessons that will take place on and up to a week after the current day
-     */
-    ObservableList<Lesson> getUpcomingLessons();
-
-    /**
      * @param date The date to query
      * @return all lessons happens on that date
      */
@@ -80,8 +75,6 @@ public interface Logic {
      */
     ObservableList<Contact> getModuleContacts(Code code);
 
-//    ObservableList<Task> getOverdueTasks(LocalDate date);
-
     /**
      * @param code The module code to query
      * @return the list of task for a specific module
@@ -89,9 +82,14 @@ public interface Logic {
     ObservableList<Task> getModuleTasks(Code code);
 
     /**
-     * @return the list of all tasks that take place on and after the current day
+     * @return The list of all tasks that were due before today.
      */
-    ObservableList<Task> getUpcomingTasks();
+    ObservableList<Task> getOverdueTasks();
+
+    /**
+     * @return The list of all tasks that are not due until more than a week later.
+     */
+    ObservableList<Task> getFutureTasks();
 
     /**
      * @param date The date to query
