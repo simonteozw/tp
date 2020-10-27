@@ -5,7 +5,6 @@ import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import java.util.stream.Stream;
 
 import trackitnus.commons.core.Messages;
-import trackitnus.logic.commands.module.AddModuleCommand;
 import trackitnus.logic.commands.module.DeleteModuleCommand;
 import trackitnus.logic.parser.ArgumentMultimap;
 import trackitnus.logic.parser.ArgumentTokenizer;
@@ -40,7 +39,7 @@ public class DeleteModuleCommandParser implements Parser<DeleteModuleCommand> {
 
         if (!arePrefixesPresent(argMultimap, PREFIX_CODE)) {
             throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                AddModuleCommand.MESSAGE_USAGE));
+                DeleteModuleCommand.MESSAGE_USAGE));
         }
 
         try {
