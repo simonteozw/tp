@@ -91,7 +91,7 @@ public class Lesson {
         return date;
     }
 
-    public LessonWeekday getWeekday() {
+    public DayOfWeek getWeekday() {
         return date.getWeekday();
     }
 

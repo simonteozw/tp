@@ -46,6 +46,7 @@ public class MainWindow extends UiPart<Stage> {
 
     private ResultDisplay resultDisplay;
     private UpcomingPanel upcomingPanel;
+    private HelpPanel helpPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -108,7 +109,6 @@ public class MainWindow extends UiPart<Stage> {
         menuItem.setAccelerator(keyCombination);
 
         /*
-         * TODO: the code below can be removed once the bug reported here
          * https://bugs.openjdk.java.net/browse/JDK-8131666
          * is fixed in later version of SDK.
          *
@@ -173,6 +173,10 @@ public class MainWindow extends UiPart<Stage> {
         case Contact.TYPE:
             contactPanel = new ContactPanel(logic);
             tabPanelPlaceholder.getChildren().add(contactPanel.getRoot());
+            break;
+        case HelpPanel.TYPE:
+            helpPanel = new HelpPanel();
+            tabPanelPlaceholder.getChildren().add(helpPanel.getRoot());
             break;
         default:
             throw new IllegalArgumentException(Messages.MESSAGE_INVALID_TAB_VALUE);
