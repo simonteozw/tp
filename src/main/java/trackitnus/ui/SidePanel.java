@@ -13,6 +13,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import trackitnus.commons.core.LogsCenter;
 import trackitnus.logic.Logic;
+import trackitnus.model.contact.Contact;
 import trackitnus.model.module.Module;
 import trackitnus.ui.upcoming.UpcomingPanel;
 
@@ -27,6 +28,9 @@ public class SidePanel extends UiPart<Region> {
 
     @FXML
     private Button upcomingButton;
+
+    @FXML
+    private Button contactButton;
 
     @FXML
     private ListView<Module> moduleListView;
@@ -45,8 +49,6 @@ public class SidePanel extends UiPart<Region> {
         this.tabConsumer = tabConsumer;
         this.logic = logic;
         helpWindow = new HelpWindow();
-        selectedTabButton = upcomingButton;
-        updateButtonDetails(upcomingButton);
         this.initialize();
     }
 
@@ -62,6 +64,10 @@ public class SidePanel extends UiPart<Region> {
             moduleListView.setPrefHeight(modules.size() * moduleRowHeight);
             moduleListView.setItems(modules);
             moduleListView.setCellFactory(listView -> new ModuleListViewCell());
+
+            // Set Default tab as upcoming tab.
+            selectedTabButton = upcomingButton;
+            updateButtonDetails(upcomingButton);
         }
     }
 
@@ -81,8 +87,8 @@ public class SidePanel extends UiPart<Region> {
                 setGraphic(updatedButton);
                 ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList(Module.TYPE,
                     module));
-                tabConsumer.accept(upcomingValues);
-                updateButtonDetails(updatedButton);
+//                tabConsumer.accept(upcomingValues);
+//                updateButtonDetails(updatedButton);
             }
         }
     }
@@ -94,6 +100,15 @@ public class SidePanel extends UiPart<Region> {
         ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList((Object) UpcomingPanel.TYPE));
         updateButtonDetails(upcomingButton);
         tabConsumer.accept(upcomingValues);
+    }
+
+    /**
+     * Relays message to MainWindow to get Contact panel information in TabPanel.
+     */
+    public void toggleContactTab() {
+        ArrayList<Object> contactValues = new ArrayList<>(Arrays.asList((Object) Contact.TYPE));
+        updateButtonDetails(contactButton);
+        tabConsumer.accept(contactValues);
     }
 
     /**
