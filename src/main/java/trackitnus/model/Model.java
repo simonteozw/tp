@@ -96,6 +96,11 @@ public interface Model {
     void setContact(Contact target, Contact editedContact);
 
     /**
+     * @return A list of all contacts
+     */
+    ObservableList<Contact> getAllContacts();
+
+    /**
      * Returns an unmodifiable view of the filtered contact list
      */
     ObservableList<Contact> getFilteredContactList();
