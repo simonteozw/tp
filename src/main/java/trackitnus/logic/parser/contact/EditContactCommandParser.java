@@ -1,6 +1,7 @@
 package trackitnus.logic.parser.contact;
 
 import static java.util.Objects.requireNonNull;
+import static trackitnus.commons.core.Messages.MESSAGE_NOT_EDITED;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -59,7 +60,7 @@ public class EditContactCommandParser implements Parser<EditContactCommand> {
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editContactDescriptor::setTags);
 
         if (!editContactDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(EditContactCommand.MESSAGE_NOT_EDITED);
+            throw new ParseException(MESSAGE_NOT_EDITED);
         }
 
         return new EditContactCommand(index, editContactDescriptor);

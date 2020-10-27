@@ -1,6 +1,7 @@
 package trackitnus.logic.commands.task;
 
 import static java.util.Objects.requireNonNull;
+import static trackitnus.commons.core.Messages.MESSAGE_DUPLICATE_TASK;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
@@ -39,8 +40,6 @@ public class EditTaskCommand extends Command {
         + PREFIX_REMARK + "New remark";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in TrackIt@NUS.";
 
     private final Index index;
     private final EditTaskCommand.EditTaskDescriptor editTaskDescriptor;

@@ -7,6 +7,7 @@ import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_REMARK;
 
+import trackitnus.commons.core.Messages;
 import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
@@ -29,8 +30,7 @@ public class AddTaskCommand extends Command {
         + PREFIX_DATE + "22/12/2020 "
         + PREFIX_REMARK + "Favourite module!";
 
-    public static final String MESSAGE_SUCCESS = "New task added: %1$s";
-    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the app";
+    public static final String MESSAGE_ADD_TASK_SUCCESS = "New task added: %1$s";
 
     private final Task toAdd;
 
@@ -47,7 +47,7 @@ public class AddTaskCommand extends Command {
         requireNonNull(model);
 
         if (model.hasTask(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_TASK);
+            throw new CommandException(Messages.MESSAGE_DUPLICATE_TASK);
         }
 
         if (toAdd.getCode().isPresent() && !model.hasModule(toAdd.getCode().get())) {
@@ -55,7 +55,7 @@ public class AddTaskCommand extends Command {
         }
 
         model.addTask(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_ADD_TASK_SUCCESS, toAdd));
     }
 
     @Override

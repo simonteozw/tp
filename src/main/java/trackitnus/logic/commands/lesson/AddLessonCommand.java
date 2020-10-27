@@ -6,6 +6,7 @@ import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_TYPE;
 
+import trackitnus.commons.core.Messages;
 import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
@@ -27,8 +28,7 @@ public class AddLessonCommand extends Command {
         + PREFIX_TYPE + "lecture "
         + PREFIX_DATE + "Wed 17:45-21:00\n";
 
-    public static final String MESSAGE_SUCCESS = "New lesson added: %1$s";
-    public static final String MESSAGE_DUPLICATE_LESSON = "This lesson already exists";
+    public static final String MESSAGE_ADD_LESSON_SUCCESS = "New lesson added: %1$s";
 
     private final Lesson toAdd;
 
@@ -49,11 +49,11 @@ public class AddLessonCommand extends Command {
         }
 
         if (model.hasLesson(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_LESSON);
+            throw new CommandException(Messages.MESSAGE_DUPLICATE_LESSON);
         }
 
         model.addLesson(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_ADD_LESSON_SUCCESS, toAdd));
     }
 
     @Override

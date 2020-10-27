@@ -7,6 +7,7 @@ import static trackitnus.testutil.typical.TypicalTrackIter.getTypicalTrackIter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import trackitnus.commons.core.Messages;
 import trackitnus.model.Model;
 import trackitnus.model.ModelManager;
 import trackitnus.model.UserPrefs;
@@ -34,19 +35,19 @@ public class AddModuleCommandIntegrationTest {
         expectedModel.addModule(validModule);
 
         assertCommandSuccess(new AddModuleCommand(validModule), model,
-            String.format(AddModuleCommand.MESSAGE_SUCCESS, validModule), expectedModel);
+            String.format(AddModuleCommand.MESSAGE_ADD_MODULE_SUCCESS, validModule), expectedModel);
     }
 
     @Test
     public void execute_duplicateModule_throwsCommandException() {
         Module moduleInList = model.getTrackIter().getModuleList().get(0);
-        assertCommandFailure(new AddModuleCommand(moduleInList), model, AddModuleCommand.MESSAGE_DUPLICATE_MODULE);
+        assertCommandFailure(new AddModuleCommand(moduleInList), model, Messages.MESSAGE_DUPLICATE_MODULE);
     }
 
     @Test
     public void execute_duplicateModuleCode_throwsCommandException() {
         Module validModule = new Module(new Code("CS1231S"), new Name("Sample"));
-        assertCommandFailure(new AddModuleCommand(validModule), model, AddModuleCommand.MESSAGE_DUPLICATE_MODULE);
+        assertCommandFailure(new AddModuleCommand(validModule), model, Messages.MESSAGE_DUPLICATE_MODULE);
     }
 
 }

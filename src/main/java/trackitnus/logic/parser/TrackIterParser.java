@@ -8,25 +8,18 @@ import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.ExitCommand;
 import trackitnus.logic.commands.HelpCommand;
 import trackitnus.logic.commands.contact.AddContactCommand;
-import trackitnus.logic.commands.contact.ClearContactCommand;
 import trackitnus.logic.commands.contact.DeleteContactCommand;
 import trackitnus.logic.commands.contact.EditContactCommand;
 import trackitnus.logic.commands.contact.FindContactCommand;
-import trackitnus.logic.commands.contact.ListContactCommand;
 import trackitnus.logic.commands.lesson.AddLessonCommand;
 import trackitnus.logic.commands.lesson.DeleteLessonCommand;
 import trackitnus.logic.commands.lesson.EditLessonCommand;
-import trackitnus.logic.commands.lesson.ListLessonCommand;
-import trackitnus.logic.commands.lesson.ViewLessonCommand;
 import trackitnus.logic.commands.module.AddModuleCommand;
 import trackitnus.logic.commands.module.DeleteModuleCommand;
 import trackitnus.logic.commands.module.EditModuleCommand;
-import trackitnus.logic.commands.module.ListModuleCommand;
-import trackitnus.logic.commands.module.ViewModuleCommand;
 import trackitnus.logic.commands.task.AddTaskCommand;
 import trackitnus.logic.commands.task.DeleteTaskCommand;
 import trackitnus.logic.commands.task.EditTaskCommand;
-import trackitnus.logic.commands.task.ViewTaskCommand;
 import trackitnus.logic.parser.contact.AddContactCommandParser;
 import trackitnus.logic.parser.contact.DeleteContactCommandParser;
 import trackitnus.logic.parser.contact.EditContactCommandParser;
@@ -35,16 +28,12 @@ import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.logic.parser.lesson.AddLessonCommandParser;
 import trackitnus.logic.parser.lesson.DeleteLessonCommandParser;
 import trackitnus.logic.parser.lesson.EditLessonCommandParser;
-import trackitnus.logic.parser.lesson.ListLessonCommandParser;
-import trackitnus.logic.parser.lesson.ViewLessonCommandParser;
 import trackitnus.logic.parser.module.AddModuleCommandParser;
 import trackitnus.logic.parser.module.DeleteModuleCommandParser;
 import trackitnus.logic.parser.module.EditModuleCommandParser;
-import trackitnus.logic.parser.module.ViewModuleCommandParser;
 import trackitnus.logic.parser.task.AddTaskCommandParser;
 import trackitnus.logic.parser.task.DeleteTaskCommandParser;
 import trackitnus.logic.parser.task.EditTaskCommandParser;
-import trackitnus.logic.parser.task.ViewTaskCommandParser;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.lesson.Lesson;
 import trackitnus.model.module.Module;
@@ -90,14 +79,8 @@ public class TrackIterParser {
             case DeleteContactCommand.COMMAND_WORD:
                 return new DeleteContactCommandParser().parse(arguments);
 
-            case ClearContactCommand.COMMAND_WORD:
-                return new ClearContactCommand();
-
             case FindContactCommand.COMMAND_WORD:
                 return new FindContactCommandParser().parse(arguments);
-
-            case ListContactCommand.COMMAND_WORD:
-                return new ListContactCommand();
 
             default:
                 throw new ParseException(Messages.MESSAGE_UNKNOWN_COMMAND);
@@ -113,12 +96,6 @@ public class TrackIterParser {
             case DeleteModuleCommand.COMMAND_WORD:
                 return new DeleteModuleCommandParser().parse(arguments);
 
-            case ViewModuleCommand.COMMAND_WORD:
-                return new ViewModuleCommandParser().parse(arguments);
-
-            case ListModuleCommand.COMMAND_WORD:
-                return new ListModuleCommand();
-
             default:
                 throw new ParseException(Messages.MESSAGE_UNKNOWN_COMMAND);
             }
@@ -133,9 +110,6 @@ public class TrackIterParser {
             case DeleteTaskCommand.COMMAND_WORD:
                 return new DeleteTaskCommandParser().parse(arguments);
 
-            case ViewTaskCommand.COMMAND_WORD:
-                return new ViewTaskCommandParser().parse(arguments);
-
             default:
                 throw new ParseException(Messages.MESSAGE_UNKNOWN_COMMAND);
             }
@@ -149,12 +123,6 @@ public class TrackIterParser {
 
             case DeleteLessonCommand.COMMAND_WORD:
                 return new DeleteLessonCommandParser().parse(arguments);
-
-            case ListLessonCommand.COMMAND_WORD:
-                return new ListLessonCommandParser().parse(arguments);
-
-            case ViewLessonCommand.COMMAND_WORD:
-                return new ViewLessonCommandParser().parse(arguments);
 
             default:
                 throw new ParseException(Messages.MESSAGE_UNKNOWN_COMMAND);

@@ -13,11 +13,9 @@ import trackitnus.commons.core.Messages;
 import trackitnus.logic.commands.ExitCommand;
 import trackitnus.logic.commands.HelpCommand;
 import trackitnus.logic.commands.contact.AddContactCommand;
-import trackitnus.logic.commands.contact.ClearContactCommand;
 import trackitnus.logic.commands.contact.DeleteContactCommand;
 import trackitnus.logic.commands.contact.EditContactCommand;
 import trackitnus.logic.commands.contact.FindContactCommand;
-import trackitnus.logic.commands.contact.ListContactCommand;
 import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.contact.NameContainsKeywordsPredicate;
@@ -37,14 +35,6 @@ public class TrackIterParserTest {
         AddContactCommand command = (AddContactCommand) parser.parseCommand(Contact.TYPE
             + " " + ContactUtil.getAddCommand(contact));
         assertEquals(new AddContactCommand(contact), command);
-    }
-
-    @Test
-    public void parseCommand_clear() throws Exception {
-        assertTrue(parser.parseCommand(Contact.TYPE + " "
-            + ClearContactCommand.COMMAND_WORD) instanceof ClearContactCommand);
-        assertTrue(parser.parseCommand(Contact.TYPE + " "
-            + ClearContactCommand.COMMAND_WORD + " 3") instanceof ClearContactCommand);
     }
 
     @Test
@@ -84,14 +74,6 @@ public class TrackIterParserTest {
     public void parseCommand_help() throws Exception {
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + " 3") instanceof HelpCommand);
-    }
-
-    @Test
-    public void parseCommand_list() throws Exception {
-        assertTrue(parser.parseCommand(Contact.TYPE + " "
-            + ListContactCommand.COMMAND_WORD) instanceof ListContactCommand);
-        assertTrue(parser.parseCommand(Contact.TYPE + " "
-            + ListContactCommand.COMMAND_WORD + " 3") instanceof ListContactCommand);
     }
 
     @Test

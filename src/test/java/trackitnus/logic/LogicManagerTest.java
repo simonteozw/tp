@@ -16,7 +16,6 @@ import trackitnus.commons.core.Messages;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.contact.AddContactCommand;
 import trackitnus.logic.commands.contact.ContactCommandTestUtil;
-import trackitnus.logic.commands.contact.ListContactCommand;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.model.Model;
@@ -57,12 +56,6 @@ public class LogicManagerTest {
     public void execute_commandExecutionError_throwsCommandException() {
         String deleteCommand = Contact.TYPE + " " + "delete 9";
         assertCommandException(deleteCommand, Messages.MESSAGE_INVALID_CONTACT_DISPLAYED_INDEX);
-    }
-
-    @Test
-    public void execute_validCommand_success() throws Exception {
-        String listCommand = Contact.TYPE + " " + ListContactCommand.COMMAND_WORD;
-        assertCommandSuccess(listCommand, ListContactCommand.MESSAGE_SUCCESS, model);
     }
 
     @Test

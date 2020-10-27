@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 
+import trackitnus.commons.core.Messages;
 import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
@@ -22,8 +23,7 @@ public class AddModuleCommand extends Command {
         + PREFIX_CODE + "CS1231S "
         + PREFIX_NAME + "Discrete Structures";
 
-    public static final String MESSAGE_SUCCESS = "New module added: %1$s";
-    public static final String MESSAGE_DUPLICATE_MODULE = "This module already exists";
+    public static final String MESSAGE_ADD_MODULE_SUCCESS = "New module added: %1$s";
 
     private final Module toAdd;
 
@@ -40,11 +40,11 @@ public class AddModuleCommand extends Command {
         requireNonNull(model);
 
         if (model.hasModule(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_MODULE);
+            throw new CommandException(Messages.MESSAGE_DUPLICATE_MODULE);
         }
 
         model.addModule(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_ADD_MODULE_SUCCESS, toAdd));
     }
 
     @Override
