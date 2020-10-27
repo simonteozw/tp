@@ -39,6 +39,11 @@ public interface Logic {
     ReadOnlyTrackIter getTrackIter();
 
     /**
+     * @return A list of all contacts.
+     */
+    ObservableList<Contact> getAllContacts();
+
+    /**
      * Returns an unmodifiable view of the filtered list of contacts
      */
     ObservableList<Contact> getFilteredContactList();
