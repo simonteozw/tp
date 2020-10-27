@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
 <HBox xmlns:fx="http://javafx.com/fxml/1" id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8">
     <GridPane HBox.hgrow="ALWAYS">
         <columnConstraints>
@@ -24,7 +23,6 @@
                         <Region fx:constant="USE_PREF_SIZE"/>
                     </minWidth>
                 </Label>
-<!--                <Label fx:id="code" styleClass="cell_big_label" text="\$code"/>-->
                 <Label fx:id="type" styleClass="cell_big_label" text="\$type"/>
                 <Label fx:id="date" styleClass="cell_big_label" text="\$date"/>
             </HBox>
