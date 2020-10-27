@@ -246,4 +246,9 @@ public class ModelStub implements Model {
     public Index getTaskIndex(Task task) {
         throw new AssertionError("This method should not be called.");
     }
+
+    @Override
+    public Index getLessonIndex(Lesson lesson) {
+        throw new AssertionError("This method should not be called.");
+    }
 }
