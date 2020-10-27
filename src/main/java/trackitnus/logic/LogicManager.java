@@ -3,13 +3,12 @@ package trackitnus.logic;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.time.LocalDate;
-import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import trackitnus.commons.core.GuiSettings;
-import trackitnus.commons.core.index.Index;
 import trackitnus.commons.core.LogsCenter;
+import trackitnus.commons.core.index.Index;
 import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
