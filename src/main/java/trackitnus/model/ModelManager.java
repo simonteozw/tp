@@ -294,12 +294,6 @@ public class ModelManager implements Model {
     }
 
     //--------------------------------START of V1.3's new functions--------------------------------
-    @Override
-    public ObservableList<Lesson> getUpcomingLessons() {
-        sortLesson();
-        updateFilteredLessonList(PREDICATE_SHOW_ALL_LESSONS);
-        return getFilteredLessonList();
-    }
 
     @Override
     public ObservableList<Lesson> getDayUpcomingLessons(LocalDate date) {
@@ -307,7 +301,7 @@ public class ModelManager implements Model {
         updateFilteredLessonList(PREDICATE_SHOW_ALL_LESSONS);
         DayOfWeek weekday = DayOfWeek.getLessonWeekDay(date);
         Predicate<Lesson> predicate = lesson -> (lesson.getWeekday().equals(weekday));
-        return getUpcomingLessons().filtered(predicate);
+        return getFilteredLessonList().filtered(predicate);
     }
 
     @Override
@@ -329,12 +323,6 @@ public class ModelManager implements Model {
     public ObservableList<Task> getModuleTasks(Code code) {
         Predicate<Task> p = task -> task.belongsToModule(code);
         updateFilteredTaskList(p);
-        return getFilteredTaskList();
-    }
-
-    @Override
-    public ObservableList<Task> getUpcomingTasks() {
-        updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
         return getFilteredTaskList();
     }
 

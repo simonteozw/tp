@@ -188,11 +188,6 @@ public class ModelStub implements Model {
     }
 
     @Override
-    public ObservableList<Lesson> getUpcomingLessons() {
-        throw new AssertionError("This method should not be called.");
-    }
-
-    @Override
     public ObservableList<Lesson> getDayUpcomingLessons(LocalDate date) {
         throw new AssertionError("This method should not be called.");
     }
@@ -209,11 +204,6 @@ public class ModelStub implements Model {
 
     @Override
     public ObservableList<Task> getModuleTasks(Code code) {
-        throw new AssertionError("This method should not be called.");
-    }
-
-    @Override
-    public ObservableList<Task> getUpcomingTasks() {
         throw new AssertionError("This method should not be called.");
     }
 

@@ -85,10 +85,6 @@ public class LogicManager implements Logic {
     }
 
     //--------------------------------START of V1.3's new functions--------------------------------
-    @Override
-    public ObservableList<Lesson> getUpcomingLessons() {
-        return model.getUpcomingLessons();
-    }
 
     @Override
     public ObservableList<Lesson> getDayUpcomingLessons(LocalDate date) {
@@ -108,11 +104,6 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<Task> getModuleTasks(Code code) {
         return model.getModuleTasks(code);
-    }
-
-    @Override
-    public ObservableList<Task> getUpcomingTasks() {
-        return model.getUpcomingTasks();
     }
 
     @Override

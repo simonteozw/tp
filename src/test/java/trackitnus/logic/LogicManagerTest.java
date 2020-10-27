@@ -96,11 +96,6 @@ public class LogicManagerTest {
     }
 
     @Test
-    public void getUpcomingTasks_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> logic.getUpcomingTasks().remove(0));
-    }
-
-    @Test
     public void getModuleTasks_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> logic.getModuleTasks(new Code("CS2345")).remove(0));
     }

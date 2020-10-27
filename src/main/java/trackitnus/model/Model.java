@@ -239,11 +239,6 @@ public interface Model {
     //--------------------------------START of V1.3's new functions--------------------------------
 
     /**
-     * @return the list of all lessons that will take place on and up to a week after the current day
-     */
-    ObservableList<Lesson> getUpcomingLessons();
-
-    /**
      * @param date The date to query
      * @return all lessons happens on that date
      */
@@ -266,11 +261,6 @@ public interface Model {
      * @return the list of task for a specific module
      */
     ObservableList<Task> getModuleTasks(Code code);
-
-    /**
-     * @return the list of all tasks
-     */
-    ObservableList<Task> getUpcomingTasks();
 
     /**
      * @return A list of tasks where each task's deadline is before today.
