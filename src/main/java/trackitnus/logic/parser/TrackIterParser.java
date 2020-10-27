@@ -12,7 +12,6 @@ import trackitnus.logic.commands.contact.ClearContactCommand;
 import trackitnus.logic.commands.contact.DeleteContactCommand;
 import trackitnus.logic.commands.contact.EditContactCommand;
 import trackitnus.logic.commands.contact.FindContactCommand;
-import trackitnus.logic.commands.contact.ListContactCommand;
 import trackitnus.logic.commands.lesson.AddLessonCommand;
 import trackitnus.logic.commands.lesson.DeleteLessonCommand;
 import trackitnus.logic.commands.lesson.EditLessonCommand;
@@ -95,9 +94,6 @@ public class TrackIterParser {
 
             case FindContactCommand.COMMAND_WORD:
                 return new FindContactCommandParser().parse(arguments);
-
-            case ListContactCommand.COMMAND_WORD:
-                return new ListContactCommand();
 
             default:
                 throw new ParseException(Messages.MESSAGE_UNKNOWN_COMMAND);
