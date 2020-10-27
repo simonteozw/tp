@@ -10,7 +10,7 @@ import trackitnus.commons.util.CollectionUtil;
 public class LessonDateTime {
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("H:mm");
 
-    private final LessonWeekday weekday;
+    private final DayOfWeek weekday;
     private final LocalTime startTime;
     private final LocalTime endTime;
 
@@ -21,14 +21,14 @@ public class LessonDateTime {
      * @param startTime
      * @param endTime
      */
-    public LessonDateTime(LessonWeekday weekday, LocalTime startTime, LocalTime endTime) {
+    public LessonDateTime(DayOfWeek weekday, LocalTime startTime, LocalTime endTime) {
         CollectionUtil.requireAllNonNull(weekday, startTime, endTime);
         this.weekday = weekday;
         this.startTime = startTime;
         this.endTime = endTime;
     }
 
-    public LessonWeekday getWeekday() {
+    public DayOfWeek getWeekday() {
         return this.weekday;
     }
 
@@ -51,9 +51,9 @@ public class LessonDateTime {
             return 0;
         } else {
             LocalDate currentDate = LocalDate.now(Lesson.DEFAULT_TIME_ZONE);
-            LessonWeekday currentWeekday = LessonWeekday.getLessonWeekDay(currentDate);
-            Integer currentToThis = LessonWeekday.distanceTo(currentWeekday, this.getWeekday());
-            Integer currentToOther = LessonWeekday.distanceTo(currentWeekday, other.getWeekday());
+            DayOfWeek currentWeekday = DayOfWeek.getLessonWeekDay(currentDate);
+            Integer currentToThis = DayOfWeek.distanceBetweenTwoDay(currentWeekday, this.getWeekday());
+            Integer currentToOther = DayOfWeek.distanceBetweenTwoDay(currentWeekday, other.getWeekday());
             int result = currentToThis.compareTo(currentToOther);
             return result == 0
                 ? this.getStartTime().compareTo(other.getStartTime())

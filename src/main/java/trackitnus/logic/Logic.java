@@ -75,14 +75,19 @@ public interface Logic {
      */
     ObservableList<Lesson> getModuleLessons(Code code);
 
+    /**
+     * @param code The module code to query
+     * @return the list of contacts for a specific module
+     */
+    ObservableList<Contact> getModuleContacts(Code code);
+
 //    ObservableList<Task> getOverdueTasks(LocalDate date);
 
     /**
      * @param code The module code to query
      * @return the list of task for a specific module
      */
-    ObservableList<Task> getModuleTasks(Code code); // TODO: check if the list of tasks has been sorted in the
-    // correct order
+    ObservableList<Task> getModuleTasks(Code code);
 
     /**
      * @param code The module code to query

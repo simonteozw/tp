@@ -1,9 +1,8 @@
 package trackitnus.model.lesson;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-public enum LessonWeekday {
+public enum DayOfWeek {
     Sun,
     Mon,
     Tue,
@@ -13,8 +12,8 @@ public enum LessonWeekday {
     Sat;
     private static final int SIZE = 7;
 
-    public static LessonWeekday getLessonWeekDay(LocalDate date) {
-        DayOfWeek dayOfWeek = date.getDayOfWeek();
+    public static DayOfWeek getLessonWeekDay(LocalDate date) {
+        java.time.DayOfWeek dayOfWeek = date.getDayOfWeek();
         switch (dayOfWeek) {
         case SUNDAY:
             return Sun;
@@ -36,7 +35,7 @@ public enum LessonWeekday {
         }
     }
 
-    public static Integer distanceTo(LessonWeekday from, LessonWeekday to) {
+    public static Integer distanceBetweenTwoDay(DayOfWeek from, DayOfWeek to) {
         return (to.ordinal() - from.ordinal() + SIZE) % SIZE;
     }
 }

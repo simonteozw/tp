@@ -8,22 +8,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import trackitnus.model.commons.Code;
-import trackitnus.model.commons.Name;
 import trackitnus.model.task.Task;
 
 public class TypicalTask {
 
-    public static final Task TASK_FULL = new Task(new Name("Doraemon"), DATE_ONE, new Code("CS1231S"),
+    public static final Task TASK_FULL = new Task(TypicalNames.get(0), DATE_ONE, TypicalModule.getOneCode(0),
         "Sample Remark");
-    public static final Task TASK_FULL_DONE = new Task(new Name("Nobita Nobi"), DATE_TWO, new Code("CS2030S"),
+    public static final Task TASK_FULL_DONE = new Task(TypicalNames.get(1), DATE_TWO, TypicalModule.getOneCode(1),
         "Sample Remark", true);
-    public static final Task TASK_NO_REMARK = new Task(new Name("Shizuka Minamoto"), DATE_THREE, new Code("CS2040"),
+    public static final Task TASK_NO_REMARK = new Task(TypicalNames.get(2), DATE_THREE, TypicalModule.getOneCode(2),
         "");
-    public static final Task TASK_NO_CODE = new Task(new Name("Takeshi Goda"), DATE_THREE, null,
+    public static final Task TASK_NO_CODE = new Task(TypicalNames.get(1), DATE_THREE, null,
         "");
 
-    public static List<Task> getTypicalTasks() {
+    public static List<Task> get() {
         return new ArrayList<>(Arrays.asList(TASK_FULL, TASK_FULL_DONE, TASK_NO_REMARK, TASK_NO_CODE));
     }
 }

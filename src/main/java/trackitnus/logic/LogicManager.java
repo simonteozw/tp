@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import trackitnus.commons.core.GuiSettings;
 import trackitnus.commons.core.LogsCenter;
-import trackitnus.commons.core.index.Index;
 import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
@@ -88,55 +87,39 @@ public class LogicManager implements Logic {
     }
 
     //--------------------------------START of V1.3's new functions--------------------------------
-    // TODO:
-    // All the current functions are just dummy implementations
-    // All functions should only generate new predicates and use the corresponding getFilteredList to return
     @Override
     public ObservableList<Lesson> getUpcomingLessons() {
-        model.sortLesson();
-        model.updateFilteredLessonList(Model.PREDICATE_SHOW_ALL_LESSONS);
-        return model.getFilteredLessonList();
+        return model.getUpcomingLessons();
     }
 
     @Override
     public ObservableList<Lesson> getDayUpcomingLessons(LocalDate date) {
-        LessonWeekday weekday = LessonWeekday.getLessonWeekDay(date);
-        Predicate<Lesson> predicate = lesson -> (lesson.getWeekday().equals(weekday));
-        ObservableList<Lesson> allUpcomingLessons = getUpcomingLessons();
-        return allUpcomingLessons.filtered(predicate);
+        return model.getDayUpcomingLessons(date);
     }
 
     @Override
     public ObservableList<Lesson> getModuleLessons(Code code) {
-        Predicate<Lesson> predicate = lesson -> (lesson.getCode().equals(code));
-//        model.updateFilteredLessonList(predicate);
-//        return model.getFilteredLessonList();
-        return model.getFilteredLessonList().filtered(predicate);
-    }
-
-    @Override
-    public ObservableList<Task> getModuleTasks(Code code) {
-        Predicate<Task> p = task -> task.belongsToModule(code);
-//        model.updateFilteredTaskList(p);
-//        return model.getFilteredTaskList();
-        return model.getFilteredTaskList().filtered(p);
+        return model.getModuleLessons(code);
     }
 
     @Override
     public ObservableList<Contact> getModuleContacts(Code code) {
-        return model.getFilteredContactList();
+        return model.getModuleContacts(code);
+    }
+
+    @Override
+    public ObservableList<Task> getModuleTasks(Code code) {
+        return model.getModuleTasks(code);
     }
 
     @Override
     public ObservableList<Task> getUpcomingTasks() {
-        model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
-        return model.getFilteredTaskList();
+        return model.getUpcomingTasks();
     }
 
     @Override
     public ObservableList<Task> getDayUpcomingTasks(LocalDate date) {
-        Predicate<Task> p = task -> task.getDate().equals(date);
-        return model.getFilteredTaskList().filtered(p);
+        return model.getDayUpcomingTasks(date);
     }
 
     @Override
@@ -145,6 +128,7 @@ public class LogicManager implements Logic {
     }
 
     //--------------------------------END of V1.3's new functions--------------------------------
+
     @Override
     public Path getTrackIterFilePath() {
         return model.getTrackIterFilePath();

@@ -56,14 +56,6 @@
       "name": "Discrete Structures"
     },
     {
-      "code": "MA1101R",
-      "name": "Linear Algebra I"
-    },
-    {
-      "code": "CS2030",
-      "name": "Programming Methodology II"
-    },
-    {
       "code": "CS3233",
       "name": "Competitive Programming"
     },
@@ -74,33 +66,84 @@
   ],
   "tasks": [
     {
-      "name": "Doraemon",
+      "name": "Do assignment 1",
       "date": "23/10/2020",
       "code": "CS1231S",
       "remark": "Sample Remark",
       "isDone": false
     },
     {
-      "name": "Nobita Nobi",
+      "name": "Solve tutorial questions",
       "date": "24/11/2020",
-      "code": "CS2030S",
+      "code": "CS3233",
       "remark": "Sample Remark",
       "isDone": true
     },
     {
-      "name": "Shizuka Minamoto",
+      "name": "Copy Nick's code xD",
       "date": "09/12/2020",
-      "code": "CS2040",
+      "code": "CFG1002",
       "remark": "",
       "isDone": false
     },
     {
-      "name": "Takeshi Goda",
+      "name": "Solve tutorial questions",
       "date": "09/12/2020",
       "code": null,
       "remark": "",
       "isDone": false
     }
   ],
-  "lessons": []
+  "lessons": [
+    {
+      "code": "CFG1002",
+      "type": "LEC",
+      "date": "Mon 8:00-10:00"
+    },
+    {
+      "code": "CFG1002",
+      "type": "REC",
+      "date": "Mon 8:00-10:00"
+    },
+    {
+      "code": "CS1231S",
+      "type": "LAB",
+      "date": "Mon 8:00-10:00"
+    },
+    {
+      "code": "CS3233",
+      "type": "LAB",
+      "date": "Mon 8:00-10:00"
+    },
+    {
+      "code": "CFG1002",
+      "type": "REC",
+      "date": "Mon 10:00-12:00"
+    },
+    {
+      "code": "CS1231S",
+      "type": "REC",
+      "date": "Mon 10:00-12:00"
+    },
+    {
+      "code": "CS1231S",
+      "type": "TUT",
+      "date": "Mon 10:00-12:00"
+    },
+    {
+      "code": "CFG1002",
+      "type": "SEC",
+      "date": "Mon 12:00-15:00"
+    },
+    {
+      "code": "CS3233",
+      "type": "LEC",
+      "date": "Mon 12:00-15:00"
+    },
+    {
+      "code": "CS3233",
+      "type": "REC",
+      "date": "Mon 12:00-15:00"
+    }
+  ]
 }

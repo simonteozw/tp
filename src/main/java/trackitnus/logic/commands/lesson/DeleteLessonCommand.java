@@ -17,7 +17,7 @@ public class DeleteLessonCommand extends Command {
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = Lesson.TYPE + " " + COMMAND_WORD
-        + ": Deletes a lesson from TrackIt@NUS. "
+        + ": Deletes the lesson identified by the index number currently displayed on the screen.\n"
         + "Parameters: "
         + "INDEX\n"
         + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "

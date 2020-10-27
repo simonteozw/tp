@@ -3,15 +3,18 @@ package trackitnus.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Objects;
 
 import javafx.collections.ObservableList;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.contact.UniqueContactList;
 import trackitnus.model.lesson.Lesson;
+import trackitnus.model.lesson.LessonComparator;
 import trackitnus.model.lesson.UniqueLessonList;
 import trackitnus.model.module.Module;
 import trackitnus.model.module.UniqueModuleList;
 import trackitnus.model.task.Task;
+import trackitnus.model.task.TaskComparator;
 import trackitnus.model.task.UniqueTaskList;
 
 /**
@@ -249,16 +252,17 @@ public class TrackIter implements ReadOnlyTrackIter {
         lessons.remove(key);
     }
 
-    public void sortLesson() {
-        lessons.sort();
-    }
-
     //// util methods
+
 
     @Override
     public String toString() {
-        return contacts.asUnmodifiableObservableList().size() + " contacts";
-        // TODO: refine later
+        return "TrackIter{" +
+            "contacts=" + contacts +
+            ", modules=" + modules +
+            ", tasks=" + tasks +
+            ", lessons=" + lessons +
+            '}';
     }
 
     @Override
@@ -273,29 +277,46 @@ public class TrackIter implements ReadOnlyTrackIter {
 
     @Override
     public ObservableList<Task> getTaskList() {
+        tasks.sort(new TaskComparator());
         return tasks.asUnmodifiableObservableList();
     }
 
     @Override
     public ObservableList<Lesson> getLessonList() {
+        lessons.sort(new LessonComparator());
         return lessons.asUnmodifiableObservableList();
     }
 
     @Override
     public boolean equals(Object other) {
-        return other == this // short circuit if same object
-            || (other instanceof TrackIter // instanceof handles nulls
-            && contacts.equals(((TrackIter) other).contacts)
-            && modules.equals(((TrackIter) other).modules)
-            && tasks.equals(((TrackIter) other).tasks)
-            && lessons.equals(((TrackIter) other).lessons));
+        if (other == this) {
+            return true;
+        }
+        if (!(other instanceof TrackIter)) {
+            return false;
+        }
+        // Two TrackIter will be considered equal if they have the SAME SET of contacts, modules, tasks & lessons
+        // Since we sometimes sort tasks & lessons, before comparing equality it's necessary to sort as well
+        TrackIter casted = (TrackIter) other;
+        sortAll();
+        casted.sortAll();
+        return contacts.equals(casted.contacts)
+            && modules.equals(casted.modules)
+            && tasks.equals(casted.tasks)
+            && lessons.equals(casted.lessons);
+    }
+
+    private void sortAll() {
+        tasks.sort(new TaskComparator());
+        lessons.sort(new LessonComparator());
     }
 
     @Override
     public int hashCode() {
-        return contacts.hashCode();
-        // TODO: refine later
+        return Objects.hash(contacts, modules, tasks, lessons);
     }
 
-
+    public void sortLesson() {
+        lessons.sort(new LessonComparator());
+    }
 }
