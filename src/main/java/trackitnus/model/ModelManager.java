@@ -303,6 +303,8 @@ public class ModelManager implements Model {
 
     @Override
     public ObservableList<Lesson> getDayUpcomingLessons(LocalDate date) {
+        sortLesson();
+        updateFilteredLessonList(PREDICATE_SHOW_ALL_LESSONS);
         DayOfWeek weekday = DayOfWeek.getLessonWeekDay(date);
         Predicate<Lesson> predicate = lesson -> (lesson.getWeekday().equals(weekday));
         return getUpcomingLessons().filtered(predicate);
