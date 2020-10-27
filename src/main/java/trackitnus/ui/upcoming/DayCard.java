@@ -1,5 +1,7 @@
 package trackitnus.ui.upcoming;
 
+import java.time.LocalDate;
+
 import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,8 +16,6 @@ import trackitnus.model.lesson.Lesson;
 import trackitnus.model.task.Task;
 import trackitnus.ui.UiPart;
 import trackitnus.ui.task.TaskCard;
-
-import java.time.LocalDate;
 
 public class DayCard extends UiPart<Region> {
 

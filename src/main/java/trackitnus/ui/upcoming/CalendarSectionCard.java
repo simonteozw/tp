@@ -12,7 +12,6 @@ import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.task.Task;
 import trackitnus.ui.UiPart;
 import trackitnus.ui.task.OverdueTaskCard;
-import trackitnus.ui.task.TaskCard;
 
 public class CalendarSectionCard extends UiPart<Region> {
     private static final String FXML = "/Upcoming/CalendarSectionCard.fxml";
