@@ -15,8 +15,6 @@ import trackitnus.logic.commands.contact.FindContactCommand;
 import trackitnus.logic.commands.lesson.AddLessonCommand;
 import trackitnus.logic.commands.lesson.DeleteLessonCommand;
 import trackitnus.logic.commands.lesson.EditLessonCommand;
-import trackitnus.logic.commands.lesson.ListLessonCommand;
-import trackitnus.logic.commands.lesson.ViewLessonCommand;
 import trackitnus.logic.commands.module.AddModuleCommand;
 import trackitnus.logic.commands.module.DeleteModuleCommand;
 import trackitnus.logic.commands.module.EditModuleCommand;
@@ -34,8 +32,6 @@ import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.logic.parser.lesson.AddLessonCommandParser;
 import trackitnus.logic.parser.lesson.DeleteLessonCommandParser;
 import trackitnus.logic.parser.lesson.EditLessonCommandParser;
-import trackitnus.logic.parser.lesson.ListLessonCommandParser;
-import trackitnus.logic.parser.lesson.ViewLessonCommandParser;
 import trackitnus.logic.parser.module.AddModuleCommandParser;
 import trackitnus.logic.parser.module.DeleteModuleCommandParser;
 import trackitnus.logic.parser.module.EditModuleCommandParser;
@@ -145,12 +141,6 @@ public class TrackIterParser {
 
             case DeleteLessonCommand.COMMAND_WORD:
                 return new DeleteLessonCommandParser().parse(arguments);
-
-            case ListLessonCommand.COMMAND_WORD:
-                return new ListLessonCommandParser().parse(arguments);
-
-            case ViewLessonCommand.COMMAND_WORD:
-                return new ViewLessonCommandParser().parse(arguments);
 
             default:
                 throw new ParseException(Messages.MESSAGE_UNKNOWN_COMMAND);
