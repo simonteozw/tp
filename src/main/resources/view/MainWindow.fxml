@@ -26,9 +26,7 @@
                         <StackPane fx:id="sidePanelPlaceholder" minWidth="150" styleClass="side_panel"/>
                     </left>
                     <center>
-                        <VBox VBox.vgrow="ALWAYS">
-                            <StackPane fx:id="tabPanelPlaceholder"/>
-                        </VBox>
+                        <StackPane fx:id="tabPanelPlaceholder"/>
                     </center>
                     <bottom>
                         <HBox>
