@@ -69,10 +69,17 @@ public class UpcomingPanel extends UiPart<Region> {
                 } else {
                     assert(object instanceof CalendarSection);
                     CalendarSection calendarSection = (CalendarSection) object;
-
-                    //TODO: Replace with appropriate filtered TaskList for Overdue and Future sections
-                    setGraphic(new CalendarSectionCard(calendarSection, logic.getFilteredTaskList(), logic).getRoot());
+                    allocateCalendarSections(calendarSection);
                 }
+            }
+        }
+
+        public void allocateCalendarSections(CalendarSection c) {
+            if (c.getTitle().equals("Overdue")) {
+                setGraphic(new CalendarSectionCard(c, logic.getOverdueTasks(), logic).getRoot());
+            } else {
+                assert(c.getTitle().equals("Future"));
+                setGraphic(new CalendarSectionCard(c, logic.getFutureTasks(), logic).getRoot());
             }
         }
     }

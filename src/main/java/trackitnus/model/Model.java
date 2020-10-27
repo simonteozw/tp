@@ -96,6 +96,11 @@ public interface Model {
     void setContact(Contact target, Contact editedContact);
 
     /**
+     * @return A list of all contacts
+     */
+    ObservableList<Contact> getAllContacts();
+
+    /**
      * Returns an unmodifiable view of the filtered contact list
      */
     ObservableList<Contact> getFilteredContactList();
@@ -239,11 +244,6 @@ public interface Model {
     //--------------------------------START of V1.3's new functions--------------------------------
 
     /**
-     * @return the list of all lessons that will take place on and up to a week after the current day
-     */
-    ObservableList<Lesson> getUpcomingLessons();
-
-    /**
      * @param date The date to query
      * @return all lessons happens on that date
      */
@@ -268,9 +268,14 @@ public interface Model {
     ObservableList<Task> getModuleTasks(Code code);
 
     /**
-     * @return the list of all tasks
+     * @return A list of tasks where each task's deadline is before today.
      */
-    ObservableList<Task> getUpcomingTasks();
+    ObservableList<Task> getOverdueTasks();
+
+    /**
+     * @return A list of tasks where each task's deadline is more than 7 days away.
+     */
+    ObservableList<Task> getFutureTasks();
 
     /**
      * @param date The date to query

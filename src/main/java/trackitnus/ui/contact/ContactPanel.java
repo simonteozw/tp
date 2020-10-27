@@ -30,7 +30,7 @@ public class ContactPanel extends UiPart<Region> {
      */
     public ContactPanel(Logic logic) {
         super(FXML);
-        ObservableList<Contact> contacts = logic.getFilteredContactList();
+        ObservableList<Contact> contacts = logic.getAllContacts();
 
         // Allow height of lists to update automatically
         contactListPanelPlaceholder.prefHeightProperty().bind(Bindings.size(contacts)
