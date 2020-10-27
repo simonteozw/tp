@@ -10,6 +10,7 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
+import trackitnus.commons.core.Messages;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.ReadOnlyTrackIter;
@@ -33,7 +34,8 @@ public class AddContactCommandTest {
 
         CommandResult commandResult = new AddContactCommand(validContact).execute(modelStub);
 
-        assertEquals(String.format(AddContactCommand.MESSAGE_SUCCESS, validContact), commandResult.getFeedbackToUser());
+        assertEquals(String.format(AddContactCommand.MESSAGE_ADD_CONTACT_SUCCESS, validContact),
+            commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validContact), modelStub.contactsAdded);
     }
 
@@ -44,7 +46,7 @@ public class AddContactCommandTest {
         ModelStub modelStub = new ModelStubWithContact(validContact);
 
         Assert.assertThrows(CommandException.class,
-            AddContactCommand.MESSAGE_DUPLICATE_CONTACT, () -> addContactCommand.execute(modelStub));
+            Messages.MESSAGE_DUPLICATE_CONTACT, () -> addContactCommand.execute(modelStub));
     }
 
     @Test

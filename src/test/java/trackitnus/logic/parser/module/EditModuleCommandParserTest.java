@@ -1,5 +1,6 @@
 package trackitnus.logic.parser.module;
 
+import static trackitnus.commons.core.Messages.MESSAGE_NOT_EDITED;
 import static trackitnus.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static trackitnus.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
@@ -34,6 +35,6 @@ public class EditModuleCommandParserTest {
 
     @Test
     public void parse_justModuleProvided_failure() {
-        assertParseFailure(parser, " m/CS1231S", EditModuleCommand.MESSAGE_NOT_EDITED);
+        assertParseFailure(parser, " m/CS1231S", MESSAGE_NOT_EDITED);
     }
 }

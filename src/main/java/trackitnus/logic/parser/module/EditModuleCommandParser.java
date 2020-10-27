@@ -1,6 +1,7 @@
 package trackitnus.logic.parser.module;
 
 import static java.util.Objects.requireNonNull;
+import static trackitnus.commons.core.Messages.MESSAGE_NOT_EDITED;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 
@@ -47,7 +48,7 @@ public class EditModuleCommandParser implements Parser<EditModuleCommand> {
         }
 
         if (!editModuleDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(EditModuleCommand.MESSAGE_NOT_EDITED);
+            throw new ParseException(MESSAGE_NOT_EDITED);
         }
 
         return new EditModuleCommand(code, editModuleDescriptor);

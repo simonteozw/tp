@@ -1,6 +1,7 @@
 package trackitnus.logic.parser.task;
 
 import static java.util.Objects.requireNonNull;
+import static trackitnus.commons.core.Messages.MESSAGE_NOT_EDITED;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
@@ -55,7 +56,7 @@ public class EditTaskCommandParser implements Parser<EditTaskCommand> {
         }
 
         if (!editTaskDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(EditTaskCommand.MESSAGE_NOT_EDITED);
+            throw new ParseException(MESSAGE_NOT_EDITED);
         }
 
         return new EditTaskCommand(index, editTaskDescriptor);

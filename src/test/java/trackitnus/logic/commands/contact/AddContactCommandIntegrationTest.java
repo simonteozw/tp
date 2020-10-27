@@ -7,6 +7,7 @@ import static trackitnus.testutil.typical.TypicalTrackIter.getTypicalTrackIter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import trackitnus.commons.core.Messages;
 import trackitnus.model.Model;
 import trackitnus.model.ModelManager;
 import trackitnus.model.UserPrefs;
@@ -33,13 +34,13 @@ public class AddContactCommandIntegrationTest {
         expectedModel.addContact(validContact);
 
         assertCommandSuccess(new AddContactCommand(validContact), model,
-            String.format(AddContactCommand.MESSAGE_SUCCESS, validContact), expectedModel);
+            String.format(AddContactCommand.MESSAGE_ADD_CONTACT_SUCCESS, validContact), expectedModel);
     }
 
     @Test
     public void execute_duplicateContact_throwsCommandException() {
         Contact contactInList = model.getTrackIter().getContactList().get(0);
-        assertCommandFailure(new AddContactCommand(contactInList), model, AddContactCommand.MESSAGE_DUPLICATE_CONTACT);
+        assertCommandFailure(new AddContactCommand(contactInList), model, Messages.MESSAGE_DUPLICATE_CONTACT);
     }
 
 }

@@ -1,6 +1,7 @@
 package trackitnus.logic.commands.module;
 
 import static java.util.Objects.requireNonNull;
+import static trackitnus.commons.core.Messages.MESSAGE_DUPLICATE_MODULE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 import static trackitnus.model.Model.PREDICATE_SHOW_ALL_MODULES;
@@ -31,8 +32,6 @@ public class EditModuleCommand extends Command {
         Module.TYPE, COMMAND_WORD, PREFIX_CODE, PREFIX_NAME);
 
     public static final String MESSAGE_EDIT_MODULE_SUCCESS = "Edited Module: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_MODULE = "This module already exists";
 
     private final Code code;
     private final EditModuleDescriptor editModuleDescriptor;

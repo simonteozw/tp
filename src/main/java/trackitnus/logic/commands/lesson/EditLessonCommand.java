@@ -1,6 +1,7 @@
 package trackitnus.logic.commands.lesson;
 
 import static java.util.Objects.requireNonNull;
+import static trackitnus.commons.core.Messages.MESSAGE_DUPLICATE_LESSON;
 import static trackitnus.commons.core.Messages.MESSAGE_MODULE_DOES_NOT_EXIST;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
@@ -40,8 +41,6 @@ public class EditLessonCommand extends Command {
         + PREFIX_DATE + "Mon 17:45-21:00\n";
 
     public static final String MESSAGE_EDIT_LESSON_SUCCESS = "Edited Lesson: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_LESSON = "This lesson already exists.";
 
     private final Index index;
     private final EditLessonDescriptor editLessonDescriptor;
@@ -84,7 +83,7 @@ public class EditLessonCommand extends Command {
         }
 
         if (!editLessonDescriptor.isAnyFieldEdited()) {
-            throw new CommandException(MESSAGE_NOT_EDITED);
+            throw new CommandException(Messages.MESSAGE_NOT_EDITED);
         }
 
         Lesson lessonToEdit = lastShownList.get(index.getZeroBased());

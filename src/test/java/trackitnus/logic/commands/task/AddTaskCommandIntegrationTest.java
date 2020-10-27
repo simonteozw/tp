@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import trackitnus.commons.core.Messages;
 import trackitnus.model.Model;
 import trackitnus.model.ModelManager;
 import trackitnus.model.UserPrefs;
@@ -33,12 +34,12 @@ public class AddTaskCommandIntegrationTest {
         expectedModel.addTask(validTask);
 
         assertCommandSuccess(new AddTaskCommand(validTask), model,
-            String.format(AddTaskCommand.MESSAGE_SUCCESS, validTask), expectedModel);
+            String.format(AddTaskCommand.MESSAGE_ADD_TASK_SUCCESS, validTask), expectedModel);
     }
 
     @Test
     public void execute_duplicateTask_throwsCommandException() {
         Task taskInList = model.getTrackIter().getTaskList().get(0);
-        assertCommandFailure(new AddTaskCommand(taskInList), model, AddTaskCommand.MESSAGE_DUPLICATE_TASK);
+        assertCommandFailure(new AddTaskCommand(taskInList), model, Messages.MESSAGE_DUPLICATE_TASK);
     }
 }

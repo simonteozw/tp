@@ -6,6 +6,7 @@ import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_PHONE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_TAG;
 
+import trackitnus.commons.core.Messages;
 import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
@@ -33,8 +34,7 @@ public class AddContactCommand extends Command {
         + PREFIX_TAG + "friends "
         + PREFIX_TAG + "owesMoney";
 
-    public static final String MESSAGE_SUCCESS = "New contact added: %1$s";
-    public static final String MESSAGE_DUPLICATE_CONTACT = "This contact already exists in the address book";
+    public static final String MESSAGE_ADD_CONTACT_SUCCESS = "New contact added: %1$s";
 
     private final Contact toAdd;
 
@@ -51,11 +51,11 @@ public class AddContactCommand extends Command {
         requireNonNull(model);
 
         if (model.hasContact(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_CONTACT);
+            throw new CommandException(Messages.MESSAGE_DUPLICATE_CONTACT);
         }
 
         model.addContact(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_ADD_CONTACT_SUCCESS, toAdd));
     }
 
     @Override

@@ -1,5 +1,6 @@
 package trackitnus.logic.parser.contact;
 
+import static trackitnus.commons.core.Messages.MESSAGE_NOT_EDITED;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_TAG;
 import static trackitnus.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static trackitnus.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -32,7 +33,7 @@ public class EditContactCommandParserTest {
         assertParseFailure(parser, ContactCommandTestUtil.VALID_NAME_AMY, MESSAGE_INVALID_FORMAT);
 
         // no field specified
-        assertParseFailure(parser, "1", EditContactCommand.MESSAGE_NOT_EDITED);
+        assertParseFailure(parser, "1", MESSAGE_NOT_EDITED);
 
         // no index and no field specified
         assertParseFailure(parser, "", MESSAGE_INVALID_FORMAT);

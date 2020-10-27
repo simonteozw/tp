@@ -1,6 +1,7 @@
 package trackitnus.logic.commands.contact;
 
 import static java.util.Objects.requireNonNull;
+import static trackitnus.commons.core.Messages.MESSAGE_DUPLICATE_CONTACT;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -47,8 +48,6 @@ public class EditContactCommand extends Command {
         + PREFIX_EMAIL + "johndoe@example.com";
 
     public static final String MESSAGE_EDIT_CONTACT_SUCCESS = "Edited Contact: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_CONTACT = "This contact already exists in TrackIt@NUS.";
 
     private final Index index;
     private final EditContactDescriptor editContactDescriptor;

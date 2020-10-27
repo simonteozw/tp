@@ -71,7 +71,7 @@ public class EditLessonCommandParser implements Parser<EditLessonCommand> {
         }
 
         if (!editLessonDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(EditLessonCommand.MESSAGE_NOT_EDITED);
+            throw new ParseException(Messages.MESSAGE_NOT_EDITED);
         }
 
         return new EditLessonCommand(index, editLessonDescriptor);
