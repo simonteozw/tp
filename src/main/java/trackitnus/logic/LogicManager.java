@@ -116,6 +116,16 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ObservableList<Task> getOverdueTasks() {
+        return model.getOverdueTasks();
+    }
+
+    @Override
+    public ObservableList<Task> getFutureTasks() {
+        return model.getFutureTasks();
+    }
+
+    @Override
     public ObservableList<Task> getDayUpcomingTasks(LocalDate date) {
         return model.getDayUpcomingTasks(date);
     }

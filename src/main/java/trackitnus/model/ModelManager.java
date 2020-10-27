@@ -337,7 +337,24 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ObservableList<Task> getOverdueTasks() {
+        updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
+        LocalDate today = LocalDate.now();
+        Predicate<Task> p = task -> task.getDate().isBefore(today);
+        return getFilteredTaskList().filtered(p);
+    }
+
+    @Override
+    public ObservableList<Task> getFutureTasks() {
+        updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
+        LocalDate oneWeekLater = LocalDate.now().plusWeeks(1);
+        Predicate<Task> p = task -> task.getDate().isAfter(oneWeekLater);
+        return getFilteredTaskList().filtered(p);
+    }
+
+    @Override
     public ObservableList<Task> getDayUpcomingTasks(LocalDate date) {
+        updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
         Predicate<Task> p = task -> task.getDate().equals(date);
         return getFilteredTaskList().filtered(p);
     }

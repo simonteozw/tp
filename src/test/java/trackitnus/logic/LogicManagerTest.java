@@ -106,6 +106,16 @@ public class LogicManagerTest {
     }
 
     @Test
+    public void getOverdueTasks_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> logic.getOverdueTasks().remove(0));
+    }
+
+    @Test
+    public void getFutureTasks_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> logic.getFutureTasks().remove(0));
+    }
+
+    @Test
     public void getDayUpcomingTasks_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, ()
             -> logic.getDayUpcomingTasks(LocalDate.parse("12/12/2020", Task.FORMATTER)).remove(0));

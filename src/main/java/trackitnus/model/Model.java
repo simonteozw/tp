@@ -273,6 +273,16 @@ public interface Model {
     ObservableList<Task> getUpcomingTasks();
 
     /**
+     * @return A list of tasks where each task's deadline is before today.
+     */
+    ObservableList<Task> getOverdueTasks();
+
+    /**
+     * @return A list of tasks where each task's deadline is more than 7 days away.
+     */
+    ObservableList<Task> getFutureTasks();
+
+    /**
      * @param date The date to query
      * @return the list of all tasks that take place on the specified date
      */

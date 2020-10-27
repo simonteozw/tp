@@ -80,8 +80,6 @@ public interface Logic {
      */
     ObservableList<Contact> getModuleContacts(Code code);
 
-//    ObservableList<Task> getOverdueTasks(LocalDate date);
-
     /**
      * @param code The module code to query
      * @return the list of task for a specific module
@@ -92,6 +90,16 @@ public interface Logic {
      * @return the list of all tasks that take place on and after the current day
      */
     ObservableList<Task> getUpcomingTasks();
+
+    /**
+     * @return The list of all tasks that were due before today.
+     */
+    ObservableList<Task> getOverdueTasks();
+
+    /**
+     * @return The list of all tasks that are not due until more than a week later.
+     */
+    ObservableList<Task> getFutureTasks();
 
     /**
      * @param date The date to query
