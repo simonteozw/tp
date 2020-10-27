@@ -86,14 +86,15 @@ public class EditContactCommandTest {
         Contact contactInFilteredList =
             model.getFilteredContactList().get(TypicalIndexes.INDEX_FIRST.getZeroBased());
         Contact editedContact =
-            new ContactBuilder(contactInFilteredList).withName(ContactCommandTestUtil.VALID_NAME_BOB).build();
+            new ContactBuilder(contactInFilteredList).withPhone("98989898").build();
         EditContactCommand editContactCommand = new EditContactCommand(TypicalIndexes.INDEX_FIRST,
-            new EditContactDescriptorBuilder().withName(ContactCommandTestUtil.VALID_NAME_BOB).build());
+            new EditContactDescriptorBuilder().withPhone("98989898").build());
 
         String expectedMessage = String.format(EditContactCommand.MESSAGE_EDIT_CONTACT_SUCCESS, editedContact);
 
         Model expectedModel = new ModelManager(new TrackIter(model.getTrackIter()), new UserPrefs());
         expectedModel.setContact(model.getFilteredContactList().get(0), editedContact);
+        ContactCommandTestUtil.showContactAtIndex(expectedModel, TypicalIndexes.INDEX_FIRST);
 
         assertCommandSuccess(editContactCommand, model, expectedMessage, expectedModel);
     }
