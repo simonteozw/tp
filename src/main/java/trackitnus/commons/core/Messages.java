@@ -19,9 +19,9 @@ public class Messages {
     public static final String MESSAGE_MODULE_DOES_NOT_EXIST = "The module specified in the command doesn't exist.";
     public static final String MESSAGE_TASK_DOES_NOT_EXIST = "There is no such task in the app";
 
-    public static final String MESSAGE_DUPLICATE_CONTACT = "This contact already exists in the app";
+    public static final String MESSAGE_DUPLICATE_CONTACT = "This contact already exists";
     public static final String MESSAGE_DUPLICATE_LESSON = "This lesson already exists";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_MODULE = "This module already exists";
-    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the app";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists";
 }
