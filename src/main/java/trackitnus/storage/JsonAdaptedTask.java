@@ -22,7 +22,7 @@ public class JsonAdaptedTask {
     private final String date;
     private final String code;
     private final String remark;
-    private boolean isDone;
+    private final boolean isDone;
 
     /**
      * Constructs a {@code JsonAdaptedTask} with the given task details.
@@ -42,7 +42,7 @@ public class JsonAdaptedTask {
      * Converts a given {@code Task} into this class for Jackson use.
      */
     public JsonAdaptedTask(Task source) {
-        name = source.getName().fullName;
+        name = source.getName().value;
         date = source.getDate().format(Task.FORMATTER);
         code = source.getCode().isPresent() ? source.getCode().get().code : null;
         remark = source.getRemark();

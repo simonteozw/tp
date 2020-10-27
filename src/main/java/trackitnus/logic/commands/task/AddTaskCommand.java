@@ -1,6 +1,7 @@
 package trackitnus.logic.commands.task;
 
 import static java.util.Objects.requireNonNull;
+import static trackitnus.commons.core.Messages.MESSAGE_MODULE_DOES_NOT_EXIST;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
@@ -16,11 +17,12 @@ public class AddTaskCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = Task.TYPE + " " + COMMAND_WORD + ": Adds a task to the app. "
+    public static final String MESSAGE_USAGE = Task.TYPE + " " + COMMAND_WORD
+        + ": Adds a task to the app.\n"
         + "Parameters: "
         + PREFIX_NAME + "NAME "
         + PREFIX_DATE + "DATE "
-        + "[" + PREFIX_CODE + "REMARK] "
+        + "[" + PREFIX_CODE + "MODULE_CODE] "
         + "[" + PREFIX_REMARK + "REMARK]\n"
         + "Example: " + Task.TYPE + " " + COMMAND_WORD + " "
         + PREFIX_NAME + "CS2103T Final "
@@ -46,6 +48,10 @@ public class AddTaskCommand extends Command {
 
         if (model.hasTask(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
+        }
+
+        if (toAdd.getCode().isPresent() && !model.hasModule(toAdd.getCode().get())) {
+            throw new CommandException(MESSAGE_MODULE_DOES_NOT_EXIST);
         }
 
         model.addTask(toAdd);

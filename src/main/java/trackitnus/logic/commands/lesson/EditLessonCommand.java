@@ -1,6 +1,7 @@
 package trackitnus.logic.commands.lesson;
 
 import static java.util.Objects.requireNonNull;
+import static trackitnus.commons.core.Messages.MESSAGE_MODULE_DOES_NOT_EXIST;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_TYPE;
@@ -26,8 +27,9 @@ public class EditLessonCommand extends Command {
     public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = Lesson.TYPE + " " + COMMAND_WORD
-        + ": Edits the details of a lesson."
-        + " At least one of the details has to be specified. "
+        + ": Edits the details of the lesson"
+        + " identified by the index number currently displayed on the screen."
+        + " At least one of the details has to be specified.\n"
         + "Parameters: INDEX "
         + "[" + PREFIX_CODE + "MODULE_CODE] "
         + "[" + PREFIX_TYPE + "TYPE] "
@@ -90,6 +92,10 @@ public class EditLessonCommand extends Command {
 
         if (!lessonToEdit.isSameLesson(editedLesson) && model.hasLesson(editedLesson)) {
             throw new CommandException(MESSAGE_DUPLICATE_LESSON);
+        }
+
+        if (!model.hasModule(editedLesson.getCode())) {
+            throw new CommandException(MESSAGE_MODULE_DOES_NOT_EXIST);
         }
 
         model.setLesson(lessonToEdit, editedLesson);

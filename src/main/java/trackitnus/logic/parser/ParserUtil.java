@@ -18,9 +18,9 @@ import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 import trackitnus.model.contact.Email;
 import trackitnus.model.contact.Phone;
+import trackitnus.model.lesson.DayOfWeek;
 import trackitnus.model.lesson.Lesson;
 import trackitnus.model.lesson.LessonDateTime;
-import trackitnus.model.lesson.LessonWeekday;
 import trackitnus.model.lesson.Type;
 import trackitnus.model.tag.Tag;
 import trackitnus.model.task.Task;
@@ -254,24 +254,24 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code weekday} is invalid.
      */
-    private static LessonWeekday parseLessonWeekday(String weekday) throws ParseException {
+    private static DayOfWeek parseLessonWeekday(String weekday) throws ParseException {
         requireNonNull(weekday);
         String raw = weekday.trim().toLowerCase();
         switch (raw) {
         case "sun":
-            return LessonWeekday.Sun;
+            return DayOfWeek.Sun;
         case "mon":
-            return LessonWeekday.Mon;
+            return DayOfWeek.Mon;
         case "tue":
-            return LessonWeekday.Tue;
+            return DayOfWeek.Tue;
         case "wed":
-            return LessonWeekday.Wed;
+            return DayOfWeek.Wed;
         case "thu":
-            return LessonWeekday.Thu;
+            return DayOfWeek.Thu;
         case "fri":
-            return LessonWeekday.Fri;
+            return DayOfWeek.Fri;
         case "sat":
-            return LessonWeekday.Sat;
+            return DayOfWeek.Sat;
         default:
             throw new ParseException(Lesson.DATE_MESSAGE_CONSTRAINTS);
         }
@@ -289,15 +289,19 @@ public class ParserUtil {
         try {
             String[] tokens = trimmedDate.split(" ", 2);
             String[] startEndTime = tokens[1].split("-", 2);
-            LessonWeekday weekday = parseLessonWeekday(tokens[0]);
+            DayOfWeek weekday = parseLessonWeekday(tokens[0]);
             LocalTime startTime = LocalTime.parse(startEndTime[0], LessonDateTime.FORMATTER);
             LocalTime endTime = LocalTime.parse(startEndTime[1], LessonDateTime.FORMATTER);
-            if (startTime.compareTo(endTime) < 0) {
+            if (startTime.compareTo(endTime) > 0) {
                 throw new ParseException(Lesson.TIME_MESSAGE_CONSTRAINTS);
             }
             return new LessonDateTime(weekday, startTime, endTime);
         } catch (Exception e) {
-            throw new ParseException(Lesson.DATE_MESSAGE_CONSTRAINTS);
+            if (e instanceof ParseException) {
+                throw e;
+            } else {
+                throw new ParseException(Lesson.DATE_MESSAGE_CONSTRAINTS);
+            }
         }
     }
 }

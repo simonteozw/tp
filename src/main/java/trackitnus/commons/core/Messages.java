@@ -16,6 +16,7 @@ public class Messages {
     public static final String MESSAGE_INVALID_LESSON_DISPLAYED_INDEX = "The lesson index provided is invalid";
 
     public static final String MESSAGE_INVALID_MODULE_DISPLAYED_INDEX = "The module index provided is invalid";
-    public static final String MESSAGE_MODULE_DOES_NOT_EXIST = "There is no module that matches the given module code";
+    public static final String MESSAGE_MODULE_DOES_NOT_EXIST = "The module specified in the command doesn't exist.";
     public static final String MESSAGE_TASK_DOES_NOT_EXIST = "There is no such task in the app";
+
 }
