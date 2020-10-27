@@ -131,6 +131,19 @@
     -fx-font-size: 17px;
 }
 
+#HelpPanel {
+     -fx-text-fill: white;
+}
+
+.help_panel {
+    -fx-text-fill: white;
+}
+
+.help_intro {
+    -fx-font-family: "Poppins";
+    -fx-font-size: 17px;
+}
+
 .module_small_label {
     -fx-font-family: "Poppins";
     -fx-font-size: 15px;

@@ -112,9 +112,19 @@ public class SidePanel extends UiPart<Region> {
     }
 
     /**
-     * Relays message to MainWindow to get Help window information in TabPanel.
+     * Relays message to MainWindow to get Help tab information in TabPanel.
      */
     public void toggleHelpTab() {
+        ArrayList<Object> helpValues = new ArrayList<>(Arrays.asList((Object) HelpPanel.TYPE));
+        updateButtonDetails(helpButton);
+        tabConsumer.accept(helpValues);
+    }
+
+    /**
+     * Relays message to MainWindow to get Help window information in TabPanel.
+     * TODO: remove this and the Help window once it is no longer required.
+     */
+    public void toggleHelpWindow() {
         updateButtonDetails(helpButton);
         if (!helpWindow.isShowing()) {
             helpWindow.show();
