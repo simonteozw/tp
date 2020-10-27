@@ -117,8 +117,8 @@ public class ModelManagerTest {
     public void getTaskIndex_rightIndex_success() {
         try {
             modelManager.addTask(TypicalTask.TASK_FULL);
-            modelManager.addTask(TypicalTask.TASK_FULL_DONE);
-            assertEquals(Index.fromOneBased(2), modelManager.getTaskIndex(TypicalTask.TASK_FULL_DONE));
+            modelManager.addTask(TypicalTask.TASK_FULL_ANOTHER);
+            assertEquals(Index.fromOneBased(2), modelManager.getTaskIndex(TypicalTask.TASK_FULL_ANOTHER));
         } catch (CommandException e) {
             Assertions.fail();
         }
@@ -128,8 +128,8 @@ public class ModelManagerTest {
     public void getTaskIndex_wrongIndex_failure() {
         try {
             modelManager.addTask(TypicalTask.TASK_FULL);
-            modelManager.addTask(TypicalTask.TASK_FULL_DONE);
-            assertNotEquals(Index.fromOneBased(1), modelManager.getTaskIndex(TypicalTask.TASK_FULL_DONE));
+            modelManager.addTask(TypicalTask.TASK_FULL_ANOTHER);
+            assertNotEquals(Index.fromOneBased(1), modelManager.getTaskIndex(TypicalTask.TASK_FULL_ANOTHER));
         } catch (CommandException e) {
             Assertions.fail();
         }

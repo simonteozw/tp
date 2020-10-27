@@ -294,18 +294,14 @@ public class ModelManager implements Model {
     }
 
     //--------------------------------START of V1.3's new functions--------------------------------
-    @Override
-    public ObservableList<Lesson> getUpcomingLessons() {
-        sortLesson();
-        updateFilteredLessonList(PREDICATE_SHOW_ALL_LESSONS);
-        return getFilteredLessonList();
-    }
 
     @Override
     public ObservableList<Lesson> getDayUpcomingLessons(LocalDate date) {
+        sortLesson();
+        updateFilteredLessonList(PREDICATE_SHOW_ALL_LESSONS);
         DayOfWeek weekday = DayOfWeek.getLessonWeekDay(date);
         Predicate<Lesson> predicate = lesson -> (lesson.getWeekday().equals(weekday));
-        return getUpcomingLessons().filtered(predicate);
+        return getFilteredLessonList().filtered(predicate);
     }
 
     @Override
@@ -331,13 +327,24 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public ObservableList<Task> getUpcomingTasks() {
+    public ObservableList<Task> getOverdueTasks() {
         updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
-        return getFilteredTaskList();
+        LocalDate today = LocalDate.now();
+        Predicate<Task> p = task -> task.getDate().isBefore(today);
+        return getFilteredTaskList().filtered(p);
+    }
+
+    @Override
+    public ObservableList<Task> getFutureTasks() {
+        updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
+        LocalDate oneWeekLater = LocalDate.now().plusWeeks(1);
+        Predicate<Task> p = task -> task.getDate().isAfter(oneWeekLater);
+        return getFilteredTaskList().filtered(p);
     }
 
     @Override
     public ObservableList<Task> getDayUpcomingTasks(LocalDate date) {
+        updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
         Predicate<Task> p = task -> task.getDate().equals(date);
         return getFilteredTaskList().filtered(p);
     }
