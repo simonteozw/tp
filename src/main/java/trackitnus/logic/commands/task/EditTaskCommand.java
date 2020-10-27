@@ -2,6 +2,7 @@ package trackitnus.logic.commands.task;
 
 import static java.util.Objects.requireNonNull;
 import static trackitnus.commons.core.Messages.MESSAGE_DUPLICATE_TASK;
+import static trackitnus.commons.core.Messages.MESSAGE_MODULE_DOES_NOT_EXIST;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
@@ -84,6 +85,10 @@ public class EditTaskCommand extends Command {
 
         if (!taskToEdit.isSameTask(editedTask) && model.hasTask(editedTask)) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
+        }
+
+        if (editedTask.getCode().isPresent() && !model.hasModule(editedTask.getCode().get())) {
+            throw new CommandException(MESSAGE_MODULE_DOES_NOT_EXIST);
         }
 
         model.setTask(taskToEdit, editedTask);
