@@ -15,9 +15,10 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     1. [Module Manager](#module-manager)
     2. [Lesson Manager](#lesson-manager)
     3. [Task Manager](#task-manager)
-    4. [Upcoming Tab](#upcoming-tab)
-    5. [Logging](#logging)
-    6. [Configuration](#config)
+    4. [Contact Manager](#contact-manager)
+    5. [Upcoming Tab](#upcoming-tab)
+    6. [Logging](#logging)
+    7. [Configuration](#config)
 5. [**Documentation**](#documentation)
 6. [**Testing**](#testing)
 7. [**Dev Ops**](#devops)<br>
