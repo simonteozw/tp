@@ -11,6 +11,7 @@ import trackitnus.logic.Logic;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.task.Task;
 import trackitnus.ui.UiPart;
+import trackitnus.ui.task.OverdueTaskCard;
 import trackitnus.ui.task.TaskCard;
 
 public class CalendarSectionCard extends UiPart<Region> {
@@ -37,7 +38,9 @@ public class CalendarSectionCard extends UiPart<Region> {
         this.calendarSection = calendarSection;
         this.logic = logic;
         sectionTitle.setText(calendarSection.getTitle());
-
+        if (calendarSection.getTitle().equals("Overdue")) {
+            sectionTitle.setStyle("-fx-text-fill: #C24949");
+        }
         taskListView.prefHeightProperty().bind(Bindings.size(taskList).multiply(taskRowHeight).add(10));
         taskListView.setItems(taskList);
         taskListView.setCellFactory(listView -> new TaskListViewCell());
@@ -71,7 +74,7 @@ public class CalendarSectionCard extends UiPart<Region> {
                 setText(null);
             } else {
                 try {
-                    setGraphic(new TaskCard(task, logic.getTaskIndex(task).getOneBased()).getRoot());
+                    setGraphic(new OverdueTaskCard(task, logic.getTaskIndex(task).getOneBased()).getRoot());
                 } catch (CommandException e) {
                     e.printStackTrace();
                 }

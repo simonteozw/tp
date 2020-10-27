@@ -21,8 +21,6 @@ public class TaskCard extends UiPart<Region> {
     private Label id;
     @FXML
     private Label name;
-//    @FXML
-//    private Label date;
     @FXML
     private Label remark;
 
@@ -34,7 +32,6 @@ public class TaskCard extends UiPart<Region> {
         this.task = task;
         id.setText("[" + displayedIndex + "] ");
         name.setText(task.getName().toString());
-//        date.setText(task.getDate().toString());
         remark.setText("\t" + task.getRemark());
     }
 

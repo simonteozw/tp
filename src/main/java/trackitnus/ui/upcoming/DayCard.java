@@ -15,6 +15,8 @@ import trackitnus.model.task.Task;
 import trackitnus.ui.UiPart;
 import trackitnus.ui.task.TaskCard;
 
+import java.time.LocalDate;
+
 public class DayCard extends UiPart<Region> {
 
     private static final String FXML = "/Upcoming/DayCard.fxml";
@@ -42,21 +44,32 @@ public class DayCard extends UiPart<Region> {
         super(FXML);
         this.day = day;
         this.logic = logic;
-        date.setText(day.getSectionHeader());
+
+        if (date.equals(LocalDate.now())) {
+            date.setText("TODAY - " + day.getSectionHeader());
+        } else {
+            date.setText(day.getSectionHeader());
+        }
 
         if (lessonList.isEmpty()) {
             lessonListView.setStyle("-fx-background-color: transparent");
         }
+
+        setUpLessonView(lessonList);
+        setUpTaskView(taskList);
+    }
+
+    private void setUpLessonView(ObservableList<Lesson> lessonList) {
         lessonListView.prefHeightProperty().bind(Bindings.size(lessonList).multiply(lessonRowHeight).add(10));
         lessonListView.setItems(lessonList);
         lessonListView.setCellFactory(listView -> new LessonListViewCell());
+    }
 
+    private void setUpTaskView(ObservableList<Task> taskList) {
         taskListView.prefHeightProperty().bind(Bindings.size(taskList).multiply(taskRowHeight).add(35));
         taskListView.setItems(taskList);
         taskListView.setCellFactory(listView -> new TaskListViewCell());
-
     }
-
 
     @Override
     public boolean equals(Object other) {
