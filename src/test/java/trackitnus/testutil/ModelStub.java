@@ -83,6 +83,11 @@ public class ModelStub implements Model {
     }
 
     @Override
+    public ObservableList<Contact> getAllContacts() {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
     public ObservableList<Contact> getFilteredContactList() {
         throw new AssertionError("This method should not be called.");
     }
