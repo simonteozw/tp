@@ -123,7 +123,6 @@ public class ModelManager implements Model {
     @Override
     public void addContact(Contact contact) {
         trackIter.addContact(contact);
-        updateFilteredContactList(PREDICATE_SHOW_ALL_CONTACTS);
     }
 
     @Override
@@ -227,7 +226,6 @@ public class ModelManager implements Model {
     @Override
     public void addTask(Task task) {
         trackIter.addTask(task);
-        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
     }
 
     @Override
@@ -277,7 +275,6 @@ public class ModelManager implements Model {
     @Override
     public void addLesson(Lesson module) {
         trackIter.addLesson(module);
-        updateFilteredLessonList(PREDICATE_SHOW_ALL_LESSONS);
     }
 
     @Override

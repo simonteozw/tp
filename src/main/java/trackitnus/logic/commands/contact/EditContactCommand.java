@@ -6,7 +6,6 @@ import static trackitnus.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_PHONE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_TAG;
-import static trackitnus.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -96,7 +95,6 @@ public class EditContactCommand extends Command {
         }
 
         model.setContact(contactToEdit, editedContact);
-        model.updateFilteredContactList(PREDICATE_SHOW_ALL_CONTACTS);
         return new CommandResult(String.format(MESSAGE_EDIT_CONTACT_SUCCESS, editedContact));
     }
 

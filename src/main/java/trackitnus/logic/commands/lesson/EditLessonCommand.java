@@ -6,7 +6,6 @@ import static trackitnus.commons.core.Messages.MESSAGE_MODULE_DOES_NOT_EXIST;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_TYPE;
-import static trackitnus.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
 
 import java.util.List;
 import java.util.Optional;
@@ -98,7 +97,6 @@ public class EditLessonCommand extends Command {
         }
 
         model.setLesson(lessonToEdit, editedLesson);
-        model.updateFilteredContactList(PREDICATE_SHOW_ALL_CONTACTS);
         return new CommandResult(String.format(MESSAGE_EDIT_LESSON_SUCCESS, editedLesson));
     }
 
