@@ -53,7 +53,7 @@ public class ModulePanel extends UiPart<Region> {
         super(FXML);
         header.setWrapText(true);
         header.setMaxWidth(500);
-        header.setText(module.getCode().code + " " + module.getName().fullName);
+        header.setText(module.getCode().code + " " + module.getName().value);
 
         ObservableList<Lesson> lessons = logic.getModuleLessons(module.getCode());
         ObservableList<Task> tasks = logic.getModuleTasks(module.getCode());

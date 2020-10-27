@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import trackitnus.commons.core.GuiSettings;
+import trackitnus.commons.core.index.Index;
 import trackitnus.commons.core.LogsCenter;
 import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
@@ -19,7 +20,6 @@ import trackitnus.model.ReadOnlyTrackIter;
 import trackitnus.model.commons.Code;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.lesson.Lesson;
-import trackitnus.model.lesson.LessonWeekday;
 import trackitnus.model.module.Module;
 import trackitnus.model.task.Task;
 import trackitnus.storage.Storage;

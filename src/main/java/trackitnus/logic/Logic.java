@@ -90,13 +90,6 @@ public interface Logic {
     ObservableList<Task> getModuleTasks(Code code);
 
     /**
-     * @param code The module code to query
-     * @return the list of contacts for a specific module
-     */
-    ObservableList<Contact> getModuleContacts(Code code); // TODO: check if the list of contacts has been sorted in the
-    // correct order
-
-    /**
      * @return the list of all tasks that take place on and after the current day
      */
     ObservableList<Task> getUpcomingTasks();
