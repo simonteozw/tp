@@ -21,7 +21,8 @@ import trackitnus.model.module.Module;
 public class EditModuleCommand extends Command {
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = Module.TYPE + COMMAND_WORD + ": Edits the details of the module "
+    public static final String MESSAGE_USAGE = Module.TYPE + " " + COMMAND_WORD
+        + ": Edits the details of the module "
         + "identified "
         + "by the module code. "
         + "Existing values will be overwritten by the input values.\n"
