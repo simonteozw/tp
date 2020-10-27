@@ -2,8 +2,7 @@
 
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.StackPane?>
-<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="placeHolder" styleClass="result-container"
-           xmlns="http://javafx.com/javafx/8">
+<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:id="placeHolder" styleClass="result-container">
     <TextArea fx:id="resultDisplay" editable="false" styleClass="result-display"
               text="Welcome to TrackIt@NUS. Click the Help button on the side menu if you're lost!"/>
 </StackPane>
