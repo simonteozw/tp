@@ -256,7 +256,6 @@ public class ModelManager implements Model {
             throw new CommandException(Messages.MESSAGE_TASK_DOES_NOT_EXIST);
         }
         return Index.fromZeroBased(index);
-//        return index;
     }
 
     //=========== Lesson ================================================================================
@@ -312,6 +311,16 @@ public class ModelManager implements Model {
         Predicate<Lesson> predicate = lesson -> (lesson.getCode().equals(code));
         updateFilteredLessonList(predicate);
         return getFilteredLessonList();
+    }
+
+    @Override
+    public Index getLessonIndex(Lesson lesson) throws CommandException {
+        ObservableList<Lesson> lessonList = getFilteredLessonList();
+        int index = lessonList.indexOf(lesson);
+        if (index == -1) {
+            throw new CommandException(Messages.MESSAGE_LESSON_DOES_NOT_EXIST);
+        }
+        return Index.fromZeroBased(index);
     }
 
     @Override

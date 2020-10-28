@@ -104,11 +104,18 @@ public interface Logic {
     ObservableList<Task> getDayUpcomingTasks(LocalDate date);
 
     /**
-     * @param task The task to get index of
-     * @return the index of the task in all tasks
+     * @param task The task to get index of.
+     * @return The index of the task in list of all tasks.
      * @throws CommandException
      */
     Index getTaskIndex(Task task) throws CommandException;
+
+    /**
+     * @param lesson The lesson to get index of.
+     * @return The index of the lesson in list of all lessons.
+     * @throws CommandException
+     */
+    Index getLessonIndex(Lesson lesson) throws CommandException;
 
     /**
      * Returns the user prefs' address book file path.

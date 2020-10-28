@@ -103,6 +103,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public Index getLessonIndex(Lesson lesson) throws CommandException {
+        return model.getLessonIndex(lesson);
+    }
+
+    @Override
     public ObservableList<Contact> getModuleContacts(Code code) {
         return model.getModuleContacts(code);
     }

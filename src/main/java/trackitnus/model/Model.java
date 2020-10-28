@@ -256,6 +256,12 @@ public interface Model {
     ObservableList<Lesson> getModuleLessons(Code code);
 
     /**
+     * @param lesson The lesson to check for.
+     * @return The index of the lesson w.r.t the last shown Lesson list.
+     */
+    Index getLessonIndex(Lesson lesson) throws CommandException;
+
+    /**
      * @param code The module code to query
      * @return the list of contacts for a specific module
      */
