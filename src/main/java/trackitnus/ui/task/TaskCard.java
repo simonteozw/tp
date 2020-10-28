@@ -20,6 +20,8 @@ public class TaskCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
+    private Label code;
+    @FXML
     private Label name;
     @FXML
     private Label remark;
@@ -32,7 +34,8 @@ public class TaskCard extends UiPart<Region> {
         this.task = task;
         id.setText("[" + displayedIndex + "] ");
         name.setText(task.getName().toString());
-        remark.setText("\t" + task.getRemark());
+        remark.setText(task.getRemark());
+        code.setText(task.getCode().isPresent() ? task.getCode().get().code + " " : "");
     }
 
     @Override

@@ -21,6 +21,8 @@ public class OverdueTaskCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
+    private Label code;
+    @FXML
     private Label name;
     @FXML
     private Label date;
@@ -37,7 +39,8 @@ public class OverdueTaskCard extends UiPart<Region> {
         name.setText(task.getName().toString());
         date.setText(task.getDate().format(formatter));
         date.setStyle("-fx-text-fill: #C24949");
-        remark.setText("\t" + task.getRemark());
+        remark.setText(task.getRemark());
+        code.setText(task.getCode().isPresent() ? task.getCode().get().code + " " : "");
     }
 
 }
