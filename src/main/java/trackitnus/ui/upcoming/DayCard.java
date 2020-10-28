@@ -115,7 +115,11 @@ public class DayCard extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new UpcomingLessonCard(lesson, getIndex() + 1).getRoot());
+                try {
+                    setGraphic(new UpcomingLessonCard(lesson, logic.getLessonIndex(lesson).getOneBased()).getRoot());
+                } catch (CommandException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
