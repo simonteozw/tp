@@ -18,7 +18,11 @@ public class TaskCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
+    private HBox labelContainer;
+    @FXML
     private Label id;
+    @FXML
+    private Label code;
     @FXML
     private Label name;
     @FXML
@@ -33,6 +37,7 @@ public class TaskCard extends UiPart<Region> {
         id.setText("[" + displayedIndex + "] ");
         name.setText(task.getName().toString());
         remark.setText("\t" + task.getRemark());
+        code.setText(task.getCode().isPresent() ? task.getCode().get().code : "");
     }
 
     @Override
