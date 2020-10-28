@@ -105,16 +105,6 @@ A sample of CS2030's module page in TrackIt@NUS. The relevant lessons, tasks, an
 
 ## Module <a name="module"></a>
 
-### View
-For: Show information about the module with the specified `MODULE_CODE`. In doing so, the app will automatically
- switch to the specific module's tab.
-
-Format: `M view m/MODULE_CODE`
-
-Examples: `M view m/CS2103T`
-
-Remark: The `MODULE_CODE` provided must be present in the Module list.
-
 ### Add
 
 For: Add a new module.
@@ -181,44 +171,64 @@ Remark: The `INDEX` provided must be positive and cannot be larger than number o
 
 ## Task <a name="task"></a>
 
-### View
-For: Show the information about the task with the specified `INDEX`. In doing so, the task will be expanded to show
- all the relevant information.
+Managing all your tasks can be so stressful! TrackIt@NUS helps alleviate that stress with our built-in Task Manager
+! To view all your tasks, simply click on the upcoming tab as shown below.
 
-Format: `T view INDEX`
+![Ui](images/Upcoming.png)
 
-Examples: `T view 1`
+This sorts all your tasks by date. To view module-specific tasks, click on any of the module tabs as shown below.
 
-Remark: The `INDEX` provided must be positive and cannot be larger than the number of Tasks.
+![Ui](images/ModuleTasks.png)
+
+:information_source: All module-specific tasks are shown in the upcoming tab, but not vice versa.
+
+You can also perform commands on the tasks as explained below.
 
 ### Add
-For: Add a new task.
+
+After a day of school you realise that you now have a few more tasks to complete and wish to keep track of them. This is
+ the command for adding a new task to TrackIt@NUS. 
 
 Format: `T add n/NAME d/DATE [m/MODULE_CODE] [r/REMARK]`
 
-Examples: `T add n/Assignment 1 d/20/11/2020 r/Focus on Chapters 1-3`
+Examples: 
 
-Remark: A task can either belong to a module or not. Hence, the `MODULE_CODE` is optional. The `DATE` provided must
- be in the form `dd/MM/yyyy` or `dd/MM/yyyy hh:mm`.
+* `T add n/Assignment 1 m/CS2100 d/20/11/2020 r/Focus on Chapters 1-3`
+* `T add n/Plan for Bob's birthday d/12/11/2020`
+* `T add n/Buy mooncakes for Mum d/28/10/2020 r/Remember to get Durian-flavoured ones`
+
+:information_source: The parameters `m/MODULE_CODE` and `r/REMARK` are optional
+
+:warning: The `DATE` provided must be in the format `dd/MM/yyyy`
 
 ### Edit
-For: Edit the task with the specified `INDEX`.
+After adding a task to TrackIt@NUS, you may want to change it, perhaps extend the deadline or change it's remark. The
+ edit command is what you should use to do so.
 
 Format: `T edit INDEX [n/NAME] [d/DATE] [m/MODULE_CODE] [r/REMARK]`
 
-Examples: `T edit 1 n/Assignment 1 d/22/11/2020`
+Examples: 
 
-Remark: The `INDEX` provided must be positive and cannot be larger than number of Tasks. At least 1
- field must be provided for editing. i.e. `T edit 1` is not allowed.
+![Ui](images/EditTask.png)
+
+* `T edit 2 n/Work on midterm report` changes the name of the Task
+* `T edit 2 r/min 1000 words` changes the remark of the Task
+* `T edit 2 m/CS2100` changes the module code of the Task 
+
+:information_source: The `INDEX` provided must be positive and cannot be larger than number of Tasks
+
+:warning: At least 1 field must be provided for editing. i.e. `T edit 1` is not allowed
+
+:bulb: Write `T edit 1 m/` to remove the module code from the task. Now, the task does not belong to any module
 
 ### Delete
-For: Delete the task with the specified `INDEX`.
+Once you have completed a task, you can delete it. This is the command to do so.
 
 Format: `T delete INDEX`
 
 Examples: `T delete 2`
 
-Remark: The `INDEX` provided must be positive and cannot be larger than the number of Tasks.
+:information_source: The `INDEX` provided must be positive and cannot be larger than the number of Tasks
 
 ## Contact <a name="contact"></a>
 
@@ -303,7 +313,6 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 
 | Command | Example |
 | ---- | ------ |
-| **View:** `M view m/MODULE_CODE` | `M view m/CS2100` |
 | **Add:** `M add m/MODULE_CODE n/NAME` | `M add m/CS2100 n/Computer Organisation` |
 | **Edit:** `M edit m/MODULE_CODE [m/NEW_MODULE_CODE] [n/NAME]` | `M edit m/CS1231S n/Discrete Mathematics` |
 | **Delete:** `M delete m/MODULE_CODE` | `M delete m/CS1101S` |
@@ -312,7 +321,6 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 
 | Command | Example |
 | ---- | ------ |
-| **View:** `T view INDEX` | `T view 1` |
 | **Add:** `T add n/NAME d/DATE [m/MODULE_CODE] [r/REMARK]` | `T add n/Assignment 1 d/20/11/2020 r/Focus on Chapters 1-3` |
 | **Edit:** `T edit INDEX [n/NAME] [d/DATE] [m/MODULE_CODE] [r/REMARK]` | `T edit 1 n/Finish Assignment` |
 | **Delete:** `T delete INDEX` | `T delete 1` |
@@ -337,6 +345,5 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 
 | Command | Example |
 | ---- | ------ |
-| **Search:** `find KEYWORD` | `find CS1101S` |
 | **Help:** `help` | `help` |
 | **Exit:** `exit` | `exit` |
