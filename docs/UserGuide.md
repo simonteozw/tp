@@ -8,7 +8,7 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 3. [About](#about)
     1. [Common Symbols](#common-symbols)
     2. [Command Format](#command-format)
-    3. [General explanation of how Commands work](#general-exp)
+    3. [Commands and their Purposes](#command-purpose)
 4. [Features](#features)
     1. [Module](#module)
     2. [Lesson](#lesson)
@@ -62,6 +62,11 @@ What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) 
 
 ## About <a name="about"></a>
 
+There are many things you can use TrackIt@NUS for. We have structured this document so it is easy for you to find
+ what you need. In the [Common Symbols](#common-symbols), [Command Format](#command-format), and 
+ [Commands and their Purposes](#command-purpose) sections, you will find useful tips on reading this document. It is
+  then followed by the [Features](#features) section, where the main features of TrackIt@NUS are documented.
+
 ### Common Symbols <a name="common-symbols"></a>
 
 | Symbol | Description |
@@ -81,27 +86,20 @@ What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) 
 
 :information_source: Parameters can be in any order. e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-### General explanation of how Commands work <a name="general-exp"></a>
+### Commands and their Purposes <a name="command-purpose"></a>
 
-:information_source: A **View** command will display all the relevant information about a certain module/lesson/task
-/contact. Relevant parameters (see [Features](#features) for more info) must be present.
-
-:information_source: An **Add** command will add a module/lesson/task/contact to TrackIt@NUS. Relevant parameters (see [Features](#features) for more info) must be present.
-
-:information_source: An **Edit** command will edit a module/lesson/task/contact. Relevant parameters (see [Features
-](#features) for more info) must be present. All parameters that are not specified will **remain unchanged**.
-
-:information_source: A **Delete** command will delete a module/lesson/task/contact. Relevant parameters (see [Features](#features) for more info) must be present.
+| **Command** | ** Purpose** |
+| -------- | --------- |
+| **Add** | Add a module/lesson/task/contact to TrackIt@NUS. Relevant parameters must be present |
+| **Edit** | Edit a module/lesson/task/contact. Relevant parameters must be present. All parameters that are not specified will **remain unchanged** |
+| **Delete** | Delete a module/lesson/task/contact. Relevant parameters must be present |
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features <a name="features"></a>
 
-![Module](images/Module.png)
-
-A sample of CS2030's module page in TrackIt@NUS. The relevant lessons, tasks, and contacts are all shown as well.
-
-:information_source: Lessons, tasks, and contacts are all linked closely to a module
+This section contains all the information you need to know about the features of TrackIt@NUS. To use each feature 
+or sub-feature, you will need to enter the command into the Command Box.
 
 ## Module <a name="module"></a>
 
