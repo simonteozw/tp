@@ -82,15 +82,15 @@ public class SampleDataUtil {
             new Task(new Name("Plan for Alex's birthday"), LocalDate.parse("12/12/2020", Task.FORMATTER),
                 null, "Buy a cake"),
             new Task(new Name("Buy Mooncakes for Mum"), LocalDate.now().plusDays(3), null, ""),
-            new Task(new Name("Do CS2100 Tutorial"), LocalDate.now().plusDays(5),
+            new Task(new Name("Do Tutorial"), LocalDate.now().plusDays(5),
                 new Code("CS2100"), ""),
-            new Task(new Name("Do CS1101S Mission"), LocalDate.now().plusDays(3),
+            new Task(new Name("Do this week's Mission"), LocalDate.now().plusDays(3),
                 new Code("CS1101S"), "Recursion"),
-            new Task(new Name("Work on GER report"), LocalDate.now().plusDays(2),
+            new Task(new Name("Work on the final report"), LocalDate.now().plusDays(2),
                 new Code("GER1000H"), "min 500 words"),
-            new Task(new Name("Study for MA1101RTest"), LocalDate.parse("05/11/2020", Task.FORMATTER),
+            new Task(new Name("Study for Final Exam"), LocalDate.parse("05/11/2020", Task.FORMATTER),
                 new Code("MA1101R"), "Focus on Diagonalisation"),
-            new Task(new Name("Prepare for CS2103T Demo"), LocalDate.now().plusDays(1),
+            new Task(new Name("Prepare for v1.3 Demo"), LocalDate.now().plusDays(1),
                 new Code("CS2103T"), "Ensure app runs smoothly")
         };
     }
