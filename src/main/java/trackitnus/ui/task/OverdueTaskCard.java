@@ -39,8 +39,8 @@ public class OverdueTaskCard extends UiPart<Region> {
         name.setText(task.getName().toString());
         date.setText(task.getDate().format(formatter));
         date.setStyle("-fx-text-fill: #C24949");
-        remark.setText("\t" + task.getRemark());
-        code.setText(task.getCode().isPresent() ? task.getCode().get().code + " " : "");
+        remark.setText(task.getRemark());
+        code.setText(task.getCode().isPresent() ? task.getCode().get().code + " ": "");
     }
 
 }
