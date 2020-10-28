@@ -13,11 +13,6 @@
     src: url("/fonts/Poppins-Bold.ttf");
 }
 
-@font-face {
-    font-family: "PoppinsBlack";
-    src: url("/fonts/Poppins-Black.ttf");
-}
-
 .background {
     -fx-background-color: #434754;
     background-color: #434754;
