@@ -14,18 +14,28 @@
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 
-Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
-</div>
+1. Fork this repo, and clone the fork into your computer
 
-First, **fork** this repo, and **clone** the fork into your computer.
+2. Open IntelliJ (if your are not in the welcome screen, click `File` > `Close Project` to close the existing project
+ diaglog first)
+ 
+ 3. Configure the JDK
+    1. Click `Configure` > `Project Defaults` > `Project Structure`
+    2. Click `New…​` and find the directory of the JDK
+    3. Follow the guide [_[se-edu/guides] IDEA: Configuring the JDK_](https://se-education.org/guides/tutorials
+    /intellijJdk.html) for more information
+    
+4. Click `Import Project`
 
-If you plan to use Intellij IDEA (highly recommended):
-1. **Configure the JDK**: Follow the guide [_[se-edu/guides] IDEA: Configuring the JDK_](https://se-education.org/guides/tutorials/intellijJdk.html) to to ensure Intellij is configured to use **JDK 11**.
-1. **Import the project as a Gradle project**: Follow the guide [_[se-edu/guides] IDEA: Importing a Gradle project_](https://se-education.org/guides/tutorials/intellijImportGradleProject.html) to import the project into IDEA.<br>
-  :exclamation: Note: Importing a Gradle project is slightly different from importing a normal Java project.
-1. **Verify the setup**:
-   1. Run the `Main` and try a few commands.
-   1. [Run the tests](Testing.md) to ensure they all pass.
+5. Locate the `build.gradle` file and select it. Click `OK`
+
+6. Click `Open as Project`
+
+7. Click `OK` to accept the default settings
+
+8. Run the `Main` and try a few commands
+
+9. [Run the tests](Testing.md) to ensure they all pass
 
 --------------------------------------------------------------------------------------------------------------------
 
