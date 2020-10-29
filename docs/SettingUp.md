@@ -1,11 +1,12 @@
----
-layout: page
-title: Setting up and getting started
----
+#TrackIt@NUS - Setting Up
 
-* Table of Contents
-{:toc}
+## Prerequisites
 
+1. JDK `11` or above
+2. IntelliJ IDE
+
+:information_source: IntelliJ by default has Gradle and JavaFX plugins installed. If you have disabled them, go to
+ `File` > `Settings` > `Plugins` to re-enable them.
 
 --------------------------------------------------------------------------------------------------------------------
 
