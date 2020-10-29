@@ -9,12 +9,27 @@ Interface Ui <<Interface>>
 Class "{abstract}\nUiPart" as UiPart
 Class UiManager
 Class MainWindow
-Class HelpWindow
 Class ResultDisplay
-Class PersonListPanel
-Class PersonCard
 Class StatusBarFooter
 Class CommandBox
+Class SideBar
+
+package SideBar <<Rectangle>> {
+'Class HiddenSideBar #FFFFFF
+}
+
+package UpcomingTab <<Rectangle>> {
+'Class HiddenUpcomingTab #FFFFFF
+}
+
+package ContactTab <<Rectangle>> {
+'Class HiddenContactTab #FFFFFF
+}
+
+package ModuleTab <<Rectangle>> {
+'Class HiddenModuleTab #FFFFFF
+
+}
 }
 
 package Model <<Rectangle>> {
@@ -30,29 +45,35 @@ HiddenOutside ..> Ui
 
 UiManager .left.|> Ui
 UiManager -down-> MainWindow
-MainWindow --> HelpWindow
 MainWindow *-down-> CommandBox
 MainWindow *-down-> ResultDisplay
-MainWindow *-down-> PersonListPanel
 MainWindow *-down-> StatusBarFooter
-
-PersonListPanel -down-> PersonCard
+MainWindow *-down---> SideBar
+MainWindow *-down--> UpcomingTab
+MainWindow *-down--> ContactTab
+MainWindow *-down--> ModuleTab
 
 MainWindow -left-|> UiPart
 
 ResultDisplay --|> UiPart
 CommandBox --|> UiPart
-PersonListPanel --|> UiPart
-PersonCard --|> UiPart
 StatusBarFooter --|> UiPart
-HelpWindow -down-|> UiPart
+SideBar -down-|> UiPart
+UpcomingTab -down-|> UiPart
+ContactTab -down-|> UiPart
+ModuleTab -down-|> UiPart
 
-PersonCard ..> Model
+SideBar ...> Model
+UpcomingTab ...> Model
+ContactTab ...> Model
+ModuleTab ...> Model
 UiManager -right-> Logic
 MainWindow -left-> Logic
 
-PersonListPanel -[hidden]left- HelpWindow
-HelpWindow -[hidden]left- CommandBox
+ModuleTab -[hidden]left- ContactTab
+ContactTab -[hidden]left- UpcomingTab
+UpcomingTab -[hidden]left- SideBar
+SideBar -[hidden]left- CommandBox
 CommandBox -[hidden]left- ResultDisplay
 ResultDisplay -[hidden]left- StatusBarFooter
 
