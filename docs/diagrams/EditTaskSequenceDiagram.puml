@@ -3,6 +3,7 @@
 
 box Logic LOGIC_COLOR_T1
 participant ":EditTaskCommand" as EditTaskCommand LOGIC_COLOR
+participant "index:Index" as index LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
@@ -20,6 +21,17 @@ activate Model
 
 Model --> EditTaskCommand
 deactivate Model
+
+EditTaskCommand -> index : getZeroBased()
+activate index
+
+index --> EditTaskCommand
+deactivate index
+
+EditTaskCommand -> EditTaskCommand : createEditedTask(taskToEdit, editTaskDescriptor)
+activate EditTaskCommand
+EditTaskCommand --> EditTaskCommand
+deactivate EditTaskCommand
 
 EditTaskCommand -> Model : setTask(taskToEdit, editedTask)
 activate Model

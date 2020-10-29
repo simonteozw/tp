@@ -3,6 +3,7 @@
 
 box Logic LOGIC_COLOR_T1
 participant ":AddTaskCommand" as AddTaskCommand LOGIC_COLOR
+participant "t:Task" as task LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
@@ -14,6 +15,24 @@ end box
 
 [-> AddTaskCommand : execute(m)
 activate AddTaskCommand
+
+AddTaskCommand -> Model : hasTask(t)
+activate Model
+
+Model --> AddTaskCommand
+deactivate Model
+
+AddTaskCommand -> task : getCode()
+activate task
+
+task --> AddTaskCommand
+deactivate task
+
+AddTaskCommand -> Model : hasModule(t.getCode().get())
+activate Model
+
+Model --> AddTaskCommand
+deactivate Model
 
 AddTaskCommand -> Model : addTask(t)
 activate Model

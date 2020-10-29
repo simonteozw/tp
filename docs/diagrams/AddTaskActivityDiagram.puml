@@ -7,7 +7,7 @@ start
 
 if () then ([valid command])
     :Parse command arguments;
-    :execute command;
+    :Execute command;
     :Save new task list to trackIter.json;
     :Show success message;
 else ([else])
