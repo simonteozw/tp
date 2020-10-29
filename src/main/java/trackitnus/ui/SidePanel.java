@@ -22,7 +22,6 @@ public class SidePanel extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(SidePanel.class);
     private Consumer<ArrayList<Object>> tabConsumer;
     private Logic logic;
-    private final HelpWindow helpWindow;
     private final int moduleRowHeight = 32;
     private Button selectedTabButton;
 
@@ -48,7 +47,6 @@ public class SidePanel extends UiPart<Region> {
         super(FXML);
         this.tabConsumer = tabConsumer;
         this.logic = logic;
-        helpWindow = new HelpWindow();
         this.initialize();
     }
 
@@ -124,14 +122,14 @@ public class SidePanel extends UiPart<Region> {
      * Relays message to MainWindow to get Help window information in TabPanel.
      * TODO: remove this and the Help window once it is no longer required.
      */
-    public void toggleHelpWindow() {
-        updateButtonDetails(helpButton);
-        if (!helpWindow.isShowing()) {
-            helpWindow.show();
-        } else {
-            helpWindow.focus();
-        }
-    }
+//    public void toggleHelpTab() {
+//        updateButtonDetails(helpButton);
+//        if (!helpWindow.isShowing()) {
+//            helpWindow.show();
+//        } else {
+//            helpWindow.focus();
+//        }
+//    }
 
     /**
      * Updates the details of the current selected tab button.

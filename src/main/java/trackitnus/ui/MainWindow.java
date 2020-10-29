@@ -139,7 +139,6 @@ public class MainWindow extends UiPart<Stage> {
 
         sidePanel = new SidePanel(this::switchTab, logic);
         sidePanelPlaceholder.getChildren().add(sidePanel.getRoot());
-//        sidePanelPlaceholder.getChildren().add(new SidePanel(this::switchTab, logic).getRoot());
 
         //Default tab open
         ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList((Object) "U"));
@@ -154,6 +153,7 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
+
     private void switchTab(ArrayList<Object> tabValues) {
         assert(tabValues.size() >= 1);
         logger.info("Switching tab to: " + String.valueOf(tabValues.get(0)));
@@ -207,7 +207,6 @@ public class MainWindow extends UiPart<Stage> {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
             (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
-//        helpWindow.hide();
         primaryStage.hide();
     }
 
