@@ -1,7 +1,5 @@
 package trackitnus.ui;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
 import javafx.collections.FXCollections;
@@ -9,15 +7,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
 import javafx.util.Callback;
 import trackitnus.commons.core.LogsCenter;
 
@@ -44,7 +39,6 @@ public class HelpPanel extends UiPart<Region> {
         super(FXML);
         helpMessage.setText(HELP_MESSAGE);
 
-//        helpCardTableView.setMaxWidth(500);
         helpCardTableView.setItems(helpCommands());
         helpCardTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         helpCardTableView.setColumnResizePolicy(new Callback<TableView.ResizeFeatures, Boolean>() {
@@ -55,7 +49,6 @@ public class HelpPanel extends UiPart<Region> {
         });
         TableColumn<HelpCard, String> actionCol = new TableColumn<>("Action");
         actionCol.setSortable(false);
-//        actionCol.setMaxWidth(300);
         actionCol.setCellValueFactory(new PropertyValueFactory<HelpCard, String>("Action"));
 
         TableColumn<HelpCard, String> commandCol = new TableColumn<>("Command");
