@@ -12,11 +12,8 @@ Class MainWindow
 Class ResultDisplay
 Class StatusBarFooter
 Class CommandBox
-Class SideBar
-
-package SideBar <<Rectangle>> {
-'Class HiddenSideBar #FFFFFF
-}
+Class SidePanel
+Class Button
 
 package UpcomingTab <<Rectangle>> {
 'Class HiddenUpcomingTab #FFFFFF
@@ -28,7 +25,10 @@ package ContactTab <<Rectangle>> {
 
 package ModuleTab <<Rectangle>> {
 'Class HiddenModuleTab #FFFFFF
+}
 
+package HelpTab <<Rectangle>> {
+'Class HiddenHelpTab #FFFFFF
 }
 }
 
@@ -45,25 +45,28 @@ HiddenOutside ..> Ui
 
 UiManager .left.|> Ui
 UiManager -down-> MainWindow
-MainWindow *-down-> CommandBox
-MainWindow *-down-> ResultDisplay
 MainWindow *-down-> StatusBarFooter
-MainWindow *-down---> SideBar
+MainWindow *-down-> ResultDisplay
+MainWindow *-down-> CommandBox
+MainWindow *-down-> SidePanel
 MainWindow *-down--> UpcomingTab
 MainWindow *-down--> ContactTab
 MainWindow *-down--> ModuleTab
+MainWindow *-down--> HelpTab
 
 MainWindow -left-|> UiPart
 
 ResultDisplay --|> UiPart
 CommandBox --|> UiPart
 StatusBarFooter --|> UiPart
-SideBar -down-|> UiPart
 UpcomingTab -down-|> UiPart
 ContactTab -down-|> UiPart
 ModuleTab -down-|> UiPart
 
-SideBar ...> Model
+SidePanel *-down-> Button
+Button -> UiPart
+
+Button ...> Model
 UpcomingTab ...> Model
 ContactTab ...> Model
 ModuleTab ...> Model
@@ -72,8 +75,8 @@ MainWindow -left-> Logic
 
 ModuleTab -[hidden]left- ContactTab
 ContactTab -[hidden]left- UpcomingTab
-UpcomingTab -[hidden]left- SideBar
-SideBar -[hidden]left- CommandBox
+UpcomingTab -[hidden]left- SidePanel
+SidePanel -[hidden]left- CommandBox
 CommandBox -[hidden]left- ResultDisplay
 ResultDisplay -[hidden]left- StatusBarFooter
 
