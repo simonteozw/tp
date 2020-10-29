@@ -113,6 +113,8 @@ In this section, we will outline the key commands of the Task Manager, namely:
 * `DeleteTaskCommand`
 * `EditTaskCommand`
 
+We will also elaborate on more key function, namely `getModuleTasks`.
+
 Generally, this is how a Task Manager handles a command.
  
  ![Add Task](images/AddTaskActivityDiagram.png)
@@ -129,8 +131,15 @@ The follow shows the sequence diagram of the `EditTaskCommand`.
 
 ![Edit Task Sequence Diagram](images/EditTaskSequenceDiagram.png)
 
+The following shows the sequence diagram of `getModuleTasks`.
+
+![Get Module Tasks Sequence Diagram](images/GetModuleTasksSequenceDiagram.png)
 
 #### Design Considerations
+
+Just by observing the above 3 sequence diagrams, it is clear that adding, deleting, and editing a task are
+ implemented in very similar ways. We chose to do this for simplicity. All task-related commands should behave the
+  same way and hence it is easier for developers to learn the code base and make contributions. 
 
 ### **Contact Manager** <a name="contact-manager"></a>
 
