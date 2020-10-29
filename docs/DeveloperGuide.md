@@ -91,11 +91,11 @@ TrackIt@NUS allows users to keep track of his/her tasks. The task manager is one
  #### Rationale
  
  The task manager is a crucial feature in TrackIt@NUS. Tasks are an integral part of any student's day-to-day life
- . In addition, to better support NUS students, tasks can either belong to a module or not. When adding a task, users
+ . In addition, to better support NUS students, a task can either belong to a module or not. When adding a task, users
   can choose to the include the `m/MODULE_CODE` parameter in order to add a task that belongs to a module. When users
    click into a specific module tab, they can see the tasks belonging to each module.
    
-[ModuleTasks](images/ModuleTasks.png)
+![ModuleTasks](images/ModuleTasks.png)
     
 :information_source: A task does not have to belong a module. In this case, the module parameter of the task is
  simply treated as null.
@@ -108,8 +108,15 @@ TrackIt@NUS allows users to keep track of his/her tasks. The task manager is one
 
 #### Current Implementation
  
-     
+In this section, we will outline the add activity command of the Task Manager which is summarised by the _Activity
+ Diagram_ below.
+ 
+ ![Add Task](images/AddTaskActivityDiagram.png)
                                                                                                             
+
+The following shows the sequence diagram of the `AddTaskCommand`.
+
+![Add Task Sequence Diagram](images/AddTaskSequenceDiagram.png)
 
 ### **Contact Manager** <a name="contact-manager"></a>
 
