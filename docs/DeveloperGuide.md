@@ -71,6 +71,8 @@ In this section, you will learn about the general design and structure TrackIt@N
 
 ### **Common Classes** <a name="common"></a>
 
+The `commons` package contains classes used by multiple other components in the `trackitnus.commons` package.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Implementation** <a name="implementation"></a>
