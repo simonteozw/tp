@@ -56,6 +56,11 @@ Refer to the guide [here](./SettingUp.md).
 
 ## **Design** <a name="design"></a>
 
+In this section, you will learn about the general design and structure TrackIt@NUS. Subsequently, this section will
+ also describe and explain how each component in TrackIt@NUS works individually. TrackIt@NUS is coded using the
+  [_Object Oriented Programming_](#oop) paradigm and it follows the [_Facade Pattern_](#facade-p) and [_Command
+   Pattern_](#command-p) in software design.
+
 ### **Architecture** <a name="architecture"></a>
 
 ### **UI Component** <a name="ui"></a>
@@ -175,6 +180,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ## **Appendix E: Glossary** <a name="appen-e"></a>
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
+
+* **Obect Oriented Programming** <a name="oop"></a>: A type of computer programming paradigm (software design) in which
+ programmers define the data type of a data structure, and the types of operations (functions) that can be applied 
+ to the data structure
+
+* **Facade Pattern** <a name="facade-p"></a>: A structural design pattern that provides a simplified 
+(but limited) interface to a complex system of classes, library or framework.
+ While decreasing the overall complexity of the application, it also helps to move unwanted dependencies to one place
+ 
+* **Command Pattern** <a name="command-p"></a>: A Design Pattern that lets you encapsulate actions within Java
+ classes. Of which, each class has an `execute()` method which is declared in the Command interface the class implements
 
 ## **Appendix F: Instructions for Manual Testing** <a name="appen-f"></a>
 
