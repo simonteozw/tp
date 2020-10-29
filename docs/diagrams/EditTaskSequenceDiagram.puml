@@ -2,7 +2,7 @@
 !include style.puml
 
 box Logic LOGIC_COLOR_T1
-participant ":AddTaskCommand" as AddTaskCommand LOGIC_COLOR
+participant ":EditTaskCommand" as EditTaskCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
@@ -12,16 +12,22 @@ participant ":TrackIter" as TrackIter MODEL_COLOR
 participant ":UniqueTaskList" as UniqueTaskList MODEL_COLOR
 end box
 
-[-> AddTaskCommand : execute(m)
-activate AddTaskCommand
+[-> EditTaskCommand : execute(m)
+activate EditTaskCommand
 
-AddTaskCommand -> Model : addTask(t)
+EditTaskCommand -> Model : getFilteredTaskList()
 activate Model
 
-Model -> TrackIter : addTask(t)
+Model --> EditTaskCommand
+deactivate Model
+
+EditTaskCommand -> Model : setTask(taskToEdit, editedTask)
+activate Model
+
+Model -> TrackIter : setTask(taskToEdit, editedTask)
 activate TrackIter
 
-TrackIter -> UniqueTaskList : add(t)
+TrackIter -> UniqueTaskList : setTask(taskToEdit, editedTask)
 activate UniqueTaskList
 
 UniqueTaskList --> TrackIter
@@ -30,17 +36,17 @@ deactivate UniqueTaskList
 TrackIter --> Model
 deactivate TrackIter
 
-Model --> AddTaskCommand
+Model --> EditTaskCommand
 deactivate Model
 
 create CommandResult
-AddTaskCommand -> CommandResult
+EditTaskCommand -> CommandResult
 activate CommandResult
 
-CommandResult --> AddTaskCommand : r
+CommandResult --> EditTaskCommand : r
 deactivate CommandResult
 
-[<--AddTaskCommand : r
-deactivate AddTaskCommand
+[<--EditTaskCommand : r
+deactivate EditTaskCommand
 
 @enduml

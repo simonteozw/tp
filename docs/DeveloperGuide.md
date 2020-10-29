@@ -108,15 +108,29 @@ TrackIt@NUS allows users to keep track of his/her tasks. The task manager is one
 
 #### Current Implementation
  
-In this section, we will outline the add activity command of the Task Manager which is summarised by the _Activity
- Diagram_ below.
+In this section, we will outline the key commands of the Task Manager, namely: 
+* `AddTaskCommand` 
+* `DeleteTaskCommand`
+* `EditTaskCommand`
+
+Generally, this is how a Task Manager handles a command.
  
  ![Add Task](images/AddTaskActivityDiagram.png)
                                                                                                             
-
 The following shows the sequence diagram of the `AddTaskCommand`.
 
 ![Add Task Sequence Diagram](images/AddTaskSequenceDiagram.png)
+
+The following shows the sequence diagram of the `DeleteTaskCommand`.
+ 
+![Delete Task Sequence Diagram](images/DeleteTaskSequenceDiagram.png)
+
+The follow shows the sequence diagram of the `EditTaskCommand`.
+
+![Edit Task Sequence Diagram](images/EditTaskSequenceDiagram.png)
+
+
+#### Design Considerations
 
 ### **Contact Manager** <a name="contact-manager"></a>
 

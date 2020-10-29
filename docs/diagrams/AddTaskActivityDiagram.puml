@@ -1,14 +1,14 @@
 @startuml
 start
-:User adds task;
+:User enters command;
 
 'Since the beta syntax does not support placing the condition outside the
 'diamond we place it as the true branch instead.
 
 if () then ([valid command])
     :Parse command arguments;
-    :Add task to UniqueTaskList;
-    :Save all tasks to trackIter.json;
+    :execute command;
+    :Save new task list to trackIter.json;
     :Show success message;
 else ([else])
     :Shows an invalid command message;
