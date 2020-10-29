@@ -131,41 +131,74 @@ Examples: `M delete m/CS2100`
 Remark: The `MODULE_CODE` provided must be present in the Module list.
 
 ## Lesson <a name="lesson"></a>
+Lectures, tutorials, labs, lectures, lectures, recitations, lectures...
+Sometimes, just looking at the timetable makes you question your life choices,
+probably until the next class starts. 
+
+While TrackIt@NUS can't do much to ease your pain, it can, at the very least,
+make sure you won't miss any of those beloved (or dreaded) classes!
+
+To view all your lessons (classes) for the next week, 
+simply click on the upcoming tab as shown below.
+
+![Ui](images/UpcomingLessons.png)
+
+This sorts all your lessons by date.
+To view the lessons of a specific module, click on any of the module tabs as shown below.
+
+![Ui](images/ModuleLessons.png)
+
+:information_source: As of v1.3, only weekly lessons are supported.
+Biweekly and monthly lessons may be added in subsequent versions.
+
+You can also perform commands on the lessons as explained below.
 
 ### Add
-For: Add a lesson to a module.
+The command that makes you moan every time you have to use it. 
+Use this command to add a lesson to a module.
 
-Format: `L add m/MODULE_CODE n/TYPE d/DATE a/LOCATION`
+Format: `L add m/MODULE_CODE n/TYPE d/DATE`
 
-Examples: `L add m/CS2103T n/tutorial d/2pm - 3pm Wed a/COM1`
+Examples:
+* `L add m/GET1020 n/lecture d/Mon 8:00-10:00`
+* `L add m/CS3233 n/tutorial d/MON 17:30-20:00`
 
-Remark: The module must exist prior to adding a lesson. `DATE` must be of the form `START_TIME - END_TIME DAY_OF_WEEK`.`TYPE` must be one of
- the following:
-* `LEC` (for lecture)
-* `TUT` (for tutorial)
-* `LAB` (for laboratory)
-* `SEC` (for sectional teaching)
-* `REC` (for recitation)
+:warning: The `TYPE` must be one of the following: `lecture`, `tutorial`,
+`lab`, `recitation`, or `sectional`.
+
+:warning: The `DATE` provided must be in the format `ddd H:mm-H:mm`;
+times are in 24-hour format.
 
 ### Edit
 
-For: Edit the detail of a lesson
+After adding a lesson, you might still want to change its details. 
+This is the command to do so.
 
-Format: `L edit INDEX [m/MODULE_CODE] [n/TYPE] [d/DATE] [a/LOCATION]`
+Format: `L edit INDEX [m/MODULE_CODE] [n/TYPE] [d/DATE]`
 
-Examples: `L edit 1 m/CS2103T n/tutorial d/2pm - 3pm Monday`
+Examples:
+* `L edit 1 m/CS2103T n/tutorial d/Mon 14:00-15:00`
+* `L edit 4 m/CS3233`
 
-Remark: The `INDEX` provided must be positive and cannot be larger than the number of Lessons. At least 1
- field must be provided for editing. i.e. `L edit 1` is not allowed.
+:information_source: The parameters `m/MODULE_CODE`, `n/TYPE`, and `d/DATE` are optional;
+however, at least one parameter must be provided, i.e. `L edit 1` is not a valid command
+
+:information_source: The `INDEX` provided must be positive 
+and cannot be larger than the number of lessons currently shown
 
 ### Delete
-For: Delete the lesson with the specified `INDEX`
+
+Sometimes, you might want to delete a particular lesson, probably since you've added
+it by mistake, or you hate it so much you want to forget its existence,
+or simply because the module has finished (hooray!). This is the command to do so.
 
 Format: `L delete INDEX`
 
-Examples: `L delete 1`
+Examples:
+* `L delete 1`
 
-Remark: The `INDEX` provided must be positive and cannot be larger than number of Lessons.
+:information_source: The `INDEX` provided must be positive 
+and cannot be larger than the number of lessons currently shown
 
 ## Task <a name="task"></a>
 
