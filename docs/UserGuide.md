@@ -259,10 +259,15 @@ and cannot be larger than the number of lessons currently shown
 Managing all your tasks can be so stressful! TrackIt@NUS helps alleviate that stress with our built-in Task Manager
 ! To view all your tasks, simply click on the upcoming tab as shown below.
 
-![Ui](images/Upcoming.png)
+![Upcoming](images/Upcoming.png)
 
 This sorts all your tasks by date. To view module-specific tasks, click on any of the module tabs as shown below.
 
+<<<<<<< HEAD
+=======
+![ModuleTasks](images/ModuleTasks.png)
+
+>>>>>>> Write rationale for Task Manager
 :information_source: All module-specific tasks are shown in the upcoming tab, but not vice versa.
 
 You can also perform commands on the tasks as explained below.
@@ -292,7 +297,7 @@ Format: `T edit INDEX [n/NAME] [d/DATE] [m/MODULE_CODE] [r/REMARK]`
 
 Examples: 
 
-![Ui](images/EditTask.png)
+![EditTask](images/EditTask.png)
 
 * `T edit 2 n/Work on midterm report` changes the name of the Task
 * `T edit 2 r/min 1000 words` changes the remark of the Task

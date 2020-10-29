@@ -85,6 +85,32 @@ This section describes some noteworthy details on how certain features are imple
 
 ### **Task Manager** <a name="task-manager"></a>
 
+TrackIt@NUS allows users to keep track of his/her tasks. The task manager is one of TrackIt@NUS's basic operations
+.
+ 
+ #### Rationale
+ 
+ The task manager is a crucial feature in TrackIt@NUS. Tasks are an integral part of any student's day-to-day life
+ . In addition, to better support NUS students, tasks can either belong to a module or not. When adding a task, users
+  can choose to the include the `m/MODULE_CODE` parameter in order to add a task that belongs to a module. When users
+   click into a specific module tab, they can see the tasks belonging to each module.
+   
+[ModuleTasks](images/ModuleTasks.png)
+    
+:information_source: A task does not have to belong a module. In this case, the module parameter of the task is
+ simply treated as null.
+     
+:warning: The module must exist (i.e. there must be a module with the specified `MODULE_CODE`) otherwise the add
+ command will not work.
+ 
+:bulb: To remove a task from a module, simply type `T edit INDEX m/` (use the `m/` prefix but leave the `MODULE_CODE
+` parameter empty).
+
+#### Current Implementation
+ 
+     
+                                                                                                            
+
 ### **Contact Manager** <a name="contact-manager"></a>
 
 ### **Upcoming Tab** <a name="upcoming-tab"></a>
