@@ -24,7 +24,7 @@ Class HiddenLogic #FFFFFF
 Class HiddenOutside #FFFFFF
 MainWindow *--> UpcomingPanel
 
-UpcomingPanel *---> DayCard
+UpcomingPanel *--> DayCard
 UpcomingPanel *--> CalendarSection
 
 CalendarSection --> CalendarSectionCard
@@ -32,11 +32,11 @@ CalendarSection --> CalendarSectionCard
 'DayCard -down-|> UiPart
 'CalendarSectionCard -down-|> UiPart
 
-DayCard --> Model
-CalendarSectionCard --> Model
+DayCard ..> Model
+CalendarSectionCard ..> Model
 
 
-DayCard --> Logic
+DayCard ---> Logic
 CalendarSectionCard --> Logic
 
 'UpcomingTab -[hidden]left- Logic
