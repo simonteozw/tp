@@ -77,20 +77,18 @@ class JsonAdaptedContact {
         final Phone modelPhone;
         if (phone == null) {
             modelPhone = null;
+        } else if (!Phone.isValidPhone(phone)) {
+            throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
         } else {
-            if (!Phone.isValidPhone(phone)) {
-                throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
-            }
             modelPhone = new Phone(phone);
         }
 
         final Email modelEmail;
         if (email == null) {
             modelEmail = null;
+        } else if (!Email.isValidEmail(email)) {
+            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
         } else {
-            if (!Email.isValidEmail(email)) {
-                throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
-            }
             modelEmail = new Email(email);
         }
 
