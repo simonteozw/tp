@@ -14,9 +14,8 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     2. [Lesson](#lesson)
     3. [Task](#task)
     4. [Contact](#contact)
-    5. [Search](#search)
-    6. [Help](#help)
-    7. [Exit](#exit)
+    5. [Help](#help)
+    6. [Exit](#exit)
 5. [FAQ](#faq)
 6. [Command Summary](#command-summary)
     1. [Module Commands](#module-commands)
@@ -267,14 +266,6 @@ Format: `C delete INDEX`
 Examples: `C delete 1`
 
 Remark: The `INDEX` provided must be positive and cannot be larger than the number of Contacts.
-
-## Searching the app <a name="search"></a>
-
-For: Searching the app for relevant modules, lessons, tasks, or contacts
-
-Format: `find KEYWORD`
-
-Examples: `find CS1101S`
 
 ## Getting help <a name="help"></a>
 
