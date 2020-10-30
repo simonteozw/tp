@@ -3,6 +3,7 @@ package trackitnus.model.contact;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 import trackitnus.commons.util.CollectionUtil;
@@ -28,7 +29,7 @@ public class Contact {
      * Every field must be present and not null.
      */
     public Contact(Name name, Phone phone, Email email, Set<Tag> tags) {
-        CollectionUtil.requireAllNonNull(name, phone, email, tags);
+        CollectionUtil.requireAllNonNull(name, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -39,12 +40,12 @@ public class Contact {
         return name;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public Optional<Phone> getPhone() {
+        return Optional.ofNullable(phone);
     }
 
-    public Email getEmail() {
-        return email;
+    public Optional<Email> getEmail() {
+        return Optional.ofNullable(email);
     }
 
     /**
@@ -99,12 +100,16 @@ public class Contact {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
-            .append(" Phone: ")
-            .append(getPhone())
-            .append(" Email: ")
-            .append(getEmail())
-            .append(" Tags: ");
+        builder.append(getName());
+        if (getPhone().isPresent()) {
+            builder.append(" Phone: ")
+                .append(getPhone().get());
+        }
+        if (getEmail().isPresent()) {
+            builder.append(" Email: ")
+                .append(getEmail().get());
+        }
+        builder.append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
     }

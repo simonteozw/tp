@@ -20,7 +20,6 @@ public class Task {
     public static final String WEIGHTAGE_MESSAGE_CONSTRAINTS = "Weightage should be in the"
         + " form of a floating point number";
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    public static final String VALIDATION_REGEX = "[^\\s].*";
 
     private final Name name;
     private final LocalDate date;
@@ -44,10 +43,6 @@ public class Task {
 
     public LocalDate getDate() {
         return date;
-    }
-
-    public static boolean isValidString(String test) {
-        return test.matches(VALIDATION_REGEX);
     }
 
     public boolean belongsToModule(Code code) {

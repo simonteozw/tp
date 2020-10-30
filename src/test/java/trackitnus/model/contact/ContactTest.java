@@ -1,5 +1,6 @@
 package trackitnus.model.contact;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static trackitnus.testutil.typical.TypicalContacts.ALICE;
@@ -88,5 +89,11 @@ public class ContactTest {
         // different tags -> returns false
         editedAlice = new ContactBuilder(ALICE).withTags(ContactCommandTestUtil.VALID_TAG_HUSBAND).build();
         assertFalse(ALICE.equals(editedAlice));
+    }
+
+    @Test
+    public void test_toString_success() {
+        Contact aliceCopy = new ContactBuilder(ALICE).build();
+        assertEquals(ALICE.toString(), "Alice Pauline Phone: 94351253 Email: alice@example.com Tags: [friends]");
     }
 }

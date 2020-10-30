@@ -49,16 +49,16 @@ public class ContactCard extends UiPart<Region> {
         id.setText("[" + displayedIndex + "] ");
         name.setText(contact.getName().value);
 
-        if (contact.getPhone() == null) {
+        if (contact.getPhone().isEmpty()) {
             phone.setText("");
         } else {
-            phone.setText(contact.getPhone().value);
+            phone.setText(contact.getPhone().get().value);
         }
 
-        if (contact.getEmail() == null) {
+        if (contact.getEmail().isEmpty()) {
             email.setText("");
         } else {
-            email.setText(contact.getEmail().value);
+            email.setText(contact.getEmail().get().value);
         }
 
         contact.getTags().stream()
