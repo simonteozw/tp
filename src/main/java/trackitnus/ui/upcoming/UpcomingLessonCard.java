@@ -12,7 +12,7 @@ import trackitnus.ui.UiPart;
  */
 public class UpcomingLessonCard extends UiPart<Region> {
 
-    private static final String FXML = "/Upcoming/UpcomingLessonListCard.fxml";
+    private static final String FXML = "Upcoming/UpcomingLessonListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.

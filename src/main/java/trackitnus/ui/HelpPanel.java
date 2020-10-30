@@ -21,7 +21,7 @@ public class HelpPanel extends UiPart<Region> {
     public static final String TYPE = "H";
     public static final String USERGUIDE_URL = "https://wehavenolinkyethaha.html";
     public static final String HELP_MESSAGE = USERGUIDE_URL;
-    private static final String FXML = "/HelpPanel.fxml";
+    private static final String FXML = "HelpPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(trackitnus.ui.HelpPanel.class);
 
     @FXML

@@ -19,7 +19,7 @@ import trackitnus.ui.task.TaskCard;
 
 public class DayCard extends UiPart<Region> {
 
-    private static final String FXML = "/Upcoming/DayCard.fxml";
+    private static final String FXML = "Upcoming/DayCard.fxml";
 
     public final Day day;
     private final int lessonRowHeight = 30;

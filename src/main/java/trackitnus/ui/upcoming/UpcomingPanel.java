@@ -17,7 +17,7 @@ import trackitnus.ui.UiPart;
 
 public class UpcomingPanel extends UiPart<Region> {
     public static final String TYPE = "U";
-    private static final String FXML = "/Upcoming/UpcomingPanel.fxml";
+    private static final String FXML = "Upcoming/UpcomingPanel.fxml";
 
     private final Logic logic;
     private final Logger logger = LogsCenter.getLogger(UpcomingPanel.class);

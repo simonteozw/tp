@@ -14,7 +14,7 @@ import trackitnus.ui.UiPart;
 import trackitnus.ui.task.OverdueTaskCard;
 
 public class CalendarSectionCard extends UiPart<Region> {
-    private static final String FXML = "/Upcoming/CalendarSectionCard.fxml";
+    private static final String FXML = "Upcoming/CalendarSectionCard.fxml";
 
     public final CalendarSection calendarSection;
     private Logic logic;

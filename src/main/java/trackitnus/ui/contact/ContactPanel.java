@@ -14,7 +14,7 @@ import trackitnus.ui.UiPart;
 
 
 public class ContactPanel extends UiPart<Region> {
-    private static final String FXML = "/Contact/ContactPanel.fxml";
+    private static final String FXML = "Contact/ContactPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ContactPanel.class);
 
     private ContactListPanel contactListPanel;
