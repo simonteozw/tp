@@ -70,6 +70,10 @@
     {
       "code": "GER1000H",
       "name": "Quantitative Reasoning"
+    },
+    {
+      "code": "CS2030S",
+      "name": "Programming Methodology"
     }
   ],
   "tasks": [
@@ -110,6 +114,12 @@
       "remark": "Focus on Diagonalisation"
     },
     {
+      "name": "Code Project 2",
+      "date": "20/11/2020",
+      "code": "CS2030S",
+      "remark": "(deadline is at the end of reading week)"
+    },
+    {
       "name": "Plan for Alex's birthday",
       "date": "12/12/2020",
       "code": null,
@@ -120,6 +130,11 @@
     {
       "code": "CS1101S",
       "type": "LEC",
+      "date": "Fri 12:00-14:00"
+    },
+    {
+      "code": "CS2030S",
+      "type": "LAB",
       "date": "Fri 12:00-14:00"
     },
     {
@@ -138,6 +153,11 @@
       "date": "Mon 12:00-14:00"
     },
     {
+      "code": "CS2030S",
+      "type": "LEC",
+      "date": "Mon 12:00-14:00"
+    },
+    {
       "code": "GER1000H",
       "type": "LEC",
       "date": "Tue 12:00-14:00"
@@ -146,6 +166,11 @@
       "code": "CS2100",
       "type": "LEC",
       "date": "Tue 16:00-18:00"
+    },
+    {
+      "code": "CS2030S",
+      "type": "REC",
+      "date": "Wed 12:00-13:00"
     },
     {
       "code": "MA1101R",

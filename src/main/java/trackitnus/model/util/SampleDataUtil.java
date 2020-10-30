@@ -77,8 +77,6 @@ public class SampleDataUtil {
                 LocalTime.NOON.plusHours(2))),
             new Lesson(new Code("GER1000H"), Type.SEC, new LessonDateTime(DayOfWeek.Fri, LocalTime.NOON.plusHours(2),
                 LocalTime.NOON.plusHours(4))),
-            new Lesson(new Code("GER1000H"), Type.SEC, new LessonDateTime(DayOfWeek.Fri, LocalTime.NOON.plusHours(2),
-                LocalTime.NOON.plusHours(4))),
             new Lesson(new Code("CS2030S"), Type.LEC, new LessonDateTime(DayOfWeek.Mon, LocalTime.NOON,
                 LocalTime.NOON.plusHours(2))),
             new Lesson(new Code("CS2030S"), Type.REC, new LessonDateTime(DayOfWeek.Wed, LocalTime.NOON,

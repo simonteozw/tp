@@ -16,12 +16,13 @@ public class AddLessonCommandParserTest {
         CommandParserTestUtil.assertParseSuccess(parser, "L add m/CS2100 n/laboratory d/Mon 09:00-10:00",
             new AddLessonCommand(TypicalLessons.get(3)));
         CommandParserTestUtil.assertParseSuccess(parser, "L add m/CS2030S n/recitation d/Wed 12:00-13:00",
-            new AddLessonCommand(TypicalLessons.get(12)));
+            new AddLessonCommand(TypicalLessons.get(11)));
         CommandParserTestUtil.assertParseSuccess(parser, "L add m/CS1101S n/Lec d/Fri 12:00-14:00",
             new AddLessonCommand(TypicalLessons.get(0)));
         CommandParserTestUtil.assertParseSuccess(parser, "L add m/CS2100 n/Lab d/Mon 09:00-10:00",
             new AddLessonCommand(TypicalLessons.get(3)));
         CommandParserTestUtil.assertParseSuccess(parser, "L add m/CS2030S n/Rec d/Wed 12:00-13:00",
-            new AddLessonCommand(TypicalLessons.get(12)));
+            new AddLessonCommand(TypicalLessons.get(11)));
     }
+
 }
