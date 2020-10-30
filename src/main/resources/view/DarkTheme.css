@@ -139,6 +139,20 @@
     -fx-font-size: 17px;
 }
 
+.table-view .column-header .label {
+    -fx-font-family: Poppins;
+    -fx-font-weight: bold;
+    -fx-font-size: 17px;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: transparent;
+}
+
+.copy-url-button {
+    -fx-border-color: white;
+}
+
 .module_small_label {
     -fx-font-family: "Poppins";
     -fx-font-size: 15px;
