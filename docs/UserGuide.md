@@ -9,7 +9,11 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     1. [Common Symbols](#common-symbols)
     2. [Command Format](#command-format)
     3. [Commands and their Purposes](#command-purpose)
-4. [Features](#features)
+4. [Layout](#layout)
+    1. [Upcoming Tab](#upcomingtab)
+    2. [Contacts Tab](#contactstab)
+    3. [Module Tabs](#moduletabs)
+5. [Features](#features)
     1. [Module](#module)
     2. [Lesson](#lesson)
     3. [Task](#task)
@@ -17,8 +21,8 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     5. [Search](#search)
     6. [Help](#help)
     7. [Exit](#exit)
-5. [FAQ](#faq)
-6. [Command Summary](#command-summary)
+6. [FAQ](#faq)
+7. [Command Summary](#command-summary)
     1. [Module Commands](#module-commands)
     2. [Task Commands](#task-commands)
     3. [Lesson Commands](#lesson-commands)
@@ -95,7 +99,48 @@ There are many things you can use TrackIt@NUS for. We have structured this docum
 | **Delete** | Delete a module/lesson/task/contact. Relevant parameters must be present |
 
 --------------------------------------------------------------------------------------------------------------------
+## Layout <a name="layout"></a>
 
+This section gives you a brief overview of the layout of TrackIt@NUS.
+TrackIt@NUS is divided into three main types of tabs:
+* The **Upcoming** Tab,
+* The **Contacts** Tab, and
+* **Module** Tabs
+
+When you switch to a tab, the tab text will be highlighted in **blue**.
+
+### Upcoming Tab <a name="upcomingtab"></a>
+This is the main tab of the application, and is the default page when the app is started. It features a calendar view of the days for the next week, as well as the **Tasks** and **Lessons** you have added under the respective days they fall under. 
+
+1. The first section labelled **"Overdue"** in red text, shows the Tasks that are past their deadline, and you have yet to complete. These **Tasks** will remain there until you delete them.
+
+2. The second section is the weekly calendar view, with your **Lessons** and **Tasks** shown under each day.
+
+3. The last section is labelled **Future**, and shows any **Tasks** that you may have added with a deadline falling after the date 7 days from today.
+
+![UpcomingPanelUi](images/UpcomingPanelUi.png)
+
+### Contacts Tab <a name="contactstab"></a>
+The contacts tab shows you all the **contacts** you have within the app. It will show you information for each contact such as:
+* **NAME**: contact name
+
+* **PHONE NUMBER**: contact's phone number
+
+* **EMAIL**: contact's email
+
+* **TAG**: any additional information you have about the contact, such as which module they are associated with (e.g. CS1010S), or their role (e.g. friend, TA)
+
+### Module Tabs <a name="moduletabs"></a>
+All the relevant information associated with each module is under the corresponding **Module** tab.
+
+There are 3 sections within a Module tab:
+1. **Lessons**: Lists out the weekly lessons you have for the module (i.e. lecture/tutorial/lab/sectionals)
+
+2. **Tasks**: Lists out the pending tasks you have for the module.
+
+3. **Contacts**: Lists out the contacts associated with the module. (e.g. friends, profs, TAs)
+
+--------------------------------------------------------------------------------------------------------------------
 ## Features <a name="features"></a>
 
 This section contains all the information you need to know about the features of TrackIt@NUS. To use each feature 
@@ -209,8 +254,6 @@ Managing all your tasks can be so stressful! TrackIt@NUS helps alleviate that st
 
 This sorts all your tasks by date. To view module-specific tasks, click on any of the module tabs as shown below.
 
-![Ui](images/ModuleTasks.png)
-
 :information_source: All module-specific tasks are shown in the upcoming tab, but not vice versa.
 
 You can also perform commands on the tasks as explained below.
@@ -262,27 +305,32 @@ Examples: `T delete 2`
 :information_source: The `INDEX` provided must be positive and cannot be larger than the number of Tasks
 
 ## Contact <a name="contact"></a>
+Don't you hate it when you need help for one of your modules but you just can't remember who else is taking the module with you? 
+
+Luckily for you, TrackIt@NUS allows you to tag your contacts with the modules you have in common, and lets you see those contacts all at once! Simply click on a module tab and you will find the list of contacts associated with that module, as you can see below.
+
+![ModuleTabContacts](images/ModuleTabContacts.png)
+
+To view all contacts from all modules, as well as any contacts that are not associated with any module, click on the **Contacts** tab in the side panel.
 
 ### Add
-
-For: Add a new contact.
+A new semester has started and you want to keep track of your new classmates. This is the command to add a new contact.
 
 Format: `C add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]...`
 
 Examples:
 
-* `C add n/John Doe p/98765432 e/jon@jon.com t/Brother`
+* `C add n/John Doe p/98765432 e/jon@jon.com t/CS2020`
 * `C add n/Rajesh Kumar p/98762342 e/raj@law.com t/Friend`
 
 ### Edit
-
-For: Edit the contact with the specified index.
+After adding a contact to TrackIt@NUS, maybe you realised you spelt their name wrong, or you want to update the contact fields. The edit command is what you should use to do so.
 
 Format: `C edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...`
 
 Examples:
-* `C edit 1 n/Johnny Depp p/98999899`
-* `C edit 2 n/Sam e/sam@gmail.com t/Colleague`
+* `C edit 1 n/Johnny Depp` changes the name of the Contact.
+* `C edit 2 n/Sam e/sam@gmail.com t/CS2100 t/TA` changes the name, email and tags of the Contact.
 
 Remark: The `INDEX` provided must be positive and cannot be larger than the number of Contacts. At least 1
  field must be provided for editing. i.e. `C edit 1` is not allowed.
@@ -292,8 +340,7 @@ Remark: The `INDEX` provided must be positive and cannot be larger than the numb
 :bulb: Can remove all tags by typing t/ without any tags following it
 
 ### Delete
-
-For: Delete the contact with the specified index.
+You have broken up with your girlfriend and want to forget their existence, starting by deleting their contact in TrackIt@NUS. This is the command to do so.
 
 Format: `C delete INDEX`
 
@@ -345,7 +392,7 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 | Command | Example |
 | ---- | ------ |
 | **Add:** `M add m/MODULE_CODE n/NAME` | `M add m/CS2100 n/Computer Organisation` |
-| **Edit:** `M edit m/MODULE_CODE [m/NEW_MODULE_CODE] [n/NAME]` | `M edit m/CS1231S n/Discrete Mathematics` |
+| **Edit:** `M edit m/MODULE_CODE [n/NAME]` | `M edit n/Discrete Mathematics` |
 | **Delete:** `M delete m/MODULE_CODE` | `M delete m/CS1101S` |
 
 ### Task <a name="task-commands"></a>
