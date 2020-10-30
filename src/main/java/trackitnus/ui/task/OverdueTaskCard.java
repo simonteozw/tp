@@ -10,7 +10,7 @@ import trackitnus.model.task.Task;
 import trackitnus.ui.UiPart;
 
 public class OverdueTaskCard extends UiPart<Region> {
-    private static final String FXML = "/Task/OverdueTaskListCard.fxml";
+    private static final String FXML = "Task/OverdueTaskListCard.fxml";
 
     public final Task task;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM");
