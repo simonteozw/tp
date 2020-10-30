@@ -130,14 +130,19 @@ The contacts tab shows you all the **contacts** you have within the app. It will
 * **TAG**: any additional information you have about the contact, such as which module they are associated with (e.g. CS1010S), or their role (e.g. friend, TA)
 
 ### Module Tabs <a name="moduletabs"></a>
-All the relevant information associated with each module is under the corresponding **Module** tab.
+![ModuleTab](images/ModuleTab.png)
+Here under each module's tab you can find all relevant **Lessons**, **Tasks** and **Contacts** that are related to the
+ module. Very convenient right? These information will be displayed in 3 sections:
+ 
+1. **Lessons**: Here you can find the info for all weekly lessons, including its time, locations/Zoom links so
+ say goodbye to missing classes (intentional skip not included😉)
 
-There are 3 sections within a Module tab:
-1. **Lessons**: Lists out the weekly lessons you have for the module (i.e. lecture/tutorial/lab/sectionals)
+2. **Tasks**: All the tasks for the module that you haven't done, listed in **chronological** order so that you know
+ what
+ to prioritize! Tips: Don't leave tutorials or assignments until the last day, chances are you not gonna finish it.
 
-2. **Tasks**: Lists out the pending tasks you have for the module.
-
-3. **Contacts**: Lists out the contacts associated with the module. (e.g. friends, profs, TAs)
+3. **Contacts**: Having difficulties with your assignment? Need TA's emails to ask? Look no further, this section
+ will list all contacts that are tagged with this module code! 
 
 --------------------------------------------------------------------------------------------------------------------
 ## Features <a name="features"></a>
@@ -146,33 +151,38 @@ This section contains all the information you need to know about the features of
 or sub-feature, you will need to enter the command into the Command Box.
 
 ## Module <a name="module"></a>
+Module is the first thing you need to create when you start using the app, because each module will be the house for 
+all of its lessons, tasks and related contacts. So, let's find out how to create a new module! 
 
 ### Add
 
-For: Add a new module.
+Create a new house for your data (Or shall I say it is to create a new category of things to worry about?)
 
 Format: `M add m/MODULE_CODE n/NAME`
 
 Examples: `M add m/CS1231S n/Discrete Structures`
 
 ### Edit
-For: Edit the module with the specified `MODULE_CODE`.
+Because modules are displayed on the sidebar, it doesn't come with index. That's why to edit & delete module, its
+ code will be used! Let's see how the syntax of a module edit command:
 
-Format: `M edit m/MODULE_CODE [m/NEW_MODULE_CODE] [n/NAME]`
+Format: `M edit m/MODULE_CODE n/NAME`
 
-Examples: `M edit m/CS1231S m/CS1101S n/Programming Methodology`
+Examples: `M edit m/CS1231S n/Programming Methodology`
 
-Remark: The `MODULE_CODE` provided must be present in the Module list. At least 1
- field must be provided for editing. i.e. `M edit m/CS2100` is not allowed.
+Remark: The `MODULE_CODE` provided must be present in the Module list. After the command, the specified module will
+ have a new name.
 
 ### Delete
-For: Delete the module with the specified `MODULE_CODE`.
+And what if you realized you accidentally added in a wrong module, or have finished one? Just delete that module! The
+ command's syntax is as follows: 
 
 Format: `M delete m/MODULE_CODE`
 
 Examples: `M delete m/CS2100`
 
-Remark: The `MODULE_CODE` provided must be present in the Module list.
+Remark: **IMPORTANT**: When you delete a module, the app will delete all of its related tasks & lessons, so check
+ twice before you delete them! 
 
 ## Lesson <a name="lesson"></a>
 Lectures, tutorials, labs, lectures, lectures, recitations, lectures...
