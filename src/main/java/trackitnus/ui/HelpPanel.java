@@ -19,7 +19,7 @@ import trackitnus.commons.core.LogsCenter;
 
 public class HelpPanel extends UiPart<Region> {
     public static final String TYPE = "H";
-    public static final String USERGUIDE_URL = "https://wehavenolinkyethaha.html";
+    public static final String USERGUIDE_URL = "https://bit.ly/2HDhjac";
     public static final String HELP_MESSAGE = USERGUIDE_URL;
     private static final String FXML = "/HelpPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(trackitnus.ui.HelpPanel.class);
@@ -31,10 +31,10 @@ public class HelpPanel extends UiPart<Region> {
     @FXML
     private TableView helpCardTableView;
 
-
     /**
      * Creates a {@code HelpPanel} with the given {@code ObservableList}.
      */
+    @SuppressWarnings("unchecked")
     public HelpPanel() {
         super(FXML);
         helpMessage.setText(HELP_MESSAGE);
