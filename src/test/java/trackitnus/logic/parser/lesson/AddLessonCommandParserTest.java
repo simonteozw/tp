@@ -11,19 +11,26 @@ public class AddLessonCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        // TODO: make it less confusing
         CommandParserTestUtil.assertParseSuccess(parser, "L add m/CS1101S n/lecture d/Fri 12:00-14:00",
-            new AddLessonCommand(TypicalLessons.get(0)));
+            new AddLessonCommand(TypicalLessons.CS1101S_LEC));
+        CommandParserTestUtil.assertParseSuccess(parser, "L add m/CS1101S n/tutorial d/Mon 12:00-14:00",
+            new AddLessonCommand(TypicalLessons.CS1101S_TUT));
         CommandParserTestUtil.assertParseSuccess(parser, "L add m/CS2100 n/laboratory d/Mon 09:00-10:00",
-            new AddLessonCommand(TypicalLessons.get(3)));
+            new AddLessonCommand(TypicalLessons.CS2100_LAB));
         CommandParserTestUtil.assertParseSuccess(parser, "L add m/CS2030S n/recitation d/Wed 12:00-13:00",
-            new AddLessonCommand(TypicalLessons.get(11)));
-        CommandParserTestUtil.assertParseSuccess(parser, "L add m/CS1101S n/Lec d/Fri 12:00-14:00",
-            new AddLessonCommand(TypicalLessons.get(0)));
-        CommandParserTestUtil.assertParseSuccess(parser, "L add m/CS2100 n/Lab d/Mon 09:00-10:00",
-            new AddLessonCommand(TypicalLessons.get(3)));
-        CommandParserTestUtil.assertParseSuccess(parser, "L add m/CS2030S n/Rec d/Wed 12:00-13:00",
-            new AddLessonCommand(TypicalLessons.get(11)));
+            new AddLessonCommand(TypicalLessons.CS2030S_REC));
+        CommandParserTestUtil.assertParseSuccess(parser, "L add m/GER1000H n/sectional d/Fri 14:00-16:00",
+            new AddLessonCommand(TypicalLessons.GER1000H_SEC));
+        CommandParserTestUtil.assertParseSuccess(parser, "L add m/CS1101S n/LEC d/Fri 12:00-14:00",
+            new AddLessonCommand(TypicalLessons.CS1101S_LEC));
+        CommandParserTestUtil.assertParseSuccess(parser, "L add m/CS1101S n/TUT d/Mon 12:00-14:00",
+            new AddLessonCommand(TypicalLessons.CS1101S_TUT));
+        CommandParserTestUtil.assertParseSuccess(parser, "L add m/CS2100 n/LAB d/Mon 09:00-10:00",
+            new AddLessonCommand(TypicalLessons.CS2100_LAB));
+        CommandParserTestUtil.assertParseSuccess(parser, "L add m/CS2030S n/REC d/Wed 12:00-13:00",
+            new AddLessonCommand(TypicalLessons.CS2030S_REC));
+        CommandParserTestUtil.assertParseSuccess(parser, "L add m/GER1000H n/SEC d/Fri 14:00-16:00",
+            new AddLessonCommand(TypicalLessons.GER1000H_SEC));
     }
 
 }
