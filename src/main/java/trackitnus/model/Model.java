@@ -256,13 +256,13 @@ public interface Model {
     ObservableList<Lesson> getModuleLessons(Code code);
 
     /**
-     * @param lesson The lesson to get index
+     * @param lesson The lesson to get index of
      * @return The index of the lesson w.r.t the last shown Lesson list.
      */
     Index getLessonIndex(Lesson lesson) throws CommandException;
 
     /**
-     * @param module The module to get index
+     * @param module The module to get index of
      * @return The index of the lesson in the list of all modules
      */
     Index getModuleIndex(Module module) throws CommandException;
