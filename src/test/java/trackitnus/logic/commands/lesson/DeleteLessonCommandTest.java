@@ -1,6 +1,7 @@
 package trackitnus.logic.commands.lesson;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static trackitnus.logic.commands.CommandTestUtil.assertCommandFailure;
 import static trackitnus.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -41,34 +42,32 @@ class DeleteLessonCommandTest {
         assertCommandFailure(deleteLessonCommand, model, Messages.MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);
     }
 
-//    @Test
-//    public void execute_validIndexFilteredList_success() {
-//        LessonCommandTestUtil.showLessonAtIndex(model, TypicalIndexes.INDEX_FIRST);
-//
-//        Lesson lessonToDelete = model.getFilteredLessonList().get(TypicalIndexes.INDEX_FIRST.getZeroBased());
-//        DeleteLessonCommand deleteLessonCommand = new DeleteLessonCommand(TypicalIndexes.INDEX_FIRST);
-//
-//        String expectedMessage = String.format(DeleteLessonCommand.MESSAGE_DELETE_LESSON_SUCCESS, lessonToDelete);
-//
-//        Model expectedModel = new ModelManager(model.getTrackIter(), new UserPrefs());
-//        expectedModel.deleteLesson(lessonToDelete);
-//        showNoLesson(expectedModel);
-//
-//        assertCommandSuccess(deleteLessonCommand, model, expectedMessage, expectedModel);
-//    }
+    @Test
+    public void execute_validIndexFilteredList_success() {
+        model.updateFilteredLessonList(model.PREDICATE_SHOW_ALL_LESSONS);
+        Lesson lessonToDelete = model.getFilteredLessonList().get(TypicalIndexes.INDEX_FIRST.getZeroBased());
+        DeleteLessonCommand deleteLessonCommand = new DeleteLessonCommand(TypicalIndexes.INDEX_FIRST);
 
-//    @Test
-//    public void execute_invalidIndexFilteredList_throwsCommandException() {
-//        LessonCommandTestUtil.showLessonAtIndex(model, TypicalIndexes.INDEX_FIRST);
-//
-//        Index outOfBoundIndex = TypicalIndexes.INDEX_SECOND;
-//        // ensures that outOfBoundIndex is still in bounds of address book list
-//        assertTrue(outOfBoundIndex.getZeroBased() < model.getTrackIter().getLessonList().size());
-//
-//        DeleteLessonCommand deleteLessonCommand = new DeleteLessonCommand(outOfBoundIndex);
-//
-//        assertCommandFailure(deleteLessonCommand, model, Messages.MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);
-//    }
+        String expectedMessage = String.format(DeleteLessonCommand.MESSAGE_DELETE_LESSON_SUCCESS, lessonToDelete);
+
+        Model expectedModel = new ModelManager(model.getTrackIter(), new UserPrefs());
+        expectedModel.deleteLesson(lessonToDelete);
+
+        assertCommandSuccess(deleteLessonCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_invalidIndexFilteredList_throwsCommandException() {
+        model.updateFilteredLessonList(p -> false); // show no lesson
+
+        Index outOfBoundIndex = Index.fromZeroBased(model.getFilteredLessonList().size());
+        // ensures that outOfBoundIndex is still in bounds of the lesson list
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getTrackIter().getLessonList().size());
+
+        DeleteLessonCommand deleteLessonCommand = new DeleteLessonCommand(outOfBoundIndex);
+
+        assertCommandFailure(deleteLessonCommand, model, Messages.MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);
+    }
 
     @Test
     public void equals() {
@@ -76,28 +75,20 @@ class DeleteLessonCommandTest {
         DeleteLessonCommand deleteSecondCommand = new DeleteLessonCommand(TypicalIndexes.INDEX_SECOND);
 
         // same object -> returns true
-        assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
+        assertEquals(deleteFirstCommand, deleteFirstCommand);
 
         // same values -> returns true
         DeleteLessonCommand deleteFirstCommandCopy = new DeleteLessonCommand(TypicalIndexes.INDEX_FIRST);
-        assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
+        assertEquals(deleteFirstCommandCopy, deleteFirstCommand);
 
         // different types -> returns false
-        assertFalse(deleteFirstCommand.equals(1));
+        assertNotEquals(deleteFirstCommand, 1);
 
         // null -> returns false
-        assertFalse(deleteFirstCommand.equals(null));
+        assertNotEquals(deleteFirstCommand, null);
 
         // different lesson -> returns false
-        assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
+        assertNotEquals(deleteSecondCommand, deleteFirstCommand);
     }
 
-    /**
-     * Updates {@code model}'s filtered list to show no one.
-     */
-    private void showNoLesson(Model model) {
-        model.updateFilteredLessonList(p -> false);
-
-        assertTrue(model.getFilteredLessonList().isEmpty());
-    }
 }
