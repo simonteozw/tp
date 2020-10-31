@@ -13,22 +13,22 @@ import trackitnus.model.util.SampleDataUtil;
 
 public class TypicalLessons {
 
-    public static Lesson CS1101S_LEC =
+    public static final Lesson CS1101S_LEC =
         new Lesson(new Code("CS1101S"), Type.LEC, new LessonDateTime(DayOfWeek.Fri, LocalTime.NOON,
             LocalTime.NOON.plusHours(2)));
-    public static Lesson CS1101S_TUT =
+    public static final Lesson CS1101S_TUT =
         new Lesson(new Code("CS1101S"), Type.TUT, new LessonDateTime(DayOfWeek.Mon, LocalTime.NOON,
             LocalTime.NOON.plusHours(2)));
-    public static Lesson CS2100_LAB =
+    public static final Lesson CS2100_LAB =
         new Lesson(new Code("CS2100"), Type.LAB, new LessonDateTime(DayOfWeek.Mon, LocalTime.MIDNIGHT.plusHours(9),
             LocalTime.MIDNIGHT.plusHours(10)));
-    public static Lesson MA1101R_LEC =
+    public static final Lesson MA1101R_LEC =
         new Lesson(new Code("MA1101R"), Type.LEC, new LessonDateTime(DayOfWeek.Thu, LocalTime.NOON.plusHours(4),
             LocalTime.NOON.plusHours(6)));
-    public static Lesson GER1000H_SEC =
+    public static final Lesson GER1000H_SEC =
         new Lesson(new Code("GER1000H"), Type.SEC, new LessonDateTime(DayOfWeek.Fri, LocalTime.NOON.plusHours(2),
             LocalTime.NOON.plusHours(4)));
-    public static Lesson CS2030S_REC =
+    public static final Lesson CS2030S_REC =
         new Lesson(new Code("CS2030S"), Type.REC, new LessonDateTime(DayOfWeek.Wed, LocalTime.NOON,
             LocalTime.NOON.plusHours(1)));
 
