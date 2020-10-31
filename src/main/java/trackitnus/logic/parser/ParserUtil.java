@@ -62,14 +62,19 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String phone} into a {@code Phone}.
+     * Parses an {@code Optional<String> phone} into an {@code Phone}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code phone} is invalid.
      */
-    public static Phone parsePhone(String phone) throws ParseException {
-        requireNonNull(phone);
-        String trimmedPhone = phone.trim();
+    public static Phone parseOptionalPhone(Optional<String> phone) throws ParseException {
+        if (phone.isEmpty()) {
+            return null;
+        }
+        String trimmedPhone = phone.get().trim();
+        if (trimmedPhone.isBlank()) {
+            return null;
+        }
         if (!Phone.isValidPhone(trimmedPhone)) {
             throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
         }
@@ -97,9 +102,14 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code email} is invalid.
      */
-    public static Email parseEmail(String email) throws ParseException {
-        requireNonNull(email);
-        String trimmedEmail = email.trim();
+    public static Email parseOptionalEmail(Optional<String> email) throws ParseException {
+        if (email.isEmpty()) {
+            return null;
+        }
+        String trimmedEmail = email.get().trim();
+        if (trimmedEmail.isBlank()) {
+            return null;
+        }
         if (!Email.isValidEmail(trimmedEmail)) {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
         }
@@ -157,7 +167,8 @@ public class ParserUtil {
             return null;
         }
         String trimmedCode = code.get().trim();
-        if (!Task.isValidString(trimmedCode)) {
+
+        if (trimmedCode.isBlank()) {
             return null;
         }
         if (!Code.isValidCode(trimmedCode)) {

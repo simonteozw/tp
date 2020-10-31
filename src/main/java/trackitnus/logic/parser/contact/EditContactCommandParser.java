@@ -52,10 +52,10 @@ public class EditContactCommandParser implements Parser<EditContactCommand> {
             editContactDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
         }
         if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
-            editContactDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
+            editContactDescriptor.setPhone(ParserUtil.parseOptionalPhone(argMultimap.getValue(PREFIX_PHONE)));
         }
         if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
-            editContactDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));
+            editContactDescriptor.setEmail(ParserUtil.parseOptionalEmail(argMultimap.getValue(PREFIX_EMAIL)));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editContactDescriptor::setTags);
 

@@ -39,8 +39,8 @@ public class ContactBuilder {
      */
     public ContactBuilder(Contact contactToCopy) {
         name = contactToCopy.getName();
-        phone = contactToCopy.getPhone();
-        email = contactToCopy.getEmail();
+        phone = contactToCopy.getPhone().get();
+        email = contactToCopy.getEmail().get();
         tags = new HashSet<>(contactToCopy.getTags());
     }
 

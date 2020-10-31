@@ -48,8 +48,8 @@ class JsonAdaptedContact {
      */
     public JsonAdaptedContact(Contact source) {
         name = source.getName().value;
-        phone = source.getPhone().value;
-        email = source.getEmail().value;
+        phone = source.getPhone().isPresent() ? source.getPhone().get().value : null;
+        email = source.getEmail().isPresent() ? source.getEmail().get().value : null;
         tagged.addAll(source.getTags().stream()
             .map(JsonAdaptedTag::new)
             .collect(Collectors.toList()));
@@ -74,21 +74,23 @@ class JsonAdaptedContact {
         }
         final Name modelName = new Name(name);
 
+        final Phone modelPhone;
         if (phone == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
-        }
-        if (!Phone.isValidPhone(phone)) {
+            modelPhone = null;
+        } else if (!Phone.isValidPhone(phone)) {
             throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
+        } else {
+            modelPhone = new Phone(phone);
         }
-        final Phone modelPhone = new Phone(phone);
 
+        final Email modelEmail;
         if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
-        }
-        if (!Email.isValidEmail(email)) {
+            modelEmail = null;
+        } else if (!Email.isValidEmail(email)) {
             throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+        } else {
+            modelEmail = new Email(email);
         }
-        final Email modelEmail = new Email(email);
 
         final Set<Tag> modelTags = new HashSet<>(contactTags);
         return new Contact(modelName, modelPhone, modelEmail, modelTags);

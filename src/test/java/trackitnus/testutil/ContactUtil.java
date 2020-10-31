@@ -30,8 +30,12 @@ public class ContactUtil {
     public static String getContactDetails(Contact contact) {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_NAME + contact.getName().value + " ");
-        sb.append(PREFIX_PHONE + contact.getPhone().value + " ");
-        sb.append(PREFIX_EMAIL + contact.getEmail().value + " ");
+        if (contact.getPhone().isPresent()) {
+            sb.append(PREFIX_PHONE + contact.getPhone().get().value + " ");
+        }
+        if (contact.getEmail().isPresent()) {
+            sb.append(PREFIX_EMAIL + contact.getEmail().get().value + " ");
+        }
         contact.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
