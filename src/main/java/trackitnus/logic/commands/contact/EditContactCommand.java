@@ -71,8 +71,14 @@ public class EditContactCommand extends Command {
         assert contactToEdit != null;
 
         Name updatedName = editContactDescriptor.getName().orElse(contactToEdit.getName());
-        Phone updatedPhone = editContactDescriptor.getPhone().orElse(contactToEdit.getPhone().orElse(null));
-        Email updatedEmail = editContactDescriptor.getEmail().orElse(contactToEdit.getEmail().orElse(null));
+
+        Phone updatedPhone = editContactDescriptor.getIsPhoneChanged()
+            ? editContactDescriptor.getPhone().orElse(null)
+            : contactToEdit.getPhone().orElse(null);
+        Email updatedEmail = editContactDescriptor.getIsEmailChanged()
+            ? editContactDescriptor.getEmail().orElse(null)
+            : contactToEdit.getEmail().orElse(null);
+
         Set<Tag> updatedTags = editContactDescriptor.getTags().orElse(contactToEdit.getTags());
 
         return new Contact(updatedName, updatedPhone, updatedEmail, updatedTags);
@@ -125,8 +131,16 @@ public class EditContactCommand extends Command {
         private Phone phone;
         private Email email;
         private Set<Tag> tags;
+        private boolean isPhoneChanged;
+        private boolean isEmailChanged;
 
+        /**
+         * Constructor for EditContactDescriptor.
+         * By default both isChanged fields should be false
+         */
         public EditContactDescriptor() {
+            isPhoneChanged = false;
+            isEmailChanged = false;
         }
 
         /**
@@ -138,13 +152,15 @@ public class EditContactCommand extends Command {
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setTags(toCopy.tags);
+            isPhoneChanged = toCopy.isPhoneChanged;
+            isEmailChanged = toCopy.isEmailChanged;
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, tags) || isPhoneChanged || isEmailChanged;
         }
 
         public Optional<Name> getName() {
@@ -160,6 +176,7 @@ public class EditContactCommand extends Command {
         }
 
         public void setPhone(Phone phone) {
+            isPhoneChanged = true;
             this.phone = phone;
         }
 
@@ -168,6 +185,7 @@ public class EditContactCommand extends Command {
         }
 
         public void setEmail(Email email) {
+            isEmailChanged = true;
             this.email = email;
         }
 
@@ -207,6 +225,14 @@ public class EditContactCommand extends Command {
                 && getPhone().equals(e.getPhone())
                 && getEmail().equals(e.getEmail())
                 && getTags().equals(e.getTags());
+        }
+
+        public boolean getIsPhoneChanged() {
+            return isPhoneChanged;
+        }
+
+        public boolean getIsEmailChanged() {
+            return isEmailChanged;
         }
     }
 }
