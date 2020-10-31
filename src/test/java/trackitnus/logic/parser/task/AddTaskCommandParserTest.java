@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
 import trackitnus.logic.commands.task.AddTaskCommand;
+import trackitnus.logic.parser.ParserUtil;
 import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 import trackitnus.model.task.Task;
@@ -15,7 +16,7 @@ public class AddTaskCommandParserTest {
     private final AddTaskCommandParser parser = new AddTaskCommandParser();
 
     private final Name name = new Name("Sample");
-    private final LocalDate date = LocalDate.parse("12/12/2020", Task.FORMATTER);
+    private final LocalDate date = LocalDate.parse("12/12/2020", ParserUtil.DATE_PATTERN);
     private final Code code = new Code("CS1100");
     private final String remark = "Test";
 

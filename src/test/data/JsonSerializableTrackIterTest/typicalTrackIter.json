@@ -79,31 +79,31 @@
   "tasks": [
     {
       "name": "Prepare for v1.3 Demo",
-      "date": "31/10/2020",
+      "date": "01/11/2020",
       "code": "CS2103T",
       "remark": "Ensure app runs smoothly"
     },
     {
       "name": "Work on the final report",
-      "date": "01/11/2020",
+      "date": "02/11/2020",
       "code": "GER1000H",
       "remark": "min 500 words"
     },
     {
       "name": "Buy Mooncakes for Mum",
-      "date": "02/11/2020",
+      "date": "03/11/2020",
       "code": null,
       "remark": ""
     },
     {
       "name": "Do this week's Mission",
-      "date": "02/11/2020",
+      "date": "03/11/2020",
       "code": "CS1101S",
       "remark": "Recursion"
     },
     {
       "name": "Do Tutorial",
-      "date": "04/11/2020",
+      "date": "05/11/2020",
       "code": "CS2100",
       "remark": ""
     },
@@ -127,21 +127,6 @@
     }
   ],
   "lessons": [
-    {
-      "code": "CS1101S",
-      "type": "LEC",
-      "date": "Fri 12:00-14:00"
-    },
-    {
-      "code": "CS2030S",
-      "type": "LAB",
-      "date": "Fri 12:00-14:00"
-    },
-    {
-      "code": "GER1000H",
-      "type": "SEC",
-      "date": "Fri 14:00-16:00"
-    },
     {
       "code": "CS2100",
       "type": "LAB",
@@ -191,6 +176,21 @@
       "code": "MA1101R",
       "type": "LEC",
       "date": "Thu 16:00-18:00"
+    },
+    {
+      "code": "CS1101S",
+      "type": "LEC",
+      "date": "Fri 12:00-14:00"
+    },
+    {
+      "code": "CS2030S",
+      "type": "LAB",
+      "date": "Fri 12:00-14:00"
+    },
+    {
+      "code": "GER1000H",
+      "type": "SEC",
+      "date": "Fri 14:00-16:00"
     }
   ]
 }

@@ -17,6 +17,7 @@ import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.contact.AddContactCommand;
 import trackitnus.logic.commands.contact.ContactCommandTestUtil;
 import trackitnus.logic.commands.exceptions.CommandException;
+import trackitnus.logic.parser.ParserUtil;
 import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.model.Model;
 import trackitnus.model.ModelManager;
@@ -24,7 +25,6 @@ import trackitnus.model.ReadOnlyTrackIter;
 import trackitnus.model.UserPrefs;
 import trackitnus.model.commons.Code;
 import trackitnus.model.contact.Contact;
-import trackitnus.model.task.Task;
 import trackitnus.storage.JsonTrackIterStorage;
 import trackitnus.storage.JsonUserPrefsStorage;
 import trackitnus.storage.StorageManager;
@@ -106,7 +106,7 @@ public class LogicManagerTest {
     @Test
     public void getDayUpcomingTasks_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, ()
-            -> logic.getDayUpcomingTasks(LocalDate.parse("12/12/2020", Task.FORMATTER)).remove(0));
+            -> logic.getDayUpcomingTasks(LocalDate.parse("12/12/2020", ParserUtil.DATE_PATTERN)).remove(0));
     }
 
     /**

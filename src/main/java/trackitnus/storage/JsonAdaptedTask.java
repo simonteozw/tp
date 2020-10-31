@@ -6,7 +6,9 @@ import java.time.format.DateTimeParseException;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import trackitnus.commons.core.Messages;
 import trackitnus.commons.exceptions.IllegalValueException;
+import trackitnus.logic.parser.ParserUtil;
 import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 import trackitnus.model.task.Task;
@@ -40,7 +42,7 @@ public class JsonAdaptedTask {
      */
     public JsonAdaptedTask(Task source) {
         name = source.getName().value;
-        date = source.getDate().format(Task.FORMATTER);
+        date = source.getDate().format(ParserUtil.DATE_PATTERN);
         code = source.getCode().isPresent() ? source.getCode().get().code : null;
         remark = source.getRemark();
     }
@@ -65,11 +67,11 @@ public class JsonAdaptedTask {
                 LocalDate.class.getSimpleName()));
         }
         try {
-            LocalDate.parse(date, Task.FORMATTER);
+            LocalDate.parse(date, ParserUtil.DATE_PATTERN);
         } catch (DateTimeParseException e) {
-            throw new IllegalValueException(Task.DATE_MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Messages.DATE_MESSAGE_CONSTRAINTS);
         }
-        final LocalDate modelDate = LocalDate.parse(date, Task.FORMATTER);
+        final LocalDate modelDate = LocalDate.parse(date, ParserUtil.DATE_PATTERN);
 
         if (remark == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Remark"));

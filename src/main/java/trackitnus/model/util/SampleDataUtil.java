@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import trackitnus.logic.parser.ParserUtil;
 import trackitnus.model.ReadOnlyTrackIter;
 import trackitnus.model.TrackIter;
 import trackitnus.model.commons.Code;
@@ -88,7 +89,7 @@ public class SampleDataUtil {
 
     public static Task[] getSampleTasks() {
         return new Task[]{
-            new Task(new Name("Plan for Alex's birthday"), LocalDate.parse("12/12/2020", Task.FORMATTER),
+            new Task(new Name("Plan for Alex's birthday"), LocalDate.parse("12/12/2020", ParserUtil.DATE_PATTERN),
                 null, "Buy a cake"),
             new Task(new Name("Buy Mooncakes for Mum"), LocalDate.now().plusDays(3), null, ""),
             new Task(new Name("Do Tutorial"), LocalDate.now().plusDays(5),
@@ -97,11 +98,12 @@ public class SampleDataUtil {
                 new Code("CS1101S"), "Recursion"),
             new Task(new Name("Work on the final report"), LocalDate.now().plusDays(2),
                 new Code("GER1000H"), "min 500 words"),
-            new Task(new Name("Study for Final Exam"), LocalDate.parse("05/11/2020", Task.FORMATTER),
+            new Task(new Name("Study for Final Exam"), LocalDate.parse("05/11/2020", ParserUtil.DATE_PATTERN),
                 new Code("MA1101R"), "Focus on Diagonalisation"),
             new Task(new Name("Prepare for v1.3 Demo"), LocalDate.now().plusDays(1),
                 new Code("CS2103T"), "Ensure app runs smoothly"),
-            new Task(new Name("Code Project 2"), LocalDate.parse("20/11/2020", Task.FORMATTER), new Code("CS2030S"),
+            new Task(new Name("Code Project 2"), LocalDate.parse("20/11/2020", ParserUtil.DATE_PATTERN),
+                new Code("CS2030S"),
                 "(deadline is at the end of reading week)")
         };
     }

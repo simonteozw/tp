@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import trackitnus.commons.core.Messages;
+import trackitnus.logic.parser.ParserUtil;
 import trackitnus.model.Model;
 import trackitnus.model.ModelManager;
 import trackitnus.model.UserPrefs;
@@ -27,7 +28,7 @@ public class AddTaskCommandIntegrationTest {
 
     @Test
     public void execute_newTask_success() {
-        Task validTask = new Task(new Name("Testing task"), LocalDate.parse("12/12/2020", Task.FORMATTER),
+        Task validTask = new Task(new Name("Testing task"), LocalDate.parse("12/12/2020", ParserUtil.DATE_PATTERN),
             null, "sample remarks");
 
         Model expectedModel = new ModelManager(model.getTrackIter(), new UserPrefs());
