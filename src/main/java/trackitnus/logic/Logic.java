@@ -104,6 +104,14 @@ public interface Logic {
     ObservableList<Task> getDayUpcomingTasks(LocalDate date);
 
     /**
+     * @param module The module to get index of
+     * @return The index of the module in the list of all modules
+     * @throws CommandException
+     */
+
+    Index getModuleIndex(Module module) throws CommandException;
+
+    /**
      * @param task The task to get index of.
      * @return The index of the task in list of all tasks.
      * @throws CommandException
