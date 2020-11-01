@@ -139,7 +139,12 @@ public class LogicManager implements Logic {
 
     @Override
     public Index getModuleIndex(Module module) throws CommandException {
-        return model.getModuleIndex(module);
+        return model.getModuleIndex(module.getCode());
+    }
+
+    @Override
+    public Index getModuleIndex(Code code) throws CommandException {
+        return model.getModuleIndex(code);
     }
 
     @Override

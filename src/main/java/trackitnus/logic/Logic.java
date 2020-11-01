@@ -116,6 +116,13 @@ public interface Logic {
     Index getModuleIndex(Module module) throws CommandException;
 
     /**
+     * @param code The module code to get index of
+     * @return The index of the module with the specified code in the list of all modules
+     * @throws CommandException
+     */
+    Index getModuleIndex(Code code) throws CommandException;
+
+    /**
      * @param task The task to get index of.
      * @return The index of the task in list of all tasks.
      * @throws CommandException

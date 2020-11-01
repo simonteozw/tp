@@ -258,7 +258,8 @@ public class ModelStub implements Model {
     }
 
     @Override
-    public Index getModuleIndex(Module module) throws CommandException {
+    public Index getModuleIndex(Code code) throws CommandException {
         throw new AssertionError("This method should not be called.");
     }
+
 }
