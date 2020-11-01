@@ -28,4 +28,17 @@ public class Messages {
     public static final String DATE_MESSAGE_CONSTRAINTS = "Date should be in the format dd/MM/yyyy";
     public static final String WEIGHTAGE_MESSAGE_CONSTRAINTS = "Weightage should be in the"
         + " form of a floating point number";
+    public static final String MESSAGE_ADD_CONTACT_SUCCESS = "New contact added: %1$s";
+    public static final String MESSAGE_DELETE_CONTACT_SUCCESS = "Deleted Contact: %1$s";
+    public static final String MESSAGE_EDIT_CONTACT_SUCCESS = "Edited Contact: %1$s";
+    public static final String MESSAGE_ADD_LESSON_SUCCESS = "New lesson added: %1$s";
+    public static final String MESSAGE_DELETE_LESSON_SUCCESS = "Deleted Lesson: %1$s";
+    public static final String MESSAGE_EDIT_LESSON_SUCCESS = "Edited Lesson: %1$s";
+    public static final String MESSAGE_ADD_MODULE_SUCCESS = "New module added: %1$s";
+    public static final String MESSAGE_DELETE_MODULE_SUCCESS = "Deleted Module: %1$s";
+    public static final String MESSAGE_EDIT_MODULE_SUCCESS = "Edited Module: %1$s";
+    public static final String MESSAGE_ADD_TASK_SUCCESS = "New task added: %1$s";
+    public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
+    public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
+    public static final String MESSAGE_EXIT_ACKNOWLEDGEMENT = "Exiting Address Book as requested ...";
 }

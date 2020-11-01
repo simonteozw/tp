@@ -29,7 +29,7 @@ public class DeleteContactCommandTest {
         Contact contactToDelete = model.getFilteredContactList().get(TypicalIndexes.INDEX_FIRST.getZeroBased());
         DeleteContactCommand deleteContactCommand = new DeleteContactCommand(TypicalIndexes.INDEX_FIRST);
 
-        String expectedMessage = String.format(DeleteContactCommand.MESSAGE_DELETE_CONTACT_SUCCESS, contactToDelete);
+        String expectedMessage = String.format(Messages.MESSAGE_DELETE_CONTACT_SUCCESS, contactToDelete);
 
         ModelManager expectedModel = new ModelManager(model.getTrackIter(), new UserPrefs());
         expectedModel.deleteContact(contactToDelete);
@@ -52,7 +52,7 @@ public class DeleteContactCommandTest {
         Contact contactToDelete = model.getFilteredContactList().get(TypicalIndexes.INDEX_FIRST.getZeroBased());
         DeleteContactCommand deleteContactCommand = new DeleteContactCommand(TypicalIndexes.INDEX_FIRST);
 
-        String expectedMessage = String.format(DeleteContactCommand.MESSAGE_DELETE_CONTACT_SUCCESS, contactToDelete);
+        String expectedMessage = String.format(Messages.MESSAGE_DELETE_CONTACT_SUCCESS, contactToDelete);
 
         Model expectedModel = new ModelManager(model.getTrackIter(), new UserPrefs());
         expectedModel.deleteContact(contactToDelete);

@@ -34,7 +34,7 @@ public class AddContactCommandIntegrationTest {
         expectedModel.addContact(validContact);
 
         assertCommandSuccess(new AddContactCommand(validContact), model,
-            String.format(AddContactCommand.MESSAGE_ADD_CONTACT_SUCCESS, validContact), expectedModel);
+            String.format(Messages.MESSAGE_ADD_CONTACT_SUCCESS, validContact), expectedModel);
     }
 
     @Test

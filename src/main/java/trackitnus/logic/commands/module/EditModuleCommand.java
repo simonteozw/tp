@@ -31,8 +31,6 @@ public class EditModuleCommand extends Command {
         + String.format("Example: %s %s %sCS1231S %sDiscrete Structures",
         Module.TYPE, COMMAND_WORD, PREFIX_CODE, PREFIX_NAME);
 
-    public static final String MESSAGE_EDIT_MODULE_SUCCESS = "Edited Module: %1$s";
-
     private final Code code;
     private final EditModuleDescriptor editModuleDescriptor;
 
@@ -77,7 +75,7 @@ public class EditModuleCommand extends Command {
         }
 
         model.setModule(moduleToEdit.get(), editedModule);
-        return new CommandResult(String.format(MESSAGE_EDIT_MODULE_SUCCESS, editedModule));
+        return new CommandResult(String.format(Messages.MESSAGE_EDIT_MODULE_SUCCESS, editedModule));
     }
 
     @Override

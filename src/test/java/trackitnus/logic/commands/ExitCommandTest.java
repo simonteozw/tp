@@ -1,7 +1,7 @@
 package trackitnus.logic.commands;
 
+import static trackitnus.commons.core.Messages.MESSAGE_EXIT_ACKNOWLEDGEMENT;
 import static trackitnus.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static trackitnus.logic.commands.ExitCommand.MESSAGE_EXIT_ACKNOWLEDGEMENT;
 
 import org.junit.jupiter.api.Test;
 
