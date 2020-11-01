@@ -47,7 +47,7 @@ public class EditContactCommandParser implements Parser<EditContactCommand> {
             throw new InvalidIndexException(Messages.MESSAGE_INVALID_CONTACT_DISPLAYED_INDEX);
         } catch (ParseException pe) {
             throw new ParseException(
-                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, EditContactCommand.MESSAGE_USAGE), pe);
+                String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, EditContactCommand.MESSAGE_USAGE), pe);
         }
 
         EditContactCommand.EditContactDescriptor editContactDescriptor = new EditContactCommand.EditContactDescriptor();
