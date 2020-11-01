@@ -9,6 +9,7 @@ import static trackitnus.logic.parser.CliSyntax.PREFIX_REMARK;
 
 import trackitnus.commons.core.Messages;
 import trackitnus.commons.core.index.Index;
+import trackitnus.logic.commands.lesson.DeleteLessonCommand;
 import trackitnus.logic.commands.task.EditTaskCommand;
 import trackitnus.logic.parser.ArgumentMultimap;
 import trackitnus.logic.parser.ArgumentTokenizer;
@@ -37,8 +38,12 @@ public class EditTaskCommandParser implements Parser<EditTaskCommand> {
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                EditTaskCommand.MESSAGE_USAGE), pe);
+            if (pe.getMessage().equals(ParserUtil.MESSAGE_INVALID_INDEX)) {
+                throw new ParseException(
+                        Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+            }
+            throw new ParseException(
+                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, EditTaskCommand.MESSAGE_USAGE), pe);
         }
 
         EditTaskCommand.EditTaskDescriptor editTaskDescriptor = new EditTaskCommand.EditTaskDescriptor();

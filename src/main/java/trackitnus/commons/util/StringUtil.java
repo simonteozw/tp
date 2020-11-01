@@ -66,4 +66,37 @@ public class StringUtil {
             return false;
         }
     }
+
+    /**
+     * Returns true if {@code s} is a string of digits and (optionally) begins with the negative sign '-'
+     * e.g. "0", "1", "2", "01", "-0", "-55", ..., {@code Integer.MAX_VALUE} <br>
+     * Will return false for any other non-null string input
+     * e.g. empty string, "-", "+1", " 2 " (untrimmed), "3 0" (contains whitespace), "1 a" (contains letters)
+     *
+     * @throws NullPointerException if {@code s} is null.
+     */
+    public static boolean isDigitSequence(String s) {
+        requireNonNull(s);
+
+        if (s.isEmpty()) {
+            return false;
+        }
+
+        if (s.equals("-")) {
+            return false;
+        }
+
+        for (int i = 0; i < s.length(); ++i) {
+            char c = s.charAt(i);
+            if (i == 0 && c == '-') { // correct
+                continue;
+            }
+            if ('0' <= c && c <= '9') { // correct
+                continue;
+            }
+            return false;
+        }
+
+        return true;
+    }
 }

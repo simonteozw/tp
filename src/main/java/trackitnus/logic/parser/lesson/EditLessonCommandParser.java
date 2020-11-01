@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 
 import trackitnus.commons.core.Messages;
 import trackitnus.commons.core.index.Index;
+import trackitnus.logic.commands.lesson.DeleteLessonCommand;
 import trackitnus.logic.commands.lesson.EditLessonCommand;
 import trackitnus.logic.commands.lesson.EditLessonCommand.EditLessonDescriptor;
 import trackitnus.logic.parser.ArgumentMultimap;
@@ -49,8 +50,12 @@ public class EditLessonCommandParser implements Parser<EditLessonCommand> {
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                EditLessonCommand.MESSAGE_USAGE), pe);
+            if (pe.getMessage().equals(ParserUtil.MESSAGE_INVALID_INDEX)) {
+                throw new ParseException(
+                        Messages.MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);
+            }
+            throw new ParseException(
+                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, EditLessonCommand.MESSAGE_USAGE), pe);
         }
 
         EditLessonDescriptor editLessonDescriptor = new EditLessonDescriptor();

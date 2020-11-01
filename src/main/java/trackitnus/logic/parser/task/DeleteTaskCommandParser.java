@@ -2,6 +2,7 @@ package trackitnus.logic.parser.task;
 
 import trackitnus.commons.core.Messages;
 import trackitnus.commons.core.index.Index;
+import trackitnus.logic.commands.lesson.DeleteLessonCommand;
 import trackitnus.logic.commands.task.DeleteTaskCommand;
 import trackitnus.logic.parser.Parser;
 import trackitnus.logic.parser.ParserUtil;
@@ -20,8 +21,12 @@ public class DeleteTaskCommandParser implements Parser<DeleteTaskCommand> {
             Index index = ParserUtil.parseIndex(args);
             return new DeleteTaskCommand(index);
         } catch (ParseException pe) {
+            if (pe.getMessage().equals(ParserUtil.MESSAGE_INVALID_INDEX)) {
+                throw new ParseException(
+                        Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+            }
             throw new ParseException(
-                String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, DeleteTaskCommand.MESSAGE_USAGE), pe);
+                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, DeleteTaskCommand.MESSAGE_USAGE), pe);
         }
     }
 }
