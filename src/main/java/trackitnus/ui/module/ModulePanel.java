@@ -5,12 +5,15 @@ import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
 import trackitnus.commons.core.LogsCenter;
 import trackitnus.logic.Logic;
+import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.lesson.Lesson;
 import trackitnus.model.module.Module;
@@ -35,7 +38,9 @@ public class ModulePanel extends UiPart<Region> {
     @FXML
     private HBox moduleHeader;
     @FXML
-    private Label header;
+    private Circle moduleCircle;
+    @FXML
+    private Label moduleName;
     @FXML
     private StackPane lessonListPanelPlaceholder;
     @FXML
@@ -46,11 +51,15 @@ public class ModulePanel extends UiPart<Region> {
     /**
      * Creates a {@code ModuleListPanel} with the given {@code ObservableList}.
      */
-    public ModulePanel(Module module, Logic logic) {
+    public ModulePanel(Module module, Logic logic) throws CommandException {
         super(FXML);
-        header.setWrapText(true);
-        header.setMaxWidth(500);
-        header.setText(module.getCode().code + " " + module.getName().value);
+        moduleHeader.setAlignment(Pos.CENTER_LEFT);
+        moduleName.setWrapText(true);
+        moduleName.setMaxWidth(500);
+        moduleName.setText(module.getCode().code + " " + module.getName().value);
+
+        int moduleIndex = logic.getModuleIndex(module).getZeroBased();
+        moduleCircle.setFill(Module.COLORS.get(moduleIndex % 10));
 
         ObservableList<Lesson> lessons = logic.getModuleLessons(module.getCode());
         ObservableList<Task> tasks = logic.getModuleTasks(module.getCode());
@@ -73,6 +82,5 @@ public class ModulePanel extends UiPart<Region> {
         contactListPanel = new ContactListPanel(contacts);
         contactListPanelPlaceholder.getChildren().add(contactListPanel.getRoot());
     }
-
 
 }

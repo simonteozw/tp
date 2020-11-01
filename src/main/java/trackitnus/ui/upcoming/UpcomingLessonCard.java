@@ -1,9 +1,12 @@
 package trackitnus.ui.upcoming;
 
+import java.util.Formatter;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
 import trackitnus.model.lesson.Lesson;
 import trackitnus.ui.UiPart;
 
@@ -38,13 +41,29 @@ public class UpcomingLessonCard extends UiPart<Region> {
     /**
      * Creates a {@code ContactCode} with the given {@code Lesson} and index to display.
      */
-    public UpcomingLessonCard(Lesson lesson, int displayedIndex) {
+    public UpcomingLessonCard(Lesson lesson, int displayedIndex, Color lessonColor) {
         super(FXML);
         this.lesson = lesson;
         id.setText("[" + displayedIndex + "] ");
         code.setText(lesson.getCode().code);
         type.setText(lesson.getType().name());
         date.setText(lesson.getDate().toString().substring(4));
+        date.setTextFill(lessonColor);
+        date.setStyle("-fx-text-fill: " + getColorHex(lessonColor) + ";");
+    }
+
+    /**
+     * Get the hexcode color from a java.scene.paint.Color class for Label fill.
+     * @param color the color to generate hexcode.
+     * @return String the hexcode of the color.
+     */
+    public String getColorHex(Color color) {
+        java.awt.Color c = new java.awt.Color((float) color.getRed(),
+            (float) color.getGreen(),
+            (float) color.getBlue(),
+            (float) color.getOpacity());
+        String hex = String.format("#%02x%02x%02x", c.getRed(), c.getGreen(), c.getBlue());
+        return hex;
     }
 
     @Override

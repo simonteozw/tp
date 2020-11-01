@@ -10,9 +10,11 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
 import trackitnus.logic.Logic;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.lesson.Lesson;
+import trackitnus.model.module.Module;
 import trackitnus.model.task.Task;
 import trackitnus.ui.UiPart;
 import trackitnus.ui.task.TaskCard;
@@ -116,7 +118,11 @@ public class DayCard extends UiPart<Region> {
                 setText(null);
             } else {
                 try {
-                    setGraphic(new UpcomingLessonCard(lesson, logic.getLessonIndex(lesson).getOneBased()).getRoot());
+                    int lessonIndex = logic.getLessonIndex(lesson).getOneBased();
+//                    int moduleIndex = logic.getModuleIndex()
+                    int moduleIndex = 1;
+                    Color lessonColor = Module.COLORS.get(moduleIndex);
+                    setGraphic(new UpcomingLessonCard(lesson, lessonIndex, lessonColor).getRoot());
                 } catch (CommandException e) {
                     e.printStackTrace();
                 }
