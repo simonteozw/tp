@@ -208,7 +208,7 @@ Biweekly and monthly lessons may be added in subsequent versions.
 You can also perform commands on the lessons as explained below.
 
 ### Add
-The command that makes you moan every time you have to use it. 
+The command that makes you groan every time you have to use it. 
 Use this command to add a lesson to a module.
 
 Format: `L add m/MODULE_CODE n/TYPE d/DATE`
