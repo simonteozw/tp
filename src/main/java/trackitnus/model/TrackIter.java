@@ -254,17 +254,6 @@ public class TrackIter implements ReadOnlyTrackIter {
 
     //// util methods
 
-
-    @Override
-    public String toString() {
-        return "TrackIter{" +
-            "contacts=" + contacts +
-            ", modules=" + modules +
-            ", tasks=" + tasks +
-            ", lessons=" + lessons +
-            '}';
-    }
-
     @Override
     public ObservableList<Contact> getContactList() {
         return contacts.asUnmodifiableObservableList();
