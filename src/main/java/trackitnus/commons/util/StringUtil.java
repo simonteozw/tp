@@ -77,26 +77,7 @@ public class StringUtil {
      */
     public static boolean isDigitSequence(String s) {
         requireNonNull(s);
-
-        if (s.isEmpty()) {
-            return false;
-        }
-
-        if (s.equals("-")) {
-            return false;
-        }
-
-        for (int i = 0; i < s.length(); ++i) {
-            char c = s.charAt(i);
-            if (i == 0 && c == '-') { // correct
-                continue;
-            }
-            if ('0' <= c && c <= '9') { // correct
-                continue;
-            }
-            return false;
-        }
-
-        return true;
+        final String regex = "[-]?([0-9])+";
+        return s.matches(regex);
     }
 }
