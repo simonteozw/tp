@@ -195,7 +195,6 @@ public class ModelManager implements Model {
     @Override
     public void addModule(Module module) {
         trackIter.addModule(module);
-        updateFilteredModuleList(PREDICATE_SHOW_ALL_MODULES);
     }
 
     @Override
@@ -212,8 +211,7 @@ public class ModelManager implements Model {
         return filteredModules;
     }
 
-    @Override
-    public void updateFilteredModuleList(Predicate<Module> predicate) throws NullPointerException {
+    private void updateFilteredModuleList(Predicate<Module> predicate) throws NullPointerException {
         requireNonNull(predicate);
         filteredModules.setPredicate(predicate);
     }
@@ -294,6 +292,13 @@ public class ModelManager implements Model {
     @Override
     public void sortLesson() {
         trackIter.sortLesson();
+    }
+
+    @Override
+    public void clearAllList() {
+        updateFilteredContactList(PREDICATE_SHOW_NO_CONTACTS);
+        updateFilteredLessonList(PREDICATE_SHOW_NO_LESSONS);
+        updateFilteredTaskList(PREDICATE_SHOW_NO_TASKS);
     }
 
     //=========== Filtered Lesson List Accessors =============================================================

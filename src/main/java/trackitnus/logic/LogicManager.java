@@ -90,6 +90,11 @@ public class LogicManager implements Logic {
         return model.getFilteredLessonList();
     }
 
+    @Override
+    public void clearAllList() {
+        model.clearAllList();
+    }
+
     //--------------------------------START of V1.3's new functions--------------------------------
 
     @Override

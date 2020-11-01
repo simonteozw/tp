@@ -133,8 +133,7 @@ public class ModelStub implements Model {
         throw new AssertionError("This method should not be called.");
     }
 
-    @Override
-    public void updateFilteredModuleList(Predicate<Module> predicate) {
+    private void updateFilteredModuleList(Predicate<Module> predicate) {
         throw new AssertionError("This method should not be called.");
     }
 
@@ -240,6 +239,11 @@ public class ModelStub implements Model {
 
     @Override
     public void sortLesson() {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public void clearAllList() {
         throw new AssertionError("This method should not be called.");
     }
 

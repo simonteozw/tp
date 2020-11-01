@@ -24,9 +24,11 @@ public interface Model {
      * {@code Predicate} that always evaluate to true
      */
     Predicate<Contact> PREDICATE_SHOW_ALL_CONTACTS = unused -> true;
-    Predicate<Module> PREDICATE_SHOW_ALL_MODULES = unused -> true;
     Predicate<Task> PREDICATE_SHOW_ALL_TASKS = unused -> true;
     Predicate<Lesson> PREDICATE_SHOW_ALL_LESSONS = unused -> true;
+    Predicate<Contact> PREDICATE_SHOW_NO_CONTACTS = unused -> false;
+    Predicate<Task> PREDICATE_SHOW_NO_TASKS = unused -> false;
+    Predicate<Lesson> PREDICATE_SHOW_NO_LESSONS = unused -> false;
 
     /**
      * Returns the user prefs.
@@ -153,13 +155,6 @@ public interface Model {
      * Returns an unmodifiable view of the filtered module list
      */
     ObservableList<Module> getFilteredModuleList();
-
-    /**
-     * Updates the filter of the filtered module list to filter by the given {@code predicate}.
-     *
-     * @throws NullPointerException if {@code predicate} is null.
-     */
-    void updateFilteredModuleList(Predicate<Module> predicate) throws NullPointerException;
 
     //=========== Task ================================================================================
 
@@ -308,4 +303,8 @@ public interface Model {
 
     void sortLesson();
 
+    /**
+     * set the predicates all all filtered list to be false
+     */
+    void clearAllList();
 }
