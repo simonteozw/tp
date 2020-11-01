@@ -217,9 +217,9 @@ Examples:
 * `L add m/GET1020 n/lecture d/Mon 8:00-10:00`
 * `L add m/CS3233 n/tutorial d/MON 17:30-20:00`
 
-:warning: The `TYPE` must be one of the following or its abbreviation:
-`lecture`/`lec`, `tutorial`/`tut`,
-`laboratory`/`lab`, `recitation`/`rec`, or `sectional`/`sec`.
+:warning: The `TYPE` must be one of the following:
+`lec`/`lecture`, `tut`/`tutorial`,
+`lab`/`laboratory`, `rec`/`recitation`, or `sec`/`sectional`.
 
 :warning: The `DATE` provided must be in the format `ddd H:mm-H:mm`;
 times are in 24-hour format.
