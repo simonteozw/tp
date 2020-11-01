@@ -36,7 +36,7 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 **TrackIt@NUS** is a desktop application for managing modules, lessons, tasks, and contacts, tailored to the needs of
  NUS students. It focuses on the _Command Line Interface (CLI)_ while providing users with a simple and clean
   _Graphical User Interface (GUI)_. The main iteraction with **TrackIt@NUS** will be done via commands.
-  
+
 **TrackIt@NUS** is an all-in-one solution for busy NUS students. The information that can be managed by **TrackIt@NUS
 ** includes:
 
@@ -63,6 +63,9 @@ In this section, you will learn about the general design and structure TrackIt@N
 
 ### **Architecture** <a name="architecture"></a>
 
+We implemented most of our methods in a similar way to ensure that the logic is uniform. This makes our code less bug
+-prone, and more maintainable.
+
 ### **UI Component** <a name="ui"></a>
 
 ### **Logic Component** <a name="logic"></a>
@@ -84,6 +87,100 @@ This section describes some noteworthy details on how certain features are imple
 ### **Lesson Manager** <a name="lesson-manager"></a>
 
 ### **Task Manager** <a name="task-manager"></a>
+
+TrackIt@NUS allows users to keep track of his/her tasks. The task manager is one of TrackIt@NUS's basic components.
+ 
+ #### Rationale
+ 
+ Tasks are an integral part of any student's day-to-day life. Hence, TrackIt@NUS includes a task manager for students to 
+ keep track of all their tasks. To better support NUS students, a task can either belong to a module or not. When
+  adding a task, users can choose to the include the `m/MODULE_CODE` parameter in order to add a task that belongs to
+   a module. When users click into a specific module tab, they can see the tasks belonging to each module.
+   
+![ModuleTasks](images/ModuleTasks.png)
+    
+:information_source: A task does not have to belong a module. In this case, the module parameter of the task is
+ simply treated as null and the task can only be viewed in the upcoming tab.
+     
+:warning: The module must exist (i.e. there must be a module with the specified `MODULE_CODE`) otherwise the add and
+ edit commands will not work.
+ 
+:bulb: To remove a task from a module, simply type `T edit INDEX m/` (use the `m/` prefix but leave the `MODULE_CODE` parameter empty).
+
+#### Current Implementation
+
+In this section, we will outline the key commands of the Task Manager, namely:
+* `AddTaskCommand`
+* `DeleteTaskCommand`
+* `EditTaskCommand`
+
+We will also elaborate on one more key function, namely `getModuleTasks`.
+
+Generally, this is how the Task Manager handles a command.
+ 
+ ![Add Task](images/AddTaskActivityDiagram.png)
+ 
+The add, delete, and edit commands are all implemented in similar ways. When they are executed they will:
+ * call on the relevant Model methods
+ * update the `UniqueTaskList` depending on the command
+ * Save the updated task list to `data/trackIter.json`
+ * return the relevant CommandResult message
+ 
+When `AddTaskCommand` is executed, it will first call the model's `hasTask` method to ensure that the task does not
+ yet exist in the app. Following this, if the task is added with a non-null module code, it will call the model's
+  `hasModule` method to ensure that the specified module exists. If both these checks pass, `AddTaskCommand` will
+   call the model's `addTask` method.
+   
+The model will then call the `addTask` method of TrackIter, which calls the `add` method of UniqueTaskList and adds
+ the task to the app.
+
+The following shows the sequence diagram of the `AddTaskCommand`.
+
+![Add Task Sequence Diagram](images/AddTaskSequenceDiagram.png)
+
+When the `DeleteTaskCommand` is executed, it will first call the model's `getFilteredTaskList` method to
+ determine the last shown list of tasks. Then, it will call the index's `getZeroBased` method to find the
+ zero-based index of the task it must delete. Then, it will check if this index is within range. If it is, it
+ calls the model's `deleteTask` method.
+ 
+The model will then call the `removeTask` method of TrackIter, which calls the `remove` method of UniqueTaskList and
+ deletes the task in question from the app.
+
+The following shows the sequence diagram of the `DeleteTaskCommand`.
+
+![Delete Task Sequence Diagram](images/DeleteTaskSequenceDiagram.png)
+
+When the `EditTaskCommand` is executed, it will first call the model's `getFilteredTaskList` method to determine the
+ last shown list of tasks. Then, it will call the index's `getZeroBased` method to find the zero-basd index of the
+  task we must edit. It will then check if the index is within range. If it is, it calls the model's `setTask` method.
+  
+The model will then call the `setTask` method of TrackIter, which calls the `setTask` method of UniqueTaskList and
+ replace the original task with the edited version in the app.
+
+The follow shows the sequence diagram of the `EditTaskCommand`.
+
+![Edit Task Sequence Diagram](images/EditTaskSequenceDiagram.png)
+
+The `getModuleTasks` function takes in a Module Code and returns all tasks that belong to the specified module.
+. When `getModuleTasks` is called, it uses the `TaskHasCodePredicate` to update the task list in the app to only show
+ the tasks that belong the specified module code.
+
+This is the sequence diagram of `getModuleTasks`.
+
+![Get Module Tasks Sequence Diagram](images/GetModuleTasksSequenceDiagram.png)
+
+#### Design Considerations
+
+As mentioned, a task may or may not belong to a module. In the case it does not, we store the module code as
+ null. A task also may or may not have a remark. In the case it does not, we store the remark as the empty
+  string. These 2 optional fields made the `EditTaskCommand` more challenging to implement. We wanted the user to be
+   able to remove an existing module code or remark simply by typing `T edit INDEX m/` and `T edit INDEX r/` respectively.
+     
+![Edit Task Activity Diagram](images/EditTaskActivityDiagram.png)
+   
+The original AB3 implementation of edit commands, which would default to the original field if the edited
+ field was null, would not be sufficient. Hence, we added 2 additional boolean variables - `isRemarkChanged` and
+  `isCodeChanged`, to know whether users wanted to remove the existing module code or remark.
 
 ### **Contact Manager** <a name="contact-manager"></a>
 
@@ -190,7 +287,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Facade Pattern** <a name="facade-p"></a>: A structural design pattern that provides a simplified 
 (but limited) interface to a complex system of classes, library or framework.
  While decreasing the overall complexity of the application, it also helps to move unwanted dependencies to one place
- 
+
 * **Command Pattern** <a name="command-p"></a>: A Design Pattern that lets you encapsulate actions within Java
  classes. Of which, each class has an `execute()` method which is declared in the Command interface the class implements
 
