@@ -97,7 +97,7 @@
 
 .lesson-list-view {
     -fx-background-insets: 0;
-    -fx-background-color: #62687A;
+    -fx-background-color: #515665;
     -fx-background-radius: 5;
 }
 
@@ -255,6 +255,7 @@
 
 .button:hover {
     -fx-text-fill: #68C2E8;
+    -fx-cursor: hand;
 }
 
 .button:pressed, .button:default:hover:pressed {

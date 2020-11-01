@@ -7,12 +7,17 @@ import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.shape.Circle;
 import trackitnus.commons.core.LogsCenter;
 import trackitnus.logic.Logic;
+import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.module.Module;
 import trackitnus.ui.upcoming.UpcomingPanel;
@@ -106,6 +111,18 @@ public class SidePanel extends UiPart<Region> {
     }
 
     /**
+     * Configure the module section that will include the module button as well as a coloured module circle label.
+     *
+     * @return HBox The module section.
+     */
+    public HBox getModuleSection() throws CommandException {
+        HBox moduleSection = new HBox();
+        moduleSection.setAlignment(Pos.CENTER_LEFT);
+        moduleSection.setPadding(new Insets(0, 0, 0, 10));
+        return moduleSection;
+    }
+
+    /**
      * Configure the module button tab in the side panel.
      *
      * @return moduleButton The module button.
@@ -117,7 +134,20 @@ public class SidePanel extends UiPart<Region> {
             updateButtonDetails(button);
             tabConsumer.accept(moduleValues);
         });
+        button.setPadding(new Insets(5));
         return button;
+    }
+
+    /**
+     * Configure the coloured module circle that is displayed beside the module code.
+     *
+     * @return moduleCircle The module circle.
+     */
+    public Circle getModuleCircle(Module module, Logic logic) throws CommandException {
+        Circle moduleCircle = new Circle(0, 0, 6);
+        int moduleIndex = logic.getModuleIndex(module).getZeroBased();
+        moduleCircle.setFill(Module.COLORS.get(moduleIndex % 10));
+        return moduleCircle;
     }
 
     /**
@@ -132,12 +162,21 @@ public class SidePanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                Button updatedButton = getModuleButton(module);
-                setGraphic(updatedButton);
-                ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList(Module.TYPE,
-                    module));
+                try {
+                    HBox moduleSection = getModuleSection();
+                    Button updatedButton = getModuleButton(module);
+                    Circle moduleCircle = getModuleCircle(module, logic);
+                    moduleSection.getChildren().add(moduleCircle);
+                    moduleSection.getChildren().add(updatedButton);
+                    setGraphic(moduleSection);
+                    ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList(Module.TYPE,
+                        module));
 //                tabConsumer.accept(upcomingValues);
 //                updateButtonDetails(updatedButton);
+
+                } catch (CommandException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

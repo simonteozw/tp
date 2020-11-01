@@ -133,11 +133,17 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Fills up all the placeholders of this window.
      */
-    void fillInnerParts() {
+    void fillInnerParts() throws CommandException {
 
         upcomingPanel = new UpcomingPanel(logic);
 
-        sidePanel = new SidePanel(this::switchTab, logic);
+        sidePanel = new SidePanel(tabValues -> {
+            try {
+                switchTab(tabValues);
+            } catch (CommandException e) {
+                e.printStackTrace();
+            }
+        }, logic);
         sidePanelPlaceholder.getChildren().add(sidePanel.getRoot());
 
         //Default tab open
@@ -154,7 +160,7 @@ public class MainWindow extends UiPart<Stage> {
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 
-    private void switchTab(ArrayList<Object> tabValues) {
+    private void switchTab(ArrayList<Object> tabValues) throws CommandException {
         assert (tabValues.size() >= 1);
         logger.info("Switching tab to: " + tabValues.get(0));
         tabPanelPlaceholder.getChildren().clear();

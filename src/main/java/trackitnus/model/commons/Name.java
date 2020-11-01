@@ -17,7 +17,7 @@ public class Name {
      * The first character of the name must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[^/ ][^/]+";
+    public static final String VALIDATION_REGEX = "[^/ ][^/]*";
 
     public final String value;
 
