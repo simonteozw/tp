@@ -23,19 +23,19 @@ public class Lesson {
 
     private final Code code;
     private final Type type;
-    private final LessonDateTime date;
+    private final LessonDateTime time;
 
     /**
      * Every field must be present and not null.
      *
      * @param code
      * @param type
-     * @param date
+     * @param time
      */
-    public Lesson(Code code, Type type, LessonDateTime date) {
-        CollectionUtil.requireAllNonNull(code, type, date);
+    public Lesson(Code code, Type type, LessonDateTime time) {
+        CollectionUtil.requireAllNonNull(code, type, time);
         this.code = code;
-        this.date = date;
+        this.time = time;
         this.type = type;
     }
 
@@ -52,12 +52,12 @@ public class Lesson {
         Lesson otherLesson = (Lesson) other;
         return otherLesson.code.equals(code)
             && otherLesson.type.equals(type)
-            && otherLesson.date.equals(date);
+            && otherLesson.time.equals(time);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(code, type, date);
+        return Objects.hash(code, type, time);
     }
 
     @Override
@@ -66,7 +66,7 @@ public class Lesson {
             + " "
             + getTypeStr()
             + " at: "
-            + getDate();
+            + getTime();
     }
 
     public Code getCode() {
@@ -81,20 +81,20 @@ public class Lesson {
         return type.name();
     }
 
-    public LessonDateTime getDate() {
-        return date;
+    public LessonDateTime getTime() {
+        return time;
     }
 
     public DayOfWeek getWeekday() {
-        return date.getWeekday();
+        return time.getWeekday();
     }
 
     public LocalTime getStartTime() {
-        return date.getStartTime();
+        return time.getStartTime();
     }
 
     public LocalTime getEndTime() {
-        return date.getEndTime();
+        return time.getEndTime();
     }
 
     /**
