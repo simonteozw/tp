@@ -326,7 +326,7 @@ public class ParserUtil {
             DayOfWeek weekday = parseLessonWeekday(tokens[0]);
             LocalTime startTime = LocalTime.parse(startEndTime[0], LessonDateTime.FORMATTER);
             LocalTime endTime = LocalTime.parse(startEndTime[1], LessonDateTime.FORMATTER);
-            if (startTime.compareTo(endTime) > 0) {
+            if (startTime.compareTo(endTime) >= 0) {
                 throw new ParseException(Lesson.TIME_MESSAGE_CONSTRAINTS);
             }
             return new LessonDateTime(weekday, startTime, endTime);
