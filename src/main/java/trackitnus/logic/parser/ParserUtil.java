@@ -206,6 +206,23 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a VALID {@code String date} into a {@code LocalDate}.
+     * Leading and trailing whitespaces will be trimmed.
+     * Crash the program if the date cannot be parsed (it's the caller responsibility to make sure the date passed in
+     * is valid!). The function is written so that the caller doesn't need to handle the possible exception since
+     * it's expected that no exception will be thrown.
+     */
+    public static LocalDate parseValidDate(String date) {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        try {
+            return LocalDate.parse(trimmedDate, DATE_PATTERN);
+        } catch (DateTimeParseException e) {
+            throw new IllegalArgumentException("an invalid date is passed into parseValidDate");
+        }
+    }
+
+    /**
      * Parses a {@code String weightage} into a {@code double}.
      * Leading and trailing whitespaces will be trimmed.
      *

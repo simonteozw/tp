@@ -6,7 +6,6 @@ import static trackitnus.testutil.typical.TypicalContacts.AMY;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.time.LocalDate;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -106,7 +105,7 @@ public class LogicManagerTest {
     @Test
     public void getDayUpcomingTasks_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, ()
-            -> logic.getDayUpcomingTasks(LocalDate.parse("12/12/2020", ParserUtil.DATE_PATTERN)).remove(0));
+            -> logic.getDayUpcomingTasks(ParserUtil.parseValidDate("12/12/2020")).remove(0));
     }
 
     /**

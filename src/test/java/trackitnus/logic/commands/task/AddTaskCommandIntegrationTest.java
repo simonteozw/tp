@@ -4,8 +4,6 @@ import static trackitnus.logic.commands.CommandTestUtil.assertCommandFailure;
 import static trackitnus.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static trackitnus.testutil.typical.TypicalTrackIter.getTypicalTrackIter;
 
-import java.time.LocalDate;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +26,7 @@ public class AddTaskCommandIntegrationTest {
 
     @Test
     public void execute_newTask_success() {
-        Task validTask = new Task(new Name("Testing task"), LocalDate.parse("12/12/2020", ParserUtil.DATE_PATTERN),
+        Task validTask = new Task(new Name("Testing task"), ParserUtil.parseValidDate("12/12/2020"),
             null, "sample remarks");
 
         Model expectedModel = new ModelManager(model.getTrackIter(), new UserPrefs());

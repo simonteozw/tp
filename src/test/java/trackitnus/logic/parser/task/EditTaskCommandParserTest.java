@@ -6,8 +6,6 @@ import static trackitnus.testutil.typical.TypicalIndexes.INDEX_FIRST;
 import static trackitnus.testutil.typical.TypicalIndexes.INDEX_SECOND;
 import static trackitnus.testutil.typical.TypicalIndexes.INDEX_THIRD;
 
-import java.time.LocalDate;
-
 import org.junit.jupiter.api.Test;
 
 import trackitnus.commons.core.Messages;
@@ -24,7 +22,7 @@ public class EditTaskCommandParserTest {
                                                          String remark) {
         EditTaskCommand.EditTaskDescriptor descriptor = new EditTaskCommand.EditTaskDescriptor();
         descriptor.setName(new Name(name));
-        descriptor.setDate(LocalDate.parse(date, ParserUtil.DATE_PATTERN));
+        descriptor.setDate(ParserUtil.parseValidDate(date));
         if (code != null) {
             descriptor.setCode(new Code(code));
         }
