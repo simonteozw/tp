@@ -218,7 +218,7 @@ public class ParserUtil {
         try {
             return LocalDate.parse(trimmedDate, DATE_PATTERN);
         } catch (DateTimeParseException e) {
-            throw new IllegalArgumentException("an invalid date is passed into parseValidDate");
+            throw new IllegalArgumentException("An invalid date is passed into parseValidDate");
         }
     }
 
