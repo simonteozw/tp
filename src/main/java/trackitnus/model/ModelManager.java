@@ -330,6 +330,16 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public Index getModuleIndex(Module module) throws CommandException {
+        ObservableList<Module> moduleList = getFilteredModuleList();
+        int index = moduleList.indexOf(module);
+        if (index == -1) {
+            throw new CommandException(Messages.MESSAGE_MODULE_DOES_NOT_EXIST);
+        }
+        return Index.fromZeroBased(index);
+    }
+
+    @Override
     public ObservableList<Contact> getModuleContacts(Code code) {
         Tag target = new Tag(code.toString());
         updateFilteredContactList(new ContactHasTagPredicate(target));

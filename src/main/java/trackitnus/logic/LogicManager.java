@@ -133,6 +133,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public Index getModuleIndex(Module module) throws CommandException {
+        return model.getModuleIndex(module);
+    }
+
+    @Override
     public Index getTaskIndex(Task task) throws CommandException {
         return model.getTaskIndex(task);
     }
