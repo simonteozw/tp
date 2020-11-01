@@ -46,8 +46,6 @@ public class EditContactCommand extends Command {
         + PREFIX_PHONE + "91234567 "
         + PREFIX_EMAIL + "johndoe@example.com";
 
-    public static final String MESSAGE_EDIT_CONTACT_SUCCESS = "Edited Contact: %1$s";
-
     private final Index index;
     private final EditContactDescriptor editContactDescriptor;
 
@@ -101,7 +99,7 @@ public class EditContactCommand extends Command {
         }
 
         model.setContact(contactToEdit, editedContact);
-        return new CommandResult(String.format(MESSAGE_EDIT_CONTACT_SUCCESS, editedContact));
+        return new CommandResult(String.format(Messages.MESSAGE_EDIT_CONTACT_SUCCESS, editedContact));
     }
 
     @Override

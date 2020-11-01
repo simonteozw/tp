@@ -23,8 +23,6 @@ public class DeleteLessonCommand extends Command {
         + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
         + "2\n";
 
-    public static final String MESSAGE_DELETE_LESSON_SUCCESS = "Deleted Lesson: %1$s";
-
     private final Index targetIndex;
 
     /**
@@ -47,7 +45,7 @@ public class DeleteLessonCommand extends Command {
 
         Lesson lessonToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deleteLesson(lessonToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_LESSON_SUCCESS, lessonToDelete));
+        return new CommandResult(String.format(Messages.MESSAGE_DELETE_LESSON_SUCCESS, lessonToDelete));
     }
 
     @Override

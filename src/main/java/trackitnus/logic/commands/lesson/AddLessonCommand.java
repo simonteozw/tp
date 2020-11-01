@@ -28,8 +28,6 @@ public class AddLessonCommand extends Command {
         + PREFIX_TYPE + "lecture "
         + PREFIX_DATE + "Wed 17:45-21:00\n";
 
-    public static final String MESSAGE_ADD_LESSON_SUCCESS = "New lesson added: %1$s";
-
     private final Lesson toAdd;
 
     /**
@@ -53,7 +51,7 @@ public class AddLessonCommand extends Command {
         }
 
         model.addLesson(toAdd);
-        return new CommandResult(String.format(MESSAGE_ADD_LESSON_SUCCESS, toAdd));
+        return new CommandResult(String.format(Messages.MESSAGE_ADD_LESSON_SUCCESS, toAdd));
     }
 
     @Override

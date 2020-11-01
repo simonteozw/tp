@@ -39,8 +39,6 @@ public class EditLessonCommand extends Command {
         + PREFIX_TYPE + "lecture "
         + PREFIX_DATE + "Mon 17:45-21:00\n";
 
-    public static final String MESSAGE_EDIT_LESSON_SUCCESS = "Edited Lesson: %1$s";
-
     private final Index index;
     private final EditLessonDescriptor editLessonDescriptor;
 
@@ -97,7 +95,7 @@ public class EditLessonCommand extends Command {
         }
 
         model.setLesson(lessonToEdit, editedLesson);
-        return new CommandResult(String.format(MESSAGE_EDIT_LESSON_SUCCESS, editedLesson));
+        return new CommandResult(String.format(Messages.MESSAGE_EDIT_LESSON_SUCCESS, editedLesson));
     }
 
     @Override

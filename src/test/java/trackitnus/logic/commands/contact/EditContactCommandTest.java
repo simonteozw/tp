@@ -33,7 +33,7 @@ public class EditContactCommandTest {
         EditContactCommand.EditContactDescriptor descriptor = new EditContactDescriptorBuilder(editedContact).build();
         EditContactCommand editContactCommand = new EditContactCommand(TypicalIndexes.INDEX_FIRST, descriptor);
 
-        String expectedMessage = String.format(EditContactCommand.MESSAGE_EDIT_CONTACT_SUCCESS, editedContact);
+        String expectedMessage = String.format(Messages.MESSAGE_EDIT_CONTACT_SUCCESS, editedContact);
 
         Model expectedModel = new ModelManager(new TrackIter(model.getTrackIter()), new UserPrefs());
         expectedModel.setContact(model.getFilteredContactList().get(0), editedContact);
@@ -58,7 +58,7 @@ public class EditContactCommandTest {
                 .build();
         EditContactCommand editContactCommand = new EditContactCommand(indexLastContact, descriptor);
 
-        String expectedMessage = String.format(EditContactCommand.MESSAGE_EDIT_CONTACT_SUCCESS, editedContact);
+        String expectedMessage = String.format(Messages.MESSAGE_EDIT_CONTACT_SUCCESS, editedContact);
 
         Model expectedModel = new ModelManager(new TrackIter(model.getTrackIter()), new UserPrefs());
         expectedModel.setContact(lastContact, editedContact);
@@ -72,7 +72,7 @@ public class EditContactCommandTest {
             new EditContactCommand.EditContactDescriptor());
         Contact editedContact = model.getFilteredContactList().get(TypicalIndexes.INDEX_FIRST.getZeroBased());
 
-        String expectedMessage = String.format(EditContactCommand.MESSAGE_EDIT_CONTACT_SUCCESS, editedContact);
+        String expectedMessage = String.format(Messages.MESSAGE_EDIT_CONTACT_SUCCESS, editedContact);
 
         Model expectedModel = new ModelManager(new TrackIter(model.getTrackIter()), new UserPrefs());
 
@@ -90,7 +90,7 @@ public class EditContactCommandTest {
         EditContactCommand editContactCommand = new EditContactCommand(TypicalIndexes.INDEX_FIRST,
             new EditContactDescriptorBuilder().withPhone("98989898").build());
 
-        String expectedMessage = String.format(EditContactCommand.MESSAGE_EDIT_CONTACT_SUCCESS, editedContact);
+        String expectedMessage = String.format(Messages.MESSAGE_EDIT_CONTACT_SUCCESS, editedContact);
 
         Model expectedModel = new ModelManager(new TrackIter(model.getTrackIter()), new UserPrefs());
         expectedModel.setContact(model.getFilteredContactList().get(0), editedContact);

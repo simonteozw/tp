@@ -39,8 +39,6 @@ public class EditTaskCommand extends Command {
         + "Example: " + Task.TYPE + " " + COMMAND_WORD + " 1 "
         + PREFIX_REMARK + "New remark";
 
-    public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
-
     private final Index index;
     private final EditTaskCommand.EditTaskDescriptor editTaskDescriptor;
 
@@ -92,7 +90,7 @@ public class EditTaskCommand extends Command {
         }
 
         model.setTask(taskToEdit, editedTask);
-        return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, editedTask));
+        return new CommandResult(String.format(Messages.MESSAGE_EDIT_TASK_SUCCESS, editedTask));
     }
 
     @Override

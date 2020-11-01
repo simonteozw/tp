@@ -30,8 +30,6 @@ public class AddTaskCommand extends Command {
         + PREFIX_DATE + "22/12/2020 "
         + PREFIX_REMARK + "Favourite module!";
 
-    public static final String MESSAGE_ADD_TASK_SUCCESS = "New task added: %1$s";
-
     private final Task toAdd;
 
     /**
@@ -55,7 +53,7 @@ public class AddTaskCommand extends Command {
         }
 
         model.addTask(toAdd);
-        return new CommandResult(String.format(MESSAGE_ADD_TASK_SUCCESS, toAdd));
+        return new CommandResult(String.format(Messages.MESSAGE_ADD_TASK_SUCCESS, toAdd));
     }
 
     @Override
