@@ -119,8 +119,7 @@ public class DayCard extends UiPart<Region> {
             } else {
                 try {
                     int lessonIndex = logic.getLessonIndex(lesson).getOneBased();
-//                    int moduleIndex = logic.getModuleIndex()
-                    int moduleIndex = 1;
+                    int moduleIndex = logic.getModuleIndex(lesson.getCode()).getZeroBased();
                     Color lessonColor = Module.COLORS.get(moduleIndex);
                     setGraphic(new UpcomingLessonCard(lesson, lessonIndex, lessonColor).getRoot());
                 } catch (CommandException e) {
