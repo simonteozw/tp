@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 public class TaskComparator implements Comparator<Task> {
     /**
-     * Compares 2 tasks to faciliate sorting.
+     * Compares 2 tasks to facilitate sorting.
      *
      * @param t1 First task to compare.
      * @param t2 Second task to compare.

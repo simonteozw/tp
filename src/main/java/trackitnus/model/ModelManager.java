@@ -211,11 +211,6 @@ public class ModelManager implements Model {
         return filteredModules;
     }
 
-    private void updateFilteredModuleList(Predicate<Module> predicate) throws NullPointerException {
-        requireNonNull(predicate);
-        filteredModules.setPredicate(predicate);
-    }
-
     //=========== Task ================================================================================
 
     @Override
@@ -256,8 +251,8 @@ public class ModelManager implements Model {
 
     @Override
     public Index getTaskIndex(Task task) throws CommandException {
-        ObservableList<Task> tasklist = getFilteredTaskList();
-        int index = tasklist.indexOf(task);
+        ObservableList<Task> taskList = getFilteredTaskList();
+        int index = taskList.indexOf(task);
         if (index == -1) {
             throw new CommandException(Messages.MESSAGE_TASK_DOES_NOT_EXIST);
         }

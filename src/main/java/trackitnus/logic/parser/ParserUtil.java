@@ -179,17 +179,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String str} into a {@code String}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code str} is invalid.
-     */
-    public static String parseString(String str) {
-        requireNonNull(str);
-        return str.trim();
-    }
-
-    /**
      * Parses a {@code String date} into a {@code LocalDate}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -223,22 +212,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String weightage} into a {@code double}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code weightage} is invalid.
-     */
-    public static double parseWeightage(String weightage) throws ParseException {
-        requireNonNull(weightage);
-        String trimmedWeightage = weightage.trim();
-        try {
-            return Double.parseDouble(trimmedWeightage);
-        } catch (NumberFormatException e) {
-            throw new ParseException(Messages.WEIGHTAGE_MESSAGE_CONSTRAINTS);
-        }
-    }
-
-    /**
      * Parses a {@code String remark} into a {@code String}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -248,8 +221,7 @@ public class ParserUtil {
         if (remark.isEmpty()) {
             return "";
         }
-        String trimmedRemark = remark.get().trim();
-        return trimmedRemark;
+        return remark.get().trim();
     }
 
     /**
@@ -330,12 +302,8 @@ public class ParserUtil {
                 throw new ParseException(Lesson.TIME_MESSAGE_CONSTRAINTS);
             }
             return new LessonDateTime(weekday, startTime, endTime);
-        } catch (Exception e) {
-            if (e instanceof ParseException) {
-                throw e;
-            } else {
-                throw new ParseException(Lesson.LESSON_TIME_MESSAGE_CONSTRAINTS);
-            }
+        } catch (DateTimeParseException e) {
+            throw new ParseException(Lesson.LESSON_TIME_MESSAGE_CONSTRAINTS);
         }
     }
 }
