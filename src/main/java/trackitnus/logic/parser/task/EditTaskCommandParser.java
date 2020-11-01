@@ -14,6 +14,7 @@ import trackitnus.logic.parser.ArgumentMultimap;
 import trackitnus.logic.parser.ArgumentTokenizer;
 import trackitnus.logic.parser.Parser;
 import trackitnus.logic.parser.ParserUtil;
+import trackitnus.logic.parser.exceptions.InvalidIndexException;
 import trackitnus.logic.parser.exceptions.ParseException;
 
 /**
@@ -36,11 +37,9 @@ public class EditTaskCommandParser implements Parser<EditTaskCommand> {
 
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
+        } catch (InvalidIndexException iie) {
+            throw new InvalidIndexException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         } catch (ParseException pe) {
-            if (pe.getMessage().equals(ParserUtil.MESSAGE_INVALID_INDEX)) {
-                throw new ParseException(
-                        Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
-            }
             throw new ParseException(
                     String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, EditTaskCommand.MESSAGE_USAGE), pe);
         }
