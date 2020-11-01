@@ -1,7 +1,10 @@
 package trackitnus.model.module;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
+import javafx.scene.paint.Color;
 import trackitnus.commons.util.CollectionUtil;
 import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
@@ -12,6 +15,9 @@ import trackitnus.model.commons.Name;
  */
 public class Module {
     public static final String TYPE = "M";
+    public static final ArrayList<Color> COLORS = new ArrayList<>(Arrays.asList(Color.web("#C24992"), Color.web(
+        "#8F42DC"), Color.web("#4264DC"), Color.web("#42B4D8"), Color.web("#3CAC84"), Color.web("#6DAC3C"),
+        Color.web("#DAEA29"), Color.web("#B79A02"), Color.web("#EE4E0A"), Color.web("#AD1A11")));
 
     private final Code code;
     private final Name name;

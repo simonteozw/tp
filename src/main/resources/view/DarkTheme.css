@@ -255,6 +255,7 @@
 
 .button:hover {
     -fx-text-fill: #68C2E8;
+    -fx-cursor: hand;
 }
 
 .button:pressed, .button:default:hover:pressed {
