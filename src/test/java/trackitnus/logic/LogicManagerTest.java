@@ -6,7 +6,6 @@ import static trackitnus.testutil.typical.TypicalContacts.AMY;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.time.LocalDate;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,6 +16,7 @@ import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.contact.AddContactCommand;
 import trackitnus.logic.commands.contact.ContactCommandTestUtil;
 import trackitnus.logic.commands.exceptions.CommandException;
+import trackitnus.logic.parser.ParserUtil;
 import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.model.Model;
 import trackitnus.model.ModelManager;
@@ -24,7 +24,6 @@ import trackitnus.model.ReadOnlyTrackIter;
 import trackitnus.model.UserPrefs;
 import trackitnus.model.commons.Code;
 import trackitnus.model.contact.Contact;
-import trackitnus.model.task.Task;
 import trackitnus.storage.JsonTrackIterStorage;
 import trackitnus.storage.JsonUserPrefsStorage;
 import trackitnus.storage.StorageManager;
@@ -106,7 +105,7 @@ public class LogicManagerTest {
     @Test
     public void getDayUpcomingTasks_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, ()
-            -> logic.getDayUpcomingTasks(LocalDate.parse("12/12/2020", Task.FORMATTER)).remove(0));
+            -> logic.getDayUpcomingTasks(ParserUtil.parseValidDate("12/12/2020")).remove(0));
     }
 
     /**

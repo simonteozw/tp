@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import trackitnus.logic.parser.ParserUtil;
 import trackitnus.model.ReadOnlyTrackIter;
 import trackitnus.model.TrackIter;
 import trackitnus.model.commons.Code;
@@ -38,6 +39,8 @@ public class SampleDataUtil {
             new Contact(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
                 getTagSet("classmates", "CS2103T")),
             new Contact(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
+                getTagSet("colleagues")),
+            new Contact(new Name("Henry CHIA Wai Kit"), new Phone("65161556"), new Email("hchia@comp.nus.edu.sg"),
                 getTagSet("colleagues"))
         };
     }
@@ -48,7 +51,8 @@ public class SampleDataUtil {
             new Module(new Code("CS2100"), new Name("Computer Organisation")),
             new Module(new Code("CS2103T"), new Name("Software Engineering")),
             new Module(new Code("MA1101R"), new Name("Linear Algebra")),
-            new Module(new Code("GER1000H"), new Name("Quantitative Reasoning"))
+            new Module(new Code("GER1000H"), new Name("Quantitative Reasoning")),
+            new Module(new Code("CS2030S"), new Name("Programming Methodology"))
         };
     }
 
@@ -74,12 +78,18 @@ public class SampleDataUtil {
                 LocalTime.NOON.plusHours(2))),
             new Lesson(new Code("GER1000H"), Type.SEC, new LessonDateTime(DayOfWeek.Fri, LocalTime.NOON.plusHours(2),
                 LocalTime.NOON.plusHours(4))),
+            new Lesson(new Code("CS2030S"), Type.LEC, new LessonDateTime(DayOfWeek.Mon, LocalTime.NOON,
+                LocalTime.NOON.plusHours(2))),
+            new Lesson(new Code("CS2030S"), Type.REC, new LessonDateTime(DayOfWeek.Wed, LocalTime.NOON,
+                LocalTime.NOON.plusHours(1))),
+            new Lesson(new Code("CS2030S"), Type.LAB, new LessonDateTime(DayOfWeek.Fri, LocalTime.NOON,
+                LocalTime.NOON.plusHours(2))),
         };
     }
 
     public static Task[] getSampleTasks() {
         return new Task[]{
-            new Task(new Name("Plan for Alex's birthday"), LocalDate.parse("12/12/2020", Task.FORMATTER),
+            new Task(new Name("Plan for Alex's birthday"), ParserUtil.parseValidDate("12/12/2020"),
                 null, "Buy a cake"),
             new Task(new Name("Buy Mooncakes for Mum"), LocalDate.now().plusDays(3), null, ""),
             new Task(new Name("Do Tutorial"), LocalDate.now().plusDays(5),
@@ -88,10 +98,13 @@ public class SampleDataUtil {
                 new Code("CS1101S"), "Recursion"),
             new Task(new Name("Work on the final report"), LocalDate.now().plusDays(2),
                 new Code("GER1000H"), "min 500 words"),
-            new Task(new Name("Study for Final Exam"), LocalDate.parse("05/11/2020", Task.FORMATTER),
+            new Task(new Name("Study for Final Exam"), ParserUtil.parseValidDate("05/11/2020"),
                 new Code("MA1101R"), "Focus on Diagonalisation"),
             new Task(new Name("Prepare for v1.3 Demo"), LocalDate.now().plusDays(1),
-                new Code("CS2103T"), "Ensure app runs smoothly")
+                new Code("CS2103T"), "Ensure app runs smoothly"),
+            new Task(new Name("Code Project 2"), ParserUtil.parseValidDate("20/11/2020"),
+                new Code("CS2030S"),
+                "(deadline is at the end of reading week)")
         };
     }
 

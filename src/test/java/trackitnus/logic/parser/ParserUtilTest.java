@@ -12,6 +12,7 @@ import java.util.Set;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import trackitnus.commons.core.Messages;
 import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Name;
@@ -44,7 +45,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseIndex_outOfRangeInput_throwsParseException() {
-        Assert.assertThrows(ParseException.class, ParserUtil.MESSAGE_INVALID_INDEX, ()
+        Assert.assertThrows(ParseException.class, Messages.MESSAGE_INVALID_INDEX, ()
             -> ParserUtil.parseIndex(Long.toString(Integer.MAX_VALUE + 1)));
     }
 

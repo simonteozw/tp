@@ -1,0 +1,64 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":EditTaskCommand" as EditTaskCommand LOGIC_COLOR
+participant "index:Index" as index LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+participant ":TrackIter" as TrackIter MODEL_COLOR
+participant ":UniqueTaskList" as UniqueTaskList MODEL_COLOR
+end box
+
+[-> EditTaskCommand : execute(m)
+activate EditTaskCommand
+
+EditTaskCommand -> Model : getFilteredTaskList()
+activate Model
+
+Model --> EditTaskCommand
+deactivate Model
+
+EditTaskCommand -> index : getZeroBased()
+activate index
+
+index --> EditTaskCommand
+deactivate index
+
+EditTaskCommand -> EditTaskCommand : createEditedTask(taskToEdit, editTaskDescriptor)
+activate EditTaskCommand
+EditTaskCommand --> EditTaskCommand
+deactivate EditTaskCommand
+
+EditTaskCommand -> Model : setTask(taskToEdit, editedTask)
+activate Model
+
+Model -> TrackIter : setTask(taskToEdit, editedTask)
+activate TrackIter
+
+TrackIter -> UniqueTaskList : setTask(taskToEdit, editedTask)
+activate UniqueTaskList
+
+UniqueTaskList --> TrackIter
+deactivate UniqueTaskList
+
+TrackIter --> Model
+deactivate TrackIter
+
+Model --> EditTaskCommand
+deactivate Model
+
+create CommandResult
+EditTaskCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> EditTaskCommand : r
+deactivate CommandResult
+
+[<--EditTaskCommand : r
+deactivate EditTaskCommand
+
+@enduml

@@ -17,11 +17,11 @@
 2. Open IntelliJ (if your are not in the welcome screen, click `File` > `Close Project` to close the existing project
  dialog first)
  
- 3. Configure the JDK
-    1. Click `Configure` > `Project Defaults` > `Project Structure`
-    2. Click `New…​` and find the directory of the JDK
-    3. Follow the guide [_[se-edu/guides] IDEA: Configuring the JDK_](https://se-education.org/guides/tutorials/intellijJdk.html) 
-    for more information
+3. Configure the JDK
+   1. Click `Configure` > `Project Defaults` > `Project Structure`
+   2. Click `New…​` and find the directory of the JDK
+   3. Follow the guide [_[se-edu/guides] IDEA: Configuring the JDK_](https://se-education.org/guides/tutorials/intellijJdk.html) 
+   for more information
     
 4. Click `Import Project`
 
@@ -41,10 +41,9 @@
 
 ### Configuring the Coding Style
 
-   If using IDEA, follow the guide [_[se-edu/guides] IDEA: Configuring the code style_](https://se-education.org/guides/tutorials/checkstyle.html) to set up IDEA's coding style to match ours.
+If using IDEA, follow the guide [_[se-edu/guides] IDEA: Configuring the code style_](https://se-education.org/guides/tutorials/checkstyle.html) to set up IDEA's coding style to match ours.
 
- :bulb: Optionally, you can follow the guide [_[se-edu/guides] Using Checkstyle_](https://se-education.org/guides/tutorials/checkstyle.html) 
- to find how to use the CheckStyle within IDEA e.g., to report problems as you write code.
+:bulb: Optionally, you can follow the guide [_[se-edu/guides] Using Checkstyle_](https://se-education.org/guides/tutorials/checkstyle.html) to find how to use the CheckStyle within IDEA e.g., to report problems as you write code.
 
 1. **Set up CI**
 
