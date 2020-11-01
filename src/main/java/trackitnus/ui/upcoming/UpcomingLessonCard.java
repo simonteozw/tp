@@ -1,7 +1,5 @@
 package trackitnus.ui.upcoming;
 
-import java.util.Formatter;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;

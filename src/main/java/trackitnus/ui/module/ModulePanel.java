@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import trackitnus.commons.core.LogsCenter;
 import trackitnus.logic.Logic;
@@ -44,9 +45,14 @@ public class ModulePanel extends UiPart<Region> {
     @FXML
     private StackPane lessonListPanelPlaceholder;
     @FXML
+    private Label taskHeader;
+    @FXML
     private StackPane taskListPanelPlaceholder;
     @FXML
+    private Label contactHeader;
+    @FXML
     private StackPane contactListPanelPlaceholder;
+
 
     /**
      * Creates a {@code ModuleListPanel} with the given {@code ObservableList}.
@@ -59,7 +65,10 @@ public class ModulePanel extends UiPart<Region> {
         moduleName.setText(module.getCode().code + " " + module.getName().value);
 
         int moduleIndex = logic.getModuleIndex(module).getZeroBased();
-        moduleCircle.setFill(Module.COLORS.get(moduleIndex % 10));
+        Color moduleColor = Module.COLORS.get(moduleIndex % 10);
+        moduleCircle.setFill(moduleColor);
+        taskHeader.setStyle("-fx-text-fill: " + getColorHex(moduleColor) + ";");
+        contactHeader.setStyle("-fx-text-fill: " + getColorHex(moduleColor) + ";");
 
         ObservableList<Lesson> lessons = logic.getModuleLessons(module.getCode());
         ObservableList<Task> tasks = logic.getModuleTasks(module.getCode());
@@ -81,6 +90,14 @@ public class ModulePanel extends UiPart<Region> {
 
         contactListPanel = new ContactListPanel(contacts);
         contactListPanelPlaceholder.getChildren().add(contactListPanel.getRoot());
+    }
+    public String getColorHex(Color color) {
+        java.awt.Color c = new java.awt.Color((float) color.getRed(),
+            (float) color.getGreen(),
+            (float) color.getBlue(),
+            (float) color.getOpacity());
+        String hex = String.format("#%02x%02x%02x", c.getRed(), c.getGreen(), c.getBlue());
+        return hex;
     }
 
 }

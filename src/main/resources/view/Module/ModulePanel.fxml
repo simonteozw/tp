@@ -23,7 +23,7 @@
                 <Insets bottom="10"/>
             </padding>
         </StackPane>
-        <Label text="Tasks" styleClass="date_label"/>
+        <Label fx:id="taskHeader" text="Tasks" styleClass="date_label"/>
         <Line startX="0" endX="500" style="-fx-stroke: #8C8C89"/>
 
         <StackPane fx:id="taskListPanelPlaceholder" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
@@ -31,7 +31,7 @@
                 <Insets bottom="10"/>
             </padding>
         </StackPane>
-        <Label text="Contacts" styleClass="date_label"/>
+        <Label fx:id="contactHeader" text="Contacts" styleClass="date_label"/>
         <Line startX="0" endX="500" style="-fx-stroke: #8C8C89"/>
         <StackPane fx:id="contactListPanelPlaceholder" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
             <padding>

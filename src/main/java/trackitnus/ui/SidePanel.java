@@ -15,7 +15,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Circle;
-import javafx.scene.text.Text;
 import trackitnus.commons.core.LogsCenter;
 import trackitnus.logic.Logic;
 import trackitnus.logic.commands.exceptions.CommandException;
@@ -118,7 +117,7 @@ public class SidePanel extends UiPart<Region> {
     public HBox getModuleSection() throws CommandException {
         HBox moduleSection = new HBox();
         moduleSection.setAlignment(Pos.CENTER_LEFT);
-        moduleSection.setPadding(new Insets(0, 0,0,10));
+        moduleSection.setPadding(new Insets(0, 0, 0, 10));
         return moduleSection;
     }
 
@@ -143,7 +142,7 @@ public class SidePanel extends UiPart<Region> {
      * @return moduleCircle The module circle.
      */
     public Circle getModuleCircle(Module module, Logic logic) throws CommandException {
-        Circle moduleCircle = new Circle(0,0,6);
+        Circle moduleCircle = new Circle(0, 0, 6);
         int moduleIndex = logic.getModuleIndex(module).getZeroBased();
         moduleCircle.setFill(Module.COLORS.get(moduleIndex % 10));
         return moduleCircle;
