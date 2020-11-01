@@ -243,6 +243,11 @@ public class ModelStub implements Model {
     }
 
     @Override
+    public void clearAllList() {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
     public Index getTaskIndex(Task task) {
         throw new AssertionError("This method should not be called.");
     }

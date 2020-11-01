@@ -294,6 +294,13 @@ public class ModelManager implements Model {
         trackIter.sortLesson();
     }
 
+    @Override
+    public void clearAllList() {
+        updateFilteredContactList(PREDICATE_SHOW_NO_CONTACTS);
+        updateFilteredLessonList(PREDICATE_SHOW_NO_LESSONS);
+        updateFilteredTaskList(PREDICATE_SHOW_NO_TASKS);
+    }
+
     //=========== Filtered Lesson List Accessors =============================================================
 
     @Override

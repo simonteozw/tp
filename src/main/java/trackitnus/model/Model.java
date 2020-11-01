@@ -26,6 +26,9 @@ public interface Model {
     Predicate<Contact> PREDICATE_SHOW_ALL_CONTACTS = unused -> true;
     Predicate<Task> PREDICATE_SHOW_ALL_TASKS = unused -> true;
     Predicate<Lesson> PREDICATE_SHOW_ALL_LESSONS = unused -> true;
+    Predicate<Contact> PREDICATE_SHOW_NO_CONTACTS = unused -> false;
+    Predicate<Task> PREDICATE_SHOW_NO_TASKS = unused -> false;
+    Predicate<Lesson> PREDICATE_SHOW_NO_LESSONS = unused -> false;
 
     /**
      * Returns the user prefs.
@@ -300,4 +303,8 @@ public interface Model {
 
     void sortLesson();
 
+    /**
+     * set the predicates all all filtered list to be false
+     */
+    void clearAllList();
 }

@@ -64,6 +64,11 @@ public interface Logic {
     ObservableList<Lesson> getFilteredLessonList();
 
     /**
+     * set all filtered list to empty, to use by UI when switch tab
+     */
+    void clearAllList();
+
+    /**
      * @param date The date to query
      * @return all lessons happens on that date
      */
@@ -108,7 +113,6 @@ public interface Logic {
      * @return The index of the module in the list of all modules
      * @throws CommandException
      */
-
     Index getModuleIndex(Module module) throws CommandException;
 
     /**
