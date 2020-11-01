@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static trackitnus.commons.core.Messages.MESSAGE_DUPLICATE_MODULE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
-import static trackitnus.model.Model.PREDICATE_SHOW_ALL_MODULES;
 
 import java.util.Optional;
 
@@ -78,7 +77,6 @@ public class EditModuleCommand extends Command {
         }
 
         model.setModule(moduleToEdit.get(), editedModule);
-        model.updateFilteredModuleList(PREDICATE_SHOW_ALL_MODULES);
         return new CommandResult(String.format(MESSAGE_EDIT_MODULE_SUCCESS, editedModule));
     }
 

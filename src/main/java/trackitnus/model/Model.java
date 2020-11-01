@@ -24,7 +24,6 @@ public interface Model {
      * {@code Predicate} that always evaluate to true
      */
     Predicate<Contact> PREDICATE_SHOW_ALL_CONTACTS = unused -> true;
-    Predicate<Module> PREDICATE_SHOW_ALL_MODULES = unused -> true;
     Predicate<Task> PREDICATE_SHOW_ALL_TASKS = unused -> true;
     Predicate<Lesson> PREDICATE_SHOW_ALL_LESSONS = unused -> true;
 
@@ -153,13 +152,6 @@ public interface Model {
      * Returns an unmodifiable view of the filtered module list
      */
     ObservableList<Module> getFilteredModuleList();
-
-    /**
-     * Updates the filter of the filtered module list to filter by the given {@code predicate}.
-     *
-     * @throws NullPointerException if {@code predicate} is null.
-     */
-    void updateFilteredModuleList(Predicate<Module> predicate) throws NullPointerException;
 
     //=========== Task ================================================================================
 
