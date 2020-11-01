@@ -335,12 +335,10 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Index getModuleIndex(Module module) throws CommandException {
+    public Index getModuleIndex(Code code) throws CommandException {
         ObservableList<Module> moduleList = getFilteredModuleList();
+        Module module = getModule(code).orElseThrow(() -> new CommandException(Messages.MESSAGE_MODULE_DOES_NOT_EXIST));
         int index = moduleList.indexOf(module);
-        if (index == -1) {
-            throw new CommandException(Messages.MESSAGE_MODULE_DOES_NOT_EXIST);
-        }
         return Index.fromZeroBased(index);
     }
 

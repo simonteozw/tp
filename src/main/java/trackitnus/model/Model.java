@@ -257,10 +257,10 @@ public interface Model {
     Index getLessonIndex(Lesson lesson) throws CommandException;
 
     /**
-     * @param module The module to get index of
-     * @return The index of the lesson in the list of all modules
+     * @param code The module code to get index of
+     * @return The index of the module with the specified code in the list of all modules
      */
-    Index getModuleIndex(Module module) throws CommandException;
+    Index getModuleIndex(Code code) throws CommandException;
 
     /**
      * @param code The module code to query
@@ -307,4 +307,5 @@ public interface Model {
      * set the predicates all all filtered list to be false
      */
     void clearAllList();
+
 }
