@@ -72,6 +72,7 @@ public class AddContactCommandTest {
         // different contact -> returns false
         assertFalse(addAliceCommand.equals(addBobCommand));
     }
+
     /**
      * A Model stub that contains a single contact.
      */

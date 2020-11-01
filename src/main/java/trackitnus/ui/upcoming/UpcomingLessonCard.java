@@ -62,7 +62,7 @@ public class UpcomingLessonCard extends UiPart<Region> {
         // state check
         UpcomingLessonCard card = (UpcomingLessonCard) other;
         return id.getText().equals(card.id.getText())
-                && lesson.equals(card.lesson);
+            && lesson.equals(card.lesson);
     }
 }
 

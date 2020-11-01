@@ -28,13 +28,12 @@ public class LessonCard extends UiPart<Region> {
     private HBox cardPane;
     @FXML
     private Label id;
-//    @FXML
+    //    @FXML
 //    private Label code;
     @FXML
     private Label type;
     @FXML
     private Label date;
-
 
 
     /**

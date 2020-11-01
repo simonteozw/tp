@@ -3,7 +3,7 @@ package trackitnus.ui.upcoming;
 import java.util.Objects;
 
 public class CalendarSection {
-    private String title;
+    private final String title;
 
     public CalendarSection(String title) {
         this.title = title;

@@ -45,8 +45,8 @@
 }
 
 .side-panel {
-    -fx-background-color: #313543!important;
-    -fx-padding: 0px!important;
+    -fx-background-color: #313543 !important;
+    -fx-padding: 0px !important;
 }
 
 .table-view {
@@ -127,7 +127,7 @@
 }
 
 #HelpPanel {
-     -fx-text-fill: white;
+    -fx-text-fill: white;
 }
 
 .help_panel {
