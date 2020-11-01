@@ -4,12 +4,14 @@ import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import trackitnus.commons.core.Messages;
 import trackitnus.commons.core.index.Index;
 import trackitnus.commons.util.StringUtil;
 import trackitnus.logic.parser.exceptions.ParseException;
@@ -23,7 +25,6 @@ import trackitnus.model.lesson.Lesson;
 import trackitnus.model.lesson.LessonDateTime;
 import trackitnus.model.lesson.Type;
 import trackitnus.model.tag.Tag;
-import trackitnus.model.task.Task;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -32,6 +33,7 @@ public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
     public static final String MESSAGE_NOT_DIGIT_SEQUENCE = "Index is not a valid digit sequence.";
+    public static final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -45,7 +47,7 @@ public class ParserUtil {
             throw new ParseException(MESSAGE_NOT_DIGIT_SEQUENCE);
         }
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
-            throw new ParseException(MESSAGE_INVALID_INDEX);
+            throw new ParseException(Messages.MESSAGE_INVALID_INDEX);
         }
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
@@ -202,9 +204,26 @@ public class ParserUtil {
         requireNonNull(date);
         String trimmedDate = date.trim();
         try {
-            return LocalDate.parse(trimmedDate, Task.FORMATTER);
+            return LocalDate.parse(trimmedDate, DATE_PATTERN);
         } catch (DateTimeParseException e) {
-            throw new ParseException(Task.DATE_MESSAGE_CONSTRAINTS);
+            throw new ParseException(Messages.DATE_MESSAGE_CONSTRAINTS);
+        }
+    }
+
+    /**
+     * Parses a VALID {@code String date} into a {@code LocalDate}.
+     * Leading and trailing whitespaces will be trimmed.
+     * Crash the program if the date cannot be parsed (it's the caller responsibility to make sure the date passed in
+     * is valid!). The function is written so that the caller doesn't need to handle the possible exception since
+     * it's expected that no exception will be thrown.
+     */
+    public static LocalDate parseValidDate(String date) {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        try {
+            return LocalDate.parse(trimmedDate, DATE_PATTERN);
+        } catch (DateTimeParseException e) {
+            throw new IllegalArgumentException("An invalid date has been passed into parseValidDate");
         }
     }
 
@@ -220,7 +239,7 @@ public class ParserUtil {
         try {
             return Double.parseDouble(trimmedWeightage);
         } catch (NumberFormatException e) {
-            throw new ParseException(Task.WEIGHTAGE_MESSAGE_CONSTRAINTS);
+            throw new ParseException(Messages.WEIGHTAGE_MESSAGE_CONSTRAINTS);
         }
     }
 
@@ -246,17 +265,22 @@ public class ParserUtil {
      */
     public static Type parseType(String type) throws ParseException {
         requireNonNull(type);
-        String rawType = type.trim();
+        String rawType = type.trim().toLowerCase();
         switch (rawType) {
         case "lecture":
+        case "lec":
             return Type.LEC;
         case "tutorial":
+        case "tut":
             return Type.TUT;
         case "lab":
+        case "laboratory":
             return Type.LAB;
         case "recitation":
+        case "rec":
             return Type.REC;
         case "sectional":
+        case "sec":
             return Type.SEC;
         default:
             throw new ParseException(Lesson.TYPE_MESSAGE_CONSTRAINTS);
@@ -288,7 +312,7 @@ public class ParserUtil {
         case "sat":
             return DayOfWeek.Sat;
         default:
-            throw new ParseException(Lesson.DATE_MESSAGE_CONSTRAINTS);
+            throw new ParseException(Lesson.LESSON_TIME_MESSAGE_CONSTRAINTS);
         }
     }
 
@@ -315,7 +339,7 @@ public class ParserUtil {
             if (e instanceof ParseException) {
                 throw e;
             } else {
-                throw new ParseException(Lesson.DATE_MESSAGE_CONSTRAINTS);
+                throw new ParseException(Lesson.LESSON_TIME_MESSAGE_CONSTRAINTS);
             }
         }
     }

@@ -18,8 +18,8 @@ public class Lesson {
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("d/MM/yyyy");
     public static final String TIME_MESSAGE_CONSTRAINTS =
         "Starting time should be earlier than finishing time";
-    public static final String DATE_MESSAGE_CONSTRAINTS =
-        "Date should be in the format \"ddd H:mm-H:mm\" (in 24-hour format), e.g. Mon 8:00-13:00";
+    public static final String LESSON_TIME_MESSAGE_CONSTRAINTS =
+        "Lesson's time should be in the format \"ddd H:mm-H:mm\" (in 24-hour format), e.g. Mon 8:00-13:00";
     public static final String WEIGHTAGE_MESSAGE_CONSTRAINTS =
         "Weightage should be in the form of a floating point number";
     public static final String TYPE_MESSAGE_CONSTRAINTS =

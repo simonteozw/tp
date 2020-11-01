@@ -1,0 +1,65 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":AddTaskCommand" as AddTaskCommand LOGIC_COLOR
+participant "t:Task" as task LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+participant ":TrackIter" as TrackIter MODEL_COLOR
+participant ":UniqueTaskList" as UniqueTaskList MODEL_COLOR
+end box
+
+[-> AddTaskCommand : execute(m)
+activate AddTaskCommand
+
+AddTaskCommand -> Model : hasTask(t)
+activate Model
+
+Model --> AddTaskCommand
+deactivate Model
+
+AddTaskCommand -> task : getCode()
+activate task
+
+task --> AddTaskCommand
+deactivate task
+
+AddTaskCommand -> Model : hasModule(t.getCode().get())
+activate Model
+
+Model --> AddTaskCommand
+deactivate Model
+
+AddTaskCommand -> Model : addTask(t)
+activate Model
+
+Model -> TrackIter : addTask(t)
+activate TrackIter
+
+TrackIter -> UniqueTaskList : add(t)
+activate UniqueTaskList
+
+UniqueTaskList --> TrackIter
+deactivate UniqueTaskList
+
+TrackIter --> Model
+deactivate TrackIter
+
+Model --> AddTaskCommand
+deactivate Model
+
+create CommandResult
+AddTaskCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> AddTaskCommand : r
+deactivate CommandResult
+
+[<--AddTaskCommand : r
+deactivate AddTaskCommand
+
+@enduml

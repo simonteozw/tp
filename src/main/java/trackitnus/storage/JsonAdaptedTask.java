@@ -1,12 +1,14 @@
 package trackitnus.storage;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import trackitnus.commons.core.Messages;
 import trackitnus.commons.exceptions.IllegalValueException;
+import trackitnus.logic.parser.ParserUtil;
+import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 import trackitnus.model.task.Task;
@@ -40,7 +42,7 @@ public class JsonAdaptedTask {
      */
     public JsonAdaptedTask(Task source) {
         name = source.getName().value;
-        date = source.getDate().format(Task.FORMATTER);
+        date = source.getDate().format(ParserUtil.DATE_PATTERN);
         code = source.getCode().isPresent() ? source.getCode().get().code : null;
         remark = source.getRemark();
     }
@@ -64,12 +66,13 @@ public class JsonAdaptedTask {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                 LocalDate.class.getSimpleName()));
         }
+
+        LocalDate modelDate;
         try {
-            LocalDate.parse(date, Task.FORMATTER);
-        } catch (DateTimeParseException e) {
-            throw new IllegalValueException(Task.DATE_MESSAGE_CONSTRAINTS);
+            modelDate = ParserUtil.parseDate(date);
+        } catch (ParseException e) {
+            throw new IllegalValueException(Messages.DATE_MESSAGE_CONSTRAINTS);
         }
-        final LocalDate modelDate = LocalDate.parse(date, Task.FORMATTER);
 
         if (remark == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Remark"));

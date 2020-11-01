@@ -70,7 +70,7 @@ public class JsonAdaptedLesson {
         try {
             ParserUtil.parseLessonDateTime(date);
         } catch (Exception e) {
-            throw new IllegalValueException(Lesson.DATE_MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Lesson.LESSON_TIME_MESSAGE_CONSTRAINTS);
         }
         final LessonDateTime modelTime = ParserUtil.parseLessonDateTime(date);
 

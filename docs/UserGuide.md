@@ -66,8 +66,8 @@ What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) 
 ## About <a name="about"></a>
 
 There are many things you can use TrackIt@NUS for. We have structured this document so it is easy for you to find
- what you need. In the [Common Symbols](#common-symbols), [Command Format](#command-format), and 
- [Commands and their Purposes](#command-purpose) sections, you will find useful tips on reading this document. It is
+ what you need. In the [Common Symbols](#common-symbols), [Command Format](#command-format), and [Commands and their
+  Purposes](#command-purpose) sections, you will find useful tips on reading this document. It is
   then followed by the [Features](#features) section, where the main features of TrackIt@NUS are documented.
 
 ### Common Symbols <a name="common-symbols"></a>
@@ -147,8 +147,8 @@ Here under each module's tab you can find all relevant **Lessons**, **Tasks** an
 --------------------------------------------------------------------------------------------------------------------
 ## Features <a name="features"></a>
 
-This section contains all the information you need to know about the features of TrackIt@NUS. To use each feature 
-or sub-feature, you will need to enter the command into the Command Box.
+This section contains all the information you need to know about the features of TrackIt@NUS. To use each feature or
+ sub-feature, you will need to enter the command into the Command Box.
 
 ## Module <a name="module"></a>
 Module is the first thing you need to create when you start using the app, because each module will be the house for 
@@ -259,9 +259,11 @@ and cannot be larger than the number of lessons currently shown
 Managing all your tasks can be so stressful! TrackIt@NUS helps alleviate that stress with our built-in Task Manager
 ! To view all your tasks, simply click on the upcoming tab as shown below.
 
-![Ui](images/Upcoming.png)
+![Upcoming](images/Upcoming.png)
 
 This sorts all your tasks by date. To view module-specific tasks, click on any of the module tabs as shown below.
+
+![ModuleTasks](images/ModuleTasks.png)
 
 :information_source: All module-specific tasks are shown in the upcoming tab, but not vice versa.
 
@@ -270,11 +272,11 @@ You can also perform commands on the tasks as explained below.
 ### Add
 
 After a day of school you realise that you now have a few more tasks to complete and wish to keep track of them. This is
- the command for adding a new task to TrackIt@NUS. 
+ the command for adding a new task to TrackIt@NUS.
 
 Format: `T add n/NAME d/DATE [m/MODULE_CODE] [r/REMARK]`
 
-Examples: 
+Examples:
 
 * `T add n/Assignment 1 m/CS2100 d/20/11/2020 r/Focus on Chapters 1-3`
 * `T add n/Plan for Bob's birthday d/12/11/2020`
@@ -290,13 +292,13 @@ After adding a task to TrackIt@NUS, you may want to change it, perhaps extend th
 
 Format: `T edit INDEX [n/NAME] [d/DATE] [m/MODULE_CODE] [r/REMARK]`
 
-Examples: 
+Examples:
 
-![Ui](images/EditTask.png)
+![EditTask](images/EditTask.png)
 
 * `T edit 2 n/Work on midterm report` changes the name of the Task
 * `T edit 2 r/min 1000 words` changes the remark of the Task
-* `T edit 2 m/CS2100` changes the module code of the Task 
+* `T edit 2 m/CS2100` changes the module code of the Task
 
 :information_source: The `INDEX` provided must be positive and cannot be larger than number of Tasks
 

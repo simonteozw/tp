@@ -29,7 +29,7 @@ public class AddModuleCommandIntegrationTest {
 
     @Test
     public void execute_newModule_success() {
-        Module validModule = new Module(new Code("CS2103T"), new Name("Sample"));
+        Module validModule = new Module(new Code("CS3233"), new Name("Sample"));
 
         Model expectedModel = new ModelManager(model.getTrackIter(), new UserPrefs());
         expectedModel.addModule(validModule);
@@ -46,7 +46,7 @@ public class AddModuleCommandIntegrationTest {
 
     @Test
     public void execute_duplicateModuleCode_throwsCommandException() {
-        Module validModule = new Module(new Code("CS1231S"), new Name("Sample"));
+        Module validModule = new Module(new Code("CS1101S"), new Name("Sample"));
         assertCommandFailure(new AddModuleCommand(validModule), model, Messages.MESSAGE_DUPLICATE_MODULE);
     }
 
