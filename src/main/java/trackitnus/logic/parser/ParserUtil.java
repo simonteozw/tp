@@ -31,9 +31,6 @@ import trackitnus.model.tag.Tag;
  * Contains utility methods used for parsing strings in the various *Parser classes.
  */
 public class ParserUtil {
-
-    public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
-    public static final String MESSAGE_NOT_DIGIT_SEQUENCE = "Index is not a valid digit sequence.";
     public static final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     /**
@@ -45,7 +42,7 @@ public class ParserUtil {
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
         String trimmedIndex = oneBasedIndex.trim();
         if (!StringUtil.isDigitSequence(trimmedIndex)) {
-            throw new ParseException(MESSAGE_NOT_DIGIT_SEQUENCE);
+            throw new ParseException(Messages.MESSAGE_NOT_DIGIT_SEQUENCE);
         }
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
             throw new InvalidIndexException(Messages.MESSAGE_INVALID_INDEX);
