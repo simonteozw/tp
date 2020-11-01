@@ -20,12 +20,19 @@ import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 import trackitnus.model.contact.Contact;
+import trackitnus.model.contact.ContactHasTagPredicate;
 import trackitnus.model.lesson.DayOfWeek;
 import trackitnus.model.lesson.Lesson;
+import trackitnus.model.lesson.LessonHasCodePredicate;
+import trackitnus.model.lesson.LessonOnWeekdayPredicate;
 import trackitnus.model.lesson.Type;
 import trackitnus.model.module.Module;
 import trackitnus.model.tag.Tag;
 import trackitnus.model.task.Task;
+import trackitnus.model.task.TaskAfterDatePredicate;
+import trackitnus.model.task.TaskHasCodePredicate;
+import trackitnus.model.task.TaskIsOverduePredicate;
+import trackitnus.model.task.TaskOnDatePredicate;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -302,14 +309,12 @@ public class ModelManager implements Model {
         sortLesson();
         updateFilteredLessonList(PREDICATE_SHOW_ALL_LESSONS);
         DayOfWeek weekday = DayOfWeek.getLessonWeekDay(date);
-        Predicate<Lesson> predicate = lesson -> (lesson.getWeekday().equals(weekday));
-        return getFilteredLessonList().filtered(predicate);
+        return getFilteredLessonList().filtered(new LessonOnWeekdayPredicate(weekday));
     }
 
     @Override
     public ObservableList<Lesson> getModuleLessons(Code code) {
-        Predicate<Lesson> predicate = lesson -> (lesson.getCode().equals(code));
-        updateFilteredLessonList(predicate);
+        updateFilteredLessonList(new LessonHasCodePredicate(code));
         return getFilteredLessonList();
     }
 
@@ -336,39 +341,33 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Contact> getModuleContacts(Code code) {
         Tag target = new Tag(code.toString());
-        Predicate<Contact> predicate = contact -> (contact.getTags().contains(target));
-        updateFilteredContactList(predicate);
+        updateFilteredContactList(new ContactHasTagPredicate(target));
         return getFilteredContactList();
     }
 
     @Override
     public ObservableList<Task> getModuleTasks(Code code) {
-        Predicate<Task> p = task -> task.belongsToModule(code);
-        updateFilteredTaskList(p);
+        updateFilteredTaskList(new TaskHasCodePredicate(code));
         return getFilteredTaskList();
     }
 
     @Override
     public ObservableList<Task> getOverdueTasks() {
         updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
-        LocalDate today = LocalDate.now();
-        Predicate<Task> p = task -> task.getDate().isBefore(today);
-        return getFilteredTaskList().filtered(p);
+        return getFilteredTaskList().filtered(new TaskIsOverduePredicate());
     }
 
     @Override
     public ObservableList<Task> getFutureTasks() {
         updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
         LocalDate oneWeekLater = LocalDate.now().plusWeeks(1);
-        Predicate<Task> p = task -> task.getDate().isAfter(oneWeekLater);
-        return getFilteredTaskList().filtered(p);
+        return getFilteredTaskList().filtered(new TaskAfterDatePredicate(oneWeekLater));
     }
 
     @Override
     public ObservableList<Task> getDayUpcomingTasks(LocalDate date) {
         updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
-        Predicate<Task> p = task -> task.getDate().equals(date);
-        return getFilteredTaskList().filtered(p);
+        return getFilteredTaskList().filtered(new TaskOnDatePredicate(date));
     }
 
     @Override

@@ -25,7 +25,7 @@ public class JsonSerializableTrackIterTest {
         JsonSerializableTrackIter dataFromFile = JsonUtil.readJsonFile(TYPICAL_CONTACTS_FILE,
             JsonSerializableTrackIter.class).get();
         TrackIter trackIterFromFile = dataFromFile.toModelType();
-        TrackIter typicalContactsTrackIter = TypicalTrackIter.getTypicalTrackIter();
+        TrackIter typicalContactsTrackIter = TypicalTrackIter.getTypicalTrackIterConst();
         assertEquals(trackIterFromFile, typicalContactsTrackIter);
     }
 

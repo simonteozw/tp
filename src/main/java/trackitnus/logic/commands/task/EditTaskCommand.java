@@ -113,6 +113,14 @@ public class EditTaskCommand extends Command {
             && editTaskDescriptor.equals(e.editTaskDescriptor);
     }
 
+    @Override
+    public String toString() {
+        return "EditTaskCommand{" +
+            "index=" + index +
+            ", editTaskDescriptor=" + editTaskDescriptor +
+            '}';
+    }
+
     /**
      * Stores the details to edit the task with. Each non-empty field value will replace the
      * corresponding field value of the task.
@@ -183,7 +191,7 @@ public class EditTaskCommand extends Command {
         }
 
         public void setRemark(String remark) {
-            this.remark = remark;
+            this.remark = (remark == null ? "" : remark);
             this.isRemarkChanged = true;
         }
 
@@ -214,6 +222,16 @@ public class EditTaskCommand extends Command {
             return getName().equals(e.getName())
                 && getDate().equals(e.getDate())
                 && getRemark().equals(e.getRemark());
+        }
+
+        @Override
+        public String toString() {
+            return "EditTaskDescriptor{" +
+                "name=" + name +
+                ", date=" + date +
+                ", code=" + code +
+                ", remark='" + remark +
+                '}';
         }
     }
 }

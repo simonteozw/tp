@@ -100,14 +100,14 @@ public class ModelManagerTest {
 
     @Test
     public void getTaskIndex_invalidIndex_throwsCommandException() {
-        assertThrows(CommandException.class, () -> modelManager.getTaskIndex(TypicalTask.TASK_FULL));
+        assertThrows(CommandException.class, () -> modelManager.getTaskIndex(TypicalTask.get(0)));
     }
 
     @Test
     public void getTaskIndex_validIndex_success() {
         try {
-            modelManager.addTask(TypicalTask.TASK_FULL);
-            assertEquals(Index.fromOneBased(1), modelManager.getTaskIndex(TypicalTask.TASK_FULL));
+            modelManager.addTask(TypicalTask.get(0));
+            assertEquals(Index.fromOneBased(1), modelManager.getTaskIndex(TypicalTask.get(0)));
         } catch (CommandException e) {
             Assertions.fail();
         }
@@ -116,9 +116,9 @@ public class ModelManagerTest {
     @Test
     public void getTaskIndex_rightIndex_success() {
         try {
-            modelManager.addTask(TypicalTask.TASK_FULL);
-            modelManager.addTask(TypicalTask.TASK_FULL_ANOTHER);
-            assertEquals(Index.fromOneBased(2), modelManager.getTaskIndex(TypicalTask.TASK_FULL_ANOTHER));
+            modelManager.addTask(TypicalTask.get(0));
+            modelManager.addTask(TypicalTask.get(1));
+            assertEquals(Index.fromOneBased(2), modelManager.getTaskIndex(TypicalTask.get(1)));
         } catch (CommandException e) {
             Assertions.fail();
         }
@@ -127,9 +127,9 @@ public class ModelManagerTest {
     @Test
     public void getTaskIndex_wrongIndex_failure() {
         try {
-            modelManager.addTask(TypicalTask.TASK_FULL);
-            modelManager.addTask(TypicalTask.TASK_FULL_ANOTHER);
-            assertNotEquals(Index.fromOneBased(1), modelManager.getTaskIndex(TypicalTask.TASK_FULL_ANOTHER));
+            modelManager.addTask(TypicalTask.get(0));
+            modelManager.addTask(TypicalTask.get(1));
+            assertNotEquals(Index.fromOneBased(1), modelManager.getTaskIndex(TypicalTask.get(1)));
         } catch (CommandException e) {
             Assertions.fail();
         }
