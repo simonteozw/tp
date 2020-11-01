@@ -8,8 +8,8 @@ import java.util.Objects;
  * Represents a Day in the Calendar view.
  */
 public class Day {
-    private LocalDate date;
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM EEEE");
+    private final LocalDate date;
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM EEEE");
 
     /**
      * Every field must be present and not null.

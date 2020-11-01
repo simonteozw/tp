@@ -26,15 +26,12 @@ import trackitnus.ui.task.TaskListPanel;
 public class ModulePanel extends UiPart<Region> {
     private static final String FXML = "Module/ModulePanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ModulePanel.class);
-
-    private LessonListPanel lessonListPanel;
-    private TaskListPanel taskListPanel;
-    private ContactListPanel contactListPanel;
-
     private final int defaultRowHeight = 50;
     private final int lessonRowHeight = 40;
     private final int paddingHeight = 10;
-
+    private final LessonListPanel lessonListPanel;
+    private final TaskListPanel taskListPanel;
+    private final ContactListPanel contactListPanel;
     @FXML
     private HBox moduleHeader;
     @FXML
@@ -61,11 +58,11 @@ public class ModulePanel extends UiPart<Region> {
 
         // Allow height of lists to update automatically
         lessonListPanelPlaceholder.prefHeightProperty().bind(Bindings.size(lessons)
-                .multiply(lessonRowHeight).add(paddingHeight));
+            .multiply(lessonRowHeight).add(paddingHeight));
         taskListPanelPlaceholder.prefHeightProperty().bind(Bindings.size(tasks)
-                .multiply(defaultRowHeight).add(paddingHeight));
+            .multiply(defaultRowHeight).add(paddingHeight));
         contactListPanelPlaceholder.prefHeightProperty().bind(Bindings.size(contacts)
-                .multiply(defaultRowHeight).add(paddingHeight));
+            .multiply(defaultRowHeight).add(paddingHeight));
 
         lessonListPanel = new LessonListPanel(lessons);
         lessonListPanelPlaceholder.getChildren().add(lessonListPanel.getRoot());

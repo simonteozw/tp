@@ -13,7 +13,7 @@ public class OverdueTaskCard extends UiPart<Region> {
     private static final String FXML = "Task/OverdueTaskListCard.fxml";
 
     public final Task task;
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM");
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM");
 
 
     @javafx.fxml.FXML

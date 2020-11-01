@@ -17,10 +17,9 @@ public class CalendarSectionCard extends UiPart<Region> {
     private static final String FXML = "Upcoming/CalendarSectionCard.fxml";
 
     public final CalendarSection calendarSection;
-    private Logic logic;
-    private String title;
     private final int taskRowHeight = 45;
-
+    private final Logic logic;
+    private String title;
     @FXML
     private ListView<Task> taskListView;
     @FXML
@@ -28,6 +27,7 @@ public class CalendarSectionCard extends UiPart<Region> {
 
     /**
      * Constructor for a section in the calendar
+     *
      * @param calendarSection
      * @param taskList
      * @param logic

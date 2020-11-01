@@ -146,6 +146,7 @@ public class ModelManager implements Model {
         updateFilteredContactList(PREDICATE_SHOW_ALL_CONTACTS);
         return getFilteredContactList();
     }
+
     /**
      * Returns an unmodifiable view of the list of {@code Contact} backed by the internal list of
      * {@code versionedTrackIter}

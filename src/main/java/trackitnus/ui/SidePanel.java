@@ -20,9 +20,9 @@ import trackitnus.ui.upcoming.UpcomingPanel;
 public class SidePanel extends UiPart<Region> {
     private static final String FXML = "SidePanel.fxml";
     private final Logger logger = LogsCenter.getLogger(SidePanel.class);
-    private Consumer<ArrayList<Object>> tabConsumer;
-    private Logic logic;
     private final int moduleRowHeight = 32;
+    private final Consumer<ArrayList<Object>> tabConsumer;
+    private final Logic logic;
     private Button selectedTabButton;
 
     @FXML
@@ -51,7 +51,6 @@ public class SidePanel extends UiPart<Region> {
     }
 
 
-
     /**
      * Initialises/reloads the tab buttons in the side panel.
      */
@@ -66,28 +65,6 @@ public class SidePanel extends UiPart<Region> {
             // Set Default tab as upcoming tab.
             selectedTabButton = upcomingButton;
             updateButtonDetails(upcomingButton);
-        }
-    }
-
-    /**
-     * Sets the view of the module tab in the side panel.
-     */
-    class ModuleListViewCell extends ListCell<Module> {
-        @Override
-        protected void updateItem(Module module, boolean empty) {
-            super.updateItem(module, empty);
-
-            if (empty || module == null) {
-                setGraphic(null);
-                setText(null);
-            } else {
-                Button updatedButton = getModuleButton(module);
-                setGraphic(updatedButton);
-                ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList(Module.TYPE,
-                    module));
-//                tabConsumer.accept(upcomingValues);
-//                updateButtonDetails(updatedButton);
-            }
         }
     }
 
@@ -120,6 +97,7 @@ public class SidePanel extends UiPart<Region> {
 
     /**
      * Updates the details of the current selected tab button.
+     *
      * @param button The new selected tab button.
      */
     public void updateButtonDetails(Button button) {
@@ -130,6 +108,7 @@ public class SidePanel extends UiPart<Region> {
 
     /**
      * Configure the module button tab in the side panel.
+     *
      * @return moduleButton The module button.
      */
     public Button getModuleButton(Module module) {
@@ -140,5 +119,27 @@ public class SidePanel extends UiPart<Region> {
             tabConsumer.accept(moduleValues);
         });
         return button;
+    }
+
+    /**
+     * Sets the view of the module tab in the side panel.
+     */
+    class ModuleListViewCell extends ListCell<Module> {
+        @Override
+        protected void updateItem(Module module, boolean empty) {
+            super.updateItem(module, empty);
+
+            if (empty || module == null) {
+                setGraphic(null);
+                setText(null);
+            } else {
+                Button updatedButton = getModuleButton(module);
+                setGraphic(updatedButton);
+                ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList(Module.TYPE,
+                    module));
+//                tabConsumer.accept(upcomingValues);
+//                updateButtonDetails(updatedButton);
+            }
+        }
     }
 }

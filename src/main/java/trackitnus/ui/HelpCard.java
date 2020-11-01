@@ -4,12 +4,13 @@ package trackitnus.ui;
  * Represents a command as well as the action it executes
  */
 public class HelpCard {
-    private String command;
-    private String action;
+    private final String command;
+    private final String action;
 
     /**
      * Constructor for a HelpCard
-     * @param action is what results from the command
+     *
+     * @param action  is what results from the command
      * @param command is what to input
      */
     public HelpCard(String action, String command) {

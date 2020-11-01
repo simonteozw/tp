@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.shape.Line?>
-
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<ListView fx:id="modulePanel" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<ListView xmlns:fx="http://javafx.com/fxml/1" fx:id="modulePanel" xmlns="http://javafx.com/javafx/8">
     <VBox>
         <padding>
             <Insets top="1" right="5" bottom="1" left="15"/>

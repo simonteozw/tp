@@ -155,17 +155,17 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void switchTab(ArrayList<Object> tabValues) {
-        assert(tabValues.size() >= 1);
-        logger.info("Switching tab to: " + String.valueOf(tabValues.get(0)));
+        assert (tabValues.size() >= 1);
+        logger.info("Switching tab to: " + tabValues.get(0));
         tabPanelPlaceholder.getChildren().clear();
         String tabName = String.valueOf(tabValues.get(0));
 
-        switch(tabName) {
+        switch (tabName) {
         case UpcomingPanel.TYPE:
             tabPanelPlaceholder.getChildren().add(upcomingPanel.getRoot());
             break;
         case Module.TYPE:
-            assert(tabValues.size() == 2);
+            assert (tabValues.size() == 2);
             Module tabModule = (Module) tabValues.get(1);
             modulePanel = new ModulePanel(tabModule, logic);
             tabPanelPlaceholder.getChildren().add(modulePanel.getRoot());
