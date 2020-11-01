@@ -208,7 +208,7 @@ Biweekly and monthly lessons may be added in subsequent versions.
 You can also perform commands on the lessons as explained below.
 
 ### Add
-The command that makes you moan every time you have to use it. 
+The command that makes you groan every time you have to use it. 
 Use this command to add a lesson to a module.
 
 Format: `L add m/MODULE_CODE n/TYPE d/DATE`
@@ -217,11 +217,15 @@ Examples:
 * `L add m/GET1020 n/lecture d/Mon 8:00-10:00`
 * `L add m/CS3233 n/tutorial d/MON 17:30-20:00`
 
-:warning: The `TYPE` must be one of the following: `lecture`, `tutorial`,
-`lab`, `recitation`, or `sectional`.
+:warning: The `TYPE` must be one of the following:
+`lec`/`lecture`, `tut`/`tutorial`,
+`lab`/`laboratory`, `rec`/`recitation`, or `sec`/`sectional`.
 
 :warning: The `DATE` provided must be in the format `ddd H:mm-H:mm`;
 times are in 24-hour format.
+
+:warning: The time slots of the lessons _can_ overlap. It is a situation
+that no one wants to be in, but, unfortunately, does sometimes happen.
 
 ### Edit
 
@@ -235,10 +239,11 @@ Examples:
 * `L edit 4 m/CS3233`
 
 :information_source: The parameters `m/MODULE_CODE`, `n/TYPE`, and `d/DATE` are optional;
-however, at least one parameter must be provided, i.e. `L edit 1` is not a valid command
+however, at least one parameter must be provided, i.e. `L edit 1` is not a valid command.
 
-:information_source: The `INDEX` provided must be positive 
-and cannot be larger than the number of lessons currently shown
+:information_source: Here, `INDEX` refers to the index of the lesson you want to edit, as shown in the current tab. 
+The `INDEX` provided must be positive 
+and cannot be larger than the number of lessons currently shown.
 
 ### Delete
 
@@ -251,8 +256,9 @@ Format: `L delete INDEX`
 Examples:
 * `L delete 1`
 
-:information_source: The `INDEX` provided must be positive 
-and cannot be larger than the number of lessons currently shown
+:information_source: Here, `INDEX` refers to the index of the lesson you want to edit, as shown in the current tab.
+The `INDEX` provided must be positive 
+and cannot be larger than the number of lessons currently shown.
 
 ## Task <a name="task"></a>
 
