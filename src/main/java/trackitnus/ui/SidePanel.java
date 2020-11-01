@@ -50,8 +50,6 @@ public class SidePanel extends UiPart<Region> {
         this.initialize();
     }
 
-
-
     /**
      * Initialises/reloads the tab buttons in the side panel.
      */
