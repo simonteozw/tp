@@ -217,11 +217,15 @@ Examples:
 * `L add m/GET1020 n/lecture d/Mon 8:00-10:00`
 * `L add m/CS3233 n/tutorial d/MON 17:30-20:00`
 
-:warning: The `TYPE` must be one of the following: `lecture`, `tutorial`,
-`lab`, `recitation`, or `sectional`.
+:warning: The `TYPE` must be one of the following or its abbreviation:
+`lecture`/`lec`, `tutorial`/`tut`,
+`laboratory`/`lab`, `recitation`/`rec`, or `sectional`/`sec`.
 
 :warning: The `DATE` provided must be in the format `ddd H:mm-H:mm`;
 times are in 24-hour format.
+
+:warning: The time slots of the lessons _can_ overlap. It is a situation
+that no one wants to be in, but, unfortunately, does sometimes happen.
 
 ### Edit
 
