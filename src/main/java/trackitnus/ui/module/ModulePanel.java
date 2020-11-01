@@ -60,6 +60,7 @@ public class ModulePanel extends UiPart<Region> {
     public ModulePanel(Module module, Logic logic) throws CommandException {
         super(FXML);
         moduleHeader.setAlignment(Pos.CENTER_LEFT);
+        moduleHeader.setMaxWidth(500);
         moduleName.setWrapText(true);
         moduleName.setMaxWidth(500);
         moduleName.setText(module.getCode().code + " " + module.getName().value);
