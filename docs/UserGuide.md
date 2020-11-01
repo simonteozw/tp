@@ -235,10 +235,11 @@ Examples:
 * `L edit 4 m/CS3233`
 
 :information_source: The parameters `m/MODULE_CODE`, `n/TYPE`, and `d/DATE` are optional;
-however, at least one parameter must be provided, i.e. `L edit 1` is not a valid command
+however, at least one parameter must be provided, i.e. `L edit 1` is not a valid command.
 
-:information_source: The `INDEX` provided must be positive 
-and cannot be larger than the number of lessons currently shown
+:information_source: Here, `INDEX` refers to the index of the lesson you want to edit, as shown in the current tab. 
+The `INDEX` provided must be positive 
+and cannot be larger than the number of lessons currently shown.
 
 ### Delete
 
@@ -251,8 +252,9 @@ Format: `L delete INDEX`
 Examples:
 * `L delete 1`
 
-:information_source: The `INDEX` provided must be positive 
-and cannot be larger than the number of lessons currently shown
+:information_source: Here, `INDEX` refers to the index of the lesson you want to edit, as shown in the current tab.
+The `INDEX` provided must be positive 
+and cannot be larger than the number of lessons currently shown.
 
 ## Task <a name="task"></a>
 
