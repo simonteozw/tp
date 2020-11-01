@@ -112,6 +112,7 @@ public class SidePanel extends UiPart<Region> {
 
     /**
      * Configure the module section that will include the module button as well as a coloured module circle label.
+     *
      * @return HBox The module section.
      */
     public HBox getModuleSection() throws CommandException {
@@ -139,6 +140,7 @@ public class SidePanel extends UiPart<Region> {
 
     /**
      * Configure the coloured module circle that is displayed beside the module code.
+     *
      * @return moduleCircle The module circle.
      */
     public Circle getModuleCircle(Module module, Logic logic) throws CommandException {

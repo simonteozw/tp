@@ -51,6 +51,7 @@ public class UpcomingLessonCard extends UiPart<Region> {
 
     /**
      * Get the hexcode color from a java.scene.paint.Color class for Label fill.
+     *
      * @param color the color to generate hexcode.
      * @return String the hexcode of the color.
      */

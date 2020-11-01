@@ -5,8 +5,6 @@ import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_TYPE;
 
-import java.util.stream.Stream;
-
 import trackitnus.commons.core.Messages;
 import trackitnus.commons.core.index.Index;
 import trackitnus.logic.commands.lesson.EditLessonCommand;
@@ -15,8 +13,6 @@ import trackitnus.logic.parser.ArgumentMultimap;
 import trackitnus.logic.parser.ArgumentTokenizer;
 import trackitnus.logic.parser.Parser;
 import trackitnus.logic.parser.ParserUtil;
-import trackitnus.logic.parser.Prefix;
-import trackitnus.logic.parser.exceptions.InvalidIndexException;
 import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.model.commons.Code;
 import trackitnus.model.lesson.LessonDateTime;
@@ -26,14 +22,6 @@ import trackitnus.model.lesson.Type;
  * Parses input arguments and creates a new EditLessonCommand object
  */
 public class EditLessonCommandParser implements Parser<EditLessonCommand> {
-    /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
-     * {@code ArgumentMultimap}.
-     */
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
-    }
-
     /**
      * Parses the given {@code String} of arguments in the context of the EditLessonCommand
      * and returns an EditLessonCommand object for execution.
@@ -49,11 +37,9 @@ public class EditLessonCommandParser implements Parser<EditLessonCommand> {
 
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
-        } catch (InvalidIndexException iie) {
-            throw new InvalidIndexException(Messages.MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);
         } catch (ParseException pe) {
-            throw new ParseException(
-                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, EditLessonCommand.MESSAGE_USAGE), pe);
+            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                EditLessonCommand.MESSAGE_USAGE), pe);
         }
 
         EditLessonDescriptor editLessonDescriptor = new EditLessonDescriptor();

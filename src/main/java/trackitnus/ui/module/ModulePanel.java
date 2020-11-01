@@ -92,6 +92,7 @@ public class ModulePanel extends UiPart<Region> {
         contactListPanel = new ContactListPanel(contacts);
         contactListPanelPlaceholder.getChildren().add(contactListPanel.getRoot());
     }
+
     public String getColorHex(Color color) {
         java.awt.Color c = new java.awt.Color((float) color.getRed(),
             (float) color.getGreen(),

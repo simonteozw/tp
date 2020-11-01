@@ -44,13 +44,13 @@ public class DeleteModuleCommand extends Command {
         }
 
         // delete all the related tasks
-        List<Task> tasksToDelete = new ArrayList<Task>(model.getModuleTasks(targetCode));
+        List<Task> tasksToDelete = new ArrayList<>(model.getModuleTasks(targetCode));
         for (Task task : tasksToDelete) {
             model.deleteTask(task);
         }
 
         // delete all the related lessons
-        List<Lesson> lessonsToDelete = new ArrayList<Lesson>(model.getModuleLessons(targetCode));
+        List<Lesson> lessonsToDelete = new ArrayList<>(model.getModuleLessons(targetCode));
         for (Lesson lesson : lessonsToDelete) {
             model.deleteLesson(lesson);
         }

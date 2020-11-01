@@ -78,7 +78,7 @@ public class MainApp extends Application {
         ReadOnlyTrackIter initialData;
         try {
             trackIterOptional = storage.readTrackIter();
-            if (!trackIterOptional.isPresent()) {
+            if (trackIterOptional.isEmpty()) {
                 logger.info("Data file not found. Will be starting with a sample TrackIter");
             }
             initialData = trackIterOptional.orElseGet(SampleDataUtil::getSampleTrackIter);

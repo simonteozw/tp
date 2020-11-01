@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import trackitnus.commons.exceptions.IllegalValueException;
 import trackitnus.logic.parser.ParserUtil;
+import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.model.commons.Code;
 import trackitnus.model.lesson.Lesson;
 import trackitnus.model.lesson.LessonDateTime;
@@ -69,9 +70,10 @@ public class JsonAdaptedLesson {
         }
         try {
             ParserUtil.parseLessonDateTime(date);
-        } catch (Exception e) {
+        } catch (ParseException e) {
             throw new IllegalValueException(Lesson.LESSON_TIME_MESSAGE_CONSTRAINTS);
         }
+
         final LessonDateTime modelTime = ParserUtil.parseLessonDateTime(date);
 
         return new Lesson(modelCode, modelType, modelTime);

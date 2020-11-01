@@ -24,7 +24,7 @@ public class DeleteTaskCommandParser implements Parser<DeleteTaskCommand> {
             throw new InvalidIndexException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         } catch (ParseException pe) {
             throw new ParseException(
-                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, DeleteTaskCommand.MESSAGE_USAGE), pe);
+                String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, DeleteTaskCommand.MESSAGE_USAGE), pe);
         }
     }
 }
