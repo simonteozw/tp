@@ -165,6 +165,7 @@ public class MainWindow extends UiPart<Stage> {
         logger.info("Switching tab to: " + tabValues.get(0));
         tabPanelPlaceholder.getChildren().clear();
         String tabName = String.valueOf(tabValues.get(0));
+        logic.clearAllList();
 
         switch (tabName) {
         case UpcomingPanel.TYPE:
