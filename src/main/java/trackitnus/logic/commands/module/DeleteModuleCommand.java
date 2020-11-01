@@ -3,9 +3,10 @@ package trackitnus.logic.commands.module;
 import static java.util.Objects.requireNonNull;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
-import javafx.collections.ObservableList;
 import trackitnus.commons.core.Messages;
 import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
@@ -43,14 +44,14 @@ public class DeleteModuleCommand extends Command {
         }
 
         // delete all the related tasks
-        ObservableList<Task> moduleTasks = model.getModuleTasks(targetCode);
-        for (Task task : moduleTasks) {
+        List<Task> tasksToDelete = new ArrayList<Task>(model.getModuleTasks(targetCode));
+        for (Task task : tasksToDelete) {
             model.deleteTask(task);
         }
 
         // delete all the related lessons
-        ObservableList<Lesson> moduleLessons = model.getModuleLessons(targetCode);
-        for (Lesson lesson : moduleLessons) {
+        List<Lesson> lessonsToDelete = new ArrayList<Lesson>(model.getModuleLessons(targetCode));
+        for (Lesson lesson : lessonsToDelete) {
             model.deleteLesson(lesson);
         }
 

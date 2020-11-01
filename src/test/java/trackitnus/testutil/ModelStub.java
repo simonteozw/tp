@@ -133,8 +133,7 @@ public class ModelStub implements Model {
         throw new AssertionError("This method should not be called.");
     }
 
-    @Override
-    public void updateFilteredModuleList(Predicate<Module> predicate) {
+    private void updateFilteredModuleList(Predicate<Module> predicate) {
         throw new AssertionError("This method should not be called.");
     }
 
@@ -244,6 +243,11 @@ public class ModelStub implements Model {
     }
 
     @Override
+    public void clearAllList() {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
     public Index getTaskIndex(Task task) {
         throw new AssertionError("This method should not be called.");
     }
@@ -254,7 +258,8 @@ public class ModelStub implements Model {
     }
 
     @Override
-    public Index getModuleIndex(Module module) throws CommandException {
+    public Index getModuleIndex(Code code) throws CommandException {
         throw new AssertionError("This method should not be called.");
     }
+
 }

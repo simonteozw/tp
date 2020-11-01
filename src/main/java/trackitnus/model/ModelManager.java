@@ -195,7 +195,6 @@ public class ModelManager implements Model {
     @Override
     public void addModule(Module module) {
         trackIter.addModule(module);
-        updateFilteredModuleList(PREDICATE_SHOW_ALL_MODULES);
     }
 
     @Override
@@ -212,8 +211,7 @@ public class ModelManager implements Model {
         return filteredModules;
     }
 
-    @Override
-    public void updateFilteredModuleList(Predicate<Module> predicate) throws NullPointerException {
+    private void updateFilteredModuleList(Predicate<Module> predicate) throws NullPointerException {
         requireNonNull(predicate);
         filteredModules.setPredicate(predicate);
     }
@@ -296,6 +294,13 @@ public class ModelManager implements Model {
         trackIter.sortLesson();
     }
 
+    @Override
+    public void clearAllList() {
+        updateFilteredContactList(PREDICATE_SHOW_NO_CONTACTS);
+        updateFilteredLessonList(PREDICATE_SHOW_NO_LESSONS);
+        updateFilteredTaskList(PREDICATE_SHOW_NO_TASKS);
+    }
+
     //=========== Filtered Lesson List Accessors =============================================================
 
     @Override
@@ -330,12 +335,10 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Index getModuleIndex(Module module) throws CommandException {
+    public Index getModuleIndex(Code code) throws CommandException {
         ObservableList<Module> moduleList = getFilteredModuleList();
+        Module module = getModule(code).orElseThrow(() -> new CommandException(Messages.MESSAGE_MODULE_DOES_NOT_EXIST));
         int index = moduleList.indexOf(module);
-        if (index == -1) {
-            throw new CommandException(Messages.MESSAGE_MODULE_DOES_NOT_EXIST);
-        }
         return Index.fromZeroBased(index);
     }
 

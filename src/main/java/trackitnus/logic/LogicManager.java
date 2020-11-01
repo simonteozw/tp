@@ -90,6 +90,11 @@ public class LogicManager implements Logic {
         return model.getFilteredLessonList();
     }
 
+    @Override
+    public void clearAllList() {
+        model.clearAllList();
+    }
+
     //--------------------------------START of V1.3's new functions--------------------------------
 
     @Override
@@ -134,7 +139,12 @@ public class LogicManager implements Logic {
 
     @Override
     public Index getModuleIndex(Module module) throws CommandException {
-        return model.getModuleIndex(module);
+        return model.getModuleIndex(module.getCode());
+    }
+
+    @Override
+    public Index getModuleIndex(Code code) throws CommandException {
+        return model.getModuleIndex(code);
     }
 
     @Override
