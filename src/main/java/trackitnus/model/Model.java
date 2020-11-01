@@ -256,16 +256,22 @@ public interface Model {
     ObservableList<Lesson> getModuleLessons(Code code);
 
     /**
-     * @param lesson The lesson to check for.
+     * @param lesson The lesson to get index of
      * @return The index of the lesson w.r.t the last shown Lesson list.
      */
     Index getLessonIndex(Lesson lesson) throws CommandException;
 
     /**
+     * @param module The module to get index of
+     * @return The index of the lesson in the list of all modules
+     */
+    Index getModuleIndex(Module module) throws CommandException;
+
+    /**
      * @param code The module code to query
      * @return the list of contacts for a specific module
      */
-    public ObservableList<Contact> getModuleContacts(Code code);
+    ObservableList<Contact> getModuleContacts(Code code);
 
     /**
      * @param code The module code to query
@@ -301,4 +307,5 @@ public interface Model {
     Optional<Lesson> getLesson(Code code, Type type);
 
     void sortLesson();
+
 }
