@@ -307,7 +307,7 @@ public class ParserUtil {
         case "sat":
             return DayOfWeek.Sat;
         default:
-            throw new ParseException(Lesson.DATE_MESSAGE_CONSTRAINTS);
+            throw new ParseException(Lesson.LESSON_TIME_MESSAGE_CONSTRAINTS);
         }
     }
 
@@ -334,7 +334,7 @@ public class ParserUtil {
             if (e instanceof ParseException) {
                 throw e;
             } else {
-                throw new ParseException(Lesson.DATE_MESSAGE_CONSTRAINTS);
+                throw new ParseException(Lesson.LESSON_TIME_MESSAGE_CONSTRAINTS);
             }
         }
     }

@@ -24,7 +24,7 @@ public class Messages {
     public static final String MESSAGE_DUPLICATE_MODULE = "This module already exists";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists";
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
-    public static final String DATE_MESSAGE_CONSTRAINTS = "Date should be in the format dd/MM/yyyy or dd/MM/yyyy hh:mm";
+    public static final String DATE_MESSAGE_CONSTRAINTS = "Date should be in the format dd/MM/yyyy";
     public static final String WEIGHTAGE_MESSAGE_CONSTRAINTS = "Weightage should be in the"
         + " form of a floating point number";
 }
