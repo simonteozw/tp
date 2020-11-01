@@ -25,6 +25,8 @@ public class EditContactCommandParserTest {
     private static final String MESSAGE_INVALID_FORMAT =
         String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, EditContactCommand.MESSAGE_USAGE);
 
+    private static final String MESSAGE_INVALID_INDEX = Messages.MESSAGE_INVALID_CONTACT_DISPLAYED_INDEX;
+
     private final EditContactCommandParser parser = new EditContactCommandParser();
 
     @Test
@@ -42,10 +44,10 @@ public class EditContactCommandParserTest {
     @Test
     public void parse_invalidPreamble_failure() {
         // negative index
-        assertParseFailure(parser, "-5" + ContactCommandTestUtil.NAME_DESC_AMY, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "-5" + ContactCommandTestUtil.NAME_DESC_AMY, MESSAGE_INVALID_INDEX);
 
         // zero index
-        assertParseFailure(parser, "0" + ContactCommandTestUtil.NAME_DESC_AMY, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "0" + ContactCommandTestUtil.NAME_DESC_AMY, MESSAGE_INVALID_INDEX);
 
         // invalid arguments being parsed as preamble
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);

@@ -14,6 +14,7 @@ import java.util.Set;
 import trackitnus.commons.core.Messages;
 import trackitnus.commons.core.index.Index;
 import trackitnus.commons.util.StringUtil;
+import trackitnus.logic.parser.exceptions.InvalidIndexException;
 import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Code;
@@ -30,7 +31,6 @@ import trackitnus.model.tag.Tag;
  * Contains utility methods used for parsing strings in the various *Parser classes.
  */
 public class ParserUtil {
-
     public static final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     /**
@@ -41,8 +41,11 @@ public class ParserUtil {
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
         String trimmedIndex = oneBasedIndex.trim();
+        if (!StringUtil.isDigitSequence(trimmedIndex)) {
+            throw new ParseException(Messages.MESSAGE_NOT_DIGIT_SEQUENCE);
+        }
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
-            throw new ParseException(Messages.MESSAGE_INVALID_INDEX);
+            throw new InvalidIndexException(Messages.MESSAGE_INVALID_INDEX);
         }
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }

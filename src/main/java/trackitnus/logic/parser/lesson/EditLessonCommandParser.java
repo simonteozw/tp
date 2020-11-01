@@ -16,6 +16,7 @@ import trackitnus.logic.parser.ArgumentTokenizer;
 import trackitnus.logic.parser.Parser;
 import trackitnus.logic.parser.ParserUtil;
 import trackitnus.logic.parser.Prefix;
+import trackitnus.logic.parser.exceptions.InvalidIndexException;
 import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.model.commons.Code;
 import trackitnus.model.lesson.LessonDateTime;
@@ -48,9 +49,11 @@ public class EditLessonCommandParser implements Parser<EditLessonCommand> {
 
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
+        } catch (InvalidIndexException iie) {
+            throw new InvalidIndexException(Messages.MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);
         } catch (ParseException pe) {
-            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                EditLessonCommand.MESSAGE_USAGE), pe);
+            throw new ParseException(
+                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, EditLessonCommand.MESSAGE_USAGE), pe);
         }
 
         EditLessonDescriptor editLessonDescriptor = new EditLessonDescriptor();

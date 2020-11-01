@@ -9,6 +9,7 @@ import trackitnus.logic.parser.ArgumentMultimap;
 import trackitnus.logic.parser.Parser;
 import trackitnus.logic.parser.ParserUtil;
 import trackitnus.logic.parser.Prefix;
+import trackitnus.logic.parser.exceptions.InvalidIndexException;
 import trackitnus.logic.parser.exceptions.ParseException;
 
 /**
@@ -33,9 +34,11 @@ public class DeleteLessonCommandParser implements Parser<DeleteLessonCommand> {
         try {
             Index index = ParserUtil.parseIndex(args);
             return new DeleteLessonCommand(index);
+        } catch (InvalidIndexException iie) {
+            throw new InvalidIndexException(Messages.MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);
         } catch (ParseException pe) {
             throw new ParseException(
-                String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, DeleteLessonCommand.MESSAGE_USAGE), pe);
+                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, DeleteLessonCommand.MESSAGE_USAGE), pe);
         }
     }
 
