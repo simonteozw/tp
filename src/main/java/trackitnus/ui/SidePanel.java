@@ -68,28 +68,6 @@ public class SidePanel extends UiPart<Region> {
     }
 
     /**
-     * Sets the view of the module tab in the side panel.
-     */
-    class ModuleListViewCell extends ListCell<Module> {
-        @Override
-        protected void updateItem(Module module, boolean empty) {
-            super.updateItem(module, empty);
-
-            if (empty || module == null) {
-                setGraphic(null);
-                setText(null);
-            } else {
-                Button updatedButton = getModuleButton(module);
-                setGraphic(updatedButton);
-                ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList(Module.TYPE,
-                    module));
-//                tabConsumer.accept(upcomingValues);
-//                updateButtonDetails(updatedButton);
-            }
-        }
-    }
-
-    /**
      * Relays message to MainWindow to get Upcoming panel information in TabPanel.
      */
     public void toggleUpcomingTab() {
@@ -118,6 +96,7 @@ public class SidePanel extends UiPart<Region> {
 
     /**
      * Updates the details of the current selected tab button.
+     *
      * @param button The new selected tab button.
      */
     public void updateButtonDetails(Button button) {
@@ -128,6 +107,7 @@ public class SidePanel extends UiPart<Region> {
 
     /**
      * Configure the module button tab in the side panel.
+     *
      * @return moduleButton The module button.
      */
     public Button getModuleButton(Module module) {
@@ -138,5 +118,27 @@ public class SidePanel extends UiPart<Region> {
             tabConsumer.accept(moduleValues);
         });
         return button;
+    }
+
+    /**
+     * Sets the view of the module tab in the side panel.
+     */
+    class ModuleListViewCell extends ListCell<Module> {
+        @Override
+        protected void updateItem(Module module, boolean empty) {
+            super.updateItem(module, empty);
+
+            if (empty || module == null) {
+                setGraphic(null);
+                setText(null);
+            } else {
+                Button updatedButton = getModuleButton(module);
+                setGraphic(updatedButton);
+                ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList(Module.TYPE,
+                    module));
+//                tabConsumer.accept(upcomingValues);
+//                updateButtonDetails(updatedButton);
+            }
+        }
     }
 }
