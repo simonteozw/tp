@@ -2,7 +2,6 @@ package trackitnus.logic.parser.task;
 
 import trackitnus.commons.core.Messages;
 import trackitnus.commons.core.index.Index;
-import trackitnus.logic.commands.lesson.DeleteLessonCommand;
 import trackitnus.logic.commands.task.DeleteTaskCommand;
 import trackitnus.logic.parser.Parser;
 import trackitnus.logic.parser.ParserUtil;

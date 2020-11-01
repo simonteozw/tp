@@ -15,7 +15,6 @@ import java.util.Set;
 import trackitnus.commons.core.Messages;
 import trackitnus.commons.core.index.Index;
 import trackitnus.logic.commands.contact.EditContactCommand;
-import trackitnus.logic.commands.lesson.DeleteLessonCommand;
 import trackitnus.logic.parser.ArgumentMultimap;
 import trackitnus.logic.parser.ArgumentTokenizer;
 import trackitnus.logic.parser.Parser;

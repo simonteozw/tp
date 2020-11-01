@@ -9,7 +9,6 @@ import java.util.stream.Stream;
 
 import trackitnus.commons.core.Messages;
 import trackitnus.commons.core.index.Index;
-import trackitnus.logic.commands.lesson.DeleteLessonCommand;
 import trackitnus.logic.commands.lesson.EditLessonCommand;
 import trackitnus.logic.commands.lesson.EditLessonCommand.EditLessonDescriptor;
 import trackitnus.logic.parser.ArgumentMultimap;

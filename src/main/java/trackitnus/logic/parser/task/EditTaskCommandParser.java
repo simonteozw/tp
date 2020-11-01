@@ -9,7 +9,6 @@ import static trackitnus.logic.parser.CliSyntax.PREFIX_REMARK;
 
 import trackitnus.commons.core.Messages;
 import trackitnus.commons.core.index.Index;
-import trackitnus.logic.commands.lesson.DeleteLessonCommand;
 import trackitnus.logic.commands.task.EditTaskCommand;
 import trackitnus.logic.parser.ArgumentMultimap;
 import trackitnus.logic.parser.ArgumentTokenizer;
