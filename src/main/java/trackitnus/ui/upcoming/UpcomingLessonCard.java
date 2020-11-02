@@ -35,6 +35,8 @@ public class UpcomingLessonCard extends UiPart<Region> {
     private Label type;
     @FXML
     private Label date;
+    @FXML
+    private Label address;
 
     /**
      * Creates a {@code ContactCode} with the given {@code Lesson} and index to display.
@@ -47,6 +49,7 @@ public class UpcomingLessonCard extends UiPart<Region> {
         type.setText(lesson.getType().name());
         date.setText(lesson.getTime().toString().substring(4));
         date.setStyle("-fx-text-fill: " + getColorHex(lessonColor) + ";");
+        address.setText(lesson.getAddress().toString());
     }
 
     /**
