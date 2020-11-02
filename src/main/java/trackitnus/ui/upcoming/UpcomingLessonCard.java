@@ -45,7 +45,7 @@ public class UpcomingLessonCard extends UiPart<Region> {
         id.setText("[" + displayedIndex + "] ");
         code.setText(lesson.getCode().code);
         type.setText(lesson.getType().name());
-        date.setText(lesson.getDate().toString().substring(4));
+        date.setText(lesson.getTime().toString().substring(4));
         date.setStyle("-fx-text-fill: " + getColorHex(lessonColor) + ";");
     }
 

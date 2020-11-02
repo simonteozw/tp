@@ -41,7 +41,7 @@ public class JsonAdaptedLesson {
     public JsonAdaptedLesson(Lesson source) {
         code = source.getCode().code;
         type = source.getTypeStr();
-        date = source.getDate().toString();
+        date = source.getTime().toString();
     }
 
     /**

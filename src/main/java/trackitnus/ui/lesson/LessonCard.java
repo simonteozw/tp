@@ -45,7 +45,7 @@ public class LessonCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
 //        code.setText(lesson.getCode().code);
         type.setText(lesson.getType().name());
-        date.setText(lesson.getDate().toString());
+        date.setText(lesson.getTime().toString());
     }
 
     @Override
