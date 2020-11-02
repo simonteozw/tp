@@ -17,7 +17,6 @@ import trackitnus.model.lesson.Lesson;
 import trackitnus.model.module.Module;
 import trackitnus.model.task.Task;
 import trackitnus.ui.UiPart;
-import trackitnus.ui.task.TaskCard;
 
 public class DayCard extends UiPart<Region> {
 
@@ -100,7 +99,7 @@ public class DayCard extends UiPart<Region> {
                 setText(null);
             } else {
                 try {
-                    setGraphic(new TaskCard(task, logic.getTaskIndex(task).getOneBased()).getRoot());
+                    setGraphic(new UpcomingTaskCard(task, logic.getTaskIndex(task).getOneBased()).getRoot());
                 } catch (CommandException e) {
                     e.printStackTrace();
                 }

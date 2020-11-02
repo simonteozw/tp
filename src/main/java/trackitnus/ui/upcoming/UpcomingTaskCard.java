@@ -1,6 +1,4 @@
-package trackitnus.ui.task;
-
-import java.time.format.DateTimeFormatter;
+package trackitnus.ui.upcoming;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -12,11 +10,10 @@ import trackitnus.ui.UiPart;
 /**
  * An UI component that displays information of a {@code task}.
  */
-public class TaskCard extends UiPart<Region> {
-    private static final String FXML = "Task/TaskListCard.fxml";
+public class UpcomingTaskCard extends UiPart<Region> {
+    private static final String FXML = "Upcoming/UpcomingTaskListCard.fxml";
 
     public final Task task;
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM EEEE");
 
     @FXML
     private HBox cardPane;
@@ -28,21 +25,17 @@ public class TaskCard extends UiPart<Region> {
     private Label name;
     @FXML
     private Label remark;
-    @FXML
-    private Label date;
 
     /**
      * Creates a {@code TaskCard} with the given {@code Task} and index to display.
      */
-    public TaskCard(Task task, int displayedIndex) {
-
+    public UpcomingTaskCard(Task task, int displayedIndex) {
         super(FXML);
         this.task = task;
         id.setText("[" + displayedIndex + "] ");
         name.setText(task.getName().toString());
         remark.setText(task.getRemark());
         code.setText(task.getCode().isPresent() ? task.getCode().get().code + " " : "");
-        date.setText(" - " + task.getDate().format(formatter));
     }
 
     @Override
@@ -53,12 +46,12 @@ public class TaskCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof TaskCard)) {
+        if (!(other instanceof trackitnus.ui.task.TaskCard)) {
             return false;
         }
 
         // state check
-        TaskCard card = (TaskCard) other;
+        trackitnus.ui.upcoming.UpcomingTaskCard card = (trackitnus.ui.upcoming.UpcomingTaskCard) other;
         return id.getText().equals(card.id.getText())
             && name.equals(card.name);
     }
