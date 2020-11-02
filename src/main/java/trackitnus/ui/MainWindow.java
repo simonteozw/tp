@@ -1,5 +1,6 @@
 package trackitnus.ui;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Logger;
@@ -38,6 +39,7 @@ public class MainWindow extends UiPart<Stage> {
 
     private final Stage primaryStage;
     private final Logic logic;
+    private String moduleTabInContext = "";
 
     // Independent Ui parts residing in this Ui container
     private ModulePanel modulePanel;
@@ -170,20 +172,25 @@ public class MainWindow extends UiPart<Stage> {
         switch (tabName) {
         case UpcomingPanel.TYPE:
             tabPanelPlaceholder.getChildren().add(upcomingPanel.getRoot());
+            moduleTabInContext = "";
             break;
         case Module.TYPE:
             assert (tabValues.size() == 2);
             Module tabModule = (Module) tabValues.get(1);
+            logger.info("Module: " + tabModule);
+            moduleTabInContext = tabModule.getCode().toString();
             modulePanel = new ModulePanel(tabModule, logic);
             tabPanelPlaceholder.getChildren().add(modulePanel.getRoot());
             break;
         case Contact.TYPE:
             contactPanel = new ContactPanel(logic);
             tabPanelPlaceholder.getChildren().add(contactPanel.getRoot());
+            moduleTabInContext = "";
             break;
         case HelpPanel.TYPE:
             helpPanel = new HelpPanel();
             tabPanelPlaceholder.getChildren().add(helpPanel.getRoot());
+            moduleTabInContext = "";
             break;
         default:
             throw new IllegalArgumentException(Messages.MESSAGE_INVALID_TAB_VALUE);
@@ -234,6 +241,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isShowHelp()) {
                 switchTab(new ArrayList<>(Arrays.asList((Object) "H")));
+            }
+
+            if(commandResult.deleteModule().equals(moduleTabInContext)) {
+                switchTab(new ArrayList<>(Arrays.asList((Object) "U")));
             }
 
             return commandResult;
