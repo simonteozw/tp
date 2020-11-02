@@ -130,67 +130,80 @@
     {
       "code": "CS2100",
       "type": "LAB",
-      "date": "Mon 9:00-10:00"
+      "date": "Mon 9:00-10:00",
+      "address": "E-learning"
     },
     {
       "code": "CS1101S",
       "type": "TUT",
-      "date": "Mon 12:00-14:00"
+      "date": "Mon 12:00-14:00",
+      "address": "COM1-0208"
     },
     {
       "code": "CS2030S",
       "type": "LEC",
-      "date": "Mon 12:00-14:00"
+      "date": "Mon 12:00-14:00",
+      "address": "E-learning"
     },
     {
       "code": "GER1000H",
       "type": "LEC",
-      "date": "Tue 12:00-14:00"
+      "date": "Tue 12:00-14:00",
+      "address": "E-learning"
     },
     {
       "code": "CS2100",
       "type": "LEC",
-      "date": "Tue 16:00-18:00"
+      "date": "Tue 16:00-18:00",
+      "address": "E-learning"
     },
     {
       "code": "CS2030S",
       "type": "REC",
-      "date": "Wed 12:00-13:00"
+      "date": "Wed 12:00-13:00",
+      "address": "LT19"
     },
     {
       "code": "MA1101R",
       "type": "SEC",
-      "date": "Wed 12:00-13:00"
+      "date": "Wed 12:00-13:00",
+      "address": "E-learning"
     },
     {
       "code": "CS2103T",
       "type": "LEC",
-      "date": "Wed 14:00-16:00"
+      "date": "Wed 14:00-16:00",
+      "address": "E-learning"
     },
     {
       "code": "CS2103T",
       "type": "TUT",
-      "date": "Thu 14:00-15:00"
+      "date": "Thu 14:00-15:00",
+      "address": "E-learning"
     },
     {
       "code": "MA1101R",
       "type": "LEC",
-      "date": "Thu 16:00-18:00"
+      "date": "Thu 16:00-18:00",
+      "address": "LT27"
     },
     {
       "code": "CS1101S",
       "type": "LEC",
-      "date": "Fri 12:00-14:00"
+      "date": "Fri 12:00-14:00",
+      "address": "TP-SR2"
     },
     {
       "code": "CS2030S",
       "type": "LAB",
-      "date": "Fri 12:00-14:00"
+      "date": "Fri 12:00-14:00",
+      "address": "E-learning"
     },
     {
       "code": "GER1000H",
       "type": "SEC",
-      "date": "Fri 14:00-16:00"
+      "date": "Fri 14:00-16:00",
+      "address": "PGPH-FR4"
     }
   ]
 }

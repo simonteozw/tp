@@ -5,6 +5,7 @@ import java.time.ZoneId;
 import java.util.Objects;
 
 import trackitnus.commons.util.CollectionUtil;
+import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Code;
 
 /**
@@ -16,14 +17,17 @@ public class Lesson {
     public static final String TYPE = "L";
     public static final String TIME_MESSAGE_CONSTRAINTS =
         "Starting time should be earlier than finishing time";
+    public static final String ADDRESS_MESSAGE_CONSTRAINTS = "Address should not be blank";
     public static final String LESSON_TIME_MESSAGE_CONSTRAINTS =
         "Lesson's time should be in the format \"ddd H:mm-H:mm\" (in 24-hour format), e.g. Mon 8:00-13:00";
     public static final String TYPE_MESSAGE_CONSTRAINTS =
-        "Type should be either 'lecture', 'tutorial', 'lab', 'recitation', or 'sectional'";
+        "Type should be either 'lec'/'lecture', 'tut'/'tutorial', 'lab'/'laboratory', " +
+        "'rec'/'recitation', or 'sec'/'sectional'";
 
     private final Code code;
     private final Type type;
     private final LessonDateTime time;
+    private final Address address;
 
     /**
      * Every field must be present and not null.
@@ -31,12 +35,14 @@ public class Lesson {
      * @param code
      * @param type
      * @param time
+     *
      */
-    public Lesson(Code code, Type type, LessonDateTime time) {
-        CollectionUtil.requireAllNonNull(code, type, time);
+    public Lesson(Code code, Type type, LessonDateTime time, Address address) {
+        CollectionUtil.requireAllNonNull(code, type, time, address);
         this.code = code;
         this.time = time;
         this.type = type;
+        this.address = address;
     }
 
     @Override
@@ -52,12 +58,13 @@ public class Lesson {
         Lesson otherLesson = (Lesson) other;
         return otherLesson.code.equals(code)
             && otherLesson.type.equals(type)
-            && otherLesson.time.equals(time);
+            && otherLesson.time.equals(time)
+            && otherLesson.address.equals(address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(code, type, time);
+        return Objects.hash(code, type, time, address);
     }
 
     @Override
@@ -65,8 +72,10 @@ public class Lesson {
         return getCode()
             + " "
             + getTypeStr()
-            + " at: "
-            + getTime();
+            + " on "
+            + getTime()
+            + " at "
+            + getAddress();
     }
 
     public Code getCode() {
@@ -95,6 +104,10 @@ public class Lesson {
 
     public LocalTime getEndTime() {
         return time.getEndTime();
+    }
+
+    public Address getAddress() {
+        return address;
     }
 
     /**

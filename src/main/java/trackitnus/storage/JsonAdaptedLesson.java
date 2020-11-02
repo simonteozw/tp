@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import trackitnus.commons.exceptions.IllegalValueException;
 import trackitnus.logic.parser.ParserUtil;
 import trackitnus.logic.parser.exceptions.ParseException;
+import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Code;
 import trackitnus.model.lesson.Lesson;
 import trackitnus.model.lesson.LessonDateTime;
@@ -23,16 +24,18 @@ public class JsonAdaptedLesson {
     private final String code;
     private final String type;
     private final String date;
+    private final String address;
 
     /**
      * Constructs a {@code JsonAdaptedLesson} with the given lesson details.
      */
     @JsonCreator
     public JsonAdaptedLesson(@JsonProperty("code") String code, @JsonProperty("type") String type,
-                             @JsonProperty("date") String date) {
+                             @JsonProperty("date") String date, @JsonProperty("address") String address) {
         this.code = code;
         this.type = type;
         this.date = date;
+        this.address = address;
     }
 
     /**
@@ -42,6 +45,7 @@ public class JsonAdaptedLesson {
         code = source.getCode().code;
         type = source.getTypeStr();
         date = source.getTime().toString();
+        address = source.getAddress().toString();
     }
 
     /**
@@ -73,9 +77,19 @@ public class JsonAdaptedLesson {
         } catch (ParseException e) {
             throw new IllegalValueException(Lesson.LESSON_TIME_MESSAGE_CONSTRAINTS);
         }
-
         final LessonDateTime modelTime = ParserUtil.parseLessonDateTime(date);
 
-        return new Lesson(modelCode, modelType, modelTime);
+        if (address == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Address.class.getSimpleName()));
+        }
+        try {
+            ParserUtil.parseAddress(address);
+        } catch (ParseException e) {
+            throw new IllegalValueException(Lesson.ADDRESS_MESSAGE_CONSTRAINTS);
+        }
+        final Address modelAddress = ParserUtil.parseAddress(address);
+
+        return new Lesson(modelCode, modelType, modelTime, modelAddress);
     }
 }

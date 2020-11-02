@@ -1,5 +1,6 @@
 package trackitnus.testutil.builder;
 
+import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Code;
 import trackitnus.model.lesson.Lesson;
 import trackitnus.model.lesson.LessonDateTime;
@@ -14,10 +15,12 @@ public class LessonBuilder {
     public static final String DEFAULT_CODE = "CS2103T";
     public static final String DEFAULT_TYPE = "lec";
     public static final String DEFAULT_TIME = "Mon 10:00-12:00";
+    public static final String DEFAULT_ADDRESS = "COM1";
 
     private Code code;
     private Type type;
     private LessonDateTime time;
+    private Address address;
 
     /**
      * Creates a {@code LessonBuilder} with the default details.
@@ -26,6 +29,7 @@ public class LessonBuilder {
         code = TestUtil.parseCode(DEFAULT_CODE);
         type = TestUtil.parseType(DEFAULT_TYPE);
         time = TestUtil.parseLessonDateTime(DEFAULT_TIME);
+        address = TestUtil.parseAddress(DEFAULT_ADDRESS);
     }
 
     /**
@@ -35,6 +39,7 @@ public class LessonBuilder {
         code = lessonToCopy.getCode();
         type = lessonToCopy.getType();
         time = lessonToCopy.getTime();
+        address = lessonToCopy.getAddress();
     }
 
     /**
@@ -61,8 +66,16 @@ public class LessonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Address} of the {@code Lesson} that we are building.
+     */
+    public LessonBuilder withAddress(String address) {
+        this.address = TestUtil.parseAddress(address);
+        return this;
+    }
+
     public Lesson build() {
-        return new Lesson(code, type, time);
+        return new Lesson(code, type, time, address);
     }
 
 }
