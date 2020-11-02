@@ -137,7 +137,7 @@
       "code": "CS1101S",
       "type": "TUT",
       "date": "Mon 12:00-14:00",
-      "address": "E-learning"
+      "address": "COM1-0208"
     },
     {
       "code": "CS2030S",
@@ -161,7 +161,7 @@
       "code": "CS2030S",
       "type": "REC",
       "date": "Wed 12:00-13:00",
-      "address": "E-learning"
+      "address": "LT19"
     },
     {
       "code": "MA1101R",
@@ -185,13 +185,13 @@
       "code": "MA1101R",
       "type": "LEC",
       "date": "Thu 16:00-18:00",
-      "address": "E-learning"
+      "address": "LT27"
     },
     {
       "code": "CS1101S",
       "type": "LEC",
       "date": "Fri 12:00-14:00",
-      "address": "E-learning"
+      "address": "TP-SR2"
     },
     {
       "code": "CS2030S",
@@ -203,7 +203,7 @@
       "code": "GER1000H",
       "type": "SEC",
       "date": "Fri 14:00-16:00",
-      "address": "E-learning"
+      "address": "PGPH-FR4"
     }
   ]
 }

@@ -16,22 +16,22 @@ public class TypicalLessons {
 
     public static final Lesson CS1101S_LEC =
         new Lesson(new Code("CS1101S"), Type.LEC, new LessonDateTime(DayOfWeek.Fri, LocalTime.NOON,
-            LocalTime.NOON.plusHours(2)), new Address("E-learning"));
+            LocalTime.NOON.plusHours(2)), new Address("TP-SR2"));
     public static final Lesson CS1101S_TUT =
         new Lesson(new Code("CS1101S"), Type.TUT, new LessonDateTime(DayOfWeek.Mon, LocalTime.NOON,
-            LocalTime.NOON.plusHours(2)), new Address("E-learning"));
+            LocalTime.NOON.plusHours(2)), new Address("COM1-0208"));
     public static final Lesson CS2100_LAB =
         new Lesson(new Code("CS2100"), Type.LAB, new LessonDateTime(DayOfWeek.Mon, LocalTime.MIDNIGHT.plusHours(9),
             LocalTime.MIDNIGHT.plusHours(10)), new Address("E-learning"));
     public static final Lesson MA1101R_LEC =
         new Lesson(new Code("MA1101R"), Type.LEC, new LessonDateTime(DayOfWeek.Thu, LocalTime.NOON.plusHours(4),
-            LocalTime.NOON.plusHours(6)), new Address("E-learning"));
+            LocalTime.NOON.plusHours(6)), new Address("LT27"));
     public static final Lesson GER1000H_SEC =
         new Lesson(new Code("GER1000H"), Type.SEC, new LessonDateTime(DayOfWeek.Fri, LocalTime.NOON.plusHours(2),
-            LocalTime.NOON.plusHours(4)), new Address("E-learning"));
+            LocalTime.NOON.plusHours(4)), new Address("PGPH-FR4"));
     public static final Lesson CS2030S_REC =
         new Lesson(new Code("CS2030S"), Type.REC, new LessonDateTime(DayOfWeek.Wed, LocalTime.NOON,
-            LocalTime.NOON.plusHours(1)), new Address("E-learning"));
+            LocalTime.NOON.plusHours(1)), new Address("LT19"));
 
 
     public static List<Lesson> get() {
