@@ -1,6 +1,5 @@
 package trackitnus.ui;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Logger;
@@ -243,7 +242,7 @@ public class MainWindow extends UiPart<Stage> {
                 switchTab(new ArrayList<>(Arrays.asList((Object) "H")));
             }
 
-            if(commandResult.deleteModule().equals(moduleTabInContext)) {
+            if (commandResult.deleteModule().equals(moduleTabInContext)) {
                 switchTab(new ArrayList<>(Arrays.asList((Object) "U")));
             }
 
