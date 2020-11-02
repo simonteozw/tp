@@ -211,11 +211,11 @@ You can also perform commands on the lessons as explained below.
 The command that makes you groan every time you have to use it. 
 Use this command to add a lesson to a module.
 
-Format: `L add m/MODULE_CODE n/TYPE d/DATE`
+Format: `L add m/MODULE_CODE n/TYPE d/DATE a/ADDRESS`
 
 Examples:
-* `L add m/GET1020 n/lecture d/Mon 8:00-10:00`
-* `L add m/CS3233 n/tutorial d/MON 17:30-20:00`
+* `L add m/GET1020 n/lecture d/Mon 8:00-10:00 a/E-learning`
+* `L add m/CS3233 n/tutorial d/MON 17:30-20:00 a/COM1-0215`
 
 :warning: The `TYPE` must be one of the following:
 `lec`/`lecture`, `tut`/`tutorial`,
@@ -232,11 +232,11 @@ that no one wants to be in, but, unfortunately, does sometimes happen.
 After adding a lesson, you might still want to change its details. 
 This is the command to do so.
 
-Format: `L edit INDEX [m/MODULE_CODE] [n/TYPE] [d/DATE]`
+Format: `L edit INDEX [m/MODULE_CODE] [n/TYPE] [d/DATE] [a/ADDRESS]`
 
 Examples:
 * `L edit 1 m/CS2103T n/tutorial d/Mon 14:00-15:00`
-* `L edit 4 m/CS3233`
+* `L edit 4 m/CS3233 a/COM2`
 
 :information_source: The parameters `m/MODULE_CODE`, `n/TYPE`, and `d/DATE` are optional;
 however, at least one parameter must be provided, i.e. `L edit 1` is not a valid command.
@@ -416,8 +416,8 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 
 | Command | Example |
 | ---- | ------ |
-| **Add:** `L add m/MODULE_CODE n/TYPE d/DATE a/LOCATION` | `L add m/CS2103T n/tutorial d/2pm - 3pm Wed a/COM1` |
-| **Edit:** `L edit INDEX [m/MODULE_CODE] [n/TYPE] [d/DATE] [a/LOCATION]` | `L edit 1 a/LT17` |
+| **Add:** `L add m/MODULE_CODE n/TYPE d/DATE a/ADDRESS` | `L add m/CS2103T n/tutorial d/Wed 14:00-15:00 a/COM1` |
+| **Edit:** `L edit INDEX [m/MODULE_CODE] [n/TYPE] [d/DATE] [a/ADDRESS]` | `L edit 1 a/LT17` |
 | **Delete:** `L delete INDEX` | `L delete 1` |
 
 ### Contact <a name="contact-commands"></a>
