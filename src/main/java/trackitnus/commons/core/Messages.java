@@ -23,6 +23,10 @@ public class Messages {
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists";
 
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
+    public static final String MESSAGE_LESSON_UNCHANGED = "The edited lesson is the same as the original.";
+    public static final String MESSAGE_CONTACT_UNCHANGED = "The edited contact is the same as the original.";
+    public static final String MESSAGE_TASK_UNCHANGED = "The edited task is the same as the original.";
+    public static final String MESSAGE_MODULE_UNCHANGED = "The edited module is the same as the original.";
 
     public static final String MESSAGE_INVALID_CONTACT_DISPLAYED_INDEX = "The contact index provided is invalid";
     public static final String MESSAGE_INVALID_TASK_DISPLAYED_INDEX = "The task index provided is invalid";

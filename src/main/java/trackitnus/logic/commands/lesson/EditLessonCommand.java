@@ -91,6 +91,10 @@ public class EditLessonCommand extends Command {
         Lesson lessonToEdit = lastShownList.get(index.getZeroBased());
         Lesson editedLesson = createEditedLesson(lessonToEdit, editLessonDescriptor);
 
+        if (lessonToEdit.isSameLesson(editedLesson)) {
+            throw new CommandException(Messages.MESSAGE_LESSON_UNCHANGED);
+        }
+
         if (!lessonToEdit.isSameLesson(editedLesson) && model.hasLesson(editedLesson)) {
             throw new CommandException(MESSAGE_DUPLICATE_LESSON);
         }
