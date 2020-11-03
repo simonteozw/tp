@@ -21,6 +21,7 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     5. [Help](#help)
     6. [Exit](#exit)
 6. [FAQ](#faq)
+7. [Glossary](#glossary)
 7. [Command Summary](#command-summary)
     1. [Module Commands](#module-commands)
     2. [Lesson Commands](#lesson-commands)
@@ -40,9 +41,9 @@ Do you want to balance schoolwork and having a social life, but dislike having t
   and I.
 
 TrackIt@NUS is a desktop app for managing modules, lessons, tasks, and contacts, tailored to the needs of NUS students and
-  optimized for use via a **Command Line Interface (CLI)** while still having the benefits of a **Graphical User
-   Interface (GUI)**. If you can type fast, you will be able to manage your academic and social commitments much faster
-    than by using other traditional GUI apps.
+  optimized for use via a [**Command Line Interface (CLI)**](#glossary) while still having the benefits of a
+   [**Graphical User Interface (GUI)**](#glossary). If you can type fast, you will be able to manage your academic
+    and social commitments much more efficiently than by using other traditional GUI apps.
 
 What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) to learn more!
 
@@ -404,6 +405,16 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
  the data of your previous TrackIt@NUS home folder.
+
+## Glossary <a name="glossary"></a>
+
+**Command Line Interface**: Known in short as **CLI**, the command line interface is a **text-based** user interface to
+ view and manage computer files. Click [here](https://en.wikipedia.org/wiki/Command-line_interface) for more
+  information!
+ 
+**Graphical User Interface**: Known in short as **GUI**, the graphical user interface is a system of interactive
+ visual components for computer software. Click [here](https://en.wikipedia.org/wiki/Graphical_user_interface) for
+  more information!
 
 ## Command Summary <a name="command-summary"></a>
 
