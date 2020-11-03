@@ -29,20 +29,28 @@ import trackitnus.model.task.Task;
 public class SampleDataUtil {
     public static Contact[] getSampleContacts() {
         return new Contact[]{
-            new Contact(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
+            new Contact(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@gmail.com"),
                 getTagSet("friends", "MA1101R")),
-            new Contact(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
+            new Contact(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@gmail.com"),
                 getTagSet("colleagues", "friends")),
-            new Contact(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
+            new Contact(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@gmail.com"),
                 getTagSet("neighbours")),
-            new Contact(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
+            new Contact(new Name("David Li"), new Phone("91031282"), new Email("lidavid@gmail.com"),
                 getTagSet("family", "CS2100")),
-            new Contact(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
+            new Contact(new Name("Uncle Soo"), new Phone("65162100"), new Email("dcssooyj@nus.edu.sg"),
+                getTagSet("Professor", "CS2100")),
+            new Contact(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@gmail.com"),
                 getTagSet("classmates", "CS2103T")),
-            new Contact(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
+            new Contact(new Name("Jeffry Lum"), new Phone("91122334"), new Email("jeffry@u.nus.edu"),
+                getTagSet("TA", "CS2103T")),
+            new Contact(new Name("Prof Damith"), new Phone("65162103"), new Email("dcsdcr@nus.edu.sg"),
+                getTagSet("Professor", "CS2103T")),
+            new Contact(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@gmail.com"),
                 getTagSet("colleagues")),
-            new Contact(new Name("Henry CHIA Wai Kit"), new Phone("65161556"), new Email("hchia@comp.nus.edu.sg"),
-                getTagSet("colleagues"))
+            new Contact(new Name("Henry Chia Wai Kit"), new Phone("65161556"), new Email("hchia@comp.nus.edu.sg"),
+                getTagSet("Professor", "CS2030S")),
+            new Contact(new Name("Kor Ming Soon"), new Phone("91223345"), new Email("e0012345@u.nus.edu"),
+                getTagSet("TA", "CS2030S"))
         };
     }
 
@@ -95,14 +103,18 @@ public class SampleDataUtil {
             new Task(new Name("Buy Mooncakes for Mum"), LocalDate.now().plusDays(3), null, ""),
             new Task(new Name("Do Tutorial"), LocalDate.now().plusDays(5),
                 new Code("CS2100"), ""),
+            new Task(new Name("Catch up on Pipelining webcast"), LocalDate.now().plusDays(-2),
+                new Code("CS2100"), "focus on latency and data forwarding"),
             new Task(new Name("Do this week's Mission"), LocalDate.now().plusDays(3),
                 new Code("CS1101S"), "Recursion"),
-            new Task(new Name("Work on the final report"), LocalDate.now().plusDays(2),
+            new Task(new Name("Work on the final report"), LocalDate.now().plusDays(0),
                 new Code("GER1000H"), "min 500 words"),
             new Task(new Name("Study for Final Exam"), ParserUtil.parseValidDate("05/11/2020"),
                 new Code("MA1101R"), "Focus on Diagonalisation"),
-            new Task(new Name("Prepare for v1.3 Demo"), LocalDate.now().plusDays(1),
+            new Task(new Name("Prepare for v1.4 Demo"), LocalDate.now().plusDays(0),
                 new Code("CS2103T"), "Ensure app runs smoothly"),
+            new Task(new Name("Practical Exam on week 13"), LocalDate.now().plusDays(5),
+                new Code("CS2103T"), "remember to upgrade to the latest CATCHER"),
             new Task(new Name("Code Project 2"), ParserUtil.parseValidDate("20/11/2020"),
                 new Code("CS2030S"),
                 "(deadline is at the end of reading week)")
