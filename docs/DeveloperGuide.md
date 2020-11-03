@@ -8,6 +8,9 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 3. [**Design**](#design)
     1. [Architecture](#architecture)
     2. [UI Component](#ui)
+        1. [Upcoming Tab](#upcoming-tab)
+        2. [Module Tab](#module-tab)
+        3. [Contact Tab](#contact-tab)
     3. [Logic Component](#logic)
     4. [Model Component](#model)
     5. [Common Classes](#common)
@@ -16,7 +19,6 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     2. [Lesson Manager](#lesson-manager)
     3. [Task Manager](#task-manager)
     4. [Contact Manager](#contact-manager)
-    5. [Upcoming Tab](#upcoming-tab)
     6. [Logging](#logging)
     7. [Configuration](#config)
 5. [**Documentation**](#documentation)
@@ -67,6 +69,14 @@ We implemented most of our methods in a similar way to ensure that the logic is 
 -prone, and more maintainable.
 
 ### **UI Component** <a name="ui"></a>
+
+#### **Upcoming Tab** <a name="upcoming-tab"></a>
+
+#### **Module Tab** <a name="module-tab"></a>
+
+#### **Contact Tab** <a name="contact-tab"></a>
+
+#### **Module Tab** <a name="upcoming-tab"></a>
 
 ### **Logic Component** <a name="logic"></a>
 
@@ -183,8 +193,6 @@ The original AB3 implementation of edit commands, which would default to the ori
   `isCodeChanged`, to know whether users wanted to remove the existing module code or remark.
 
 ### **Contact Manager** <a name="contact-manager"></a>
-
-### **Upcoming Tab** <a name="upcoming-tab"></a>
 
 ### **Logging** <a name="logging"></a>
 
