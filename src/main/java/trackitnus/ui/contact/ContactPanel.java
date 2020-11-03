@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import trackitnus.commons.core.LogsCenter;
-import trackitnus.logic.Logic;
 import trackitnus.model.contact.Contact;
 import trackitnus.ui.UiPart;
 
