@@ -70,7 +70,10 @@ We implemented most of our methods in a similar way to ensure that the logic is 
 
 ### **UI Component** <a name="ui"></a>
 (Contributed by Wei Hong)
+
 The Class Diagram below shows how the `UI` components and sections interact with one another.
+
+![UiClassDiagram.png](images/UiClassDiagram.png)
 
 The UI consists of a `MainWindow` that is made up of parts e.g. `SidePanel`, `StatusBarFooter`, `CommandBox
 ` etc. All these, including the MainWindow, inherit from the abstract UiPart class. The UI also consist of the
