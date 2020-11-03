@@ -1,5 +1,6 @@
 package trackitnus.ui.task;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import javafx.fxml.FXML;
@@ -10,11 +11,11 @@ import trackitnus.model.task.Task;
 import trackitnus.ui.UiPart;
 
 public class OverdueTaskCard extends UiPart<Region> {
-    private static final String FXML = "/Task/OverdueTaskListCard.fxml";
+    private static final String FXML = "Task/OverdueTaskListCard.fxml";
 
     public final Task task;
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM");
-
+    private LocalDate today = LocalDate.now();
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM");
 
     @javafx.fxml.FXML
     private HBox cardPane;
@@ -38,7 +39,12 @@ public class OverdueTaskCard extends UiPart<Region> {
         id.setText("[" + displayedIndex + "] ");
         name.setText(task.getName().toString());
         date.setText(task.getDate().format(formatter));
-        date.setStyle("-fx-text-fill: #C24949");
+
+        if (task.getDate().isAfter(today.plusDays(7))) {
+            date.setStyle("-fx-text-fill: #68C2E8");
+        } else {
+            date.setStyle("-fx-text-fill: #d53636");
+        }
         remark.setText(task.getRemark());
         code.setText(task.getCode().isPresent() ? task.getCode().get().code + " " : "");
     }

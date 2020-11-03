@@ -38,6 +38,7 @@ public class MainWindow extends UiPart<Stage> {
 
     private final Stage primaryStage;
     private final Logic logic;
+    private String moduleTabInContext = "";
 
     // Independent Ui parts residing in this Ui container
     private ModulePanel modulePanel;
@@ -133,13 +134,18 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Fills up all the placeholders of this window.
      */
-    void fillInnerParts() {
+    void fillInnerParts() throws CommandException {
 
         upcomingPanel = new UpcomingPanel(logic);
 
-        sidePanel = new SidePanel(this::switchTab, logic);
+        sidePanel = new SidePanel(tabValues -> {
+            try {
+                switchTab(tabValues);
+            } catch (CommandException e) {
+                e.printStackTrace();
+            }
+        }, logic);
         sidePanelPlaceholder.getChildren().add(sidePanel.getRoot());
-//        sidePanelPlaceholder.getChildren().add(new SidePanel(this::switchTab, logic).getRoot());
 
         //Default tab open
         ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList((Object) "U"));
@@ -154,29 +160,36 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
-    private void switchTab(ArrayList<Object> tabValues) {
-        assert(tabValues.size() >= 1);
-        logger.info("Switching tab to: " + String.valueOf(tabValues.get(0)));
+
+    private void switchTab(ArrayList<Object> tabValues) throws CommandException {
+        assert (tabValues.size() >= 1);
+        logger.info("Switching tab to: " + tabValues.get(0));
         tabPanelPlaceholder.getChildren().clear();
         String tabName = String.valueOf(tabValues.get(0));
+        logic.clearAllList();
 
-        switch(tabName) {
+        switch (tabName) {
         case UpcomingPanel.TYPE:
             tabPanelPlaceholder.getChildren().add(upcomingPanel.getRoot());
+            moduleTabInContext = "";
             break;
         case Module.TYPE:
-            assert(tabValues.size() == 2);
+            assert (tabValues.size() == 2);
             Module tabModule = (Module) tabValues.get(1);
+            logger.info("Module: " + tabModule);
+            moduleTabInContext = tabModule.getCode().toString();
             modulePanel = new ModulePanel(tabModule, logic);
             tabPanelPlaceholder.getChildren().add(modulePanel.getRoot());
             break;
         case Contact.TYPE:
             contactPanel = new ContactPanel(logic);
             tabPanelPlaceholder.getChildren().add(contactPanel.getRoot());
+            moduleTabInContext = "";
             break;
         case HelpPanel.TYPE:
             helpPanel = new HelpPanel();
             tabPanelPlaceholder.getChildren().add(helpPanel.getRoot());
+            moduleTabInContext = "";
             break;
         default:
             throw new IllegalArgumentException(Messages.MESSAGE_INVALID_TAB_VALUE);
@@ -207,7 +220,6 @@ public class MainWindow extends UiPart<Stage> {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
             (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
-//        helpWindow.hide();
         primaryStage.hide();
     }
 
@@ -218,13 +230,20 @@ public class MainWindow extends UiPart<Stage> {
      */
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
-//            changeTabOnCommandEntered(commandText);
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+            if (commandResult.isShowHelp()) {
+                switchTab(new ArrayList<>(Arrays.asList((Object) "H")));
+            }
+
+            if (commandResult.deleteModule().equals(moduleTabInContext)) {
+                switchTab(new ArrayList<>(Arrays.asList((Object) "U")));
             }
 
             return commandResult;

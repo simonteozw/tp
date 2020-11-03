@@ -9,16 +9,19 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     1. [Common Symbols](#common-symbols)
     2. [Command Format](#command-format)
     3. [Commands and their Purposes](#command-purpose)
-4. [Features](#features)
+4. [Layout](#layout)
+    1. [Upcoming Tab](#upcomingtab)
+    2. [Contacts Tab](#contactstab)
+    3. [Module Tabs](#moduletabs)
+5. [Features](#features)
     1. [Module](#module)
     2. [Lesson](#lesson)
     3. [Task](#task)
     4. [Contact](#contact)
-    5. [Search](#search)
-    6. [Help](#help)
-    7. [Exit](#exit)
-5. [FAQ](#faq)
-6. [Command Summary](#command-summary)
+    5. [Help](#help)
+    6. [Exit](#exit)
+6. [FAQ](#faq)
+7. [Command Summary](#command-summary)
     1. [Module Commands](#module-commands)
     2. [Task Commands](#task-commands)
     3. [Lesson Commands](#lesson-commands)
@@ -63,8 +66,8 @@ What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) 
 ## About <a name="about"></a>
 
 There are many things you can use TrackIt@NUS for. We have structured this document so it is easy for you to find
- what you need. In the [Common Symbols](#common-symbols), [Command Format](#command-format), and 
- [Commands and their Purposes](#command-purpose) sections, you will find useful tips on reading this document. It is
+ what you need. In the [Common Symbols](#common-symbols), [Command Format](#command-format), and [Commands and their
+  Purposes](#command-purpose) sections, you will find useful tips on reading this document. It is
   then followed by the [Features](#features) section, where the main features of TrackIt@NUS are documented.
 
 ### Common Symbols <a name="common-symbols"></a>
@@ -95,88 +98,178 @@ There are many things you can use TrackIt@NUS for. We have structured this docum
 | **Delete** | Delete a module/lesson/task/contact. Relevant parameters must be present |
 
 --------------------------------------------------------------------------------------------------------------------
+## Layout <a name="layout"></a>
 
+This section gives you a brief overview of the layout of TrackIt@NUS.
+TrackIt@NUS is divided into three main types of tabs:
+* The **Upcoming** Tab,
+* The **Contacts** Tab, and
+* **Module** Tabs
+
+When you switch to a tab, the tab text will be highlighted in **blue**.
+
+### Upcoming Tab <a name="upcomingtab"></a>
+This is the main tab of the application, and is the default page when the app is started. It features a calendar view of the days for the next week, as well as the **Tasks** and **Lessons** you have added under the respective days they fall under. 
+
+1. The first section labelled **"Overdue"** in red text, shows the Tasks that are past their deadline, and you have yet to complete. These **Tasks** will remain there until you delete them.
+
+2. The second section is the weekly calendar view, with your **Lessons** and **Tasks** shown under each day.
+
+3. The last section is labelled **Future**, and shows any **Tasks** that you may have added with a deadline falling after the date 7 days from today.
+
+![UpcomingPanelUi](images/UpcomingPanelUi.png)
+
+### Contacts Tab <a name="contactstab"></a>
+The contacts tab shows you all the **contacts** you have within the app. It will show you information for each contact such as:
+* **NAME**: contact name
+
+* **PHONE NUMBER**: contact's phone number
+
+* **EMAIL**: contact's email
+
+* **TAG**: any additional information you have about the contact, such as which module they are associated with (e.g. CS1010S), or their role (e.g. friend, TA)
+
+### Module Tabs <a name="moduletabs"></a>
+![ModuleTab](images/ModuleTab.png)
+Here under each module's tab you can find all relevant **Lessons**, **Tasks** and **Contacts** that are related to the
+ module. Very convenient right? These information will be displayed in 3 sections:
+ 
+1. **Lessons**: Here you can find the info for all weekly lessons, including its time, locations/Zoom links so
+ say goodbye to missing classes (intentional skip not included😉)
+
+2. **Tasks**: All the tasks for the module that you haven't done, listed in **chronological** order so that you know
+ what
+ to prioritize! Tips: Don't leave tutorials or assignments until the last day, chances are you not gonna finish it.
+
+3. **Contacts**: Having difficulties with your assignment? Need TA's emails to ask? Look no further, this section
+ will list all contacts that are tagged with this module code! 
+
+--------------------------------------------------------------------------------------------------------------------
 ## Features <a name="features"></a>
 
-This section contains all the information you need to know about the features of TrackIt@NUS. To use each feature 
-or sub-feature, you will need to enter the command into the Command Box.
+This section contains all the information you need to know about the features of TrackIt@NUS. To use each feature or
+ sub-feature, you will need to enter the command into the Command Box.
 
 ## Module <a name="module"></a>
+Module is the first thing you need to create when you start using the app, because each module will be the house for 
+all of its lessons, tasks and related contacts. So, let's find out how to create a new module! 
 
 ### Add
 
-For: Add a new module.
+Create a new house for your data (Or shall I say it is to create a new category of things to worry about?)
 
 Format: `M add m/MODULE_CODE n/NAME`
 
 Examples: `M add m/CS1231S n/Discrete Structures`
 
 ### Edit
-For: Edit the module with the specified `MODULE_CODE`.
+Because modules are displayed on the sidebar, it doesn't come with index. That's why to edit & delete module, its
+ code will be used! Let's see how the syntax of a module edit command:
 
-Format: `M edit m/MODULE_CODE [m/NEW_MODULE_CODE] [n/NAME]`
+Format: `M edit m/MODULE_CODE n/NAME`
 
-Examples: `M edit m/CS1231S m/CS1101S n/Programming Methodology`
+Examples: `M edit m/CS1231S n/Programming Methodology`
 
-Remark: The `MODULE_CODE` provided must be present in the Module list. At least 1
- field must be provided for editing. i.e. `M edit m/CS2100` is not allowed.
+Remark: The `MODULE_CODE` provided must be present in the Module list. After the command, the specified module will
+ have a new name.
 
 ### Delete
-For: Delete the module with the specified `MODULE_CODE`.
+And what if you realized you accidentally added in a wrong module, or have finished one? Just delete that module! The
+ command's syntax is as follows: 
 
 Format: `M delete m/MODULE_CODE`
 
 Examples: `M delete m/CS2100`
 
-Remark: The `MODULE_CODE` provided must be present in the Module list.
+Remark: **IMPORTANT**: When you delete a module, the app will delete all of its related tasks & lessons, so check
+ twice before you delete them! 
 
 ## Lesson <a name="lesson"></a>
+Lectures, tutorials, labs, lectures, lectures, recitations, lectures...
+Sometimes, just looking at the timetable makes you question your life choices,
+probably until the next class starts. 
+
+While TrackIt@NUS can't do much to ease your pain, it can, at the very least,
+make sure you won't miss any of those beloved (or dreaded) classes!
+
+To view all your lessons (classes) for the next week, 
+simply click on the upcoming tab as shown below.
+
+![Ui](images/UpcomingLessons.png)
+
+This sorts all your lessons by date.
+To view the lessons of a specific module, click on any of the module tabs as shown below.
+
+![Ui](images/ModuleLessons.png)
+
+:information_source: As of v1.3, only weekly lessons are supported.
+Biweekly and monthly lessons may be added in subsequent versions.
+
+You can also perform commands on the lessons as explained below.
 
 ### Add
-For: Add a lesson to a module.
+The command that makes you groan every time you have to use it. 
+Use this command to add a lesson to a module.
 
-Format: `L add m/MODULE_CODE n/TYPE d/DATE a/LOCATION`
+Format: `L add m/MODULE_CODE n/TYPE d/DATE a/ADDRESS`
 
-Examples: `L add m/CS2103T n/tutorial d/2pm - 3pm Wed a/COM1`
+Examples:
+* `L add m/GET1020 n/lecture d/Mon 8:00-10:00 a/E-learning`
+* `L add m/CS3233 n/tutorial d/MON 17:30-20:00 a/COM1-0215`
 
-Remark: The module must exist prior to adding a lesson. `DATE` must be of the form `START_TIME - END_TIME DAY_OF_WEEK`.`TYPE` must be one of
- the following:
-* `LEC` (for lecture)
-* `TUT` (for tutorial)
-* `LAB` (for laboratory)
-* `SEC` (for sectional teaching)
-* `REC` (for recitation)
+:warning: The `TYPE` must be one of the following:
+`lec`/`lecture`, `tut`/`tutorial`,
+`lab`/`laboratory`, `rec`/`recitation`, or `sec`/`sectional`.
+
+:warning: The `DATE` provided must be in the format `ddd H:mm-H:mm`;
+times are in 24-hour format.
+
+:warning: The time slots of the lessons _can_ overlap. It is a situation
+that no one wants to be in, but, unfortunately, does sometimes happen.
 
 ### Edit
 
-For: Edit the detail of a lesson
+After adding a lesson, you might still want to change its details. 
+This is the command to do so.
 
-Format: `L edit INDEX [m/MODULE_CODE] [n/TYPE] [d/DATE] [a/LOCATION]`
+Format: `L edit INDEX [m/MODULE_CODE] [n/TYPE] [d/DATE] [a/ADDRESS]`
 
-Examples: `L edit 1 m/CS2103T n/tutorial d/2pm - 3pm Monday`
+Examples:
+* `L edit 1 m/CS2103T n/tutorial d/Mon 14:00-15:00`
+* `L edit 4 m/CS3233 a/COM2`
 
-Remark: The `INDEX` provided must be positive and cannot be larger than the number of Lessons. At least 1
- field must be provided for editing. i.e. `L edit 1` is not allowed.
+:information_source: The parameters `m/MODULE_CODE`, `n/TYPE`, and `d/DATE` are optional;
+however, at least one parameter must be provided, i.e. `L edit 1` is not a valid command.
+
+:information_source: Here, `INDEX` refers to the index of the lesson you want to edit, as shown in the current tab. 
+The `INDEX` provided must be positive 
+and cannot be larger than the number of lessons currently shown.
 
 ### Delete
-For: Delete the lesson with the specified `INDEX`
+
+Sometimes, you might want to delete a particular lesson, probably since you've added
+it by mistake, or you hate it so much you want to forget its existence,
+or simply because the module has finished (hooray!). This is the command to do so.
 
 Format: `L delete INDEX`
 
-Examples: `L delete 1`
+Examples:
+* `L delete 1`
 
-Remark: The `INDEX` provided must be positive and cannot be larger than number of Lessons.
+:information_source: Here, `INDEX` refers to the index of the lesson you want to edit, as shown in the current tab.
+The `INDEX` provided must be positive 
+and cannot be larger than the number of lessons currently shown.
 
 ## Task <a name="task"></a>
 
 Managing all your tasks can be so stressful! TrackIt@NUS helps alleviate that stress with our built-in Task Manager
 ! To view all your tasks, simply click on the upcoming tab as shown below.
 
-![Ui](images/Upcoming.png)
+![Upcoming](images/Upcoming.png)
 
 This sorts all your tasks by date. To view module-specific tasks, click on any of the module tabs as shown below.
 
-![Ui](images/ModuleTasks.png)
+![ModuleTasks](images/ModuleTasks.png)
 
 :information_source: All module-specific tasks are shown in the upcoming tab, but not vice versa.
 
@@ -185,11 +278,11 @@ You can also perform commands on the tasks as explained below.
 ### Add
 
 After a day of school you realise that you now have a few more tasks to complete and wish to keep track of them. This is
- the command for adding a new task to TrackIt@NUS. 
+ the command for adding a new task to TrackIt@NUS.
 
 Format: `T add n/NAME d/DATE [m/MODULE_CODE] [r/REMARK]`
 
-Examples: 
+Examples:
 
 * `T add n/Assignment 1 m/CS2100 d/20/11/2020 r/Focus on Chapters 1-3`
 * `T add n/Plan for Bob's birthday d/12/11/2020`
@@ -205,13 +298,13 @@ After adding a task to TrackIt@NUS, you may want to change it, perhaps extend th
 
 Format: `T edit INDEX [n/NAME] [d/DATE] [m/MODULE_CODE] [r/REMARK]`
 
-Examples: 
+Examples:
 
-![Ui](images/EditTask.png)
+![EditTask](images/EditTask.png)
 
 * `T edit 2 n/Work on midterm report` changes the name of the Task
 * `T edit 2 r/min 1000 words` changes the remark of the Task
-* `T edit 2 m/CS2100` changes the module code of the Task 
+* `T edit 2 m/CS2100` changes the module code of the Task
 
 :information_source: The `INDEX` provided must be positive and cannot be larger than number of Tasks
 
@@ -229,27 +322,32 @@ Examples: `T delete 2`
 :information_source: The `INDEX` provided must be positive and cannot be larger than the number of Tasks
 
 ## Contact <a name="contact"></a>
+Don't you hate it when you need help for one of your modules but you just can't remember who else is taking the module with you? 
+
+Luckily for you, TrackIt@NUS allows you to tag your contacts with the modules you have in common, and lets you see those contacts all at once! Simply click on a module tab and you will find the list of contacts associated with that module, as you can see below.
+
+![ModuleTabContacts](images/ModuleTabContacts.png)
+
+To view all contacts from all modules, as well as any contacts that are not associated with any module, click on the **Contacts** tab in the side panel.
 
 ### Add
-
-For: Add a new contact.
+A new semester has started and you want to keep track of your new classmates. This is the command to add a new contact.
 
 Format: `C add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]...`
 
 Examples:
 
-* `C add n/John Doe p/98765432 e/jon@jon.com t/Brother`
+* `C add n/John Doe p/98765432 e/jon@jon.com t/CS2020`
 * `C add n/Rajesh Kumar p/98762342 e/raj@law.com t/Friend`
 
 ### Edit
-
-For: Edit the contact with the specified index.
+After adding a contact to TrackIt@NUS, maybe you realised you spelt their name wrong, or you want to update the contact fields. The edit command is what you should use to do so.
 
 Format: `C edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...`
 
 Examples:
-* `C edit 1 n/Johnny Depp p/98999899`
-* `C edit 2 n/Sam e/sam@gmail.com t/Colleague`
+* `C edit 1 n/Johnny Depp` changes the name of the Contact.
+* `C edit 2 n/Sam e/sam@gmail.com t/CS2100 t/TA` changes the name, email and tags of the Contact.
 
 Remark: The `INDEX` provided must be positive and cannot be larger than the number of Contacts. At least 1
  field must be provided for editing. i.e. `C edit 1` is not allowed.
@@ -259,22 +357,13 @@ Remark: The `INDEX` provided must be positive and cannot be larger than the numb
 :bulb: Can remove all tags by typing t/ without any tags following it
 
 ### Delete
-
-For: Delete the contact with the specified index.
+You have broken up with your girlfriend and want to forget their existence, starting by deleting their contact in TrackIt@NUS. This is the command to do so.
 
 Format: `C delete INDEX`
 
 Examples: `C delete 1`
 
 Remark: The `INDEX` provided must be positive and cannot be larger than the number of Contacts.
-
-## Searching the app <a name="search"></a>
-
-For: Searching the app for relevant modules, lessons, tasks, or contacts
-
-Format: `find KEYWORD`
-
-Examples: `find CS1101S`
 
 ## Getting help <a name="help"></a>
 
@@ -312,7 +401,7 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 | Command | Example |
 | ---- | ------ |
 | **Add:** `M add m/MODULE_CODE n/NAME` | `M add m/CS2100 n/Computer Organisation` |
-| **Edit:** `M edit m/MODULE_CODE [m/NEW_MODULE_CODE] [n/NAME]` | `M edit m/CS1231S n/Discrete Mathematics` |
+| **Edit:** `M edit m/MODULE_CODE [n/NAME]` | `M edit n/Discrete Mathematics` |
 | **Delete:** `M delete m/MODULE_CODE` | `M delete m/CS1101S` |
 
 ### Task <a name="task-commands"></a>
@@ -327,8 +416,8 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 
 | Command | Example |
 | ---- | ------ |
-| **Add:** `L add m/MODULE_CODE n/TYPE d/DATE a/LOCATION` | `L add m/CS2103T n/tutorial d/2pm - 3pm Wed a/COM1` |
-| **Edit:** `L edit INDEX [m/MODULE_CODE] [n/TYPE] [d/DATE] [a/LOCATION]` | `L edit 1 a/LT17` |
+| **Add:** `L add m/MODULE_CODE n/TYPE d/DATE a/ADDRESS` | `L add m/CS2103T n/tutorial d/Wed 14:00-15:00 a/COM1` |
+| **Edit:** `L edit INDEX [m/MODULE_CODE] [n/TYPE] [d/DATE] [a/ADDRESS]` | `L edit 1 a/LT17` |
 | **Delete:** `L delete INDEX` | `L delete 1` |
 
 ### Contact <a name="contact-commands"></a>

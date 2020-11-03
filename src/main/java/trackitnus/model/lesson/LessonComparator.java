@@ -12,7 +12,7 @@ public class LessonComparator implements Comparator<Lesson> {
      */
     @Override
     public int compare(Lesson firstLesson, Lesson secondLesson) {
-        int res = firstLesson.getDate().compareTo(secondLesson.getDate());
+        int res = firstLesson.getTime().compareTo(secondLesson.getTime());
         return res == 0
             ? firstLesson.toString().compareTo(secondLesson.toString())
             : res;

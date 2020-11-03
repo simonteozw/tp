@@ -14,13 +14,12 @@ import trackitnus.ui.UiPart;
 import trackitnus.ui.task.OverdueTaskCard;
 
 public class CalendarSectionCard extends UiPart<Region> {
-    private static final String FXML = "/Upcoming/CalendarSectionCard.fxml";
+    private static final String FXML = "Upcoming/CalendarSectionCard.fxml";
 
     public final CalendarSection calendarSection;
-    private Logic logic;
-    private String title;
     private final int taskRowHeight = 45;
-
+    private final Logic logic;
+    private String title;
     @FXML
     private ListView<Task> taskListView;
     @FXML
@@ -28,6 +27,7 @@ public class CalendarSectionCard extends UiPart<Region> {
 
     /**
      * Constructor for a section in the calendar
+     *
      * @param calendarSection
      * @param taskList
      * @param logic
@@ -38,7 +38,7 @@ public class CalendarSectionCard extends UiPart<Region> {
         this.logic = logic;
         sectionTitle.setText(calendarSection.getTitle());
         if (calendarSection.getTitle().equals("Overdue")) {
-            sectionTitle.setStyle("-fx-text-fill: #C24949");
+            sectionTitle.setStyle("-fx-text-fill: #D53636");
         }
         taskListView.prefHeightProperty().bind(Bindings.size(taskList).multiply(taskRowHeight).add(10));
         taskListView.setItems(taskList);

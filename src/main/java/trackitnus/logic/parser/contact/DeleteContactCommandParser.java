@@ -5,6 +5,7 @@ import trackitnus.commons.core.index.Index;
 import trackitnus.logic.commands.contact.DeleteContactCommand;
 import trackitnus.logic.parser.Parser;
 import trackitnus.logic.parser.ParserUtil;
+import trackitnus.logic.parser.exceptions.InvalidIndexException;
 import trackitnus.logic.parser.exceptions.ParseException;
 
 /**
@@ -22,6 +23,8 @@ public class DeleteContactCommandParser implements Parser<DeleteContactCommand> 
         try {
             Index index = ParserUtil.parseIndex(args);
             return new DeleteContactCommand(index);
+        } catch (InvalidIndexException iie) {
+            throw new InvalidIndexException(Messages.MESSAGE_INVALID_CONTACT_DISPLAYED_INDEX);
         } catch (ParseException pe) {
             throw new ParseException(
                 String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, DeleteContactCommand.MESSAGE_USAGE), pe);

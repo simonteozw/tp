@@ -17,14 +17,12 @@ import trackitnus.ui.UiPart;
 
 public class UpcomingPanel extends UiPart<Region> {
     public static final String TYPE = "U";
-    private static final String FXML = "/Upcoming/UpcomingPanel.fxml";
+    private static final String FXML = "Upcoming/UpcomingPanel.fxml";
 
     private final Logic logic;
     private final Logger logger = LogsCenter.getLogger(UpcomingPanel.class);
-
-    private LocalDate today = LocalDate.now();
     private final ObservableList<Object> calendarDates = FXCollections.observableArrayList();
-
+    private final LocalDate today = LocalDate.now();
     @FXML
     private ListView<Object> calendarView;
 
@@ -65,9 +63,9 @@ public class UpcomingPanel extends UiPart<Region> {
                 if (object instanceof Day) {
                     Day day = (Day) object;
                     setGraphic(new DayCard(day, logic.getDayUpcomingTasks(day.getDate()),
-                            logic.getDayUpcomingLessons(day.getDate()), logic).getRoot());
+                        logic.getDayUpcomingLessons(day.getDate()), logic).getRoot());
                 } else {
-                    assert(object instanceof CalendarSection);
+                    assert (object instanceof CalendarSection);
                     CalendarSection calendarSection = (CalendarSection) object;
                     allocateCalendarSections(calendarSection);
                 }
@@ -78,7 +76,7 @@ public class UpcomingPanel extends UiPart<Region> {
             if (c.getTitle().equals("Overdue")) {
                 setGraphic(new CalendarSectionCard(c, logic.getOverdueTasks(), logic).getRoot());
             } else {
-                assert(c.getTitle().equals("Future"));
+                assert (c.getTitle().equals("Future"));
                 setGraphic(new CalendarSectionCard(c, logic.getFutureTasks(), logic).getRoot());
             }
         }

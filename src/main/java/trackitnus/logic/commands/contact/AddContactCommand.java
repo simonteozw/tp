@@ -34,8 +34,6 @@ public class AddContactCommand extends Command {
         + PREFIX_TAG + "friends "
         + PREFIX_TAG + "owesMoney";
 
-    public static final String MESSAGE_ADD_CONTACT_SUCCESS = "New contact added: %1$s";
-
     private final Contact toAdd;
 
     /**
@@ -55,7 +53,7 @@ public class AddContactCommand extends Command {
         }
 
         model.addContact(toAdd);
-        return new CommandResult(String.format(MESSAGE_ADD_CONTACT_SUCCESS, toAdd));
+        return new CommandResult(String.format(Messages.MESSAGE_ADD_CONTACT_SUCCESS, toAdd));
     }
 
     @Override

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
 import trackitnus.model.lesson.Lesson;
 import trackitnus.ui.UiPart;
 
@@ -12,7 +13,7 @@ import trackitnus.ui.UiPart;
  */
 public class UpcomingLessonCard extends UiPart<Region> {
 
-    private static final String FXML = "/Upcoming/UpcomingLessonListCard.fxml";
+    private static final String FXML = "Upcoming/UpcomingLessonListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -34,17 +35,36 @@ public class UpcomingLessonCard extends UiPart<Region> {
     private Label type;
     @FXML
     private Label date;
+    @FXML
+    private Label address;
 
     /**
      * Creates a {@code ContactCode} with the given {@code Lesson} and index to display.
      */
-    public UpcomingLessonCard(Lesson lesson, int displayedIndex) {
+    public UpcomingLessonCard(Lesson lesson, int displayedIndex, Color lessonColor) {
         super(FXML);
         this.lesson = lesson;
         id.setText("[" + displayedIndex + "] ");
         code.setText(lesson.getCode().code);
         type.setText(lesson.getType().name());
-        date.setText(lesson.getDate().toString().substring(4));
+        date.setText(lesson.getTime().toString().substring(4));
+        date.setStyle("-fx-text-fill: " + getColorHex(lessonColor) + ";");
+        address.setText(lesson.getAddress().toString());
+    }
+
+    /**
+     * Get the hexcode color from a java.scene.paint.Color class for Label fill.
+     *
+     * @param color the color to generate hexcode.
+     * @return String the hexcode of the color.
+     */
+    public String getColorHex(Color color) {
+        java.awt.Color c = new java.awt.Color((float) color.getRed(),
+            (float) color.getGreen(),
+            (float) color.getBlue(),
+            (float) color.getOpacity());
+        String hex = String.format("#%02x%02x%02x", c.getRed(), c.getGreen(), c.getBlue());
+        return hex;
     }
 
     @Override
@@ -62,7 +82,7 @@ public class UpcomingLessonCard extends UiPart<Region> {
         // state check
         UpcomingLessonCard card = (UpcomingLessonCard) other;
         return id.getText().equals(card.id.getText())
-                && lesson.equals(card.lesson);
+            && lesson.equals(card.lesson);
     }
 }
 

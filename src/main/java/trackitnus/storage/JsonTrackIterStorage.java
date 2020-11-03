@@ -47,7 +47,7 @@ public class JsonTrackIterStorage implements TrackIterStorage {
 
         Optional<JsonSerializableTrackIter> jsonTrackIter = JsonUtil.readJsonFile(
             filePath, JsonSerializableTrackIter.class);
-        if (!jsonTrackIter.isPresent()) {
+        if (jsonTrackIter.isEmpty()) {
             return Optional.empty();
         }
 

@@ -33,6 +33,15 @@ public class ModuleListPanel extends UiPart<Region> {
         moduleListView.setCellFactory(listView -> new ModuleListViewCell());
     }
 
+    public Button getModuleButton(Module module) {
+        Button button = new Button(module.getCode().code);
+        ArrayList<Object> moduleValues = new ArrayList<>(Arrays.asList(Module.TYPE, module));
+//        button.setOnAction(actionEvent -> {
+//            tabConsumer.accept(moduleValues);
+//        });
+        return button;
+    }
+
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Module} using a {@code ContactCard}.
      */
@@ -48,15 +57,6 @@ public class ModuleListPanel extends UiPart<Region> {
                 setGraphic(getModuleButton(module));
             }
         }
-    }
-
-    public Button getModuleButton(Module module) {
-        Button button = new Button(module.getCode().code);
-        ArrayList<Object> moduleValues = new ArrayList<>(Arrays.asList((Object) Module.TYPE, (Object) module));
-//        button.setOnAction(actionEvent -> {
-//            tabConsumer.accept(moduleValues);
-//        });
-        return button;
     }
 
 }

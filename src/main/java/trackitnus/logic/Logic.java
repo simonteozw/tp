@@ -64,6 +64,11 @@ public interface Logic {
     ObservableList<Lesson> getFilteredLessonList();
 
     /**
+     * set all filtered list to empty, to use by UI when switch tab
+     */
+    void clearAllList();
+
+    /**
      * @param date The date to query
      * @return all lessons happens on that date
      */
@@ -102,6 +107,20 @@ public interface Logic {
      * @return the list of all tasks that take place on that specific day
      */
     ObservableList<Task> getDayUpcomingTasks(LocalDate date);
+
+    /**
+     * @param module The module to get index of
+     * @return The index of the module in the list of all modules
+     * @throws CommandException
+     */
+    Index getModuleIndex(Module module) throws CommandException;
+
+    /**
+     * @param code The module code to get index of
+     * @return The index of the module with the specified code in the list of all modules
+     * @throws CommandException
+     */
+    Index getModuleIndex(Code code) throws CommandException;
 
     /**
      * @param task The task to get index of.

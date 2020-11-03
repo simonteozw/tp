@@ -46,8 +46,6 @@ public class EditContactCommand extends Command {
         + PREFIX_PHONE + "91234567 "
         + PREFIX_EMAIL + "johndoe@example.com";
 
-    public static final String MESSAGE_EDIT_CONTACT_SUCCESS = "Edited Contact: %1$s";
-
     private final Index index;
     private final EditContactDescriptor editContactDescriptor;
 
@@ -71,8 +69,14 @@ public class EditContactCommand extends Command {
         assert contactToEdit != null;
 
         Name updatedName = editContactDescriptor.getName().orElse(contactToEdit.getName());
-        Phone updatedPhone = editContactDescriptor.getPhone().orElse(contactToEdit.getPhone());
-        Email updatedEmail = editContactDescriptor.getEmail().orElse(contactToEdit.getEmail());
+
+        Phone updatedPhone = editContactDescriptor.getIsPhoneChanged()
+            ? editContactDescriptor.getPhone().orElse(null)
+            : contactToEdit.getPhone().orElse(null);
+        Email updatedEmail = editContactDescriptor.getIsEmailChanged()
+            ? editContactDescriptor.getEmail().orElse(null)
+            : contactToEdit.getEmail().orElse(null);
+
         Set<Tag> updatedTags = editContactDescriptor.getTags().orElse(contactToEdit.getTags());
 
         return new Contact(updatedName, updatedPhone, updatedEmail, updatedTags);
@@ -87,15 +91,23 @@ public class EditContactCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_CONTACT_DISPLAYED_INDEX);
         }
 
+        if (!editContactDescriptor.isAnyFieldEdited()) {
+            throw new CommandException(Messages.MESSAGE_NOT_EDITED);
+        }
+
         Contact contactToEdit = lastShownList.get(index.getZeroBased());
         Contact editedContact = createEditedContact(contactToEdit, editContactDescriptor);
+
+        if (contactToEdit.isSameContact(editedContact)) {
+            throw new CommandException(Messages.MESSAGE_CONTACT_UNCHANGED);
+        }
 
         if (!contactToEdit.isSameContact(editedContact) && model.hasContact(editedContact)) {
             throw new CommandException(MESSAGE_DUPLICATE_CONTACT);
         }
 
         model.setContact(contactToEdit, editedContact);
-        return new CommandResult(String.format(MESSAGE_EDIT_CONTACT_SUCCESS, editedContact));
+        return new CommandResult(String.format(Messages.MESSAGE_EDIT_CONTACT_SUCCESS, editedContact));
     }
 
     @Override
@@ -125,8 +137,16 @@ public class EditContactCommand extends Command {
         private Phone phone;
         private Email email;
         private Set<Tag> tags;
+        private boolean isPhoneChanged;
+        private boolean isEmailChanged;
 
+        /**
+         * Constructor for EditContactDescriptor.
+         * By default both isChanged fields should be false
+         */
         public EditContactDescriptor() {
+            isPhoneChanged = false;
+            isEmailChanged = false;
         }
 
         /**
@@ -138,13 +158,15 @@ public class EditContactCommand extends Command {
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setTags(toCopy.tags);
+            isPhoneChanged = toCopy.isPhoneChanged;
+            isEmailChanged = toCopy.isEmailChanged;
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, tags) || isPhoneChanged || isEmailChanged;
         }
 
         public Optional<Name> getName() {
@@ -160,6 +182,7 @@ public class EditContactCommand extends Command {
         }
 
         public void setPhone(Phone phone) {
+            isPhoneChanged = true;
             this.phone = phone;
         }
 
@@ -168,6 +191,7 @@ public class EditContactCommand extends Command {
         }
 
         public void setEmail(Email email) {
+            isEmailChanged = true;
             this.email = email;
         }
 
@@ -207,6 +231,14 @@ public class EditContactCommand extends Command {
                 && getPhone().equals(e.getPhone())
                 && getEmail().equals(e.getEmail())
                 && getTags().equals(e.getTags());
+        }
+
+        public boolean getIsPhoneChanged() {
+            return isPhoneChanged;
+        }
+
+        public boolean getIsEmailChanged() {
+            return isEmailChanged;
         }
     }
 }

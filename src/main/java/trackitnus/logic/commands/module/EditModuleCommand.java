@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static trackitnus.commons.core.Messages.MESSAGE_DUPLICATE_MODULE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
-import static trackitnus.model.Model.PREDICATE_SHOW_ALL_MODULES;
 
 import java.util.Optional;
 
@@ -31,8 +30,6 @@ public class EditModuleCommand extends Command {
         + "[" + PREFIX_NAME + "NAME]\n"
         + String.format("Example: %s %s %sCS1231S %sDiscrete Structures",
         Module.TYPE, COMMAND_WORD, PREFIX_CODE, PREFIX_NAME);
-
-    public static final String MESSAGE_EDIT_MODULE_SUCCESS = "Edited Module: %1$s";
 
     private final Code code;
     private final EditModuleDescriptor editModuleDescriptor;
@@ -73,13 +70,16 @@ public class EditModuleCommand extends Command {
 
         Module editedModule = createEditedModule(moduleToEdit.get(), editModuleDescriptor);
 
+        if (moduleToEdit.get().isSameModule(editedModule)) {
+            throw new CommandException(Messages.MESSAGE_MODULE_UNCHANGED);
+        }
+
         if (!moduleToEdit.get().isSameModule(editedModule) && model.hasModule(editedModule)) {
             throw new CommandException(MESSAGE_DUPLICATE_MODULE);
         }
 
         model.setModule(moduleToEdit.get(), editedModule);
-        model.updateFilteredModuleList(PREDICATE_SHOW_ALL_MODULES);
-        return new CommandResult(String.format(MESSAGE_EDIT_MODULE_SUCCESS, editedModule));
+        return new CommandResult(String.format(Messages.MESSAGE_EDIT_MODULE_SUCCESS, editedModule));
     }
 
     @Override

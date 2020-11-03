@@ -7,12 +7,17 @@ import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.shape.Circle;
 import trackitnus.commons.core.LogsCenter;
 import trackitnus.logic.Logic;
+import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.contact.Contact;
 import trackitnus.model.module.Module;
 import trackitnus.ui.upcoming.UpcomingPanel;
@@ -20,9 +25,8 @@ import trackitnus.ui.upcoming.UpcomingPanel;
 public class SidePanel extends UiPart<Region> {
     private static final String FXML = "SidePanel.fxml";
     private final Logger logger = LogsCenter.getLogger(SidePanel.class);
-    private Consumer<ArrayList<Object>> tabConsumer;
-    private Logic logic;
-    private final HelpWindow helpWindow;
+    private final Consumer<ArrayList<Object>> tabConsumer;
+    private final Logic logic;
     private final int moduleRowHeight = 32;
     private Button selectedTabButton;
 
@@ -48,11 +52,8 @@ public class SidePanel extends UiPart<Region> {
         super(FXML);
         this.tabConsumer = tabConsumer;
         this.logic = logic;
-        helpWindow = new HelpWindow();
         this.initialize();
     }
-
-
 
     /**
      * Initialises/reloads the tab buttons in the side panel.
@@ -68,28 +69,6 @@ public class SidePanel extends UiPart<Region> {
             // Set Default tab as upcoming tab.
             selectedTabButton = upcomingButton;
             updateButtonDetails(upcomingButton);
-        }
-    }
-
-    /**
-     * Sets the view of the module tab in the side panel.
-     */
-    class ModuleListViewCell extends ListCell<Module> {
-        @Override
-        protected void updateItem(Module module, boolean empty) {
-            super.updateItem(module, empty);
-
-            if (empty || module == null) {
-                setGraphic(null);
-                setText(null);
-            } else {
-                Button updatedButton = getModuleButton(module);
-                setGraphic(updatedButton);
-                ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList(Module.TYPE,
-                    module));
-//                tabConsumer.accept(upcomingValues);
-//                updateButtonDetails(updatedButton);
-            }
         }
     }
 
@@ -121,20 +100,8 @@ public class SidePanel extends UiPart<Region> {
     }
 
     /**
-     * Relays message to MainWindow to get Help window information in TabPanel.
-     * TODO: remove this and the Help window once it is no longer required.
-     */
-    public void toggleHelpWindow() {
-        updateButtonDetails(helpButton);
-        if (!helpWindow.isShowing()) {
-            helpWindow.show();
-        } else {
-            helpWindow.focus();
-        }
-    }
-
-    /**
      * Updates the details of the current selected tab button.
+     *
      * @param button The new selected tab button.
      */
     public void updateButtonDetails(Button button) {
@@ -144,7 +111,20 @@ public class SidePanel extends UiPart<Region> {
     }
 
     /**
+     * Configure the module section that will include the module button as well as a coloured module circle label.
+     *
+     * @return HBox The module section.
+     */
+    public HBox getModuleSection() throws CommandException {
+        HBox moduleSection = new HBox();
+        moduleSection.setAlignment(Pos.CENTER_LEFT);
+        moduleSection.setPadding(new Insets(0, 0, 0, 10));
+        return moduleSection;
+    }
+
+    /**
      * Configure the module button tab in the side panel.
+     *
      * @return moduleButton The module button.
      */
     public Button getModuleButton(Module module) {
@@ -154,6 +134,50 @@ public class SidePanel extends UiPart<Region> {
             updateButtonDetails(button);
             tabConsumer.accept(moduleValues);
         });
+        button.setPadding(new Insets(5));
         return button;
+    }
+
+    /**
+     * Configure the coloured module circle that is displayed beside the module code.
+     *
+     * @return moduleCircle The module circle.
+     */
+    public Circle getModuleCircle(Module module, Logic logic) throws CommandException {
+        Circle moduleCircle = new Circle(0, 0, 6);
+        int moduleIndex = logic.getModuleIndex(module).getZeroBased();
+        moduleCircle.setFill(Module.COLORS.get(moduleIndex % 10));
+        return moduleCircle;
+    }
+
+    /**
+     * Sets the view of the module tab in the side panel.
+     */
+    class ModuleListViewCell extends ListCell<Module> {
+        @Override
+        protected void updateItem(Module module, boolean empty) {
+            super.updateItem(module, empty);
+
+            if (empty || module == null) {
+                setGraphic(null);
+                setText(null);
+            } else {
+                try {
+                    HBox moduleSection = getModuleSection();
+                    Button updatedButton = getModuleButton(module);
+                    Circle moduleCircle = getModuleCircle(module, logic);
+                    moduleSection.getChildren().add(moduleCircle);
+                    moduleSection.getChildren().add(updatedButton);
+                    setGraphic(moduleSection);
+                    ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList(Module.TYPE,
+                        module));
+//                tabConsumer.accept(upcomingValues);
+//                updateButtonDetails(updatedButton);
+
+                } catch (CommandException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

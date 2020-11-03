@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
-<ListView xmlns:fx="http://javafx.com/fxml/1" fx:id="modulePanel" xmlns="http://javafx.com/javafx/8">
+
+<ListView fx:id="modulePanel" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <VBox>
         <padding>
-            <Insets top="1" right="5" bottom="1" left="15"/>
+            <Insets bottom="1" left="15" right="5" top="1" />
         </padding>
-        <Label text="All Contacts" styleClass="date_label"/>
-        <Line startX="0" endX="500" style="-fx-stroke: #8C8C89"/>
+        <Label styleClass="date_label" text="All Contacts" />
+        <Line endX="500" startX="0" style="-fx-stroke: #8C8C89" />
         <StackPane fx:id="contactListPanelPlaceholder" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
             <padding>
-                <Insets bottom="10"/>
+                <Insets bottom="10" />
             </padding>
         </StackPane>
     </VBox>
+   <padding>
+      <Insets top="10.0" />
+   </padding>
 </ListView>

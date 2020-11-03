@@ -52,98 +52,158 @@
   ],
   "modules": [
     {
-      "code": "CS1231S",
-      "name": "Discrete Structures"
+      "code": "CS1101S",
+      "name": "Programming Methodology"
     },
     {
-      "code": "CS3233",
-      "name": "Competitive Programming"
+      "code": "CS2100",
+      "name": "Computer Organisation"
     },
     {
-      "code": "CFG1002",
-      "name": "Career Catalyst"
+      "code": "CS2103T",
+      "name": "Software Engineering"
+    },
+    {
+      "code": "MA1101R",
+      "name": "Linear Algebra"
+    },
+    {
+      "code": "GER1000H",
+      "name": "Quantitative Reasoning"
+    },
+    {
+      "code": "CS2030S",
+      "name": "Programming Methodology"
     }
   ],
   "tasks": [
     {
-      "name": "Do assignment 1",
-      "date": "23/10/2020",
-      "code": "CS1231S",
-      "remark": "Sample Remark",
-      "isDone": false
+      "name": "Prepare for v1.3 Demo",
+      "date": "01/11/2020",
+      "code": "CS2103T",
+      "remark": "Ensure app runs smoothly"
     },
     {
-      "name": "Solve tutorial questions",
-      "date": "24/11/2020",
-      "code": "CS3233",
-      "remark": "Sample Remark",
-      "isDone": true
+      "name": "Work on the final report",
+      "date": "02/11/2020",
+      "code": "GER1000H",
+      "remark": "min 500 words"
     },
     {
-      "name": "Copy Nick's code xD",
-      "date": "09/12/2020",
-      "code": "CFG1002",
-      "remark": "",
-      "isDone": false
-    },
-    {
-      "name": "Solve tutorial questions",
-      "date": "09/12/2020",
+      "name": "Buy Mooncakes for Mum",
+      "date": "03/11/2020",
       "code": null,
-      "remark": "",
-      "isDone": false
+      "remark": ""
+    },
+    {
+      "name": "Do this week's Mission",
+      "date": "03/11/2020",
+      "code": "CS1101S",
+      "remark": "Recursion"
+    },
+    {
+      "name": "Do Tutorial",
+      "date": "05/11/2020",
+      "code": "CS2100",
+      "remark": ""
+    },
+    {
+      "name": "Study for Final Exam",
+      "date": "05/11/2020",
+      "code": "MA1101R",
+      "remark": "Focus on Diagonalisation"
+    },
+    {
+      "name": "Code Project 2",
+      "date": "20/11/2020",
+      "code": "CS2030S",
+      "remark": "(deadline is at the end of reading week)"
+    },
+    {
+      "name": "Plan for Alex's birthday",
+      "date": "12/12/2020",
+      "code": null,
+      "remark": "Buy a cake"
     }
   ],
   "lessons": [
     {
-      "code": "CFG1002",
-      "type": "LEC",
-      "date": "Mon 8:00-10:00"
-    },
-    {
-      "code": "CFG1002",
-      "type": "REC",
-      "date": "Mon 8:00-10:00"
-    },
-    {
-      "code": "CS1231S",
+      "code": "CS2100",
       "type": "LAB",
-      "date": "Mon 8:00-10:00"
+      "date": "Mon 9:00-10:00",
+      "address": "E-learning"
     },
     {
-      "code": "CS3233",
-      "type": "LAB",
-      "date": "Mon 8:00-10:00"
-    },
-    {
-      "code": "CFG1002",
-      "type": "REC",
-      "date": "Mon 10:00-12:00"
-    },
-    {
-      "code": "CS1231S",
-      "type": "REC",
-      "date": "Mon 10:00-12:00"
-    },
-    {
-      "code": "CS1231S",
+      "code": "CS1101S",
       "type": "TUT",
-      "date": "Mon 10:00-12:00"
+      "date": "Mon 12:00-14:00",
+      "address": "COM1-0208"
     },
     {
-      "code": "CFG1002",
-      "type": "SEC",
-      "date": "Mon 12:00-15:00"
-    },
-    {
-      "code": "CS3233",
+      "code": "CS2030S",
       "type": "LEC",
-      "date": "Mon 12:00-15:00"
+      "date": "Mon 12:00-14:00",
+      "address": "E-learning"
     },
     {
-      "code": "CS3233",
+      "code": "GER1000H",
+      "type": "LEC",
+      "date": "Tue 12:00-14:00",
+      "address": "E-learning"
+    },
+    {
+      "code": "CS2100",
+      "type": "LEC",
+      "date": "Tue 16:00-18:00",
+      "address": "E-learning"
+    },
+    {
+      "code": "CS2030S",
       "type": "REC",
-      "date": "Mon 12:00-15:00"
+      "date": "Wed 12:00-13:00",
+      "address": "LT19"
+    },
+    {
+      "code": "MA1101R",
+      "type": "SEC",
+      "date": "Wed 12:00-13:00",
+      "address": "E-learning"
+    },
+    {
+      "code": "CS2103T",
+      "type": "LEC",
+      "date": "Wed 14:00-16:00",
+      "address": "E-learning"
+    },
+    {
+      "code": "CS2103T",
+      "type": "TUT",
+      "date": "Thu 14:00-15:00",
+      "address": "E-learning"
+    },
+    {
+      "code": "MA1101R",
+      "type": "LEC",
+      "date": "Thu 16:00-18:00",
+      "address": "LT27"
+    },
+    {
+      "code": "CS1101S",
+      "type": "LEC",
+      "date": "Fri 12:00-14:00",
+      "address": "TP-SR2"
+    },
+    {
+      "code": "CS2030S",
+      "type": "LAB",
+      "date": "Fri 12:00-14:00",
+      "address": "E-learning"
+    },
+    {
+      "code": "GER1000H",
+      "type": "SEC",
+      "date": "Fri 14:00-16:00",
+      "address": "PGPH-FR4"
     }
   ]
 }

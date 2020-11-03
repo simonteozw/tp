@@ -4,14 +4,17 @@ import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import trackitnus.commons.core.Messages;
 import trackitnus.commons.core.index.Index;
 import trackitnus.commons.util.StringUtil;
+import trackitnus.logic.parser.exceptions.InvalidIndexException;
 import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Code;
@@ -23,14 +26,12 @@ import trackitnus.model.lesson.Lesson;
 import trackitnus.model.lesson.LessonDateTime;
 import trackitnus.model.lesson.Type;
 import trackitnus.model.tag.Tag;
-import trackitnus.model.task.Task;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
  */
 public class ParserUtil {
-
-    public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -40,8 +41,11 @@ public class ParserUtil {
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
         String trimmedIndex = oneBasedIndex.trim();
+        if (!StringUtil.isDigitSequence(trimmedIndex)) {
+            throw new ParseException(Messages.MESSAGE_NOT_DIGIT_SEQUENCE);
+        }
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
-            throw new ParseException(MESSAGE_INVALID_INDEX);
+            throw new InvalidIndexException(Messages.MESSAGE_INVALID_INDEX);
         }
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
@@ -62,14 +66,19 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String phone} into a {@code Phone}.
+     * Parses an {@code Optional<String> phone} into an {@code Phone}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code phone} is invalid.
      */
-    public static Phone parsePhone(String phone) throws ParseException {
-        requireNonNull(phone);
-        String trimmedPhone = phone.trim();
+    public static Phone parseOptionalPhone(Optional<String> phone) throws ParseException {
+        if (phone.isEmpty()) {
+            return null;
+        }
+        String trimmedPhone = phone.get().trim();
+        if (trimmedPhone.isBlank()) {
+            return null;
+        }
         if (!Phone.isValidPhone(trimmedPhone)) {
             throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
         }
@@ -97,9 +106,14 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code email} is invalid.
      */
-    public static Email parseEmail(String email) throws ParseException {
-        requireNonNull(email);
-        String trimmedEmail = email.trim();
+    public static Email parseOptionalEmail(Optional<String> email) throws ParseException {
+        if (email.isEmpty()) {
+            return null;
+        }
+        String trimmedEmail = email.get().trim();
+        if (trimmedEmail.isBlank()) {
+            return null;
+        }
         if (!Email.isValidEmail(trimmedEmail)) {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
         }
@@ -157,24 +171,14 @@ public class ParserUtil {
             return null;
         }
         String trimmedCode = code.get().trim();
-        if (!Task.isValidString(trimmedCode)) {
+
+        if (trimmedCode.isBlank()) {
             return null;
         }
         if (!Code.isValidCode(trimmedCode)) {
             throw new ParseException(Code.MESSAGE_CONSTRAINTS);
         }
         return new Code(trimmedCode);
-    }
-
-    /**
-     * Parses a {@code String str} into a {@code String}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code str} is invalid.
-     */
-    public static String parseString(String str) {
-        requireNonNull(str);
-        return str.trim();
     }
 
     /**
@@ -187,25 +191,26 @@ public class ParserUtil {
         requireNonNull(date);
         String trimmedDate = date.trim();
         try {
-            return LocalDate.parse(trimmedDate, Task.FORMATTER);
+            return LocalDate.parse(trimmedDate, DATE_PATTERN);
         } catch (DateTimeParseException e) {
-            throw new ParseException(Task.DATE_MESSAGE_CONSTRAINTS);
+            throw new ParseException(Messages.DATE_MESSAGE_CONSTRAINTS);
         }
     }
 
     /**
-     * Parses a {@code String weightage} into a {@code double}.
+     * Parses a VALID {@code String date} into a {@code LocalDate}.
      * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code weightage} is invalid.
+     * Crash the program if the date cannot be parsed (it's the caller responsibility to make sure the date passed in
+     * is valid!). The function is written so that the caller doesn't need to handle the possible exception since
+     * it's expected that no exception will be thrown.
      */
-    public static double parseWeightage(String weightage) throws ParseException {
-        requireNonNull(weightage);
-        String trimmedWeightage = weightage.trim();
+    public static LocalDate parseValidDate(String date) {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
         try {
-            return Double.parseDouble(trimmedWeightage);
-        } catch (NumberFormatException e) {
-            throw new ParseException(Task.WEIGHTAGE_MESSAGE_CONSTRAINTS);
+            return LocalDate.parse(trimmedDate, DATE_PATTERN);
+        } catch (DateTimeParseException e) {
+            throw new IllegalArgumentException("An invalid date has been passed into parseValidDate");
         }
     }
 
@@ -219,8 +224,7 @@ public class ParserUtil {
         if (remark.isEmpty()) {
             return "";
         }
-        String trimmedRemark = remark.get().trim();
-        return trimmedRemark;
+        return remark.get().trim();
     }
 
     /**
@@ -231,17 +235,22 @@ public class ParserUtil {
      */
     public static Type parseType(String type) throws ParseException {
         requireNonNull(type);
-        String rawType = type.trim();
+        String rawType = type.trim().toLowerCase();
         switch (rawType) {
         case "lecture":
+        case "lec":
             return Type.LEC;
         case "tutorial":
+        case "tut":
             return Type.TUT;
         case "lab":
+        case "laboratory":
             return Type.LAB;
         case "recitation":
+        case "rec":
             return Type.REC;
         case "sectional":
+        case "sec":
             return Type.SEC;
         default:
             throw new ParseException(Lesson.TYPE_MESSAGE_CONSTRAINTS);
@@ -273,7 +282,7 @@ public class ParserUtil {
         case "sat":
             return DayOfWeek.Sat;
         default:
-            throw new ParseException(Lesson.DATE_MESSAGE_CONSTRAINTS);
+            throw new ParseException(Lesson.LESSON_TIME_MESSAGE_CONSTRAINTS);
         }
     }
 
@@ -292,16 +301,12 @@ public class ParserUtil {
             DayOfWeek weekday = parseLessonWeekday(tokens[0]);
             LocalTime startTime = LocalTime.parse(startEndTime[0], LessonDateTime.FORMATTER);
             LocalTime endTime = LocalTime.parse(startEndTime[1], LessonDateTime.FORMATTER);
-            if (startTime.compareTo(endTime) > 0) {
+            if (startTime.compareTo(endTime) >= 0) {
                 throw new ParseException(Lesson.TIME_MESSAGE_CONSTRAINTS);
             }
             return new LessonDateTime(weekday, startTime, endTime);
-        } catch (Exception e) {
-            if (e instanceof ParseException) {
-                throw e;
-            } else {
-                throw new ParseException(Lesson.DATE_MESSAGE_CONSTRAINTS);
-            }
+        } catch (DateTimeParseException e) {
+            throw new ParseException(Lesson.LESSON_TIME_MESSAGE_CONSTRAINTS);
         }
     }
 }

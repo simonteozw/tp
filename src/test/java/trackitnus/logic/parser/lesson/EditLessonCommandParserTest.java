@@ -10,6 +10,7 @@ import trackitnus.logic.commands.lesson.EditLessonCommand;
 public class EditLessonCommandParserTest {
     private final EditLessonCommandParser parser = new EditLessonCommandParser();
 
+    // TODO: Improve this
     @Test
     public void parse_noFieldsProvided_failure() {
         assertParseFailure(parser, "", String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,

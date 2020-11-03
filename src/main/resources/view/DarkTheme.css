@@ -4,12 +4,12 @@
 }
 
 @font-face {
-    font-family: "PoppinsSemiBold";
+    font-family: "Poppins SemiBold";
     src: url("/fonts/Poppins-SemiBold.ttf");
 }
 
 @font-face {
-    font-family: "PoppinsBold";
+    font-family: "Poppins Bold";
     src: url("/fonts/Poppins-Bold.ttf");
 }
 
@@ -45,8 +45,8 @@
 }
 
 .side-panel {
-    -fx-background-color: #313543!important;
-    -fx-padding: 0px!important;
+    -fx-background-color: #313543 !important;
+    -fx-padding: 0px !important;
 }
 
 .table-view {
@@ -97,7 +97,7 @@
 
 .lesson-list-view {
     -fx-background-insets: 0;
-    -fx-background-color: #62687A;
+    -fx-background-color: #515665;
     -fx-background-radius: 5;
 }
 
@@ -127,7 +127,7 @@
 }
 
 #HelpPanel {
-     -fx-text-fill: white;
+    -fx-text-fill: white;
 }
 
 .help_panel {
@@ -139,6 +139,20 @@
     -fx-font-size: 17px;
 }
 
+.table-view .column-header .label {
+    -fx-font-family: Poppins;
+    -fx-font-weight: bold;
+    -fx-font-size: 17px;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: transparent;
+}
+
+.copy-url-button {
+    -fx-border-color: white;
+}
+
 .module_small_label {
     -fx-font-family: "Poppins";
     -fx-font-size: 15px;
@@ -148,15 +162,21 @@
     -fx-text-fill: white;
 }
 
-.cell_big_label {
+.lesson-cell-label {
     -fx-font-family: "Poppins";
+    -fx-font-size: 13px;
+    -fx-text-fill: #010504;
+}
+
+.cell_big_label {
+    -fx-font-family: "Poppins SemiBold";
     -fx-font-size: 13px;
     -fx-text-fill: #010504;
 }
 
 .cell_small_label {
     -fx-font-family: "Poppins";
-    -fx-font-size: 11px;
+    -fx-font-size: 11.5px;
     -fx-text-fill: #010504;
 }
 
@@ -241,6 +261,7 @@
 
 .button:hover {
     -fx-text-fill: #68C2E8;
+    -fx-cursor: hand;
 }
 
 .button:pressed, .button:default:hover:pressed {
@@ -353,7 +374,7 @@
 
 #tags .label {
     -fx-text-fill: white;
-    -fx-background-color: #D14F4F;
+    -fx-background-color: #46B7E7;
     -fx-padding: 1 3 1 3;
     -fx-border-radius: 10;
     -fx-background-radius: 10;

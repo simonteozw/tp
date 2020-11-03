@@ -1,38 +1,44 @@
 package trackitnus.testutil.typical;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
+import trackitnus.model.commons.Address;
+import trackitnus.model.commons.Code;
+import trackitnus.model.lesson.DayOfWeek;
 import trackitnus.model.lesson.Lesson;
 import trackitnus.model.lesson.LessonDateTime;
 import trackitnus.model.lesson.Type;
-import trackitnus.model.module.Module;
+import trackitnus.model.util.SampleDataUtil;
 
 public class TypicalLessons {
-    private static final List<Lesson> lessons = new ArrayList<>();
-    private static final int NUM_LESSON = 10;
+
+    public static final Lesson CS1101S_LEC =
+        new Lesson(new Code("CS1101S"), Type.LEC, new LessonDateTime(DayOfWeek.Fri, LocalTime.NOON,
+            LocalTime.NOON.plusHours(2)), new Address("TP-SR2"));
+    public static final Lesson CS1101S_TUT =
+        new Lesson(new Code("CS1101S"), Type.TUT, new LessonDateTime(DayOfWeek.Mon, LocalTime.NOON,
+            LocalTime.NOON.plusHours(2)), new Address("COM1-0208"));
+    public static final Lesson CS2100_LAB =
+        new Lesson(new Code("CS2100"), Type.LAB, new LessonDateTime(DayOfWeek.Mon, LocalTime.MIDNIGHT.plusHours(9),
+            LocalTime.MIDNIGHT.plusHours(10)), new Address("E-learning"));
+    public static final Lesson MA1101R_LEC =
+        new Lesson(new Code("MA1101R"), Type.LEC, new LessonDateTime(DayOfWeek.Thu, LocalTime.NOON.plusHours(4),
+            LocalTime.NOON.plusHours(6)), new Address("LT27"));
+    public static final Lesson GER1000H_SEC =
+        new Lesson(new Code("GER1000H"), Type.SEC, new LessonDateTime(DayOfWeek.Fri, LocalTime.NOON.plusHours(2),
+            LocalTime.NOON.plusHours(4)), new Address("PGPH-FR4"));
+    public static final Lesson CS2030S_REC =
+        new Lesson(new Code("CS2030S"), Type.REC, new LessonDateTime(DayOfWeek.Wed, LocalTime.NOON,
+            LocalTime.NOON.plusHours(1)), new Address("LT19"));
+
 
     public static List<Lesson> get() {
-        if (!lessons.isEmpty()) {
-            return lessons;
-        }
-        List<Module> modules = TypicalModule.get();
-        Type[] types = Type.values();
-        List<LessonDateTime> times = TypicalLessonDateTime.get();
-        int cnt = 0;
-        for (Module module : modules) {
-            for (Type type : types) {
-                for (LessonDateTime time : times) {
-                    lessons.add(new Lesson(module.getCode(), type, time));
-                }
-            }
-        }
-        Collections.shuffle(lessons, new Random(0));
-        while (lessons.size() > NUM_LESSON) {
-            lessons.remove(lessons.size() - 1);
-        }
-        return lessons;
+        return Arrays.asList(SampleDataUtil.getSampleLessons());
+    }
+
+    public static Lesson get(int index) {
+        return get().get(index);
     }
 }

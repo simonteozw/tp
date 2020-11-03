@@ -2,8 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
@@ -25,6 +23,7 @@
             <Label fx:id="code" text="\$code" styleClass="cell_big_label"/>
             <HBox spacing="5" alignment="CENTER_LEFT">
                 <Label fx:id="name" text="\$name" styleClass="cell_big_label"/>
+                <Label fx:id="date" text="\$date" styleClass="cell_big_label"/>
             </HBox>
         </HBox>
 

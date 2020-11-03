@@ -45,7 +45,7 @@ public class StringUtil {
         requireNonNull(t);
         StringWriter sw = new StringWriter();
         t.printStackTrace(new PrintWriter(sw));
-        return t.getMessage() + "\n" + sw.toString();
+        return t.getMessage() + "\n" + sw;
     }
 
     /**
@@ -65,5 +65,19 @@ public class StringUtil {
         } catch (NumberFormatException nfe) {
             return false;
         }
+    }
+
+    /**
+     * Returns true if {@code s} is a string of digits and (optionally) begins with the negative sign '-'
+     * e.g. "0", "1", "2", "01", "-0", "-55", ..., {@code Integer.MAX_VALUE} <br>
+     * Will return false for any other non-null string input
+     * e.g. empty string, "-", "+1", " 2 " (untrimmed), "3 0" (contains whitespace), "1 a" (contains letters)
+     *
+     * @throws NullPointerException if {@code s} is null.
+     */
+    public static boolean isDigitSequence(String s) {
+        requireNonNull(s);
+        final String regex = "[-]?([0-9])+";
+        return s.matches(regex);
     }
 }

@@ -3,6 +3,7 @@ package trackitnus.logic.commands.lesson;
 import static java.util.Objects.requireNonNull;
 import static trackitnus.commons.core.Messages.MESSAGE_DUPLICATE_LESSON;
 import static trackitnus.commons.core.Messages.MESSAGE_MODULE_DOES_NOT_EXIST;
+import static trackitnus.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_DATE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_TYPE;
@@ -17,6 +18,7 @@ import trackitnus.logic.commands.Command;
 import trackitnus.logic.commands.CommandResult;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.Model;
+import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Code;
 import trackitnus.model.lesson.Lesson;
 import trackitnus.model.lesson.LessonDateTime;
@@ -33,13 +35,13 @@ public class EditLessonCommand extends Command {
         + "Parameters: INDEX "
         + "[" + PREFIX_CODE + "MODULE_CODE] "
         + "[" + PREFIX_TYPE + "TYPE] "
-        + "[" + PREFIX_DATE + "DATE]\n"
+        + "[" + PREFIX_DATE + "DATE] "
+        + "[" + PREFIX_ADDRESS + "ADDRESS]\n"
         + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " 2 "
         + PREFIX_CODE + "CS3233 "
         + PREFIX_TYPE + "lecture "
-        + PREFIX_DATE + "Mon 17:45-21:00\n";
-
-    public static final String MESSAGE_EDIT_LESSON_SUCCESS = "Edited Lesson: %1$s";
+        + PREFIX_DATE + "Mon 17:45-21:00 "
+        + PREFIX_ADDRESS + "COM1-0215\n";
 
     private final Index index;
     private final EditLessonDescriptor editLessonDescriptor;
@@ -67,9 +69,10 @@ public class EditLessonCommand extends Command {
 
         Code updatedCode = editLessonDescriptor.getCode().orElse(lessonToEdit.getCode());
         Type updatedType = editLessonDescriptor.getType().orElse(lessonToEdit.getType());
-        LessonDateTime updatedDate = editLessonDescriptor.getDate().orElse(lessonToEdit.getDate());
+        LessonDateTime updatedDate = editLessonDescriptor.getDate().orElse(lessonToEdit.getTime());
+        Address updatedAddress = editLessonDescriptor.getAddress().orElse(lessonToEdit.getAddress());
 
-        return new Lesson(updatedCode, updatedType, updatedDate);
+        return new Lesson(updatedCode, updatedType, updatedDate, updatedAddress);
     }
 
     @Override
@@ -88,6 +91,10 @@ public class EditLessonCommand extends Command {
         Lesson lessonToEdit = lastShownList.get(index.getZeroBased());
         Lesson editedLesson = createEditedLesson(lessonToEdit, editLessonDescriptor);
 
+        if (lessonToEdit.isSameLesson(editedLesson)) {
+            throw new CommandException(Messages.MESSAGE_LESSON_UNCHANGED);
+        }
+
         if (!lessonToEdit.isSameLesson(editedLesson) && model.hasLesson(editedLesson)) {
             throw new CommandException(MESSAGE_DUPLICATE_LESSON);
         }
@@ -97,7 +104,7 @@ public class EditLessonCommand extends Command {
         }
 
         model.setLesson(lessonToEdit, editedLesson);
-        return new CommandResult(String.format(MESSAGE_EDIT_LESSON_SUCCESS, editedLesson));
+        return new CommandResult(String.format(Messages.MESSAGE_EDIT_LESSON_SUCCESS, editedLesson));
     }
 
     @Override
@@ -126,6 +133,7 @@ public class EditLessonCommand extends Command {
         private Code code;
         private Type type;
         private LessonDateTime date;
+        private Address address;
 
         public EditLessonDescriptor() {
         }
@@ -138,13 +146,14 @@ public class EditLessonCommand extends Command {
             setCode(toCopy.code);
             setType(toCopy.type);
             setDate(toCopy.date);
+            setAddress(toCopy.address);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(code, type, date);
+            return CollectionUtil.isAnyNonNull(code, type, date, address);
         }
 
         public Optional<Code> getCode() {
@@ -171,6 +180,14 @@ public class EditLessonCommand extends Command {
             this.date = date;
         }
 
+        public Optional<Address> getAddress() {
+            return Optional.ofNullable(address);
+        }
+
+        public void setAddress(Address address) {
+            this.address = address;
+        }
+
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -188,7 +205,8 @@ public class EditLessonCommand extends Command {
 
             return getCode().equals(e.getCode())
                 && getType().equals(e.getType())
-                && getDate().equals(e.getDate());
+                && getDate().equals(e.getDate())
+                && getAddress().equals(e.getAddress());
         }
     }
 }

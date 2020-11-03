@@ -10,16 +10,17 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
 import trackitnus.logic.Logic;
 import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.lesson.Lesson;
+import trackitnus.model.module.Module;
 import trackitnus.model.task.Task;
 import trackitnus.ui.UiPart;
-import trackitnus.ui.task.TaskCard;
 
 public class DayCard extends UiPart<Region> {
 
-    private static final String FXML = "/Upcoming/DayCard.fxml";
+    private static final String FXML = "Upcoming/DayCard.fxml";
 
     public final Day day;
     private final int lessonRowHeight = 30;
@@ -45,8 +46,8 @@ public class DayCard extends UiPart<Region> {
         this.day = day;
         this.logic = logic;
 
-        if (date.equals(LocalDate.now())) {
-            date.setText("TODAY - " + day.getSectionHeader());
+        if (day.getDate().equals(LocalDate.now())) {
+            date.setText("Today - " + day.getSectionHeader());
         } else {
             date.setText(day.getSectionHeader());
         }
@@ -98,7 +99,7 @@ public class DayCard extends UiPart<Region> {
                 setText(null);
             } else {
                 try {
-                    setGraphic(new TaskCard(task, logic.getTaskIndex(task).getOneBased()).getRoot());
+                    setGraphic(new UpcomingTaskCard(task, logic.getTaskIndex(task).getOneBased()).getRoot());
                 } catch (CommandException e) {
                     e.printStackTrace();
                 }
@@ -116,7 +117,10 @@ public class DayCard extends UiPart<Region> {
                 setText(null);
             } else {
                 try {
-                    setGraphic(new UpcomingLessonCard(lesson, logic.getLessonIndex(lesson).getOneBased()).getRoot());
+                    int lessonIndex = logic.getLessonIndex(lesson).getOneBased();
+                    int moduleIndex = logic.getModuleIndex(lesson.getCode()).getZeroBased();
+                    Color lessonColor = Module.COLORS.get(moduleIndex);
+                    setGraphic(new UpcomingLessonCard(lesson, lessonIndex, lessonColor).getRoot());
                 } catch (CommandException e) {
                     e.printStackTrace();
                 }

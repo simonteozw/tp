@@ -39,8 +39,6 @@ public class EditTaskCommand extends Command {
         + "Example: " + Task.TYPE + " " + COMMAND_WORD + " 1 "
         + PREFIX_REMARK + "New remark";
 
-    public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
-
     private final Index index;
     private final EditTaskCommand.EditTaskDescriptor editTaskDescriptor;
 
@@ -83,6 +81,10 @@ public class EditTaskCommand extends Command {
         Task taskToEdit = lastShownList.get(index.getZeroBased());
         Task editedTask = createEditedTask(taskToEdit, editTaskDescriptor);
 
+        if (taskToEdit.isSameTask(editedTask)) {
+            throw new CommandException(Messages.MESSAGE_TASK_UNCHANGED);
+        }
+
         if (!taskToEdit.isSameTask(editedTask) && model.hasTask(editedTask)) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
@@ -92,7 +94,7 @@ public class EditTaskCommand extends Command {
         }
 
         model.setTask(taskToEdit, editedTask);
-        return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, editedTask));
+        return new CommandResult(String.format(Messages.MESSAGE_EDIT_TASK_SUCCESS, editedTask));
     }
 
     @Override
@@ -111,6 +113,14 @@ public class EditTaskCommand extends Command {
         EditTaskCommand e = (EditTaskCommand) other;
         return index.equals(e.index)
             && editTaskDescriptor.equals(e.editTaskDescriptor);
+    }
+
+    @Override
+    public String toString() {
+        return "EditTaskCommand{" +
+            "index=" + index +
+            ", editTaskDescriptor=" + editTaskDescriptor +
+            '}';
     }
 
     /**
@@ -183,7 +193,7 @@ public class EditTaskCommand extends Command {
         }
 
         public void setRemark(String remark) {
-            this.remark = remark;
+            this.remark = (remark == null ? "" : remark);
             this.isRemarkChanged = true;
         }
 
@@ -214,6 +224,16 @@ public class EditTaskCommand extends Command {
             return getName().equals(e.getName())
                 && getDate().equals(e.getDate())
                 && getRemark().equals(e.getRemark());
+        }
+
+        @Override
+        public String toString() {
+            return "EditTaskDescriptor{" +
+                "name=" + name +
+                ", date=" + date +
+                ", code=" + code +
+                ", remark='" + remark +
+                '}';
         }
     }
 }

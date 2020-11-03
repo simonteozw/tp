@@ -1,7 +1,6 @@
 package trackitnus.model.task;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -16,11 +15,6 @@ import trackitnus.model.commons.Name;
  */
 public class Task {
     public static final String TYPE = "T";
-    public static final String DATE_MESSAGE_CONSTRAINTS = "Date should be in the format dd/MM/yyyy or dd/MM/yyyy hh:mm";
-    public static final String WEIGHTAGE_MESSAGE_CONSTRAINTS = "Weightage should be in the"
-        + " form of a floating point number";
-    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    public static final String VALIDATION_REGEX = "[^\\s].*";
 
     private final Name name;
     private final LocalDate date;
@@ -44,10 +38,6 @@ public class Task {
 
     public LocalDate getDate() {
         return date;
-    }
-
-    public static boolean isValidString(String test) {
-        return test.matches(VALIDATION_REGEX);
     }
 
     public boolean belongsToModule(Code code) {

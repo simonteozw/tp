@@ -24,9 +24,11 @@ public interface Model {
      * {@code Predicate} that always evaluate to true
      */
     Predicate<Contact> PREDICATE_SHOW_ALL_CONTACTS = unused -> true;
-    Predicate<Module> PREDICATE_SHOW_ALL_MODULES = unused -> true;
     Predicate<Task> PREDICATE_SHOW_ALL_TASKS = unused -> true;
     Predicate<Lesson> PREDICATE_SHOW_ALL_LESSONS = unused -> true;
+    Predicate<Contact> PREDICATE_SHOW_NO_CONTACTS = unused -> false;
+    Predicate<Task> PREDICATE_SHOW_NO_TASKS = unused -> false;
+    Predicate<Lesson> PREDICATE_SHOW_NO_LESSONS = unused -> false;
 
     /**
      * Returns the user prefs.
@@ -154,13 +156,6 @@ public interface Model {
      */
     ObservableList<Module> getFilteredModuleList();
 
-    /**
-     * Updates the filter of the filtered module list to filter by the given {@code predicate}.
-     *
-     * @throws NullPointerException if {@code predicate} is null.
-     */
-    void updateFilteredModuleList(Predicate<Module> predicate) throws NullPointerException;
-
     //=========== Task ================================================================================
 
     /**
@@ -256,16 +251,22 @@ public interface Model {
     ObservableList<Lesson> getModuleLessons(Code code);
 
     /**
-     * @param lesson The lesson to check for.
+     * @param lesson The lesson to get index of
      * @return The index of the lesson w.r.t the last shown Lesson list.
      */
     Index getLessonIndex(Lesson lesson) throws CommandException;
 
     /**
+     * @param code The module code to get index of
+     * @return The index of the module with the specified code in the list of all modules
+     */
+    Index getModuleIndex(Code code) throws CommandException;
+
+    /**
      * @param code The module code to query
      * @return the list of contacts for a specific module
      */
-    public ObservableList<Contact> getModuleContacts(Code code);
+    ObservableList<Contact> getModuleContacts(Code code);
 
     /**
      * @param code The module code to query
@@ -301,4 +302,10 @@ public interface Model {
     Optional<Lesson> getLesson(Code code, Type type);
 
     void sortLesson();
+
+    /**
+     * set the predicates all all filtered list to be false
+     */
+    void clearAllList();
+
 }

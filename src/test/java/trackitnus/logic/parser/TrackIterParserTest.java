@@ -3,10 +3,6 @@ package trackitnus.logic.parser;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.junit.jupiter.api.Test;
 
 import trackitnus.commons.core.Messages;
@@ -15,10 +11,8 @@ import trackitnus.logic.commands.HelpCommand;
 import trackitnus.logic.commands.contact.AddContactCommand;
 import trackitnus.logic.commands.contact.DeleteContactCommand;
 import trackitnus.logic.commands.contact.EditContactCommand;
-import trackitnus.logic.commands.contact.FindContactCommand;
 import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.model.contact.Contact;
-import trackitnus.model.contact.NameContainsKeywordsPredicate;
 import trackitnus.testutil.Assert;
 import trackitnus.testutil.ContactUtil;
 import trackitnus.testutil.builder.ContactBuilder;
@@ -59,15 +53,6 @@ public class TrackIterParserTest {
     public void parseCommand_exit() throws Exception {
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + " 3") instanceof ExitCommand);
-    }
-
-    @Test
-    public void parseCommand_find() throws Exception {
-        List<String> keywords = Arrays.asList("foo", "bar", "baz");
-        FindContactCommand command = (FindContactCommand) parser.parseCommand(
-            Contact.TYPE + " " + FindContactCommand.COMMAND_WORD + " "
-                + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindContactCommand(new NameContainsKeywordsPredicate(keywords)), command);
     }
 
     @Test
