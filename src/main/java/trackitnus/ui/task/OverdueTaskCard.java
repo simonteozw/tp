@@ -43,7 +43,7 @@ public class OverdueTaskCard extends UiPart<Region> {
         if (task.getDate().isAfter(today.plusDays(7))) {
             date.setStyle("-fx-text-fill: #68C2E8");
         } else {
-            date.setStyle("-fx-text-fill: #C24949");
+            date.setStyle("-fx-text-fill: #d53636");
         }
         remark.setText(task.getRemark());
         code.setText(task.getCode().isPresent() ? task.getCode().get().code + " " : "");

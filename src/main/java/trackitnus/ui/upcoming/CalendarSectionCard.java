@@ -38,7 +38,7 @@ public class CalendarSectionCard extends UiPart<Region> {
         this.logic = logic;
         sectionTitle.setText(calendarSection.getTitle());
         if (calendarSection.getTitle().equals("Overdue")) {
-            sectionTitle.setStyle("-fx-text-fill: #C24949");
+            sectionTitle.setStyle("-fx-text-fill: #D53636");
         }
         taskListView.prefHeightProperty().bind(Bindings.size(taskList).multiply(taskRowHeight).add(10));
         taskListView.setItems(taskList);
