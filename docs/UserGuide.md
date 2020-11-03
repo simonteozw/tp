@@ -23,8 +23,8 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 6. [FAQ](#faq)
 7. [Command Summary](#command-summary)
     1. [Module Commands](#module-commands)
-    2. [Task Commands](#task-commands)
-    3. [Lesson Commands](#lesson-commands)
+    2. [Lesson Commands](#lesson-commands)
+    3. [Task Commands](#task-commands)
     4. [Contact Commands](#contact-commands)
     5. [General Commands](#general-commands)
 
@@ -97,19 +97,24 @@ There are many things you can use TrackIt@NUS for. We have structured this docum
 | **Edit** | Edit a module/lesson/task/contact. Relevant parameters must be present. All parameters that are not specified will **remain unchanged** |
 | **Delete** | Delete a module/lesson/task/contact. Relevant parameters must be present |
 
+:warning: For lessons, tasks, and contacts, the **Edit** and **Delete** commands requires user to input an `INDEX` to
+ specify the lesson/task/contact they want to edit/delete. The specified `INDEX` must be **within the range** of indexes
+  seen in the **current window**.
+
 --------------------------------------------------------------------------------------------------------------------
 ## Layout <a name="layout"></a>
 
 This section gives you a brief overview of the layout of TrackIt@NUS.
 TrackIt@NUS is divided into three main types of tabs:
-* The **Upcoming** Tab,
-* The **Contacts** Tab, and
-* **Module** Tabs
+* The **Upcoming** Tab
+* The **Contacts** Tab
+* The various **Module** Tabs
 
 When you switch to a tab, the tab text will be highlighted in **blue**.
 
 ### Upcoming Tab <a name="upcomingtab"></a>
-This is the main tab of the application, and is the default page when the app is started. It features a calendar view of the days for the next week, as well as the **Tasks** and **Lessons** you have added under the respective days they fall under. 
+This is the main tab of the application, and is the default page when the app starts. It features a calendar view of the
+ days for the next week, as well as the **Tasks** and **Lessons** you have added under the respective days they fall under. 
 
 1. The first section labelled **"Overdue"** in red text, shows the Tasks that are past their deadline, and you have yet to complete. These **Tasks** will remain there until you delete them.
 
@@ -132,7 +137,7 @@ The contacts tab shows you all the **contacts** you have within the app. It will
 ### Module Tabs <a name="moduletabs"></a>
 ![ModuleTab](images/ModuleTab.png)
 Here under each module's tab you can find all relevant **Lessons**, **Tasks** and **Contacts** that are related to the
- module. Very convenient right? These information will be displayed in 3 sections:
+ module. Very convenient right? This information will be displayed in 3 sections:
  
 1. **Lessons**: Here you can find the info for all weekly lessons, including its time, locations/Zoom links so
  say goodbye to missing classes (intentional skip not included😉)
@@ -181,7 +186,7 @@ Format: `M delete m/MODULE_CODE`
 
 Examples: `M delete m/CS2100`
 
-Remark: **IMPORTANT**: When you delete a module, the app will delete all of its related tasks & lessons, so check
+:warning: When you delete a module, the app will delete all of its related tasks & lessons, so check
  twice before you delete them! 
 
 ## Lesson <a name="lesson"></a>
@@ -211,11 +216,11 @@ You can also perform commands on the lessons as explained below.
 The command that makes you groan every time you have to use it. 
 Use this command to add a lesson to a module.
 
-Format: `L add m/MODULE_CODE n/TYPE d/DATE a/ADDRESS`
+Format: `L add m/MODULE_CODE t/TYPE d/DATE a/ADDRESS`
 
 Examples:
-* `L add m/GET1020 n/lecture d/Mon 8:00-10:00 a/E-learning`
-* `L add m/CS3233 n/tutorial d/MON 17:30-20:00 a/COM1-0215`
+* `L add m/GET1020 t/lecture d/Mon 8:00-10:00 a/E-learning`
+* `L add m/CS3233 t/tutorial d/MON 17:30-20:00 a/COM1-0215`
 
 :warning: The `TYPE` must be one of the following:
 `lec`/`lecture`, `tut`/`tutorial`,
@@ -243,7 +248,7 @@ however, at least one parameter must be provided, i.e. `L edit 1` is not a valid
 
 :information_source: Here, `INDEX` refers to the index of the lesson you want to edit, as shown in the current tab. 
 The `INDEX` provided must be positive 
-and cannot be larger than the number of lessons currently shown.
+and within the range of lessons in the current window.
 
 ### Delete
 
@@ -256,9 +261,9 @@ Format: `L delete INDEX`
 Examples:
 * `L delete 1`
 
-:information_source: Here, `INDEX` refers to the index of the lesson you want to edit, as shown in the current tab.
+:information_source: Here, `INDEX` refers to the index of the lesson you want to delete, as shown in the current tab.
 The `INDEX` provided must be positive 
-and cannot be larger than the number of lessons currently shown.
+and within the range of lessons in the current window.
 
 ## Task <a name="task"></a>
 
@@ -306,11 +311,13 @@ Examples:
 * `T edit 2 r/min 1000 words` changes the remark of the Task
 * `T edit 2 m/CS2100` changes the module code of the Task
 
-:information_source: The `INDEX` provided must be positive and cannot be larger than number of Tasks
+:information_source: Here, `INDEX` refers to the index of the task you want to edit, as shown in the current tab. The
+ `INDEX` provided must be positive and within the range of tasks in the current window.
 
-:warning: At least 1 field must be provided for editing. i.e. `T edit 1` is not allowed
+:warning: At least 1 field must be provided for editing. i.e. `T edit 1` is not allowed.
 
-:bulb: Write `T edit 1 m/` to remove the module code from the task. Now, the task does not belong to any module
+:bulb: Write `T edit 1 m/` to remove the module code from the task. Now, the task does not belong to any module. You
+ can also use `T edit 1 r/` to remove the remark from the task.
 
 ### Delete
 Once you have completed a task, you can delete it. This is the command to do so.
@@ -319,7 +326,8 @@ Format: `T delete INDEX`
 
 Examples: `T delete 2`
 
-:information_source: The `INDEX` provided must be positive and cannot be larger than the number of Tasks
+:information_source: Here, `INDEX` refers to the index of the task you want to edit, as shown in the current tab. The
+ `INDEX` provided must be positive and within the range of tasks in the current window.
 
 ## Contact <a name="contact"></a>
 Don't you hate it when you need help for one of your modules but you just can't remember who else is taking the module with you? 
@@ -340,6 +348,9 @@ Examples:
 * `C add n/John Doe p/98765432 e/jon@jon.com t/CS2020`
 * `C add n/Rajesh Kumar p/98762342 e/raj@law.com t/Friend`
 
+:information_source: The `t/TAG` parameter is optional. You can use it as many times as you want (i.e. `C add n/John
+ Doe p/98765432 e/jon@jon.com t/CS2020 t/Brother` will add 2 tags to the contact instead of just 1).
+
 ### Edit
 After adding a contact to TrackIt@NUS, maybe you realised you spelt their name wrong, or you want to update the contact fields. The edit command is what you should use to do so.
 
@@ -349,8 +360,8 @@ Examples:
 * `C edit 1 n/Johnny Depp` changes the name of the Contact.
 * `C edit 2 n/Sam e/sam@gmail.com t/CS2100 t/TA` changes the name, email and tags of the Contact.
 
-Remark: The `INDEX` provided must be positive and cannot be larger than the number of Contacts. At least 1
- field must be provided for editing. i.e. `C edit 1` is not allowed.
+:information_source: The `INDEX` provided must be positive and  within the range of contacts in the current window
+. Atleast 1 field must be provided for editing (i.e. `C edit 1` is not allowed).
 
 :warning: When editing tags, existing tags of contact will be removed (i.e. adding tags is not cumulative)
 
@@ -363,7 +374,7 @@ Format: `C delete INDEX`
 
 Examples: `C delete 1`
 
-Remark: The `INDEX` provided must be positive and cannot be larger than the number of Contacts.
+Remark: The `INDEX` provided must be positive and  within the range of contacts in the current window.
 
 ## Getting help <a name="help"></a>
 
@@ -404,6 +415,14 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 | **Edit:** `M edit m/MODULE_CODE [n/NAME]` | `M edit n/Discrete Mathematics` |
 | **Delete:** `M delete m/MODULE_CODE` | `M delete m/CS1101S` |
 
+### Lesson <a name="lesson-commands"></a>
+
+| Command | Example |
+| ---- | ------ |
+| **Add:** `L add m/MODULE_CODE t/TYPE d/DATE a/ADDRESS` | `L add m/CS2103T n/tutorial d/Wed 14:00-15:00 a/COM1` |
+| **Edit:** `L edit INDEX [m/MODULE_CODE] [t/TYPE] [d/DATE] [a/ADDRESS]` | `L edit 1 a/LT17` |
+| **Delete:** `L delete INDEX` | `L delete 1` |
+
 ### Task <a name="task-commands"></a>
 
 | Command | Example |
@@ -411,14 +430,6 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 | **Add:** `T add n/NAME d/DATE [m/MODULE_CODE] [r/REMARK]` | `T add n/Assignment 1 d/20/11/2020 r/Focus on Chapters 1-3` |
 | **Edit:** `T edit INDEX [n/NAME] [d/DATE] [m/MODULE_CODE] [r/REMARK]` | `T edit 1 n/Finish Assignment` |
 | **Delete:** `T delete INDEX` | `T delete 1` |
-
-### Lesson <a name="lesson-commands"></a>
-
-| Command | Example |
-| ---- | ------ |
-| **Add:** `L add m/MODULE_CODE n/TYPE d/DATE a/ADDRESS` | `L add m/CS2103T n/tutorial d/Wed 14:00-15:00 a/COM1` |
-| **Edit:** `L edit INDEX [m/MODULE_CODE] [n/TYPE] [d/DATE] [a/ADDRESS]` | `L edit 1 a/LT17` |
-| **Delete:** `L delete INDEX` | `L delete 1` |
 
 ### Contact <a name="contact-commands"></a>
 
