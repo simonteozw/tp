@@ -188,7 +188,7 @@ Format: `M delete m/MODULE_CODE`
 Examples: `M delete m/CS2100`
 
 :information_source: When you delete a module, the contacts associated with that module will **not** be deleted. The
- tag will also not be edited in any way.
+ tag will also **not** be edited in any way.
 
 :warning: When you delete a module, the app will delete all of its related tasks & lessons, so check
  twice before you delete them! 
@@ -354,6 +354,12 @@ Examples:
 
 :information_source: The `t/TAG` parameter is optional. You can use it as many times as you want (i.e. `C add n/John
  Doe p/98765432 e/jon@jon.com t/CS2020 t/Brother` will add 2 tags to the contact instead of just 1).
+ 
+:information_source: To add a contact to a module, simply enter the module code as a tag. If the provided module code
+ does not exist, the tag will just be treated as another ordinary tag. No error will be thrown. 
+
+:information_source: You can add a contact using an email that already exists in TrackIt@NUS. It is fine for 2
+ contacts to have the same email.
 
 ### Edit
 After adding a contact to TrackIt@NUS, maybe you realised you spelt their name wrong, or you want to update the contact fields. The edit command is what you should use to do so.
@@ -367,9 +373,12 @@ Examples:
 :information_source: The `INDEX` provided must be positive and  within the range of contacts in the current window
 . Atleast 1 field must be provided for editing (i.e. `C edit 1` is not allowed).
 
-:warning: When editing tags, existing tags of contact will be removed (i.e. adding tags is not cumulative)
+:information_source: You can edit a contact to have an email that already exists in TrackIt@NUS. It is fine for 2
+contacts to have the same email.
 
-:bulb: Can remove all tags by typing t/ without any tags following it
+:warning: When editing tags, existing tags of contact will be removed (i.e. adding tags is not cumulative).
+
+:bulb: Can remove all tags by typing t/ without any tags following it.
 
 ### Delete
 You have broken up with your girlfriend and want to forget their existence, starting by deleting their contact in TrackIt@NUS. This is the command to do so.
