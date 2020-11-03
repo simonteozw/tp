@@ -73,6 +73,10 @@ ModuleTab ...> Model
 UiManager -right-> Logic
 MainWindow -left-> Logic
 
+ModuleTab --> Logic
+UpcomingTab --> Logic
+
+Logic -[hidden]up- UI
 ModuleTab -[hidden]left- ContactTab
 ContactTab -[hidden]left- UpcomingTab
 UpcomingTab -[hidden]left- SidePanel
