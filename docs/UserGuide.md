@@ -86,7 +86,7 @@ There are many things you can use TrackIt@NUS for. We have structured this docum
 | `lower_case/` | These are **prefixes** and are used to separate the different parameters of a command | `n/`, `d/`, `t/` |
 | `UPPER_CASE` | These are **parameters** and need to be supplied to complete certain commands | `C add n/John ...` |
 | `[UPPER_CASE]` |  These are **optional parameters** | `C add n/John ...` or `C add n/John t/Friend ...` both work |
-| `…`​ | These are parameters that can be used **multiple times** or **none at all** | `C add n/John t/Brother-in-law t/Colleague t/Friend ...` |
+| `…`​ | These are parameters that can be used **multiple times** or **none at all** | `C add n/John t/Brother t/Colleague t/Friend ...` |
 
 :information_source: Parameters can be in any order. e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
@@ -186,6 +186,9 @@ And what if you realized you accidentally added in a wrong module, or have finis
 Format: `M delete m/MODULE_CODE`
 
 Examples: `M delete m/CS2100`
+
+:information_source: When you delete a module, the contacts associated with that module will **not** be deleted. The
+ tag will also not be edited in any way.
 
 :warning: When you delete a module, the app will delete all of its related tasks & lessons, so check
  twice before you delete them! 
