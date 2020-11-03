@@ -51,7 +51,7 @@ What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) 
 
 1. Ensure you have **Java 11** or above on your Computer.
 
-1. Download the latest version of TrackIt@NUS from [here](https://github.com/AY2021S1-CS2103T-W13-4/tp/releases/tag/v1.2).
+1. Download the latest version of TrackIt@NUS from [here](https://github.com/AY2021S1-CS2103T-W13-4/tp/releases).
 
 1. Copy the file to the folder you want to use as the home folder for TrackIt@NUS.
 
