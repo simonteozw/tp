@@ -1,0 +1,42 @@
+@startuml
+!include style.puml
+
+Actor User as user USER_COLOR
+Participant ":UI" as ui UI_COLOR
+Participant ":Logic" as logic LOGIC_COLOR
+Participant ":Model" as model MODEL_COLOR
+
+user -[USER_COLOR]> ui : click on CS3233 tab
+activate ui UI_COLOR
+
+ui -[UI_COLOR]> logic : getModuleLessons("CS3233")
+activate logic LOGIC_COLOR
+
+logic -[LOGIC_COLOR]> model : getModuleLessons("CS3233")
+activate model MODEL_COLOR
+
+model -[MODEL_COLOR]-> logic : CS3233's Lessons
+logic --[LOGIC_COLOR]> ui : CS3233's Lessons
+
+ui -[UI_COLOR]> logic : getModuleTasks("CS3233")
+logic -[LOGIC_COLOR]> model : getModuleTasks("CS3233")
+model -[MODEL_COLOR]-> logic : CS3233's Tasks
+logic --[LOGIC_COLOR]> ui : CS3233's Tasks
+
+ui -[UI_COLOR]> logic : getModuleContacts("CS3233")
+logic -[LOGIC_COLOR]> model : getModuleContacts("CS3233")
+model -[MODEL_COLOR]-> logic : CS3233's Contacts
+logic --[LOGIC_COLOR]> ui : CS3233's Contacts
+
+note right of logic
+no calls will be made to
+saveTrackIter
+end note
+
+deactivate model
+
+deactivate logic
+
+ui--[UI_COLOR]> user : display the CS3233 tab
+deactivate ui
+@enduml

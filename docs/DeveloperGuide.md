@@ -98,9 +98,15 @@ For example, the `Logic` component (see the class diagram given below) defines i
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues
+ the command `T delete 1`.
 
-<img src="images/ArchitectureSequenceDiagram.png" width="574" />
+<img src="images/ArchitectureDeleteTaskSequenceDiagram.png" width="587" />
+
+Another *Sequence Diagram* below shows how the components interact with each other for the scenario where the user
+ click on the Upcoming tab.
+
+<img src="images/ArchitectureModuleTabSequenceDiagram.png" width="686" />
 
 The sections below give more details of each component.
 
