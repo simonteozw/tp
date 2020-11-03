@@ -63,7 +63,7 @@ In this section, you will learn about the general design and structure TrackIt@N
 
 ### **Architecture** <a name="architecture"></a>
 
-<img src="images/ArchitectureDiagram.png" width="450" />
+<img src="images/ArchitectureDeleteTaskSequenceDiagram.png" width="450" />
 
 The ***Architecture Diagram*** given above explains the high-level design of the App. Given below is a quick overview of each component.
 
