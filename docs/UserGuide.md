@@ -137,6 +137,7 @@ The contacts tab shows you all the **contacts** you have within the app. It will
 
 ### Module Tabs <a name="moduletabs"></a>
 ![ModuleTab](images/ModuleTab.png)
+
 Here under each module's tab you can find all relevant **Lessons**, **Tasks** and **Contacts** that are related to the
  module. Very convenient right? This information will be displayed in 3 sections:
  
@@ -176,8 +177,8 @@ Format: `M edit m/MODULE_CODE n/NAME`
 
 Examples: `M edit m/CS1231S n/Programming Methodology`
 
-Remark: The `MODULE_CODE` provided must be present in the Module list. After the command, the specified module will
- have a new name.
+:information_source: The `MODULE_CODE` provided must be present in the Module list. After the command, the specified
+ module will have a new name.
 
 ### Delete
 And what if you realized you accidentally added in a wrong module, or have finished one? Just delete that module! The
@@ -248,7 +249,7 @@ Examples:
 * `L edit 4 m/CS3233 a/COM2`
 
 :information_source: The parameters `m/MODULE_CODE`, `n/TYPE`, and `d/DATE` are optional;
-however, at least one parameter must be provided, i.e. `L edit 1` is not a valid command.
+however, at least one parameter must be provided (i.e. `L edit 1` is not a valid command).
 
 :information_source: Here, `INDEX` refers to the index of the lesson you want to edit, as shown in the current tab. 
 The `INDEX` provided must be positive 
@@ -320,7 +321,7 @@ Examples:
 :information_source: Here, `INDEX` refers to the index of the task you want to edit, as shown in the current tab. The
  `INDEX` provided must be positive and within the range of tasks in the current window.
 
-:warning: At least 1 field must be provided for editing. i.e. `T edit 1` is not allowed.
+:warning: At least 1 field must be provided for editing (i.e. `T edit 1` is not allowed).
 
 :bulb: Write `T edit 1 m/` to remove the module code from the task. Now, the task does not belong to any module. You
  can also use `T edit 1 r/` to remove the remark from the task.
@@ -451,7 +452,7 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 
 | Command | Example |
 | ---- | ------ |
-| **Add:** `L add m/MODULE_CODE t/TYPE d/DATE a/ADDRESS` | `L add m/CS2103T n/tutorial d/Wed 14:00-15:00 a/COM1` |
+| **Add:** `L add m/MODULE_CODE t/TYPE d/DATE a/ADDRESS` | `L add m/CS2103T t/tutorial d/Wed 14:00-15:00 a/COM1` |
 | **Edit:** `L edit INDEX [m/MODULE_CODE] [t/TYPE] [d/DATE] [a/ADDRESS]` | `L edit 1 a/LT17` |
 | **Delete:** `L delete INDEX` | `L delete 1` |
 
