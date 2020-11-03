@@ -95,6 +95,8 @@ The UI component,
 
 (Contributed by Wei Hong)
 
+![UiModuleTabClassDiagram.png](images/UiModuleTabClassDiagram.png)
+
 The Class Diagram below shows how `Module Tab` components interact with each other.
 
 This module tab consist of three panels (`LessonListPanel`, `TaskListPanel`, `ContactListPanel`) and their
