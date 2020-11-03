@@ -170,7 +170,7 @@ public class MainWindow extends UiPart<Stage> {
 
         switch (tabName) {
         case UpcomingPanel.TYPE:
-            tabPanelPlaceholder.getChildren().add(upcomingPanel.getRoot());
+            tabPanelPlaceholder.getChildren().add(new UpcomingPanel(logic).getRoot());
             moduleTabInContext = "";
             break;
         case Module.TYPE:
