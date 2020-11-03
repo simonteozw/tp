@@ -46,8 +46,8 @@ public class DayCard extends UiPart<Region> {
         this.day = day;
         this.logic = logic;
 
-        if (date.equals(LocalDate.now())) {
-            date.setText("TODAY - " + day.getSectionHeader());
+        if (day.getDate().equals(LocalDate.now())) {
+            date.setText("Today - " + day.getSectionHeader());
         } else {
             date.setText(day.getSectionHeader());
         }
