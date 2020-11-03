@@ -59,9 +59,9 @@ What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) 
 
 ![Ui](images/Ui.png)
 
-1. You are now on the home page of TrackIt@NUS.
+You are now on the home page of TrackIt@NUS.
 
-1. At the bottom of the screen, type your command in the Command Box (see [Features](#features) for more info) and
+At the bottom of the screen, type your command in the Command Box (see [Features](#features) for more info) and
  press `Enter` on your keyboard to execute it.
 
 ## About <a name="about"></a>
@@ -364,6 +364,9 @@ Examples:
 
 :information_source: You can add a contact using an email that already exists in TrackIt@NUS. It is fine for 2
  contacts to have the same email.
+ 
+:information_source: Phone numbers can be of any length and begin with any digit. The only restrictions placed on phone
+ numbers is that they must all numbers.
 
 ### Edit
 After adding a contact to TrackIt@NUS, maybe you realised you spelt their name wrong, or you want to update the contact fields. The edit command is what you should use to do so.
@@ -379,6 +382,8 @@ Examples:
 
 :information_source: You can edit a contact to have an email that already exists in TrackIt@NUS. It is fine for 2
 contacts to have the same email.
+
+:information_source: Phone numbers can be of any length and begin with any digit. The only restrictions placed on phone numbers is that they must all numbers.
 
 :warning: When editing tags, existing tags of contact will be removed (i.e. adding tags is not cumulative).
 
