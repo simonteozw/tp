@@ -1,0 +1,46 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor UI_COLOR_T4
+skinparam classBackgroundColor UI_COLOR
+
+package UpcomingTab <<Rectangle>>{
+
+Class UpcomingPanel
+Class CalendarSection
+Class CalendarSectionCard
+Class DayCard
+
+}
+
+package Model <<Rectangle>> {
+Class HiddenModel #FFFFFF
+}
+
+package Logic <<Rectangle>> {
+Class HiddenLogic #FFFFFF
+}
+
+Class HiddenOutside #FFFFFF
+MainWindow *--> UpcomingPanel
+
+UpcomingPanel *--> DayCard
+UpcomingPanel *--> CalendarSection
+
+CalendarSection --> CalendarSectionCard
+
+'DayCard -down-|> UiPart
+'CalendarSectionCard -down-|> UiPart
+
+DayCard ..> Model
+CalendarSectionCard ..> Model
+
+
+DayCard ---> Logic
+CalendarSectionCard --> Logic
+
+'UpcomingTab -[hidden]left- Logic
+'UpcomingTab -[hidden]left- Model
+
+
+@enduml
