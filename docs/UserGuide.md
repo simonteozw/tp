@@ -297,9 +297,11 @@ Examples:
 * `T add n/Plan for Bob's birthday d/12/11/2020`
 * `T add n/Buy mooncakes for Mum d/28/10/2020 r/Remember to get Durian-flavoured ones`
 
-:information_source: The parameters `m/MODULE_CODE` and `r/REMARK` are optional
+:information_source: The parameters `m/MODULE_CODE` and `r/REMARK` are optional.
 
-:warning: The `DATE` provided must be in the format `dd/MM/yyyy`
+:warning: The `DATE` provided must be in the format `dd/MM/yyyy`.
+
+:bulb: To give users greater freedom when adding tasks, you **can** add tasks with deadlines in the past.
 
 ### Edit
 After adding a task to TrackIt@NUS, you may want to change it, perhaps extend the deadline or change it's remark. The
@@ -322,6 +324,8 @@ Examples:
 
 :bulb: Write `T edit 1 m/` to remove the module code from the task. Now, the task does not belong to any module. You
  can also use `T edit 1 r/` to remove the remark from the task.
+ 
+:bulb: To give users greater freedom when adding tasks, you **can** add tasks with deadlines in the past.
 
 ### Delete
 Once you have completed a task, you can delete it. This is the command to do so.
