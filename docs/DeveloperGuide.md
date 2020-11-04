@@ -69,14 +69,42 @@ We implemented most of our methods in a similar way to ensure that the logic is 
 -prone, and more maintainable.
 
 ### **UI Component** <a name="ui"></a>
+(Contributed by Wei Hong)
+
+The Class Diagram below shows how the `UI` components and sections interact with one another.
+
+![UiClassDiagram.png](images/UiClassDiagram.png)
+
+The UI consists of a `MainWindow` that is made up of parts e.g. `SidePanel`, `StatusBarFooter`, `CommandBox
+` etc. All these, including the MainWindow, inherit from the abstract UiPart class. The UI also consist of 4 main
+ components: `UpcomingTab`, `ModuleTab`, `ContactTab` and `HelpTab`. Each of these components consist of
+  several other classes as well. More details of this will be provided in the [sub-sections](#upcoming-tab).
+
+The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching .fxml files that
+ are in the `src/main/resources/view` folder. For example, the layout of the `MainWindow` is specified in
+  `MainWindow.fxml`.
+
+The UI component,
+* Executes user commands using the `Logic` component.
+* Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
 #### **Upcoming Tab** <a name="upcoming-tab"></a>
+(Contributed by Tiffany)
 
 #### **Module Tab** <a name="module-tab"></a>
 
-#### **Contact Tab** <a name="contact-tab"></a>
+(Contributed by Wei Hong)
 
-#### **Module Tab** <a name="upcoming-tab"></a>
+![UiModuleTabClassDiagram.png](images/UiModuleTabClassDiagram.png)
+
+The Class Diagram below shows how `Module Tab` components interact with each other.
+
+This module tab consist of three panels (`LessonListPanel`, `TaskListPanel`, `ContactListPanel`) and their
+ corresponding cards (`LessonCard`, `TaskCard`, `ContactCard`). In all of the panels, the graphics of each of the
+  `ListCell` is defined by the respective Cards.
+  
+  The `ContactTab` and `HelpTab` both follow a similar structure as the above class diagram, except that they each
+   consist of 1 single panel.
 
 ### **Logic Component** <a name="logic"></a>
 
