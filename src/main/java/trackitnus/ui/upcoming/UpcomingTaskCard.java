@@ -46,7 +46,7 @@ public class UpcomingTaskCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof trackitnus.ui.task.TaskCard)) {
+        if (!(other instanceof trackitnus.ui.upcoming.UpcomingTaskCard)) {
             return false;
         }
 
