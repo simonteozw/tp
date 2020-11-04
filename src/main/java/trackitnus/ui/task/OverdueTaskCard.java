@@ -14,7 +14,7 @@ public class OverdueTaskCard extends UiPart<Region> {
     private static final String FXML = "Task/OverdueTaskListCard.fxml";
 
     public final Task task;
-    private LocalDate today = LocalDate.now();
+    private final LocalDate today = LocalDate.now();
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM");
 
     @javafx.fxml.FXML

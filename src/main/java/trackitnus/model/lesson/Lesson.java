@@ -22,7 +22,7 @@ public class Lesson {
         "Lesson's time should be in the format \"ddd H:mm-H:mm\" (in 24-hour format), e.g. Mon 8:00-13:00";
     public static final String TYPE_MESSAGE_CONSTRAINTS =
         "Type should be either 'lec'/'lecture', 'tut'/'tutorial', 'lab'/'laboratory', " +
-        "'rec'/'recitation', or 'sec'/'sectional'";
+            "'rec'/'recitation', or 'sec'/'sectional'";
 
     private final Code code;
     private final Type type;
@@ -35,7 +35,6 @@ public class Lesson {
      * @param code
      * @param type
      * @param time
-     *
      */
     public Lesson(Code code, Type type, LessonDateTime time, Address address) {
         CollectionUtil.requireAllNonNull(code, type, time, address);

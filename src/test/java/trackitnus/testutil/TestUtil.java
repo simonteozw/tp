@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 import trackitnus.commons.core.index.Index;
@@ -64,9 +63,6 @@ public class TestUtil {
     public static Contact getContact(Model model, Index index) {
         return model.getFilteredContactList().get(index.getZeroBased());
     }
-
-
-    public static final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     /**
      * this function act as an adapter to call ParserUtil, but omit checked the exception because it's expected that

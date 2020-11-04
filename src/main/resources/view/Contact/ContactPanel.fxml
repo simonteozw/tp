@@ -6,21 +6,20 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
-
-<ListView fx:id="modulePanel" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<ListView xmlns:fx="http://javafx.com/fxml/1" fx:id="modulePanel" xmlns="http://javafx.com/javafx/8">
     <VBox>
         <padding>
-            <Insets bottom="1" left="15" right="5" top="1" />
+            <Insets bottom="1" left="15" right="5" top="1"/>
         </padding>
-        <Label styleClass="date_label" text="All Contacts" />
-        <Line endX="500" startX="0" style="-fx-stroke: #8C8C89" />
+        <Label styleClass="date_label" text="All Contacts"/>
+        <Line endX="500" startX="0" style="-fx-stroke: #8C8C89"/>
         <StackPane fx:id="contactListPanelPlaceholder" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
             <padding>
-                <Insets bottom="10" />
+                <Insets bottom="10"/>
             </padding>
         </StackPane>
     </VBox>
-   <padding>
-      <Insets top="10.0" />
-   </padding>
+    <padding>
+        <Insets top="10.0"/>
+    </padding>
 </ListView>

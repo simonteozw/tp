@@ -81,7 +81,7 @@ public class JsonAdaptedLesson {
 
         if (address == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Address.class.getSimpleName()));
+                Address.class.getSimpleName()));
         }
         try {
             ParserUtil.parseAddress(address);
