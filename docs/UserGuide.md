@@ -90,6 +90,9 @@ There are many things you can use TrackIt@NUS for. We have structured this docum
 
 :information_source: Parameters can be in any order. e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
+:warning: **Except** for parameters that can be used multiple times, we will only register the last shown instance of
+ all other parameters (i.e. `C add n/Jon n/Tim n/James ...` will add a contact with the name James).
+
 ### Commands and their Purposes <a name="command-purpose"></a>
 
 | **Command** | ** Purpose** |
@@ -170,7 +173,7 @@ Format: `M add m/MODULE_CODE n/NAME`
 Examples: `M add m/CS1231S n/Discrete Structures`
 
 ### Edit
-Because modules are displayed on the sidebar, it doesn't come with index. That's why to edit & delete module, its
+Because modules are displayed on the sidebar, it doesn't come with index. That's why to edit and delete a module, its
  code will be used! Let's see how the syntax of a module edit command:
 
 Format: `M edit m/MODULE_CODE n/NAME`
@@ -252,8 +255,7 @@ Examples:
 however, at least one parameter must be provided (i.e. `L edit 1` is not a valid command).
 
 :information_source: Here, `INDEX` refers to the index of the lesson you want to edit, as shown in the current tab. 
-The `INDEX` provided must be positive 
-and within the range of lessons in the current window.
+The `INDEX` provided must be one of the lesson indexes shown in the current window.
 
 ### Delete
 
@@ -267,8 +269,7 @@ Examples:
 * `L delete 1`
 
 :information_source: Here, `INDEX` refers to the index of the lesson you want to delete, as shown in the current tab.
-The `INDEX` provided must be positive 
-and within the range of lessons in the current window.
+The `INDEX` provided must be one of the lesson indexes shown in the current window.
 
 ## Task <a name="task"></a>
 
@@ -319,7 +320,7 @@ Examples:
 * `T edit 2 m/CS2100` changes the module code of the Task
 
 :information_source: Here, `INDEX` refers to the index of the task you want to edit, as shown in the current tab. The
- `INDEX` provided must be positive and within the range of tasks in the current window.
+ `INDEX` provided must be one of the task indexes shown in the current window.
 
 :warning: At least 1 field must be provided for editing (i.e. `T edit 1` is not allowed).
 
@@ -335,8 +336,8 @@ Format: `T delete INDEX`
 
 Examples: `T delete 2`
 
-:information_source: Here, `INDEX` refers to the index of the task you want to edit, as shown in the current tab. The
- `INDEX` provided must be positive and within the range of tasks in the current window.
+:information_source: Here, `INDEX` refers to the index of the task you want to delete, as shown in the current tab. The
+ `INDEX` provided must one of the task indexes shown in the current window.
 
 ## Contact <a name="contact"></a>
 Don't you hate it when you need help for one of your modules but you just can't remember who else is taking the module with you? 
@@ -354,8 +355,10 @@ Format: `C add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]...`
 
 Examples:
 
-* `C add n/John Doe p/98765432 e/jon@jon.com t/CS2020`
-* `C add n/Rajesh Kumar p/98762342 e/raj@law.com t/Friend`
+* `C add n/John Doe p/98765432 e/jon@jon.com t/CS2020 t/TA`
+* `C add n/Rajesh Kumar p/98762342 e/raj@law.com t/Friend t/Colleague`
+
+:information_source: The `p/PHONE_NUMBER` and `e/EMAIL` tabs are optional. They can either be used once or not at all.
 
 :information_source: The `t/TAG` parameter is optional. You can use it as many times as you want (i.e. `C add n/John
  Doe p/98765432 e/jon@jon.com t/CS2020 t/Brother` will add 2 tags to the contact instead of just 1).
@@ -366,8 +369,7 @@ Examples:
 :information_source: You can add a contact using an email that already exists in TrackIt@NUS. It is fine for 2
  contacts to have the same email.
  
-:information_source: Phone numbers can be of any length and begin with any digit. The only restrictions placed on phone
- numbers is that they must all numbers.
+:information_source: Phone numbers can must consist only digits, and can be of any length.
 
 ### Edit
 After adding a contact to TrackIt@NUS, maybe you realised you spelt their name wrong, or you want to update the contact fields. The edit command is what you should use to do so.
@@ -378,13 +380,15 @@ Examples:
 * `C edit 1 n/Johnny Depp` changes the name of the Contact.
 * `C edit 2 n/Sam e/sam@gmail.com t/CS2100 t/TA` changes the name, email and tags of the Contact.
 
-:information_source: The `INDEX` provided must be positive and  within the range of contacts in the current window
-. Atleast 1 field must be provided for editing (i.e. `C edit 1` is not allowed).
+:information_source: Here, the `INDEX` refers to the index of the contact you want to edit. The `INDEX` provided must be
+ one of the contact indexes shown in the current window.
 
 :information_source: You can edit a contact to have an email that already exists in TrackIt@NUS. It is fine for 2
 contacts to have the same email.
 
-:information_source: Phone numbers can be of any length and begin with any digit. The only restrictions placed on phone numbers is that they must all numbers.
+:information_source: Phone numbers must consist only digits, and can be of any length.
+
+:warning: At least 1 field must be provided for editing (i.e. `C edit 1` is not allowed).
 
 :warning: When editing tags, existing tags of contact will be removed (i.e. adding tags is not cumulative).
 
@@ -397,8 +401,8 @@ Format: `C delete INDEX`
 
 Examples: `C delete 1`
 
-Remark: The `INDEX` provided must be positive and  within the range of contacts in the current window.
-
+:information_source: Here, the `INDEX` refers to the index of the contact you want to delete. The `INDEX` provided
+ must be one of the contact indexes shown in the current window.
 ## Getting help <a name="help"></a>
 
 For: Getting help from the program.
@@ -468,7 +472,7 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 
 | Command | Example |
 | ------ | ---------- |
-| **Add:** `C add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]...` | `C add n/John Doe p/98765432 e/jon@jon.com t/Brother` |
+| **Add:** `C add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]...` | `C add n/John Doe p/98765432 e/jon@jon.com t/Brother t/Friend` |
 | **Edit:** `C edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...` | `C edit 1 n/Johnny Depp p/98999899` |
 | **Delete:** `C delete INDEX` | `C delete 1` |
 
