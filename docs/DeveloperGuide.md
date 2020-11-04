@@ -104,7 +104,7 @@ The *Sequence Diagram* below shows how the components interact with each other f
 <img src="images/ArchitectureDeleteTaskSequenceDiagram.png" width="587" />
 
 Another *Sequence Diagram* below shows how the components interact with each other for the scenario where the user
- click on the Upcoming tab.
+ click on a module tab.
 
 <img src="images/ArchitectureModuleTabSequenceDiagram.png" width="686" />
 
