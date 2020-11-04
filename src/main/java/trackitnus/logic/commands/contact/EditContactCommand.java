@@ -98,7 +98,7 @@ public class EditContactCommand extends Command {
         Contact contactToEdit = lastShownList.get(index.getZeroBased());
         Contact editedContact = createEditedContact(contactToEdit, editContactDescriptor);
 
-        if (contactToEdit.isSameContact(editedContact)) {
+        if (contactToEdit.equals(editedContact)) {
             throw new CommandException(Messages.MESSAGE_CONTACT_UNCHANGED);
         }
 

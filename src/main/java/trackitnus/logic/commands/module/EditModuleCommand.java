@@ -70,7 +70,7 @@ public class EditModuleCommand extends Command {
 
         Module editedModule = createEditedModule(moduleToEdit.get(), editModuleDescriptor);
 
-        if (moduleToEdit.get().isSameModule(editedModule)) {
+        if (moduleToEdit.get().equals(editedModule)) {
             throw new CommandException(Messages.MESSAGE_MODULE_UNCHANGED);
         }
 
