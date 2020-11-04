@@ -8,6 +8,9 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 3. [**Design**](#design)
     1. [Architecture](#architecture)
     2. [UI Component](#ui)
+        1. [Upcoming Tab](#upcoming-tab)
+        2. [Module Tab](#module-tab)
+        3. [Contact Tab](#contact-tab)
     3. [Logic Component](#logic)
     4. [Model Component](#model)
     5. [Storage Component](#storage)
@@ -17,7 +20,6 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     2. [Lesson Manager](#lesson-manager)
     3. [Task Manager](#task-manager)
     4. [Contact Manager](#contact-manager)
-    5. [Upcoming Tab](#upcoming-tab)
     6. [Logging](#logging)
     7. [Configuration](#config)
 5. [**Documentation**](#documentation)
@@ -113,6 +115,42 @@ The sections below give more details of each component.
 
 
 ### **UI Component** <a name="ui"></a>
+(Contributed by Wei Hong)
+
+The Class Diagram below shows how the `UI` components and sections interact with one another.
+
+![UiClassDiagram.png](images/UiClassDiagram.png)
+
+The UI consists of a `MainWindow` that is made up of parts e.g. `SidePanel`, `StatusBarFooter`, `CommandBox
+` etc. All these, including the MainWindow, inherit from the abstract UiPart class. The UI also consist of 4 main
+ components: `UpcomingTab`, `ModuleTab`, `ContactTab` and `HelpTab`. Each of these components consist of
+  several other classes as well. More details of this will be provided in the [sub-sections](#upcoming-tab).
+
+The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching .fxml files that
+ are in the `src/main/resources/view` folder. For example, the layout of the `MainWindow` is specified in
+  `MainWindow.fxml`.
+
+The UI component,
+* Executes user commands using the `Logic` component.
+* Listens for changes to `Model` data so that the UI can be updated with the modified data.
+
+#### **Upcoming Tab** <a name="upcoming-tab"></a>
+(Contributed by Tiffany)
+
+#### **Module Tab** <a name="module-tab"></a>
+
+(Contributed by Wei Hong)
+
+![UiModuleTabClassDiagram.png](images/UiModuleTabClassDiagram.png)
+
+The Class Diagram below shows how `Module Tab` components interact with each other.
+
+This module tab consist of three panels (`LessonListPanel`, `TaskListPanel`, `ContactListPanel`) and their
+ corresponding cards (`LessonCard`, `TaskCard`, `ContactCard`). In all of the panels, the graphics of each of the
+  `ListCell` is defined by the respective Cards.
+  
+  The `ContactTab` and `HelpTab` both follow a similar structure as the above class diagram, except that they each
+   consist of 1 single panel.
 
 ### **Logic Component** <a name="logic"></a>
 
@@ -274,8 +312,6 @@ The original AB3 implementation of edit commands, which would default to the ori
   `isCodeChanged`, to know whether users wanted to remove the existing module code or remark.
 
 ### **Contact Manager** <a name="contact-manager"></a>
-
-### **Upcoming Tab** <a name="upcoming-tab"></a>
 
 ### **Logging** <a name="logging"></a>
 

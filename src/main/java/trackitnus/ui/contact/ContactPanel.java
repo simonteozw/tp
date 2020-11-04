@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import trackitnus.commons.core.LogsCenter;
-import trackitnus.logic.Logic;
 import trackitnus.model.contact.Contact;
 import trackitnus.ui.UiPart;
 
@@ -19,15 +18,17 @@ public class ContactPanel extends UiPart<Region> {
     private final int defaultRowHeight = 50;
     private final int paddingHeight = 10;
     private final ContactListPanel contactListPanel;
+    private ObservableList<Contact> contacts;
+
     @FXML
     private StackPane contactListPanelPlaceholder;
 
     /**
      * Creates a {@code ContactListPanel} with the given {@code ObservableList}.
      */
-    public ContactPanel(Logic logic) {
+    public ContactPanel(ObservableList<Contact> contactList) {
         super(FXML);
-        ObservableList<Contact> contacts = logic.getAllContacts();
+        contacts = contactList;
 
         // Allow height of lists to update automatically
         contactListPanelPlaceholder.prefHeightProperty().bind(Bindings.size(contacts)
