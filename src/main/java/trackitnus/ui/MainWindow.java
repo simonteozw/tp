@@ -182,7 +182,7 @@ public class MainWindow extends UiPart<Stage> {
             tabPanelPlaceholder.getChildren().add(modulePanel.getRoot());
             break;
         case Contact.TYPE:
-            contactPanel = new ContactPanel(logic);
+            contactPanel = new ContactPanel(logic.getAllContacts());
             tabPanelPlaceholder.getChildren().add(contactPanel.getRoot());
             moduleTabInContext = "";
             break;

@@ -1,0 +1,53 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor UI_COLOR_T4
+skinparam classBackgroundColor UI_COLOR
+
+package ModuleTab <<Rectangle>>{
+
+Class TaskListPanel
+Class TaskCard
+Class LessonListPanel
+Class LessonCard
+Class ContactListPanel
+Class ContactCard
+
+}
+
+package Model <<Rectangle>> {
+Class HiddenModel #FFFFFF
+}
+
+package Logic <<Rectangle>> {
+Class HiddenLogic #FFFFFF
+}
+
+Class HiddenOutside #FFFFFF
+
+MainWindow *--> TaskListPanel
+MainWindow *--> LessonListPanel
+MainWindow *--> ContactListPanel
+
+TaskListPanel --> TaskCard
+LessonListPanel --> LessonCard
+ContactListPanel --> ContactCard
+
+'DayCard -down-|> UiPart
+'CalendarSectionCard -down-|> UiPart
+
+TaskCard ..> Model
+LessonCard ..> Model
+ContactCard ..> Model
+
+
+TaskCard ---> Logic
+LessonCard --> Logic
+ContactCard --> Logic
+
+ModuleTab -[hidden]left- Logic
+ModuleTab -[hidden]left- Model
+Logic --[hidden]left-- Model
+
+
+@enduml
