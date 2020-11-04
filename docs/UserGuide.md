@@ -127,6 +127,10 @@ You can specify the same parameter more than once in a command. Depending on the
 ## 4. Layout <a name="layout"></a>
 
 This section gives you a brief overview of the layout of TrackIt@NUS.
+
+![Layout](images/Layout.png)
+_Figure 2 - Layout of TrackIt@NUS_
+
 TrackIt@NUS is divided into three main types of tabs:
 * The **Upcoming** Tab
 * The **Contacts** Tab
@@ -145,13 +149,13 @@ This is the main tab of the application, and is the default page when the app st
 3. The last section is labelled **Future**, and shows any **Tasks** that you may have added with a deadline falling after the date 7 days from today.
 
 ![UpcomingPanelUi](images/UpcomingPanelUi.png)
-<br>_Figure 2 - Example of Upcoming Tab_
+<br>_Figure 3 - Example of Upcoming Tab_
 
 ### Contacts Tab <a name="contactstab"></a>
 The contacts tab shows you an overview of all the **contacts** you have within the app. 
 
 ![ContactsTab](images/ContactsTab.png)
-<br>_Figure 3 - Example of Contacts Tab_
+<br>_Figure 4 - Example of Contacts Tab_
 
 It will show you information for each contact such as:
 * `NAME`: contact name
@@ -167,7 +171,7 @@ Here under each module's tab you can find all relevant **Lessons**, **Tasks** an
  module. 
  
  ![ModuleTab](images/ModuleTab.png)
-<br>_Figure 4 - Example of Module Tab_
+<br>_Figure 5 - Example of Module Tab_
 
 Very convenient right? This information will be displayed in 3 sections:
  
@@ -213,7 +217,7 @@ Example: To add the Module CS1231 Discrete Structures into TrackIt@NUS, follow t
 3. The Result Display will show the success message and you will see your new module in the side panel.
 
 ![AddModuleOutcome](images/AddModuleOutcome.png)
-<br>_Figure 5 - Example outcome of adding a module_
+<br>_Figure 6 - Example outcome of adding a module_
 
 ### 5.1.3 Edit
 Because modules are displayed only on the side panel, it doesn't come with index. That's why to edit and delete a module, its
@@ -231,7 +235,7 @@ Example: If you have spelt a module CS1231's name wrongly and wish to change it 
 3. The Result Display will show a success message and you will be able to view the correct module name in the corresponding module tab.
 
 (INSERT SCREENSHOT OF EDIT OUTCOME HERE)
-<br>_Figure 6 - Example outcome of editing a module_
+<br>_Figure 7 - Example outcome of editing a module_
 
 ### 5.1.4 Delete
 And what if you realized you accidentally added in a wrong module, or have finished one? Just delete that module! The
@@ -249,7 +253,7 @@ To delete the module `CS2100`:
 3. The Result Display will show a success message and the module tab will be removed from the side panel.
 
 ![DeleteModuleOutcome](images/DeleteModuleOutcome.png)
-<br>_Figure 7 - Example outcome of deleting a module_
+<br>_Figure 8 - Example outcome of deleting a module_
 
 
 ## 5.2 Lesson <a name="lesson"></a>
@@ -350,6 +354,7 @@ This sorts all your tasks by date. To view module-specific tasks, click on any o
 
 You can also perform commands on the tasks as explained below.
 
+### 5.3.1 Task Command Parameters
 Here are the parameters used in the Task feature:
 | **Parameter** | **Description** | **Example** |
 | --------------| ----------------| ----------- |
@@ -359,7 +364,7 @@ Here are the parameters used in the Task feature:
 | `DATE` | Indicates the date of a task deadline. Must be in `dd/mm/yyyy` format. | **01/01/2021** |
 | `REMARK` | Refers to any (optional) additional remarks for a task. | For a task `Assignment 1`, a possible remark could be `Focus on Chapters 1-3` |
 
-### Add
+### 5.3.2 Add
 
 After a day of school you realise that you now have a few more tasks to complete and wish to keep track of them. This is
  the command for adding a new task to TrackIt@NUS.
@@ -421,6 +426,7 @@ Luckily for you, TrackIt@NUS allows you to tag your contacts with the modules yo
 
 To view all contacts from all modules, as well as any contacts that are not associated with any module, click on the **Contacts** tab in the side panel.
 
+### 5.4.1 Contact Command Parameters
 Here are the parameters used in the Contact feature:
 | **Parameter** | **Description** | **Example** |
 | --------------| ----------------| ----------- |
