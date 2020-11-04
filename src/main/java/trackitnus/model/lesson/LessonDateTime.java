@@ -4,11 +4,13 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
+import trackitnus.commons.util.AppUtil;
 import trackitnus.commons.util.CollectionUtil;
 
 
 public class LessonDateTime {
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("H:mm");
+    private static final String MESSAGE_CONSTRAINTS = "Starting time should be earlier than finishing time";
 
     private final DayOfWeek weekday;
     private final LocalTime startTime;
@@ -24,8 +26,13 @@ public class LessonDateTime {
     public LessonDateTime(DayOfWeek weekday, LocalTime startTime, LocalTime endTime) {
         CollectionUtil.requireAllNonNull(weekday, startTime, endTime);
         this.weekday = weekday;
+        AppUtil.checkArgument(isValidTime(startTime, endTime), MESSAGE_CONSTRAINTS + " " + startTime + " " + endTime);
         this.startTime = startTime;
         this.endTime = endTime;
+    }
+
+    private Boolean isValidTime(LocalTime startTime, LocalTime endTime) {
+        return startTime.compareTo(endTime) < 0;
     }
 
     public DayOfWeek getWeekday() {

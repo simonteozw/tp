@@ -38,9 +38,9 @@ public class EditLessonCommand extends Command {
         + "[" + PREFIX_DATE + "DATE] "
         + "[" + PREFIX_ADDRESS + "ADDRESS]\n"
         + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " 2 "
-        + PREFIX_CODE + "CS3233 "
-        + PREFIX_TYPE + "lecture "
-        + PREFIX_DATE + "Mon 17:45-21:00 "
+        + PREFIX_CODE + "CS1101S "
+        + PREFIX_TYPE + "Lab "
+        + PREFIX_DATE + "Fri 16:00-18:00 "
         + PREFIX_ADDRESS + "COM1-0215\n";
 
     private final Index index;

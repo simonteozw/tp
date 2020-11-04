@@ -78,40 +78,52 @@
   ],
   "tasks": [
     {
-      "name": "Prepare for v1.3 Demo",
-      "date": "01/11/2020",
+      "name": "Catch up on Pipelining webcast",
+      "date": "03/11/2020",
+      "code": "CS2100",
+      "remark": "focus on latency and data forwarding"
+    },
+    {
+      "name": "Prepare for v1.4 Demo",
+      "date": "05/11/2020",
       "code": "CS2103T",
       "remark": "Ensure app runs smoothly"
-    },
-    {
-      "name": "Work on the final report",
-      "date": "02/11/2020",
-      "code": "GER1000H",
-      "remark": "min 500 words"
-    },
-    {
-      "name": "Buy Mooncakes for Mum",
-      "date": "03/11/2020",
-      "code": null,
-      "remark": ""
-    },
-    {
-      "name": "Do this week's Mission",
-      "date": "03/11/2020",
-      "code": "CS1101S",
-      "remark": "Recursion"
-    },
-    {
-      "name": "Do Tutorial",
-      "date": "05/11/2020",
-      "code": "CS2100",
-      "remark": ""
     },
     {
       "name": "Study for Final Exam",
       "date": "05/11/2020",
       "code": "MA1101R",
       "remark": "Focus on Diagonalisation"
+    },
+    {
+      "name": "Work on the final report",
+      "date": "05/11/2020",
+      "code": "GER1000H",
+      "remark": "min 500 words"
+    },
+    {
+      "name": "Buy Mooncakes for Mum",
+      "date": "08/11/2020",
+      "code": null,
+      "remark": ""
+    },
+    {
+      "name": "Do this week's Mission",
+      "date": "08/11/2020",
+      "code": "CS1101S",
+      "remark": "Recursion"
+    },
+    {
+      "name": "Do Tutorial",
+      "date": "10/11/2020",
+      "code": "CS2100",
+      "remark": ""
+    },
+    {
+      "name": "Practical Exam on week 13",
+      "date": "10/11/2020",
+      "code": "CS2103T",
+      "remark": "remember to upgrade to the latest CATCHER"
     },
     {
       "name": "Code Project 2",
@@ -128,22 +140,46 @@
   ],
   "lessons": [
     {
+      "code": "CS2103T",
+      "type": "TUT",
+      "date": "Thu 14:00-15:00",
+      "address": "E-learning"
+    },
+    {
+      "code": "MA1101R",
+      "type": "LEC",
+      "date": "Thu 16:00-18:00",
+      "address": "LT27"
+    },
+    {
+      "code": "CS2030S",
+      "type": "LAB",
+      "date": "Fri 12:00-14:00",
+      "address": "E-learning"
+    },
+    {
+      "code": "GER1000H",
+      "type": "SEC",
+      "date": "Fri 14:00-16:00",
+      "address": "PGPH-FR4"
+    },
+    {
       "code": "CS2100",
       "type": "LAB",
       "date": "Mon 9:00-10:00",
       "address": "E-learning"
     },
     {
-      "code": "CS1101S",
-      "type": "TUT",
-      "date": "Mon 12:00-14:00",
-      "address": "COM1-0208"
-    },
-    {
       "code": "CS2030S",
       "type": "LEC",
-      "date": "Mon 12:00-14:00",
+      "date": "Mon 11:00-12:00",
       "address": "E-learning"
+    },
+    {
+      "code": "CS1101S",
+      "type": "TUT",
+      "date": "Mon 14:00-16:00",
+      "address": "COM1-0208"
     },
     {
       "code": "GER1000H",
@@ -158,52 +194,28 @@
       "address": "E-learning"
     },
     {
+      "code": "CS1101S",
+      "type": "LEC",
+      "date": "Wed 8:00-10:00",
+      "address": "TP-SR2"
+    },
+    {
+      "code": "MA1101R",
+      "type": "SEC",
+      "date": "Wed 10:00-11:00",
+      "address": "E-learning"
+    },
+    {
       "code": "CS2030S",
       "type": "REC",
       "date": "Wed 12:00-13:00",
       "address": "LT19"
     },
     {
-      "code": "MA1101R",
-      "type": "SEC",
-      "date": "Wed 12:00-13:00",
-      "address": "E-learning"
-    },
-    {
       "code": "CS2103T",
       "type": "LEC",
       "date": "Wed 14:00-16:00",
       "address": "E-learning"
-    },
-    {
-      "code": "CS2103T",
-      "type": "TUT",
-      "date": "Thu 14:00-15:00",
-      "address": "E-learning"
-    },
-    {
-      "code": "MA1101R",
-      "type": "LEC",
-      "date": "Thu 16:00-18:00",
-      "address": "LT27"
-    },
-    {
-      "code": "CS1101S",
-      "type": "LEC",
-      "date": "Fri 12:00-14:00",
-      "address": "TP-SR2"
-    },
-    {
-      "code": "CS2030S",
-      "type": "LAB",
-      "date": "Fri 12:00-14:00",
-      "address": "E-learning"
-    },
-    {
-      "code": "GER1000H",
-      "type": "SEC",
-      "date": "Fri 14:00-16:00",
-      "address": "PGPH-FR4"
     }
   ]
 }

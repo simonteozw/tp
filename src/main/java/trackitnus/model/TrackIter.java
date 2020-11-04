@@ -308,4 +308,14 @@ public class TrackIter implements ReadOnlyTrackIter {
     public void sortLesson() {
         lessons.sort(new LessonComparator());
     }
+
+    @Override
+    public String toString() {
+        return "TrackIter{" +
+            "contacts=" + contacts +
+            ", modules=" + modules +
+            ", tasks=" + tasks +
+            ", lessons=" + lessons +
+            '}';
+    }
 }
