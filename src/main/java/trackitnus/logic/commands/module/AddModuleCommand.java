@@ -22,6 +22,7 @@ public class AddModuleCommand extends Command {
         + "Example: " + Module.TYPE + " " + COMMAND_WORD + " "
         + PREFIX_CODE + "CS1231S "
         + PREFIX_NAME + "Discrete Structures";
+    private static final int NUM_MODULE_LIMIT = 10;
 
     private final Module toAdd;
 
@@ -39,6 +40,10 @@ public class AddModuleCommand extends Command {
 
         if (model.hasModule(toAdd)) {
             throw new CommandException(Messages.MESSAGE_DUPLICATE_MODULE);
+        }
+
+        if (model.getFilteredModuleList().size() + 1 > NUM_MODULE_LIMIT) {
+            throw new CommandException(Messages.MESSAGE_MODULE_LIMIT_REACHED);
         }
 
         model.addModule(toAdd);

@@ -29,10 +29,11 @@ public class AddressTest {
         // invalid addresses
         assertFalse(Address.isValidAddress("")); // empty string
         assertFalse(Address.isValidAddress(" ")); // spaces only
+        assertFalse(Address.isValidAddress("a553466543hgdgghfghfhg")); // > 20 characters
 
         // valid addresses
-        assertTrue(Address.isValidAddress("Blk 456, Den Road, #01-355"));
+        assertTrue(Address.isValidAddress("E-learning"));
         assertTrue(Address.isValidAddress("-")); // one character
-        assertTrue(Address.isValidAddress("Leng Inc; 1234 Market St; San Francisco CA 2349879; USA")); // long address
+        assertTrue(Address.isValidAddress("COM1-0203")); // long address
     }
 }

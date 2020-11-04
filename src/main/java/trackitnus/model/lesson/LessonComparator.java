@@ -13,8 +13,9 @@ public class LessonComparator implements Comparator<Lesson> {
     @Override
     public int compare(Lesson firstLesson, Lesson secondLesson) {
         int res = firstLesson.getTime().compareTo(secondLesson.getTime());
-        return res == 0
-            ? firstLesson.toString().compareTo(secondLesson.toString())
-            : res;
+        if (res != 0) {
+            return res;
+        }
+        return firstLesson.toString().compareTo(secondLesson.toString());
     }
 }
