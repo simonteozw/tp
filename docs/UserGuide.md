@@ -207,7 +207,7 @@ You can use this command to create a new Module (Or a new category of things to 
 Format: `M add m/MODULE_CODE n/NAME`
 
 Example: To add the Module CS1231 Discrete Structures into TrackIt@NUS, follow these instructions.
-| **Service** | |
+| **Parameter** | |
 | ------------|-|
 | `MODULE_CODE` | CS1231 |
 | `NAME` | Discrete Structures |

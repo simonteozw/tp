@@ -115,7 +115,6 @@ The sections below give more details of each component.
 
 
 ### **UI Component** <a name="ui"></a>
-(Contributed by Wei Hong)
 
 The Class Diagram below shows how the `UI` components and sections interact with one another.
 
@@ -135,11 +134,23 @@ The UI component,
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
 #### **Upcoming Tab** <a name="upcoming-tab"></a>
-(Contributed by Tiffany)
+
+The *Class Diagram* below shows how the components in the `Upcoming Tab` interact with each other.
+![UiUpcomingTabClassDiagram](images/UiUpcomingTabClassDiagram.png)
+
+:information_source: All the `ListPanels` and `Cards` inherit from the abstract `UiPart` class.
+
+The UI contains 4 types of `Tabs`:
+1. The `Upcoming Tab`
+2. `Module Tabs`
+3. The `Contacts Tab`
+4. The `Help Tab`
+
+Each of these tabs consists of one or more List Panels and its respective Card. In each List Panel, the `Graphics
+` component of each of the List Cells is defined by the respective Card.
+The `Contacts Tab` and `Help Tab` follow the same structure as the *Class Diagram* above.
 
 #### **Module Tab** <a name="module-tab"></a>
-
-(Contributed by Wei Hong)
 
 ![UiModuleTabClassDiagram.png](images/UiModuleTabClassDiagram.png)
 
