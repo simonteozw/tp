@@ -91,7 +91,7 @@ The rest of the App consists of four components.
 Each of the four components,
 
 * defines its *API* in an `interface` with the same name as the Component.
-* exposes its functionality using a concrete `{Component Name}Manager` class (which implements the corresponding API `interface` mentioned in the previous point.
+* exposes its functionality using a concrete `{COMPONENT_NAME}Manager` class (which implements the corresponding API `interface` mentioned in the previous point.
 
 For example, the `Logic` component (see the class diagram given below) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
 
@@ -105,7 +105,7 @@ The *Sequence Diagram* below shows how the components interact with each other f
 <img src="images/ArchitectureDeleteTaskSequenceDiagram.png" width="587" />
 
 Another *Sequence Diagram* below shows how the components interact with each other for the scenario where the user
- click on a module tab.
+ clicks on a module tab.
 
 <img src="images/ArchitectureModuleTabSequenceDiagram.png" width="686" />
 
@@ -131,8 +131,8 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 ![Interactions Inside the Logic Component for the `delete 1` Command](images/LogicDeleteTaskSequenceDiagram.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteTaskCommandParser
-` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+<div markdown="span" class="alert alert-info">:information_source: The lifeline for `DeleteTaskCommandParser
+` should end at the destroy marker (X) but due to a limitation in PlantUML, the lifeline continues to the end of the diagram
 </div>
 
 ### **Model Component** <a name="model"></a>
