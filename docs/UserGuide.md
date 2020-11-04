@@ -8,7 +8,8 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 3. [About](#about)
     1. [Common Symbols](#common-symbols)
     2. [Command Format](#command-format)
-    3. [Commands and their Purposes](#command-purpose)
+    3. [Common Parameters](#common-parameters)
+    4. [Duplicate Parameters](#duplicate-parameters)
 4. [Layout](#layout)
     1. [Upcoming Tab](#upcomingtab)
     2. [Contacts Tab](#contactstab)
@@ -32,13 +33,14 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Introduction <a name="introduction"></a>
+## 1. Introduction <a name="introduction"></a>
 
 Welcome to the **TrackIt@NUS** user-guide!
 
-Do you want to balance schoolwork and having a social life, but dislike having to use 3 different
- apps to keep track of everything? Then look no further! TrackIt@NUS is a one-stop solution for busy students like you
-  and I.
+Do you struggle having to use multiple apps to balance your school life? Do you waste precious time just trying
+ to find the information you need in the many apps you use? Well, look no further. Our application, TrackIt@NUS is an
+  all-in-one solution for a busy student like you to manage and organize your life, helping you to **Track Less, and
+   Live More.**
 
 TrackIt@NUS is a desktop app for managing modules, lessons, tasks, and contacts, tailored to the needs of NUS students and
   optimized for use via a [**Command Line Interface (CLI)**](#glossary) while still having the benefits of a
@@ -47,66 +49,82 @@ TrackIt@NUS is a desktop app for managing modules, lessons, tasks, and contacts,
 
 What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) to learn more!
 
-## Quick start <a name="quick-start"></a>
+## 2. Quick Start <a name="quick-start"></a>
 
-1. Ensure you have **Java 11** or above on your Computer.
+1. Ensure you have **Java 11** or above on your Computer. You may install it [here](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html).
 
 1. Download the latest version of TrackIt@NUS from [here](https://github.com/AY2021S1-CS2103T-W13-4/tp/releases).
 
 1. Copy the file to the folder you want to use as the home folder for TrackIt@NUS.
 
-1. Double-click the file to start the app. The GUI shown below should appear in a few seconds.
+1. Double-click the file to start the app. A GUI similar to Figure 1 shown below should appear in a few seconds. You
+ are now on the main page of TrackIt@NUS.
+Note how the app contains some sample data. <br><br>
 
 ![Ui](images/Ui.png)
+_Figure 1 - GUI of TrackIt@NUS_
 
-You are now on the home page of TrackIt@NUS.
+At the bottom of the screen, type your command in the Command Box and press `Enter` on your keyboard to execute it
+. Try typing `help` and pressing `Enter` to navigate to the Help Tab!<br>
+ 
+For details on the commands you can use, please refer to [Section 5 - Features](#features).
 
-At the bottom of the screen, type your command in the Command Box (see [Features](#features) for more info) and
- press `Enter` on your keyboard to execute it.
-
-## About <a name="about"></a>
+## 3. About <a name="about"></a>
 
 There are many things you can use TrackIt@NUS for. We have structured this document so it is easy for you to find
  what you need. In the [Common Symbols](#common-symbols), [Command Format](#command-format), and [Commands and their
   Purposes](#command-purpose) sections, you will find useful tips on reading this document. It is
   then followed by the [Features](#features) section, where the main features of TrackIt@NUS are documented.
 
-### Common Symbols <a name="common-symbols"></a>
+### 3.1 Common Symbols <a name="common-symbols"></a>
 
 | Symbol | Description |
 | --- | ----------- |
-| :information_source: | Something important to take note of |
-| :bulb: | A tip is being mentioned |
-| :warning: | Something to be careful of |
+| :information_source: | This symbol indicates that something important to take note of. |
+| :bulb: | This symbol indicates that a tip is being mentioned. |
+| :warning: | This symbol indicates something to be careful of. |
 
-### Command Format <a name="command-format"></a>
+### 3.2 Command Format <a name="command-format"></a>
+
+This section shows you how all the commands in this guide have been formatted.
 
 | **Format** | **Meaning** | **Example** |
 | ----- | -------- | -------------- |
-| `lower_case/` | These are **prefixes** and are used to separate the different parameters of a command | `n/`, `d/`, `t/` |
-| `UPPER_CASE` | These are **parameters** and need to be supplied to complete certain commands | `C add n/John ...` |
-| `[UPPER_CASE]` |  These are **optional parameters** | `C add n/John ...` or `C add n/John t/Friend ...` both work |
-| `…`​ | These are parameters that can be used **multiple times** or **none at all** | `C add n/John t/Brother t/Colleague t/Friend ...` |
+| `lower_case/`<br><br>A lower case letter, followed by a forward slash | These are **prefixes**.<br><br>They are used to separate the different parameters of a command. | `n/`, `d/`, `t/`<br><br>Note that prefixes **cannot have spaces**: `n /` is **not** a prefix, and will not be recognized. |
+| `UPPER_CASE`<br><br>Words in upper case | These are **parameters**.<br><br>They need to be supplied to complete certain commands | To create a new **contact** with the name **John**, we use the `add contact` command.<br><br>Suppose the `add contact` command looks like this: `C add n/NAME`<br><br>Simply replace `NAME` with `John` to create John's contact: `C add n/John` |
+| `[UPPER_CASE]`<br><br>Words in upper case, surrounded by square brackets |  These are **optional parameters** and need not be included for some commands.| Suppose a command contains two parameters: `n/NAME [t/TAG]`<br><br>The **first parameter** `NAME` is **compulsory**.<br>The **second parameter** `TAG` is **optional**.<br><br>Since a `TAG` is optional, both of these commands are valid:<br><br><ul><li>`C add n/John`</li><li>`C add n/John t/Friend`</li></ul>|
+| `UPPER_CASE…`<br><br>`[UPPER_CASE]...`<br><br>An ellipsis `...` following any words in upper case | These are parameters that can be used **multiple times** or **none at all**. | The following parameter can be used **multiple times**: `t/TAG...`<br><br>This means that it can be: <ul><li>**Left empty**</li><li>**Used one time**: `t/friend`</li><li>**Used multiple times: `t/friend t/groupmate`</li></ul> |
 
 :information_source: Parameters can be in any order. e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+ 
+### 3.3 Common Parameters <a name="common-parameters"></a>
+This section lists and explains what the parameters commonly used in the commands mean.
 
-:warning: **Except** for parameters that can be used multiple times, we will only register the last shown instance of
- all other parameters (i.e. `C add n/Jon n/Tim n/James ...` will add a contact with the name James).
+| **Parameter** | **Explanation** | **Examples** |
+| ------------- | -------------- | ------------|
+| `INDEX` | Indicates the position of an item in a list. The specified `INDEX` must be **within the range** of the number of items in the list. | **1** - refers to the first item in a list |
+| `MODULE_CODE`| Refers to the unique code given to the module.<br><br>You can personalise this and give it your own code. However, we recommend you use the module’s official code. | **CS2103T** |
+| `NAME`| Depending on the command, this could either refer to a:<br><br><ul><li>**Module** name,</li><li>**Contact** name,</li><li>or **Task** name</li></ul> | <ul><li>**Software Engineering**</li><li>**John Doe**</li><li>**Assignment**</li></ul>|
+| `TYPE` | Refers to the type of lesson.| **lec** - lecture<br><br>**tut** - tutorial<br><br>**lab** - laboratory<br><br>**rec** - recitation<br><br>**sec** - sectional |
+| `DATE`<br><br>For Task commands | Indicates the date of a task deadline. Must be in `dd/mm/yyyy` format. | **01/01/2021** |
+| `DATE`<br><br>For Lesson commands | Indicates the weekly timing of a lesson. Must be in `ddd H:mm-H:mm` and 24-hour time format. | **mon 12:00-14:00** |
+| `ADDRESS` | Indicates where a lesson is held. | **COM1-0215** |
+| `REMARK` | Refers to any (optional) additional remarks for a task. | For a task `Assignment 1`, a possible remark could be `Focus on Chapters 1-3` |
+| `PHONE_NUMBER` | Refers to the phone number of a contact. Phone numbers can be of any length. | **999** |
+| `EMAIL` | Refers to the email address of a contact. Emails should be in the format `local-part@domain`.<br><br>The `local-part` can only contain:<ul><li>Alphanumeric characters, and</li><li>The following special characters:<br>`!#$%&'*+-/=?^_{}~`</li></ul><br><br>The `domain` can only contain:<br><ul><li>At least 2 characters</li><li>Alphanumeric characters</li><li>The following special characters in between: dash `-`, and period `.`</li><li>Start and end must be alphanumeric characters</li></ul><br>|**johnDoe925@example.com**|
+| `TAG` | Tags are a way to group any number of contacts under a similar label. Tagging a contact with a `MODULE_CODE` will allow you to view the contact under the corresponding module tab. | `n/John Doe t/CS2103T t/groupmate` |
 
-### Commands and their Purposes <a name="command-purpose"></a>
-
-| **Command** | ** Purpose** |
-| -------- | --------- |
-| **Add** | Add a module/lesson/task/contact to TrackIt@NUS. Relevant parameters must be present |
-| **Edit** | Edit a module/lesson/task/contact. Relevant parameters must be present. All parameters that are not specified will **remain unchanged** |
-| **Delete** | Delete a module/lesson/task/contact. Relevant parameters must be present |
-
-:warning: For lessons, tasks, and contacts, the **Edit** and **Delete** commands requires user to input an `INDEX` to
- specify the lesson/task/contact they want to edit/delete. The specified `INDEX` must be **within the range** of indexes
-  seen in the **current window**.
+### 3.4 Duplicate Parameters <a name="duplicate-parameters"></a>
+You can specify the same parameter more than once in a command. Depending on the command, you will receive different
+ outcomes:
+ 
+ | **Parameter** | **Explanation** | **Example** |
+ | -------------| ---------------- | ----------- |
+ |Could be used multiple times| **All occurrences** will be used when executing the command|In the `add contact`command, you can create a contact with **multiple tags.**<br><br>You can input multiple tags by chaining them:<br>`t/CS1101S t/TA`<br><br>This will give a contact these tags.|
+ | Can only be used once | Only the **last occurrence** will be used when executing the command. | On executing `M add m/CS2103T n/Favourite Mod n/Software Engineering`, you will create a module with the name `Software Engineering`, and the name `SE` will be ignored. | 
 
 --------------------------------------------------------------------------------------------------------------------
-## Layout <a name="layout"></a>
+## 4. Layout <a name="layout"></a>
 
 This section gives you a brief overview of the layout of TrackIt@NUS.
 TrackIt@NUS is divided into three main types of tabs:
