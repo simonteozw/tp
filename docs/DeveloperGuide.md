@@ -10,7 +10,8 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     2. [UI Component](#ui)
     3. [Logic Component](#logic)
     4. [Model Component](#model)
-    5. [Common Classes](#common)
+    5. [Storage Component](#storage)
+    6. [Common Classes](#common)
 4. [**Implementation**](#implementation)
     1. [Module Manager](#module-manager)
     2. [Lesson Manager](#lesson-manager)
@@ -151,6 +152,16 @@ The `Model`,
     * `filteredContactList`, which contains all the `Contacts` in the TrackIt@NUS
 * These lists can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change
 * Does not depend on any of the other three components.
+
+### **Storage Component** <a name="storage"></a>
+
+![Structure of the Storage Component](images/StorageClassDiagram.png)
+
+**API** : [`Storage.java`](https://github.com/AY2021S1-CS2103T-W13-4/tp/blob/master/src/main/java/trackitnus/storage/Storage.java)
+
+The `Storage` component,
+* can save `UserPref` objects in json format and read it back.
+* can save the app's data in json format and read it back.
 
 ### **Common Classes** <a name="common"></a>
 
