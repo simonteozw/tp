@@ -162,6 +162,9 @@ Format: `M add m/MODULE_CODE n/NAME`
 
 Examples: `M add m/CS1231S n/Discrete Structures`
 
+Remark: Since the `MODULE_CODE` itself is not changable, please make sure that you have entered it correctly! In the
+ rare case that you somehow mistype the code, please delete the old module and add a new one!
+ 
 ### Edit
 Because modules are displayed on the sidebar, it doesn't come with index. That's why to edit & delete module, its
  code will be used! Let's see how the syntax of a module edit command:
@@ -171,7 +174,7 @@ Format: `M edit m/MODULE_CODE n/NAME`
 Examples: `M edit m/CS1231S n/Programming Methodology`
 
 Remark: The `MODULE_CODE` provided must be present in the Module list. After the command, the specified module will
- have a new name.
+ have a new name. The `MODULE_CODE` itself not changable!
 
 ### Delete
 And what if you realized you accidentally added in a wrong module, or have finished one? Just delete that module! The
