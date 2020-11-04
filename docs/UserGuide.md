@@ -62,7 +62,7 @@ What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) 
 Note how the app contains some sample data. <br><br>
 
 ![Ui](images/Ui.png)
-_Figure 1 - GUI of TrackIt@NUS_
+<br>_Figure 1 - GUI of TrackIt@NUS_
 
 At the bottom of the screen, type your command in the Command Box and press `Enter` on your keyboard to execute it
 . Try typing `help` and pressing `Enter` to navigate to the Help Tab!<br>
@@ -145,31 +145,39 @@ This is the main tab of the application, and is the default page when the app st
 3. The last section is labelled **Future**, and shows any **Tasks** that you may have added with a deadline falling after the date 7 days from today.
 
 ![UpcomingPanelUi](images/UpcomingPanelUi.png)
+<br>_Figure 2 - Example of Upcoming Tab_
 
 ### Contacts Tab <a name="contactstab"></a>
-The contacts tab shows you all the **contacts** you have within the app. It will show you information for each contact such as:
-* **NAME**: contact name
+The contacts tab shows you an overview of all the **contacts** you have within the app. 
 
-* **PHONE NUMBER**: contact's phone number
+![ContactsTab](images/ContactsTab.png)
+<br>_Figure 3 - Example of Contacts Tab_
 
-* **EMAIL**: contact's email
+It will show you information for each contact such as:
+* `NAME`: contact name
 
-* **TAG**: any additional information you have about the contact, such as which module they are associated with (e.g. CS1010S), or their role (e.g. friend, TA)
+* `PHONE NUMBER`: contact's phone number
+
+* `EMAIL`: contact's email
+
+* `TAG`: any additional information you have about the contact, such as which module they are associated with (e.g. CS1010S), or their role (e.g. friend, TA)
 
 ### Module Tabs <a name="moduletabs"></a>
-![ModuleTab](images/ModuleTab.png)
-
 Here under each module's tab you can find all relevant **Lessons**, **Tasks** and **Contacts** that are related to the
- module. Very convenient right? This information will be displayed in 3 sections:
+ module. 
  
-1. **Lessons**: Here you can find the info for all weekly lessons, including its time, locations/Zoom links so
- say goodbye to missing classes (intentional skip not included😉)
+ ![ModuleTab](images/ModuleTab.png)
+<br>_Figure 4 - Example of Module Tab_
 
-2. **Tasks**: All the tasks for the module that you haven't done, listed in **chronological** order so that you know
- what
- to prioritize! Tips: Don't leave tutorials or assignments until the last day, chances are you not gonna finish it.
+Very convenient right? This information will be displayed in 3 sections:
+ 
+1. `Lessons`: Here you can find the info for all weekly lessons, including its time and location so
+ say goodbye to missing your classes!
 
-3. **Contacts**: Having difficulties with your assignment? Need TA's emails to ask? Look no further, this section
+2. `Tasks`: All the tasks for the module that you haven't done, listed in **chronological** order so that you know
+ what to prioritize! Tips: Don't leave tutorials or assignments until the last day, chances are you not gonna finish it.
+
+3. `Contacts`: Having difficulties with your assignment? Need TA's emails to ask? Look no further, this section
  will list all contacts that are tagged with this module code! 
 
 --------------------------------------------------------------------------------------------------------------------
