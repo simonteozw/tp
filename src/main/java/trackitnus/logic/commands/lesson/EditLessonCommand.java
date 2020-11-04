@@ -24,7 +24,7 @@ import trackitnus.model.lesson.Lesson;
 import trackitnus.model.lesson.LessonDateTime;
 import trackitnus.model.lesson.Type;
 
-public class EditLessonCommand extends Command {
+public final class EditLessonCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
@@ -129,7 +129,7 @@ public class EditLessonCommand extends Command {
      * Stores the details to edit the contact with. Each non-empty field value will replace the
      * corresponding field value of the contact.
      */
-    public static class EditLessonDescriptor {
+    public static final class EditLessonDescriptor {
         private Code code;
         private Type type;
         private LessonDateTime date;

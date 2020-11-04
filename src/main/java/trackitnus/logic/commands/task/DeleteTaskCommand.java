@@ -12,7 +12,7 @@ import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.Model;
 import trackitnus.model.task.Task;
 
-public class DeleteTaskCommand extends Command {
+public final class DeleteTaskCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 

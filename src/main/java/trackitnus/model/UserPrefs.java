@@ -11,7 +11,7 @@ import trackitnus.commons.core.GuiSettings;
 /**
  * Represents User's preferences.
  */
-public class UserPrefs implements ReadOnlyUserPrefs {
+public final class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
     private Path trackIterFilePath = Paths.get("data", "trackIter.json");

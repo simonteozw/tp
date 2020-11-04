@@ -11,7 +11,7 @@ import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.Model;
 import trackitnus.model.module.Module;
 
-public class AddModuleCommand extends Command {
+public final class AddModuleCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
     public static final String MESSAGE_USAGE = Module.TYPE + " " + COMMAND_WORD
