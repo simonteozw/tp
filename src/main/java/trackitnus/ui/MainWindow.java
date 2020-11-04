@@ -238,12 +238,12 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
-            if (commandResult.isShowHelp()) {
-                switchTab(new ArrayList<>(Arrays.asList((Object) "H")));
-            }
-
             if (commandResult.deleteModule().equals(moduleTabInContext)) {
                 switchTab(new ArrayList<>(Arrays.asList((Object) "U")));
+            }
+
+            if (commandResult.isShowHelp()) {
+                switchTab(new ArrayList<>(Arrays.asList((Object) "H")));
             }
 
             return commandResult;
