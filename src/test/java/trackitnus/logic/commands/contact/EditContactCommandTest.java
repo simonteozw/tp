@@ -67,20 +67,15 @@ public class EditContactCommandTest {
     }
 
     @Test
-    public void execute_noFieldSpecifiedUnfilteredList_success() {
+    public void execute_noFieldSpecifiedUnfilteredList_failure() {
         EditContactCommand editContactCommand = new EditContactCommand(TypicalIndexes.INDEX_FIRST,
             new EditContactCommand.EditContactDescriptor());
-        Contact editedContact = model.getFilteredContactList().get(TypicalIndexes.INDEX_FIRST.getZeroBased());
 
-        String expectedMessage = String.format(Messages.MESSAGE_EDIT_CONTACT_SUCCESS, editedContact);
-
-        Model expectedModel = new ModelManager(new TrackIter(model.getTrackIter()), new UserPrefs());
-
-        assertCommandSuccess(editContactCommand, model, expectedMessage, expectedModel);
+        assertCommandFailure(editContactCommand, model, Messages.MESSAGE_NOT_EDITED);
     }
 
     @Test
-    public void execute_filteredList_success() {
+    public void execute_filteredList_failure() {
         ContactCommandTestUtil.showContactAtIndex(model, TypicalIndexes.INDEX_FIRST);
 
         Contact contactInFilteredList =
@@ -90,13 +85,11 @@ public class EditContactCommandTest {
         EditContactCommand editContactCommand = new EditContactCommand(TypicalIndexes.INDEX_FIRST,
             new EditContactDescriptorBuilder().withPhone("98989898").build());
 
-        String expectedMessage = String.format(Messages.MESSAGE_EDIT_CONTACT_SUCCESS, editedContact);
-
         Model expectedModel = new ModelManager(new TrackIter(model.getTrackIter()), new UserPrefs());
         expectedModel.setContact(model.getFilteredContactList().get(0), editedContact);
         ContactCommandTestUtil.showContactAtIndex(expectedModel, TypicalIndexes.INDEX_FIRST);
 
-        assertCommandSuccess(editContactCommand, model, expectedMessage, expectedModel);
+        assertCommandFailure(editContactCommand, model, Messages.MESSAGE_CONTACT_UNCHANGED);
     }
 
     @Test

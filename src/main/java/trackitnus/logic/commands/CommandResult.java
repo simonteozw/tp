@@ -22,12 +22,18 @@ public class CommandResult {
     private final boolean exit;
 
     /**
+     * Checks if user is deleting a module
+     */
+    private final String deleteModule;
+
+    /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, String deleteModule) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
+        this.deleteModule = deleteModule;
     }
 
     /**
@@ -35,7 +41,11 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false);
+        this(feedbackToUser, false, false, "");
+    }
+
+    public CommandResult(String feedbackToUser, String deleteModule) {
+        this(feedbackToUser, false, false, deleteModule);
     }
 
     public String getFeedbackToUser() {
@@ -48,6 +58,10 @@ public class CommandResult {
 
     public boolean isExit() {
         return exit;
+    }
+
+    public String deleteModule() {
+        return deleteModule;
     }
 
     @Override

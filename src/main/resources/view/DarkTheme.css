@@ -4,12 +4,12 @@
 }
 
 @font-face {
-    font-family: "PoppinsSemiBold";
+    font-family: "Poppins SemiBold";
     src: url("/fonts/Poppins-SemiBold.ttf");
 }
 
 @font-face {
-    font-family: "PoppinsBold";
+    font-family: "Poppins Bold";
     src: url("/fonts/Poppins-Bold.ttf");
 }
 
@@ -162,15 +162,21 @@
     -fx-text-fill: white;
 }
 
-.cell_big_label {
+.lesson-cell-label {
     -fx-font-family: "Poppins";
+    -fx-font-size: 13px;
+    -fx-text-fill: #010504;
+}
+
+.cell_big_label {
+    -fx-font-family: "Poppins SemiBold";
     -fx-font-size: 13px;
     -fx-text-fill: #010504;
 }
 
 .cell_small_label {
     -fx-font-family: "Poppins";
-    -fx-font-size: 11px;
+    -fx-font-size: 11.5px;
     -fx-text-fill: #010504;
 }
 

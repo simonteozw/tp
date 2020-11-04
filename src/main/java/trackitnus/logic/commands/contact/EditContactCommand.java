@@ -91,8 +91,16 @@ public class EditContactCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_CONTACT_DISPLAYED_INDEX);
         }
 
+        if (!editContactDescriptor.isAnyFieldEdited()) {
+            throw new CommandException(Messages.MESSAGE_NOT_EDITED);
+        }
+
         Contact contactToEdit = lastShownList.get(index.getZeroBased());
         Contact editedContact = createEditedContact(contactToEdit, editContactDescriptor);
+
+        if (contactToEdit.isSameContact(editedContact)) {
+            throw new CommandException(Messages.MESSAGE_CONTACT_UNCHANGED);
+        }
 
         if (!contactToEdit.isSameContact(editedContact) && model.hasContact(editedContact)) {
             throw new CommandException(MESSAGE_DUPLICATE_CONTACT);
