@@ -69,11 +69,11 @@ The ***Architecture Diagram*** given above explains the high-level design of the
 
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2021S1-CS2103T-W13-4/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 
 </div>
 
-**`Main`** has two classes called [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
+**`Main`** has two classes called [`Main`](https://github.com/AY2021S1-CS2103T-W13-4/tp/blob/master/src/main/java/trackitnus/Main.java) and [`MainApp`](https://github.com/AY2021S1-CS2103T-W13-4/tp/blob/master/src/main/java/trackitnus/MainApp.java). It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
@@ -115,7 +115,42 @@ The sections below give more details of each component.
 
 ### **Logic Component** <a name="logic"></a>
 
+![Structure of the Logic Component](images/LogicClassDiagram.png)
+
+**API** :
+[`Logic.java`](https://github.com/AY2021S1-CS2103T-W13-4/tp/blob/master/src/main/java/trackitnus/logic/Logic.java)
+
+1. `Logic` uses the `TrackIterParser` class to parse the user command.
+1. This results in a `Command` object which is executed by the `LogicManager`.
+1. The command execution can affect the `Model` (e.g. adding a person).
+1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
+1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions
+
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
+
+![Interactions Inside the Logic Component for the `delete 1` Command](images/LogicDeleteTaskSequenceDiagram.png)
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteTaskCommandParser
+` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</div>
+
 ### **Model Component** <a name="model"></a>
+
+![Structure of the Model Component](images/ModelClassDiagram.png)
+
+**API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-W13-4/tp/blob/master/src/main/java/trackitnus/model/Model.java)
+
+The `Model`,
+
+* stores a `UserPref` object that represents the user’s preferences.
+* stores the TrackIt@NUS data.
+* exposes 4 unmodifiable `ObservableList<>` objects:
+    * `filteredModuleList`, which contains all the `Modules` in the TrackIt@NUS
+    * `filteredLessonList`, which contains all the `Lessons` in the TrackIt@NUS
+    * `filteredTaskList`, which contains all the `Tasks` in the TrackIt@NUS
+    * `filteredContactList`, which contains all the `Contacts` in the TrackIt@NUS
+* These lists can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change
+* Does not depend on any of the other three components.
 
 ### **Common Classes** <a name="common"></a>
 

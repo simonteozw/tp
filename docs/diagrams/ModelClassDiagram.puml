@@ -1,56 +1,53 @@
 @startuml
 !include style.puml
-skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
 Package Model <<Rectangle>>{
-Interface ReadOnlyAddressBook <<Interface>>
+Interface ReadOnlyTrackIter <<Interface>>
 Interface Model <<Interface>>
 Interface ObservableList <<Interface>>
-Class AddressBook
-Class ReadOnlyAddressBook
+Class TrackIter
+Class ReadOnlyTrackIter
 Class Model
 Class ModelManager
 Class UserPrefs
 Class ReadOnlyUserPrefs
 
-Package Person {
-Class Person
-Class Address
-Class Email
-Class Name
-Class Phone
-Class UniquePersonList
+Package Module {
+Class UniqueModuleList
 }
 
-Package Tag {
-Class Tag
+Package Lesson {
+Class UniqueLessonList
 }
+
+Package Task {
+Class UniqueTaskList
+}
+
+Package Contact {
+Class UniqueContactList
+}
+
+
 }
 
 Class HiddenOutside #FFFFFF
 HiddenOutside ..> Model
 
-AddressBook .up.|> ReadOnlyAddressBook
+TrackIter .up.|> ReadOnlyTrackIter
 
 ModelManager .up.|> Model
 Model .right.> ObservableList
-ModelManager o--> "1" AddressBook
+
+ModelManager o--> "1" TrackIter
 ModelManager o-left-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 
-AddressBook *--> "1" UniquePersonList
-UniquePersonList o--> "*" Person
-Person *--> Name
-Person *--> Phone
-Person *--> Email
-Person *--> Address
-Person *--> "*" Tag
+TrackIter *--> "1" UniqueLessonList
+TrackIter *--> "1" UniqueModuleList
+TrackIter *--> "1" UniqueContactList
+TrackIter *--> "1" UniqueTaskList
 
-Name -[hidden]right-> Phone
-Phone -[hidden]right-> Address
-Address -[hidden]right-> Email
-
-ModelManager -->"1" Person : filtered list
 @enduml
