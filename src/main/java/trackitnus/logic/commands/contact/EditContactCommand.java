@@ -29,7 +29,7 @@ import trackitnus.model.tag.Tag;
 /**
  * Edits the details of an existing contact in the address book.
  */
-public class EditContactCommand extends Command {
+public final class EditContactCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
@@ -98,7 +98,7 @@ public class EditContactCommand extends Command {
         Contact contactToEdit = lastShownList.get(index.getZeroBased());
         Contact editedContact = createEditedContact(contactToEdit, editContactDescriptor);
 
-        if (contactToEdit.isSameContact(editedContact)) {
+        if (contactToEdit.equals(editedContact)) {
             throw new CommandException(Messages.MESSAGE_CONTACT_UNCHANGED);
         }
 
@@ -132,7 +132,7 @@ public class EditContactCommand extends Command {
      * Stores the details to edit the contact with. Each non-empty field value will replace the
      * corresponding field value of the contact.
      */
-    public static class EditContactDescriptor {
+    public static final class EditContactDescriptor {
         private Name name;
         private Phone phone;
         private Email email;

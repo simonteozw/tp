@@ -20,7 +20,7 @@ public class UpcomingSectionCard extends UiPart<Region> {
     private static final String FXML = "Upcoming/CalendarSectionCard.fxml";
 
     public final UpcomingSection section;
-    private final int taskRowHeight = 45;
+    private static final int TASK_ROW_HEIGHT = 45;
     private final Logic logic;
     private String title;
 
@@ -45,11 +45,10 @@ public class UpcomingSectionCard extends UiPart<Region> {
             sectionTitle.setStyle("-fx-text-fill: #D53636");
         }
         setUpTaskView(taskList);
-
     }
 
     private void setUpTaskView(ObservableList<Task> taskList) {
-        taskListView.prefHeightProperty().bind(Bindings.size(taskList).multiply(taskRowHeight).add(10));
+        taskListView.prefHeightProperty().bind(Bindings.size(taskList).multiply(TASK_ROW_HEIGHT).add(10));
         taskListView.setItems(taskList);
         taskListView.setCellFactory(listView -> new TaskListViewCell());
     }
@@ -60,7 +59,6 @@ public class UpcomingSectionCard extends UiPart<Region> {
         if (other == this) {
             return true;
         }
-
         // instanceof handles nulls
         if (!(other instanceof UpcomingSectionCard)) {
             return false;
@@ -69,6 +67,7 @@ public class UpcomingSectionCard extends UiPart<Region> {
         // state check
         UpcomingSectionCard card = (UpcomingSectionCard) other;
         return title.equals(card.title);
+
     }
 
     class TaskListViewCell extends ListCell<Task> {

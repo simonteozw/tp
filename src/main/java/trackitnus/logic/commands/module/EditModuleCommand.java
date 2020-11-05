@@ -17,7 +17,7 @@ import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 import trackitnus.model.module.Module;
 
-public class EditModuleCommand extends Command {
+public final class EditModuleCommand extends Command {
     public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = Module.TYPE + " " + COMMAND_WORD
@@ -70,7 +70,7 @@ public class EditModuleCommand extends Command {
 
         Module editedModule = createEditedModule(moduleToEdit.get(), editModuleDescriptor);
 
-        if (moduleToEdit.get().isSameModule(editedModule)) {
+        if (moduleToEdit.get().equals(editedModule)) {
             throw new CommandException(Messages.MESSAGE_MODULE_UNCHANGED);
         }
 
@@ -112,7 +112,7 @@ public class EditModuleCommand extends Command {
      * Stores the details to edit the module with. Each non-empty field value will replace the
      * corresponding field value of the module.
      */
-    public static class EditModuleDescriptor {
+    public static final class EditModuleDescriptor {
 
         private Name name;
 

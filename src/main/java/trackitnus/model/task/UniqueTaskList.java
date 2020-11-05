@@ -139,4 +139,11 @@ public class UniqueTaskList implements Iterable<Task> {
     public void sort(TaskComparator taskComparator) {
         internalList.sort(taskComparator);
     }
+
+    @Override
+    public String toString() {
+        return "UniqueTaskList{" +
+            "internalList=" + internalList +
+            '}';
+    }
 }

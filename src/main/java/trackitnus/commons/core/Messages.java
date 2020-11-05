@@ -49,4 +49,5 @@ public class Messages {
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
 
     public static final String MESSAGE_EXIT_ACKNOWLEDGEMENT = "Exiting the app as requested ...";
+    public static final String MESSAGE_MODULE_LIMIT_REACHED = "It's not allowed to have more than 10 modules";
 }

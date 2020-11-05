@@ -16,7 +16,7 @@ import trackitnus.model.contact.Contact;
 /**
  * Adds a contact to the address book.
  */
-public class AddContactCommand extends Command {
+public final class AddContactCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 

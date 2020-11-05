@@ -24,7 +24,7 @@ import trackitnus.model.lesson.Lesson;
 import trackitnus.model.lesson.LessonDateTime;
 import trackitnus.model.lesson.Type;
 
-public class EditLessonCommand extends Command {
+public final class EditLessonCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
@@ -38,9 +38,9 @@ public class EditLessonCommand extends Command {
         + "[" + PREFIX_DATE + "DATE] "
         + "[" + PREFIX_ADDRESS + "ADDRESS]\n"
         + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " 2 "
-        + PREFIX_CODE + "CS3233 "
-        + PREFIX_TYPE + "lecture "
-        + PREFIX_DATE + "Mon 17:45-21:00 "
+        + PREFIX_CODE + "CS1101S "
+        + PREFIX_TYPE + "Lab "
+        + PREFIX_DATE + "Fri 16:00-18:00 "
         + PREFIX_ADDRESS + "COM1-0215\n";
 
     private final Index index;
@@ -91,7 +91,7 @@ public class EditLessonCommand extends Command {
         Lesson lessonToEdit = lastShownList.get(index.getZeroBased());
         Lesson editedLesson = createEditedLesson(lessonToEdit, editLessonDescriptor);
 
-        if (lessonToEdit.isSameLesson(editedLesson)) {
+        if (lessonToEdit.equals(editedLesson)) {
             throw new CommandException(Messages.MESSAGE_LESSON_UNCHANGED);
         }
 
@@ -129,7 +129,7 @@ public class EditLessonCommand extends Command {
      * Stores the details to edit the contact with. Each non-empty field value will replace the
      * corresponding field value of the contact.
      */
-    public static class EditLessonDescriptor {
+    public static final class EditLessonDescriptor {
         private Code code;
         private Type type;
         private LessonDateTime date;

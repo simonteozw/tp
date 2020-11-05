@@ -139,4 +139,11 @@ public class UniqueLessonList implements Iterable<Lesson> {
     public void sort(LessonComparator lessonComparator) {
         internalList.sort(lessonComparator);
     }
+
+    @Override
+    public String toString() {
+        return "UniqueLessonList{" +
+            "internalList=" + internalList +
+            '}';
+    }
 }

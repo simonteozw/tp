@@ -135,4 +135,11 @@ public class UniqueContactList implements Iterable<Contact> {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "UniqueContactList{" +
+            "internalList=" + internalList +
+            '}';
+    }
 }

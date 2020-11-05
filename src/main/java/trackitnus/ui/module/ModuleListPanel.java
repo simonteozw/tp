@@ -32,8 +32,7 @@ public class ModuleListPanel extends UiPart<Region> {
     }
 
     public Button getModuleButton(Module module) {
-        Button button = new Button(module.getCode().code);
-        return button;
+        return new Button(module.getCode().code);
     }
 
     /**

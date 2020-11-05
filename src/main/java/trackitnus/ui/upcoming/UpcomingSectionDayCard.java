@@ -26,8 +26,8 @@ public class UpcomingSectionDayCard extends UiPart<Region> {
     private static final String FXML = "Upcoming/DayCard.fxml";
 
     public final UpcomingSection section;
-    private final int lessonRowHeight = 30;
-    private final int taskRowHeight = 45;
+    private static final int LESSON_ROW_HEIGHT = 30;
+    private static final int TASK_ROW_HEIGHT = 45;
     private final Logic logic;
 
     @FXML
@@ -68,14 +68,14 @@ public class UpcomingSectionDayCard extends UiPart<Region> {
         if (lessonList.isEmpty()) {
             lessonListView.prefHeightProperty().setValue(0);
         } else {
-            lessonListView.prefHeightProperty().bind(Bindings.size(lessonList).multiply(lessonRowHeight).add(10));
+            lessonListView.prefHeightProperty().bind(Bindings.size(lessonList).multiply(LESSON_ROW_HEIGHT).add(10));
         }
         lessonListView.setItems(lessonList);
         lessonListView.setCellFactory(listView -> new LessonListViewCell());
     }
 
     private void setUpTaskView(ObservableList<Task> taskList) {
-        taskListView.prefHeightProperty().bind(Bindings.size(taskList).multiply(taskRowHeight).add(35));
+        taskListView.prefHeightProperty().bind(Bindings.size(taskList).multiply(TASK_ROW_HEIGHT).add(35));
         taskListView.setItems(taskList);
         taskListView.setCellFactory(listView -> new TaskListViewCell());
     }

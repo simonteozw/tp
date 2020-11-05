@@ -14,7 +14,7 @@ import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.Model;
 import trackitnus.model.lesson.Lesson;
 
-public class AddLessonCommand extends Command {
+public final class AddLessonCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
@@ -26,10 +26,10 @@ public class AddLessonCommand extends Command {
         + PREFIX_DATE + "DATE "
         + PREFIX_ADDRESS + "ADDRESS\n"
         + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
-        + PREFIX_CODE + "CS3233 "
-        + PREFIX_TYPE + "lecture "
-        + PREFIX_DATE + "Wed 17:45-21:00 "
-        + PREFIX_ADDRESS + "COM1-PL2\n";
+        + PREFIX_CODE + "CS1101S "
+        + PREFIX_TYPE + "Lab "
+        + PREFIX_DATE + "Fri 16:00-18:00 "
+        + PREFIX_ADDRESS + "COM1-0215\n";
 
     private final Lesson toAdd;
 

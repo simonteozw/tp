@@ -15,7 +15,7 @@ import trackitnus.model.contact.Contact;
 /**
  * Deletes a contact identified using it's displayed index from the address book.
  */
-public class DeleteContactCommand extends Command {
+public final class DeleteContactCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 
