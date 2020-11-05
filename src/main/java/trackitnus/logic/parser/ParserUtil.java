@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.Set;
 
@@ -235,7 +236,7 @@ public class ParserUtil {
      */
     public static Type parseType(String type) throws ParseException {
         requireNonNull(type);
-        String rawType = type.trim().toLowerCase();
+        String rawType = type.trim().toLowerCase(Locale.ENGLISH);
         switch (rawType) {
         case "lecture":
         case "lec":
@@ -265,7 +266,7 @@ public class ParserUtil {
      */
     private static DayOfWeek parseLessonWeekday(String weekday) throws ParseException {
         requireNonNull(weekday);
-        String raw = weekday.trim().toLowerCase();
+        String raw = weekday.trim().toLowerCase(Locale.ENGLISH);
         switch (raw) {
         case "sun":
             return DayOfWeek.Sun;

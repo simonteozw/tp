@@ -23,7 +23,7 @@ import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 import trackitnus.model.task.Task;
 
-public class EditTaskCommand extends Command {
+public final class EditTaskCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
@@ -127,7 +127,7 @@ public class EditTaskCommand extends Command {
      * Stores the details to edit the task with. Each non-empty field value will replace the
      * corresponding field value of the task.
      */
-    public static class EditTaskDescriptor {
+    public static final class EditTaskDescriptor {
         private Name name;
         private LocalDate date;
         private Code code;

@@ -14,7 +14,7 @@ import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.Model;
 import trackitnus.model.lesson.Lesson;
 
-public class AddLessonCommand extends Command {
+public final class AddLessonCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
