@@ -169,10 +169,6 @@ public class SidePanel extends UiPart<Region> {
                     moduleSection.getChildren().add(moduleCircle);
                     moduleSection.getChildren().add(updatedButton);
                     setGraphic(moduleSection);
-                    ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList(Module.TYPE,
-                        module));
-//                tabConsumer.accept(upcomingValues);
-//                updateButtonDetails(updatedButton);
 
                 } catch (CommandException e) {
                     e.printStackTrace();

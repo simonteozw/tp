@@ -18,11 +18,14 @@ import trackitnus.model.module.Module;
 import trackitnus.model.task.Task;
 import trackitnus.ui.UiPart;
 
-public class DayCard extends UiPart<Region> {
+/**
+ * A UI component that displays information of a {@code UpcomingSection} but in a calendar format
+ */
+public class UpcomingSectionDayCard extends UiPart<Region> {
 
     private static final String FXML = "Upcoming/DayCard.fxml";
 
-    public final Day day;
+    public final UpcomingSection section;
     private final int lessonRowHeight = 30;
     private final int taskRowHeight = 45;
     private final Logic logic;
@@ -37,19 +40,20 @@ public class DayCard extends UiPart<Region> {
     private Label date;
 
     /**
-     * Constructor for DayCard
+     * Constructor for UpcomingSectionDayCard
      *
-     * @param day
+     * @param section a section in the calendar
      */
-    public DayCard(Day day, ObservableList<Task> taskList, ObservableList<Lesson> lessonList, Logic logic) {
+    public UpcomingSectionDayCard(UpcomingSection section, ObservableList<Task> taskList,
+                                  ObservableList<Lesson> lessonList, Logic logic) {
         super(FXML);
-        this.day = day;
+        this.section = section;
         this.logic = logic;
 
-        if (day.getDate().equals(LocalDate.now())) {
-            date.setText("Today - " + day.getSectionHeader());
+        if (section.getDate().equals(LocalDate.now())) {
+            date.setText("Today - " + section.getTitle());
         } else {
-            date.setText(day.getSectionHeader());
+            date.setText(section.getTitle());
         }
 
         if (lessonList.isEmpty()) {
@@ -84,12 +88,12 @@ public class DayCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof DayCard)) {
+        if (!(other instanceof UpcomingSectionDayCard)) {
             return false;
         }
 
         // state check
-        DayCard card = (DayCard) other;
+        UpcomingSectionDayCard card = (UpcomingSectionDayCard) other;
         return date.getText().equals(card.date.getText());
     }
 
