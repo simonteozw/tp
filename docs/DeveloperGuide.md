@@ -247,8 +247,8 @@ This section describes some noteworthy details on how certain features are imple
 ### **Overview** <a name="overview"></a>
 
 #### **Code Design Considerations** <a name="code-des-cons"></a>
-
-All commands in TrackIt@NUS follow a similar execution flow.
+----
+**All commands in TrackIt@NUS follow a similar execution flow.**
 
 ![Command Activity Diagram](images/CommandActivityDiagram.png)
 
@@ -270,10 +270,127 @@ Another design challenge was how to manage our predicates. TrackIt@NUS makes use
 | ---- | ----- | ------- |
 | **Option 1 (current choice):** Extract each the predicates into their own unique class | Increases code maintainability and testability. Now as a developer you exactly where to find each predicate. Makes use of the DRY principle and improves abstraction because you no longer need to interact with the actual lambda or test function, simply call the predicate. | Makes code more verbose as each predicate can simply be declared using a single lambda. |
 | **Option2:** Declare each predicate using a single lambda in the ModelManager class. No predicate will have a class. | Makes code shorter and simpler to read. No need to create a class when you can simply declare a predicate with a lambda. | Need to duplicate such code when using ModelStubs for testing. This will violate the DRY principle. |
+----
+**All classes of Logic & Model at the same level will have similar structures**
 
+To elaborate on this, we will first take an example on some lowest-level classes of the codebase. They include `Email`, `Address`, `Code`, `Name` ....
+
+All of these classes share a similar structure as 2 classes `Address` and `Code` as below:
+![CodeAndAddressClassDiagram](images/CodeAndAddressClassDiagram.png)
+
+Furthermore, all Add/Edit/Delete commands will share very similar structure, below is the example of AddCommand, EditCommand & DeleteCommand, 
+![AddEditDeleteCommandClassDiagrams](images/AddEditDeleteCommandClassDiagram.png)
+
+The same principle applies to all CommandParser classes.
+
+This will bring several benefits:
+* If a bug is found, we can quickly check same-level classes(that have the similar structure) for the existence of the bug since it's quite likely to contain the same bug
+* If any fix/improvement is applied to a class, we can quickly apply the same fix/improvement to other same-level classes
+* Improve maintainability of the project. Since the back-end was developed in parallel, each developer was assigned to code at least one "part" of the back-end 
+(for example, one can be assigned to write all Module-related classes, subclasses, commands and command-parsers). Yet, due to the similarity in structure 
+of classes of the same level, it's very easy for a developer to maintain others' codes.
+
+A possible drawback of this uniform design is that it may not be the most appropriate design for each class, but for this project we believe this drawback doesn't apply.
+----
+
+----
+**Other code design rules applied**
+* A function/method should only do what it's expected to do (which should be inferable from its name), and in no ways should it surprise the caller.
+
+----
 #### **Feature Design Considerations** <a name="feat-des-cons"></a>
 
 ### **Module Manager** <a name="module-manager"></a>
+
+TrackIt@NUS allows users to keep track of all modules that he/she is taking. Module (or more exactly module's code) is
+ the link between Lesson, Task and Contact. The following diagram illustates their relationship:
+ 
+![Module link](images/ModuleLink.png)
+     
+ :information_source: The module code needs to begin with 2-3 captial letters, then exactly 4 digits, then follows by
+  an optional captial letter. The module name must not be empty and doesn't contain character "/"
+      
+ :information_source: modules are allowed to have the same name, as long as they have different codes
+ 
+ :bulb: Since there is no index being shown for a module, the module can be edited/deleted only by its code. 
+ For example: 
+ * `M edit m/CS2030 n/Edited name` to change the name of CS2030 to "Edited name"
+ * `M delete m/CS2030` to delete the CS2030 module
+ 
+ #### Current Implementation
+ 
+ In this section, we will outline the key commands for Modules, namely:
+ * `AddModuleCommand`
+ * `DeleteModuleCommand`
+ * `EditModuleCommand`
+ 
+ Generally, this is how the Module Manager handles a command.
+  
+  ![Add Module](images/AddModuleActivityDiagram.png)
+  
+ The add, delete, and edit commands are all implemented in similar ways. When they are executed they will:
+  * call on the relevant Model methods
+  * update the `UniqueModuleList` depending on the command
+  * Save the updated module list to `data/trackIter.json`
+  * return the relevant CommandResult message
+  
+ When `AddModuleCommand` is executed, it will first call the model's `hasModule` method to ensure that the module does not
+  yet exist in the app. Following this, if the module is added with a non-null module code, it will call the model's
+   `hasModule` method to ensure that the specified module exists. If both these checks pass, `AddModuleCommand` will
+    call the model's `addModule` method.
+    
+ The model will then call the `addModule` method of TrackIter, which calls the `add` method of UniqueModuleList and adds
+  the module to the app.
+ 
+ The following shows the sequence diagram of the `AddModuleCommand`.
+ 
+ ![Add Module Sequence Diagram](images/AddModuleSequenceDiagram.png)
+ 
+ When the `DeleteModuleCommand` is executed, it will first call the model's `getFilteredModuleList` method to
+  determine the last shown list of modules. Then, it will call the index's `getZeroBased` method to find the
+  zero-based index of the module it must delete. Then, it will check if this index is within range. If it is, it
+  calls the model's `deleteModule` method.
+  
+ The model will then call the `removeModule` method of TrackIter, which calls the `remove` method of UniqueModuleList and
+  deletes the module in question from the app.
+ 
+ The following shows the sequence diagram of the `DeleteModuleCommand`.
+ 
+ ![Delete Module Sequence Diagram](images/DeleteModuleSequenceDiagram.png)
+ 
+ When the `EditModuleCommand` is executed, it will first call the model's `getFilteredModuleList` method to determine the
+  last shown list of modules. Then, it will call the index's `getZeroBased` method to find the zero-basd index of the
+   module we must edit. It will then check if the index is within range. If it is, it calls the model's `setModule` method.
+   
+ The model will then call the `setModule` method of TrackIter, which calls the `setModule` method of UniqueModuleList and
+  replace the original module with the edited version in the app.
+ 
+ The follow shows the sequence diagram of the `EditModuleCommand`.
+ 
+ ![Edit Module Sequence Diagram](images/EditModuleSequenceDiagram.png)
+ 
+ The `getModuleModules` function takes in a Module Code and returns all modules that belong to the specified module.
+ . When `getModuleModules` is called, it uses the `ModuleHasCodePredicate` to update the module list in the app to only show
+  the modules that belong the specified module code.
+ 
+ This is the sequence diagram of `getModuleModules`.
+ 
+ ![Get Module Modules Sequence Diagram](images/GetModuleModulesSequenceDiagram.png)
+ 
+ #### Design Considerations
+ 
+ As mentioned, a module may or may not belong to a module. In the case it does not, we store the module code as
+  null. A module also may or may not have a remark. In the case it does not, we store the remark as the empty
+   string. These 2 optional fields made the `EditModuleCommand` more challenging to implement. We wanted the user to be
+    able to remove an existing module code or remark simply by typing `T edit INDEX m/` and `T edit INDEX r/` respectively.
+      
+ ![Edit Module Activity Diagram](images/EditModuleActivityDiagram.png)
+    
+ The original AB3 implementation of edit commands, which would default to the original field if the edited
+  field was null, would not be sufficient. Hence, we added 2 additional boolean variables - `isRemarkChanged` and
+   `isCodeChanged`, to know whether users wanted to remove the existing module code or remark.
+
+ 
 
 ### **Lesson Manager** <a name="lesson-manager"></a>
 
@@ -750,3 +867,13 @@ Given below are instructions to test the app manually.
     
 
 ## **Appendix G: Effort** <a name="appen-g"></a>
+
+The team has put in a tremendous amount of effort to this project, with a single simple principle in mind: create an app
+ that our targeted users will prefer over existing commercial apps, and do so while maintain a production-grade
+  codebase. In the following section, the effort will be further elaborated.
+  
+### App's functionality 
+
+When we first start the project, we were quite surprised that the app must be optimized for CLI, which is not a
+ common thing for most of the commercial apps nowadays
+ 
