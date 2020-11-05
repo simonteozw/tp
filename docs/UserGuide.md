@@ -60,7 +60,7 @@ What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) 
  are now on the main page of TrackIt@NUS.
 Note how the app contains some sample data. <br><br>
 
-![Ui](images/Ui.png)
+![Ui](images/UG/Ui.png)
 <br>_Figure 1 - GUI of TrackIt@NUS_
 
 At the bottom of the screen, type your command in the Command Box and press `Enter` on your keyboard to execute it
@@ -128,7 +128,7 @@ You can specify the same parameter more than once in a command. Depending on the
 
 This section gives you a brief overview of the layout of TrackIt@NUS.
 
-![Layout](images/Layout.png)
+![Layout](images/UG/Layout.png)
 _Figure 2 - Layout of TrackIt@NUS_
 
 TrackIt@NUS is divided into three main types of tabs:
@@ -148,13 +148,13 @@ This is the main tab of the application, and is the default page when the app st
 
 3. The last section is labelled **Future**, and shows any **Tasks** that you may have added with a deadline falling after the date 7 days from today.
 
-![UpcomingPanelUi](images/UpcomingPanelUi.png)
+![UpcomingPanelUi](images/UG/UpcomingPanelUi.png)
 <br>_Figure 3 - Example of Upcoming Tab_
 
 ### Contacts Tab <a name="contactstab"></a>
 The contacts tab shows you an overview of all the **contacts** you have within the app. 
 
-![ContactsTab](images/ContactsTab.png)
+![ContactsTab](images/UG/ContactsTab.png)
 <br>_Figure 4 - Example of Contacts Tab_
 
 It will show you information for each contact such as:
@@ -170,7 +170,7 @@ It will show you information for each contact such as:
 Here under each module's tab you can find all relevant **Lessons**, **Tasks** and **Contacts** that are related to the
  module. 
  
- ![ModuleTab](images/ModuleTab.png)
+ ![ModuleTab](images/UG/ModuleTab.png)
 <br>_Figure 5 - Example of Module Tab_
 
 Very convenient right? This information will be displayed in 3 sections:
@@ -216,7 +216,7 @@ Example: To add the Module CS1231 Discrete Structures into TrackIt@NUS, follow t
 2. Press `Enter` to execute.
 3. The Result Display will show the success message and you will see your new module in the side panel.
 
-![AddModuleOutcome](images/AddModuleOutcome.png)
+![AddModuleOutcome](images/UG/AddModuleOutcome.png)
 <br>_Figure 6 - Example outcome of adding a module_
 
 ### 5.1.3 Edit
@@ -252,7 +252,7 @@ To delete the module `CS2100`:
 2. Press `Enter` to execute
 3. The Result Display will show a success message and the module tab will be removed from the side panel.
 
-![DeleteModuleOutcome](images/DeleteModuleOutcome.png)
+![DeleteModuleOutcome](images/UG/DeleteModuleOutcome.png)
 <br>_Figure 8 - Example outcome of deleting a module_
 
 
@@ -266,12 +266,12 @@ make sure you won't miss any of those beloved (or dreaded) classes!
 To view all your lessons (classes) for the next week, 
 simply click on the upcoming tab as shown below.
 
-![Ui](images/UpcomingLessons.png)
+![Ui](images/UG/UpcomingLessons.png)
 
 This sorts all your lessons by date.
 To view the lessons of a specific module, click on any of the module tabs as shown below.
 
-![Ui](images/ModuleLessons.png)
+![Ui](images/UG/ModuleLessons.png)
 
 :information_source: As of v1.3, only weekly lessons are supported.
 Biweekly and monthly lessons may be added in subsequent versions.
@@ -344,11 +344,11 @@ The `INDEX` provided must be one of the lesson indexes shown in the current wind
 Managing all your tasks can be so stressful! TrackIt@NUS helps alleviate that stress with our built-in Task Manager
 ! To view all your tasks, simply click on the upcoming tab as shown below.
 
-![Upcoming](images/Upcoming.png)
+![Upcoming](images/UG/Upcoming.png)
 
 This sorts all your tasks by date. To view module-specific tasks, click on any of the module tabs as shown below.
 
-![ModuleTasks](images/ModuleTasks.png)
+![ModuleTasks](images/UG/ModuleTasks.png)
 
 :information_source: All module-specific tasks are shown in the upcoming tab, but not vice versa.
 
@@ -391,7 +391,7 @@ Format: `T edit INDEX [n/NAME] [d/DATE] [m/MODULE_CODE] [r/REMARK]`
 
 Examples:
 
-![EditTask](images/EditTask.png)
+![EditTask](images/UG/EditTask.png)
 
 * `T edit 2 n/Work on midterm report` changes the name of the Task
 * `T edit 2 r/min 1000 words` changes the remark of the Task
@@ -422,7 +422,7 @@ Don't you hate it when you need help for one of your modules but you just can't 
 
 Luckily for you, TrackIt@NUS allows you to tag your contacts with the modules you have in common, and lets you see those contacts all at once! Simply click on a module tab and you will find the list of contacts associated with that module, as you can see below.
 
-![ModuleTabContacts](images/ModuleTabContacts.png)
+![ModuleTabContacts](images/UG/ModuleTabContacts.png)
 
 To view all contacts from all modules, as well as any contacts that are not associated with any module, click on the **Contacts** tab in the side panel.
 
