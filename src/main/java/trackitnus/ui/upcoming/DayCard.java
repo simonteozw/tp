@@ -61,7 +61,11 @@ public class DayCard extends UiPart<Region> {
     }
 
     private void setUpLessonView(ObservableList<Lesson> lessonList) {
-        lessonListView.prefHeightProperty().bind(Bindings.size(lessonList).multiply(lessonRowHeight).add(10));
+        if (lessonList.isEmpty()) {
+            lessonListView.prefHeightProperty().setValue(0);
+        } else {
+            lessonListView.prefHeightProperty().bind(Bindings.size(lessonList).multiply(lessonRowHeight).add(10));
+        }
         lessonListView.setItems(lessonList);
         lessonListView.setCellFactory(listView -> new LessonListViewCell());
     }
