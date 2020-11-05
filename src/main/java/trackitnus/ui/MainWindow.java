@@ -38,7 +38,7 @@ public class MainWindow extends UiPart<Stage> {
 
     private final Stage primaryStage;
     private final Logic logic;
-    private String moduleTabInContext = "";
+    private String tabInContext = "";
 
     // Independent Ui parts residing in this Ui container
     private ModulePanel modulePanel;
@@ -166,30 +166,28 @@ public class MainWindow extends UiPart<Stage> {
         logger.info("Switching tab to: " + tabValues.get(0));
         tabPanelPlaceholder.getChildren().clear();
         String tabName = String.valueOf(tabValues.get(0));
+        tabInContext = tabName;
         logic.clearAllList();
 
         switch (tabName) {
         case UpcomingPanel.TYPE:
             tabPanelPlaceholder.getChildren().add(new UpcomingPanel(logic).getRoot());
-            moduleTabInContext = "";
             break;
         case Module.TYPE:
             assert (tabValues.size() == 2);
             Module tabModule = (Module) tabValues.get(1);
+            tabInContext = tabModule.getCode().toString();
             logger.info("Module: " + tabModule);
-            moduleTabInContext = tabModule.getCode().toString();
             modulePanel = new ModulePanel(tabModule, logic);
             tabPanelPlaceholder.getChildren().add(modulePanel.getRoot());
             break;
         case Contact.TYPE:
             contactPanel = new ContactPanel(logic.getAllContacts());
             tabPanelPlaceholder.getChildren().add(contactPanel.getRoot());
-            moduleTabInContext = "";
             break;
         case HelpPanel.TYPE:
             helpPanel = new HelpPanel();
             tabPanelPlaceholder.getChildren().add(helpPanel.getRoot());
-            moduleTabInContext = "";
             break;
         default:
             throw new IllegalArgumentException(Messages.MESSAGE_INVALID_TAB_VALUE);
@@ -238,7 +236,7 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
-            if (commandResult.getIsDeleteModule().equals(moduleTabInContext)) {
+            if (commandResult.getIsDeleteModule().equals(tabInContext)) {
                 switchTab(new ArrayList<>(Arrays.asList((Object) "U")));
             }
 
