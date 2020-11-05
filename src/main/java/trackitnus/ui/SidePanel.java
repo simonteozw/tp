@@ -46,7 +46,7 @@ public class SidePanel extends UiPart<Region> {
     /**
      * Constructor for SidePanel
      *
-     * @param tabConsumer
+     * @param tabConsumer carries values to MainWindow
      */
     public SidePanel(Consumer<ArrayList<Object>> tabConsumer, Logic logic) {
         super(FXML);
@@ -115,7 +115,7 @@ public class SidePanel extends UiPart<Region> {
      *
      * @return HBox The module section.
      */
-    public HBox getModuleSection() throws CommandException {
+    public HBox getModuleSection() {
         HBox moduleSection = new HBox();
         moduleSection.setAlignment(Pos.CENTER_LEFT);
         moduleSection.setPadding(new Insets(0, 0, 0, 10));
@@ -169,6 +169,7 @@ public class SidePanel extends UiPart<Region> {
                     moduleSection.getChildren().add(moduleCircle);
                     moduleSection.getChildren().add(updatedButton);
                     setGraphic(moduleSection);
+
                 } catch (CommandException e) {
                     e.printStackTrace();
                 }
