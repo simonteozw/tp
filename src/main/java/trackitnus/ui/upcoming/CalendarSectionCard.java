@@ -17,9 +17,8 @@ public class CalendarSectionCard extends UiPart<Region> {
     private static final String FXML = "Upcoming/CalendarSectionCard.fxml";
 
     public final CalendarSection calendarSection;
-    private final int taskRowHeight = 45;
+    private static final int TASK_ROW_HEIGHT = 45;
     private final Logic logic;
-    private String title;
     @FXML
     private ListView<Task> taskListView;
     @FXML
@@ -40,7 +39,7 @@ public class CalendarSectionCard extends UiPart<Region> {
         if (calendarSection.getTitle().equals("Overdue")) {
             sectionTitle.setStyle("-fx-text-fill: #D53636");
         }
-        taskListView.prefHeightProperty().bind(Bindings.size(taskList).multiply(taskRowHeight).add(10));
+        taskListView.prefHeightProperty().bind(Bindings.size(taskList).multiply(TASK_ROW_HEIGHT).add(10));
         taskListView.setItems(taskList);
         taskListView.setCellFactory(listView -> new TaskListViewCell());
 
@@ -54,13 +53,9 @@ public class CalendarSectionCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof CalendarSectionCard)) {
-            return false;
-        }
+        return other instanceof CalendarSectionCard;
 
         // state check
-        CalendarSectionCard card = (CalendarSectionCard) other;
-        return title.equals(card.title);
     }
 
     class TaskListViewCell extends ListCell<Task> {

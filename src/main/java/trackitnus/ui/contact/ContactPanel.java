@@ -18,7 +18,7 @@ public class ContactPanel extends UiPart<Region> {
     private final int defaultRowHeight = 50;
     private final int paddingHeight = 10;
     private final ContactListPanel contactListPanel;
-    private ObservableList<Contact> contacts;
+    private final ObservableList<Contact> contacts;
 
     @FXML
     private StackPane contactListPanelPlaceholder;

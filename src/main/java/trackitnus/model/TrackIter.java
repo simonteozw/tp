@@ -21,7 +21,7 @@ import trackitnus.model.task.UniqueTaskList;
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSameContact comparison)
  */
-public class TrackIter implements ReadOnlyTrackIter {
+public final class TrackIter implements ReadOnlyTrackIter {
 
     private final UniqueContactList contacts;
     private final UniqueModuleList modules;
@@ -307,5 +307,15 @@ public class TrackIter implements ReadOnlyTrackIter {
 
     public void sortLesson() {
         lessons.sort(new LessonComparator());
+    }
+
+    @Override
+    public String toString() {
+        return "TrackIter{" +
+            "contacts=" + contacts +
+            ", modules=" + modules +
+            ", tasks=" + tasks +
+            ", lessons=" + lessons +
+            '}';
     }
 }

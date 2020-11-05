@@ -17,7 +17,7 @@ import trackitnus.model.lesson.Lesson;
 import trackitnus.model.module.Module;
 import trackitnus.model.task.Task;
 
-public class DeleteModuleCommand extends Command {
+public final class DeleteModuleCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 

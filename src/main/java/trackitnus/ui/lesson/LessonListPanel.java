@@ -33,7 +33,7 @@ public class LessonListPanel extends UiPart<Region> {
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Lesson} using a {@code LessonCard}.
      */
-    class LessonListViewCell extends ListCell<Lesson> {
+    static class LessonListViewCell extends ListCell<Lesson> {
         @Override
         protected void updateItem(Lesson lesson, boolean empty) {
             super.updateItem(lesson, empty);

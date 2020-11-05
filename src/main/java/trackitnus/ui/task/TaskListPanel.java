@@ -27,13 +27,13 @@ public class TaskListPanel extends UiPart<Region> {
     public TaskListPanel(ObservableList<Task> taskList) {
         super(FXML);
         taskListView.setItems(taskList);
-        taskListView.setCellFactory(listView -> new TaskListPanel.TaskListViewCell());
+        taskListView.setCellFactory(listView -> new TaskListViewCell());
     }
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Task} using a {@code TaskCard}.
      */
-    class TaskListViewCell extends ListCell<Task> {
+    static class TaskListViewCell extends ListCell<Task> {
         @Override
         protected void updateItem(Task task, boolean empty) {
             super.updateItem(task, empty);

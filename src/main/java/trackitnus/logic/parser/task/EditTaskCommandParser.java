@@ -34,7 +34,6 @@ public class EditTaskCommandParser implements Parser<EditTaskCommand> {
             ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_DATE, PREFIX_CODE, PREFIX_REMARK);
 
         Index index;
-
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (InvalidIndexException iie) {

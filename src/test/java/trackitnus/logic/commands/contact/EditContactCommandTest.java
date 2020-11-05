@@ -67,6 +67,26 @@ public class EditContactCommandTest {
     }
 
     @Test
+    public void execute_filteredList_success() {
+        ContactCommandTestUtil.showContactAtIndex(model, TypicalIndexes.INDEX_FIRST);
+
+        Contact contactInFilteredList =
+                model.getFilteredContactList().get(TypicalIndexes.INDEX_FIRST.getZeroBased());
+        Contact editedContact =
+                new ContactBuilder(contactInFilteredList).withPhone("98989898").build();
+        EditContactCommand editContactCommand = new EditContactCommand(TypicalIndexes.INDEX_FIRST,
+                new EditContactDescriptorBuilder().withPhone("98989898").build());
+
+        Model expectedModel = new ModelManager(new TrackIter(model.getTrackIter()), new UserPrefs());
+        expectedModel.setContact(model.getFilteredContactList().get(0), editedContact);
+        ContactCommandTestUtil.showContactAtIndex(expectedModel, TypicalIndexes.INDEX_FIRST);
+
+        String expectedMessage = String.format(Messages.MESSAGE_EDIT_CONTACT_SUCCESS, editedContact);
+
+        assertCommandSuccess(editContactCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
     public void execute_noFieldSpecifiedUnfilteredList_failure() {
         EditContactCommand editContactCommand = new EditContactCommand(TypicalIndexes.INDEX_FIRST,
             new EditContactCommand.EditContactDescriptor());
@@ -75,19 +95,10 @@ public class EditContactCommandTest {
     }
 
     @Test
-    public void execute_filteredList_failure() {
+    public void execute_unchangedFilteredList_failure() {
         ContactCommandTestUtil.showContactAtIndex(model, TypicalIndexes.INDEX_FIRST);
-
-        Contact contactInFilteredList =
-            model.getFilteredContactList().get(TypicalIndexes.INDEX_FIRST.getZeroBased());
-        Contact editedContact =
-            new ContactBuilder(contactInFilteredList).withPhone("98989898").build();
         EditContactCommand editContactCommand = new EditContactCommand(TypicalIndexes.INDEX_FIRST,
-            new EditContactDescriptorBuilder().withPhone("98989898").build());
-
-        Model expectedModel = new ModelManager(new TrackIter(model.getTrackIter()), new UserPrefs());
-        expectedModel.setContact(model.getFilteredContactList().get(0), editedContact);
-        ContactCommandTestUtil.showContactAtIndex(expectedModel, TypicalIndexes.INDEX_FIRST);
+            new EditContactDescriptorBuilder().withPhone("94351253").build());
 
         assertCommandFailure(editContactCommand, model, Messages.MESSAGE_CONTACT_UNCHANGED);
     }

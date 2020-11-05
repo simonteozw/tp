@@ -1,7 +1,5 @@
 package trackitnus.ui.module;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -34,12 +32,7 @@ public class ModuleListPanel extends UiPart<Region> {
     }
 
     public Button getModuleButton(Module module) {
-        Button button = new Button(module.getCode().code);
-        ArrayList<Object> moduleValues = new ArrayList<>(Arrays.asList(Module.TYPE, module));
-//        button.setOnAction(actionEvent -> {
-//            tabConsumer.accept(moduleValues);
-//        });
-        return button;
+        return new Button(module.getCode().code);
     }
 
     /**
