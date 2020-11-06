@@ -19,7 +19,7 @@ public class LessonCard extends UiPart<Region> {
      * As a consequence, UI elements' variable names cannot be set to such keywords
      * or an exception will be thrown by JavaFX during runtime.
      *
-     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on TrackIter level 4</a>
+     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The Issue on Address Book level 4</a>
      */
 
     public final Lesson lesson;
@@ -34,6 +34,8 @@ public class LessonCard extends UiPart<Region> {
     private Label date;
     @FXML
     private Label address;
+    @FXML
+    private Label code;
 
     /**
      * Creates a {@code ContactCode} with the given {@code Lesson} and index to display.
@@ -41,10 +43,11 @@ public class LessonCard extends UiPart<Region> {
     public LessonCard(Lesson lesson, int displayedIndex) {
         super(FXML);
         this.lesson = lesson;
-        id.setText(displayedIndex + ". ");
+        id.setText("[" + displayedIndex + "]");
         type.setText(lesson.getType().name());
         date.setText(lesson.getTime().toString());
         address.setText(lesson.getAddress().toString());
+        code.setText("");
     }
 
     @Override

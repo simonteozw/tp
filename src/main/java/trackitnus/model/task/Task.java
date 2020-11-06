@@ -10,7 +10,7 @@ import trackitnus.model.commons.Name;
 
 
 /**
- * Represents a Task in the address book.
+ * Represents a Task in the app.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Task {
@@ -50,6 +50,10 @@ public class Task {
 
     public Optional<Code> getCode() {
         return Optional.ofNullable(code);
+    }
+
+    public Task setCode(Code newCode) {
+        return new Task(name, date, newCode, remark);
     }
 
     public Name getName() {
@@ -99,6 +103,6 @@ public class Task {
      * This methods is here for to act as a compatibility layer for UniqueTaskList
      */
     public boolean isSameTask(Task task) {
-        return this.equals(task);
+        return equals(task);
     }
 }

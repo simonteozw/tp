@@ -9,7 +9,7 @@ import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Code;
 
 /**
- * Represents a Lesson in the address book.
+ * Represents a Lesson in the app.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Lesson {
@@ -35,6 +35,7 @@ public class Lesson {
      * @param code
      * @param type
      * @param time
+     * @param address
      */
     public Lesson(Code code, Type type, LessonDateTime time, Address address) {
         CollectionUtil.requireAllNonNull(code, type, time, address);
@@ -81,6 +82,15 @@ public class Lesson {
         return code;
     }
 
+    /**
+     * @param newCode the new code to set
+     * @return a new lesson with the code that has just been passed in
+     */
+    public Lesson modifyCode(Code newCode) {
+        CollectionUtil.requireAllNonNull(newCode);
+        return new Lesson(newCode, type, time, address);
+    }
+
     public Type getType() {
         return type;
     }
@@ -114,6 +124,7 @@ public class Lesson {
      * This methods is here for to act as a compatibility layer for UniqueModuleList
      */
     public boolean isSameLesson(Lesson lesson) {
-        return this.equals(lesson);
+        return equals(lesson);
     }
+
 }

@@ -18,11 +18,15 @@ import trackitnus.model.module.Module;
 import trackitnus.model.task.Task;
 import trackitnus.ui.UiPart;
 
-public class DayCard extends UiPart<Region> {
+/**
+ * A UI component that displays information of a {@code UpcomingSection} but in a calendar format
+ */
+public class UpcomingSectionDayCard extends UiPart<Region> {
 
     private static final String FXML = "Upcoming/DayCard.fxml";
+    public static final int TASK_HEIGHT_OFFSET = 35;
 
-    public final Day day;
+    public final UpcomingSection section;
     private static final int LESSON_ROW_HEIGHT = 30;
     private static final int TASK_ROW_HEIGHT = 45;
     private final Logic logic;
@@ -37,19 +41,20 @@ public class DayCard extends UiPart<Region> {
     private Label date;
 
     /**
-     * Constructor for DayCard
+     * Constructor for UpcomingSectionDayCard
      *
-     * @param day
+     * @param section a section in the calendar
      */
-    public DayCard(Day day, ObservableList<Task> taskList, ObservableList<Lesson> lessonList, Logic logic) {
+    public UpcomingSectionDayCard(UpcomingSection section, ObservableList<Task> taskList,
+                                  ObservableList<Lesson> lessonList, Logic logic) {
         super(FXML);
-        this.day = day;
+        this.section = section;
         this.logic = logic;
 
-        if (day.getDate().equals(LocalDate.now())) {
-            date.setText("Today - " + day.getSectionHeader());
+        if (section.getDate().equals(LocalDate.now())) {
+            date.setText("Today - " + section.getTitle());
         } else {
-            date.setText(day.getSectionHeader());
+            date.setText(section.getTitle());
         }
 
         if (lessonList.isEmpty()) {
@@ -61,13 +66,18 @@ public class DayCard extends UiPart<Region> {
     }
 
     private void setUpLessonView(ObservableList<Lesson> lessonList) {
-        lessonListView.prefHeightProperty().bind(Bindings.size(lessonList).multiply(LESSON_ROW_HEIGHT).add(10));
+        if (lessonList.isEmpty()) {
+            lessonListView.prefHeightProperty().setValue(0);
+        } else {
+            lessonListView.prefHeightProperty().bind(Bindings.size(lessonList).multiply(LESSON_ROW_HEIGHT).add(10));
+        }
         lessonListView.setItems(lessonList);
         lessonListView.setCellFactory(listView -> new LessonListViewCell());
     }
 
     private void setUpTaskView(ObservableList<Task> taskList) {
-        taskListView.prefHeightProperty().bind(Bindings.size(taskList).multiply(TASK_ROW_HEIGHT).add(35));
+        taskListView.prefHeightProperty()
+            .bind(Bindings.size(taskList).multiply(TASK_ROW_HEIGHT).add(TASK_HEIGHT_OFFSET));
         taskListView.setItems(taskList);
         taskListView.setCellFactory(listView -> new TaskListViewCell());
     }
@@ -80,12 +90,12 @@ public class DayCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof DayCard)) {
+        if (!(other instanceof UpcomingSectionDayCard)) {
             return false;
         }
 
         // state check
-        DayCard card = (DayCard) other;
+        UpcomingSectionDayCard card = (UpcomingSectionDayCard) other;
         return date.getText().equals(card.date.getText());
     }
 

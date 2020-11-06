@@ -535,7 +535,7 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 | Command | Example |
 | ---- | ------ |
 | **Add:** `M add m/MODULE_CODE n/NAME` | `M add m/CS2100 n/Computer Organisation` |
-| **Edit:** `M edit MODULE_CODE [m/NEW_MODULE_CODE] [n/NAME]` | `M edit n/Discrete Mathematics` |
+| **Edit:** `M edit MODULE_CODE [m/NEW_MODULE_CODE] [n/NAME]` | `M edit CS1231 n/Discrete Structures` |
 | **Delete:** `M delete MODULE_CODE` | `M delete CS1101S` |
 
 ### Lesson <a name="lesson-commands"></a>

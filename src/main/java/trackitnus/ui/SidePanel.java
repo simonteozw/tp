@@ -27,7 +27,7 @@ public class SidePanel extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(SidePanel.class);
     private final Consumer<ArrayList<Object>> tabConsumer;
     private final Logic logic;
-    private final int moduleRowHeight = 32;
+    private static final int MODULE_ROW_HEIGHT = 32;
     private Button selectedTabButton;
 
     @FXML
@@ -46,13 +46,13 @@ public class SidePanel extends UiPart<Region> {
     /**
      * Constructor for SidePanel
      *
-     * @param tabConsumer
+     * @param tabConsumer carries values to MainWindow
      */
     public SidePanel(Consumer<ArrayList<Object>> tabConsumer, Logic logic) {
         super(FXML);
         this.tabConsumer = tabConsumer;
         this.logic = logic;
-        this.initialize();
+        initialize();
     }
 
     /**
@@ -62,7 +62,7 @@ public class SidePanel extends UiPart<Region> {
         if (logic != null) {
             // Get modules tab buttons.
             ObservableList<Module> modules = logic.getFilteredModuleList();
-            moduleListView.setPrefHeight(modules.size() * moduleRowHeight);
+            moduleListView.setPrefHeight(modules.size() * MODULE_ROW_HEIGHT);
             moduleListView.setItems(modules);
             moduleListView.setCellFactory(listView -> new ModuleListViewCell());
 
@@ -115,7 +115,7 @@ public class SidePanel extends UiPart<Region> {
      *
      * @return HBox The module section.
      */
-    public HBox getModuleSection() throws CommandException {
+    public HBox getModuleSection() {
         HBox moduleSection = new HBox();
         moduleSection.setAlignment(Pos.CENTER_LEFT);
         moduleSection.setPadding(new Insets(0, 0, 0, 10));
@@ -169,6 +169,7 @@ public class SidePanel extends UiPart<Region> {
                     moduleSection.getChildren().add(moduleCircle);
                     moduleSection.getChildren().add(updatedButton);
                     setGraphic(moduleSection);
+
                 } catch (CommandException e) {
                     e.printStackTrace();
                 }

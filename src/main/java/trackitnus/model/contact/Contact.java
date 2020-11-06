@@ -11,7 +11,7 @@ import trackitnus.model.commons.Name;
 import trackitnus.model.tag.Tag;
 
 /**
- * Represents a Contact in the address book.
+ * Represents a Contact in the app.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Contact {
@@ -54,6 +54,22 @@ public class Contact {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    /**
+     * Returns a Contact with {@code oldTag} replaced by {@code newTag}
+     */
+    public Contact setTag(Tag oldTag, Tag newTag) {
+        Set<Tag> oldTags = getTags();
+        Set<Tag> newTags = new HashSet<>();
+        for (Tag tag: oldTags) {
+            if (tag.equals(oldTag)) {
+                newTags.add(newTag);
+            } else {
+                newTags.add(tag);
+            }
+        }
+        return new Contact(name, phone, email, newTags);
     }
 
     /**

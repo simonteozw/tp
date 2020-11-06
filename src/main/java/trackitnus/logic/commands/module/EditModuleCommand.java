@@ -5,6 +5,8 @@ import static trackitnus.commons.core.Messages.MESSAGE_DUPLICATE_MODULE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_CODE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_NAME;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import trackitnus.commons.core.Messages;
@@ -15,7 +17,11 @@ import trackitnus.logic.commands.exceptions.CommandException;
 import trackitnus.model.Model;
 import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
+import trackitnus.model.contact.Contact;
+import trackitnus.model.lesson.Lesson;
 import trackitnus.model.module.Module;
+import trackitnus.model.tag.Tag;
+import trackitnus.model.task.Task;
 
 public final class EditModuleCommand extends Command {
     public static final String COMMAND_WORD = "edit";
@@ -26,9 +32,10 @@ public final class EditModuleCommand extends Command {
         + "by the module code. "
         + "Existing values will be overwritten by the input values.\n"
         + "Parameters: "
-        + PREFIX_CODE + "MODULE_CODE (must be an existing code) "
+        + "MODULE_CODE "
+        + "[" + PREFIX_CODE + "NEW_MODULE_CODE] "
         + "[" + PREFIX_NAME + "NAME]\n"
-        + String.format("Example: %s %s %sCS1231S %sDiscrete Structures",
+        + String.format("Example: %s %s CS1231T %sCS1231S %sDiscrete Structures",
         Module.TYPE, COMMAND_WORD, PREFIX_CODE, PREFIX_NAME);
 
     private final Code code;
@@ -54,31 +61,53 @@ public final class EditModuleCommand extends Command {
                                              EditModuleDescriptor editModuleDescriptor) {
         assert moduleToEdit != null;
 
-        Code originalCode = moduleToEdit.getCode();
+        Code updatedCode = editModuleDescriptor.getCode().orElse(moduleToEdit.getCode());
         Name updatedName = editModuleDescriptor.getName().orElse(moduleToEdit.getName());
 
-        return new Module(originalCode, updatedName);
+        return new Module(updatedCode, updatedName);
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        Optional<Module> moduleToEdit = model.getModule(code);
-        if (moduleToEdit.isEmpty()) {
-            throw new CommandException(Messages.MESSAGE_MODULE_DOES_NOT_EXIST);
-        }
+        Module moduleToEdit =
+            model.getModule(code).orElseThrow(() -> new CommandException(Messages.MESSAGE_MODULE_DOES_NOT_EXIST));
 
-        Module editedModule = createEditedModule(moduleToEdit.get(), editModuleDescriptor);
+        Module editedModule = createEditedModule(moduleToEdit, editModuleDescriptor);
 
-        if (moduleToEdit.get().equals(editedModule)) {
+        if (moduleToEdit.equals(editedModule)) {
             throw new CommandException(Messages.MESSAGE_MODULE_UNCHANGED);
         }
 
-        if (!moduleToEdit.get().isSameModule(editedModule) && model.hasModule(editedModule)) {
+        if (!moduleToEdit.hasSameCode(editedModule) && model.hasModule(editedModule)) {
             throw new CommandException(MESSAGE_DUPLICATE_MODULE);
         }
 
-        model.setModule(moduleToEdit.get(), editedModule);
+        if (!moduleToEdit.hasSameCode(editedModule)) {
+            Code updatedCode = editModuleDescriptor.getCode().orElseThrow(RuntimeException::new);
+            // edit all the related tasks
+            List<Task> tasksToEdit = new ArrayList<>(model.getModuleTasks(code));
+            for (Task task : tasksToEdit) {
+                Task updatedTask = task.setCode(updatedCode);
+                model.setTask(task, updatedTask);
+            }
+
+            // edit all the related lessons
+            List<Lesson> lessonsToEdit = new ArrayList<>(model.getModuleLessons(code));
+            for (Lesson lesson : lessonsToEdit) {
+                Lesson updatedLesson = lesson.modifyCode(updatedCode);
+                model.setLesson(lesson, updatedLesson);
+            }
+
+            List<Contact> contactsToEdit = new ArrayList<>(model.getModuleContacts(code));
+            for (Contact contact : contactsToEdit) {
+                Contact updatedContact = contact.setTag(new Tag(code.toString()), new Tag(updatedCode.toString()));
+                model.setContact(contact, updatedContact);
+            }
+        }
+
+        // edit the module
+        model.setModule(moduleToEdit, editedModule);
         return new CommandResult(String.format(Messages.MESSAGE_EDIT_MODULE_SUCCESS, editedModule));
     }
 
@@ -114,6 +143,7 @@ public final class EditModuleCommand extends Command {
      */
     public static final class EditModuleDescriptor {
 
+        private Code code;
         private Name name;
 
         public EditModuleDescriptor() {
@@ -123,6 +153,7 @@ public final class EditModuleCommand extends Command {
          * Copy constructor.
          */
         public EditModuleDescriptor(EditModuleDescriptor toCopy) {
+            setCode(toCopy.code);
             setName(toCopy.name);
         }
 
@@ -130,7 +161,7 @@ public final class EditModuleCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name);
+            return CollectionUtil.isAnyNonNull(code, name);
         }
 
         @Override
@@ -148,7 +179,15 @@ public final class EditModuleCommand extends Command {
             // state check
             EditModuleDescriptor e = (EditModuleDescriptor) other;
 
-            return getName().equals(e.getName());
+            return getCode().equals(e.getCode()) && getName().equals(e.getName());
+        }
+
+        public Optional<Code> getCode() {
+            return Optional.ofNullable(code);
+        }
+
+        public void setCode(Code code) {
+            this.code = code;
         }
 
         public Optional<Name> getName() {
@@ -162,7 +201,8 @@ public final class EditModuleCommand extends Command {
         @Override
         public String toString() {
             return "EditModuleDescriptor{" +
-                "name=" + name +
+                "code=" + code +
+                ", name=" + name +
                 '}';
         }
     }
