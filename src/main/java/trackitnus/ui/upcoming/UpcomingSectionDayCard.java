@@ -24,6 +24,7 @@ import trackitnus.ui.UiPart;
 public class UpcomingSectionDayCard extends UiPart<Region> {
 
     private static final String FXML = "Upcoming/DayCard.fxml";
+    public static final int TASK_HEIGHT_OFFSET = 35;
 
     public final UpcomingSection section;
     private static final int LESSON_ROW_HEIGHT = 30;
@@ -75,7 +76,8 @@ public class UpcomingSectionDayCard extends UiPart<Region> {
     }
 
     private void setUpTaskView(ObservableList<Task> taskList) {
-        taskListView.prefHeightProperty().bind(Bindings.size(taskList).multiply(TASK_ROW_HEIGHT).add(35));
+        taskListView.prefHeightProperty()
+            .bind(Bindings.size(taskList).multiply(TASK_ROW_HEIGHT).add(TASK_HEIGHT_OFFSET));
         taskListView.setItems(taskList);
         taskListView.setCellFactory(listView -> new TaskListViewCell());
     }
