@@ -38,8 +38,8 @@ Welcome to the **TrackIt@NUS** user-guide!
 
 Do you struggle having to use multiple apps to balance your school life? Do you waste precious time just trying
  to find the information you need in the many apps you use? Well, look no further. Our application, TrackIt@NUS is an
-  all-in-one solution for a busy student like you to manage and organize your life, helping you to **Track Less, and
-   Live More.**
+  all-in-one solution for a busy student like you to manage and organize your life, helping you to *Track Less, and
+   Live More.*
 
 TrackIt@NUS is a desktop app for managing modules, lessons, tasks, and contacts, tailored to the needs of NUS students and
   optimized for use via a [**Command Line Interface (CLI)**](#glossary) while still having the benefits of a
@@ -220,17 +220,15 @@ Example: To add the Module CS1231 Discrete Structures into TrackIt@NUS, follow t
 <br>_Figure 6 - Example outcome of adding a module_
 
 ### 5.1.3 Edit
-Because modules are displayed only on the side panel, it doesn't come with index. That's why to edit and delete a module, its
- code will be used! Let's see how to edit a module's name:
+Because modules are displayed only on the side panel, they are not indexed. That's why to edit and delete a module, its code will be used instead! This is how to edit a module's code and/or name:
 
-Format: `M edit m/MODULE_CODE n/NAME`
+Format: `M edit MODULE_CODE [m/NEW_MODULE_CODE] [n/NAME]`
 
 :information_source: Note:
 * The `MODULE_CODE` provided must be present in the Module list.
-* You are unable to edit a module's `MODULE_CODE`. In such a circumstance, please delete the module and create a new one with the correct module code.
 
-Example: If you have spelt a module CS1231's name wrongly and wish to change it to the correct spelling `Programming Methodology`, follow these instructions.
-1. Type `M edit m/CS1231S n/Programming Methodology` into the Command Box
+Example: If you have spelt a module CS1231's name wrongly and wish to change it to the correct spelling `Discrete Structures`, follow these instructions.
+1. Type `M edit CS1231 n/Discrete Structures` into the Command Box
 2. Press `Enter` to execute
 3. The Result Display will show a success message and you will be able to view the correct module name in the corresponding module tab.
 
@@ -241,14 +239,14 @@ Example: If you have spelt a module CS1231's name wrongly and wish to change it 
 And what if you realized you accidentally added in a wrong module, or have finished one? Just delete that module! The
  command's syntax is as follows: 
 
-Format: `M delete m/MODULE_CODE`
+Format: `M delete MODULE_CODE`
 
 :information_source: Note: 
 * When you delete a module, the contacts associated with that module will **not** be deleted. The tag will also **not** be edited in any way.
 * When you delete a module, the app will delete all of its related tasks & lessons, so check twice before you delete it! 
 
 To delete the module `CS2100`:
-1. Type `M delete m/CS2100` into the Command Box
+1. Type `M delete CS2100` into the Command Box
 2. Press `Enter` to execute
 3. The Result Display will show a success message and the module tab will be removed from the side panel.
 
@@ -537,8 +535,8 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 | Command | Example |
 | ---- | ------ |
 | **Add:** `M add m/MODULE_CODE n/NAME` | `M add m/CS2100 n/Computer Organisation` |
-| **Edit:** `M edit m/MODULE_CODE [n/NAME]` | `M edit n/Discrete Mathematics` |
-| **Delete:** `M delete m/MODULE_CODE` | `M delete m/CS1101S` |
+| **Edit:** `M edit MODULE_CODE [m/NEW_MODULE_CODE] [n/NAME]` | `M edit n/Discrete Mathematics` |
+| **Delete:** `M delete MODULE_CODE` | `M delete CS1101S` |
 
 ### Lesson <a name="lesson-commands"></a>
 
