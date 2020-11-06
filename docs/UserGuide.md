@@ -232,7 +232,7 @@ Example: If you have spelt a module CS1231's name wrongly and wish to change it 
 2. Press `Enter` to execute
 3. The Result Display will show a success message and you will be able to view the correct module name in the corresponding module tab.
 
-(INSERT SCREENSHOT OF EDIT OUTCOME HERE)
+![EditModuleOutcome](images/UG/EditModuleOutcome.png)
 <br>_Figure 7 - Example outcome of editing a module_
 
 ### 5.1.4 Delete
