@@ -28,7 +28,7 @@ public interface Model {
     Predicate<Contact> PREDICATE_SHOW_NO_CONTACTS = unused -> false;
     Predicate<Task> PREDICATE_SHOW_NO_TASKS = unused -> false;
     Predicate<Lesson> PREDICATE_SHOW_NO_LESSONS = unused -> false;
-
+    int NUM_MODULE_LIMIT = 10;
     /**
      * Returns the user prefs.
      */
@@ -221,6 +221,11 @@ public interface Model {
      * {@code lesson} must not already exist in the TrackIter.
      */
     void addLesson(Lesson lesson);
+
+    /**
+     * check if a new module can still be added
+     */
+    boolean canAddModule();
 
     /**
      * Replaces the given lesson {@code target} with {@code editedLesson}.
