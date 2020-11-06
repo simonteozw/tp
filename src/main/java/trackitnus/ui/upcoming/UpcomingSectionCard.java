@@ -18,9 +18,8 @@ import trackitnus.ui.task.OverdueFutureTaskCard;
  */
 public class UpcomingSectionCard extends UiPart<Region> {
     private static final String FXML = "Upcoming/CalendarSectionCard.fxml";
-
-    public final UpcomingSection section;
     private static final int TASK_ROW_HEIGHT = 45;
+    public final UpcomingSection section;
     private final Logic logic;
     private String title;
 
@@ -32,9 +31,9 @@ public class UpcomingSectionCard extends UiPart<Region> {
     /**
      * Constructor for a section in the calendar
      *
-     * @param section a section in the calendar
+     * @param section  a section in the calendar
      * @param taskList the tasklist to display
-     * @param logic logic
+     * @param logic    logic
      */
     public UpcomingSectionCard(UpcomingSection section, ObservableList<Task> taskList, Logic logic) {
         super(FXML);
