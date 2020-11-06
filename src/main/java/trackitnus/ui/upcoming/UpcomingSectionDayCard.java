@@ -23,12 +23,11 @@ import trackitnus.ui.UiPart;
  */
 public class UpcomingSectionDayCard extends UiPart<Region> {
 
-    private static final String FXML = "Upcoming/DayCard.fxml";
     public static final int TASK_HEIGHT_OFFSET = 35;
-
-    public final UpcomingSection section;
+    private static final String FXML = "Upcoming/DayCard.fxml";
     private static final int LESSON_ROW_HEIGHT = 30;
     private static final int TASK_ROW_HEIGHT = 45;
+    public final UpcomingSection section;
     private final Logic logic;
 
     @FXML
