@@ -297,8 +297,6 @@ TrackIt@NUS also gives users a better understanding of their tasks by allowing u
  keep track of all their tasks. To better support NUS students, a task can either belong to a module or not. When
   adding a task, users can choose to the include the `m/MODULE_CODE` parameter in order to add a task that belongs to
    a module. When users click into a specific module tab, they can see the tasks belonging to each module.
-   
-![ModuleTasks](images/ModuleTasks.png)
     
 :information_source: A task does not have to belong a module. In this case, the module parameter of the task is
  simply treated as null and the task can only be viewed in the upcoming tab.
@@ -521,13 +519,89 @@ Given below are instructions to test the app manually.
 ### Launch and Shutdown
 
 1. Initial Launch
-    1. Download the jar file and copy it into an empty folder
+    1. Download the jar file and copy it into an empty folder <br><br>
     2. Open the folder containing the jar and enter the command `java -jar trackitnus.jar` in the terminal <br>
-    Expected: Shows a [GUI](#gui) with a list of upcoming tasks and lessons
+    Expected: Shows a [GUI](#gui) with a list of upcoming tasks and lessons <br><br>
 2. Saving Window Preferences
-    1. Resize the window to an optimal size. Move the window to a different location. Close the window.
+    1. Resize the window to an optimal size. Move the window to a different location. Close the window <br><br>
     2. Re-launch the app, following the steps in the previous test <br>
     Expected: The most recent window size and location is retained
+   
+### Adding a Module
+
+1. Adding a module from any view
+    1. Prerequisites: Arguments are valid and compulsory parameters (module code and module name) are provided <br><br>
+    2. Test Case: `M add m/CS1231 n/Discrete Mathematics` <br>
+    Expected: Adds a module with the module code `CS1231` and module name `Discrete Mathematics`. The new module code
+     will appear on the sidebar, you can click on it to view the module <br><br>
+    3. Test Case: `M add m/CS1231 n/Not so discrete Mathematics` <br>
+    Expected: The module is not added. An error message saying that the module already exists (assuming you did the
+     1st test case) is shown <br><br>
+    4. Test Case: `M add m/cs1231 n/Discrete Mathematics` <br>
+    Expected: The module is not added. An error message saying that the module code is the incorrect format is shown <br><br>
+    5. Other incorrect add commands to try: `M add m/ n/Discrete Mathematics`, `M add m/CS1231 n/`, `M add m/ n
+    /Discrete Mathematics` <br>
+    Expected: Similar to previous test case 
+    
+### Adding a Lesson
+
+1. Adding a lesson to a module:
+    1. Prerequisites: 
+        1. Arguments are valid and compulsory parameters are provided <br><br>
+        1. The module must exist (the module code must belong to a an existing module) <br><br>
+        2. The type must be one of `lec/lecture`, `tut/tutorial`, `lab/laboratory`, `rec/recitation`, or `sec
+        /sectional` <br><br>
+        3. The date provided must of the form `Day HH:mm-HH:mm` <br><br>
+        4. The start time of the date must be earlier than the end time <br><br>
+        5. The address provided cannot be longer than 20 characters <br><br>
+    2. Test Case: `L add m/CS1101S t/Lab d/Fri 16:00-18:00 a/COM1-0215` <br>
+    Expected: The lesson is added to the `CS1101S` module <br><br>
+    3. Test Case: `L add m/CS1101S t/testing d/Fri 16:00-18:00 a/COM1-0215` <br>
+    Expected: The lesson is not added. An error message about the allowed types is shown <br><br>
+    4. Other incorrect commands to try: `L add m/CS1101S t/testing d/Fri 16:00-18:00 a/COM1-0215`, `L add m/CS1101S t
+    /Lab d/Fri 16:00-18:00 a/Too long of an address to be a valid address`, `L add m/CS1101S t/testing d/Fri 20:00-18
+    :00 a/COM1-0215` <br>
+    Expected: Similar to previous test case 
+
+### Adding a Task
+
+1. Adding a task 
+    1. Prerequisites:
+        1. Arguments are valid and compulsory parameters are provided <br><br>
+        2. The date must be in the form `dd/mm/yyyy` <br><br>
+    2. Test Case: `T add n/Buy cake for Mom d/12/12/2020` <br>
+    Expected: Adds a task by the name `Buy cake for Mom` to TrackIt@NUS <br><br>
+    3. Test Case: `T add n/Buy cake for Dad d/11/11/2020 r/Get extra chocolate` <br>
+    Expected: Adds a task by the name `Buy cake for Dad` with a remark `Get extra chocolate` to TrackIt@NUS <br><br>
+    4. Test Case: `T add n/Buy cake for Mom d/12/12/2020` <br>
+    Expected: The task is not added. An error message saying that the task already exists (assuming you did the first
+     test case) is shown <br><br>
+    5. Test Case: `T add n/Buy noodles for Mom d/12/12/20202` <br>
+    Expected: The task is not added. An error message saying that the date is in the wrong format is shown <br><br>
+2. Adding a task to a module
+    1. Prerequisites:
+        1. Arguments are valid and compulsory parameters are provided <br><br>
+        2. The module must exist (the module code must belong to a an existing module) <br><br>
+    2. Test Case: `T add n/Do Assignment d/12/12/2020 m/CS1101S` <br>
+    Expected: Adds a task by the name `Do Assignment` to the `CS1101S` module <br><br>
+    3. Test Case: `T add n/Do Tutorial d/12/12/2020 m/CS1101S r/Check first 3 questions` <br>
+    Expected: Adds a task by the name `Do Tutorial` with a remark `Check first 3 questions` to the `CS1101S` module <br><br>
+    4. Test Case: `T add n/Do Assignment d/12/12/2020 m/cs1101s` <br>
+    Expected: The task is not added. An error message saying that the module code is of the wrong format is shown <br><br>
+
+### Adding a Contact
+
+1. Adding a contact from any view
+    1. Prerequisites
+        1. Arguments are valid and compulsory parameters are provided <br><br>
+    2. Test Case: `C add n/Tom p/98989898 e/tom@mail.com` <br>
+    Expected: The contact is added to TrackIt@NUS <br><br>
+    3. Test Case: `C add` <br>
+    Expected: The contact is not added. An error message about valid command format is shown <br><br>
+    4. Test Case: `C add n/` <br>
+    Expected: The contact is not added. An error message saying the name must be a non-empty string is shown <br><br>
+    5. Other wrong commands to try: `C add n/Tom p/abc`, `C add n/Tom e/abc`, `C add n/Tom t/123-abc` <br>
+    Expected: Similar to previous test case
     
 ### Viewing Help
 
