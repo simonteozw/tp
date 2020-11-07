@@ -513,4 +513,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ## **Appendix F: Instructions for Manual Testing** <a name="appen-f"></a>
 
+Given below are instructions to test the app manually.
+
+:information_source: These instructions only provide a starting point for testers to work on, testers are expected to
+ do more _exploratory_ testing.
+ 
+### Launch and Shutdown
+
+1. Initial Launch
+    1. Download the jar file and copy it into an empty folder
+    2. Open the folder containing the jar and enter the command `java -jar trackitnus.jar` in the terminal <br>
+    Expected: Shows a [GUI](#gui) with a list of upcoming tasks and lessons
+2. Saving Window Preferences
+    1. Resize the window to an optimal size. Move the window to a different location. Close the window.
+    2. Re-launch the app, following the steps in the previous test
+    Expected: The most recent window size and location is retained
+
 ## **Appendix G: Effort** <a name="appen-g"></a>
