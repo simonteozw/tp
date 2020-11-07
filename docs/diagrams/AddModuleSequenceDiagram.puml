@@ -1,0 +1,51 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":AddModuleCommand" as AddModuleCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+participant ":TrackIter" as TrackIter MODEL_COLOR
+end box
+
+[-> AddModuleCommand : execute(m)
+activate AddModuleCommand
+
+AddModuleCommand -> Model : hasModule(code)
+activate Model
+Model -> TrackIter : hasModule(code)
+activate TrackIter
+TrackIter --> Model : result
+Model --> AddModuleCommand : result
+
+
+AddModuleCommand -> Model : canAddMoreModule()
+Model -> TrackIter : getFilteredModuleList()
+TrackIter -> Model : moduleList
+Model --> AddModuleCommand : result
+
+AddModuleCommand -> Model : addModule(t)
+
+Model -> TrackIter : addModule(t)
+
+
+TrackIter --> Model
+deactivate TrackIter
+
+Model --> AddModuleCommand
+deactivate Model
+
+create CommandResult
+AddModuleCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> AddModuleCommand : r
+deactivate CommandResult
+
+[<--AddModuleCommand : r
+deactivate AddModuleCommand
+
+@enduml

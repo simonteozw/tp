@@ -164,9 +164,9 @@ public class ModelManager implements Model {
     //=========== Module ================================================================================
 
     @Override
-    public boolean hasModule(Module task) {
-        requireNonNull(task);
-        return trackIter.hasModule(task);
+    public boolean hasModule(Module module) {
+        requireNonNull(module);
+        return trackIter.hasModule(module);
     }
 
     @Override

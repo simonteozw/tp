@@ -1,0 +1,41 @@
+@startuml
+
+!include style.puml
+title Delete Module Command
+
+start
+
+:Receives an ""M delete"" command;
+
+if () then ([valid command])
+      :Parses the
+      ""M delete"" command
+      and the parameters;
+
+      if () then ([exists a module with specified code])
+
+      :Delete the module;
+      :Delete all associated tasks;
+      :Delete all associated lessons;
+
+
+      else ([else])
+      :Shows module doesn't
+      exist error;
+
+      endif
+note right
+          A task/lesson is associated with a module
+          if its <b>code</b> field equals to the
+          deleted module's <b>code</b>
+        end note
+else ([else])
+
+    :Shows an
+    invalid command
+    error message;
+endif
+
+stop
+
+@enduml
