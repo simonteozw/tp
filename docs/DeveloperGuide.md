@@ -314,83 +314,86 @@ TrackIt@NUS allows users to keep track of all modules that he/she is taking. Mod
  
  :bulb: Since there is no index being shown for a module, the module can be edited/deleted only by its code. 
  For example: 
- * `M edit m/CS2030 n/Edited name` to change the name of CS2030 to "Edited name"
- * `M delete m/CS2030` to delete the CS2030 module
+ * `M edit CS2030 m/CS2040 n/Edited name` to change the code of CS2030 to CS2040, and change its name to "Edited name"
+ * `M delete CS2030` to delete the CS2030 module
  
- #### Current Implementation
- 
- In this section, we will outline the key commands for Modules, namely:
- * `AddModuleCommand`
- * `DeleteModuleCommand`
- * `EditModuleCommand`
- 
- Generally, this is how the Module Manager handles a command.
-  
-  ![Add Module](images/AddModuleActivityDiagram.png)
-  
- The add, delete, and edit commands are all implemented in similar ways. When they are executed they will:
-  * call on the relevant Model methods
-  * update the `UniqueModuleList` depending on the command
-  * Save the updated module list to `data/trackIter.json`
-  * return the relevant CommandResult message
-  
- When `AddModuleCommand` is executed, it will first call the model's `hasModule` method to ensure that the module does not
-  yet exist in the app. Following this, if the module is added with a non-null module code, it will call the model's
-   `hasModule` method to ensure that the specified module exists. If both these checks pass, `AddModuleCommand` will
-    call the model's `addModule` method.
-    
- The model will then call the `addModule` method of TrackIter, which calls the `add` method of UniqueModuleList and adds
-  the module to the app.
- 
- The following shows the sequence diagram of the `AddModuleCommand`.
- 
- ![Add Module Sequence Diagram](images/AddModuleSequenceDiagram.png)
- 
- When the `DeleteModuleCommand` is executed, it will first call the model's `getFilteredModuleList` method to
-  determine the last shown list of modules. Then, it will call the index's `getZeroBased` method to find the
-  zero-based index of the module it must delete. Then, it will check if this index is within range. If it is, it
-  calls the model's `deleteModule` method.
-  
- The model will then call the `removeModule` method of TrackIter, which calls the `remove` method of UniqueModuleList and
-  deletes the module in question from the app.
- 
- The following shows the sequence diagram of the `DeleteModuleCommand`.
- 
- ![Delete Module Sequence Diagram](images/DeleteModuleSequenceDiagram.png)
- 
- When the `EditModuleCommand` is executed, it will first call the model's `getFilteredModuleList` method to determine the
-  last shown list of modules. Then, it will call the index's `getZeroBased` method to find the zero-basd index of the
-   module we must edit. It will then check if the index is within range. If it is, it calls the model's `setModule` method.
-   
- The model will then call the `setModule` method of TrackIter, which calls the `setModule` method of UniqueModuleList and
-  replace the original module with the edited version in the app.
- 
- The follow shows the sequence diagram of the `EditModuleCommand`.
- 
- ![Edit Module Sequence Diagram](images/EditModuleSequenceDiagram.png)
- 
- The `getModuleModules` function takes in a Module Code and returns all modules that belong to the specified module.
- . When `getModuleModules` is called, it uses the `ModuleHasCodePredicate` to update the module list in the app to only show
-  the modules that belong the specified module code.
- 
- This is the sequence diagram of `getModuleModules`.
- 
- ![Get Module Modules Sequence Diagram](images/GetModuleModulesSequenceDiagram.png)
- 
- #### Design Considerations
- 
- As mentioned, a module may or may not belong to a module. In the case it does not, we store the module code as
-  null. A module also may or may not have a remark. In the case it does not, we store the remark as the empty
-   string. These 2 optional fields made the `EditModuleCommand` more challenging to implement. We wanted the user to be
-    able to remove an existing module code or remark simply by typing `T edit INDEX m/` and `T edit INDEX r/` respectively.
-      
- ![Edit Module Activity Diagram](images/EditModuleActivityDiagram.png)
-    
- The original AB3 implementation of edit commands, which would default to the original field if the edited
-  field was null, would not be sufficient. Hence, we added 2 additional boolean variables - `isRemarkChanged` and
-   `isCodeChanged`, to know whether users wanted to remove the existing module code or remark.
 
+#### Current Implementation
+
+In this section, we will outline the key operations of the Module Manager, namely:
+* `AddModuleCommand`
+* `DeleteModuleCommand`
+* `EditModuleCommand`
  
+The add, delete, and edit commands are all implemented in similar ways. When they are executed they will:
+ * call on the relevant Model methods
+ * update the `UniqueModuleList` depending on the command
+ * Save the updated module list to `data/trackIter.json`
+ * return the relevant CommandResult message
+
+In this section, we will use the following Activity Diagram to outline the parse & execution of a AddModuleCommand
+
+![Activity diagram for Add Module Command](images/AddModuleCommandActivityDiagram.png)
+
+When the user enters the `M add m/CODE n/NAME` command to add a new module, the user input command undergoes the same command parsing as described in 
+[Section 3.3 Logic Component](#33-logic-component). If the parse process is successful, a `AddModuleCommand` will be returned an its `execute` method will be called
+
+The following steps will describe the execution of the `AddModuleCommand` in detail, assuming that no errors are encountered.
+1. The `Model`'s `hasModule(code)` is called. If it returns `true`, a `CommandException` will be thrown.
+2. The `Model`'s `canAddMoreModule()` is called. If it returns `true`, a `CommandException` will be thrown.
+3. The `Model`'s `deleteModule()` is called to delete the module from TrackIt
+4. The `Ui` component will detect this change and update the GUI.
+5. Assuming that the above steps are all successful, the `AddModuleCommand` will then create a `CommandResult` object and return the result.
+
+The following Sequence Diagram summarises the aforementioned steps. 
+
+![Add Module Sequence Diagram](images/AddModuleSequenceDiagram.png)
+
+In this section, we will use the following Activity Diagram to outline the parse & execution of a DeleteModuleCommand
+
+![Activity diagram for Delete Module Command](images/DeleteModuleCommandActivityDiagram.png)
+
+When the user enters the `M delete CODE` command to delete a module, the user input command undergoes the same command parsing as described in 
+[Section 3.3 Logic Component](#33-logic-component). If the parse process is successful, a `DeleteModuleCommand` will be returned an its `execute` method will be called
+
+The following steps will describe the execution of the `DeleteModuleCommand` in detail, assuming that no errors are encountered.
+1. The `Model`'s `getModule(code)` is called and it will return an Optional<Module> to delete. If the returned optional is empty, a `CommandException` will be thrown.
+2. The `Model`'s `getModuleTasks()` is called to get the list of tasks that are associated with the module. 
+3. For each task received from the above step, the `Model`'s `deleteTask()` will be called to delete the task from TrackIt
+4. The `Model`'s `getModuleLessons()` is called to get the list of lessons that are associated with the module. 
+5. For each lesson received from the above step, the `Model`'s `deleteLesson()` will be called to delete the lesson from TrackIt
+7. The `Model`'s `deleteModule()` is called to delete the module from TrackIt
+8. The `Ui` component will detect this change and update the GUI.
+9. Assuming that the above steps are all successful, the `DeleteModuleCommand` will then create a `CommandResult` object and return the result.
+
+The following Sequence Diagram summarises the aforementioned steps. 
+
+![Delete Module Sequence Diagram](images/DeleteModuleSequenceDiagram.png)
+     
+In this section, we will use the following Activity Diagram to outline the parse & execution of a EditModuleCommand
+
+![Activity diagram for Edit Module Command](images/EditModuleCommandActivityDiagram.png)
+
+When the user enters the `M edit CODE` command to edit a module, the user input command undergoes the same command parsing as described in 
+[Section 3.3 Logic Component](#33-logic-component). If the parse process is successful, a `EditModuleCommand` will be returned an its `execute` method will be called
+
+The following steps will describe the execution of the `EditModuleCommand` in detail, assuming that no errors are encountered.
+1. The `Model`'s `getModule(code)` is called and it will return an Optional<Module> to edit. If the returned optional is empty, a `CommandException` will be thrown.
+2. The `Model`'s `createEditedModule` is called to create the new `editedModule` to replace the old `Module`
+3. If `editedModule` is equal to the old `Module`, a `CommandException` will be thrown.
+4. If the `code` of `editedModule` coincides with one of the `code` of existing module, a `CommandException` will be thrown.
+5. If the `code` of the `editedModule` is different from the old `Module`'s `code`:
+    1. The `Model`'s `getModuleTasks()` is called to get the list of tasks that are associated with the module
+    2. For each task received from the above step, its `code` will be changed to the new `code`
+    3. The `Model`'s `getModuleLessons()` is called to get the list of lessons that are associated with the module
+    4. For each task received from the above step, its `code` will be changed to the new `code`
+    5. The `Model`'s `getModuleContacts()` is called to get the list of contact tags that associated with the module
+    6. For each tag received from the above step, its content will be changed to the new `code`
+7. The `Model`'s `setModule()` is called to edit the module from TrackIt
+8. The `Ui` component will detect this change and update the GUI.
+9. Assuming that the above steps are all successful, the `EditModuleCommand` will then create a `CommandResult` object and return the result.
+
+The following Sequence Diagram summarises the aforementioned steps. 
 
 ### **Lesson Manager** <a name="lesson-manager"></a>
 
