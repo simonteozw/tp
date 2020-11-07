@@ -16,10 +16,13 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     5. [Storage Component](#storage)
     6. [Common Classes](#common)
 4. [**Implementation**](#implementation)
-    1. [Module Manager](#module-manager)
-    2. [Lesson Manager](#lesson-manager)
-    3. [Task Manager](#task-manager)
-    4. [Contact Manager](#contact-manager)
+    1. [Overview](#overview)
+        1. [Code Design Considerations](#code-des-cons)
+        2. [Feature Design Considerations](#feat-des-cons)
+    2. [Module Manager](#module-manager)
+    3. [Lesson Manager](#lesson-manager)
+    4. [Task Manager](#task-manager)
+    5. [Contact Manager](#contact-manager)
     6. [Logging](#logging)
     7. [Configuration](#config)
 5. [**Documentation**](#documentation)
@@ -40,13 +43,28 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
  NUS students. It focuses on the _Command Line Interface (CLI)_ while providing users with a simple and clean
   _Graphical User Interface (GUI)_. The main iteraction with **TrackIt@NUS** will be done via commands.
 
-**TrackIt@NUS** is an all-in-one solution for busy NUS students. The information that can be managed by **TrackIt@NUS
-** includes:
+**TrackIt@NUS** is an all-in-one solution for busy NUS students. The information that can be managed by **TrackIt@NUS** includes:
 
 * Modules
 * Lessons (for each module)
-* Tasks
+* Tasks 
 * Contacts
+
+By combining these 4 core functions into a single app, we are able to deliver a unique user experience tailored to
+ university students. In addition to the standard CRUD operations, students using TrackIt@NUS will be able to:
+ 
+* View all upcoming tasks
+* View all module-specific tasks
+* View all upcoming lessons
+* View all module-specific lessons
+* View all contacts
+* View all module-specific contacts (i.e. Professors, TAs, friends in the same module)
+
+Any help on the development of TrackIt@NUS would be greatly appreciated, and there are several ways to do so:
+
+* Contribute to the codebase of TrackIt@NUS by expanding the current set of features
+* Write new test cases to improve coverage
+* Propose and implement improvements for our existing features
 
 The purpose of this Developer Guide is to help you understand the design and implementation of **TrackIt@NUS** so
  that you can get started on your contributions to the app.
@@ -72,7 +90,9 @@ The ***Architecture Diagram*** given above explains the high-level design of the
 
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2021S1-CS2103T-W13-4/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https
+://github.com/AY2021S1-CS2103T-W13-4/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se
+-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 
 </div>
 
@@ -162,6 +182,8 @@ This module tab consist of three panels (`LessonListPanel`, `TaskListPanel`, `Co
   
   The `ContactTab` and `HelpTab` both follow a similar structure as the above class diagram, except that they each
    consist of 1 single panel.
+   
+#### **Contact Tab** <a name="contact-tab"></a>
 
 ### **Logic Component** <a name="logic"></a>
 
@@ -222,6 +244,35 @@ The `commons` package contains classes used by multiple other components in the 
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### **Overview** <a name="overview"></a>
+
+#### **Code Design Considerations** <a name="code-des-cons"></a>
+
+All commands in TrackIt@NUS follow a similar execution flow.
+
+![Command Activity Diagram](images/CommandActivityDiagram.png)
+
+We have done this to improve maintainability. Making our code more uniform will:
+
+* Make testing easier 
+* Allow us to track down bugs faster
+* Allow us to better use the Single Level of Abstraction (SLAP) principle in our code
+
+In addition, this will make our code base much more organised, and hence make it easier for new developers to quickly
+ learn and contribute.
+ 
+Another design challenge was how to manage our predicates. TrackIt@NUS makes use of many different predicates to
+ allow users to view specific tasks, lessons, and contacts. For exmaple, users can view module-specific tasks
+ , contacts, and lessons. They can also view overdue tasks and future tasks (tasks where the deadline is more than a
+  week away). To manage all these predicates, we had 2 options:
+
+|  | Pros | Cons |
+| ---- | ----- | ------- |
+| **Option 1 (current choice):** Extract each the predicates into their own unique class | Increases code maintainability and testability. Now as a developer you exactly where to find each predicate. Makes use of the DRY principle and improves abstraction because you no longer need to interact with the actual lambda or test function, simply call the predicate. | Makes code more verbose as each predicate can simply be declared using a single lambda. |
+| **Option2:** Declare each predicate using a single lambda in the ModelManager class. No predicate will have a class. | Makes code shorter and simpler to read. No need to create a class when you can simply declare a predicate with a lambda. | Need to duplicate such code when using ModelStubs for testing. This will violate the DRY principle. |
+
+#### **Feature Design Considerations** <a name="feat-des-cons"></a>
+
 ### **Module Manager** <a name="module-manager"></a>
 
 ### **Lesson Manager** <a name="lesson-manager"></a>
@@ -229,6 +280,16 @@ This section describes some noteworthy details on how certain features are imple
 ### **Task Manager** <a name="task-manager"></a>
 
 TrackIt@NUS allows users to keep track of his/her tasks. The task manager is one of TrackIt@NUS's basic components.
+
+The common commands for the task manager include:
+
+* `add` - Creates a new task
+* `edit` - Modifies an existing task
+* `delete` - Deletes an existing task
+
+TrackIt@NUS also gives users a better understanding of their tasks by allowing users to view tasks in certain
+ categories. Users can view overdue tasks, tasks on a specific day, future tasks (tasks that have deadlines more than
+  a week away), and specific module tasks.
  
  #### Rationale
  
@@ -249,16 +310,13 @@ TrackIt@NUS allows users to keep track of his/her tasks. The task manager is one
 
 #### Current Implementation
 
-In this section, we will outline the key commands of the Task Manager, namely:
+In this section, we will outline the key operations of the Task Manager, namely:
 * `AddTaskCommand`
 * `DeleteTaskCommand`
 * `EditTaskCommand`
 
-We will also elaborate on one more key function, namely `getModuleTasks`.
-
-Generally, this is how the Task Manager handles a command.
- 
- ![Add Task](images/AddTaskActivityDiagram.png)
+We will also elaborate on one more key operation that is used in the module tabs, namely `getModuleTasks
+`, `getOverdueTasks`, `getDayUpcomingTasks`, `getFutureTasks`.
  
 The add, delete, and edit commands are all implemented in similar ways. When they are executed they will:
  * call on the relevant Model methods
@@ -309,6 +367,9 @@ This is the sequence diagram of `getModuleTasks`.
 
 ![Get Module Tasks Sequence Diagram](images/GetModuleTasksSequenceDiagram.png)
 
+`getOverdueTasks`, `getDayUpcomingTasks`, and `getFutureTasks` are all implemented in very similar ways. In fact, the
+ only differences are the predicates used.
+
 #### Design Considerations
 
 As mentioned, a task may or may not belong to a module. In the case it does not, we store the module code as
@@ -321,7 +382,7 @@ As mentioned, a task may or may not belong to a module. In the case it does not,
 The original AB3 implementation of edit commands, which would default to the original field if the edited
  field was null, would not be sufficient. Hence, we added 2 additional boolean variables - `isRemarkChanged` and
   `isCodeChanged`, to know whether users wanted to remove the existing module code or remark.
-
+ 
 ### **Contact Manager** <a name="contact-manager"></a>
 
 ### **Logging** <a name="logging"></a>
