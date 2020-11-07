@@ -277,6 +277,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean canAddMoreModule() {
+        return getFilteredModuleList().size() < NUM_MODULE_LIMIT;
+    }
+
+    @Override
     public void setLesson(Lesson target, Lesson editedLesson) {
         CollectionUtil.requireAllNonNull(target, editedLesson);
 
