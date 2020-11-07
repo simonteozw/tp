@@ -2,7 +2,6 @@ package trackitnus.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static trackitnus.storage.JsonAdaptedModule.MISSING_FIELD_MESSAGE_FORMAT;
-import static trackitnus.testutil.typical.TypicalContacts.BENSON;
 
 import org.junit.jupiter.api.Test;
 
@@ -38,7 +37,7 @@ public class JsonAdaptedModuleTest {
     @Test
     public void toModelType_nullName_throwsIllegalValueException() {
         JsonAdaptedModule module =
-            new JsonAdaptedModule(VALID_CODE,null);
+            new JsonAdaptedModule(VALID_CODE, null);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
         Assert.assertThrows(IllegalValueException.class, expectedMessage, module::toModelType);
     }

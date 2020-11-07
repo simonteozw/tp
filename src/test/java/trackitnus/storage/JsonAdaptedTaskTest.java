@@ -2,7 +2,6 @@ package trackitnus.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static trackitnus.storage.JsonAdaptedTask.MISSING_FIELD_MESSAGE_FORMAT;
-import static trackitnus.testutil.typical.TypicalContacts.BENSON;
 
 import java.time.LocalDate;
 
@@ -13,7 +12,6 @@ import trackitnus.commons.exceptions.IllegalValueException;
 import trackitnus.logic.parser.ParserUtil;
 import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
-import trackitnus.model.contact.Phone;
 import trackitnus.model.task.Task;
 import trackitnus.testutil.Assert;
 import trackitnus.testutil.typical.TypicalTask;
