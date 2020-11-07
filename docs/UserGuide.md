@@ -1,5 +1,7 @@
 # TrackIt@NUS - User Guide
 
+![Logo](images/UG/trackit-logo.png)
+
 By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 
 ## Table of Contents
@@ -35,6 +37,7 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 --------------------------------------------------------------------------------------------------------------------
 
 ## 1. Introduction <a name="introduction"></a>
+
 
 Welcome to the **TrackIt@NUS** user-guide!
 
