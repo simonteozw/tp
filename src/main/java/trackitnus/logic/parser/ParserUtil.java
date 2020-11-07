@@ -23,7 +23,6 @@ import trackitnus.model.commons.Name;
 import trackitnus.model.contact.Email;
 import trackitnus.model.contact.Phone;
 import trackitnus.model.lesson.DayOfWeek;
-import trackitnus.model.lesson.Lesson;
 import trackitnus.model.lesson.LessonDateTime;
 import trackitnus.model.lesson.Type;
 import trackitnus.model.tag.Tag;
@@ -254,7 +253,7 @@ public class ParserUtil {
         case "sec":
             return Type.SEC;
         default:
-            throw new ParseException(Lesson.TYPE_MESSAGE_CONSTRAINTS);
+            throw new ParseException(Type.TYPE_MESSAGE_CONSTRAINTS);
         }
     }
 
@@ -283,7 +282,7 @@ public class ParserUtil {
         case "sat":
             return DayOfWeek.Sat;
         default:
-            throw new ParseException(Lesson.LESSON_TIME_MESSAGE_CONSTRAINTS);
+            throw new ParseException(LessonDateTime.MESSAGE_CONSTRAINTS);
         }
     }
 
@@ -298,16 +297,19 @@ public class ParserUtil {
         String trimmedDate = date.trim();
         try {
             String[] tokens = trimmedDate.split(" ", 2);
+            if (tokens.length != 2) {
+                throw new ParseException(LessonDateTime.MESSAGE_CONSTRAINTS);
+            }
             String[] startEndTime = tokens[1].split("-", 2);
             DayOfWeek weekday = parseLessonWeekday(tokens[0]);
             LocalTime startTime = LocalTime.parse(startEndTime[0], LessonDateTime.FORMATTER);
             LocalTime endTime = LocalTime.parse(startEndTime[1], LessonDateTime.FORMATTER);
             if (startTime.compareTo(endTime) >= 0) {
-                throw new ParseException(Lesson.TIME_MESSAGE_CONSTRAINTS);
+                throw new ParseException(LessonDateTime.MESSAGE_CONSTRAINTS);
             }
             return new LessonDateTime(weekday, startTime, endTime);
         } catch (DateTimeParseException e) {
-            throw new ParseException(Lesson.LESSON_TIME_MESSAGE_CONSTRAINTS);
+            throw new ParseException(LessonDateTime.MESSAGE_CONSTRAINTS);
         }
     }
 }
