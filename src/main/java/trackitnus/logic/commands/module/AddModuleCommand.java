@@ -42,7 +42,7 @@ public final class AddModuleCommand extends Command {
             throw new CommandException(Messages.MESSAGE_DUPLICATE_MODULE);
         }
 
-        if (!model.canAddModule()) {
+        if (!model.canAddMoreModule()) {
             throw new CommandException(Messages.MESSAGE_MODULE_LIMIT_REACHED);
         }
 

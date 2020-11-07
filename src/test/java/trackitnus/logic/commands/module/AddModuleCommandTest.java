@@ -84,7 +84,7 @@ public class AddModuleCommandTest {
         }
 
         @Override
-        public boolean canAddModule() {
+        public boolean canAddMoreModule() {
             return true;
         }
 

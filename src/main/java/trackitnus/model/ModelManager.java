@@ -277,7 +277,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public boolean canAddModule() {
+    public boolean canAddMoreModule() {
         return getFilteredModuleList().size() < NUM_MODULE_LIMIT;
     }
 

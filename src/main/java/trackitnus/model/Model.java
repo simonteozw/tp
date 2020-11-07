@@ -225,7 +225,7 @@ public interface Model {
     /**
      * check if a new module can still be added
      */
-    boolean canAddModule();
+    boolean canAddMoreModule();
 
     /**
      * Replaces the given lesson {@code target} with {@code editedLesson}.
