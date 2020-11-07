@@ -9,7 +9,7 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     1. [Common Symbols](#common-symbols)
     2. [Command Format](#command-format)
     3. [Duplicate Parameters](#duplicate-parameters)
-4. [Layout](#layout)
+4. [Application Layout](#layout)
     1. [Upcoming Tab](#upcomingtab)
     2. [Contacts Tab](#contactstab)
     3. [Module Tabs](#moduletabs)
@@ -124,35 +124,50 @@ You can specify the same parameter more than once in a command. Depending on the
  | Can only be used once | Only the **last occurrence** will be used when executing the command. | On executing `M add m/CS2103T n/Favourite Mod n/Software Engineering`, you will create a module with the name `Software Engineering`, and the name `SE` will be ignored. | 
 
 --------------------------------------------------------------------------------------------------------------------
-## 4. Layout <a name="layout"></a>
+## 4. Application Layout <a name="layout"></a>
 
-This section gives you a brief overview of the layout of TrackIt@NUS.
+This section is gives you a **brief overview** of the **layout** of TrackIt@NUS, and this will help you get used to our interface in a matter of minutes!
 
 ![Layout](images/UG/Layout.png)
 _Figure 2 - Layout of TrackIt@NUS_
 
-TrackIt@NUS is divided into three main types of tabs:
-* The **Upcoming** Tab
-* The **Contacts** Tab
-* The various **Module** Tabs
+TrackIt@NUS is mainly divided into **four** carefully designed `tabs`:
+* The `Upcoming Tab` 
+* The `Contacts Tab`
+* The various `Module Tabs` 
+* The `Help Tab`
 
-When you switch to a tab, the tab text will be highlighted in **blue**.
+The `side panel` on the left section allows you to easily navigate between the `tabs`. When you switch to a different `tab`, the new `tab` will be highlighted in **blue** in the `side panel`. To run a command, simply type a command in the `command box` and TrackIt@NUS will inform you about the outcome in the `result display`.
 
-### Upcoming Tab <a name="upcomingtab"></a>
-This is the main tab of the application, and is the default page when the app starts. It features a calendar view of the
- days for the next week, as well as the **Tasks** and **Lessons** you have added under the respective days they fall under. 
+### 4.1 Upcoming Tab <a name="upcomingtab"></a>
+This beautiful `upcoming tab` is what you will see when you first run TrackIt@NUS! It allows you to see an **overview** of all your **upcoming lessons** for the week, as well as the **list of tasks** you have that are **due soon**. With the `upcoming tab`, you don't have to worry about missing lesson or deadlines anymore!
 
-1. The first section labelled **"Overdue"** in red text, shows the Tasks that are past their deadline, and you have yet to complete. These **Tasks** will remain there until you delete them.
+In the `upcoming tab`, there are **three** main `sections` arranged in **chronological order**:
+1. The `overdue section` is coloured **red**&#x1F534;  to **warn** you that about the list of tasks that are **past their deadline but you have yet to complete**. These tasks will remain there until you delete them, so remember to complete these tasks as soon as possible!
 
-2. The second section is the weekly calendar view, with your **Lessons** and **Tasks** shown under each day.
+2. The next **7** `daily section` shows the your **Lessons** and **Tasks** daily for the next 7 days. This is where you can start planning your schedule for the day.
 
-3. The last section is labelled **Future**, and shows any **Tasks** that you may have added with a deadline falling after the date 7 days from today.
+3. The `future section` shows the **Tasks** that are not due so soon. To be more specific, they are is only due **at least 7 days later**, so you don't have to worry about them too much for now.
 
 ![UpcomingPanelUi](images/UG/UpcomingPanelUi.png)
 <br>_Figure 3 - Example of Upcoming Tab_
 
-### Contacts Tab <a name="contactstab"></a>
-The contacts tab shows you an overview of all the **contacts** you have within the app. 
+### 4.2 Module Tabs <a name="moduletabs"></a>
+In each `module tab`, you can find all the details that you will need when studying for a specific module. This includes all `Lessons`, `Tasks` and `Contacts` related to this module. With this, you don't have to waste precious time toggling between your calender, to-do list and contacts app anymore!
+ 
+ ![ModuleTab](images/UG/ModuleTab.png)
+<br>_Figure 5 - Example of Module Tab_
+ 
+1. `Lessons`: Here you can find the info for all weekly lessons, including its time and location so say goodbye to missing your classes!
+
+2. `Tasks`: All the tasks for the module that you haven't done, listed in **chronological** order so that you know
+ what to prioritize! Tips: Don't leave tutorials or assignments until the last day, chances are you not gonna finish it.
+
+3. `Contacts`: Having difficulties with your assignment? Need TA's emails to ask? Look no further, this section
+ will list all contacts that are tagged with this module code! 
+ 
+### 4.3 Contacts Tab <a name="contactstab"></a>
+The `contacts tab` is where you can find all the people that are relevant in the course of your studies. This tab allows you to get in contact
 
 ![ContactsTab](images/UG/ContactsTab.png)
 <br>_Figure 4 - Example of Contacts Tab_
@@ -165,24 +180,6 @@ It will show you information for each contact such as:
 * `EMAIL`: contact's email
 
 * `TAG`: any additional information you have about the contact, such as which module they are associated with (e.g. CS1010S), or their role (e.g. friend, TA)
-
-### Module Tabs <a name="moduletabs"></a>
-Here under each module's tab you can find all relevant **Lessons**, **Tasks** and **Contacts** that are related to the
- module. 
- 
- ![ModuleTab](images/UG/ModuleTab.png)
-<br>_Figure 5 - Example of Module Tab_
-
-Very convenient right? This information will be displayed in 3 sections:
- 
-1. `Lessons`: Here you can find the info for all weekly lessons, including its time and location so
- say goodbye to missing your classes!
-
-2. `Tasks`: All the tasks for the module that you haven't done, listed in **chronological** order so that you know
- what to prioritize! Tips: Don't leave tutorials or assignments until the last day, chances are you not gonna finish it.
-
-3. `Contacts`: Having difficulties with your assignment? Need TA's emails to ask? Look no further, this section
- will list all contacts that are tagged with this module code! 
 
 --------------------------------------------------------------------------------------------------------------------
 ## 5. Features <a name="features"></a>
