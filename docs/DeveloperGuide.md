@@ -526,7 +526,33 @@ Given below are instructions to test the app manually.
     Expected: Shows a [GUI](#gui) with a list of upcoming tasks and lessons
 2. Saving Window Preferences
     1. Resize the window to an optimal size. Move the window to a different location. Close the window.
-    2. Re-launch the app, following the steps in the previous test
+    2. Re-launch the app, following the steps in the previous test <br>
     Expected: The most recent window size and location is retained
+    
+### Viewing Help
+
+1. Opens the help window
+    1. Test Case: `help` <br>
+    Expected: Opens the help window
+    
+### Changing Tabs
+
+1. Changes the tab
+    1. Test Case: Click on the Upcoming tab <br>
+    Expected: Switches the Upcoming tab. Upcoming tab is highlighted in the sidebar
+    2. Test Case: Click on the Contacts tab <br>
+    Expected: Switches to the Contacts tab. Contacts tab is highlighted in the sidebar
+    3. Test Case: Click on any of the module tabs <br>
+    Expected: Switches to the module tab that was clicked. The specific module tab is highlighted in the sidebar
+    4. Test Case: Click on the Help tab <br>
+    Expected: Switches the Help tab. Help tab is highlighted in the sidebar
+    
+### Exiting the Program
+1. Exiting the Program
+    1. Test Case: `exit` <br>
+    Expectation: Exits the program
+    2. Test Case: Click on the red cross on at the top left corner of TrackIt@NUS <br>
+    Expectation: Exits the program
+    
 
 ## **Appendix G: Effort** <a name="appen-g"></a>
