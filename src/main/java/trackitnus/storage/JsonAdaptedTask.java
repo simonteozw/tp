@@ -78,6 +78,9 @@ public class JsonAdaptedTask {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Remark"));
         }
 
+        if (code != null && !Code.isValidCode(code)) {
+            throw new IllegalValueException(Code.MESSAGE_CONSTRAINTS);
+        }
         final Code modelCode = code == null ? null : new Code(code);
 
         return new Task(modelName, modelDate, modelCode, remark);
