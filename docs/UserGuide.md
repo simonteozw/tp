@@ -8,30 +8,30 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 1. [Introduction](#introduction)
 2. [Quick Start](#quick-start)
 3. [About](#about)
-    1. [Common Symbols](#common-symbols)
-    2. [Command Format](#command-format)
-    3. [Duplicate Parameters](#duplicate-parameters)
+    * 3.1 [Common Symbols](#common-symbols)
+    * 3.2 [Command Format](#command-format)
+    * 3.3 [Duplicate Parameters](#duplicate-parameters)
 4. [Application Layout](#layout)
-    1. [Upcoming Tab](#upcomingtab)
-    2. [Module Tabs](#moduletabs)
-    3. [Contacts Tab](#contactstab)
-    4. [Help Tab](#helptab)
+    * 4.1 [Upcoming Tab](#upcomingtab)
+    * 4.2 [Module Tabs](#moduletabs)
+    * 4.3 [Contacts Tab](#contactstab)
+    * 4.4 [Help Tab](#helptab)
     
 5. [Features](#features)
-    1. [Module](#module)
-    2. [Lesson](#lesson)
-    3. [Task](#task)
-    4. [Contact](#contact)
-    5. [Help](#help)
-    6. [Exit](#exit)
+    * 5.1 [Module](#module)
+    * 5.2 [Lesson](#lesson)
+    * 5.3 [Task](#task)
+    * 5.4 [Contact](#contact)
+    * 5.5 [Help](#help)
+    * 5.6 [Exit](#exit)
 6. [FAQ](#faq)
 7. [Glossary](#glossary)
 7. [Command Summary](#command-summary)
-    1. [Module Commands](#module-commands)
-    2. [Lesson Commands](#lesson-commands)
-    3. [Task Commands](#task-commands)
-    4. [Contact Commands](#contact-commands)
-    5. [General Commands](#general-commands)
+    * 7.1 [Module Commands](#module-commands)
+    * 7.2 [Lesson Commands](#lesson-commands)
+    * 7.3 [Task Commands](#task-commands)
+    * 7.4 [Contact Commands](#contact-commands)
+    * 7.5 [General Commands](#general-commands)
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -516,7 +516,7 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 
 --------------------------------------------------------------------------------------------------------------------
 
-## FAQ <a name="faq"></a>
+## 6. FAQ <a name="faq"></a>
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
@@ -532,7 +532,7 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
  visual components for computer software. Click [here](https://en.wikipedia.org/wiki/Graphical_user_interface) for
   more information!
 
-## Command Summary <a name="command-summary"></a>
+## 7. Command Summary <a name="command-summary"></a>
 
 ### Module <a name="module-commands"></a>
 
