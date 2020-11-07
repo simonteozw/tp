@@ -11,8 +11,10 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     3. [Duplicate Parameters](#duplicate-parameters)
 4. [Application Layout](#layout)
     1. [Upcoming Tab](#upcomingtab)
-    2. [Contacts Tab](#contactstab)
-    3. [Module Tabs](#moduletabs)
+    2. [Module Tabs](#moduletabs)
+    3. [Contacts Tab](#contactstab)
+    4. [Help Tab](#helptab)
+    
 5. [Features](#features)
     1. [Module](#module)
     2. [Lesson](#lesson)
@@ -126,60 +128,62 @@ You can specify the same parameter more than once in a command. Depending on the
 --------------------------------------------------------------------------------------------------------------------
 ## 4. Application Layout <a name="layout"></a>
 
-This section is gives you a **brief overview** of the **layout** of TrackIt@NUS, and this will help you get used to our interface in a matter of minutes!
+This section is gives you a **brief overview** of the **layout** of TrackIt@NUS, and this will help you **get used** to our interface in **a matter of minutes**!
 
 ![Layout](images/UG/Layout.png)
 _Figure 2 - Layout of TrackIt@NUS_
 
 TrackIt@NUS is mainly divided into **four** carefully designed `tabs`:
-* The `Upcoming Tab` 
-* The `Contacts Tab`
-* The various `Module Tabs` 
-* The `Help Tab`
+* The `Upcoming tab` 
+* The `Contacts tab`
+* The various `Module tabs` 
+* The `Help tab`
 
-The `side panel` on the left section allows you to easily navigate between the `tabs`. When you switch to a different `tab`, the new `tab` will be highlighted in **blue** in the `side panel`. To run a command, simply type a command in the `command box` and TrackIt@NUS will inform you about the outcome in the `result display`.
+The `Side panel` on the left section allows you to **easily navigate** between the `tabs`. When you switch to a different `tab`, the new `tab` will be highlighted in **blue** in the `Side panel`. To run a command, simply type a command in the `Command box` and TrackIt@NUS will inform you about the outcome in the `Result display`.
 
 ### 4.1 Upcoming Tab <a name="upcomingtab"></a>
-This beautiful `upcoming tab` is what you will see when you first run TrackIt@NUS! It allows you to see an **overview** of all your **upcoming lessons** for the week, as well as the **list of tasks** you have that are **due soon**. With the `upcoming tab`, you don't have to worry about missing lesson or deadlines anymore!
+Built with a **clean UI**, the beautiful `Upcoming tab` is what you will see when you first run TrackIt@NUS! It allows you to see an **overview** of all your **upcoming lessons** for the week, as well as the **list of tasks** you have that are **due soon**. With the `Upcoming tab`, you don't have to worry about missing any lesson or deadlines anymore!
 
-In the `upcoming tab`, there are **three** main `sections` arranged in **chronological order**:
-1. The `overdue section` is coloured **red**&#x1F534;  to **warn** you that about the list of tasks that are **past their deadline but you have yet to complete**. These tasks will remain there until you delete them, so remember to complete these tasks as soon as possible!
+In the `Upcoming tab`, there are **three** main `sections` arranged in **chronological order**:
+1. The `Overdue section` is coloured **red** &#x1F534;  to **warn** you that about the list of tasks that are **past their deadline but you have yet to complete**. These tasks will remain there until you delete them, so remember to complete these tasks as soon as possible!
 
-2. The next **7** `daily section` shows the your **Lessons** and **Tasks** daily for the next 7 days. This is where you can start planning your schedule for the day.
+2. The next **seven** `Daily sections` shows the your **Lessons** and **Tasks** daily for the next seven days. This is where you can start planning your schedule for the day.
 
-3. The `future section` shows the **Tasks** that are not due so soon. To be more specific, they are is only due **at least 7 days later**, so you don't have to worry about them too much for now.
+3. The `Future section` shows the **Tasks** that are only due **at least 7 days later**, so these are tasks that you don't have to worry too much about for now.
 
 ![UpcomingPanelUi](images/UG/UpcomingPanelUi.png)
 <br>_Figure 3 - Example of Upcoming Tab_
 
 ### 4.2 Module Tabs <a name="moduletabs"></a>
-In each `module tab`, you can find all the details that you will need when studying for a specific module. This includes all `Lessons`, `Tasks` and `Contacts` related to this module. With this, you don't have to waste precious time toggling between your calender, to-do list and contacts app anymore!
+Besides the `Upcoming tab`, the `Module tab` is another **highlight** that you can look forward to! This is an **all-in-one page** with all the details that you will need when **studying for a specific module**. With this, you don't have to waste precious time toggling between your calender, to-do list and contacts app anymore!
  
  ![ModuleTab](images/UG/ModuleTab.png)
-<br>_Figure 5 - Example of Module Tab_
+ <br>_Figure 5 - Example of Module Tab_
  
-1. `Lessons`: Here you can find the info for all weekly lessons, including its time and location so say goodbye to missing your classes!
+The `Module tab` includes `Lessons`, `Tasks` and `Contacts` that are related to this module.
+ 
+1. `Lessons`: List of lessons for this module
 
-2. `Tasks`: All the tasks for the module that you haven't done, listed in **chronological** order so that you know
- what to prioritize! Tips: Don't leave tutorials or assignments until the last day, chances are you not gonna finish it.
+2. `Tasks`: List of tasks in **chronological** order. *Tips: Don't leave tutorials or assignments until the last day, chances are you not gonna finish it!*
 
-3. `Contacts`: Having difficulties with your assignment? Need TA's emails to ask? Look no further, this section
- will list all contacts that are tagged with this module code! 
+3. `Contacts`: List of contacts relevant to this module. Here's where you can **find help** if u have difficulties with your assignment!
+ 
+ :information_source: Want to know more details about [Lessons](#lesson), [Tasks](#task) and [Contacts](#contact)? Simply click on the respective links!
  
 ### 4.3 Contacts Tab <a name="contactstab"></a>
-The `contacts tab` is where you can find all the people that are relevant in the course of your studies. This tab allows you to get in contact
+So you might ask, why is there a need for the `Contacts tab` when I can add `contacts` in the `Module tab`? Well, the **beauty** of `Contacts tab` is that you can add people who are **not taking the same module as you** but they are **still relevant in your school work**! In this way, you can still **include other useful contacts** in TrackIt@NUS. How cool is that?
+
+ *For example, if you have a friend who has a strong English command but taking different modules, he or she can still help out with your reflection essay!*
 
 ![ContactsTab](images/UG/ContactsTab.png)
-<br>_Figure 4 - Example of Contacts Tab_
+<br>_Figure 4 - Example of Contacts Tab
 
-It will show you information for each contact such as:
-* `NAME`: contact name
-
-* `PHONE NUMBER`: contact's phone number
-
-* `EMAIL`: contact's email
-
-* `TAG`: any additional information you have about the contact, such as which module they are associated with (e.g. CS1010S), or their role (e.g. friend, TA)
+ :information_source: More details about `contacts` can be found [here](#contact).
+ 
+ ### 4.4 Help Tab <a name="helptab"></a>
+ Feeling **lost** and **lazy to spend time** looking through this detailed user guide to **find a single command**? Here's an extra bonus for you! This `Help tab` gives you a **quick summary** of the commands that you can use. This way, you can quickly **fire many commands in a matter of second** and you are **one step closer to productivity**! 
+ 
+ [TODO: add a help tab picture here!]
 
 --------------------------------------------------------------------------------------------------------------------
 ## 5. Features <a name="features"></a>
