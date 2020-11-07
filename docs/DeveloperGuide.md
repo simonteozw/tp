@@ -631,6 +631,7 @@ Given below are instructions to test the app manually.
         4. The date provided must of the form `Day HH:mm-HH:mm` <br><br>
         5. The start time of the date must be earlier than the end time <br><br>
         6. The address provided cannot be longer than 20 characters <br><br>
+        7. The index provided must be a lesson index seen on the current window <br><br>
     2. Test Case: `L edit 1 t/tut` <br>
     Expected: The lesson type is changed to `tutorial`, unless it was originally a tutorial (in which case an error
      message is shown) <br><br>
@@ -646,6 +647,7 @@ Given below are instructions to test the app manually.
     1. Prerequisites:
         1. Arguments are valid and compulsory parameters are provided <br><br>
         2. The date must be in the form `dd/mm/yyyy` <br><br>
+        3. The index provided must be a task index seen on the current window <br><br>
     2. Test Case: `T edit 1 n/New Task Name` <br>
     Expected: The task name changes to `New Task Name` <br><br>
     3. Test Case: `T edit 1 d/11/11/2021` <br>
@@ -654,8 +656,7 @@ Given below are instructions to test the app manually.
     4. Test Case: `T edit -1` <br>
     Expected: An error message about the invalid task index is shown <br><br>
 2. Editing a Task to change or remove the module code
-    1. Prerequisites:
-        1. The module must exist (the module code must belong to a an existing module) <br><br>
+    1. Prerequisites: The module must exist (the module code must belong to a an existing module) <br><br>
     1. Test Case: `T edit 1 m/MA1101R` <br>
     Expected: The first task in the current window changes to belong to `MA1101R`, unless it originally belonged to
      `MA1101R` (in which case an error message is shown) <br><br>
@@ -669,14 +670,15 @@ Given below are instructions to test the app manually.
      (in
      which case an error message is thrown) <br><br>
 
-#### Editing a Contact
+### Editing a Contact
 
 1. Editing a Contact
-    1. Test Case: `C edit 1 p/9999999` <br>
+    1. Prerequisites: The index provided must be a contact index seen on the current window <br><br>
+    2. Test Case: `C edit 1 p/9999999` <br>
     Expected: The first contact in the current window has his/her phone number changed to `9999999`, unless it was
      originally `9999999` (in which case an error message is shown) <br><br>
-    2. Test Case: `C edit 1 e/new@email.com` <br>
-    Expected: The first contact in the current window has his/her email changed to `new@email.com`
+    3. Test Case: `C edit 1 e/new@email.com` <br>
+    Expected: The first contact in the current window has his/her email changed to `new@email.com` <br><br>
     3. Test Case: `C edit -1` <br>
     Expected: An error message about the invalid contact index is shown <br><br>
 2. Editing a Contact to change or remove tags
@@ -686,6 +688,42 @@ Given below are instructions to test the app manually.
     2. Test Case: `C edit 1 t/` <br>
     Expected: The first contact in the current window has all of his/her old tags removed, unless the contact has no
      tags originally (in which case an error message is shown) <br><br>
+     
+### Deleting a Module
+
+1. Deleting a Module
+    1. Prerequisites: The module must exist (the module code must belong to a an existing module) <br><br>
+    2. Test Case: `M delete CS2030S` <br>
+    Expected: The module `CS2030S` is deleted <br><br>
+    3. Test Case: `M delete cs2030s` <br>
+    Expected: An error message about the invalid command format is shown <br><br>
+
+### Deleting a Lesson
+
+1. Deleting a Lesson
+     1. Prerequisites: The index provided must be a lesson index seen on the current window <br><br>
+     2. Test Case: `L delete 1` <br>
+     Expected: The first lesson in the current window is deleted <br><br>
+     3. Test Case: `L delete -1` <br>
+     Expected: An error message about the invalid lesson index is shown <br><br>
+
+### Deleting a Task
+
+1. Deleting a Task
+     1. Prerequisites: The index provided must be a task index seen on the current window <br><br>
+     2. Test Case: `T delete 1` <br>
+     Expected: The first task in the current window is deleted <br><br>
+     3. Test Case: `T delete -1` <br>
+     Expected: An error message about the invalid task index is shown <br><br>
+     
+### Deleting a Contact
+
+1. Deleting a Contact
+     1. Prerequisites: The index provided must be a contact index seen on the current window <br><br>
+     2. Test Case: `C delete 1` <br>
+     Expected: The first contact in the current window is deleted <br><br>
+     3. Test Case: `C delete -1` <br>
+     Expected: An error message about the invalid contact index is shown <br><br>
 
 ### Viewing Help
 
