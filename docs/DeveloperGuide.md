@@ -426,20 +426,22 @@ Refer to the guide [here](./DevOps.md)
 
 **Target user profile**:
 
+* university students
 * take multiple modules
-* want to easily track their weekly calendar
-* want to be notified about important academic dates coming up
-* want to have their personal todos & events integrated with their academic calendar
+* want to easily know the events lined up in their week ahead
+* want to have their personal todos integrated with the academic calendar
 * want to access related contacts when they browse a module
-* want to keep track of modules' details (grading scheme, module's knowledge coverage)
+* want to keep track of module details (relevant lessons, tasks, and contacts)
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+* is reasonably comfortable using [CLI](#cli) apps
 
 **Value proposition**
-* able to integrate personal todos/events into the weekly academic calendar.
-* able to manage modules' information (module's knowledge coverage, grading scheme) & related contacts in one app
+* An all-in-one student life manager, that simplifies the lives of university students by combining the ability to
+ manage four key aspects of student life into one app. Students will be able to know every important thing they have
+  upcoming as well as every module-related thing they currently have.
+* TrackIt@NUS can manage your student life faster than the typical mouse/[GUI](#gui) app.
 
 ## **Appendix B: User stories** <a name="appen-b"></a>
 
@@ -493,19 +495,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 *{More to be added}*
 
 ## **Appendix E: Glossary** <a name="appen-e"></a>
-
-* **Mainstream OS**: Windows, Linux, Unix, OS-X
-
-* **Obect Oriented Programming** <a name="oop"></a>: A type of computer programming paradigm (software design) in which
- programmers define the data type of a data structure, and the types of operations (functions) that can be applied 
- to the data structure
-
-* **Facade Pattern** <a name="facade-p"></a>: A structural design pattern that provides a simplified 
-(but limited) interface to a complex system of classes, library or framework.
- While decreasing the overall complexity of the application, it also helps to move unwanted dependencies to one place
-
-* **Command Pattern** <a name="command-p"></a>: A Design Pattern that lets you encapsulate actions within Java
- classes. Of which, each class has an `execute()` method which is declared in the Command interface the class implements
+| **Term** | **Explanation** |
+| --------- | --------------- |
+| **Mainstream OS** <a name="oop"></a> | Windows, Linux, Unix, OS-X |
+| **CRUD** <a name="crud"></a> | The four basic functions any application should have: <ul><li>Create</li><li>Read</li><li>Update</li><li>Delete</li></ul> |
+| **Obect Oriented Programming** <a name="oop"></a> | A type of computer programming paradigm (software design) in which programmers define the data type of a data structure, and the types of operations (functions) that can be applied to the data structure. |
+| **Facade Pattern** <a name="facade-p"></a> | A structural design pattern that provides a simplified (but limited) interface to a complex system of classes, library or framework. While decreasing the overall complexity of the application, it also helps to move unwanted dependencies to one place. |
+| **Command Pattern** <a name="command-p"></a>: | A Design Pattern that lets you encapsulate actions within Java classes. Of which, each class has an `execute()` method which is declared in the Command interface the class implements. |
+| **Command Line Interface (CLI)** <a name="cli"></a> | A text based user interface to view and manage computer files. |
+| **Graphical User Interface (GUI)** <a name="gui"></a> | A form of user interface that allows users to interact with electronic devices through graphical icons and audio indicator such as primary notation, instead of text-baed user interfaces. |
+| **JavaFX** <a name="javafx"></a> | A software platform for creating and delivering desktop applications, as well as rich Internet applications (RIAs) that can run across a wide variety of devices. |
+| **JavaScript Object Notation** <a name="json"></a> | A lightweight data-interchange format which is easily readable and writable. |
+| **Prefix** <a name="prefix"></a> | The term that comes before each parameter in the command. For example, the prefix in `n/NAME` is `n/`. |
+| **PlantUML** <a name="plantuml"></a> | A software tool we use to draw the diagrams shown in this document. |
+| **NFR** <a name="nfr"></a> | Stands for "Non-functional Requirement". |
+| **MSS** <a name="mss"></a> | Stands for "Main Success Scenario". This describes the given interaction for a given use case, assuming nothing goes wrong. |
 
 ## **Appendix F: Instructions for Manual Testing** <a name="appen-f"></a>
 
