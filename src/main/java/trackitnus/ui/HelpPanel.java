@@ -56,8 +56,8 @@ public class HelpPanel extends UiPart<Region> {
     private static ObservableList<HelpCard> helpCommands() {
         ObservableList<HelpCard> helpCommands = FXCollections.observableArrayList();
         helpCommands.add(new HelpCard("Module: Add", "M add m/MODULE_CODE n/NAME"));
-        helpCommands.add(new HelpCard("Module: Edit", "M edit m/MODULE_CODE n/NAME"));
-        helpCommands.add(new HelpCard("Module: Delete", "M delete m/MODULE_CODE"));
+        helpCommands.add(new HelpCard("Module: Edit", "M edit MODULE_CODE m/MODULE_CODE n/NAME"));
+        helpCommands.add(new HelpCard("Module: Delete", "M delete MODULE_CODE"));
         helpCommands.add(new HelpCard("Lesson: Add", "L add m/MODULE_CODE t/TYPE d/DAY HH:MM-HH:MM"));
         helpCommands.add(new HelpCard("Lesson: Edit", "L edit INDEX [m/MODULE_CODE] [t/TYPE] [d/DAY HH:MM-HH:MM]"));
         helpCommands.add(new HelpCard("Lesson: Delete", "L delete INDEX"));
