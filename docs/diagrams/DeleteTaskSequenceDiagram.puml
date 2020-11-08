@@ -22,22 +22,13 @@ Model --> DeleteTaskCommand : lastShownList
 deactivate Model
 
 DeleteTaskCommand -> index : getZeroBased()
-activate index
-
-index --> DeleteTaskCommand
-deactivate index
 
 
 DeleteTaskCommand -> Model : deleteTask(t)
 activate Model
 
 Model -> TrackIter : removeTask(t)
-activate TrackIter
 
-TrackIter --> Model
-deactivate TrackIter
-
-Model --> DeleteTaskCommand
 deactivate Model
 
 create CommandResult
