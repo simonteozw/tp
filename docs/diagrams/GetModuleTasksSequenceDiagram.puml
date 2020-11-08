@@ -26,7 +26,6 @@ deactivate Pred
 Model -> Model : updateFilteredTaskList(p)
 activate Model
 
-Model --> Model
 deactivate Model
 
 Model --> LogicManager

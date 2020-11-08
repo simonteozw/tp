@@ -18,14 +18,10 @@ activate EditTaskCommand
 EditTaskCommand -> Model : getFilteredTaskList()
 activate Model
 
-Model --> EditTaskCommand
+Model --> EditTaskCommand : lastShownList
 deactivate Model
 
 EditTaskCommand -> index : getZeroBased()
-activate index
-
-index --> EditTaskCommand
-deactivate index
 
 EditTaskCommand -> EditTaskCommand : createEditedTask(taskToEdit, editTaskDescriptor)
 activate EditTaskCommand
@@ -36,12 +32,8 @@ EditTaskCommand -> Model : setTask(taskToEdit, editedTask)
 activate Model
 
 Model -> TrackIter : setTask(taskToEdit, editedTask)
-activate TrackIter
 
-TrackIter --> Model
-deactivate TrackIter
 
-Model --> EditTaskCommand
 deactivate Model
 
 create CommandResult
