@@ -214,7 +214,7 @@ Module is the first thing you need to create when you start using the app, becau
 Here are the parameters used in the Module feature:
 | **Parameter** | **Description** | **Example** |
 | --------------| ----------------| ----------- |
-| `CODE`| Refers to the unique code given to the module.<br>You can personalise this and give it your own code. However, we recommend you use the module’s official code. | `CS2103T` |
+| `CODE`| Refers to the unique code given to the module. | `CS2103T` |
 | `NAME`| Refers to the module name. | `Software Engineering` |
 
 ### 5.1.2 Add a Module `M add` <a name="module-add"></a>
@@ -242,8 +242,7 @@ Because modules are displayed only on the side panel, they are not indexed. That
 
 Format: `M edit CODE [m/NEW_CODE] [n/NAME]`
 
-:information_source: Note:
-* The `CODE` provided must be present in the Module list.
+:information_source: The `CODE` provided must be present in the `Module` list.
 
 Example: If you have spelled a module CS1231S's code wrongly and wish to change it to the correct code `CS1231`, follow these instructions.
 
@@ -265,9 +264,9 @@ And what if you realized you accidentally added in a wrong module, or have finis
 
 Format: `M delete CODE`
 
-:information_source: Note: 
-* When you delete a module, the contacts associated with that module will **not** be deleted. The tag will also **not** be edited in any way.
-* When you delete a module, the app will delete all of its related tasks & lessons, so check twice before you delete it! 
+
+:warning: all related `tasks` & `lessons` will be deleted as well, so check twice before you delete it! 
+:information_source:  `contacts` associated with that module will **not** be deleted. The `tag` will **not** be removed as well.
 
 To delete the module `CS1231`:
 
@@ -304,7 +303,7 @@ Here are the parameters used in the Module feature:
 | `CODE`| Refers to the unique code given to the module.<br><br>You can personalise this and give it your own code. However, we recommend you use the module’s official code. | `CS2103T` |
 | `TYPE` | Refers to the type of lesson.| `lecture`/`lec` - lecture<br>`tutorial`/`tut` - tutorial<br>`laboratory`/`lab` - laboratory<br>`recitation`/`rec` - recitation<br>`sectional`/`sec` - sectional |
 | `DATE` | Indicates the weekly timing of a lesson. Must be in `ddd H:mm-H:mm` and 24-hour time format. | `mon 12:00-14:00` |
-| `ADDRESS` | Indicates where a lesson is held. | `COM1-0215` |
+| `ADDRESS` | Indicates where a lesson is held.<br> :information_source: unfortunately, Zoom links are still not supported. Refer to [FAQ](#faq) for more details. | `COM1-0215` |
 
 :warning: The time slots of the lessons _can_ overlap. It's a situation that no one wants to be in, but, unfortunately, does sometimes happen.
 
@@ -313,8 +312,7 @@ The command that makes you sigh every time you have to use it. Use this command 
 
 Format: `L add m/CODE t/TYPE d/DATE a/ADDRESS`
 
-:information_source: Note:
-* You must create the Module first before you can add a lesson with that module code.
+:information_source: You must create the Module first before you can add a lesson with that module code.
 
 Example: To add MA1101R tutorial in COM1-0121 that falls every Monday from 4-6pm, follow these instructions.
 
@@ -378,7 +376,7 @@ _Figure 12 - Example outcome of deleting a lesson_
 ## 5.3 Task <a name="task"></a> 
 
 Managing all your tasks can be so stressful! TrackIt@NUS helps alleviate that stress with our built-in Task Manager
-! To view all your tasks, simply click on the upcoming tab as shown below.
+:information_source: To view all your tasks, simply click on the upcoming tab as shown below.
 
 
 This sorts all your tasks by date. To view module-specific tasks, click on any of the module tabs as shown below.
@@ -584,6 +582,12 @@ A: TrackIt@NUS data is saved in the hard disk automatically after any command th
 
 **Q: How do I transfer my data to another computer?** <br>
 A: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous TrackIt@NUS home folder.
+
+**Q: How many `modules` can I add in total?** <br>
+A: The current limit is 10 modules.
+
+**Q: The pandemic is not over and my `lessons` are still online. Can I include Zoom links in my `lessons` address field ?** <br>
+A: Unfortunately, as of v1.4, the `ADDRESS` field supports up to **20 char**. Clickable Zoom links may be added in subsequent versions.
 
 **Q: Can I add a biweekly `lesson` in the module?** <br>
 A: Unfortunately, as of v1.4, only weekly lessons are supported. Biweekly and monthly lessons may be added in subsequent versions.
