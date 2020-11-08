@@ -41,6 +41,7 @@ public class MainWindow extends UiPart<Stage> {
     private String tabInContext = "";
 
     private ResultDisplay resultDisplay;
+    private SidePanel sidePanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -136,6 +137,7 @@ public class MainWindow extends UiPart<Stage> {
             }
         }, logic);
         sidePanelPlaceholder.getChildren().add(sidePanel.getRoot());
+        this.sidePanel = sidePanel;
 
         //Default tab open
         ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList((Object) UpcomingPanel.TYPE));
@@ -178,6 +180,7 @@ public class MainWindow extends UiPart<Stage> {
             break;
         case HelpPanel.TYPE:
             HelpPanel helpPanel = new HelpPanel();
+            sidePanel.updateHelpButton();
             tabPanelPlaceholder.getChildren().add(helpPanel.getRoot());
             break;
         default:
