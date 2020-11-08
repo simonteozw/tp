@@ -138,8 +138,6 @@ public class UniqueModuleList implements Iterable<Module> {
 
     @Override
     public String toString() {
-        return "UniqueModuleList{" +
-            "internalList=" + internalList +
-            '}';
+        return "UniqueModuleList{" + "internalList=" + internalList + '}';
     }
 }
