@@ -400,6 +400,97 @@ The following Sequence Diagram will illustrate the above steps in greater detail
 
 ### **Lesson Manager** <a name="lesson-manager"></a>
 
+TrackIt@NUS allows users to keep track of their weekly lessons. The lesson manager is one of TrackIt@NUS's basic components.
+
+The common commands for the lesson manager include:
+
+* `add` - Creates a new lesson
+* `edit` - Modifies an existing lesson
+* `delete` - Deletes an existing lesson
+
+TrackIt@NUS also gives users a better understanding of their lessons by allowing users to view lessons in certain 
+categories. Users can view lessons specific to a module and lessons on a specific day.
+
+ #### Rationale
+ 
+ Lessons are an integral part of any student's day-to-day life. Hence, TrackIt@NUS includes a lesson manager for students to 
+ keep track of their lessons. Each lesson must belong to a unique module. When users click into a specific module tab, 
+ they can see the lessons belonging to that module.
+   
+:warning: The module must exist (i.e. there must be a module with the specified `MODULE_CODE`), otherwise, the `add` and
+ `edit` commands will not work.
+ 
+ #### Current Implementation
+ 
+ In this section, we will outline the key operations of the Lesson Manager, namely:
+ * `AddLessonCommand`
+ * `DeleteLessonCommand`
+ * `EditLessonCommand`
+ 
+ We will also elaborate on one more key operation that is used in the module tabs, namely `getModuleLessons`.
+  
+ The `add`, `delete`, and `edit` commands are all implemented in similar ways. When executed they will:
+  * call on the relevant Model methods
+  * update the `UniqueLessonList` depending on the command
+  * Save the updated lesson list to `data/trackIter.json`
+  * return the relevant CommandResult message
+ 
+ The following steps will describe the execution of the `AddLessonCommand`, assuming no errors are encountered:
+ 
+ 1. When `AddLessonCommand` is executed, it will first call the model's `hasModule` method 
+ 2. This is to ensure that the specified module exists
+ 3. Following this, it will call the model's `hasLesson` method 
+ 4. This is to ensure that the lesson does not yet exist in the app
+ 5. If both checks pass, `AddLessonCommand` will call the model's `addLesson` method
+ 6. The model will then call the `addLesson` method of TrackIter, and adds the lesson to the app.
+ 
+ ![Add Lesson Activity Diagram](images/AddLessonActivityDiagram.png)
+ 
+ The following shows the sequence diagram of the `AddLessonCommand`.
+ 
+ ![Add Lesson Sequence Diagram](images/AddLessonSequenceDiagram.png)
+ 
+ The following steps will describe the execution of the `DeleteLessonCommand`, assuming no errors are encountered:
+ 
+ 1. When the `DeleteLessonCommand` is executed, it will first call the model's `getFilteredLessonList` method 
+ 2. This is to determine the last shown list of lessons
+ 3. Then, it will call the index's `getZeroBased` method 
+ 4. This is to find the zero-based index of the lesson it must delete
+ 5. Then, it will check if this index is within range
+ 6. If it is, it calls the model's `deleteLesson` method.
+ 7. The model will then call the `removeLesson` method of TrackIter, which deletes the lesson in question from the app.
+ 
+ ![Delete Lesson Activity Diagram](images/DeleteLessonActivityDiagram.png)
+ 
+ The following shows the sequence diagram of the `DeleteLessonCommand`.
+ 
+ ![Delete Lesson Sequence Diagram](images/DeleteLessonSequenceDiagram.png)
+ 
+ The following steps will describe the execution of the `EditLessonCommand`, assuming no errors are encountered:
+ 
+ 1. When the `EditLessonCommand` is executed, it will first call the model's `getFilteredLessonList` method
+ 2. This is to determine the last shown list of lessons
+ 3. Then, it will call the index's `getZeroBased` method 
+ 4. This is to find the zero-based index of the lesson we must edit
+ 5. It will then check if the index is within range
+ 6. If it is, it calls the model's `setLesson` method
+ 7. The model will then call the `setLesson` method of TrackIter, which replaces the original lesson with the edited
+  version in the app.
+  
+ ![Edit Lesson Activity Diagram](images/EditLessonActivityDiagram.png)
+ 
+ The follow shows the sequence diagram of the `EditLessonCommand`.
+ 
+ ![Edit Lesson Sequence Diagram](images/EditLessonSequenceDiagram.png)
+ 
+ The `getModuleLessons` function takes in a Module Code and returns all lessons that belong to the specified module.
+  When `getModuleLessons` is called, it uses the `LessonHasCodePredicate` to update the lesson list in the app to only show
+  the lessons that belong to the specified module code.
+ 
+ This is the sequence diagram of `getModuleLessons`.
+ 
+ ![Get Module Lessons Sequence Diagram](images/GetModuleLessonsSequenceDiagram.png)
+
 ### **Task Manager** <a name="task-manager"></a>
 
 TrackIt@NUS allows users to keep track of his/her tasks. The task manager is one of TrackIt@NUS's basic components.
