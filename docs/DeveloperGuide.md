@@ -444,39 +444,53 @@ The add, delete, and edit commands are all implemented in similar ways. When the
  * update the `UniqueTaskList` depending on the command
  * Save the updated task list to `data/trackIter.json`
  * return the relevant CommandResult message
+
+The following steps will describe the execution of the `AddTaskCommand`, assuming no errors are encountered:
  
-When `AddTaskCommand` is executed, it will first call the model's `hasTask` method to ensure that the task does not
- yet exist in the app. Following this, if the task is added with a non-null module code, it will call the model's
-  `hasModule` method to ensure that the specified module exists. If both these checks pass, `AddTaskCommand` will
-   call the model's `addTask` method.
-   
-The model will then call the `addTask` method of TrackIter, which calls the `add` method of UniqueTaskList and adds
- the task to the app.
+1. When `AddTaskCommand` is executed, it will first call the model's `hasTask` method 
+2. This is to ensure that the task does not yet exist in the app
+3. Following this, if the task is added with a non-null module code, it will call the model's
+  `hasModule` method 
+4. This is to ensure that the specified module exists
+5. If both these checks pass, `AddTaskCommand` will call the model's `addTask` method.
+6. The model will then call the `addTask` method of TrackIter, and adds the task to the app.
+
+![Add Task Activity Diagram](images/AddTaskActivityDiagram.png)
 
 The following shows the sequence diagram of the `AddTaskCommand`.
 
 ![Add Task Sequence Diagram](images/AddTaskSequenceDiagram.png)
 
-When the `DeleteTaskCommand` is executed, it will first call the model's `getFilteredTaskList` method to
- determine the last shown list of tasks. Then, it will call the index's `getZeroBased` method to find the
- zero-based index of the task it must delete. Then, it will check if this index is within range. If it is, it
- calls the model's `deleteTask` method.
- 
-The model will then call the `removeTask` method of TrackIter, which calls the `remove` method of UniqueTaskList and
- deletes the task in question from the app.
+The following steps will describe the execution of the `DeleteTaskCommand`, assuming no errors are encountered:
+
+1. When the `DeleteTaskCommand` is executed, it will first call the model's `getFilteredTaskList` method 
+2. This is to determine the last shown list of tasks
+3. Then, it will call the index's `getZeroBased` method 
+4. This is to find the zero-based index of the task it must delete
+5. Then, it will check if this index is within range
+6. If it is, it calls the model's `deleteTask` method.
+7. The model will then call the `removeTask` method of TrackIter, which deletes the task in question from the app.
+
+![Delete Task Activity Diagram](images/DeleteTaskActivityDiagram.png)
 
 The following shows the sequence diagram of the `DeleteTaskCommand`.
 
 ![Delete Task Sequence Diagram](images/DeleteTaskSequenceDiagram.png)
 
-When the `EditTaskCommand` is executed, it will first call the model's `getFilteredTaskList` method to determine the
- last shown list of tasks. Then, it will call the index's `getZeroBased` method to find the zero-basd index of the
-  task we must edit. It will then check if the index is within range. If it is, it calls the model's `setTask` method.
-  
-The model will then call the `setTask` method of TrackIter, which calls the `setTask` method of UniqueTaskList and
- replace the original task with the edited version in the app.
+The following steps will describe the execution of the `EditTaskCommand`, assuming no errors are encountered:
 
-The follow shows the sequence diagram of the `EditTaskCommand`.
+1. When the `EditTaskCommand` is executed, it will first call the model's `getFilteredTaskList` method
+2. This is to determine the last shown list of tasks
+3. Then, it will call the index's `getZeroBased` method 
+4. This is to find the zero-based index of the task we must edit
+5. It will then check if the index is within range
+6. If it is, it calls the model's `setTask` method
+7. The model will then call the `setTask` method of TrackIter, which replaces the original task with the edited
+ version in the app.
+ 
+![Edit Task Command Activity Diagram](images/EditTaskCommandActivityDiagram.png)
+
+The follow shows the sequence diagram of the `EditTaskCommand` assuming no errors are encountered.
 
 ![Edit Task Sequence Diagram](images/EditTaskSequenceDiagram.png)
 

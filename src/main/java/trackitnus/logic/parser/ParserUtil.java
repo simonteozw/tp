@@ -302,6 +302,9 @@ public class ParserUtil {
             }
             String[] startEndTime = tokens[1].split("-", 2);
             DayOfWeek weekday = parseLessonWeekday(tokens[0]);
+            if (startEndTime.length != 2) {
+                throw new ParseException(LessonDateTime.MESSAGE_CONSTRAINTS);
+            }
             LocalTime startTime = LocalTime.parse(startEndTime[0], LessonDateTime.FORMATTER);
             LocalTime endTime = LocalTime.parse(startEndTime[1], LessonDateTime.FORMATTER);
             if (startTime.compareTo(endTime) >= 0) {
