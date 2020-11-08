@@ -2,10 +2,11 @@ package trackitnus.model.task;
 
 import java.util.Comparator;
 
+/**
+ * Compares 2 tasks to facilitate sorting.
+ */
 public class TaskComparator implements Comparator<Task> {
     /**
-     * Compares 2 tasks to facilitate sorting.
-     *
      * @param t1 First task to compare.
      * @param t2 Second task to compare.
      * @return an int < 0 if t1 is "less than" t2.

@@ -9,7 +9,6 @@ import trackitnus.model.commons.Code;
 
 /**
  * Represents a Lesson in the app.
- * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Lesson {
     public static final String TYPE = "L";
@@ -21,11 +20,6 @@ public class Lesson {
 
     /**
      * Every field must be present and not null.
-     *
-     * @param code
-     * @param type
-     * @param time
-     * @param address
      */
     public Lesson(Code code, Type type, LessonDateTime time, Address address) {
         CollectionUtil.requireAllNonNull(code, type, time, address);
@@ -111,7 +105,7 @@ public class Lesson {
 
     /**
      * Returns true if the two lessons are the same
-     * This methods is here for to act as a compatibility layer for UniqueModuleList
+     * This methods is here for to act as a compatibility layer for equals
      */
     public boolean isSameLesson(Lesson lesson) {
         return equals(lesson);

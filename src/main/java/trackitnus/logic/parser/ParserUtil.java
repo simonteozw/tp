@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import trackitnus.commons.core.Messages;
 import trackitnus.commons.core.index.Index;
@@ -217,8 +218,6 @@ public class ParserUtil {
     /**
      * Parses a {@code String remark} into a {@code String}.
      * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code remark} is invalid.
      */
     public static String parseRemark(Optional<String> remark) {
         if (remark.isEmpty()) {
@@ -314,5 +313,13 @@ public class ParserUtil {
         } catch (DateTimeParseException e) {
             throw new ParseException(LessonDateTime.MESSAGE_CONSTRAINTS);
         }
+    }
+
+    /**
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
+     */
+    public static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }

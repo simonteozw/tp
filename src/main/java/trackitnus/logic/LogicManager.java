@@ -95,8 +95,6 @@ public class LogicManager implements Logic {
         model.clearAllList();
     }
 
-    //--------------------------------START of V1.3's new functions--------------------------------
-
     @Override
     public ObservableList<Lesson> getDayUpcomingLessons(LocalDate date) {
         return model.getDayUpcomingLessons(date);
@@ -151,8 +149,6 @@ public class LogicManager implements Logic {
     public Index getTaskIndex(Task task) throws CommandException {
         return model.getTaskIndex(task);
     }
-
-    //--------------------------------END of V1.3's new functions--------------------------------
 
     @Override
     public Path getTrackIterFilePath() {

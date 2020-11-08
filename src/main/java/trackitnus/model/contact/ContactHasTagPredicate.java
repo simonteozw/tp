@@ -4,6 +4,9 @@ import java.util.function.Predicate;
 
 import trackitnus.model.tag.Tag;
 
+/**
+ * Tests that a {@code Contact}'s {@code tags} contain a given tag
+ */
 public class ContactHasTagPredicate implements Predicate<Contact> {
 
     private final Tag tag;

@@ -43,7 +43,7 @@ public final class EditTaskCommand extends Command {
     private final EditTaskCommand.EditTaskDescriptor editTaskDescriptor;
 
     /**
-     * @param index              of the task in the filtered contact list to edit
+     * @param index              of the task in the filtered task list to edit
      * @param editTaskDescriptor details to edit the task with
      */
     public EditTaskCommand(Index index, EditTaskCommand.EditTaskDescriptor editTaskDescriptor) {

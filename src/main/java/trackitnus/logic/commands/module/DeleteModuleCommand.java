@@ -27,6 +27,11 @@ public final class DeleteModuleCommand extends Command {
 
     private final Code targetCode;
 
+    /**
+     * Creates an DeleteModuleCommand to delete the Module
+     *
+     * @param targetCode the code of the module to delete
+     */
     public DeleteModuleCommand(Code targetCode) {
         this.targetCode = targetCode;
     }
