@@ -425,16 +425,16 @@ TrackIt@NUS also gives users a better understanding of their tasks by allowing u
  
  Tasks are an integral part of any student's day-to-day life. Hence, TrackIt@NUS includes a task manager for students to 
  keep track of all their tasks. To better support NUS students, a task can either belong to a module or not. When
-  adding a task, users can choose to the include the `m/MODULE_CODE` parameter in order to add a task that belongs to
+  adding a task, users can choose to the include the `m/CODE` parameter in order to add a task that belongs to
    a module. When users click into a specific module tab, they can see the tasks belonging to each module.
     
 :information_source: A task does not have to belong a module. In this case, the module parameter of the task is
  simply treated as null and the task can only be viewed in the upcoming tab.
      
-:warning: The module must exist (i.e. there must be a module with the specified `MODULE_CODE`) otherwise the add and
+:warning: The module must exist (i.e. there must be a module with the specified `CODE`) otherwise the add and
  edit commands will not work.
  
-:bulb: To remove a task from a module, simply type `T edit INDEX m/` (use the `m/` prefix but leave the `MODULE_CODE` parameter empty).
+:bulb: To remove a task from a module, simply type `T edit INDEX m/` (use the `m/` prefix but leave the `CODE` parameter empty).
 
 #### Current Implementation
 
