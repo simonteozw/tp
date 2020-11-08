@@ -34,22 +34,24 @@ alt editedModule.code != moduleToEdit.code
 'getModuleTask
 EditModuleCommand -> Model : getModuleTasks(code)
 activate Model
-Model -> TrackIter : updateFilteredTaskList(pTask)
-Model -> TrackIter : getFilteredTaskList(pTask)
+Model -> Model : updateFilteredTaskList(pTask)
+activate Model
+deactivate Model
 note right
 pTask: predicate to only shows tasks
 that are associated with the module
 end note
-TrackIter -> Model : tasksToEdit
+Model -> TrackIter : getFilteredTaskList(pTask)
+TrackIter --> Model : tasksToEdit
 Model --> EditModuleCommand : tasksToEdit
 deactivate Model
 'end
 
 'edit tasks
 loop task in tasksToEdit
-    EditModuleCommand -> Model : editTask(task)
+    EditModuleCommand -> Model : setTask(oldTask,newTask)
     activate Model
-    Model -> TrackIter : editTask(task)
+    Model -> TrackIter : setTask(oldTask,newTask)
 deactivate Model
 end
 'end
@@ -57,22 +59,24 @@ end
 'getModuleLesson
 EditModuleCommand -> Model : getModuleLessons(code)
 activate Model
-Model -> TrackIter : updateFilteredLessonList(pLesson)
-Model -> TrackIter : getFilteredLessonList(pLesson)
+Model -> Model : updateFilteredLessonList(pLesson)
+activate Model
+deactivate Model
 note right
 pLesson: predicate to only shows lessons
 that are associated with the module
 end note
-TrackIter -> Model : lessonsToEdit
+Model -> TrackIter : getFilteredLessonList(pLesson)
+TrackIter --> Model : lessonsToEdit
 Model --> EditModuleCommand : lessonsToEdit
 deactivate Model
 'end
 
 'edit lessons
 loop lesson in lessonsToEdit
-    EditModuleCommand -> Model : editLesson(lesson)
+    EditModuleCommand -> Model : setLesson(oldLesson,newLesson)
     activate Model
-    Model -> TrackIter : editLesson(lesson)
+    Model -> TrackIter : setLesson(oldLesson,newLesson)
 deactivate Model
 end
 'end
@@ -80,22 +84,24 @@ end
 'getModuleContact
 EditModuleCommand -> Model : getModuleContacts(code)
 activate Model
-Model -> TrackIter : updateFilteredContactList(pContact)
-Model -> TrackIter : getFilteredContactList(pContact)
+Model -> Model : updateFilteredContactList(pContact)
+activate Model
+deactivate Model
 note right
 pContact: predicate to only shows contacts
 that are associated with the module
 end note
-TrackIter -> Model : contactsToEdit
+Model -> TrackIter : getFilteredContactList(pContact)
+TrackIter --> Model : contactsToEdit
 Model --> EditModuleCommand : contactsToEdit
 deactivate Model
 'end
 
 'edit contacts
 loop contact in contactsToEdit
-    EditModuleCommand -> Model : setTag(oldCode,newCode)
+    EditModuleCommand -> Model : setContact(oldContact,newContact)
     activate Model
-    Model -> TrackIter : editContact(contact)
+    Model -> TrackIter : setContact(oldContact,newContact)
 deactivate Model
 end
 'end

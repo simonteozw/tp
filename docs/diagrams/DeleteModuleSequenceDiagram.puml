@@ -32,7 +32,7 @@ note right
 pTask: predicate to only shows tasks
 that are associated with the module
 end note
-TrackIter -> Model : tasksToDelete
+TrackIter --> Model : tasksToDelete
 Model --> DeleteModuleCommand : tasksToDelete
 deactivate Model
 'end
@@ -55,7 +55,7 @@ note right
 pLesson: predicate to only shows lessons
 that are associated with the module
 end note
-TrackIter -> Model : lessonsToDelete
+TrackIter --> Model : lessonsToDelete
 Model --> DeleteModuleCommand : lessonsToDelete
 deactivate Model
 'end

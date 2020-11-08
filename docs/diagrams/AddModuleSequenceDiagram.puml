@@ -27,8 +27,8 @@ deactivate Model
 AddModuleCommand -> Model : canAddMoreModule()
 activate Model
 Model -> TrackIter : getFilteredModuleList()
-TrackIter -> Model : moduleList
-Model --> AddModuleCommand : moduleList
+TrackIter --> Model : moduleList
+Model --> AddModuleCommand : result
 deactivate Model
 'end
 
