@@ -565,39 +565,39 @@ A: It is meant for you to add `contacts` that are **not taking** the same module
 
 ### Module <a name="module-commands"></a>
 
-| Command | Example |
-| ---- | ------ |
-| **Add:** `M add m/MODULE_CODE n/NAME` | `M add m/CS2100 n/Computer Organisation` |
-| **Edit:** `M edit MODULE_CODE [m/NEW_MODULE_CODE] [n/NAME]` | `M edit CS1231 n/Discrete Structures` |
-| **Delete:** `M delete MODULE_CODE` | `M delete CS1101S` |
+| Command | Format | Example |
+| -- | -------- | -------- |
+| **add** | `M add m/MODULE_CODE n/NAME` | `M add m/CS2100 n/Computer Organisation` |
+| **edit**| `M edit MODULE_CODE [m/NEW_MODULE_CODE] [n/NAME]` | `M edit CS1231 n/Discrete Structures` |
+| **delete** | `M delete MODULE_CODE` | `M delete CS1101S` |
 
 ### Lesson <a name="lesson-commands"></a>
 
-| Command | Example |
-| ---- | ------ |
-| **Add:** `L add m/MODULE_CODE t/TYPE d/DATE a/ADDRESS` | `L add m/CS2103T t/tutorial d/Wed 14:00-15:00 a/COM1` |
-| **Edit:** `L edit INDEX [m/MODULE_CODE] [t/TYPE] [d/DATE] [a/ADDRESS]` | `L edit 1 a/LT17` |
-| **Delete:** `L delete INDEX` | `L delete 1` |
+| Command | Format | Example |
+| -- | ------ | ------ |
+| **add** | `L add m/MODULE_CODE t/TYPE d/DATE a/ADDRESS` | `L add m/CS2103T t/tutorial d/Wed 14:00-15:00 a/COM1` |
+| **edit** | `L edit INDEX [m/MODULE_CODE] [t/TYPE] [d/DATE] [a/ADDRESS]` | `L edit 1 a/LT17` |
+| **delete** | `L delete INDEX` | `L delete 1` |
 
 ### Task <a name="task-commands"></a>
 
-| Command | Example |
-| ---- | ------ |
-| **Add:** `T add n/NAME d/DATE [m/MODULE_CODE] [r/REMARK]` | `T add n/Assignment 1 d/20/11/2020 r/Focus on Chapters 1-3` |
-| **Edit:** `T edit INDEX [n/NAME] [d/DATE] [m/MODULE_CODE] [r/REMARK]` | `T edit 1 n/Finish Assignment` |
-| **Delete:** `T delete INDEX` | `T delete 1` |
+| Command | Format | Example |
+| -- | ------ | ------ |
+| **add** | `T add n/NAME d/DATE [m/MODULE_CODE] [r/REMARK]` | `T add n/Assignment 1 d/20/11/2020 r/Focus on Chapters 1-3` |
+| **edit** | `T edit INDEX [n/NAME] [d/DATE] [m/MODULE_CODE] [r/REMARK]` | `T edit 1 n/Finish Assignment` |
+| **delete** | `T delete INDEX` | `T delete 1` |
 
 ### Contact <a name="contact-commands"></a>
 
-| Command | Example |
-| ------ | ---------- |
-| **Add:** `C add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]...` | `C add n/John Doe p/98765432 e/jon@jon.com t/Brother t/Friend` |
-| **Edit:** `C edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...` | `C edit 1 n/Johnny Depp p/98999899` |
-| **Delete:** `C delete INDEX` | `C delete 1` |
+| Command | Format | Example |
+| -- | ------ | ------ |
+| **add** | `C add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]...` | `C add n/John Doe p/98765432 e/jon@jon.com t/Brother t/Friend` |
+| **edit** | `C edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...` | `C edit 1 n/Johnny Depp p/98999899` |
+| **delete** | `C delete INDEX` | `C delete 1` |
 
 ### General <a name="general-commands"></a>
 
-| Command | Example |
+| Command | Format |
 | ---- | ------ |
-| **Help:** `help` | `help` |
-| **Exit:** `exit` | `exit` |
+| **help** | `help` | `help` |
+| **exit** | `exit` | `exit` |
