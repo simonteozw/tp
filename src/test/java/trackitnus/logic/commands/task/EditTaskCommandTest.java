@@ -95,15 +95,6 @@ public class EditTaskCommandTest {
     }
 
     @Test
-    public void execute_unchangedFilteredList_failure() {
-        TaskCommandTestUtil.showTaskAtIndex(model, TypicalIndexes.INDEX_FIRST);
-        EditTaskCommand editTaskCommand = new EditTaskCommand(TypicalIndexes.INDEX_FIRST,
-            new EditTaskDescriptorBuilder().withCode(Optional.ofNullable("CS2100")).build());
-
-        assertCommandFailure(editTaskCommand, model, Messages.MESSAGE_TASK_UNCHANGED);
-    }
-
-    @Test
     public void execute_duplicateTaskUnfilteredList_failure() {
         Task firstTask = model.getFilteredTaskList().get(TypicalIndexes.INDEX_FIRST.getZeroBased());
         EditTaskCommand.EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder(firstTask).build();
