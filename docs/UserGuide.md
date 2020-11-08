@@ -99,7 +99,7 @@ There are many things you can use TrackIt@NUS for. We have structured this docum
 
 ### 3.2 Command Format <a name="command-format"></a>
 
-Since **TrackIt@NUS** is a *CLI* application, knowing how to use commands is important. This following section shows you how to interpret and use commands in the app. All commands follow similar formats as outlined below and examples will be provided to help you understand their usage. Examples of commands and their formats will be written in `code-blocks`.
+Since **TrackIt@NUS** is a *CLI* application, knowing how to use commands is important. The following section shows you how to interpret and use commands in the app. All commands follow similar formats as outlined below and examples will be provided to help you understand their usage. Examples of commands and their formats will be written in `code-blocks`.
 
 The table below explains some important technical terms. An example will be provided to help you visualize these terms.
 | **Technical Term** | **Explanation** |
@@ -129,7 +129,7 @@ The following table explains how you can use a command with the provided format.
  
 
 ### 3.3 Duplicate Parameters <a name="duplicate-parameters"></a>
-You can specify the same parameter more than once in a command. Depending on the command, you will receive different
+You can specify the same parameter more than once in each command. Depending on the command, you will receive different
  outcomes:
  
  | **Parameter** | **Explanation** | **Example** |
@@ -140,7 +140,7 @@ You can specify the same parameter more than once in a command. Depending on the
 --------------------------------------------------------------------------------------------------------------------
 ## 4. Application Layout <a name="layout"></a>
 
-This section is gives you a **brief overview** of the **layout** of TrackIt@NUS, and this will help you **get used** to our interface in **a matter of minutes**!
+This section gives you a **brief overview** of the **layout** of TrackIt@NUS, and this will help you **get used** to our interface in **a matter of minutes**!
 
 ![Layout](images/UG/Layout.png)
 _Figure 2 - Layout of TrackIt@NUS_
@@ -160,15 +160,15 @@ Built with a **clean UI**, the `Upcoming tab` is what you will see when you firs
 _Figure 3 - Layout of Upcoming Tab_
 
 In the `Upcoming tab`, there are **three** main `sections` arranged in **chronological order**:
-1. The `Overdue section` is coloured &#x1F534; to **warn** you that about the **incomplete tasks** that are **past their deadline**. These tasks will remain there until you delete them, so remember to complete them as soon as possible!
+1. The `Overdue section` is colored &#x1F534; to **warn** you about the **incomplete tasks** that are **past their deadline**. These tasks will remain there until you delete them, so remember to complete them as soon as possible!
 
-2. The next seven `Daily sections` shows the your **Lessons** and **Tasks** daily for the **next seven days**. This is where you can start planning your schedule for the day.
+2. The next seven `Daily sections` shows your daily **Lessons** and **Tasks** for the **next 7 days**. This is where you can start planning your schedule for the day.
 
 3. The `Future section` shows the **Tasks** that are only due **at least 7 days later**, so these are tasks that you don't have to worry too much about for now.
 
 
 ### 4.2 Module Tabs <a name="moduletabs"></a>
-Besides the `Upcoming tab`, the `Module tab` is another **highlight** that you can look forward to! This is an **all-in-one page** with all the details that you will need when **studying for a specific module**. With this, you don't have to waste precious time toggling between your calender, to-do list and contacts app anymore!
+Besides, the `Upcoming tab`, the `Module tab` is another **highlight** that you can look forward to! This is an **all-in-one page** with all the details that you will need when **studying for a specific module**. With this, you don't have to waste precious time toggling between your calendar, to-do list and contacts app anymore!
  
  ![ModuleTab](images/UG/ModulePanel.png)
  _Figure 4 - Layout of Module Tab_
@@ -180,7 +180,7 @@ The `Module tab` includes `Lessons`, `Tasks` and `Contacts` that are related to 
 2. `Tasks`: List of **tasks** in **chronological** order. 
   :bulb: *Don't leave tutorials or assignments until the last day, chances are you won't finish it on time!*
 
-3. `Contacts`: List of **relevant contacts** for this module. Here's where you can **find help** if u have difficulties with your assignments!
+3. `Contacts`: List of **relevant contacts** for this module. Here's where you can **find help** if you have difficulties with your assignments!
 
 :information_source: Click here to find out more about [Lessons](#lesson), [Tasks](#task) and [Contacts](#contact) .
    
@@ -245,7 +245,7 @@ Format: `M edit CODE [m/NEW_CODE] [n/NAME]`
 :information_source: Note:
 * The `CODE` provided must be present in the Module list.
 
-Example: If you have spelt a module CS1231S's code wrongly and wish to change it to the correct code `CS1231`, follow these instructions.
+Example: If you have spelled a module CS1231S's code wrongly and wish to change it to the correct code `CS1231`, follow these instructions.
 
 | **Parameter** | **Example** |
 | ------------|-|
