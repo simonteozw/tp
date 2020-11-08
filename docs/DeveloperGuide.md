@@ -558,8 +558,7 @@ Given below are instructions to test the app manually.
     Expected: The lesson is added to the `CS1101S` module <br><br>
     3. Test Case: `L add m/CS1101S t/testing d/Fri 16:00-18:00 a/COM1-0215` <br>
     Expected: The lesson is not added. An error message about the allowed types is shown <br><br>
-    4. Other incorrect commands to try: `L add m/CS1101S t/testing d/Fri 16:00-18:00 a/COM1-0215`, `L add m/CS1101S t
-    /Lab d/Fri 16:00-18:00 a/Too long of an address to be a valid address`, `L add m/CS1101S t/testing d/Fri 20:00-18
+    4. Other incorrect commands to try: `L add m/CS1101S t/testing d/Fri 16:00-18:00 a/COM1-0215`, `L add m/CS1101S t/Lab d/Fri 16:00-18:00 a/Too long of an address to be a valid address`, `L add m/CS1101S t/testing d/Fri 20:00-18
     :00 a/COM1-0215` <br>
     Expected: Similar to previous test case 
 
