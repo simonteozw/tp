@@ -178,7 +178,7 @@ The `Module tab` includes `Lessons`, `Tasks` and `Contacts` that are related to 
 1. `Lessons`: List of **lessons** for this module.
 
 2. `Tasks`: List of **tasks** in **chronological** order. 
-  :bulb: *Don't leave tutorials or assignments until the last day, chances are you not gonna finish it!*
+  :bulb: *Don't leave tutorials or assignments until the last day, chances are you won't finish it on time!*
 
 3. `Contacts`: List of **relevant contacts** for this module. Here's where you can **find help** if u have difficulties with your assignments!
 
@@ -188,7 +188,7 @@ The `Module tab` includes `Lessons`, `Tasks` and `Contacts` that are related to 
 ### 4.3 Contacts Tab <a name="contactstab"></a>
 So you might ask, why is there a need for the `Contacts tab` when I can add `contacts` in the `Module tab`? Well, the **beauty** of the `Contacts tab` is that you can add people who may **not be taking the same modules** as you but they are **still relevant** in your social life and/or school life! In this way, you can still include **other useful contacts** in TrackIt@NUS. How cool is that?
 
-:information_source: For example, if your friend have strong English command but does not take the same module as you, you can still add him as a contact first. Who knows? Next time he can be the one helping you with your reflection essay!
+:information_source: Relevant contacts can include your course mates, hostel friends, or even just school mates!
 
 ![ContactsTab](images/UG/ContactsPanel.png)
 _Figure 5 - Layout of Contacts Tab_
