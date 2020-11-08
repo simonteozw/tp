@@ -645,3 +645,7 @@ A: It is meant for you to add `contacts` that **may not be taking** the same mod
 | ---- | ------ |
 | **help** | `help` |
 | **exit** | `exit` |
+
+#### Congratulations! You have come to the end of TrackIT@NUS user guide. Now you are one step closer to productivity. Remember, _track less, and live more_ 😊!
+--------------------------------------------------------------------------------------------------------------------
+![Logo](images/UG/trackit-logo.png)
