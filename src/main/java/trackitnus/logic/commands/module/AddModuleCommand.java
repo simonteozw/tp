@@ -27,7 +27,7 @@ public final class AddModuleCommand extends Command {
     private final Module toAdd;
 
     /**
-     * Creates an AddModule to add the specified {@code Module}
+     * Creates an AddModuleCommand to add the specified {@code Module}
      */
     public AddModuleCommand(Module module) {
         requireNonNull(module);

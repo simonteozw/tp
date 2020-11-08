@@ -4,6 +4,9 @@ import java.util.function.Predicate;
 
 import trackitnus.model.commons.Code;
 
+/**
+ * Tests that a {@code Task}'s {@code code} equals to a given {@code code}
+ */
 public class TaskHasCodePredicate implements Predicate<Task> {
 
     private final Code code;

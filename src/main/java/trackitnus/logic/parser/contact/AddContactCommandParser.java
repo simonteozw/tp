@@ -6,7 +6,6 @@ import static trackitnus.logic.parser.CliSyntax.PREFIX_PHONE;
 import static trackitnus.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
-import java.util.stream.Stream;
 
 import trackitnus.commons.core.Messages;
 import trackitnus.logic.commands.contact.AddContactCommand;
@@ -14,7 +13,6 @@ import trackitnus.logic.parser.ArgumentMultimap;
 import trackitnus.logic.parser.ArgumentTokenizer;
 import trackitnus.logic.parser.Parser;
 import trackitnus.logic.parser.ParserUtil;
-import trackitnus.logic.parser.Prefix;
 import trackitnus.logic.parser.exceptions.ParseException;
 import trackitnus.model.commons.Name;
 import trackitnus.model.contact.Contact;
@@ -28,14 +26,6 @@ import trackitnus.model.tag.Tag;
 public class AddContactCommandParser implements Parser<AddContactCommand> {
 
     /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
-     * {@code ArgumentMultimap}.
-     */
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
-    }
-
-    /**
      * Parses the given {@code String} of arguments in the context of the AddContactCommand
      * and returns an AddContactCommand object for execution.
      *
@@ -45,7 +35,7 @@ public class AddContactCommandParser implements Parser<AddContactCommand> {
         ArgumentMultimap argMultimap =
             ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME)
+        if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_NAME)
             || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
                 AddContactCommand.MESSAGE_USAGE));

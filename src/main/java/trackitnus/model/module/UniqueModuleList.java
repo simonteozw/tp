@@ -14,10 +14,10 @@ import trackitnus.model.module.exceptions.ModuleNotFoundException;
 /**
  * A list of modules that enforces uniqueness between its elements and does not allow nulls.
  * A module is considered unique by comparing using {@code Module#hasSameCode(Module)}. As such,
- * adding and updating of contacts uses Module#hasSameCode(Module) for equality so as to ensure that
+ * adding and updating of modules uses Module#hasSameCode(Module) for equality so as to ensure that
  * the module being added or updated is unique in terms of identity in the UniqueModuleList.
  * However, the removal of a module uses Module#equals(Object) so
- * as to ensure that the contact with exactly the same fields will be removed.
+ * as to ensure that the module with exactly the same fields will be removed.
  * <p>
  * Supports a minimal set of list operations.
  *
@@ -123,12 +123,12 @@ public class UniqueModuleList implements Iterable<Module> {
     }
 
     /**
-     * Returns true if {@code contacts} contains only unique contacts.
+     * Returns true if {@code modules} contains only unique modules.
      */
-    private boolean modulesAreUnique(List<Module> contacts) {
-        for (int i = 0; i < contacts.size() - 1; i++) {
-            for (int j = i + 1; j < contacts.size(); j++) {
-                if (contacts.get(i).hasSameCode(contacts.get(j))) {
+    private boolean modulesAreUnique(List<Module> modules) {
+        for (int i = 0; i < modules.size() - 1; i++) {
+            for (int j = i + 1; j < modules.size(); j++) {
+                if (modules.get(i).hasSameCode(modules.get(j))) {
                     return false;
                 }
             }

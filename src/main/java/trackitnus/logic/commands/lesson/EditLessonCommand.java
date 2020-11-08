@@ -49,8 +49,8 @@ public final class EditLessonCommand extends Command {
     /**
      * Creates a EditLessonCommand to edit the specified {@code Lesson}
      *
-     * @param index
-     * @param editLessonDescriptor
+     * @param index                index of the lesson to edit in the current FilteredLessonList
+     * @param editLessonDescriptor the descriptor of the new lesson
      */
     public EditLessonCommand(Index index, EditLessonDescriptor editLessonDescriptor) {
         requireNonNull(index);
@@ -61,8 +61,8 @@ public final class EditLessonCommand extends Command {
     }
 
     /**
-     * Creates and returns a {@code Contact} with the details of {@code contactToEdit}
-     * edited with {@code editContactDescriptor}.
+     * Creates and returns a {@code Lesson} with the details of {@code lessonToEdit}
+     * edited with {@code editLessonDescriptor}.
      */
     private static Lesson createEditedLesson(Lesson lessonToEdit, EditLessonDescriptor editLessonDescriptor) {
         assert lessonToEdit != null;
@@ -126,8 +126,8 @@ public final class EditLessonCommand extends Command {
     }
 
     /**
-     * Stores the details to edit the contact with. Each non-empty field value will replace the
-     * corresponding field value of the contact.
+     * Stores the details to edit the lesson with. Each non-empty field value will replace the
+     * corresponding field value of the lesson.
      */
     public static final class EditLessonDescriptor {
         private Code code;

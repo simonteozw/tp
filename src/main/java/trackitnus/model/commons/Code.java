@@ -13,16 +13,14 @@ public class Code {
         "Module code should start with 2 or 3 upper-case letters, follow by 4 numeric digits and optionally a single "
             + "letter";
 
-    /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
     public static final String VALIDATION_REGEX = "^[A-Z]{2,3}[0-9]{4}[A-Z]?$";
 
     public final String code;
 
     /**
-     * Every field must be present and not null.
+     * Constructs a {@code Code}.
+     *
+     * @param code A valid code
      */
     public Code(String code) {
         requireNonNull(code);
@@ -30,8 +28,10 @@ public class Code {
         this.code = code;
     }
 
+
     /**
-     * Returns true if a given string is a valid name.
+     * @param test the string to test
+     * @return true if the given string is a valid code.
      */
     public static boolean isValidCode(String test) {
         return test.matches(VALIDATION_REGEX);

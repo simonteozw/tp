@@ -26,7 +26,7 @@ public class Contact {
     private final Set<Tag> tags = new HashSet<>();
 
     /**
-     * Every field must be present and not null.
+     * Name and tags must be present and not null
      */
     public Contact(Name name, Phone phone, Email email, Set<Tag> tags) {
         CollectionUtil.requireAllNonNull(name, tags);

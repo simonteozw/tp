@@ -11,7 +11,6 @@ import trackitnus.model.commons.Name;
 
 /**
  * Represents a Task in the app.
- * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Task {
     public static final String TYPE = "T";
@@ -23,10 +22,6 @@ public class Task {
 
     /**
      * name, date & remark must be present and not null
-     *
-     * @param name
-     * @param date
-     * @param remark
      */
     public Task(Name name, LocalDate date, Code code, String remark) {
         CollectionUtil.requireAllNonNull(name, date, remark);

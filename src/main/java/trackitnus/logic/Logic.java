@@ -111,28 +111,28 @@ public interface Logic {
     /**
      * @param module The module to get index of
      * @return The index of the module in the list of all modules
-     * @throws CommandException
+     * @throws CommandException If an error occurs during execution
      */
     Index getModuleIndex(Module module) throws CommandException;
 
     /**
      * @param code The module code to get index of
      * @return The index of the module with the specified code in the list of all modules
-     * @throws CommandException
+     * @throws CommandException If an error occurs during execution
      */
     Index getModuleIndex(Code code) throws CommandException;
 
     /**
      * @param task The task to get index of.
      * @return The index of the task in list of all tasks.
-     * @throws CommandException
+     * @throws CommandException If an error occurs during execution
      */
     Index getTaskIndex(Task task) throws CommandException;
 
     /**
      * @param lesson The lesson to get index of.
      * @return The index of the lesson in list of all lessons.
-     * @throws CommandException
+     * @throws CommandException If an error occurs during execution
      */
     Index getLessonIndex(Lesson lesson) throws CommandException;
 

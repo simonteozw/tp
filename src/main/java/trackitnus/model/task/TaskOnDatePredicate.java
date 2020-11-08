@@ -3,6 +3,9 @@ package trackitnus.model.task;
 import java.time.LocalDate;
 import java.util.function.Predicate;
 
+/**
+ * Tests that a {@code Task}'s {@code date} equals to a given {@code date}
+ */
 public class TaskOnDatePredicate implements Predicate<Task> {
 
     private final LocalDate date;

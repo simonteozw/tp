@@ -62,8 +62,9 @@ public class CommandResult {
 
     /**
      * Constructs a CommandResult to handle the event if a module is being edited
-     * @param feedbackToUser of module being edited
-     * @param editedModule the module it is being edited to
+     *
+     * @param feedbackToUser  of module being edited
+     * @param editedModule    the module it is being edited to
      * @param preEditedModule the module prior to being edited
      */
     public CommandResult(String feedbackToUser, Module editedModule, Module preEditedModule) {
@@ -72,8 +73,6 @@ public class CommandResult {
 
     /**
      * Constructs a CommandResult to handle the event of a module being deleted
-     * @param feedbackToUser
-     * @param nameOfDeletedModule
      */
     public CommandResult(String feedbackToUser, String nameOfDeletedModule) {
         this(feedbackToUser, false, false, null, null, nameOfDeletedModule);

@@ -33,7 +33,7 @@ public final class AddTaskCommand extends Command {
     private final Task toAdd;
 
     /**
-     * Creates an AddContactCommand to add the specified {@code Contact}
+     * Creates an AddTaskCommand to add the specified {@code Task}
      */
     public AddTaskCommand(Task task) {
         requireNonNull(task);
