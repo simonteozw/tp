@@ -1,0 +1,40 @@
+@startuml
+!include style.puml
+
+skinparam arrowThickness 1.1
+skinparam classBackgroundColor MODEL_COLOR
+
+show member
+
+class AddContactCommand {
+   + {static} COMMAND_WORD : String
+   + {static} MESSAGE_USAGE : String
+   - toAdd: Module
+   + AddModuleCommand(module : Module )
+   + execute(model : Model) : CommandResult
+}
+
+class EditTaskCommand {
+   + {static} COMMAND_WORD : String
+   + {static} MESSAGE_USAGE : String
+   - index: Index
+   + EditTaskCommand(index: Index, editTaskDescriptor: EditTaskDescriptor)
+   - editTaskDescriptor: EditTaskDescriptor
+   - {static} createEditedTask(taskToEdit: Task, editTaskDescriptor: EditTaskDescriptor) : Task
+   + execute(model : Model) : CommandResult
+}
+
+class DeleteLessonCommand {
+    + {static} COMMAND_WORD : String
+    + {static} MESSAGE_USAGE : String
+    - targetIndex: Index
+    + DeleteLessonCommand(targetIndex: Index)
+    + execute(model : Model) : CommandResult
+}
+
+EditTaskCommand +-- EditTaskDescriptor
+
+class EditTaskDescriptor {
+}
+
+@enduml

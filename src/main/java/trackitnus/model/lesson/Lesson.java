@@ -1,7 +1,6 @@
 package trackitnus.model.lesson;
 
 import java.time.LocalTime;
-import java.time.ZoneId;
 import java.util.Objects;
 
 import trackitnus.commons.util.CollectionUtil;
@@ -13,16 +12,7 @@ import trackitnus.model.commons.Code;
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Lesson {
-    public static final ZoneId DEFAULT_TIME_ZONE = ZoneId.of("UTC+8");
     public static final String TYPE = "L";
-    public static final String TIME_MESSAGE_CONSTRAINTS =
-        "Starting time should be earlier than finishing time";
-    public static final String ADDRESS_MESSAGE_CONSTRAINTS = "Address should not be blank";
-    public static final String LESSON_TIME_MESSAGE_CONSTRAINTS =
-        "Lesson's time should be in the format \"ddd H:mm-H:mm\" (in 24-hour format), e.g. Mon 8:00-13:00";
-    public static final String TYPE_MESSAGE_CONSTRAINTS =
-        "Type should be either 'lec'/'lecture', 'tut'/'tutorial', 'lab'/'laboratory', " +
-            "'rec'/'recitation', or 'sec'/'sectional'";
 
     private final Code code;
     private final Type type;
@@ -86,7 +76,7 @@ public class Lesson {
      * @param newCode the new code to set
      * @return a new lesson with the code that has just been passed in
      */
-    public Lesson modifyCode(Code newCode) {
+    public Lesson setCode(Code newCode) {
         CollectionUtil.requireAllNonNull(newCode);
         return new Lesson(newCode, type, time, address);
     }

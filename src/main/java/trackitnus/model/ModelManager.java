@@ -164,9 +164,9 @@ public class ModelManager implements Model {
     //=========== Module ================================================================================
 
     @Override
-    public boolean hasModule(Module task) {
-        requireNonNull(task);
-        return trackIter.hasModule(task);
+    public boolean hasModule(Module module) {
+        requireNonNull(module);
+        return trackIter.hasModule(module);
     }
 
     @Override
@@ -274,6 +274,11 @@ public class ModelManager implements Model {
     @Override
     public void addLesson(Lesson module) {
         trackIter.addLesson(module);
+    }
+
+    @Override
+    public boolean canAddMoreModule() {
+        return getFilteredModuleList().size() < NUM_MODULE_LIMIT;
     }
 
     @Override

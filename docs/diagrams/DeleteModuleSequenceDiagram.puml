@@ -1,0 +1,75 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":DeleteModuleCommand" as DeleteModuleCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+participant ":TrackIter" as TrackIter MODEL_COLOR
+end box
+
+[-> DeleteModuleCommand : execute(m)
+activate DeleteModuleCommand
+
+'getModule
+DeleteModuleCommand -> Model : getModule(code)
+activate Model
+Model -> TrackIter : getModule(code)
+activate TrackIter
+TrackIter --> Model : moduleToDelete
+Model --> DeleteModuleCommand : moduleToDelete
+'end
+
+'getModuleTask
+DeleteModuleCommand -> Model : getModuleTasks(code)
+Model -> TrackIter : updateFilteredTaskList(p1)
+Model -> TrackIter : getFilteredTaskList(p1)
+TrackIter -> Model : tasksToDelete
+Model --> DeleteModuleCommand : tasksToDelete
+'end
+
+'delete tasks
+loop task in tasksToDelete
+    DeleteModuleCommand -> Model : deleteTask(task)
+    Model -> TrackIter : deleteTask(task)
+end
+'end
+
+'getModuleLesson
+DeleteModuleCommand -> Model : getModuleLessons(code)
+Model -> TrackIter : updateFilteredLessonList(p2)
+Model -> TrackIter : getFilteredLessonList(p2)
+TrackIter -> Model : lessonsToDelete
+Model --> DeleteModuleCommand : lessonsToDelete
+'end
+
+'delete lessons
+loop lesson in lessonsToDelete
+    DeleteModuleCommand -> Model : deleteLesson(lesson)
+    Model -> TrackIter : deleteLesson(lesson)
+end
+'end
+
+DeleteModuleCommand -> Model : deleteModule(t)
+
+Model -> TrackIter : deleteModule(t)
+
+
+deactivate TrackIter
+
+deactivate Model
+
+create CommandResult
+DeleteModuleCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> DeleteModuleCommand : r
+deactivate CommandResult
+
+[<--DeleteModuleCommand : r
+deactivate DeleteModuleCommand
+
+@enduml

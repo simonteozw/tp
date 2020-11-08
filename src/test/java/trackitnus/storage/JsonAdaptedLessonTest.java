@@ -11,6 +11,7 @@ import trackitnus.commons.exceptions.IllegalValueException;
 import trackitnus.model.commons.Address;
 import trackitnus.model.commons.Code;
 import trackitnus.model.lesson.Lesson;
+import trackitnus.model.lesson.LessonDateTime;
 import trackitnus.testutil.Assert;
 import trackitnus.testutil.typical.TypicalLessons;
 
@@ -52,7 +53,7 @@ public class JsonAdaptedLessonTest {
     public void toModelType_invalidTime_throwsIllegalValueException() {
         JsonAdaptedLesson lesson =
             new JsonAdaptedLesson(VALID_CODE, VALID_TYPE, INVALID_TIME, VALID_ADDRESS);
-        String expectedMessage = Lesson.LESSON_TIME_MESSAGE_CONSTRAINTS;
+        String expectedMessage = LessonDateTime.MESSAGE_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, lesson::toModelType);
     }
 
@@ -69,7 +70,7 @@ public class JsonAdaptedLessonTest {
     public void toModelType_invalidAddress_throwsIllegalValueException() {
         JsonAdaptedLesson lesson =
             new JsonAdaptedLesson(VALID_CODE, VALID_TYPE, VALID_TIME, INVALID_ADDRESS);
-        String expectedMessage = Lesson.ADDRESS_MESSAGE_CONSTRAINTS;
+        String expectedMessage = Address.MESSAGE_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, lesson::toModelType);
     }
 

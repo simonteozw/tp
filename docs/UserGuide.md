@@ -344,28 +344,27 @@ The `INDEX` provided must be one of the lesson indexes shown in the current wind
 
 ## 5.3 Task <a name="task"></a>
 
-Managing all your tasks can be so stressful! TrackIt@NUS helps alleviate that stress with our built-in Task Manager
-! To view all your tasks, simply click on the upcoming tab as shown below.
+Managing all your tasks can be so stressful! TrackIt@NUS helps alleviate that stress with our built-in Task Manager! To view all your tasks sorted by their date, simply click on the upcoming tab and you will see something like the screenshot below, with tasks in the red outline:
 
 ![Upcoming](images/UG/Upcoming.png)
+_Figure ?? - View of tasks in Upcoming tab_
 
-This sorts all your tasks by date. To view module-specific tasks, click on any of the module tabs as shown below.
+To view module-specific tasks, click on any of the module tabs and you will see something like this screenshot below, with tasks in the red outline:
 
 ![ModuleTasks](images/UG/ModuleTasks.png)
+_Figure ?? - View of tasks in module tab_
 
-:information_source: All module-specific tasks are shown in the upcoming tab, but not vice versa.
-
-You can also perform commands on the tasks as explained below.
+You can also perform commands on the tasks as we will now explain.
 
 ### 5.3.1 Task Command Parameters
 Here are the parameters used in the Task feature:
 | **Parameter** | **Description** | **Example** |
 | --------------| ----------------| ----------- |
 | `INDEX` | Indicates the position of an item in a list. The specified `INDEX` must be **within the range** of the number of items in the list. | **1** - refers to the first item in a list |
-| `MODULE_CODE`| Refers to the unique code given to the module.<br><br>You can personalise this and give it your own code. However, we recommend you use the module’s official code. | **CS2103T** |
+| `MODULE_CODE`| Refers to the unique code given to the module.<br><br>You can personalise this and give it your own code. However, we recommend you use the module’s official code. | **MA1101R** |
 | `NAME`| Refers to the **Task** name | **Assignment 1** |
 | `DATE` | Indicates the date of a task deadline. Must be in `dd/mm/yyyy` format. | **01/01/2021** |
-| `REMARK` | Refers to any (optional) additional remarks for a task. | For a task `Assignment 1`, a possible remark could be `Focus on Chapters 1-3` |
+| `[REMARK]` | Refers to any (optional) additional remarks for a task. | For a task `Assignment 1`, a possible remark could be `Focus on Chapters 1-3` |
 
 ### 5.3.2 Add
 
@@ -374,51 +373,64 @@ After a day of school you realise that you now have a few more tasks to complete
 
 Format: `T add n/NAME d/DATE [m/MODULE_CODE] [r/REMARK]`
 
-Examples:
+:information_source: Note: <br> 
+   * To give users greater freedom when adding tasks, you **can** add tasks with deadlines in the past.
 
-* `T add n/Assignment 1 m/CS2100 d/20/11/2020 r/Focus on Chapters 1-3`
-* `T add n/Plan for Bob's birthday d/12/11/2020`
-* `T add n/Buy mooncakes for Mum d/28/10/2020 r/Remember to get Durian-flavoured ones`
+Example: To add a task "MA1101R Assignment 1 due on 1 November 2020, covering Chapters 1-3" into TrackIt@NUS, follow these instructions.
+| **Parameter** | |
+| ------------- | - |
+| NAME| Assignment 1 |
+| DATE | 01/11/2020 |
+| Optional: [MODULE_CODE]| MA1101R |
+| Optional: [REMARK] | Focus on Chapters 1-3 |
 
-:information_source: The parameters `m/MODULE_CODE` and `r/REMARK` are optional.
+<br>1. To add, type `T add n/Assignment 1 m/MA1101R d/01/11/2020 r/Focus on Chapters 1-3` into the command box.
+<br>2. Press `Enter` to execute.
+<br>3. The result display will show the success message and you will see your new task in the Upcoming tab, and its corresponding module tab (if MODULE_CODE field was filled).
 
-:warning: The `DATE` provided must be in the format `dd/MM/yyyy`.
-
-:bulb: To give users greater freedom when adding tasks, you **can** add tasks with deadlines in the past.
+(TODO: ADD TASK OUTCOME SCREENSHOT)
+_Figure ? - Example outcome of adding a task_
 
 ### Edit
-After adding a task to TrackIt@NUS, you may want to change it, perhaps extend the deadline or change it's remark. The
+After adding a task to TrackIt@NUS, you may want to change it, perhaps extend the deadline or change any remarks. The
  edit command is what you should use to do so.
 
 Format: `T edit INDEX [n/NAME] [d/DATE] [m/MODULE_CODE] [r/REMARK]`
 
-Examples:
+:information-source: Note:
+* At least 1 field must be provided for editing (i.e. `T edit 1` is not allowed).
+* Enter `T edit 1 m/` to remove the module code from the first task in the list. Now, the task does not belong to any module. You
+ can also use `T edit 1 r/` to remove the remark.
+ * To give users greater freedom, you **can** edit the date of a module to be in the past.
+ 
+Example: To edit the task "MA1101R Assignment 1 due on 1 November 2020, covering Chapters 1-3" to be due on 31 October 2020 instead, follow these instructions.
+| **Parameter**||
+|--------------| -|
+| INDEX | 1 |
+| DATE | 31/10/2020 |
+
+<br>1. Look for the task's index which is on the left of the task.
+<br>2. Type `T edit 1 d/31/10/2020`  into the command box.
+<br>3. Press `Enter` to execute.
+<br>4. The Result Display will show a success message an you should see your task update accordingly.
 
 ![EditTask](images/UG/EditTask.png)
-
-* `T edit 2 n/Work on midterm report` changes the name of the Task
-* `T edit 2 r/min 1000 words` changes the remark of the Task
-* `T edit 2 m/CS2100` changes the module code of the Task
-
-:information_source: Here, `INDEX` refers to the index of the task you want to edit, as shown in the current tab. The
- `INDEX` provided must be one of the task indexes shown in the current window.
-
-:warning: At least 1 field must be provided for editing (i.e. `T edit 1` is not allowed).
-
-:bulb: Write `T edit 1 m/` to remove the module code from the task. Now, the task does not belong to any module. You
- can also use `T edit 1 r/` to remove the remark from the task.
+_Figure ? - Example outcome of editing a task_
  
-:bulb: To give users greater freedom when adding tasks, you **can** add tasks with deadlines in the past.
-
 ### Delete
 Once you have completed a task, you can delete it. This is the command to do so.
 
 Format: `T delete INDEX`
 
-Examples: `T delete 2`
+Example: To delete a task, follow these instructions.
 
-:information_source: Here, `INDEX` refers to the index of the task you want to delete, as shown in the current tab. The
- `INDEX` provided must one of the task indexes shown in the current window.
+<br>1. Look for the task's index which is on the left of the task.
+<br>2. Type `T delete 1` into the command box.
+<br>3. Press `Enter` to execute.
+<br>4. The Result Display will show a success message and you should see your task disappear.
+
+(TODO: ADD DELETE TASK OUTCOME)
+_Figure ? - Example outcome of deleting a task_
 
 ## 5.4 Contact <a name="contact"></a>
 Don't you hate it when you need help for one of your modules but you just can't remember who else is taking the module with you? 

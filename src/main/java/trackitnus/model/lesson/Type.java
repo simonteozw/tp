@@ -5,6 +5,9 @@ public enum Type {
     TUT,
     LAB,
     REC,
-    SEC
+    SEC;
+    public static final String TYPE_MESSAGE_CONSTRAINTS =
+        "Type should be either 'lec'/'lecture', 'tut'/'tutorial', 'lab'/'laboratory', " +
+            "'rec'/'recitation', or 'sec'/'sectional'";
 }
 

@@ -128,9 +128,6 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() throws CommandException {
-
-        UpcomingPanel upcomingPanel = new UpcomingPanel(logic);
-
         SidePanel sidePanel = new SidePanel(tabValues -> {
             try {
                 switchTab(tabValues);
@@ -141,7 +138,7 @@ public class MainWindow extends UiPart<Stage> {
         sidePanelPlaceholder.getChildren().add(sidePanel.getRoot());
 
         //Default tab open
-        ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList((Object) "U"));
+        ArrayList<Object> upcomingValues = new ArrayList<>(Arrays.asList((Object) UpcomingPanel.TYPE));
         switchTab(upcomingValues);
 
         resultDisplay = new ResultDisplay();
@@ -230,12 +227,20 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
-            if (commandResult.getNameOfEditedModule().equals(tabInContext)) {
-                switchTab(new ArrayList<>(Arrays.asList((Object) "U")));
+            if (commandResult.getNameOfDeletedModule().equals(tabInContext)) {
+                switchTab(new ArrayList<>(Arrays.asList((Object) UpcomingPanel.TYPE)));
+            }
+
+            if (commandResult.getPreEditedModule() != null) {
+                if (commandResult.getPreEditedModule().getCode().code.equals(tabInContext)) {
+                    ModulePanel modulePanel = new ModulePanel(commandResult.getEditedModule(), logic);
+                    tabPanelPlaceholder.getChildren().add(modulePanel.getRoot());
+                    tabInContext = commandResult.getEditedModule().getCode().toString();
+                }
             }
 
             if (commandResult.isShowHelp()) {
-                switchTab(new ArrayList<>(Arrays.asList((Object) "H")));
+                switchTab(new ArrayList<>(Arrays.asList((Object) HelpPanel.TYPE)));
             }
 
             return commandResult;
