@@ -297,8 +297,6 @@ TrackIt@NUS also gives users a better understanding of their tasks by allowing u
  keep track of all their tasks. To better support NUS students, a task can either belong to a module or not. When
   adding a task, users can choose to the include the `m/MODULE_CODE` parameter in order to add a task that belongs to
    a module. When users click into a specific module tab, they can see the tasks belonging to each module.
-   
-![ModuleTasks](images/ModuleTasks.png)
     
 :information_source: A task does not have to belong a module. In this case, the module parameter of the task is
  simply treated as null and the task can only be viewed in the upcoming tab.
@@ -512,5 +510,245 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | **MSS** <a name="mss"></a> | Stands for "Main Success Scenario". This describes the given interaction for a given use case, assuming nothing goes wrong. |
 
 ## **Appendix F: Instructions for Manual Testing** <a name="appen-f"></a>
+
+Given below are instructions to test the app manually.
+
+:information_source: These instructions only provide a starting point for testers to work on, testers are expected to
+ do more _exploratory_ testing.
+ 
+### Launch and Shutdown
+
+1. Initial Launch
+    1. Download the jar file and copy it into an empty folder <br><br>
+    2. Open the folder containing the jar and enter the command `java -jar trackitnus.jar` in the terminal <br>
+    Expected: Shows a [GUI](#gui) with a list of upcoming tasks and lessons <br><br>
+2. Saving Window Preferences
+    1. Resize the window to an optimal size. Move the window to a different location. Close the window <br><br>
+    2. Re-launch the app, following the steps in the previous test <br>
+    Expected: The most recent window size and location is retained
+   
+### Adding a Module
+
+1. Adding a module from any view
+    1. Prerequisites: Arguments are valid and compulsory parameters (module code and module name) are provided <br><br>
+    2. Test Case: `M add m/CS1231 n/Discrete Mathematics` <br>
+    Expected: Adds a module with the module code `CS1231` and module name `Discrete Mathematics`. The new module code
+     will appear on the sidebar, you can click on it to view the module <br><br>
+    3. Test Case: `M add m/CS1231 n/Not so discrete Mathematics` <br>
+    Expected: The module is not added. An error message saying that the module already exists (assuming you did the
+     1st test case) is shown <br><br>
+    4. Test Case: `M add m/cs1231 n/Discrete Mathematics` <br>
+    Expected: The module is not added. An error message saying that the module code is the incorrect format is shown <br><br>
+    5. Other incorrect add commands to try: `M add m/ n/Discrete Mathematics`, `M add m/CS1231 n/`, `M add m/ n
+    /Discrete Mathematics` <br>
+    Expected: Similar to previous test case 
+    
+### Adding a Lesson
+
+1. Adding a lesson to a module:
+    1. Prerequisites: 
+        1. Arguments are valid and compulsory parameters are provided <br><br>
+        2. The module must exist (the module code must belong to a an existing module) <br><br>
+        3. The type must be one of `lec/lecture`, `tut/tutorial`, `lab/laboratory`, `rec/recitation`, or `sec
+        /sectional` <br><br>
+        4. The date provided must of the form `Day HH:mm-HH:mm` <br><br>
+        5. The start time of the date must be earlier than the end time <br><br>
+        6. The address provided cannot be longer than 20 characters <br><br>
+    2. Test Case: `L add m/CS1101S t/Lab d/Fri 16:00-18:00 a/COM1-0215` <br>
+    Expected: The lesson is added to the `CS1101S` module <br><br>
+    3. Test Case: `L add m/CS1101S t/testing d/Fri 16:00-18:00 a/COM1-0215` <br>
+    Expected: The lesson is not added. An error message about the allowed types is shown <br><br>
+    4. Other incorrect commands to try: `L add m/CS1101S t/testing d/Fri 16:00-18:00 a/COM1-0215`, `L add m/CS1101S t
+    /Lab d/Fri 16:00-18:00 a/Too long of an address to be a valid address`, `L add m/CS1101S t/testing d/Fri 20:00-18
+    :00 a/COM1-0215` <br>
+    Expected: Similar to previous test case 
+
+### Adding a Task
+
+1. Adding a task 
+    1. Prerequisites:
+        1. Arguments are valid and compulsory parameters are provided <br><br>
+        2. The date must be in the form `dd/mm/yyyy` <br><br>
+    2. Test Case: `T add n/Buy cake for Mom d/12/12/2020` <br>
+    Expected: Adds a task by the name `Buy cake for Mom` to TrackIt@NUS <br><br>
+    3. Test Case: `T add n/Buy cake for Dad d/11/11/2020 r/Get extra chocolate` <br>
+    Expected: Adds a task by the name `Buy cake for Dad` with a remark `Get extra chocolate` to TrackIt@NUS <br><br>
+    4. Test Case: `T add n/Buy cake for Mom d/12/12/2020` <br>
+    Expected: The task is not added. An error message saying that the task already exists (assuming you did the first
+     test case) is shown <br><br>
+    5. Test Case: `T add n/Buy noodles for Mom d/12/12/20202` <br>
+    Expected: The task is not added. An error message saying that the date is in the wrong format is shown <br><br>
+2. Adding a task to a module
+    1. Prerequisites:
+        1. Arguments are valid and compulsory parameters are provided <br><br>
+        2. The module must exist (the module code must belong to a an existing module) <br><br>
+    2. Test Case: `T add n/Do Assignment d/12/12/2020 m/CS1101S` <br>
+    Expected: Adds a task by the name `Do Assignment` to the `CS1101S` module <br><br>
+    3. Test Case: `T add n/Do Tutorial d/12/12/2020 m/CS1101S r/Check first 3 questions` <br>
+    Expected: Adds a task by the name `Do Tutorial` with a remark `Check first 3 questions` to the `CS1101S` module <br><br>
+    4. Test Case: `T add n/Do Assignment d/12/12/2020 m/cs1101s` <br>
+    Expected: The task is not added. An error message saying that the module code is of the wrong format is shown <br><br>
+
+### Adding a Contact
+
+1. Adding a contact from any view
+    1. Prerequisites: Arguments are valid and compulsory parameters are provided <br><br>
+    2. Test Case: `C add n/Tom p/98989898 e/tom@mail.com` <br>
+    Expected: The contact is added to TrackIt@NUS <br><br>
+    3. Test Case: `C add` <br>
+    Expected: The contact is not added. An error message about valid command format is shown <br><br>
+    4. Test Case: `C add n/` <br>
+    Expected: The contact is not added. An error message saying the name must be a non-empty string is shown <br><br>
+    5. Other wrong commands to try: `C add n/Tom p/abc`, `C add n/Tom e/abc`, `C add n/Tom t/123-abc` <br>
+    Expected: Similar to previous test case
+    
+### Editing a Module
+
+1. Editing a module's code
+    1. Prerequisites: Arguments are valid and compulsory parameters are provided <br><br>
+    2. Test Case: `M edit CS2030 m/CS2030S` <br>
+    Expected: The module code changes. All the lessons, tasks, and contacts associated with this module code wil be
+     changed as well <br><br>
+    3. Test Case: `M edit CS2030 m/cs2030` <br>
+    Expected: The module code does not change. An error message saying that the new module code is invalid is shown <br><br>
+    3. Test Case: `M edit CS2030 m/CS2100` <br>
+    Expected: The module code does not change. An error message saying that the new module code already exists
+     (assuming the module `CS2100` exists in TrackIt@NUS) is shown <br><br>   
+2. Editing a module's name
+    1. Test Case: `M edit CS2030 n/New Name` <br>
+    Expected: The module name changes <br><br>
+    2. Test Case: `M edit CS2030 n/Inva/id Name` <br>
+    Expected: The module name does not change. An error message saying that the provided name is of the wrong format
+     is shown <br><br>
+
+### Editing a Lesson
+
+1. Editing a Lesson
+    1. Prerequisites: 
+        1. Arguments are valid and compulsory parameters are provided <br><br>
+        2. The module must exist (the module code must belong to a an existing module) <br><br>
+        3. The type must be one of `lec/lecture`, `tut/tutorial`, `lab/laboratory`, `rec/recitation`, or `sec/sectional` <br><br>
+        4. The date provided must of the form `Day HH:mm-HH:mm` <br><br>
+        5. The start time of the date must be earlier than the end time <br><br>
+        6. The address provided cannot be longer than 20 characters <br><br>
+        7. The index provided must be a lesson index seen on the current window <br><br>
+    2. Test Case: `L edit 1 t/tut` <br>
+    Expected: The lesson type is changed to `tutorial`, unless it was originally a tutorial (in which case an error
+     message is shown) <br><br>
+    3. Test Case: `L edit 1 m/CS2030S` <br>
+    Expected: The module that the lesson is associated to is changed to `CS2030S`, unless it originally belonged to
+     `CS2030S` (in which case an error message is shown) <br><br>
+    4. Test Case: `L edit -1` <br>
+    Expected: An error message about the invalid command format is shown <br><br>
+
+### Editing a Task
+
+1. Editing a Task
+    1. Prerequisites:
+        1. Arguments are valid and compulsory parameters are provided <br><br>
+        2. The date must be in the form `dd/mm/yyyy` <br><br>
+        3. The index provided must be a task index seen on the current window <br><br>
+    2. Test Case: `T edit 1 n/New Task Name` <br>
+    Expected: The task name changes to `New Task Name` <br><br>
+    3. Test Case: `T edit 1 d/11/11/2021` <br>
+    Expected: The task date changes to `11/11/2021`, unless its original date was `11/11/2021` (in which case an
+     error message is shown) <br><br>
+    4. Test Case: `T edit -1` <br>
+    Expected: An error message about the invalid task index is shown <br><br>
+2. Editing a Task to change or remove the module code
+    1. Prerequisites: The module must exist (the module code must belong to a an existing module) <br><br>
+    1. Test Case: `T edit 1 m/MA1101R` <br>
+    Expected: The first task in the current window changes to belong to `MA1101R`, unless it originally belonged to
+     `MA1101R` (in which case an error message is shown) <br><br>
+    2. Test Case: `T edit 1 m/` <br>
+    Expected: The first task in the current window no longer has a module code <br><br>
+3. Editing a Task to change or remove the remark
+    1. Test Case: `T edit 1 r/New remark` <br>
+    Expected: The first task in the current window has its remark change to `New Remark` <br><br>
+    2. Test Case: `T edit 1 r/` <br>
+    Expected: The first task in the current window has its remark removed, unless it originally did not have a remark
+     (in
+     which case an error message is thrown) <br><br>
+
+### Editing a Contact
+
+1. Editing a Contact
+    1. Prerequisites: The index provided must be a contact index seen on the current window <br><br>
+    2. Test Case: `C edit 1 p/9999999` <br>
+    Expected: The first contact in the current window has his/her phone number changed to `9999999`, unless it was
+     originally `9999999` (in which case an error message is shown) <br><br>
+    3. Test Case: `C edit 1 e/new@email.com` <br>
+    Expected: The first contact in the current window has his/her email changed to `new@email.com` <br><br>
+    3. Test Case: `C edit -1` <br>
+    Expected: An error message about the invalid contact index is shown <br><br>
+2. Editing a Contact to change or remove tags
+    1. Test Case: `C edit 1 t/newtag` <br>
+    Expected: The first contact in the current window has all of his/her old tags removed and replaced with 1 tag
+     `newtag` <br><br>
+    2. Test Case: `C edit 1 t/` <br>
+    Expected: The first contact in the current window has all of his/her old tags removed, unless the contact has no
+     tags originally (in which case an error message is shown) <br><br>
+     
+### Deleting a Module
+
+1. Deleting a Module
+    1. Prerequisites: The module must exist (the module code must belong to a an existing module) <br><br>
+    2. Test Case: `M delete CS2030S` <br>
+    Expected: The module `CS2030S` is deleted <br><br>
+    3. Test Case: `M delete cs2030s` <br>
+    Expected: An error message about the invalid command format is shown <br><br>
+
+### Deleting a Lesson
+
+1. Deleting a Lesson
+     1. Prerequisites: The index provided must be a lesson index seen on the current window <br><br>
+     2. Test Case: `L delete 1` <br>
+     Expected: The first lesson in the current window is deleted <br><br>
+     3. Test Case: `L delete -1` <br>
+     Expected: An error message about the invalid lesson index is shown <br><br>
+
+### Deleting a Task
+
+1. Deleting a Task
+     1. Prerequisites: The index provided must be a task index seen on the current window <br><br>
+     2. Test Case: `T delete 1` <br>
+     Expected: The first task in the current window is deleted <br><br>
+     3. Test Case: `T delete -1` <br>
+     Expected: An error message about the invalid task index is shown <br><br>
+     
+### Deleting a Contact
+
+1. Deleting a Contact
+     1. Prerequisites: The index provided must be a contact index seen on the current window <br><br>
+     2. Test Case: `C delete 1` <br>
+     Expected: The first contact in the current window is deleted <br><br>
+     3. Test Case: `C delete -1` <br>
+     Expected: An error message about the invalid contact index is shown <br><br>
+
+### Viewing Help
+
+1. Opens the help window
+    1. Test Case: `help` <br>
+    Expected: Opens the help window
+    
+### Changing Tabs
+
+1. Changes the tab
+    1. Test Case: Click on the Upcoming tab <br>
+    Expected: Switches the Upcoming tab. Upcoming tab is highlighted in the sidebar <br><br>
+    2. Test Case: Click on the Contacts tab <br>
+    Expected: Switches to the Contacts tab. Contacts tab is highlighted in the sidebar <br><br>
+    3. Test Case: Click on any of the module tabs <br>
+    Expected: Switches to the module tab that was clicked. The specific module tab is highlighted in the sidebar <br><br>
+    4. Test Case: Click on the Help tab <br>
+    Expected: Switches the Help tab. Help tab is highlighted in the sidebar
+    
+### Exiting the Program
+1. Exiting the Program
+    1. Test Case: `exit` <br>
+    Expectation: Exits the program <br><br>
+    2. Test Case: Click on the red cross on at the top left corner of TrackIt@NUS <br>
+    Expectation: Exits the program
+    
 
 ## **Appendix G: Effort** <a name="appen-g"></a>
