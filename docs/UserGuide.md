@@ -217,13 +217,14 @@ Here are the parameters used in the Module feature:
 | `CODE`| Refers to the unique code given to the module.<br>You can personalise this and give it your own code. However, we recommend you use the module’s official code. | `CS2103T` |
 | `NAME`| Refers to the module name. | `Software Engineering` |
 
-### 5.1.2 Add a Module <a name="module-add"></a>
+### 5.1.2 Add a Module `M add` <a name="module-add"></a>
 
 You can use this command to create a new Module (Or a new category of things to worry about).
 
 Format: `M add m/CODE n/NAME`
 
 Example: To add the Module CS1231 Discrete Structures into TrackIt@NUS, follow these instructions.
+
 | **Parameter** | **Example** |
 | ------------|-|
 | `CODE` | `CS1231S` |
@@ -236,7 +237,7 @@ Example: To add the Module CS1231 Discrete Structures into TrackIt@NUS, follow t
 ![AddModuleOutcome](images/UG/AddModuleOutcome.png)
 _Figure 7 - Example outcome of adding a module_
 
-### 5.1.3 Edit a Module <a name="module-edit"></a>
+### 5.1.3 Edit a Module `M edit` <a name="module-edit"></a>
 Because modules are displayed only on the side panel, they are not indexed. That's why to edit and delete a module, its code will be used instead! This is how to edit a module's code and/or name:
 
 Format: `M edit CODE [m/NEW_CODE] [n/NAME]`
@@ -244,15 +245,21 @@ Format: `M edit CODE [m/NEW_CODE] [n/NAME]`
 :information_source: Note:
 * The `CODE` provided must be present in the Module list.
 
-Example: If you have spelt a module CS1231's name wrongly and wish to change it to the correct spelling `Discrete Structures`, follow these instructions.
-1. Type `M edit CS1231 n/Discrete Structures` into the Command Box
-2. Press `Enter` to execute
+Example: If you have spelt a module CS1231S's code wrongly and wish to change it to the correct code `CS1231`, follow these instructions.
+
+| **Parameter** | **Example** |
+| ------------|-|
+| `CODE` | `CS1231S` |
+| `NEW_CODE` | `CS1231` |
+
+1. Type `M edit CS1231S m/CS1231` into the Command Box.
+2. Press `Enter` to execute.
 3. The Result Display will show a success message and you will be able to view the correct module name in the corresponding module tab.
 
 ![EditModuleOutcome](images/UG/EditModuleOutcome.png)
 _Figure 8 - Example outcome of editing a module_
 
-### 5.1.4 Delete a Module <a name="module-delete"></a>
+### 5.1.4 Delete a Module `M delete` <a name="module-delete"></a>
 And what if you realized you accidentally added in a wrong module, or have finished one? Just delete that module! The
  command's syntax is as follows: 
 
@@ -262,8 +269,13 @@ Format: `M delete CODE`
 * When you delete a module, the contacts associated with that module will **not** be deleted. The tag will also **not** be edited in any way.
 * When you delete a module, the app will delete all of its related tasks & lessons, so check twice before you delete it! 
 
-To delete the module `CS2100`:
-1. Type `M delete CS2100` into the Command Box
+To delete the module `CS1231`:
+
+| **Parameter** | **Example** |
+| ------------|-|
+| `CODE` | `CS1231` |
+
+1. Type `M delete CS1231` into the Command Box
 2. Press `Enter` to execute
 3. The Result Display will show a success message and the module tab will be removed from the side panel.
 
@@ -288,15 +300,15 @@ You can also perform commands on the lessons as explained below.
 Here are the parameters used in the Module feature:
 | **Parameter** | **Description** | **Example** |
 | --------------| ----------------| ----------- |
-| `INDEX` | Indicates the position of an item in a list. The specified `INDEX` must be **within the range** of the number of items in the list. | **1** - refers to the first item in a list |
-| `CODE`| Refers to the unique code given to the module.<br><br>You can personalise this and give it your own code. However, we recommend you use the module’s official code. | **CS2103T** |
-| `TYPE` | Refers to the type of lesson.| **lecture/lec** - lecture<br><br>**tutorial/tut** - tutorial<br><br>**laboratory/lab** - laboratory<br><br>**recitation/rec** - recitation<br><br>**sectional/sec** - sectional |
-| `DATE` | Indicates the weekly timing of a lesson. Must be in `ddd H:mm-H:mm` and 24-hour time format. | **mon 12:00-14:00** |
-| `ADDRESS` | Indicates where a lesson is held. | **COM1-0215** |
+| `INDEX` | Indicates the position of an item in a list. The specified `INDEX` must be **within the range** of the number of items in the list. | `1` refers to the first item in a list |
+| `CODE`| Refers to the unique code given to the module.<br><br>You can personalise this and give it your own code. However, we recommend you use the module’s official code. | `CS2103T` |
+| `TYPE` | Refers to the type of lesson.| `lecture`/`lec` - lecture<br>`tutorial`/`tut` - tutorial<br>`laboratory`/`lab` - laboratory<br>`recitation`/`rec` - recitation<br>`sectional`/`sec` - sectional |
+| `DATE` | Indicates the weekly timing of a lesson. Must be in `ddd H:mm-H:mm` and 24-hour time format. | `mon 12:00-14:00` |
+| `ADDRESS` | Indicates where a lesson is held. | `COM1-0215` |
 
 :warning: The time slots of the lessons _can_ overlap. It's a situation that no one wants to be in, but, unfortunately, does sometimes happen.
 
-### 5.2.2 Add a Lesson <a name="lesson-add"></a>
+### 5.2.2 Add a Lesson `L add` <a name="lesson-add"></a>
 The command that makes you sigh every time you have to use it. Use this command to add a lesson to a module.
 
 Format: `L add m/CODE t/TYPE d/DATE a/ADDRESS`
@@ -305,12 +317,13 @@ Format: `L add m/CODE t/TYPE d/DATE a/ADDRESS`
 * You must create the Module first before you can add a lesson with that module code.
 
 Example: To add MA1101R tutorial in COM1-0121 that falls every Monday from 4-6pm, follow these instructions.
-| **Parameter** | |
-|---------------|-|
-| CODE| **MA1101R**|
-|TYPE| **tutorial/tut**|
-|DATE| **Mon 16:00-17:00** |
-| ADDRESS | COM1-0121|
+
+| **Parameter** | **Example** |
+| ------------|-|
+| `CODE`| `MA1101R`|
+| `TYPE`| `tutorial`/ `tut`|
+| `DATE`| `Mon 16:00-17:00` |
+| `ADDRESS` | `COM1-0121` |
 
 1. To add, type `L add m/MA1101R t/tutorial d/MON 16:00-17:00 a/COM1-0121` into the command box.
 2. Press `Enter` to execute.
@@ -319,7 +332,7 @@ Example: To add MA1101R tutorial in COM1-0121 that falls every Monday from 4-6pm
 ![AddLessonOutcome](images/UG/AddLessonOutcome.png)
 _Figure 10 - Example outcome of adding a lesson_
 
-### 5.2.3 Edit a Lesson <a name="lesson-edit"></a>
+### 5.2.3 Edit a Lesson `L edit` <a name="lesson-edit"></a>
 
 After adding a lesson, you might still want to change its details. 
 This is the command to do so.
@@ -330,10 +343,10 @@ Format: `L edit INDEX [m/CODE] [t/TYPE] [d/DATE] [a/ADDRESS]`
 however, at least one parameter must be provided (i.e. `L edit 1` is not a valid command).
 
 Example: To change the lesson timing to 5pm-6pm, follow these instructions. 
-| **Parameter** | |
+| **Parameter** | **Example** |
 |---------------|-|
-| INDEX | 1|
-|DATE| **Mon 17:00-18:00** |
+| `INDEX` | `1` |
+| `DATE` | `Mon 17:00-18:00` |
 
 1. Look for the lesson's index which is on the left of the lesson.
 2. To add, type `L edit 1 d/MON 17:00-18:00` into the command box.
@@ -343,18 +356,21 @@ Example: To change the lesson timing to 5pm-6pm, follow these instructions.
 ![EditLessonOutcome](images/UG/EditLessonOutcome.png)
 _Figure 11 - Example outcome of editing a lesson_
 
-### 5.2.4 Delete a Lesson <a name="lesson-delete"></a>
+### 5.2.4 Delete a Lesson `L delete` <a name="lesson-delete"></a>
 Sometimes, you might want to delete a particular lesson, probably since you've added it by mistake, or you hate it so much you want to forget its existence. This is the command to do so.
 
 Format: `L delete INDEX`
 
 Example: To delete a lesson, follow these instructions.
 
+| **Parameter** | **Example** |
+|---------------|-|
+| `INDEX` | `1` |
+
 1. Look for the lesson's index which is on the left of the lesson.
 2. Type `L delete 1` into the command box.
 3. Press `Enter` to execute.
 4. The Result Display will show a success message and you should see your lesson disappear.
-
 
 ![DeleteLessonOutcome](images/UG/DeleteLessonOutcome.png)
 _Figure 12 - Example outcome of deleting a lesson_
@@ -376,13 +392,13 @@ You can also perform commands on the tasks as explained below.
 Here are the parameters used in the Task feature:
 | **Parameter** | **Description** | **Example** |
 | --------------| ----------------| ----------- |
-| `INDEX` | Indicates the position of an item in a list. The specified `INDEX` must be **within the range** of the number of items in the list. | **1** - refers to the first item in a list |
-| `CODE`| Refers to the unique code given to the module.<br><br>You can personalise this and give it your own code. However, we recommend you use the module’s official code. | **MA1101R** |
-| `NAME`| Refers to the **Task** name | **Assignment 1** |
-| `DATE` | Indicates the date of a task deadline. Must be in `dd/mm/yyyy` format. | **01/01/2021** |
+| `INDEX` | Indicates the position of an item in a list. The specified `INDEX` must be **within the range** of the number of items in the list. | `1` - refers to the first item in a list |
+| `CODE`| Refers to the unique code given to the module.<br><br>You can personalise this and give it your own code. However, we recommend you use the module’s official code. | `MA1101R` |
+| `NAME`| Refers to the **Task** name | `Assignment 1` |
+| `DATE` | Indicates the date of a task deadline. Must be in `dd/mm/yyyy` format. | `01/01/2021` |
 | `REMARK` | Refers to any (optional) additional remarks for a task. | For a task `Assignment 1`, a possible remark could be `Focus on Chapters 1-3` |
 
-### 5.3.2 Add a Task <a name="task-add"></a>
+### 5.3.2 Add a Task `T add` <a name="task-add"></a>
 
 After a day of school you realise that you now have a few more tasks to complete and wish to keep track of them. This is
  the command for adding a new task to TrackIt@NUS.
@@ -390,12 +406,12 @@ After a day of school you realise that you now have a few more tasks to complete
 Format: `T add n/NAME d/DATE [m/CODE] [r/REMARK]`
 
 Example: To add a task "MA1101R Assignment 1 due on 1 November 2020, covering Chapters 1-3" into TrackIt@NUS, follow these instructions.
-| **Parameter** | |
+| **Parameter** | **Example** |
 | ------------- | - |
-| NAME| Assignment 1 |
-| DATE | 01/11/2020 |
-| Optional: [CODE]| MA1101R |
-| Optional: [REMARK] | Focus on Chapters 1-3 |
+| `NAME`| `Assignment 1` |
+| `DATE` | `01/11/2020` |
+| Optional: [ `CODE` ]| `MA1101R` |
+| Optional: [ `REMARK` ] | `Focus on Chapters 1-3` |
 
 1. To add, type `T add n/Assignment 1 m/MA1101R d/01/11/2020 r/Focus on Chapters 1-3` into the command box.
 2. Press `Enter` to execute.
@@ -408,17 +424,26 @@ Example: To add a task "MA1101R Assignment 1 due on 1 November 2020, covering Ch
 ![AddTaskOutcome](images/UG/AddTaskOutcome.png)
 _Figure 13 - Example outcome of adding a task_
 
-### 5.3.3 Edit a Task <a name="task-edit"></a>
+### 5.3.3 Edit a Task `T edit` <a name="task-edit"></a>
 After adding a task to TrackIt@NUS, you may want to change it, perhaps extend the deadline or change it's remark. The
  edit command is what you should use to do so.
 
 Format: `T edit INDEX [n/NAME] [d/DATE] [m/CODE] [r/REMARK]`
 
 Examples:
+* `T edit 1 n/Work on midterm report` changes the name of the Task
+* `T edit 1 r/min 1000 words` changes the remark of the Task
+* `T edit 1 m/CS2100` changes the module code of the Task
+* `T edit 1 d/31/10/2020` changes the deadline of the Task ( This will be used for the demonstration. )
 
-* `T edit 2 n/Work on midterm report` changes the name of the Task
-* `T edit 2 r/min 1000 words` changes the remark of the Task
-* `T edit 2 m/CS2100` changes the module code of the Task
+| **Parameter** | **Example** |
+| ------------- | - |
+| `INDEX`| `1` |
+| `DATE` | `31/10/2020` |
+
+1. To add, type `T edit 1 d/31/10/2020` into the command box.
+2. Press `Enter` to execute.
+3. The result display will show the success message and you will see your edited task in the Upcoming tab, and its corresponding module tab (if CODE field was filled).
 
 ![EditTaskOutcome](images/UG/EditTaskOutcome.png)
 _Figure 14 - Example outcome of editing a task_
@@ -433,12 +458,16 @@ _Figure 14 - Example outcome of editing a task_
  
 :bulb: To give users greater freedom when adding tasks, you **can** add tasks with deadlines in the past.
 
-### 5.3.4 Delete a Task <a name="task-delete"></a>
+### 5.3.4 Delete a Task `T delete` <a name="task-delete"></a>
 Once you have completed a task, you can delete it. This is the command to do so.
 
 Format: `T delete INDEX`
 
-Examples: `T delete 2`
+Examples: `T delete 1`
+
+| **Parameter** | **Example** |
+| ------------- | - |
+| `INDEX`| `1` |
 
 ![DeleteTaskOutcome](images/UG/DeleteTaskOutcome.png)
 _Figure 15 - Example outcome of deleting a task_
@@ -457,13 +486,13 @@ To view all contacts from all modules, as well as any contacts that are not asso
 Here are the parameters used in the Contact feature:
 | **Parameter** | **Description** | **Example** |
 | --------------| ----------------| ----------- |
-| `INDEX` | Indicates the position of an item in a list. The specified `INDEX` must be **within the range** of the number of items in the list. | **1** - refers to the first item in a list |
-| `NAME`| Refers to the **Contact** name. | **John Doe** |
-| `[PHONE_NUMBER]` | (Optional) Refers to the phone number of a contact. Phone numbers must consist of only numbers, and can be of any length. | **999** |
-| `[EMAIL]` | (Optional) Refers to the email address of a contact. Emails should be in the format `local-part@domain`.<br><br>The `local-part` can only contain:<ul><li>Alphanumeric characters, and</li><li>The following special characters:<br>`!#$%&'*+-/=?^_{}~`</li></ul><br><br>The `domain` can only contain:<br><ul><li>At least 2 characters</li><li>Alphanumeric characters</li><li>The following special characters in between: dash `-`, and period `.`</li><li>Start and end must be alphanumeric characters</li></ul><br>|**johnDoe925@example.com**|
+| `INDEX` | Indicates the position of an item in a list. The specified `INDEX` must be **within the range** of the number of items in the list. | `1` - refers to the first item in a list |
+| `NAME`| Refers to the **Contact** name. | `John Doe` |
+| `[PHONE_NUMBER]` | (Optional) Refers to the phone number of a contact. Phone numbers must consist of only numbers, and can be of any length. | `999` |
+| `[EMAIL]` | (Optional) Refers to the email address of a contact. Emails should be in the format `local-part@domain`.<br><br>The `local-part` can only contain:<ul><li>Alphanumeric characters, and</li><li>The following special characters:<br>`!#$%&'*+-/=?^_{}~`</li></ul><br><br>The `domain` can only contain:<br><ul><li>At least 2 characters</li><li>Alphanumeric characters</li><li>The following special characters in between: dash `-`, and period `.`</li><li>Start and end must be alphanumeric characters</li></ul><br>|`johnDoe925@example.com`|
 | `[TAG]` | (Optional) Tags are a way to group any number of contacts under a similar label. You can add as many tags as you want. Tagging a contact with a `CODE` will allow you to view the contact under the corresponding module tab. <br>Note: if the provided module code doesn't exist, the tag will just be treated as another ordinary tag without any problems.| `n/John Doe t/MA1101R t/groupmate` |
 
-### 5.4.2 Add a Contact <a name="contact-add"></a>
+### 5.4.2 Add a Contact `C add` <a name="contact-add"></a>
 A new semester has started and you want to keep track of your new classmates. This is the command to add a new contact.
 
 Format: `C add n/NAME [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...`
@@ -472,12 +501,12 @@ Format: `C add n/NAME [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...`
 * Duplicate email addresses (2 or more contacts with the same email address) can exist within TrackIt@NUS, so please always ensure that you are entering the correct email address. 
 
 Examples: To add a new contact John Doe, your MA1101R TA, follow these instructions.
-| **Parameter** | |
+| **Parameter** | **Example** |
 | ------------- | - |
-| NAME| John Doe |
-| PHONE_NUMBER | 98765432 |
-| EMAIL| johndoe@gmail.com |
-| TAG | MA1101R, TA |
+| `NAME`| `John Doe` |
+| `PHONE_NUMBER` | `98765432` |
+| `EMAIL`| `johndoe@gmail.com` |
+| `TAG` | `MA1101R`, `TA` |
 
 1. To add, type `C add n/John Doe p/98765432 e/johndoe@gmail.com t/MA1101R t/TA` into the command box.
 2. Press `Enter` to execute.
@@ -486,7 +515,7 @@ Examples: To add a new contact John Doe, your MA1101R TA, follow these instructi
 ![AddContactOutcome](images/UG/AddContactOutcome.png)
 _Figure 16 - Example outcome of adding a contact_
 
-### 5.4.3 Edit a Contact <a name="contact-edit"></a>
+### 5.4.3 Edit a Contact `C edit` <a name="contact-edit"></a>
 After adding your new contact John Doe to TrackIt@NUS, maybe you realised you spelled his name wrong, or you want to update his phone number. The edit command is what you should use to do so.
 
 Format: `C edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...`
@@ -499,10 +528,10 @@ however, at least one parameter must be provided (i.e. `C edit 1` is not a valid
 
 
 Example: To change John Doe's name to Johnny Depp, follow these instructions.
-| **Parameter** | |
+| **Parameter** | **Example** |
 |---------------| - |
-| INDEX | 2 |
-| NAME | **Johnny Depp** |
+| `INDEX` | `2` |
+| `NAME` | `Johnny Depp` |
 
 1. Look for the lesson's index which is on the left of the lesson.
 2. To add, type `C edit 2 n/Johnny Depp` into the command box.
@@ -512,16 +541,20 @@ Example: To change John Doe's name to Johnny Depp, follow these instructions.
 ![EditContactOutcome](images/UG/EditContactOutcome.png)
 _Figure 17 - Example outcome of editing a contact_
 
-### 5.4.4 Delete a Contact <a name="contact-delete"></a>
+### 5.4.4 Delete a Contact `C delete` <a name="contact-delete"></a>
 Congratulations! You have finished reading the module MA1101R and now wish to delete your TA Johnny Depp's contact from TrackIt@NUS. This is the command to do so.
 
 Format: `C delete INDEX`
 
 Examples: To delete Johnny Depp's contact, follow these instructions.
 
-<br>1. To add, type `C edit 2 n/Johnny Depp` into the command box.
-<br>2. Press `Enter` to execute.
-<br>3. The Result Display will show the success message and you should see Johnny Depp's contact disappear from both the Contacts tab and MA1101R tab.
+| **Parameter** | **Example** |
+|---------------| - |
+| `INDEX` | `2` |
+
+1. To add, type `C edit 2 n/Johnny Depp` into the command box.
+2. Press `Enter` to execute.
+3. The Result Display will show the success message and you should see Johnny Depp's contact disappear from both the Contacts tab and MA1101R tab.
 
 ![DeleteContactOutcome](images/UG/DeleteContactOutcome.png)
 _Figure 18 - Example outcome of deleting a contact_
@@ -578,9 +611,9 @@ A: It is meant for you to add `contacts` that **may not be taking** the same mod
 
 | Command | Format | Example |
 | -- | -------- | -------- |
-| **add** | `M add m/MODULE_CODE n/NAME` | `M add m/CS2100 n/Computer Organisation` |
-| **edit**| `M edit MODULE_CODE [m/NEW_MODULE_CODE] [n/NAME]` | `M edit CS1231 n/Discrete Structures` |
-| **delete** | `M delete MODULE_CODE` | `M delete CS1101S` |
+| **add** | `M add m/MODULE_CODE n/NAME` | `M add m/CS1231S n/Discrete Structures` |
+| **edit**| `M edit MODULE_CODE [m/NEW_MODULE_CODE] [n/NAME]` | `M edit CS1231S m/CS1231` |
+| **delete** | `M delete MODULE_CODE` | `M CS1231` |
 
 ### Lesson <a name="lesson-commands"></a>
 
@@ -602,13 +635,13 @@ A: It is meant for you to add `contacts` that **may not be taking** the same mod
 
 | Command | Format | Example |
 | -- | ------ | ------ |
-| **add** | `C add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]...` | `C add n/John Doe p/98765432 e/jon@jon.com t/Brother t/Friend` |
-| **edit** | `C edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...` | `C edit 1 n/Johnny Depp p/98999899` |
-| **delete** | `C delete INDEX` | `C delete 1` |
+| **add** | `C add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]...` | `C add n/John Doe p/98765432 e/johndoe@gmail.com t/MA1101R t/TA` |
+| **edit** | `C edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...` | `C edit 2 n/Johnny Depp` |
+| **delete** | `C delete INDEX` | `C delete 2` |
 
 ### General <a name="general-commands"></a>
 
 | Command | Format |
 | ---- | ------ |
-| **help** | `help` | `help` |
-| **exit** | `exit` | `exit` |
+| **help** | `help` |
+| **exit** | `exit` |
