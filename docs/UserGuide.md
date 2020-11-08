@@ -1,38 +1,43 @@
 # TrackIt@NUS - User Guide
 
+![Logo](images/UG/trackit-logo.png)
+
 By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Quick Start](#quick-start)
 3. [About](#about)
-    1. [Common Symbols](#common-symbols)
-    2. [Command Format](#command-format)
-    3. [Duplicate Parameters](#duplicate-parameters)
-4. [Layout](#layout)
-    1. [Upcoming Tab](#upcomingtab)
-    2. [Contacts Tab](#contactstab)
-    3. [Module Tabs](#moduletabs)
+    * 3.1 [Common Symbols](#common-symbols)
+    * 3.2 [Command Format](#command-format)
+    * 3.3 [Duplicate Parameters](#duplicate-parameters)
+4. [Application Layout](#layout)
+    * 4.1 [Upcoming Tab](#upcomingtab)
+    * 4.2 [Module Tabs](#moduletabs)
+    * 4.3 [Contacts Tab](#contactstab)
+    * 4.4 [Help Tab](#helptab)
+    
 5. [Features](#features)
-    1. [Module](#module)
-    2. [Lesson](#lesson)
-    3. [Task](#task)
-    4. [Contact](#contact)
-    5. [Help](#help)
-    6. [Exit](#exit)
+    * 5.1 [Module](#module)
+    * 5.2 [Lesson](#lesson)
+    * 5.3 [Task](#task)
+    * 5.4 [Contact](#contact)
+    * 5.5 [Help](#help)
+    * 5.6 [Exit](#exit)
 6. [FAQ](#faq)
 7. [Glossary](#glossary)
 7. [Command Summary](#command-summary)
-    1. [Module Commands](#module-commands)
-    2. [Lesson Commands](#lesson-commands)
-    3. [Task Commands](#task-commands)
-    4. [Contact Commands](#contact-commands)
-    5. [General Commands](#general-commands)
+    * 7.1 [Module Commands](#module-commands)
+    * 7.2 [Lesson Commands](#lesson-commands)
+    * 7.3 [Task Commands](#task-commands)
+    * 7.4 [Contact Commands](#contact-commands)
+    * 7.5 [General Commands](#general-commands)
 
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## 1. Introduction <a name="introduction"></a>
+
 
 Welcome to the **TrackIt@NUS** user-guide!
 
@@ -124,65 +129,65 @@ You can specify the same parameter more than once in a command. Depending on the
  | Can only be used once | Only the **last occurrence** will be used when executing the command. | On executing `M add m/CS2103T n/Favourite Mod n/Software Engineering`, you will create a module with the name `Software Engineering`, and the name `SE` will be ignored. | 
 
 --------------------------------------------------------------------------------------------------------------------
-## 4. Layout <a name="layout"></a>
+## 4. Application Layout <a name="layout"></a>
 
-This section gives you a brief overview of the layout of TrackIt@NUS.
+This section is gives you a **brief overview** of the **layout** of TrackIt@NUS, and this will help you **get used** to our interface in **a matter of minutes**!
 
 ![Layout](images/UG/Layout.png)
 _Figure 2 - Layout of TrackIt@NUS_
 
-TrackIt@NUS is divided into three main types of tabs:
-* The **Upcoming** Tab
-* The **Contacts** Tab
-* The various **Module** Tabs
+TrackIt@NUS is mainly divided into **four** carefully designed `tabs`:
+* The `Upcoming tab` 
+* The `Contacts tab`
+* The various `Module tabs` 
+* The `Help tab`
 
-When you switch to a tab, the tab text will be highlighted in **blue**.
+The `Side panel` on the left section allows you to **easily navigate** between the `tabs`. When you switch to a different `tab`, the new `tab` will be highlighted in **blue** in the `Side panel`. To run a command, simply type a command in the `Command box` and TrackIt@NUS will inform you about the outcome in the `Result display`.
 
-### Upcoming Tab <a name="upcomingtab"></a>
-This is the main tab of the application, and is the default page when the app starts. It features a calendar view of the
- days for the next week, as well as the **Tasks** and **Lessons** you have added under the respective days they fall under. 
-
-1. The first section labelled **"Overdue"** in red text, shows the Tasks that are past their deadline, and you have yet to complete. These **Tasks** will remain there until you delete them.
-
-2. The second section is the weekly calendar view, with your **Lessons** and **Tasks** shown under each day.
-
-3. The last section is labelled **Future**, and shows any **Tasks** that you may have added with a deadline falling after the date 7 days from today.
+### 4.1 Upcoming Tab <a name="upcomingtab"></a>
+Built with a **clean UI**, the `Upcoming tab` is what you will see when you first run TrackIt@NUS! You get to see an **overview** of all your **upcoming lessons** for the week, as well as the **list of tasks that are due soon**. With the `Upcoming tab`, you don't have to worry about missing any lessons or deadlines anymore!
 
 ![UpcomingPanelUi](images/UG/UpcomingPanelUi.png)
-<br>_Figure 3 - Example of Upcoming Tab_
+<br>_Figure 3 - Layout of Upcoming Tab_
 
-### Contacts Tab <a name="contactstab"></a>
-The contacts tab shows you an overview of all the **contacts** you have within the app. 
+In the `Upcoming tab`, there are **three** main `sections` arranged in **chronological order**:
+1. The `Overdue section` is coloured **red &#x1F534;  to warn** you that about the **incomplete tasks** that are **past their deadline**. These tasks will remain there until you delete them, so remember to complete them as soon as possible!
 
-![ContactsTab](images/UG/ContactsTab.png)
-<br>_Figure 4 - Example of Contacts Tab_
+2. The next seven `Daily sections` shows the your **Lessons** and **Tasks** daily for the **next seven days**. This is where you can start planning your schedule for the day.
 
-It will show you information for each contact such as:
-* `NAME`: contact name
+3. The `Future section` shows the **Tasks** that are only due **at least 7 days later**, so these are tasks that you don't have to worry too much about for now.
 
-* `PHONE NUMBER`: contact's phone number
 
-* `EMAIL`: contact's email
-
-* `TAG`: any additional information you have about the contact, such as which module they are associated with (e.g. CS1010S), or their role (e.g. friend, TA)
-
-### Module Tabs <a name="moduletabs"></a>
-Here under each module's tab you can find all relevant **Lessons**, **Tasks** and **Contacts** that are related to the
- module. 
+### 4.2 Module Tabs <a name="moduletabs"></a>
+Besides the `Upcoming tab`, the `Module tab` is another **highlight** that you can look forward to! This is an **all-in-one page** with all the details that you will need when **studying for a specific module**. With this, you don't have to waste precious time toggling between your calender, to-do list and contacts app anymore!
  
  ![ModuleTab](images/UG/ModuleTab.png)
-<br>_Figure 5 - Example of Module Tab_
-
-Very convenient right? This information will be displayed in 3 sections:
+ <br>_Figure 5 - Layout of Module Tab_
  
-1. `Lessons`: Here you can find the info for all weekly lessons, including its time and location so
- say goodbye to missing your classes!
+The `Module tab` includes `Lessons`, `Tasks` and `Contacts` that are related to this module.
+ 
+1. `Lessons`: List of **lessons** for this module.
 
-2. `Tasks`: All the tasks for the module that you haven't done, listed in **chronological** order so that you know
- what to prioritize! Tips: Don't leave tutorials or assignments until the last day, chances are you not gonna finish it.
+2. `Tasks`: List of **tasks** in **chronological** order. *Tips: Don't leave tutorials or assignments until the last day, chances are you not gonna finish it!*
 
-3. `Contacts`: Having difficulties with your assignment? Need TA's emails to ask? Look no further, this section
- will list all contacts that are tagged with this module code! 
+3. `Contacts`: List of **relevant contacts** for this module. Here's where you can **find help** if u have difficulties with your assignments!
+ 
+ :information_source: Want to know more details about [Lessons](#lesson), [Tasks](#task) and [Contacts](#contact)? Simply click on the respective links!
+ 
+### 4.3 Contacts Tab <a name="contactstab"></a>
+So you might ask, why is there a need for the `Contacts tab` when I can add `contacts` in the `Module tab`? Well, the **beauty** of `Contacts tab` is that you can add people who are **not taking the same module** as you but they are **still relevant** in your school work! In this way, you can still include **other useful contacts** in TrackIt@NUS. How cool is that?
+
+ *For example, if your friend has a strong English command but taking different modules from you, he or she can still help out with your reflection essay!*
+
+![ContactsTab](images/UG/ContactsTab.png)
+<br>_Figure 4 - Layout of Contacts Tab
+
+ :information_source: More details about `contacts` can be found [here](#contact).
+ 
+ ### 4.4 Help Tab <a name="helptab"></a>
+ Feeling **lost**? If you are **lazy** to spend time looking through this long and detailed user guide to find **a single command**, here's an extra bonus for you! This `Help tab` gives you a **quick summary** of the commands that you can use. This way, you can fire multiple commands in **a matter of seconds** and you can be one step closer to **productivity**! 
+ 
+ [TODO: add a help tab picture here!]
 
 --------------------------------------------------------------------------------------------------------------------
 ## 5. Features <a name="features"></a>
@@ -512,11 +517,19 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 
 --------------------------------------------------------------------------------------------------------------------
 
-## FAQ <a name="faq"></a>
+## 6. FAQ <a name="faq"></a>
 
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
+
+**Q: How do I transfer my data to another Computer?**
+A: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
  the data of your previous TrackIt@NUS home folder.
+
+**Q: Why can I add a `lesson` that clashes with my existing `lessons`? Is this a bug?**
+A: This is because there are instances where students are granted **a case-by-case approval** to overload modules with **concurrent lessons**. These students should have the option to include concurrent lessons. 
+ 
+**Q: Why is there a need for the `Contacts Tab` when I can already add `contacts` in the `Module Tab`?**
+A: It is meant for you to add `contacts` that are **not taking** the same modules as you but they are **still relevant** in your studies. Please refer to the [Contacts Tab](#contactstab) for more details.
+
 
 ## Glossary <a name="glossary"></a>
 
@@ -528,7 +541,7 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
  visual components for computer software. Click [here](https://en.wikipedia.org/wiki/Graphical_user_interface) for
   more information!
 
-## Command Summary <a name="command-summary"></a>
+## 7. Command Summary <a name="command-summary"></a>
 
 ### Module <a name="module-commands"></a>
 
