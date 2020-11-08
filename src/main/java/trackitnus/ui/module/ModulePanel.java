@@ -31,7 +31,7 @@ public class ModulePanel extends UiPart<Region> {
     public static final int MAX_WIDTH = 500;
     private static final String FXML = "Module/ModulePanel.fxml";
     private static final int DEFAULT_ROW_HEIGHT = 50;
-    private static final int LESSON_ROW_HEIGHT = 40;
+    private static final int LESSON_ROW_HEIGHT = 28;
     private static final int PADDING_HEIGHT = 10;
     private final Logger logger = LogsCenter.getLogger(ModulePanel.class);
     private final LessonListPanel lessonListPanel;

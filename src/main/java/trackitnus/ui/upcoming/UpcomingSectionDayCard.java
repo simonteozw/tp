@@ -25,7 +25,7 @@ public class UpcomingSectionDayCard extends UiPart<Region> {
 
     public static final int TASK_HEIGHT_OFFSET = 35;
     private static final String FXML = "Upcoming/DayCard.fxml";
-    private static final int LESSON_ROW_HEIGHT = 30;
+    private static final int LESSON_ROW_HEIGHT = 27;
     private static final int TASK_ROW_HEIGHT = 45;
     public final UpcomingSection section;
     private final Logic logic;
