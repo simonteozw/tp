@@ -2,6 +2,7 @@ package trackitnus.model.lesson;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 import trackitnus.commons.util.AppUtil;
@@ -10,7 +11,10 @@ import trackitnus.commons.util.CollectionUtil;
 
 public class LessonDateTime {
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("H:mm");
-    private static final String MESSAGE_CONSTRAINTS = "Starting time should be earlier than finishing time";
+    public static final ZoneId DEFAULT_TIME_ZONE = ZoneId.of("UTC+8");
+    public static final String MESSAGE_CONSTRAINTS =
+        "Lesson's time should be in the format \"ddd H:mm-H:mm\" (in 24-hour format) and Starting time should be "
+            + "earlier than Finishing time, e.g. Mon 8:00-13:00";
 
     private final DayOfWeek weekday;
     private final LocalTime startTime;
@@ -57,7 +61,7 @@ public class LessonDateTime {
         if (equals(other)) {
             return 0;
         } else {
-            LocalDate currentDate = LocalDate.now(Lesson.DEFAULT_TIME_ZONE);
+            LocalDate currentDate = LocalDate.now(DEFAULT_TIME_ZONE);
             DayOfWeek currentWeekday = DayOfWeek.getLessonWeekDay(currentDate);
             Integer currentToThis = DayOfWeek.distanceBetweenTwoDay(currentWeekday, getWeekday());
             Integer currentToOther = DayOfWeek.distanceBetweenTwoDay(currentWeekday, other.getWeekday());

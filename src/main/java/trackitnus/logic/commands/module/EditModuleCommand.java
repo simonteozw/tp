@@ -95,7 +95,7 @@ public final class EditModuleCommand extends Command {
             // edit all the related lessons
             List<Lesson> lessonsToEdit = new ArrayList<>(model.getModuleLessons(code));
             for (Lesson lesson : lessonsToEdit) {
-                Lesson updatedLesson = lesson.modifyCode(updatedCode);
+                Lesson updatedLesson = lesson.setCode(updatedCode);
                 model.setLesson(lesson, updatedLesson);
             }
 
@@ -108,7 +108,8 @@ public final class EditModuleCommand extends Command {
 
         // edit the module
         model.setModule(moduleToEdit, editedModule);
-        return new CommandResult(String.format(Messages.MESSAGE_EDIT_MODULE_SUCCESS, editedModule));
+        return new CommandResult(String.format(Messages.MESSAGE_EDIT_MODULE_SUCCESS, editedModule), editedModule,
+            moduleToEdit);
     }
 
     @Override

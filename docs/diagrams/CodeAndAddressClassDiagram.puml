@@ -1,0 +1,27 @@
+@startuml
+!include style.puml
+
+skinparam arrowThickness 1.1
+skinparam classBackgroundColor MODEL_COLOR
+
+show member
+
+class Address {
+   + {static} MESSAGE_CONSTRAINTS : String
+   + {static} VALIDATION_REGEX : String
+   - value : String
+
+   + {static} isValidAddress(test : String) : boolean
+   + Address(address : String)
+}
+
+class Code {
+   + {static} MESSAGE_CONSTRAINTS : String
+   + {static} VALIDATION_REGEX : String
+   - value : String
+
+   + {static} isValidCode(test : String) : boolean
+   + Code(code : String)
+}
+
+@enduml

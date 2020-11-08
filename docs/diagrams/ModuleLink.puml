@@ -1,0 +1,15 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor MODEL_COLOR
+skinparam classBackgroundColor MODEL_COLOR
+
+
+Module "1" --> "1" Code
+
+Lesson -up-> "1" Code
+
+Task --> "0..1" Code
+Contact --> "*" Tag
+Tag -left- "0..1" Code
+@enduml

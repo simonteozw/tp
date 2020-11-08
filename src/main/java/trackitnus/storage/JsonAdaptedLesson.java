@@ -75,7 +75,7 @@ public class JsonAdaptedLesson {
         try {
             ParserUtil.parseLessonDateTime(date);
         } catch (ParseException e) {
-            throw new IllegalValueException(Lesson.LESSON_TIME_MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(LessonDateTime.MESSAGE_CONSTRAINTS);
         }
         final LessonDateTime modelTime = ParserUtil.parseLessonDateTime(date);
 
@@ -86,7 +86,7 @@ public class JsonAdaptedLesson {
         try {
             ParserUtil.parseAddress(address);
         } catch (ParseException e) {
-            throw new IllegalValueException(Lesson.ADDRESS_MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
         }
         final Address modelAddress = ParserUtil.parseAddress(address);
 

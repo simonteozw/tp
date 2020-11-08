@@ -1,0 +1,61 @@
+@startuml
+
+!include style.puml
+title Edit Module Command
+
+start
+
+:Receives an ""M edit"" command;
+
+if () then ([valid command])
+      :Parses the
+      ""M edit"" command
+      and the parameters;
+
+      if () then ([exists a module
+ with specified code])
+
+      if () then ([at least one field
+      is changed])
+
+      if () then ([new code is valid])
+
+      if () then ([new code is different
+      from old code])
+      :Edit all associated tasks;
+      :Edit all associated lessons;
+      :Edit all associated contact tags;
+      endif
+      :Edit the module;
+
+      else ([else])
+      :Shows duplicated code error;
+      endif
+
+      else ([else])
+      :Shows module
+      unchanged error;
+      endif
+else ([else])
+      :Shows module doesn't
+      exist error;
+
+      endif
+note right
+          A task/lesson/is associated with a module
+          if its <b>code</b> field equals to the module's <b>code</b>
+        end note
+note right
+        A contact tag is associated with a module
+        if it is equals to the module's <b>code</b>
+end note
+else ([else])
+
+    :Shows an
+    invalid command
+    error message;
+endif
+
+stop
+
+@enduml
