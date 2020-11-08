@@ -642,10 +642,74 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  TrackIt@NUS closes the app window
 
     Use case ends.
-
-
+    
 ### Module
 
+**Use Case: UC06 - Adding a Module**
+
+**MSS**
+
+1.  User requests to add a new module
+2.  TrackIt@NUS adds the requested module
+
+    Use case ends.
+    
+**Extensions**
+
+*   1.a. The given module code already exists in the app
+    *   1.a.1 TrackIt@NUS shows an error message
+    
+        Use case resumes at step 1.
+*   1.b. The given module code is invalid
+    *   1.b.1 TrackIt@NUS shows an error message
+    
+        Use case resumes at step 1.
+*   1.c. The given module name is invalid
+    *   1.c.1 TrackIt@NUS shows an error message
+    
+        Use case resumes at step 1.
+        
+**Use Case: UC07 - Editing a Module**
+
+**MSS**
+
+1.  User requests to edit an existing module
+2.  TrackIt@NUS edits the module
+
+    Use case ends.
+    
+**Extensions**
+
+*   1.a. The given module code does not exist in the app
+    *   1.a.1 TrackIt@NUS shows an error message
+    
+        Use case resumes at step 1.
+*   1.b. The given module code is invalid
+    *   1.b.1 TrackIt@NUS shows an error message
+    
+        Use case resumes at step 1.
+*   1.c. The given module name is invalid
+    *   1.c.1 TrackIt@NUS shows an error message
+    
+        Use case resumes at step 1.
+    
+**Use Case: UC07 - Editing a Module**
+
+**MSS**
+
+1.  User requests to delete an existing module
+2.  TrackIt@NUS deletes the module
+
+    Use case ends.
+    
+**Extensions**
+
+*   1.a. The given module does not exist in the app
+    *   1.a.1 TrackIt@NUS shows an error message
+    
+        Use case resumes at step 1.
+    
+    
 ### Lesson
 
 ### Task
