@@ -66,7 +66,7 @@ What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) 
 Note how the app contains some sample data. <br><br>
 
 ![Ui](images/UG/Ui.png)
-_Figure 1 - GUI of TrackIt@NUS_
+<br> _Figure 1 - GUI of TrackIt@NUS_
 
 At the bottom of the screen, type your command in the Command Box and press `Enter` on your keyboard to execute it
 . Try typing `help` and pressing `Enter` to navigate to the Help Tab!<br>
@@ -175,9 +175,7 @@ The `Module tab` includes `Lessons`, `Tasks` and `Contacts` that are related to 
  :information_source: Want to know more details about [Lessons](#lesson), [Tasks](#task) and [Contacts](#contact)? Simply click on the respective links!
  
 ### 4.3 Contacts Tab <a name="contactstab"></a>
-So you might ask, why is there a need for the `Contacts tab` when I can add `contacts` in the `Module tab`? Well, the **beauty** of `Contacts tab` is that you can add people who are **not taking the same module** as you but they are **still relevant** in your school work! In this way, you can still include **other useful contacts** in TrackIt@NUS. How cool is that?
-
- *For example, if your friend has a strong English command but taking different modules from you, he or she can still help out with your reflection essay!*
+So you might ask, why is there a need for the `Contacts tab` when I can add `contacts` in the `Module tab`? Well, the **beauty** of the `Contacts tab` is that you can add people who may **not be taking the same modules** as you but they are **still relevant** in your social life and/or school life! In this way, you can still include **other useful contacts** in TrackIt@NUS. How cool is that?
 
 ![ContactsTab](images/UG/ContactsPanel.png)
 _Figure 5 - Layout of Contacts Tab_
@@ -296,7 +294,7 @@ The command that makes you sigh every time you have to use it. Use this command 
 
 Format: `L add m/CODE t/TYPE d/DATE a/ADDRESS`
 
-:information-source: Note:
+:information_source: Note:
 * You must create the Module first before you can add a lesson with that module code.
 
 Example: To add MA1101R tutorial in COM1-0121 that falls every Monday from 4-6pm, follow these instructions.
@@ -316,7 +314,6 @@ _Figure ? - Example outcome of adding a lesson_
 
 ![AddLessonOutcome](images/UG/AddLessonOutcome.png)
 _Figure 10 - Example outcome of adding a lesson_
-
 
 ### 5.2.3 Edit
 
