@@ -60,8 +60,8 @@ public class HelpPanel extends UiPart<Region> {
         helpCommands.add(new HelpCard("Module: Edit", "M edit CODE m/CODE n/NAME"));
         helpCommands.add(new HelpCard("Module: Delete", "M delete CODE"));
         helpCommands.add(new HelpCard("Lesson: Add", "L add m/CODE t/TYPE d/DAY HH:MM-HH:MM a/ADDRESS"));
-        helpCommands.add(new HelpCard("Lesson: Edit", "L edit INDEX [m/CODE] [t/TYPE] " +
-            "[d/DAY HH:MM-HH:MM] [a/ADDRESS]"));
+        helpCommands
+            .add(new HelpCard("Lesson: Edit", "L edit INDEX [m/CODE] [t/TYPE] " + "[d/DAY HH:MM-HH:MM] [a/ADDRESS]"));
         helpCommands.add(new HelpCard("Lesson: Delete", "L delete INDEX"));
         helpCommands.add(new HelpCard("Task: Add", "T add n/NAME d/DATE [m/CODE] [r/REMARK]"));
         helpCommands.add(new HelpCard("Task: Edit", "T edit INDEX [n/NAME] [d/DATE] [m/CODE] [r/REMARK]"));

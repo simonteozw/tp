@@ -142,8 +142,6 @@ public class UniqueLessonList implements Iterable<Lesson> {
 
     @Override
     public String toString() {
-        return "UniqueLessonList{" +
-            "internalList=" + internalList +
-            '}';
+        return "UniqueLessonList{" + "internalList=" + internalList + '}';
     }
 }

@@ -121,10 +121,7 @@ public final class EditTaskCommand extends Command {
 
     @Override
     public String toString() {
-        return "EditTaskCommand{" +
-            "index=" + index +
-            ", editTaskDescriptor=" + editTaskDescriptor +
-            '}';
+        return "EditTaskCommand{" + "index=" + index + ", editTaskDescriptor=" + editTaskDescriptor + '}';
     }
 
     /**
@@ -233,12 +230,8 @@ public final class EditTaskCommand extends Command {
 
         @Override
         public String toString() {
-            return "EditTaskDescriptor{" +
-                "name=" + name +
-                ", date=" + date +
-                ", code=" + code +
-                ", remark='" + remark +
-                '}';
+            return "EditTaskDescriptor{" + "name=" + name + ", date=" + date + ", code=" + code + ", remark='" + remark
+                + '}';
         }
     }
 }
