@@ -66,7 +66,7 @@ What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) 
 Note how the app contains some sample data. <br><br>
 
 ![Ui](images/UG/Ui.png)
-<br>_Figure 1 - GUI of TrackIt@NUS_
+_Figure 1 - GUI of TrackIt@NUS_
 
 At the bottom of the screen, type your command in the Command Box and press `Enter` on your keyboard to execute it
 . Try typing `help` and pressing `Enter` to navigate to the Help Tab!<br>
@@ -147,8 +147,8 @@ The `Side panel` on the left section allows you to **easily navigate** between t
 ### 4.1 Upcoming Tab <a name="upcomingtab"></a>
 Built with a **clean UI**, the `Upcoming tab` is what you will see when you first run TrackIt@NUS! You get to see an **overview** of all your **upcoming lessons** for the week, as well as the **list of tasks that are due soon**. With the `Upcoming tab`, you don't have to worry about missing any lessons or deadlines anymore!
 
-![UpcomingPanelUi](images/UG/UpcomingPanelUi.png)
-<br>_Figure 3 - Layout of Upcoming Tab_
+![UpcomingPanelUi](images/UG/UpcomingPanel.png)
+_Figure 3 - Layout of Upcoming Tab_
 
 In the `Upcoming tab`, there are **three** main `sections` arranged in **chronological order**:
 1. The `Overdue section` is coloured **red &#x1F534;  to warn** you that about the **incomplete tasks** that are **past their deadline**. These tasks will remain there until you delete them, so remember to complete them as soon as possible!
@@ -161,8 +161,8 @@ In the `Upcoming tab`, there are **three** main `sections` arranged in **chronol
 ### 4.2 Module Tabs <a name="moduletabs"></a>
 Besides the `Upcoming tab`, the `Module tab` is another **highlight** that you can look forward to! This is an **all-in-one page** with all the details that you will need when **studying for a specific module**. With this, you don't have to waste precious time toggling between your calender, to-do list and contacts app anymore!
  
- ![ModuleTab](images/UG/ModuleTab.png)
- <br>_Figure 5 - Layout of Module Tab_
+ ![ModuleTab](images/UG/ModulePanel.png)
+ _Figure 4 - Layout of Module Tab_
  
 The `Module tab` includes `Lessons`, `Tasks` and `Contacts` that are related to this module.
  
@@ -179,15 +179,16 @@ So you might ask, why is there a need for the `Contacts tab` when I can add `con
 
  *For example, if your friend has a strong English command but taking different modules from you, he or she can still help out with your reflection essay!*
 
-![ContactsTab](images/UG/ContactsTab.png)
-<br>_Figure 4 - Layout of Contacts Tab
+![ContactsTab](images/UG/ContactsPanel.png)
+_Figure 5 - Layout of Contacts Tab_
 
  :information_source: More details about `contacts` can be found [here](#contact).
  
  ### 4.4 Help Tab <a name="helptab"></a>
  Feeling **lost**? If you are **lazy** to spend time looking through this long and detailed user guide to find **a single command**, here's an extra bonus for you! This `Help tab` gives you a **quick summary** of the commands that you can use. This way, you can fire multiple commands in **a matter of seconds** and you can be one step closer to **productivity**! 
  
- [TODO: add a help tab picture here!]
+![HelpTab](images/UG/HelpPanel.png)
+_Figure 6 - Layout of Help Tab_
 
 --------------------------------------------------------------------------------------------------------------------
 ## 5. Features <a name="features"></a>
@@ -222,7 +223,7 @@ Example: To add the Module CS1231 Discrete Structures into TrackIt@NUS, follow t
 3. The Result Display will show the success message and you will see your new module in the side panel.
 
 ![AddModuleOutcome](images/UG/AddModuleOutcome.png)
-<br>_Figure 6 - Example outcome of adding a module_
+_Figure 7 - Example outcome of adding a module_
 
 ### 5.1.3 Edit
 Because modules are displayed only on the side panel, they are not indexed. That's why to edit and delete a module, its code will be used instead! This is how to edit a module's code and/or name:
@@ -238,7 +239,7 @@ Example: If you have spelt a module CS1231's name wrongly and wish to change it 
 3. The Result Display will show a success message and you will be able to view the correct module name in the corresponding module tab.
 
 ![EditModuleOutcome](images/UG/EditModuleOutcome.png)
-<br>_Figure 7 - Example outcome of editing a module_
+_Figure 8 - Example outcome of editing a module_
 
 ### 5.1.4 Delete
 And what if you realized you accidentally added in a wrong module, or have finished one? Just delete that module! The
@@ -256,7 +257,7 @@ To delete the module `CS2100`:
 3. The Result Display will show a success message and the module tab will be removed from the side panel.
 
 ![DeleteModuleOutcome](images/UG/DeleteModuleOutcome.png)
-<br>_Figure 8 - Example outcome of deleting a module_
+_Figure 9 - Example outcome of deleting a module_
 
 
 ## 5.2 Lesson <a name="lesson"></a>
@@ -269,12 +270,8 @@ make sure you won't miss any of those beloved (or dreaded) classes!
 To view all your lessons (classes) for the next week, 
 simply click on the upcoming tab as shown below.
 
-![Ui](images/UG/UpcomingLessons.png)
-
 This sorts all your lessons by date.
 To view the lessons of a specific module, click on any of the module tabs as shown below.
-
-![Ui](images/UG/ModuleLessons.png)
 
 :information_source: As of v1.3, only weekly lessons are supported.
 Biweekly and monthly lessons may be added in subsequent versions.
@@ -311,6 +308,10 @@ times are in 24-hour format.
 :warning: The time slots of the lessons _can_ overlap. It is a situation
 that no one wants to be in, but, unfortunately, does sometimes happen.
 
+![AddLessonOutcome](images/UG/AddLessonOutcome.png)
+_Figure 10 - Example outcome of adding a lesson_
+
+
 ### 5.2.3 Edit
 
 After adding a lesson, you might still want to change its details. 
@@ -328,6 +329,9 @@ however, at least one parameter must be provided (i.e. `L edit 1` is not a valid
 :information_source: Here, `INDEX` refers to the index of the lesson you want to edit, as shown in the current tab. 
 The `INDEX` provided must be one of the lesson indexes shown in the current window.
 
+![EditLessonOutcome](images/UG/EditLessonOutcome.png)
+_Figure 11 - Example outcome of editing a lesson_
+
 ### 5.2.4 Delete
 
 Sometimes, you might want to delete a particular lesson, probably since you've added
@@ -342,29 +346,31 @@ Examples:
 :information_source: Here, `INDEX` refers to the index of the lesson you want to delete, as shown in the current tab.
 The `INDEX` provided must be one of the lesson indexes shown in the current window.
 
+![DeleteLessonOutcome](images/UG/DeleteLessonOutcome.png)
+_Figure 12 - Example outcome of deleting a lesson_
+
 ## 5.3 Task <a name="task"></a>
 
-Managing all your tasks can be so stressful! TrackIt@NUS helps alleviate that stress with our built-in Task Manager! To view all your tasks sorted by their date, simply click on the upcoming tab and you will see something like the screenshot below, with tasks in the red outline:
+Managing all your tasks can be so stressful! TrackIt@NUS helps alleviate that stress with our built-in Task Manager
+! To view all your tasks, simply click on the upcoming tab as shown below.
 
-![Upcoming](images/UG/Upcoming.png)
-_Figure ?? - View of tasks in Upcoming tab_
 
-To view module-specific tasks, click on any of the module tabs and you will see something like this screenshot below, with tasks in the red outline:
+This sorts all your tasks by date. To view module-specific tasks, click on any of the module tabs as shown below.
 
-![ModuleTasks](images/UG/ModuleTasks.png)
-_Figure ?? - View of tasks in module tab_
 
-You can also perform commands on the tasks as we will now explain.
+:information_source: All module-specific tasks are shown in the upcoming tab, but not vice versa.
+
+You can also perform commands on the tasks as explained below.
 
 ### 5.3.1 Task Command Parameters
 Here are the parameters used in the Task feature:
 | **Parameter** | **Description** | **Example** |
 | --------------| ----------------| ----------- |
 | `INDEX` | Indicates the position of an item in a list. The specified `INDEX` must be **within the range** of the number of items in the list. | **1** - refers to the first item in a list |
-| `MODULE_CODE`| Refers to the unique code given to the module.<br><br>You can personalise this and give it your own code. However, we recommend you use the module’s official code. | **MA1101R** |
+| `MODULE_CODE`| Refers to the unique code given to the module.<br><br>You can personalise this and give it your own code. However, we recommend you use the module’s official code. | **CS2103T** |
 | `NAME`| Refers to the **Task** name | **Assignment 1** |
 | `DATE` | Indicates the date of a task deadline. Must be in `dd/mm/yyyy` format. | **01/01/2021** |
-| `[REMARK]` | Refers to any (optional) additional remarks for a task. | For a task `Assignment 1`, a possible remark could be `Focus on Chapters 1-3` |
+| `REMARK` | Refers to any (optional) additional remarks for a task. | For a task `Assignment 1`, a possible remark could be `Focus on Chapters 1-3` |
 
 ### 5.3.2 Add
 
@@ -373,71 +379,64 @@ After a day of school you realise that you now have a few more tasks to complete
 
 Format: `T add n/NAME d/DATE [m/MODULE_CODE] [r/REMARK]`
 
-:information_source: Note: <br> 
-   * To give users greater freedom when adding tasks, you **can** add tasks with deadlines in the past.
+Examples:
 
-Example: To add a task "MA1101R Assignment 1 due on 1 November 2020, covering Chapters 1-3" into TrackIt@NUS, follow these instructions.
-| **Parameter** | |
-| ------------- | - |
-| NAME| Assignment 1 |
-| DATE | 01/11/2020 |
-| Optional: [MODULE_CODE]| MA1101R |
-| Optional: [REMARK] | Focus on Chapters 1-3 |
+* `T add n/Assignment 1 m/CS2100 d/20/11/2020 r/Focus on Chapters 1-3`
+* `T add n/Plan for Bob's birthday d/12/11/2020`
+* `T add n/Buy mooncakes for Mum d/28/10/2020 r/Remember to get Durian-flavoured ones`
 
-<br>1. To add, type `T add n/Assignment 1 m/MA1101R d/01/11/2020 r/Focus on Chapters 1-3` into the command box.
-<br>2. Press `Enter` to execute.
-<br>3. The result display will show the success message and you will see your new task in the Upcoming tab, and its corresponding module tab (if MODULE_CODE field was filled).
+:information_source: The parameters `m/MODULE_CODE` and `r/REMARK` are optional.
 
-(TODO: ADD TASK OUTCOME SCREENSHOT)
-_Figure ? - Example outcome of adding a task_
+:warning: The `DATE` provided must be in the format `dd/MM/yyyy`.
+
+:bulb: To give users greater freedom when adding tasks, you **can** add tasks with deadlines in the past.
+
+![AddTaskOutcome](images/UG/AddTaskOutcome.png)
+_Figure 13 - Example outcome of adding a task_
 
 ### Edit
-After adding a task to TrackIt@NUS, you may want to change it, perhaps extend the deadline or change any remarks. The
+After adding a task to TrackIt@NUS, you may want to change it, perhaps extend the deadline or change it's remark. The
  edit command is what you should use to do so.
 
 Format: `T edit INDEX [n/NAME] [d/DATE] [m/MODULE_CODE] [r/REMARK]`
 
-:information-source: Note:
-* At least 1 field must be provided for editing (i.e. `T edit 1` is not allowed).
-* Enter `T edit 1 m/` to remove the module code from the first task in the list. Now, the task does not belong to any module. You
- can also use `T edit 1 r/` to remove the remark.
- * To give users greater freedom, you **can** edit the date of a module to be in the past.
- 
-Example: To edit the task "MA1101R Assignment 1 due on 1 November 2020, covering Chapters 1-3" to be due on 31 October 2020 instead, follow these instructions.
-| **Parameter**||
-|--------------| -|
-| INDEX | 1 |
-| DATE | 31/10/2020 |
+Examples:
 
-<br>1. Look for the task's index which is on the left of the task.
-<br>2. Type `T edit 1 d/31/10/2020`  into the command box.
-<br>3. Press `Enter` to execute.
-<br>4. The Result Display will show a success message an you should see your task update accordingly.
+* `T edit 2 n/Work on midterm report` changes the name of the Task
+* `T edit 2 r/min 1000 words` changes the remark of the Task
+* `T edit 2 m/CS2100` changes the module code of the Task
 
-![EditTask](images/UG/EditTask.png)
-_Figure ? - Example outcome of editing a task_
+![EditTaskOutcome](images/UG/EditTaskOutcome.png)
+_Figure 14 - Example outcome of editing a task_
+
+:information_source: Here, `INDEX` refers to the index of the task you want to edit, as shown in the current tab. The
+ `INDEX` provided must be one of the task indexes shown in the current window.
+
+:warning: At least 1 field must be provided for editing (i.e. `T edit 1` is not allowed).
+
+:bulb: Write `T edit 1 m/` to remove the module code from the task. Now, the task does not belong to any module. You
+ can also use `T edit 1 r/` to remove the remark from the task.
  
+:bulb: To give users greater freedom when adding tasks, you **can** add tasks with deadlines in the past.
+
 ### Delete
 Once you have completed a task, you can delete it. This is the command to do so.
 
 Format: `T delete INDEX`
 
-Example: To delete a task, follow these instructions.
+Examples: `T delete 2`
 
-<br>1. Look for the task's index which is on the left of the task.
-<br>2. Type `T delete 1` into the command box.
-<br>3. Press `Enter` to execute.
-<br>4. The Result Display will show a success message and you should see your task disappear.
+![DeleteTaskOutcome](images/UG/DeleteTaskOutcome.png)
+_Figure 15 - Example outcome of deleting a task_
 
-(TODO: ADD DELETE TASK OUTCOME)
-_Figure ? - Example outcome of deleting a task_
+:information_source: Here, `INDEX` refers to the index of the task you want to delete, as shown in the current tab. The
+ `INDEX` provided must one of the task indexes shown in the current window.
 
 ## 5.4 Contact <a name="contact"></a>
 Don't you hate it when you need help for one of your modules but you just can't remember who else is taking the module with you? 
 
 Luckily for you, TrackIt@NUS allows you to tag your contacts with the modules you have in common, and lets you see those contacts all at once! Simply click on a module tab and you will find the list of contacts associated with that module, as you can see below.
 
-![ModuleTabContacts](images/UG/ModuleTabContacts.png)
 
 To view all contacts from all modules, as well as any contacts that are not associated with any module, click on the **Contacts** tab in the side panel.
 
@@ -461,6 +460,9 @@ Examples:
 * `C add n/John Doe p/98765432 e/jon@jon.com t/CS2020 t/TA`
 * `C add n/Rajesh Kumar p/98762342 e/raj@law.com t/Friend t/Colleague`
 
+![AddContactOutcome](images/UG/AddContactOutcome.png)
+_Figure 16 - Example outcome of adding a contact_
+
 :information_source: The `p/PHONE_NUMBER` and `e/EMAIL` tabs are optional. They can either be used once or not at all.
 
 :information_source: The `t/TAG` parameter is optional. You can use it as many times as you want (i.e. `C add n/John
@@ -483,6 +485,9 @@ Examples:
 * `C edit 1 n/Johnny Depp` changes the name of the Contact.
 * `C edit 2 n/Sam e/sam@gmail.com t/CS2100 t/TA` changes the name, email and tags of the Contact.
 
+![EditContactOutcome](images/UG/EditContactOutcome.png)
+_Figure 17 - Example outcome of editing a contact_
+
 :information_source: Here, the `INDEX` refers to the index of the contact you want to edit. The `INDEX` provided must be
  one of the contact indexes shown in the current window.
 
@@ -503,6 +508,9 @@ You have broken up with your girlfriend and want to forget their existence, star
 Format: `C delete INDEX`
 
 Examples: `C delete 1`
+
+![DeleteContactOutcome](images/UG/DeleteContactOutcome.png)
+_Figure 18 - Example outcome of deleting a contact_
 
 :information_source: Here, the `INDEX` refers to the index of the contact you want to delete. The `INDEX` provided
  must be one of the contact indexes shown in the current window.
@@ -557,39 +565,39 @@ A: It is meant for you to add `contacts` that are **not taking** the same module
 
 ### Module <a name="module-commands"></a>
 
-| Command | Example |
-| ---- | ------ |
-| **Add:** `M add m/MODULE_CODE n/NAME` | `M add m/CS2100 n/Computer Organisation` |
-| **Edit:** `M edit MODULE_CODE [m/NEW_MODULE_CODE] [n/NAME]` | `M edit CS1231 n/Discrete Structures` |
-| **Delete:** `M delete MODULE_CODE` | `M delete CS1101S` |
+| Command | Format | Example |
+| -- | -------- | -------- |
+| **add** | `M add m/MODULE_CODE n/NAME` | `M add m/CS2100 n/Computer Organisation` |
+| **edit**| `M edit MODULE_CODE [m/NEW_MODULE_CODE] [n/NAME]` | `M edit CS1231 n/Discrete Structures` |
+| **delete** | `M delete MODULE_CODE` | `M delete CS1101S` |
 
 ### Lesson <a name="lesson-commands"></a>
 
-| Command | Example |
-| ---- | ------ |
-| **Add:** `L add m/MODULE_CODE t/TYPE d/DATE a/ADDRESS` | `L add m/CS2103T t/tutorial d/Wed 14:00-15:00 a/COM1` |
-| **Edit:** `L edit INDEX [m/MODULE_CODE] [t/TYPE] [d/DATE] [a/ADDRESS]` | `L edit 1 a/LT17` |
-| **Delete:** `L delete INDEX` | `L delete 1` |
+| Command | Format | Example |
+| -- | ------ | ------ |
+| **add** | `L add m/MODULE_CODE t/TYPE d/DATE a/ADDRESS` | `L add m/CS2103T t/tutorial d/Wed 14:00-15:00 a/COM1` |
+| **edit** | `L edit INDEX [m/MODULE_CODE] [t/TYPE] [d/DATE] [a/ADDRESS]` | `L edit 1 a/LT17` |
+| **delete** | `L delete INDEX` | `L delete 1` |
 
 ### Task <a name="task-commands"></a>
 
-| Command | Example |
-| ---- | ------ |
-| **Add:** `T add n/NAME d/DATE [m/MODULE_CODE] [r/REMARK]` | `T add n/Assignment 1 d/20/11/2020 r/Focus on Chapters 1-3` |
-| **Edit:** `T edit INDEX [n/NAME] [d/DATE] [m/MODULE_CODE] [r/REMARK]` | `T edit 1 n/Finish Assignment` |
-| **Delete:** `T delete INDEX` | `T delete 1` |
+| Command | Format | Example |
+| -- | ------ | ------ |
+| **add** | `T add n/NAME d/DATE [m/MODULE_CODE] [r/REMARK]` | `T add n/Assignment 1 d/20/11/2020 r/Focus on Chapters 1-3` |
+| **edit** | `T edit INDEX [n/NAME] [d/DATE] [m/MODULE_CODE] [r/REMARK]` | `T edit 1 n/Finish Assignment` |
+| **delete** | `T delete INDEX` | `T delete 1` |
 
 ### Contact <a name="contact-commands"></a>
 
-| Command | Example |
-| ------ | ---------- |
-| **Add:** `C add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]...` | `C add n/John Doe p/98765432 e/jon@jon.com t/Brother t/Friend` |
-| **Edit:** `C edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...` | `C edit 1 n/Johnny Depp p/98999899` |
-| **Delete:** `C delete INDEX` | `C delete 1` |
+| Command | Format | Example |
+| -- | ------ | ------ |
+| **add** | `C add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]...` | `C add n/John Doe p/98765432 e/jon@jon.com t/Brother t/Friend` |
+| **edit** | `C edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...` | `C edit 1 n/Johnny Depp p/98999899` |
+| **delete** | `C delete INDEX` | `C delete 1` |
 
 ### General <a name="general-commands"></a>
 
-| Command | Example |
+| Command | Format |
 | ---- | ------ |
-| **Help:** `help` | `help` |
-| **Exit:** `exit` | `exit` |
+| **help** | `help` | `help` |
+| **exit** | `exit` | `exit` |
