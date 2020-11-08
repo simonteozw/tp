@@ -95,7 +95,7 @@ public final class EditModuleCommand extends Command {
             // edit all the related lessons
             List<Lesson> lessonsToEdit = new ArrayList<>(model.getModuleLessons(code));
             for (Lesson lesson : lessonsToEdit) {
-                Lesson updatedLesson = lesson.modifyCode(updatedCode);
+                Lesson updatedLesson = lesson.setCode(updatedCode);
                 model.setLesson(lesson, updatedLesson);
             }
 

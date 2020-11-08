@@ -29,6 +29,7 @@ public interface Model {
     Predicate<Task> PREDICATE_SHOW_NO_TASKS = unused -> false;
     Predicate<Lesson> PREDICATE_SHOW_NO_LESSONS = unused -> false;
     int NUM_MODULE_LIMIT = 10;
+
     /**
      * Returns the user prefs.
      */
