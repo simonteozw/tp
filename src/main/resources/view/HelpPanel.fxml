@@ -16,7 +16,7 @@
             <Insets bottom="1" left="15" right="5" top="1" />
         </padding>
         <Label styleClass="module_big_label" text="Command Summary" />
-        <Line endX="500" startX="0" style="-fx-stroke: #8C8C89" />
+        <Line endX="500" style="-fx-stroke: #8C8C89" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="6.0" stroke="#ffffff00" strokeType="INSIDE" width="214.0" />
         <Label styleClass="help_intro" text="For more info, refer to User Guide:" />
         <HBox>
@@ -28,7 +28,8 @@
                <Insets top="7.0" />
             </padding>
             </Label>
-            <Button fx:id="copyButton" mnemonicParsing="false" onAction="#copyUrl" style="-fx-font-size: 15" styleClass="copyurl-button" text="Copy URL">
+            <Button fx:id="copyButton" mnemonicParsing="false" onAction="#copyUrl" style="-fx-font-size: 15"
+                    text="Copy URL">
                 <HBox.margin>
                     <Insets left="5.0" />
                 </HBox.margin>

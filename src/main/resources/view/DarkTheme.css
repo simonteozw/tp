@@ -63,7 +63,6 @@
 
 .table-view .column-header, .table-view .filler {
     -fx-size: 35;
-    /*-fx-border-width: 0 0 1 0;*/
     -fx-background-color: transparent;
     -fx-border-color: transparent transparent derive(-fx-base, 80%) transparent;
     -fx-border-insets: 0 10 1 0;
@@ -147,10 +146,6 @@
 
 .table-row-cell:selected {
     -fx-background-color: transparent;
-}
-
-.copy-url-button {
-    -fx-border-color: white;
 }
 
 .module_small_label {
@@ -294,26 +289,7 @@
     -fx-background-color: #1d1d1d;
 }
 
-.dialog-pane > *.button-bar > *.container {
-    -fx-background-color: #1d1d1d;
-}
 
-.dialog-pane > *.label.content {
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-text-fill: white;
-}
-
-.dialog-pane:header *.header-panel {
-    -fx-background-color: derive(#1d1d1d, 25%);
-}
-
-.dialog-pane:header *.header-panel *.label {
-    -fx-font-size: 18px;
-    -fx-font-style: italic;
-    -fx-fill: white;
-    -fx-text-fill: white;
-}
 
 .scroll-bar {
     -fx-background-color: #5D606C;

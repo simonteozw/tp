@@ -3,5 +3,4 @@
 <?import trackitnus.ui.TestFxmlObject?>
 <fx:root xmlns:fx="http://javafx.com/fxml" type="TestFxmlObject"
          xmlns="http://javafx.com/javafx">
-    <text>Hello World!</text>
 </fx:root>
