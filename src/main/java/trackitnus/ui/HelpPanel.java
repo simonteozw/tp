@@ -40,6 +40,7 @@ public class HelpPanel extends UiPart<Region> {
         helpMessage.setText(HELP_MESSAGE);
 
         helpCardTableView.setItems(helpCommands());
+        helpCardTableView.setSelectionModel(null);
         helpCardTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         helpCardTableView.setColumnResizePolicy((Callback<TableView.ResizeFeatures, Boolean>) p -> true);
         TableColumn<HelpCard, String> actionCol = new TableColumn<>("Action");
@@ -55,15 +56,15 @@ public class HelpPanel extends UiPart<Region> {
 
     private static ObservableList<HelpCard> helpCommands() {
         ObservableList<HelpCard> helpCommands = FXCollections.observableArrayList();
-        helpCommands.add(new HelpCard("Module: Add", "M add m/MODULE_CODE n/NAME"));
-        helpCommands.add(new HelpCard("Module: Edit", "M edit MODULE_CODE m/MODULE_CODE n/NAME"));
-        helpCommands.add(new HelpCard("Module: Delete", "M delete MODULE_CODE"));
-        helpCommands.add(new HelpCard("Lesson: Add", "L add m/MODULE_CODE t/TYPE d/DAY HH:MM-HH:MM a/ADDRESS"));
-        helpCommands.add(new HelpCard("Lesson: Edit", "L edit INDEX [m/MODULE_CODE] [t/TYPE] " +
+        helpCommands.add(new HelpCard("Module: Add", "M add m/CODE n/NAME"));
+        helpCommands.add(new HelpCard("Module: Edit", "M edit CODE m/CODE n/NAME"));
+        helpCommands.add(new HelpCard("Module: Delete", "M delete CODE"));
+        helpCommands.add(new HelpCard("Lesson: Add", "L add m/CODE t/TYPE d/DAY HH:MM-HH:MM a/ADDRESS"));
+        helpCommands.add(new HelpCard("Lesson: Edit", "L edit INDEX [m/CODE] [t/TYPE] " +
             "[d/DAY HH:MM-HH:MM] [a/ADDRESS]"));
         helpCommands.add(new HelpCard("Lesson: Delete", "L delete INDEX"));
-        helpCommands.add(new HelpCard("Task: Add", "T add n/NAME d/DATE [m/MODULE_CODE] [r/REMARK]"));
-        helpCommands.add(new HelpCard("Task: Edit", "T edit INDEX [n/NAME] [d/DATE] [m/MODULE_CODE] [r/REMARK]"));
+        helpCommands.add(new HelpCard("Task: Add", "T add n/NAME d/DATE [m/CODE] [r/REMARK]"));
+        helpCommands.add(new HelpCard("Task: Edit", "T edit INDEX [n/NAME] [d/DATE] [m/CODE] [r/REMARK]"));
         helpCommands.add(new HelpCard("Task: Delete", "T delete INDEX"));
         helpCommands.add(new HelpCard("Contacts: Add", "C add n/NAME [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]"));
         helpCommands.add(new HelpCard("Contacts: Edit", "C edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]"));
