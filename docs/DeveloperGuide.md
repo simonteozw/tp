@@ -632,10 +632,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 8.  Users of the app find the app intuitive and easy to use
 9.  The app should be able to save data locally
 10. The app should be for a single user i.e. (not a multi-user product).
-11. The app should be able to hold up to 150 modules/lessons/tasks/contacts in total without a noticeable sluggishness in performance for
- typical usage.
-12. The app should be able to start up sufficiently fast (<5s).
-13. The app should not crash in the event of invalid user input
+11. The app should be able to start up sufficiently fast (<5s).
+12. The app should not crash in the event of invalid user input
 
 ## **Appendix E: Glossary** <a name="appen-e"></a>
 | **Term** | **Explanation** |
