@@ -142,10 +142,18 @@ The Class Diagram below shows how the `UI` components and sections interact with
 
 The UI consists of a `MainWindow` that is made up of parts e.g. `SidePanel`, `StatusBarFooter`, `CommandBox
 ` etc. All these, including the MainWindow, inherit from the abstract UiPart class. The UI also consist of 4 main
- components: `UpcomingTab`, `ModuleTab`, `ContactTab` and `HelpTab`. Each of these components consist of
-  several other classes as well. More details of this will be provided in the [sub-sections](#upcoming-tab).
+ components:
+  1. The `UpcomingTab`
+  2. The various `ModuleTab`
+  3. The `ContactTab`
+  4. The `HelpTab` 
 
-The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching .fxml files that
+Each of these components consist of several other classes, and more details can be found in the respective [sub
+  -sections](#upcoming-tab).
+
+The `UI` component uses **[JavaFx](#javafx)** UI framework. The layout of these UI parts are defined in matching `.fxml
+`  files
+ that
  are in the `src/main/resources/view` folder. For example, the layout of the `MainWindow` is specified in
   `MainWindow.fxml`.
 
@@ -159,12 +167,6 @@ The *Class Diagram* below shows how the components in the `Upcoming Tab` interac
 ![UiUpcomingTabClassDiagram](images/UiUpcomingTabClassDiagram.png)
 
 :information_source: All the `ListPanels` and `Cards` inherit from the abstract `UiPart` class.
-
-The UI contains 4 types of `Tabs`:
-1. The `Upcoming Tab`
-2. `Module Tabs`
-3. The `Contacts Tab`
-4. The `Help Tab`
 
 Each of these tabs consists of one or more List Panels and its respective Card. In each List Panel, the `Graphics
 ` component of each of the List Cells is defined by the respective Card.
@@ -180,10 +182,8 @@ This module tab consist of three panels (`LessonListPanel`, `TaskListPanel`, `Co
  corresponding cards (`LessonCard`, `TaskCard`, `ContactCard`). In all of the panels, the graphics of each of the
   `ListCell` is defined by the respective Cards.
   
-  The `ContactTab` and `HelpTab` both follow a similar structure as the above class diagram, except that they each
-   consist of 1 single panel.
-   
-#### **Contact Tab** <a name="contact-tab"></a>
+  The `ContactTab` and `HelpTab` both follow a **similar structure** as the above class diagram, except that they each
+   consist of **1 single panel instead of 3**.
 
 ### **Logic Component** <a name="logic"></a>
 
