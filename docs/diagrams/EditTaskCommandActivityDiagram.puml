@@ -1,0 +1,48 @@
+@startuml
+start
+:User enters edit task command;
+
+'Since the beta syntax does not support placing the condition outside the
+'diamond we place it as the true branch instead.
+
+if () then ([valid command])
+    :Retrieve the last shown task list;
+    if () then ([index provided is within range of last shown list])
+        if () then ([any fields are edited])
+            :Retrieve the task at the given index;
+            :Create the edited task;
+            if () then ([edited task is different from task to edit])
+            if () then ([edited task does not exist in model])
+            if () then ([edited task has a valid module code])
+            :Replace task to
+            edit with edited task;
+            :Save updated task list
+            to trackIter.json;
+            :Show success message;
+            else ([else])
+            :Show invalid module
+            code error message;
+            endif
+            else ([else])
+            :Show duplicate
+            task error message;
+            endif
+            else ([else])
+            :Show task is
+            unchanged message;
+            endif
+        else ([else])
+            :Show not edited
+             error message;
+        endif
+
+    else ([else])
+        :Show invalid task
+        index error message;
+    endif
+else ([else])
+    :Shows invalid
+    command message;
+endif
+stop
+@enduml
