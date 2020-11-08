@@ -51,7 +51,7 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 Welcome to the **TrackIt@NUS** user-guide!
 
 Do you struggle having to use multiple apps to balance your school life? Do you waste precious time just trying
- to find the information you need in the many apps you use? Well, look no further. Our application, TrackIt@NUS is an
+ to find the information you need in the many apps you use? Well, look no further. Our application, **TrackIt@NUS** is an
   all-in-one solution for a busy student like you to manage and organize your life, helping you to *Track Less, and
    Live More.*
 
