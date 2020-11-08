@@ -596,14 +596,14 @@ A: It is meant for you to add `contacts` that **may not be taking** the same mod
 
 
 ## 7. Glossary <a name="glossary"></a>
+| **Term** | **Explanation** |
+| -- | ----- |
+| Command Line Interface (CLI) | This refers to a **text-based** user interface to view and manage computer files. Click [here](https://en.wikipedia.org/wiki/Command-line_interface) for more information!|
+| Graphical User Interface (GUI) | This refers to a system of interactive visual components for computer software. Click [here](https://en.wikipedia.org/wiki/Graphical_user_interface) for more information! |
+| Index | This refers to the specific position of item in the list. This list can be a `Lesson`, `Task` or `Contact` list. | 
+| Tag | Tags are a way to group any number of `contacts` under a similar label. You can add as many tags as you want | 
 
-**Command Line Interface**: Known in short as **CLI**, the command line interface is a **text-based** user interface to
- view and manage computer files. Click [here](https://en.wikipedia.org/wiki/Command-line_interface) for more
-  information!
- 
-**Graphical User Interface**: Known in short as **GUI**, the graphical user interface is a system of interactive
- visual components for computer software. Click [here](https://en.wikipedia.org/wiki/Graphical_user_interface) for
-  more information!
+
 
 ## 8. Command Summary <a name="command-summary"></a>
 
