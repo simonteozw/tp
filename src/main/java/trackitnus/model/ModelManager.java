@@ -114,7 +114,6 @@ public class ModelManager implements Model {
         trackIter.resetData(trackIt);
     }
 
-    //=========== Contact ================================================================================
     @Override
     public boolean hasContact(Contact contact) {
         requireNonNull(contact);
@@ -138,18 +137,12 @@ public class ModelManager implements Model {
         trackIter.setContact(target, editedContact);
     }
 
-    //=========== Filtered Contact List Accessors =============================================================
-
     @Override
     public ObservableList<Contact> getAllContacts() {
         updateFilteredContactList(PREDICATE_SHOW_ALL_CONTACTS);
         return getFilteredContactList();
     }
 
-    /**
-     * Returns an unmodifiable view of the list of {@code Contact} backed by the internal list of
-     * {@code versionedTrackIter}
-     */
     @Override
     public ObservableList<Contact> getFilteredContactList() {
         return filteredContacts;
@@ -160,8 +153,6 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredContacts.setPredicate(predicate);
     }
-
-    //=========== Module ================================================================================
 
     @Override
     public boolean hasModule(Module module) {
@@ -197,20 +188,15 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void setModule(Module target, Module editedTask) {
-        CollectionUtil.requireAllNonNull(target, editedTask);
-
-        trackIter.setModule(target, editedTask);
+    public void setModule(Module target, Module editedModule) {
+        CollectionUtil.requireAllNonNull(target, editedModule);
+        trackIter.setModule(target, editedModule);
     }
-
-    //=========== Filtered Module List Accessors =============================================================
 
     @Override
     public ObservableList<Module> getFilteredModuleList() {
         return filteredModules;
     }
-
-    //=========== Task ================================================================================
 
     @Override
     public boolean hasTask(Task task) {
@@ -231,11 +217,8 @@ public class ModelManager implements Model {
     @Override
     public void setTask(Task target, Task editedTask) {
         CollectionUtil.requireAllNonNull(target, editedTask);
-
         trackIter.setTask(target, editedTask);
     }
-
-    //=========== Filtered Task List Accessors =============================================================
 
     @Override
     public ObservableList<Task> getFilteredTaskList() {
@@ -284,7 +267,6 @@ public class ModelManager implements Model {
     @Override
     public void setLesson(Lesson target, Lesson editedLesson) {
         CollectionUtil.requireAllNonNull(target, editedLesson);
-
         trackIter.setLesson(target, editedLesson);
     }
 
@@ -299,14 +281,10 @@ public class ModelManager implements Model {
         updateFilteredTaskList(PREDICATE_SHOW_NO_TASKS);
     }
 
-    //=========== Filtered Lesson List Accessors =============================================================
-
     @Override
     public ObservableList<Lesson> getFilteredLessonList() {
         return filteredLessons;
     }
-
-    //--------------------------------START of V1.3's new functions--------------------------------
 
     @Override
     public ObservableList<Lesson> getDayUpcomingLessons(LocalDate date) {
