@@ -674,7 +674,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to edit an existing module
-2.  TrackIt@NUS edits the module
+2.  TrackIt@NUS replaces the original module with the edited one
 
     Use case ends.
     
@@ -693,7 +693,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
         Use case resumes at step 1.
     
-**Use Case: UC07 - Editing a Module**
+**Use Case: UC08 - Deleting a Module**
 
 **MSS**
 
@@ -711,6 +711,137 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
     
 ### Lesson
+
+**Use Case: UC09 - Adding a Lesson**
+
+**MSS**
+
+1.  User requests to add a lesson
+2.  TrackIt@NUS adds the requested lesson
+    
+    Use case ends.
+    
+**Extensions**
+
+*   1.a. The given module code does not exist
+    *   1.a.1 TrackIt@NUS shows an error message
+        
+        Use case resumes at step 1.
+*   1.b. The given module code is invalid
+    *   1.b.1 TrackIt@NUS shows an error message
+            
+        Use case resumes at step 1.
+*   1.c. The given lesson already exists in the app
+    *   1.c.1 TrackIt@NUS shows an error message
+        
+        Use case resumes at step 1.
+*   1.d. The given start time is after the end time
+    *   1.d.1 TrackIt@NUS shows an error message
+            
+        Use case resumes at step 1.
+*   1.e. The given address is too long (> 20 characters)
+    *   1.e.1 TrackIt@NUS shows an error message
+        
+        Use case resumes at step 1.
+        
+
+**Use Case: UC10 - Editing a Lesson**
+
+**MSS**
+
+1.  User requests to edit a lesson
+2.  TrackIt@NUS replaces the original lesson with the edited lesson
+    
+    Use case ends.
+
+**Extensions**
+
+*   1.a. The given module code does not exist
+    *   1.a.1 TrackIt@NUS shows an error message
+        
+        Use case resumes at step 1.
+*   1.b. The given module code is invalid
+    *   1.b.1 TrackIt@NUS shows an error message
+            
+        Use case resumes at step 1.
+*   1.c. The given lesson already exists in the app
+    *   1.c.1 TrackIt@NUS shows an error message
+        
+        Use case resumes at step 1.
+*   1.d. The given start time is after the end time
+    *   1.d.1 TrackIt@NUS shows an error message
+            
+        Use case resumes at step 1.
+*   1.e. The given address is too long (> 20 characters)
+    *   1.e.1 TrackIt@NUS shows an error message
+        
+        Use case resumes at step 1.
+        
+*   1.f. No field is provided to edit
+    *   1.f.1 TrackIt@NUS shows an error message
+    
+        Use case resumes at step 1.
+        
+*   1.g. The requested lesson does not exist (provided index is invalid)
+    *   1.g.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
+         
+**Use Case: UC11 - Deleting a Lesson**
+ 
+**MSS**
+ 
+1.  User requests to edit a lesson
+2.  TrackIt@NUS replaces the original lesson with the edited lesson
+     
+    Use case ends.
+  
+**Extensions**  
+        
+*   1.g. The requested lesson does not exist (provided index is invalid)
+    *   1.g.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
+
+**Use Case: UC12 - View a module's lessons**
+ 
+**MSS**
+
+1.  User requests to view a module's lessons
+2.  TrackIt@NUS shows all the module's lessons
+
+    Use case ends.
+    
+**Extensions**
+
+*   1.a. The given module code does not exist
+    *   1.a.1 TrackIt@NUS shows an error message
+        
+        Use case resumes at step 1.
+*   1.b. The given module code is invalid
+    *   1.b.1 TrackIt@NUS shows an error message
+            
+        Use case resumes at step 1.
+*   1.c. The given module does not have any lessons
+    *   1.c.1 TrackIt@NUS shows no lessons
+    
+        Use case ends.
+        
+**Use Case: UC13 - View a certain day's lessons**
+ 
+**MSS**
+
+1.  User requests to view a certain day's lessons
+2.  TrackIt@NUS shows all the lessons on the requested day
+
+    Use case ends.
+    
+**Extensions**
+
+*   1.a. The given day does not have any lessons
+    *   1.a.1 TrackIt@NUS shows no lessons
+    
+        Use case ends.
 
 ### Task
 
