@@ -255,13 +255,28 @@ Refer to the guide [here](./DevOps.md)
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
 | Priority | As a …​                                    | I want to …​                                                   | So that I can…​                                                        |
-| -------- | -------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `* * *`  | student              | have all modules' important dates in one place                         | never miss any event                                                   |
-| `* * *`  | student              | have information (name, description, time) about any important dates   | always know what to prepare                                            |
-| `* * *`  | student              | have all the tutorial/lab details (Zoom link, time) in one place       | easily find them when I need it                                        |
-| `* * *`  | forgetful student    | find the grading structure of a module                                 | better revise for each assignment / mid-term / exam                    |
-| `* *`    | student              | have all the module descriptions in one place                          | read them if I need to                                                 |
-| `*`      | struggling student   | access the contact information of my TA/Prof                           | ask question or schedule a consultation                                |
+| -------- | -------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `* * *`  | new user             | be able to use the help command                                        | refer to instructions on what commands are available when I forget about them |
+| `* * *`  | student              | see an overview of the upcoming tasks I have                           | plan my schedule accordingly                                      |
+| `* * *`  | student              | see an overview of the upcoming lessons I have                         | easily see what lessons I have coming up                          |
+| `* * *`  | student              | see all the tasks I have for a certain module                          | organize my time better                                           |
+| `* * *`  | student              | see all the lessons I have for a certain module                        | organize my time more efficiently                                 |
+| `* * *`  | student              | have any lessons I add to be recurring                                 | not have to add lessons to my schedule every week                 |
+| `* * *`  | careless student     | edit the details of my tasks, modules, lessons and contacts            | rectify mistakes I made                                           |
+| `* * *`  | student              | delete any tasks when they are completed                               | focus better on the tasks that have yet to be completed           |
+| `* * *`  | student              | delete any contacts                                                    | no longer have details of contacts that I no longer need          |
+| `* * *`  | student              | delete any modules after I am done reading them                        | remove the relevant tasks and lessons that I no longer need       |
+| `* * *`  | struggling student   | quickly access the contact information of my TA/Prof                   | easily contact them for help                                      |
+| `* * `   | forgetful student    | group my friends by those that are taking the same modules as I am     | share resources or ask for help much more easily                  |
+| `* *`    | student              | assign priority ratings to my tasks                                    | know what has to be done first <br> (coming in v1.5)                                   | 
+| `* * `   | student              | receive a warning message when I try to add lessons that clash         | prevent clashes in my schedule <br> (coming in v1.5)              |
+| `*`      | student              | set biweekly or monthly recurring lessons                              | keep track of some lessons that may be biweekly or monthly <br> (coming in v1.5)        | 
+| `*`      | student              | edit a task's remarks without having to retype the entire remark        | make small changes much more easily <br> (coming in v1.5)        |
+| `*`      | student              | be able to sort my contacts by other parameters                         | find relevant contacts more easily <br> (coming in v1.5)         |
+| `*`      | user                 | switch between the different views using command line                   | view the information in the different views with greater ease <br> (coming in v1.5)   |
+| `*`      | user                 | be able to set reminders that might not be related to a module          | make use of the calendar function to organize not just my school work but my own life |
+
+
 
 ## **Appendix C: Use cases** <a name="appen-c"></a>
 
