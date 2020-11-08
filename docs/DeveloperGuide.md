@@ -694,8 +694,13 @@ This is the sequence diagram of `getModuleContacts`.
 
 A number of fields in a contact (namely phone number and e-mail address) are optional. In the case they are not specified, 
  we store them as null. Similar to tasks, we wanted users to be able to remove any optional field simply by 
-  specifying the `/p` or `/e` flag without providing a parameter. Hence, we added 2 additional boolean variables - `isPhoneChanged` and 
-   `isEmailChanged`, to know whether users wanted to remove the existing phone number or e-mail address.
+  specifying the `/p` or `/e` flag without providing a parameter.
+   
+![Remove Phone Number Activity Diagram](images/RemovePhoneNumberActivityDiagram.png)
+   
+The original AB3 implementation of edit commands, which would default to the original field if the edited
+ field was null, would not be sufficient. Hence, we added 2 additional boolean variables - `isPhoneChanged` and 
+  `isEmailChanged`, to know whether users wanted to remove the existing phone number and/or e-mail address.
 
 ### **Logging** <a name="logging"></a>
 
