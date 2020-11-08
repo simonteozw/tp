@@ -579,19 +579,19 @@ Examples: `exit`
 
 ## 6. FAQ <a name="faq"></a>
 
-**Q: Will my data be saved in the computer?**
+**Q: Will my data be saved in the computer?** <br>
 A: TrackIt@NUS data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-**Q: How do I transfer my data to another computer?**
+**Q: How do I transfer my data to another computer?** <br>
 A: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous TrackIt@NUS home folder.
 
-**Q: Can I add a biweekly `lesson` in the module?**
+**Q: Can I add a biweekly `lesson` in the module?** <br>
 A: Unfortunately, as of v1.4, only weekly lessons are supported. Biweekly and monthly lessons may be added in subsequent versions.
 
-**Q: Why can I add a `lesson` that clashes with my existing `lessons`? Is this a bug?**
+**Q: Why can I add a `lesson` that clashes with my existing `lessons`? Is this a bug?** <br>
 A: This is because there are instances where students are granted **a case-by-case approval** to overload modules with **concurrent lessons**. These students should have the option to include concurrent lessons. 
  
-**Q: Why is there a need for the `Contacts Tab` when I can already add `contacts` in the `Module Tab`?**
+**Q: Why is there a need for the `Contacts Tab` when I can already add `contacts` in the `Module Tab`?** <br>
 A: It is meant for you to add `contacts` that **may not be taking** the same modules as you but they are **still relevant** in your social life and/or studies. Please refer to the [Contacts Tab](#contactstab) for more details.
 
 
