@@ -17,8 +17,8 @@ public class DeleteModuleCommandParser implements Parser<DeleteModuleCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public DeleteModuleCommand parse(String args) throws ParseException {
-            Code code = ParserUtil.parseCode(args);
-            return new DeleteModuleCommand(code);
+        Code code = ParserUtil.parseCode(args);
+        return new DeleteModuleCommand(code);
     }
 
 }

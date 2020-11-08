@@ -76,7 +76,7 @@ public class Lesson {
      * @param newCode the new code to set
      * @return a new lesson with the code that has just been passed in
      */
-    public Lesson modifyCode(Code newCode) {
+    public Lesson setCode(Code newCode) {
         CollectionUtil.requireAllNonNull(newCode);
         return new Lesson(newCode, type, time, address);
     }
