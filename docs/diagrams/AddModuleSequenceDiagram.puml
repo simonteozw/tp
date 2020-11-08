@@ -14,29 +14,31 @@ end box
 [-> AddModuleCommand : execute(m)
 activate AddModuleCommand
 
+'hasModule
 AddModuleCommand -> Model : hasModule(code)
 activate Model
 Model -> TrackIter : hasModule(code)
-activate TrackIter
 TrackIter --> Model : result
 Model --> AddModuleCommand : result
-
-
-AddModuleCommand -> Model : canAddMoreModule()
-Model -> TrackIter : getFilteredModuleList()
-TrackIter -> Model : moduleList
-Model --> AddModuleCommand : result
-
-AddModuleCommand -> Model : addModule(t)
-
-Model -> TrackIter : addModule(t)
-
-
-TrackIter --> Model
-deactivate TrackIter
-
-Model --> AddModuleCommand
 deactivate Model
+'end
+
+'canAddMoreModule
+AddModuleCommand -> Model : canAddMoreModule()
+activate Model
+Model -> TrackIter : getFilteredModuleList()
+TrackIter --> Model : moduleList
+Model --> AddModuleCommand : result
+deactivate Model
+'end
+
+'addModule
+AddModuleCommand -> Model : addModule(t)
+activate Model
+Model -> TrackIter : addModule(t)
+deactivate Model
+'end
+
 
 create CommandResult
 AddModuleCommand -> CommandResult

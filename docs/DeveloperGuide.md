@@ -291,6 +291,7 @@ This will bring several benefits:
 of classes of the same level, it's very easy for a developer to maintain others' codes.
 
 A possible drawback of this uniform design is that it may not be the most appropriate design for each class, but for this project we believe this drawback doesn't apply.
+
 ----
 
 ----
@@ -341,11 +342,11 @@ When the user enters the `M add m/CODE n/NAME` command to add a new module, the 
 The following steps will describe the execution of the `AddModuleCommand` in detail, assuming that no errors are encountered.
 1. The `Model`'s `hasModule(code)` is called. If it returns `true`, a `CommandException` will be thrown.
 2. The `Model`'s `canAddMoreModule()` is called. If it returns `true`, a `CommandException` will be thrown.
-3. The `Model`'s `deleteModule()` is called to delete the module from TrackIt
+3. The `Model`'s `addModule()` is called to add the module from TrackIt
 4. The `Ui` component will detect this change and update the GUI.
 5. Assuming that the above steps are all successful, the `AddModuleCommand` will then create a `CommandResult` object and return the result.
 
-The following Sequence Diagram summarises the aforementioned steps. 
+The following Sequence Diagram will illustrate the above steps in greater detail :
 
 ![Add Module Sequence Diagram](images/AddModuleSequenceDiagram.png)
 
@@ -366,7 +367,7 @@ The following steps will describe the execution of the `DeleteModuleCommand` in 
 8. The `Ui` component will detect this change and update the GUI.
 9. Assuming that the above steps are all successful, the `DeleteModuleCommand` will then create a `CommandResult` object and return the result.
 
-The following Sequence Diagram summarises the aforementioned steps. 
+The following Sequence Diagram will illustrate the above steps in greater detail :
 
 ![Delete Module Sequence Diagram](images/DeleteModuleSequenceDiagram.png)
      
@@ -384,16 +385,18 @@ The following steps will describe the execution of the `EditModuleCommand` in de
 4. If the `code` of `editedModule` coincides with one of the `code` of existing module, a `CommandException` will be thrown.
 5. If the `code` of the `editedModule` is different from the old `Module`'s `code`:
     1. The `Model`'s `getModuleTasks()` is called to get the list of tasks that are associated with the module
-    2. For each task received from the above step, its `code` will be changed to the new `code`
+    2. For each task in the above step, a `newTask` is created by replacing its old `code` with the new `code`, then `Model`'s `setTask()` is called to replace `oldTask` with `newTask`
     3. The `Model`'s `getModuleLessons()` is called to get the list of lessons that are associated with the module
-    4. For each task received from the above step, its `code` will be changed to the new `code`
-    5. The `Model`'s `getModuleContacts()` is called to get the list of contact tags that associated with the module
-    6. For each tag received from the above step, its content will be changed to the new `code`
+    4. For each lesson in the above step, a `newLesson` is created by replacing its old `code` with the new `code`, then `Model`'s `setLesson()` is called to replace `oldLesson` with `newLesson`
+    5. The `Model`'s `getModuleContacts()` is called to get the list of contacts that associated with the module
+    6. For each contact in the above step, a `newContact` is created by deleting the old `code` from the set of tags and add in the new `code`, then `Model`'s `setContact()` is called to replace `oldContact` with `newContact`
 7. The `Model`'s `setModule()` is called to edit the module from TrackIt
 8. The `Ui` component will detect this change and update the GUI.
 9. Assuming that the above steps are all successful, the `EditModuleCommand` will then create a `CommandResult` object and return the result.
 
-The following Sequence Diagram summarises the aforementioned steps. 
+The following Sequence Diagram will illustrate the above steps in greater detail :
+
+![Edit Module Sequence Diagram](images/EditModuleSequenceDiagram.png)
 
 ### **Lesson Manager** <a name="lesson-manager"></a>
 
