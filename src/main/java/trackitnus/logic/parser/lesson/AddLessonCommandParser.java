@@ -45,7 +45,8 @@ public class AddLessonCommandParser implements Parser<AddLessonCommand> {
             ArgumentTokenizer.tokenize(args,
                 PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE, PREFIX_ADDRESS);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE, PREFIX_ADDRESS)) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_CODE, PREFIX_TYPE, PREFIX_DATE, PREFIX_ADDRESS) || !argMultimap
+            .getPreamble().isEmpty()) {
             throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
                 AddLessonCommand.MESSAGE_USAGE));
         }
