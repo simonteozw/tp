@@ -247,8 +247,8 @@ This section describes some noteworthy details on how certain features are imple
 ### **Overview** <a name="overview"></a>
 
 #### **Code Design Considerations** <a name="code-des-cons"></a>
-
-All commands in TrackIt@NUS follow a similar execution flow.
+----
+**All commands in TrackIt@NUS follow a similar execution flow.**
 
 ![Command Activity Diagram](images/CommandActivityDiagram.png)
 
@@ -270,10 +270,130 @@ Another design challenge was how to manage our predicates. TrackIt@NUS makes use
 | ---- | ----- | ------- |
 | **Option 1 (current choice):** Extract each the predicates into their own unique class | Increases code maintainability and testability. Now as a developer you exactly where to find each predicate. Makes use of the DRY principle and improves abstraction because you no longer need to interact with the actual lambda or test function, simply call the predicate. | Makes code more verbose as each predicate can simply be declared using a single lambda. |
 | **Option2:** Declare each predicate using a single lambda in the ModelManager class. No predicate will have a class. | Makes code shorter and simpler to read. No need to create a class when you can simply declare a predicate with a lambda. | Need to duplicate such code when using ModelStubs for testing. This will violate the DRY principle. |
+----
+**All classes of Logic & Model at the same level will have similar structures**
 
+To elaborate on this, we will first take an example on some lowest-level classes of the codebase. They include `Email`, `Address`, `Code`, `Name` ....
+
+All of these classes share a similar structure as 2 classes `Address` and `Code` as below:
+![CodeAndAddressClassDiagram](images/CodeAndAddressClassDiagram.png)
+
+Furthermore, all Add/Edit/Delete commands will share very similar structure, below is the example of AddCommand, EditCommand & DeleteCommand, 
+![AddEditDeleteCommandClassDiagrams](images/AddEditDeleteCommandClassDiagram.png)
+
+The same principle applies to all CommandParser classes.
+
+This will bring several benefits:
+* If a bug is found, we can quickly check same-level classes(that have the similar structure) for the existence of the bug since it's quite likely to contain the same bug
+* If any fix/improvement is applied to a class, we can quickly apply the same fix/improvement to other same-level classes
+* Improve maintainability of the project. Since the back-end was developed in parallel, each developer was assigned to code at least one "part" of the back-end 
+(for example, one can be assigned to write all Module-related classes, subclasses, commands and command-parsers). Yet, due to the similarity in structure 
+of classes of the same level, it's very easy for a developer to maintain others' codes.
+
+A possible drawback of this uniform design is that it may not be the most appropriate design for each class, but for this project we believe this drawback doesn't apply.
+----
+
+----
+**Other code design rules applied**
+* A function/method should only do what it's expected to do (which should be inferable from its name), and in no ways should it surprise the caller.
+
+----
 #### **Feature Design Considerations** <a name="feat-des-cons"></a>
 
 ### **Module Manager** <a name="module-manager"></a>
+
+TrackIt@NUS allows users to keep track of all modules that he/she is taking. Module (or more exactly module's code) is
+ the link between Lesson, Task and Contact. The following diagram illustates their relationship:
+ 
+![Module link](images/ModuleLink.png)
+     
+ :information_source: The module code needs to begin with 2-3 captial letters, then exactly 4 digits, then follows by
+  an optional captial letter. The module name must not be empty and doesn't contain character "/"
+      
+ :information_source: modules are allowed to have the same name, as long as they have different codes
+ 
+ :bulb: Since there is no index being shown for a module, the module can be edited/deleted only by its code. 
+ For example: 
+ * `M edit CS2030 m/CS2040 n/Edited name` to change the code of CS2030 to CS2040, and change its name to "Edited name"
+ * `M delete CS2030` to delete the CS2030 module
+ 
+
+#### Current Implementation
+
+In this section, we will outline the key operations of the Module Manager, namely:
+* `AddModuleCommand`
+* `DeleteModuleCommand`
+* `EditModuleCommand`
+ 
+The add, delete, and edit commands are all implemented in similar ways. When they are executed they will:
+ * call on the relevant Model methods
+ * update the `UniqueModuleList` depending on the command
+ * Save the updated module list to `data/trackIter.json`
+ * return the relevant CommandResult message
+
+In this section, we will use the following Activity Diagram to outline the parse & execution of a AddModuleCommand
+
+![Activity diagram for Add Module Command](images/AddModuleCommandActivityDiagram.png)
+
+When the user enters the `M add m/CODE n/NAME` command to add a new module, the user input command undergoes the same command parsing as described in 
+[Section 3.3 Logic Component](#33-logic-component). If the parse process is successful, a `AddModuleCommand` will be returned an its `execute` method will be called
+
+The following steps will describe the execution of the `AddModuleCommand` in detail, assuming that no errors are encountered.
+1. The `Model`'s `hasModule(code)` is called. If it returns `true`, a `CommandException` will be thrown.
+2. The `Model`'s `canAddMoreModule()` is called. If it returns `true`, a `CommandException` will be thrown.
+3. The `Model`'s `deleteModule()` is called to delete the module from TrackIt
+4. The `Ui` component will detect this change and update the GUI.
+5. Assuming that the above steps are all successful, the `AddModuleCommand` will then create a `CommandResult` object and return the result.
+
+The following Sequence Diagram summarises the aforementioned steps. 
+
+![Add Module Sequence Diagram](images/AddModuleSequenceDiagram.png)
+
+In this section, we will use the following Activity Diagram to outline the parse & execution of a DeleteModuleCommand
+
+![Activity diagram for Delete Module Command](images/DeleteModuleCommandActivityDiagram.png)
+
+When the user enters the `M delete CODE` command to delete a module, the user input command undergoes the same command parsing as described in 
+[Section 3.3 Logic Component](#33-logic-component). If the parse process is successful, a `DeleteModuleCommand` will be returned an its `execute` method will be called
+
+The following steps will describe the execution of the `DeleteModuleCommand` in detail, assuming that no errors are encountered.
+1. The `Model`'s `getModule(code)` is called and it will return an Optional<Module> to delete. If the returned optional is empty, a `CommandException` will be thrown.
+2. The `Model`'s `getModuleTasks()` is called to get the list of tasks that are associated with the module. 
+3. For each task received from the above step, the `Model`'s `deleteTask()` will be called to delete the task from TrackIt
+4. The `Model`'s `getModuleLessons()` is called to get the list of lessons that are associated with the module. 
+5. For each lesson received from the above step, the `Model`'s `deleteLesson()` will be called to delete the lesson from TrackIt
+7. The `Model`'s `deleteModule()` is called to delete the module from TrackIt
+8. The `Ui` component will detect this change and update the GUI.
+9. Assuming that the above steps are all successful, the `DeleteModuleCommand` will then create a `CommandResult` object and return the result.
+
+The following Sequence Diagram summarises the aforementioned steps. 
+
+![Delete Module Sequence Diagram](images/DeleteModuleSequenceDiagram.png)
+     
+In this section, we will use the following Activity Diagram to outline the parse & execution of a EditModuleCommand
+
+![Activity diagram for Edit Module Command](images/EditModuleCommandActivityDiagram.png)
+
+When the user enters the `M edit CODE` command to edit a module, the user input command undergoes the same command parsing as described in 
+[Section 3.3 Logic Component](#33-logic-component). If the parse process is successful, a `EditModuleCommand` will be returned an its `execute` method will be called
+
+The following steps will describe the execution of the `EditModuleCommand` in detail, assuming that no errors are encountered.
+1. The `Model`'s `getModule(code)` is called and it will return an Optional<Module> to edit. If the returned optional is empty, a `CommandException` will be thrown.
+2. The `Model`'s `createEditedModule` is called to create the new `editedModule` to replace the old `Module`
+3. If `editedModule` is equal to the old `Module`, a `CommandException` will be thrown.
+4. If the `code` of `editedModule` coincides with one of the `code` of existing module, a `CommandException` will be thrown.
+5. If the `code` of the `editedModule` is different from the old `Module`'s `code`:
+    1. The `Model`'s `getModuleTasks()` is called to get the list of tasks that are associated with the module
+    2. For each task received from the above step, its `code` will be changed to the new `code`
+    3. The `Model`'s `getModuleLessons()` is called to get the list of lessons that are associated with the module
+    4. For each task received from the above step, its `code` will be changed to the new `code`
+    5. The `Model`'s `getModuleContacts()` is called to get the list of contact tags that associated with the module
+    6. For each tag received from the above step, its content will be changed to the new `code`
+7. The `Model`'s `setModule()` is called to edit the module from TrackIt
+8. The `Ui` component will detect this change and update the GUI.
+9. Assuming that the above steps are all successful, the `EditModuleCommand` will then create a `CommandResult` object and return the result.
+
+The following Sequence Diagram summarises the aforementioned steps. 
 
 ### **Lesson Manager** <a name="lesson-manager"></a>
 
@@ -750,3 +870,13 @@ Given below are instructions to test the app manually.
     
 
 ## **Appendix G: Effort** <a name="appen-g"></a>
+
+The team has put in a tremendous amount of effort to this project, with a single simple principle in mind: create an app
+ that our targeted users will prefer over existing commercial apps, and do so while maintain a production-grade
+  codebase. In the following section, the effort will be further elaborated.
+  
+### App's functionality 
+
+When we first start the project, we were quite surprised that the app must be optimized for CLI, which is not a
+ common thing for most of the commercial apps nowadays
+ 
