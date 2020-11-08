@@ -291,6 +291,7 @@ This will bring several benefits:
 of classes of the same level, it's very easy for a developer to maintain others' codes.
 
 A possible drawback of this uniform design is that it may not be the most appropriate design for each class, but for this project we believe this drawback doesn't apply.
+
 ----
 
 ----
@@ -394,6 +395,8 @@ The following steps will describe the execution of the `EditModuleCommand` in de
 9. Assuming that the above steps are all successful, the `EditModuleCommand` will then create a `CommandResult` object and return the result.
 
 The following Sequence Diagram summarises the aforementioned steps. 
+
+![Edit Module Sequence Diagram](images/EditModuleSequenceDiagram.png)
 
 ### **Lesson Manager** <a name="lesson-manager"></a>
 

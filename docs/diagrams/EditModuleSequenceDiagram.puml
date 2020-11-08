@@ -1,0 +1,122 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":EditModuleCommand" as EditModuleCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+participant ":TrackIter" as TrackIter MODEL_COLOR
+end box
+
+[-> EditModuleCommand : execute(m)
+activate EditModuleCommand
+
+'getModule
+EditModuleCommand -> Model : getModule(code)
+activate Model
+Model -> TrackIter : getModule(code)
+TrackIter --> Model : moduleToEdit
+Model --> EditModuleCommand : moduleToEdit
+deactivate Model
+'end
+
+'createEditedModule
+EditModuleCommand -> EditModuleCommand : createEditedModule(moduleToEdit, editModuleDescriptor)
+activate EditModuleCommand
+EditModuleCommand --> EditModuleCommand : editedModule
+deactivate EditModuleCommand
+'end
+
+alt editedModule.code != moduleToEdit.code
+'getModuleTask
+EditModuleCommand -> Model : getModuleTasks(code)
+activate Model
+Model -> TrackIter : updateFilteredTaskList(pTask)
+Model -> TrackIter : getFilteredTaskList(pTask)
+note right
+pTask: predicate to only shows tasks
+that are associated with the module
+end note
+TrackIter -> Model : tasksToEdit
+Model --> EditModuleCommand : tasksToEdit
+deactivate Model
+'end
+
+'edit tasks
+loop task in tasksToEdit
+    EditModuleCommand -> Model : editTask(task)
+    activate Model
+    Model -> TrackIter : editTask(task)
+deactivate Model
+end
+'end
+
+'getModuleLesson
+EditModuleCommand -> Model : getModuleLessons(code)
+activate Model
+Model -> TrackIter : updateFilteredLessonList(pLesson)
+Model -> TrackIter : getFilteredLessonList(pLesson)
+note right
+pLesson: predicate to only shows lessons
+that are associated with the module
+end note
+TrackIter -> Model : lessonsToEdit
+Model --> EditModuleCommand : lessonsToEdit
+deactivate Model
+'end
+
+'edit lessons
+loop lesson in lessonsToEdit
+    EditModuleCommand -> Model : editLesson(lesson)
+    activate Model
+    Model -> TrackIter : editLesson(lesson)
+deactivate Model
+end
+'end
+
+'getModuleContact
+EditModuleCommand -> Model : getModuleContacts(code)
+activate Model
+Model -> TrackIter : updateFilteredContactList(pContact)
+Model -> TrackIter : getFilteredContactList(pContact)
+note right
+pContact: predicate to only shows contacts
+that are associated with the module
+end note
+TrackIter -> Model : contactsToEdit
+Model --> EditModuleCommand : contactsToEdit
+deactivate Model
+'end
+
+'edit contacts
+loop contact in contactsToEdit
+    EditModuleCommand -> Model : setTag(oldCode,newCode)
+    activate Model
+    Model -> TrackIter : editContact(contact)
+deactivate Model
+end
+'end
+
+end
+
+
+EditModuleCommand -> Model : editModule(t)
+activate Model
+Model -> TrackIter : editModule(t)
+
+deactivate Model
+
+create CommandResult
+EditModuleCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> EditModuleCommand : r
+deactivate CommandResult
+
+[<--EditModuleCommand : r
+deactivate EditModuleCommand
+
+@enduml
