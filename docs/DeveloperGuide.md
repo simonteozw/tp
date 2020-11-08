@@ -835,7 +835,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
  
 **MSS**
 
-1.  User requests to view a module's lessons
+1.  User views a module's page
 2.  TrackIt@NUS shows all the module's lessons
 
     Use case ends.
@@ -843,15 +843,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 *   1.a. The given module code does not exist
-    *   1.a.1 TrackIt@NUS shows an error message
+    *   1.a.1 User cannot view the module's page
         
-        Use case resumes at step 1.
-*   1.b. The given module code is invalid
-    *   1.b.1 TrackIt@NUS shows an error message
-            
-        Use case resumes at step 1.
-*   1.c. The given module does not have any lessons
-    *   1.c.1 TrackIt@NUS shows no lessons
+        Use case ends.
+*   1.b. The given module does not have any lessons
+    *   1.b.1 TrackIt@NUS shows no lessons
     
         Use case resumes at step 1.
         
@@ -861,15 +857,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
  
 **MSS**
 
-1.  User requests to view a certain day's lessons
-2.  TrackIt@NUS shows all the lessons on the requested day
+1.  User views the `Upcoming` tab
+2.  TrackIt@NUS shows every day's lessons for the next week
 
     Use case resumes at step 1.
     
 **Extensions**
 
 *   1.a. The given day does not have any lessons
-    *   1.a.1 TrackIt@NUS shows no lessons
+    *   1.a.1 TrackIt@NUS shows no lessons for that day
     
         Use case ends.
 
@@ -1029,18 +1025,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to view all tasks on a certain date
-2.  TrackIt@NUS show that date's tasks
+1.  User views the `Upcoming` tab
+2.  TrackIt@NUS show every day's tasks for the next week
      
     Use case ends.
   
-**Extensions**  
-        
-*   1.a. The requested date is invalid (wrong format)
-    *   1.a.1 TrackIt@NUS shows an error message
-     
-        Use case resumes at step 1.
-        
+**Extensions**
+
+*   1.a. The given day does not have any tasks
+    *   1.a.1 TrackIt@NUS shows no tasks for that day
+    
+        Use case ends.
+
 **Use Case: UC19 - Viewing a Module's Task**
 
 **Preconditions:** Module exists in the app.
@@ -1049,7 +1045,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to view the module's tasks
+1.  User views the requested module's page
 2.  TrackIt@NUS shows all the tasks that belong to the specified module
      
     Use case ends.
@@ -1057,9 +1053,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**  
         
 *   1.a. The requested module does not exist
-    *   1.a.1 TrackIt@NUS shows an error message
+    *   1.a.1 User cannot view the module's page
      
-        Use case resumes at step 1.
+        Use case ends.
+*   1.b. The requested module does not have any tasks
+    *   1.b.1 TrackIt@NUS shows no tasks
+     
+        Use case ends.
 
 ### Contact
 
@@ -1094,8 +1094,80 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     *   1.c.1 TrackIt@NUS shows an error message
      
         Use case resumes at step 1.
+        
+
+**Use Case: UC21 - Editing a Contact**
+
+**Preconditions:** Contact must exist in the app.
+
+**Guarantees:** Updated contact list with the requested contact edited.
+
+**MSS**
+
+1.  User requests to edit contact
+2.  TrackIt@NUS edit the requested contact
+     
+    Use case ends.
+  
+**Extensions**  
+        
+*   1.a. The edited contact already exists in the app
+    *   1.a.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
+*   1.b. The provided name is invalid (wrong format)
+    *   1.b.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
+*   1.c. The provided email is invalid (wrong format)
+    *   1.c.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
+*   1.c. The provided phone number is invalid (wrong format)
+    *   1.c.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
+
+**Use Case: UC22 - Deleting a Contact**
+
+**Preconditions:** Contact must exist in the app.
+
+**Guarantees:** Updated contact list with the requested contact removed.
+
+**MSS**
+
+1.  User requests to delete contact
+2.  TrackIt@NUS removes the requested contact
+     
+    Use case ends.
+  
+**Extensions**  
+        
+*   1.a. The requested contact does not exists in the app (index provided is invalid)
+    *   1.a.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
 
 
+**Use Case: UC23 - View a Module's Contacts**
+
+**Preconditions:** Module must exist in the app.
+
+**Guarantees:** Shows all contacts associated with the requested module
+
+**MSS**
+
+1.  User views any module page
+2.  TrackIt@NUS shows the module's contact
+     
+    Use case ends.
+  
+**Extensions**  
+        
+*   1.a. The requested module does not exist in the app 
+    *   1.a.1 User cannot view the module page
+     
+        Use case ends.
 
 ## **Appendix D: Non-Functional Requirements** <a name="appen-d"></a>
 
