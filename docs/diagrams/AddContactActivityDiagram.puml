@@ -1,0 +1,21 @@
+@startuml
+start
+:User enters add contact command;
+
+'Since the beta syntax does not support placing the condition outside the
+'diamond we place it as the true branch instead.
+
+if () then ([valid command])
+    :Parse command arguments;
+    if () then ([contact does not exist in model])
+        :Add contact to TrackIt@NUS;
+        :Save updated contact list to trackIter.json;
+        :Show success message;
+    else ([else])
+        :Throw duplicate contact error;
+    endif
+else ([else])
+    :Shows an invalid command message;
+endif
+stop
+@enduml

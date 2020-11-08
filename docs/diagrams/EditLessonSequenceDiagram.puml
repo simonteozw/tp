@@ -18,14 +18,10 @@ activate EditLessonCommand
 EditLessonCommand -> Model : getFilteredLessonList()
 activate Model
 
-Model --> EditLessonCommand
+Model --> EditLessonCommand : lastShownList
 deactivate Model
 
 EditLessonCommand -> index : getZeroBased()
-activate index
-
-index --> EditLessonCommand
-deactivate index
 
 EditLessonCommand -> EditLessonCommand : createEditedLesson(lessonToEdit, editLessonDescriptor)
 activate EditLessonCommand
@@ -36,12 +32,8 @@ EditLessonCommand -> Model : setLesson(lessonToEdit, editedLesson)
 activate Model
 
 Model -> TrackIter : setLesson(lessonToEdit, editedLesson)
-activate TrackIter
 
-TrackIter --> Model
-deactivate TrackIter
 
-Model --> EditLessonCommand
 deactivate Model
 
 create CommandResult

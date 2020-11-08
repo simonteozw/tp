@@ -22,22 +22,13 @@ Model --> DeleteLessonCommand : lastShownList
 deactivate Model
 
 DeleteLessonCommand -> index : getZeroBased()
-activate index
-
-index --> DeleteLessonCommand
-deactivate index
 
 
-DeleteLessonCommand -> Model : deleteLesson(t)
+DeleteLessonCommand -> Model : deleteLesson(l)
 activate Model
 
-Model -> TrackIter : removeLesson(t)
-activate TrackIter
+Model -> TrackIter : removeLesson(l)
 
-TrackIter --> Model
-deactivate TrackIter
-
-Model --> DeleteLessonCommand
 deactivate Model
 
 create CommandResult

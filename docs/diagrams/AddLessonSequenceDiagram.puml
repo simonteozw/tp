@@ -8,53 +8,31 @@ end box
 
 box Model MODEL_COLOR_T1
 participant "m:Model" as Model MODEL_COLOR
-participant "l:Lesson" as lesson MODEL_COLOR
 participant ":TrackIter" as TrackIter MODEL_COLOR
 end box
 
 [-> AddLessonCommand : execute(m)
 activate AddLessonCommand
 
-AddLessonCommand -> lesson : getCode()
-activate lesson
-
-lesson --> AddLessonCommand
-deactivate lesson
-
 AddLessonCommand -> Model : hasModule(l.getCode())
 activate Model
 
 Model -> TrackIter : hasModule(l.getCode())
-activate TrackIter
 
-TrackIter --> Model
-deactivate TrackIter
-
-Model --> AddLessonCommand
 deactivate Model
 
 AddLessonCommand -> Model : hasLesson(l)
 activate Model
 
 Model -> TrackIter : hasLesson(l)
-activate TrackIter
 
-TrackIter --> Model
-deactivate TrackIter
-
-Model --> AddLessonCommand
 deactivate Model
 
 AddLessonCommand -> Model : addLesson(l)
 activate Model
 
 Model -> TrackIter : addLesson(l)
-activate TrackIter
 
-TrackIter --> Model
-deactivate TrackIter
-
-Model --> AddLessonCommand
 deactivate Model
 
 create CommandResult
