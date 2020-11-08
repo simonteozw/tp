@@ -108,7 +108,8 @@ public final class EditModuleCommand extends Command {
 
         // edit the module
         model.setModule(moduleToEdit, editedModule);
-        return new CommandResult(String.format(Messages.MESSAGE_EDIT_MODULE_SUCCESS, editedModule));
+        return new CommandResult(String.format(Messages.MESSAGE_EDIT_MODULE_SUCCESS, editedModule), editedModule,
+            moduleToEdit);
     }
 
     @Override
