@@ -596,7 +596,62 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `TrackIt@NUS` application and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Find the grading structure of a module**
+### Navigation
+
+**Use case: UC01 - Viewing the Upcoming tab**
+
+**MSS**
+
+1.  User requests to go to the `Upcoming` tan
+2.  TrackIt@NUS switches to the `Upcoming` tab, showing all upcoming lessons and tasks
+
+    Use case ends.
+    
+**Use case: UC02 - Viewing the Contacts tab**
+
+**MSS**
+
+1.  User requests to go to the `Contacts` tab
+2.  TrackIt@NUS switches to the `Contacts` tab, showing all contacts
+
+    Use case ends.
+
+**Use case: UC03 - Viewing the Help tab**
+
+**MSS**
+
+1.  User requests to view the `help` tab
+2.  TrackIt@NUS opens the help window showing the list of commands and their explanations
+
+    Use case ends.
+
+**Use case: UC04 - Going to a different tab**
+
+**MSS**
+
+1.  User requests to go to a different tab
+2.  TrackIt@NUS switches to the requested tab
+
+    Use case ends.
+
+**Use case: UC05 - Exiting the App**
+
+**MSS**
+
+1.  User requests to exit the app
+2.  TrackIt@NUS closes the app window
+
+    Use case ends.
+
+
+### Module
+
+### Lesson
+
+### Task
+
+### Contact
+**Use case: UC01 - Find the grading structure of a module**
 
 **MSS**
 
