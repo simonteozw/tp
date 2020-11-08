@@ -26,7 +26,7 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     * 5.6 [Exit](#exit)
 6. [FAQ](#faq)
 7. [Glossary](#glossary)
-7. [Command Summary](#command-summary)
+8. [Command Summary](#command-summary)
     * 7.1 [Module Commands](#module-commands)
     * 7.2 [Lesson Commands](#lesson-commands)
     * 7.3 [Task Commands](#task-commands)
@@ -51,7 +51,7 @@ TrackIt@NUS is a desktop app for managing modules, lessons, tasks, and contacts,
    [**Graphical User Interface (GUI)**](#glossary). If you can type fast, you will be able to manage your academic
     and social commitments much more efficiently than by using other traditional GUI apps.
 
-What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) to learn more!
+What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) to learn more
 
 ## 2. Quick Start <a name="quick-start"></a>
 
@@ -329,6 +329,7 @@ Example: To change the lesson timing to 5pm-6pm, follow these instructions.
 |---------------|-|
 | INDEX | 1|
 |DATE| **Mon 17:00-18:00** |
+
 <br>1. Look for the lesson's index which is on the left of the lesson.
 <br>2. To add, type `L edit 1 d/MON 17:00-18:00` into the command box.
 <br>3. Press `Enter` to execute.
@@ -445,9 +446,9 @@ _Figure ? - Example outcome of deleting a task_
 ## 5.4 Contact <a name="contact"></a>
 Don't you hate it when you need help for one of your modules but you just can't remember who else is taking the module with you? 
 
-Luckily for you, TrackIt@NUS allows you to tag your contacts with the modules you have in common, and lets you see those contacts all at once! Simply click on a ![module tab](#moduletabs) and you will find the list of contacts associated with that module.
+Luckily for you, TrackIt@NUS allows you to tag your contacts with the modules you have in common, and lets you see those contacts all at once! Simply click on a [module tab](#moduletabs) and you will find the list of contacts associated with that module.
 
-To view all contacts from all modules, as well as any contacts that are not associated with any module, click on the ![**Contacts** tab](#contactstab) in the side panel.
+To view all contacts from all modules, as well as any contacts that are not associated with any module, click on the [**Contacts** tab](#contactstab) in the side panel.
 
 ### 5.4.1 Contact Command Parameters
 Here are the parameters used in the Contact feature:
@@ -523,7 +524,7 @@ _Figure ? - Example of deleting a contact_
 
 ## Getting help <a name="help"></a>
 
-For: Navigating to the ![help tab](#helptab) for a command summary list.
+For: Navigating to the [help tab](#helptab) for a command summary list.
 
 Format: `help`
 
@@ -548,17 +549,17 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 
 
 **Q: How do I transfer my data to another Computer?**
-A: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
+<br>A: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
  the data of your previous TrackIt@NUS home folder.
 
 **Q: Why can I add a `lesson` that clashes with my existing `lessons`? Is this a bug?**
-A: This is because there are instances where students are granted **a case-by-case approval** to overload modules with **concurrent lessons**. These students should have the option to include concurrent lessons. 
+<br>A: This is because there are instances where students are granted **a case-by-case approval** to overload modules with **concurrent lessons**. These students should have the option to include concurrent lessons. 
  
 **Q: Why is there a need for the `Contacts Tab` when I can already add `contacts` in the `Module Tab`?**
-A: It is meant for you to add `contacts` that are **not taking** the same modules as you but they are **still relevant** in your studies. Please refer to the [Contacts Tab](#contactstab) for more details.
+<br>A: It is meant for you to add `contacts` that **may not be taking** the same modules as you but they are **still relevant** in your social life and/or studies. Please refer to the [Contacts Tab](#contactstab) for more details.
 
 
-## Glossary <a name="glossary"></a>
+## 7. Glossary <a name="glossary"></a>
 
 **Command Line Interface**: Known in short as **CLI**, the command line interface is a **text-based** user interface to
  view and manage computer files. Click [here](https://en.wikipedia.org/wiki/Command-line_interface) for more
@@ -568,7 +569,7 @@ A: It is meant for you to add `contacts` that are **not taking** the same module
  visual components for computer software. Click [here](https://en.wikipedia.org/wiki/Graphical_user_interface) for
   more information!
 
-## 7. Command Summary <a name="command-summary"></a>
+## 8. Command Summary <a name="command-summary"></a>
 
 ### Module <a name="module-commands"></a>
 
