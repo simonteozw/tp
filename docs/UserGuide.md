@@ -147,6 +147,9 @@ The `Side panel` on the left section allows you to **easily navigate** between t
 ### 4.1 Upcoming Tab <a name="upcomingtab"></a>
 Built with a **clean UI**, the beautiful `Upcoming tab` is what you will see when you first run TrackIt@NUS! It allows you to see an **overview** of all your **upcoming lessons** for the week, as well as the **list of tasks** you have that are **due soon**. With the `Upcoming tab`, you don't have to worry about missing any lesson or deadlines anymore!
 
+![UpcomingPanelUi](images/UG/UpcomingPanelUi.png)
+<br>_Figure 3 - Layout of Upcoming Tab_
+
 In the `Upcoming tab`, there are **three** main `sections` arranged in **chronological order**:
 1. The `Overdue section` is coloured **red** &#x1F534;  to **warn** you that about the list of tasks that are **past their deadline but you have yet to complete**. These tasks will remain there until you delete them, so remember to complete these tasks as soon as possible!
 
@@ -154,18 +157,16 @@ In the `Upcoming tab`, there are **three** main `sections` arranged in **chronol
 
 3. The `Future section` shows the **Tasks** that are only due **at least 7 days later**, so these are tasks that you don't have to worry too much about for now.
 
-![UpcomingPanelUi](images/UG/UpcomingPanelUi.png)
-<br>_Figure 3 - Example of Upcoming Tab_
 
 ### 4.2 Module Tabs <a name="moduletabs"></a>
 Besides the `Upcoming tab`, the `Module tab` is another **highlight** that you can look forward to! This is an **all-in-one page** with all the details that you will need when **studying for a specific module**. With this, you don't have to waste precious time toggling between your calender, to-do list and contacts app anymore!
  
  ![ModuleTab](images/UG/ModuleTab.png)
- <br>_Figure 5 - Example of Module Tab_
+ <br>_Figure 5 - Layout of Module Tab_
  
 The `Module tab` includes `Lessons`, `Tasks` and `Contacts` that are related to this module.
  
-1. `Lessons`: List of lessons for this module
+1. `Lessons`: List of lessons for this module.
 
 2. `Tasks`: List of tasks in **chronological** order. *Tips: Don't leave tutorials or assignments until the last day, chances are you not gonna finish it!*
 
@@ -179,7 +180,7 @@ So you might ask, why is there a need for the `Contacts tab` when I can add `con
  *For example, if you have a friend who has a strong English command but taking different modules, he or she can still help out with your reflection essay!*
 
 ![ContactsTab](images/UG/ContactsTab.png)
-<br>_Figure 4 - Example of Contacts Tab
+<br>_Figure 4 - Layout of Contacts Tab
 
  :information_source: More details about `contacts` can be found [here](#contact).
  
@@ -518,9 +519,13 @@ TrackIt@NUS data is saved in the hard disk automatically after any command that 
 
 ## 6. FAQ <a name="faq"></a>
 
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
+
+**Q: How do I transfer my data to another Computer?**<br>
+A: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
  the data of your previous TrackIt@NUS home folder.
+ 
+ **Q: Why is there a need for the `Contacts Tab` when I can already add `contacts` in the `Module Tab`?**<br>
+ A: Please refer to the [Contacts Tab](#contactstab) for 
 
 ## Glossary <a name="glossary"></a>
 
