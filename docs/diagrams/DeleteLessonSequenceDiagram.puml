@@ -1,0 +1,44 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":DeleteLessonCommand" as DeleteLessonCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+participant "targetIndex:Index" as index MODEL_COLOR
+participant ":TrackIter" as TrackIter MODEL_COLOR
+end box
+
+[-> DeleteLessonCommand : execute(m)
+activate DeleteLessonCommand
+
+DeleteLessonCommand -> Model : getFilteredLessonList()
+activate Model
+
+Model --> DeleteLessonCommand : lastShownList
+deactivate Model
+
+DeleteLessonCommand -> index : getZeroBased()
+
+
+DeleteLessonCommand -> Model : deleteLesson(l)
+activate Model
+
+Model -> TrackIter : removeLesson(l)
+
+deactivate Model
+
+create CommandResult
+DeleteLessonCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> DeleteLessonCommand : r
+deactivate CommandResult
+
+[<--DeleteLessonCommand : r
+deactivate DeleteLessonCommand
+
+@enduml
