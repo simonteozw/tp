@@ -621,13 +621,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ## **Appendix D: Non-Functional Requirements** <a name="appen-d"></a>
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 tasks/contacts/classes without a noticeable sluggishness in performance for
- typical usage.
-3.  Users of the app find the app intuitive and easy to use
-4.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should
+2.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should
  be able to accomplish most of the tasks faster using commands than using the mouse.
-5. The UI of the app is attractive to the users
-*{More to be added}*
+3.  A user should be able to easily see why their commands are invalid
+4.  The app should be able to run with or without internet connection
+5.  The app should not require user to install
+6.  Features implemented should be easily testable by manual testing, and possisble to be tested by automated testing.
+7.  The UI of the app makes users comfortable using it
+8.  Users of the app find the app intuitive and easy to use
+9.  The app should be able to save data locally
+10. The app should be for a single user i.e. (not a multi-user product).
+11. The app should be able to hold up to 150 modules/lessons/tasks/contacts without a noticeable sluggishness in performance for
+ typical usage.
+12. The app should be able to start up sufficiently fast (<=5s).
+13. The app should not crash in the event of invalid user input
 
 ## **Appendix E: Glossary** <a name="appen-e"></a>
 | **Term** | **Explanation** |
