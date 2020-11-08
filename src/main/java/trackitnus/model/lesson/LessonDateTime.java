@@ -23,9 +23,9 @@ public class LessonDateTime {
     /**
      * Every field must be present and not null.
      *
-     * @param weekday
-     * @param startTime
-     * @param endTime
+     * @param weekday   a day among 7 days of a week
+     * @param startTime the start time of the lesson
+     * @param endTime   the end time of the lesson
      */
     public LessonDateTime(DayOfWeek weekday, LocalTime startTime, LocalTime endTime) {
         CollectionUtil.requireAllNonNull(weekday, startTime, endTime);
@@ -35,7 +35,7 @@ public class LessonDateTime {
         this.endTime = endTime;
     }
 
-    private Boolean isValidTime(LocalTime startTime, LocalTime endTime) {
+    private boolean isValidTime(LocalTime startTime, LocalTime endTime) {
         return startTime.compareTo(endTime) < 0;
     }
 

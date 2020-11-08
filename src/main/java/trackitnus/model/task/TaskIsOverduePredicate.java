@@ -3,6 +3,9 @@ package trackitnus.model.task;
 import java.time.LocalDate;
 import java.util.function.Predicate;
 
+/**
+ * Tests that a {@code Task}'s {@code date} is before today
+ */
 public class TaskIsOverduePredicate implements Predicate<Task> {
 
     @Override

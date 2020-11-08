@@ -28,7 +28,7 @@ public final class DeleteLessonCommand extends Command {
     /**
      * Creates a DeleteLessonCommand to delete the specified {@code Lesson}
      *
-     * @param index
+     * @param index index of the lesson to delete in the current FilteredLessonList
      */
     public DeleteLessonCommand(Index index) {
         this.targetIndex = index;

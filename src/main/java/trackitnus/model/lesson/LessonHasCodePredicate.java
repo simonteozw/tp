@@ -4,6 +4,9 @@ import java.util.function.Predicate;
 
 import trackitnus.model.commons.Code;
 
+/**
+ * Tests that a {@code Lesson}'s {@code code} equals to a given {@code code}
+ */
 public class LessonHasCodePredicate implements Predicate<Lesson> {
 
     private final Code code;

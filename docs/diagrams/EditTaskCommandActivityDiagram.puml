@@ -13,7 +13,8 @@ if () then ([valid command])
             :Create the edited task;
             if () then ([edited task is different from task to edit])
             if () then ([edited task does not exist in model])
-            if () then ([edited task has a valid module code])
+            if () then ([edited task has a valid
+            module code or no module code])
             :Replace task to
             edit with edited task;
             :Save updated task list

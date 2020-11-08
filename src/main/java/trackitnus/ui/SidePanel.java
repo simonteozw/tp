@@ -100,6 +100,13 @@ public class SidePanel extends UiPart<Region> {
     }
 
     /**
+     * Colors the help button when help command is entered
+     */
+    public void updateHelpButton() {
+        updateButtonDetails(helpButton);
+    }
+
+    /**
      * Updates the details of the current selected tab button.
      *
      * @param button The new selected tab button.

@@ -54,7 +54,7 @@ public final class EditModuleCommand extends Command {
     }
 
     /**
-     * Creates and returns a {@code Model} with the details of {@code moduleToEdit}
+     * Creates and returns a {@code Module} with the details of {@code moduleToEdit}
      * edited with {@code editModuleDescriptor}.
      */
     private static Module createEditedModule(Module moduleToEdit,
@@ -99,6 +99,7 @@ public final class EditModuleCommand extends Command {
                 model.setLesson(lesson, updatedLesson);
             }
 
+            // edit all the related contacts
             List<Contact> contactsToEdit = new ArrayList<>(model.getModuleContacts(code));
             for (Contact contact : contactsToEdit) {
                 Contact updatedContact = contact.setTag(new Tag(code.toString()), new Tag(updatedCode.toString()));

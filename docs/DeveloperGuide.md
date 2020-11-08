@@ -291,6 +291,7 @@ This will bring several benefits:
 of classes of the same level, it's very easy for a developer to maintain others' codes.
 
 A possible drawback of this uniform design is that it may not be the most appropriate design for each class, but for this project we believe this drawback doesn't apply.
+
 ----
 
 ----
@@ -324,6 +325,13 @@ In this section, we will outline the key operations of the Module Manager, namel
 * `AddModuleCommand`
 * `DeleteModuleCommand`
 * `EditModuleCommand`
+
+Before we begin, it is important for us to define 1 key term: **association**:
+
+:information_source: A lesson/task is associated with a module if its **code** field is equal to the
+ module's **code**.
+ 
+:information_source: A contact is associated with a module if it contains that module's code as 1 of its tags
  
 The add, delete, and edit commands are all implemented in similar ways. When they are executed they will:
  * call on the relevant Model methods
@@ -341,11 +349,11 @@ When the user enters the `M add m/CODE n/NAME` command to add a new module, the 
 The following steps will describe the execution of the `AddModuleCommand` in detail, assuming that no errors are encountered.
 1. The `Model`'s `hasModule(code)` is called. If it returns `true`, a `CommandException` will be thrown.
 2. The `Model`'s `canAddMoreModule()` is called. If it returns `true`, a `CommandException` will be thrown.
-3. The `Model`'s `deleteModule()` is called to delete the module from TrackIt
+3. The `Model`'s `addModule()` is called to add the module from TrackIt
 4. The `Ui` component will detect this change and update the GUI.
 5. Assuming that the above steps are all successful, the `AddModuleCommand` will then create a `CommandResult` object and return the result.
 
-The following Sequence Diagram summarises the aforementioned steps. 
+The following Sequence Diagram will illustrate the above steps in greater detail :
 
 ![Add Module Sequence Diagram](images/AddModuleSequenceDiagram.png)
 
@@ -366,7 +374,7 @@ The following steps will describe the execution of the `DeleteModuleCommand` in 
 8. The `Ui` component will detect this change and update the GUI.
 9. Assuming that the above steps are all successful, the `DeleteModuleCommand` will then create a `CommandResult` object and return the result.
 
-The following Sequence Diagram summarises the aforementioned steps. 
+The following Sequence Diagram will illustrate the above steps in greater detail :
 
 ![Delete Module Sequence Diagram](images/DeleteModuleSequenceDiagram.png)
      
@@ -384,16 +392,18 @@ The following steps will describe the execution of the `EditModuleCommand` in de
 4. If the `code` of `editedModule` coincides with one of the `code` of existing module, a `CommandException` will be thrown.
 5. If the `code` of the `editedModule` is different from the old `Module`'s `code`:
     1. The `Model`'s `getModuleTasks()` is called to get the list of tasks that are associated with the module
-    2. For each task received from the above step, its `code` will be changed to the new `code`
+    2. For each task in the above step, a `newTask` is created by replacing its old `code` with the new `code`, then `Model`'s `setTask()` is called to replace `oldTask` with `newTask`
     3. The `Model`'s `getModuleLessons()` is called to get the list of lessons that are associated with the module
-    4. For each task received from the above step, its `code` will be changed to the new `code`
-    5. The `Model`'s `getModuleContacts()` is called to get the list of contact tags that associated with the module
-    6. For each tag received from the above step, its content will be changed to the new `code`
+    4. For each lesson in the above step, a `newLesson` is created by replacing its old `code` with the new `code`, then `Model`'s `setLesson()` is called to replace `oldLesson` with `newLesson`
+    5. The `Model`'s `getModuleContacts()` is called to get the list of contacts that associated with the module
+    6. For each contact in the above step, a `newContact` is created by deleting the old `code` from the set of tags and add in the new `code`, then `Model`'s `setContact()` is called to replace `oldContact` with `newContact`
 7. The `Model`'s `setModule()` is called to edit the module from TrackIt
 8. The `Ui` component will detect this change and update the GUI.
 9. Assuming that the above steps are all successful, the `EditModuleCommand` will then create a `CommandResult` object and return the result.
 
-The following Sequence Diagram summarises the aforementioned steps. 
+The following Sequence Diagram will illustrate the above steps in greater detail :
+
+![Edit Module Sequence Diagram](images/EditModuleSequenceDiagram.png)
 
 ### **Lesson Manager** <a name="lesson-manager"></a>
 
@@ -444,13 +454,11 @@ The add, delete, and edit commands are all implemented in similar ways. When the
 
 The following steps will describe the execution of the `AddTaskCommand`, assuming no errors are encountered:
  
-1. When `AddTaskCommand` is executed, it will first call the model's `hasTask` method 
-2. This is to ensure that the task does not yet exist in the app
-3. Following this, if the task is added with a non-null module code, it will call the model's
-  `hasModule` method 
-4. This is to ensure that the specified module exists
-5. If both these checks pass, `AddTaskCommand` will call the model's `addTask` method.
-6. The model will then call the `addTask` method of TrackIter, and adds the task to the app.
+1. When `AddTaskCommand` is executed, it will first call the model's `hasTask` method to ensure that the task does not yet exist in the app
+2. Following this, if the task is added with a non-null module code, it will call the model's
+  `hasModule` method to ensure that the specified module exists
+3. If both these checks pass, `AddTaskCommand` will call the model's `addTask` method.
+4. The model will then call the `addTask` method of TrackIter, and adds the task to the app.
 
 ![Add Task Activity Diagram](images/AddTaskActivityDiagram.png)
 
@@ -460,13 +468,11 @@ The following shows the sequence diagram of the `AddTaskCommand`.
 
 The following steps will describe the execution of the `DeleteTaskCommand`, assuming no errors are encountered:
 
-1. When the `DeleteTaskCommand` is executed, it will first call the model's `getFilteredTaskList` method 
-2. This is to determine the last shown list of tasks
-3. Then, it will call the index's `getZeroBased` method 
-4. This is to find the zero-based index of the task it must delete
-5. Then, it will check if this index is within range
-6. If it is, it calls the model's `deleteTask` method.
-7. The model will then call the `removeTask` method of TrackIter, which deletes the task in question from the app.
+1. When the `DeleteTaskCommand` is executed, it will first call the model's `getFilteredTaskList` method to determine the last shown list of tasks
+2. Then, it will call the index's `getZeroBased` method to find the zero-based index of the task it must delete
+3. Then, it will check if this index is within range
+4. If it is, it calls the model's `deleteTask` method.
+5. The model will then call the `removeTask` method of TrackIter, which deletes the task in question from the app.
 
 ![Delete Task Activity Diagram](images/DeleteTaskActivityDiagram.png)
 
@@ -476,13 +482,11 @@ The following shows the sequence diagram of the `DeleteTaskCommand`.
 
 The following steps will describe the execution of the `EditTaskCommand`, assuming no errors are encountered:
 
-1. When the `EditTaskCommand` is executed, it will first call the model's `getFilteredTaskList` method
-2. This is to determine the last shown list of tasks
-3. Then, it will call the index's `getZeroBased` method 
-4. This is to find the zero-based index of the task we must edit
-5. It will then check if the index is within range
-6. If it is, it calls the model's `setTask` method
-7. The model will then call the `setTask` method of TrackIter, which replaces the original task with the edited
+1. When the `EditTaskCommand` is executed, it will first call the model's `getFilteredTaskList` method to determine the last shown list of tasks
+2. Then, it will call the index's `getZeroBased` method to find the zero-based index of the task we must edit
+3. It will then check if the index is within range
+4. If it is, it calls the model's `setTask` method
+5. The model will then call the `setTask` method of TrackIter, which replaces the original task with the edited
  version in the app.
  
 ![Edit Task Command Activity Diagram](images/EditTaskCommandActivityDiagram.png)
@@ -580,13 +584,28 @@ Refer to the guide [here](./DevOps.md)
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
 | Priority | As a …​                                    | I want to …​                                                   | So that I can…​                                                        |
-| -------- | -------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `* * *`  | student              | have all modules' important dates in one place                         | never miss any event                                                   |
-| `* * *`  | student              | have information (name, description, time) about any important dates   | always know what to prepare                                            |
-| `* * *`  | student              | have all the tutorial/lab details (Zoom link, time) in one place       | easily find them when I need it                                        |
-| `* * *`  | forgetful student    | find the grading structure of a module                                 | better revise for each assignment / mid-term / exam                    |
-| `* *`    | student              | have all the module descriptions in one place                          | read them if I need to                                                 |
-| `*`      | struggling student   | access the contact information of my TA/Prof                           | ask question or schedule a consultation                                |
+| -------- | -------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `* * *`  | new user             | be able to use the help command                                        | refer to instructions on what commands are available when I forget about them |
+| `* * *`  | student              | see an overview of the upcoming tasks I have                           | plan my schedule accordingly                                      |
+| `* * *`  | student              | see an overview of the upcoming lessons I have                         | easily see what lessons I have coming up                          |
+| `* * *`  | student              | see all the tasks I have for a certain module                          | organize my time better                                           |
+| `* * *`  | student              | see all the lessons I have for a certain module                        | organize my time more efficiently                                 |
+| `* * *`  | student              | have any lessons I add to be recurring                                 | not have to add lessons to my schedule every week                 |
+| `* * *`  | careless student     | edit the details of my tasks, modules, lessons and contacts            | rectify mistakes I made                                           |
+| `* * *`  | student              | delete any tasks when they are completed                               | focus better on the tasks that have yet to be completed           |
+| `* * *`  | student              | delete any contacts                                                    | no longer have details of contacts that I no longer need          |
+| `* * *`  | student              | delete any modules after I am done reading them                        | remove the relevant tasks and lessons that I no longer need       |
+| `* * *`  | struggling student   | quickly access the contact information of my TA/Prof                   | easily contact them for help                                      |
+| `* * `   | forgetful student    | group my friends by those that are taking the same modules as I am     | share resources or ask for help much more easily                  |
+| `* *`    | student              | assign priority ratings to my tasks                                    | know what has to be done first <br> (coming in v1.5)                                   | 
+| `* * `   | student              | receive a warning message when I try to add lessons that clash         | prevent clashes in my schedule <br> (coming in v1.5)              |
+| `*`      | student              | set biweekly or monthly recurring lessons                              | keep track of some lessons that may be biweekly or monthly <br> (coming in v1.5)        | 
+| `*`      | student              | edit a task's remarks without having to retype the entire remark        | make small changes much more easily <br> (coming in v1.5)        |
+| `*`      | student              | be able to sort my contacts by other parameters                         | find relevant contacts more easily <br> (coming in v1.5)         |
+| `*`      | user                 | switch between the different views using command line                   | view the information in the different views with greater ease <br> (coming in v1.5)   |
+| `*`      | user                 | be able to set reminders that might not be related to a module          | make use of the calendar function to organize not just my school work but my own life |
+
+
 
 ## **Appendix C: Use cases** <a name="appen-c"></a>
 
@@ -618,13 +637,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ## **Appendix D: Non-Functional Requirements** <a name="appen-d"></a>
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 tasks/contacts/classes without a noticeable sluggishness in performance for
- typical usage.
-3.  Users of the app find the app intuitive and easy to use
-4.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should
+2.  A user with **above average typing speed** for regular English text (i.e. not code, not system admin commands) should
  be able to accomplish most of the tasks faster using commands than using the mouse.
-5. The UI of the app is attractive to the users
-*{More to be added}*
+3.  A user should be able to easily see why their commands are invalid
+4.  The app should be able to run with or without internet connection
+5.  The app should not require user to install
+6.  Features implemented should be easily testable by manual testing, and possisble to be tested by automated testing.
+7.  The UI of the app makes users comfortable using it
+8.  Users of the app find the app intuitive and easy to use
+9.  The app should be able to save data locally
+10. The app should be for a single user i.e. (not a multi-user product).
+11. The app should be able to hold up to 150 modules/lessons/tasks/contacts in total without a noticeable sluggishness in performance for
+ typical usage.
+12. The app should be able to start up sufficiently fast (<5s).
+13. The app should not crash in the event of invalid user input
 
 ## **Appendix E: Glossary** <a name="appen-e"></a>
 | **Term** | **Explanation** |

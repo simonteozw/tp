@@ -19,7 +19,7 @@
                 <URL value="@Extensions.css"/>
             </stylesheets>
             <HBox xmlns:fx="http://javafx.com/fxml" fx:id="side_pane">
-                <StackPane fx:id="sidePanelPlaceholder" minWidth="150" styleClass="side_panel"/>
+                <StackPane fx:id="sidePanelPlaceholder" minWidth="150" styleClass="side-panel"/>
                 <VBox VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
                     <StackPane fx:id="tabPanelPlaceholder" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS"/>
                     <StackPane fx:id="commandBoxPlaceholder" styleClass="pane-with-border" VBox.vgrow="NEVER"

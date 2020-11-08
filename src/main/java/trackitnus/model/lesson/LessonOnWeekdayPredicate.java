@@ -2,6 +2,9 @@ package trackitnus.model.lesson;
 
 import java.util.function.Predicate;
 
+/**
+ * Tests that a {@code Lesson} is on a specified day of the week
+ */
 public class LessonOnWeekdayPredicate implements Predicate<Lesson> {
 
     private final DayOfWeek weekday;

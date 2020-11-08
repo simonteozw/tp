@@ -10,7 +10,7 @@ import trackitnus.model.commons.Code;
 import trackitnus.model.commons.Name;
 
 /**
- * Represents a Lesson in the app.
+ * Represents a Module in the app.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Module {
@@ -24,9 +24,6 @@ public class Module {
 
     /**
      * Every field must be present and not null.
-     *
-     * @param code
-     * @param name
      */
     public Module(Code code, Name name) {
         CollectionUtil.requireAllNonNull(code, name);
@@ -52,9 +49,9 @@ public class Module {
             return false;
         }
 
-        Module otherLesson = (Module) other;
-        return otherLesson.code.equals(code)
-            && otherLesson.name.equals(name);
+        Module otherModule = (Module) other;
+        return otherModule.code.equals(code)
+            && otherModule.name.equals(name);
     }
 
     @Override

@@ -23,6 +23,11 @@ public final class DeleteTaskCommand extends Command {
 
     private final Index targetIndex;
 
+    /**
+     * Creates a DeleteTaskCommand to delete the specified {@code Task}
+     *
+     * @param targetIndex index of the task to delete in the current FilteredTaskList
+     */
     public DeleteTaskCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
