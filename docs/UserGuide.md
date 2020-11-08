@@ -5,33 +5,50 @@
 By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 
 ## Table of Contents
-1. [Introduction](#introduction)
-2. [Quick Start](#quick-start)
-3. [About](#about)
-    * 3.1 [Common Symbols](#common-symbols)
-    * 3.2 [Command Format](#command-format)
-    * 3.3 [Duplicate Parameters](#duplicate-parameters)
-4. [Application Layout](#layout)
-    * 4.1 [Upcoming Tab](#upcomingtab)
-    * 4.2 [Module Tabs](#moduletabs)
-    * 4.3 [Contacts Tab](#contactstab)
-    * 4.4 [Help Tab](#helptab)
-    
-5. [Features](#features)
-    * 5.1 [Module](#module)
-    * 5.2 [Lesson](#lesson)
-    * 5.3 [Task](#task)
-    * 5.4 [Contact](#contact)
-    * 5.5 [Help](#help)
-    * 5.6 [Exit](#exit)
-6. [FAQ](#faq)
-7. [Glossary](#glossary)
-8. [Command Summary](#command-summary)
-    * 7.1 [Module Commands](#module-commands)
-    * 7.2 [Lesson Commands](#lesson-commands)
-    * 7.3 [Task Commands](#task-commands)
-    * 7.4 [Contact Commands](#contact-commands)
-    * 7.5 [General Commands](#general-commands)
+- [TrackIt@NUS - User Guide](#trackitnus---user-guide)
+  - [Table of Contents](#table-of-contents)
+  - [1. Introduction <a name="introduction"></a>](#1-introduction-)
+  - [2. Quick Start <a name="quick-start"></a>](#2-quick-start-)
+  - [3. About <a name="about"></a>](#3-about-)
+    - [3.1 Common Symbols <a name="common-symbols"></a>](#31-common-symbols-)
+    - [3.2 Command Format <a name="command-format"></a>](#32-command-format-)
+    - [3.3 Duplicate Parameters <a name="duplicate-parameters"></a>](#33-duplicate-parameters-)
+  - [4. Application Layout <a name="layout"></a>](#4-application-layout-)
+    - [4.1 Upcoming Tab <a name="upcomingtab"></a>](#41-upcoming-tab-)
+    - [4.2 Module Tabs <a name="moduletabs"></a>](#42-module-tabs-)
+    - [4.3 Contacts Tab <a name="contactstab"></a>](#43-contacts-tab-)
+    - [4.4 Help Tab <a name="helptab"></a>](#44-help-tab-)
+  - [5. Features <a name="features"></a>](#5-features-)
+  - [5.1 Module <a name="module"></a>](#51-module-)
+    - [5.1.1 Module Command Parameters <a name="module-command-parameter"></a>](#511-module-command-parameters-)
+    - [5.1.2 Add a Module <a name="module-add"></a>](#512-add-a-module-)
+    - [5.1.3 Edit a Module <a name="module-edit"></a>](#513-edit-a-module-)
+    - [5.1.4 Delete a Module <a name="module-delete"></a>](#514-delete-a-module-)
+  - [5.2 Lesson <a name="lesson"></a>](#52-lesson-)
+    - [5.2.1 Lesson Command Parameters <a name="lesson-command-parameters"></a>](#521-lesson-command-parameters-)
+    - [5.2.2 Add a Lesson <a name="lesson-add"></a>](#522-add-a-lesson-)
+    - [5.2.3 Edit a Lesson <a name="lesson-edit"></a>](#523-edit-a-lesson-)
+    - [5.2.4 Delete a Lesson <a name="lesson-delete"></a>](#524-delete-a-lesson-)
+  - [5.3 Task <a name="task"></a>](#53-task-)
+    - [5.3.1 Task Command Parameters <a name="task-command-parameters"></a>](#531-task-command-parameters-)
+    - [5.3.2 Add a Task <a name="task-add"></a>](#532-add-a-task-)
+    - [5.3.3 Edit a Task <a name="task-edit"></a>](#533-edit-a-task-)
+    - [5.3.4 Delete a Task <a name="task-delete"></a>](#534-delete-a-task-)
+  - [5.4 Contact <a name="contact"></a>](#54-contact-)
+    - [5.4.1 Contact Command Parameters <a name="contact-command-parameters"></a>](#541-contact-command-parameters-)
+    - [5.4.2 Add a Contact <a name="contact-add"></a>](#542-add-a-contact-)
+    - [5.4.3 Edit a Contact <a name="contact-edit"></a>](#543-edit-a-contact-)
+    - [5.4.4 Delete a Contact <a name="contact-delete"></a>](#544-delete-a-contact-)
+  - [5.5 Getting help <a name="help"></a>](#55-getting-help-)
+  - [5.6 Exiting the app <a name="exit"></a>](#56-exiting-the-app-)
+  - [6. FAQ <a name="faq"></a>](#6-faq-)
+  - [7. Glossary <a name="glossary"></a>](#7-glossary-)
+  - [8. Command Summary <a name="command-summary"></a>](#8-command-summary-)
+    - [Module <a name="module-commands"></a>](#module-)
+    - [Lesson <a name="lesson-commands"></a>](#lesson-)
+    - [Task <a name="task-commands"></a>](#task-)
+    - [Contact <a name="contact-commands"></a>](#contact-)
+    - [General <a name="general-commands"></a>](#general-)
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -151,7 +168,7 @@ Built with a **clean UI**, the `Upcoming tab` is what you will see when you firs
 _Figure 3 - Layout of Upcoming Tab_
 
 In the `Upcoming tab`, there are **three** main `sections` arranged in **chronological order**:
-1. The `Overdue section` is coloured **red &#x1F534;  to warn** you that about the **incomplete tasks** that are **past their deadline**. These tasks will remain there until you delete them, so remember to complete them as soon as possible!
+1. The `Overdue section` is coloured &#x1F534; to **warn** you that about the **incomplete tasks** that are **past their deadline**. These tasks will remain there until you delete them, so remember to complete them as soon as possible!
 
 2. The next seven `Daily sections` shows the your **Lessons** and **Tasks** daily for the **next seven days**. This is where you can start planning your schedule for the day.
 
@@ -168,22 +185,26 @@ The `Module tab` includes `Lessons`, `Tasks` and `Contacts` that are related to 
  
 1. `Lessons`: List of **lessons** for this module.
 
-2. `Tasks`: List of **tasks** in **chronological** order. *Tips: Don't leave tutorials or assignments until the last day, chances are you not gonna finish it!*
+2. `Tasks`: List of **tasks** in **chronological** order. 
+  :bulb: *Don't leave tutorials or assignments until the last day, chances are you not gonna finish it!*
 
 3. `Contacts`: List of **relevant contacts** for this module. Here's where you can **find help** if u have difficulties with your assignments!
- 
- :information_source: Want to know more details about [Lessons](#lesson), [Tasks](#task) and [Contacts](#contact)? Simply click on the respective links!
+
+:information_source: Click here to find out more about [Lessons](#lesson), [Tasks](#task) and [Contacts](#contact) .
+   
  
 ### 4.3 Contacts Tab <a name="contactstab"></a>
 So you might ask, why is there a need for the `Contacts tab` when I can add `contacts` in the `Module tab`? Well, the **beauty** of the `Contacts tab` is that you can add people who may **not be taking the same modules** as you but they are **still relevant** in your social life and/or school life! In this way, you can still include **other useful contacts** in TrackIt@NUS. How cool is that?
 
+:information_source: For example, if your friend have strong English command but does not take the same module as you, you can still add him as a contact first. Who knows? Next time he can be the one helping you with your reflection essay!
+
 ![ContactsTab](images/UG/ContactsPanel.png)
 _Figure 5 - Layout of Contacts Tab_
 
- :information_source: More details about `contacts` can be found [here](#contact).
+:information_source: Click here to find out more about [Contacts](#contact) .
  
- ### 4.4 Help Tab <a name="helptab"></a>
- Feeling **lost**? If you are **lazy** to spend time looking through this long and detailed user guide to find **a single command**, here's an extra bonus for you! This `Help tab` gives you a **quick summary** of the commands that you can use. This way, you can fire multiple commands in **a matter of seconds** and you can be one step closer to **productivity**! 
+### 4.4 Help Tab <a name="helptab"></a>
+Feeling **lost**? If you are **lazy** to spend time looking through this long and detailed user guide to find **a single command**, here's an extra bonus for you! This `Help tab` gives you a **quick summary** of the commands that you can use. This way, you can fire multiple commands in **a matter of seconds** and you can be one step closer to **productivity**! 
  
 ![HelpTab](images/UG/HelpPanel.png)
 _Figure 6 - Layout of Help Tab_
@@ -197,33 +218,33 @@ This section contains all the information you need to know about the features of
 ## 5.1 Module <a name="module"></a>
 Module is the first thing you need to create when you start using the app, because each module will house its own lessons, tasks and related contacts. So, let's find out how to create a new module! 
 
-### 5.1.1 Module Command Parameters
+### 5.1.1 Module Command Parameters <a name="module-command-parameter"></a>
 Here are the parameters used in the Module feature:
 | **Parameter** | **Description** | **Example** |
 | --------------| ----------------| ----------- |
-| `CODE`| Refers to the unique code given to the module.<br><br>You can personalise this and give it your own code. However, we recommend you use the module’s official code. | **CS2103T** |
-| `NAME`| Refers to the **Module** name. | **Software Engineering** |
+| `CODE`| Refers to the unique code given to the module.<br>You can personalise this and give it your own code. However, we recommend you use the module’s official code. | `CS2103T` |
+| `NAME`| Refers to the module name. | `Software Engineering` |
 
-### 5.1.2 Add
+### 5.1.2 Add a Module <a name="module-add"></a>
 
 You can use this command to create a new Module (Or a new category of things to worry about).
 
 Format: `M add m/CODE n/NAME`
 
 Example: To add the Module CS1231 Discrete Structures into TrackIt@NUS, follow these instructions.
-| **Parameter** | |
+| **Parameter** | **Example** |
 | ------------|-|
-| `CODE` | CS1231 |
-| `NAME` | Discrete Structures |
+| `CODE` | `CS1231S` |
+| `NAME` | `Discrete Structures` |
 
-1. To add, type `M add m/CS1231S n/Discrete Structures` into the command box
+1. To add, type `M add m/CS1231S n/Discrete Structures` into the command box.
 2. Press `Enter` to execute.
 3. The Result Display will show the success message and you will see your new module in the side panel.
 
 ![AddModuleOutcome](images/UG/AddModuleOutcome.png)
 _Figure 7 - Example outcome of adding a module_
 
-### 5.1.3 Edit
+### 5.1.3 Edit a Module <a name="module-edit"></a>
 Because modules are displayed only on the side panel, they are not indexed. That's why to edit and delete a module, its code will be used instead! This is how to edit a module's code and/or name:
 
 Format: `M edit CODE [m/NEW_CODE] [n/NAME]`
@@ -239,7 +260,7 @@ Example: If you have spelt a module CS1231's name wrongly and wish to change it 
 ![EditModuleOutcome](images/UG/EditModuleOutcome.png)
 _Figure 8 - Example outcome of editing a module_
 
-### 5.1.4 Delete
+### 5.1.4 Delete a Module <a name="module-delete"></a>
 And what if you realized you accidentally added in a wrong module, or have finished one? Just delete that module! The
  command's syntax is as follows: 
 
@@ -265,19 +286,13 @@ While TrackIt@NUS can't do much to make those lessons disappear, it can, at the 
 
 To view all your lessons (classes) for the next week, simply click on the upcoming tab, which sorts your lessons by day, and you will see something like the screenshot below, with lessons in the red outline.
 
-![Ui](images/UG/UpcomingLessons.png)
-_Figure ? - Lessons in upcoming tab_
-
 To view the lessons of a specific module, click on any of the module tabs and you will see something like the screenshot below, with lessons in the red outline.
 
-![Ui](images/UG/ModuleLessons.png)
-_Figure ? - Lessons in module tab_
-
-:information_source: As of v1.3, only weekly lessons are supported. Biweekly and monthly lessons may be added in subsequent versions.
+:information_source: As of v1.4, only weekly lessons are supported. Biweekly and monthly lessons may be added in subsequent versions.
 
 You can also perform commands on the lessons as explained below.
 
-### 5.2.1 Lesson Command Parameters
+### 5.2.1 Lesson Command Parameters <a name="lesson-command-parameters"></a>
 Here are the parameters used in the Module feature:
 | **Parameter** | **Description** | **Example** |
 | --------------| ----------------| ----------- |
@@ -289,7 +304,7 @@ Here are the parameters used in the Module feature:
 
 :warning: The time slots of the lessons _can_ overlap. It's a situation that no one wants to be in, but, unfortunately, does sometimes happen.
 
-### 5.2.2 Add
+### 5.2.2 Add a Lesson <a name="lesson-add"></a>
 The command that makes you sigh every time you have to use it. Use this command to add a lesson to a module.
 
 Format: `L add m/CODE t/TYPE d/DATE a/ADDRESS`
@@ -305,25 +320,21 @@ Example: To add MA1101R tutorial in COM1-0121 that falls every Monday from 4-6pm
 |DATE| **Mon 16:00-17:00** |
 | ADDRESS | COM1-0121|
 
-<br>1. To add, type `L add m/MA1101R t/tutorial d/MON 16:00-17:00 a/COM1-0121` into the command box.
-<br>2. Press `Enter` to execute.
-<br>3. The Result Display will show the success message and you should see your new lesson in the Upcoming tab as well as the MA1101R module tab.
-
-(TODO: ADD LESSON OUTCOME)
-_Figure ? - Example outcome of adding a lesson_
+1. To add, type `L add m/MA1101R t/tutorial d/MON 16:00-17:00 a/COM1-0121` into the command box.
+2. Press `Enter` to execute.
+3. The Result Display will show the success message and you should see your new lesson in the Upcoming tab as well as the MA1101R module tab.
 
 ![AddLessonOutcome](images/UG/AddLessonOutcome.png)
 _Figure 10 - Example outcome of adding a lesson_
 
-### 5.2.3 Edit
+### 5.2.3 Edit a Lesson <a name="lesson-edit"></a>
 
 After adding a lesson, you might still want to change its details. 
 This is the command to do so.
 
 Format: `L edit INDEX [m/CODE] [t/TYPE] [d/DATE] [a/ADDRESS]`
 
-:information_source: Note:
-<br>The parameters `m/CODE`, `t/TYPE`, and `d/DATE` are optional;
+:information_source: Note: the parameters `m/CODE`, `t/TYPE`, and `d/DATE` are optional;
 however, at least one parameter must be provided (i.e. `L edit 1` is not a valid command).
 
 Example: To change the lesson timing to 5pm-6pm, follow these instructions. 
@@ -332,33 +343,31 @@ Example: To change the lesson timing to 5pm-6pm, follow these instructions.
 | INDEX | 1|
 |DATE| **Mon 17:00-18:00** |
 
-<br>1. Look for the lesson's index which is on the left of the lesson.
-<br>2. To add, type `L edit 1 d/MON 17:00-18:00` into the command box.
-<br>3. Press `Enter` to execute.
-<br>4. The Result Display will show the success message and you should see your lesson updated in the Upcoming tab as well as the MA1101R module tab.
+1. Look for the lesson's index which is on the left of the lesson.
+2. To add, type `L edit 1 d/MON 17:00-18:00` into the command box.
+3. Press `Enter` to execute.
+4. The Result Display will show the success message and you should see your lesson updated in the Upcoming tab as well as the MA1101R module tab.
 
 ![EditLessonOutcome](images/UG/EditLessonOutcome.png)
 _Figure 11 - Example outcome of editing a lesson_
 
-### 5.2.4 Delete
+### 5.2.4 Delete a Lesson <a name="lesson-delete"></a>
 Sometimes, you might want to delete a particular lesson, probably since you've added it by mistake, or you hate it so much you want to forget its existence. This is the command to do so.
 
 Format: `L delete INDEX`
 
 Example: To delete a lesson, follow these instructions.
 
-<br>1. Look for the lesson's index which is on the left of the lesson.
-<br>2. Type `L delete 1` into the command box.
-<br>3. Press `Enter` to execute.
-<br>4. The Result Display will show a success message and you should see your lesson disappear.
+1. Look for the lesson's index which is on the left of the lesson.
+2. Type `L delete 1` into the command box.
+3. Press `Enter` to execute.
+4. The Result Display will show a success message and you should see your lesson disappear.
 
-(TODO: ADD DELETE LESSON OUTCOME)
-_Figure ? - Example outcome of deleting a lesson_
 
 ![DeleteLessonOutcome](images/UG/DeleteLessonOutcome.png)
 _Figure 12 - Example outcome of deleting a lesson_
 
-## 5.3 Task <a name="task"></a>
+## 5.3 Task <a name="task"></a> 
 
 Managing all your tasks can be so stressful! TrackIt@NUS helps alleviate that stress with our built-in Task Manager
 ! To view all your tasks, simply click on the upcoming tab as shown below.
@@ -371,7 +380,7 @@ This sorts all your tasks by date. To view module-specific tasks, click on any o
 
 You can also perform commands on the tasks as explained below.
 
-### 5.3.1 Task Command Parameters
+### 5.3.1 Task Command Parameters <a name="task-command-parameters"></a>
 Here are the parameters used in the Task feature:
 | **Parameter** | **Description** | **Example** |
 | --------------| ----------------| ----------- |
@@ -381,7 +390,7 @@ Here are the parameters used in the Task feature:
 | `DATE` | Indicates the date of a task deadline. Must be in `dd/mm/yyyy` format. | **01/01/2021** |
 | `REMARK` | Refers to any (optional) additional remarks for a task. | For a task `Assignment 1`, a possible remark could be `Focus on Chapters 1-3` |
 
-### 5.3.2 Add
+### 5.3.2 Add a Task <a name="task-add"></a>
 
 After a day of school you realise that you now have a few more tasks to complete and wish to keep track of them. This is
  the command for adding a new task to TrackIt@NUS.
@@ -396,9 +405,9 @@ Example: To add a task "MA1101R Assignment 1 due on 1 November 2020, covering Ch
 | Optional: [CODE]| MA1101R |
 | Optional: [REMARK] | Focus on Chapters 1-3 |
 
-<br>1. To add, type `T add n/Assignment 1 m/MA1101R d/01/11/2020 r/Focus on Chapters 1-3` into the command box.
-<br>2. Press `Enter` to execute.
-<br>3. The result display will show the success message and you will see your new task in the Upcoming tab, and its corresponding module tab (if CODE field was filled).
+1. To add, type `T add n/Assignment 1 m/MA1101R d/01/11/2020 r/Focus on Chapters 1-3` into the command box.
+2. Press `Enter` to execute.
+3. The result display will show the success message and you will see your new task in the Upcoming tab, and its corresponding module tab (if CODE field was filled).
 
 :warning: The `DATE` provided must be in the format `dd/MM/yyyy`.
 
@@ -407,7 +416,7 @@ Example: To add a task "MA1101R Assignment 1 due on 1 November 2020, covering Ch
 ![AddTaskOutcome](images/UG/AddTaskOutcome.png)
 _Figure 13 - Example outcome of adding a task_
 
-### Edit
+### 5.3.3 Edit a Task <a name="task-edit"></a>
 After adding a task to TrackIt@NUS, you may want to change it, perhaps extend the deadline or change it's remark. The
  edit command is what you should use to do so.
 
@@ -432,7 +441,7 @@ _Figure 14 - Example outcome of editing a task_
  
 :bulb: To give users greater freedom when adding tasks, you **can** add tasks with deadlines in the past.
 
-### Delete
+### 5.3.4 Delete a Task <a name="task-delete"></a>
 Once you have completed a task, you can delete it. This is the command to do so.
 
 Format: `T delete INDEX`
@@ -452,7 +461,7 @@ Luckily for you, TrackIt@NUS allows you to tag your contacts with the modules yo
 
 To view all contacts from all modules, as well as any contacts that are not associated with any module, click on the [**Contacts** tab](#contactstab) in the side panel.
 
-### 5.4.1 Contact Command Parameters
+### 5.4.1 Contact Command Parameters <a name="contact-command-parameters"></a>
 Here are the parameters used in the Contact feature:
 | **Parameter** | **Description** | **Example** |
 | --------------| ----------------| ----------- |
@@ -462,7 +471,7 @@ Here are the parameters used in the Contact feature:
 | `[EMAIL]` | (Optional) Refers to the email address of a contact. Emails should be in the format `local-part@domain`.<br><br>The `local-part` can only contain:<ul><li>Alphanumeric characters, and</li><li>The following special characters:<br>`!#$%&'*+-/=?^_{}~`</li></ul><br><br>The `domain` can only contain:<br><ul><li>At least 2 characters</li><li>Alphanumeric characters</li><li>The following special characters in between: dash `-`, and period `.`</li><li>Start and end must be alphanumeric characters</li></ul><br>|**johnDoe925@example.com**|
 | `[TAG]` | (Optional) Tags are a way to group any number of contacts under a similar label. You can add as many tags as you want. Tagging a contact with a `CODE` will allow you to view the contact under the corresponding module tab. <br>Note: if the provided module code doesn't exist, the tag will just be treated as another ordinary tag without any problems.| `n/John Doe t/MA1101R t/groupmate` |
 
-### Add
+### 5.4.2 Add a Contact <a name="contact-add"></a>
 A new semester has started and you want to keep track of your new classmates. This is the command to add a new contact.
 
 Format: `C add n/NAME [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...`
@@ -478,14 +487,14 @@ Examples: To add a new contact John Doe, your MA1101R TA, follow these instructi
 | EMAIL| johndoe@gmail.com |
 | TAG | MA1101R, TA |
 
-<br>1. To add, type `C add n/John Doe p/98765432 e/johndoe@gmail.com t/MA1101R t/TA` into the command box.
-<br>2. Press `Enter` to execute.
-<br>3. The result display will show the success message and you will see your new contact in the Contacts tab, and the MA1101R tab (if CODE field was filled).
+1. To add, type `C add n/John Doe p/98765432 e/johndoe@gmail.com t/MA1101R t/TA` into the command box.
+2. Press `Enter` to execute.
+3. The result display will show the success message and you will see your new contact in the Contacts tab, and the MA1101R tab (if CODE field was filled).
 
 ![AddContactOutcome](images/UG/AddContactOutcome.png)
 _Figure 16 - Example outcome of adding a contact_
 
-### Edit
+### 5.4.3 Edit a Contact <a name="contact-edit"></a>
 After adding your new contact John Doe to TrackIt@NUS, maybe you realised you spelled his name wrong, or you want to update his phone number. The edit command is what you should use to do so.
 
 Format: `C edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...`
@@ -503,15 +512,15 @@ Example: To change John Doe's name to Johnny Depp, follow these instructions.
 | INDEX | 2 |
 | NAME | **Johnny Depp** |
 
-<br>1. Look for the lesson's index which is on the left of the lesson.
-<br>2. To add, type `C edit 2 n/Johnny Depp` into the command box.
-<br>3. Press `Enter` to execute.
-<br>4. The Result Display will show the success message and you should see your lesson updated in the Upcoming tab as well as the MA1101R module tab.
+1. Look for the lesson's index which is on the left of the lesson.
+2. To add, type `C edit 2 n/Johnny Depp` into the command box.
+3. Press `Enter` to execute.
+4. The Result Display will show the success message and you should see your lesson updated in the Upcoming tab as well as the MA1101R module tab.
 
 ![EditContactOutcome](images/UG/EditContactOutcome.png)
 _Figure 17 - Example outcome of editing a contact_
 
-### Delete
+### 5.4.4 Delete a Contact <a name="contact-delete"></a>
 Congratulations! You have finished reading the module MA1101R and now wish to delete your TA Johnny Depp's contact from TrackIt@NUS. This is the command to do so.
 
 Format: `C delete INDEX`
@@ -525,7 +534,7 @@ Examples: To delete Johnny Depp's contact, follow these instructions.
 ![DeleteContactOutcome](images/UG/DeleteContactOutcome.png)
 _Figure 18 - Example outcome of deleting a contact_
 
-## Getting help <a name="help"></a>
+## 5.5 Getting help <a name="help"></a>
 
 For: Navigating to the [help tab](#helptab) for a command summary list.
 
@@ -533,7 +542,7 @@ Format: `help`
 
 Examples: `help`
 
-## Exiting the app <a name="exit"></a>
+## 5.6 Exiting the app <a name="exit"></a>
 
 For: Exit the program.
 
@@ -541,25 +550,24 @@ Format: `exit`
 
 Examples: `exit`
 
-## Saving the data
-
-TrackIt@NUS data is saved in the hard disk automatically after any command that changes the data. There is no need to
- save manually.
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## 6. FAQ <a name="faq"></a>
 
+**Q: Will my data be saved in the computer?**
+A: TrackIt@NUS data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-**Q: How do I transfer my data to another Computer?**
-<br>A: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
- the data of your previous TrackIt@NUS home folder.
+**Q: How do I transfer my data to another computer?**
+A: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous TrackIt@NUS home folder.
+
+**Q: Can I add a biweekly `lesson` in the module?**
+A: Unfortunately, as of v1.4, only weekly lessons are supported. Biweekly and monthly lessons may be added in subsequent versions.
 
 **Q: Why can I add a `lesson` that clashes with my existing `lessons`? Is this a bug?**
-<br>A: This is because there are instances where students are granted **a case-by-case approval** to overload modules with **concurrent lessons**. These students should have the option to include concurrent lessons. 
+A: This is because there are instances where students are granted **a case-by-case approval** to overload modules with **concurrent lessons**. These students should have the option to include concurrent lessons. 
  
 **Q: Why is there a need for the `Contacts Tab` when I can already add `contacts` in the `Module Tab`?**
-<br>A: It is meant for you to add `contacts` that **may not be taking** the same modules as you but they are **still relevant** in your social life and/or studies. Please refer to the [Contacts Tab](#contactstab) for more details.
+A: It is meant for you to add `contacts` that **may not be taking** the same modules as you but they are **still relevant** in your social life and/or studies. Please refer to the [Contacts Tab](#contactstab) for more details.
 
 
 ## 7. Glossary <a name="glossary"></a>
