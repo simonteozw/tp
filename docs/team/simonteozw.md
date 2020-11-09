@@ -66,6 +66,19 @@ and [#212](https://github.com/AY2021S1-CS2103T-W17-1/tp/issues/212).
 
 ## Contributions to the User Guide
 
+Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.
 
+* [Task](https://github.com/AY2021S1-CS2103T-W13-4/tp/blob/master/docs/UserGuide.md#task)
 
 ## Contributions to the Developer Guide
+
+Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.
+
+* [Introduction](https://github.com/AY2021S1-CS2103T-W13-4/tp/blob/master/docs/DeveloperGuide.md#introduction)
+* [Setting up](https://github.com/AY2021S1-CS2103T-W13-4/tp/blob/master/docs/DeveloperGuide.md#setup)
+* [Common Classes](https://github.com/AY2021S1-CS2103T-W13-4/tp/blob/master/docs/DeveloperGuide.md#common)
+* [Task Manager](https://github.com/AY2021S1-CS2103T-W13-4/tp/blob/master/docs/DeveloperGuide.md#task-manager)
+* [Documentation](https://github.com/AY2021S1-CS2103T-W13-4/tp/blob/master/docs/DeveloperGuide.md#documentation)
+* [Testing](https://github.com/AY2021S1-CS2103T-W13-4/tp/blob/master/docs/DeveloperGuide.md#testing)
+* [Product Scope](https://github.com/AY2021S1-CS2103T-W13-4/tp/blob/master/docs/DeveloperGuide.md#appendix-a-product-scope-)
+* [Glossary](https://github.com/AY2021S1-CS2103T-W13-4/tp/blob/master/docs/DeveloperGuide.md#appendix-e-glossary-)
