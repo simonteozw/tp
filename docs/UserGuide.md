@@ -1,5 +1,3 @@
-# TrackIt@NUS - User Guide
-
 ![Logo](images/UG/trackit-logo.png)
 
 By: `Team W13-4` Since: `Aug 2020` License: `MIT`
@@ -7,7 +5,7 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Quick Start](#quick-start)
-3. [About](#about)
+3. [Format and Usage](#about)
     * 3.1 [Common Symbols](#common-symbols)
     * 3.2 [Command Format](#command-format)
     * 3.3 [Duplicate Parameters](#duplicate-parameters)
@@ -50,13 +48,12 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 
 Welcome to the **TrackIt@NUS** user-guide!
 
-Do you struggle having to use multiple apps to balance your school life? Do you waste precious time just trying
- to find the information you need in the many apps you use? Well, look no further. Our application, **TrackIt@NUS** is an
-  all-in-one solution for a busy student like you to manage and organize your life, helping you to *Track Less, and
-   Live More.*
+Are you struggling to use many different applications to manage your school work?
+Having to toggle between NUSMODS, LumiNUS and your own to-do list to find your school work can be a real hassle. If you happen to be feel this way, then you are in luck! 
+**TrackIt@NUS** is a all-in-one desktop app for you to manage your modules, lessons, tasks, and contacts. 
+It boasts a beautiful *upcoming view* and *module view* so that busy student like you to to easily organize your school life, helping you to *Track Less, and Live More.*
 
-TrackIt@NUS is a desktop app for managing modules, lessons, tasks, and contacts, tailored to the needs of NUS students and
-  optimized for use via a [**Command Line Interface (CLI)**](#glossary) while still having the benefits of a
+**TrackIT@NUS** is optimized for use via a [**Command Line Interface (CLI)**](#glossary) while still having the benefits of a
    [**Graphical User Interface (GUI)**](#glossary). If you can type fast, you will be able to manage your academic
     and social commitments much more efficiently than by using other traditional GUI apps.
 
@@ -77,12 +74,13 @@ Note how the app contains some sample data. <br><br>
 ![Ui](images/Ui.png)
 <br> _Figure 1 - GUI of TrackIt@NUS_
 
-At the bottom of the screen, type your command in the Command Box and press `Enter` on your keyboard to execute it
-. Try typing `help` and pressing `Enter` to navigate to the Help Tab!<br>
+Before you start using the TrackIt@NUS, you can first get familiarised with the app's [Format and Usage](#about), as well as it's [Application Layout](#layout).
+Once you are ready to type your first command, you can type in the Command Box at the bottom of the screen and press `Enter` on your keyboard to execute it.
+Try typing `help` and pressing `Enter` to navigate to the Help Tab!<br>
  
 For details on the commands you can use, please refer to [Section 5 - Features](#features).
 
-## 3. About <a name="about"></a>
+## 3. Format and Usage <a name="about"></a>
 
 There are many things you can use TrackIt@NUS for. We have structured this document so it is easy for you to find
  what you need. In the [Common Symbols](#common-symbols), [Command Format](#command-format), and [Commands and their
