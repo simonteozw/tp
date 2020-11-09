@@ -272,11 +272,14 @@ Another design challenge was how to manage our predicates. TrackIt@NUS makes use
  , contacts, and lessons. They can also view overdue tasks and future tasks (tasks where the deadline is more than a
   week away). To manage all these predicates, we had 2 options:
 
+
 |  | Pros | Cons |
 | ---- | ----- | ------- |
 | **Option 1 (current choice):** Extract each the predicates into their own unique class | Increases code maintainability and testability. Now as a developer you exactly where to find each predicate. Makes use of the DRY principle and improves abstraction because you no longer need to interact with the actual lambda or test function, simply call the predicate. | Makes code more verbose as each predicate can simply be declared using a single lambda. |
 | **Option2:** Declare each predicate using a single lambda in the ModelManager class. No predicate will have a class. | Makes code shorter and simpler to read. No need to create a class when you can simply declare a predicate with a lambda. | Need to duplicate such code when using ModelStubs for testing. This will violate the DRY principle. |
-----
+
+--------
+
 **All classes of Logic & Model at the same level will have similar structures**
 
 ![ContactCodeTaskLessonClassDiagram](images/ContactCodeTaskLessonClassDiagram.png)
@@ -426,7 +429,9 @@ We have put in a lot of effort to make the command syntax unified, means that al
 This will relieve our users from the mental burden of having to remember different syntax for different commands. Although there are only 14 commands to get used to, having to remember all 14 of them will be a huge barrier for our new potential users and also, it will put an unnecessary mental burden on the users of our app.
 
 ----
+
 **Other small feature considerations**
+
 |  | Rationale |
 | ---- | ----- |
 | No limit on length of phone number | We have looked at Android's and iOS's contact app and no app imposes limits on the length of phone number |
@@ -553,7 +558,7 @@ categories. Users can view lessons specific to a module and lessons on a specifi
 
  #### 4.3.1 Rationale <a name="lesson-manager-rationale"></a>
  
- Lessons are an integral part of any student's day-to-day life. Hence, TrackIt@NUS includes a lesson manager for students to 
+Lessons are an integral part of any student's day-to-day life. Hence, TrackIt@NUS includes a lesson manager for students to 
  keep track of their lessons. Each lesson must belong to a unique module. When users click into a specific module tab, 
  they can see the lessons belonging to that module.
    
@@ -1453,6 +1458,7 @@ Extensions:
 12. The app should not crash in the event of invalid user input
 
 ## **Appendix E: Glossary** <a name="appen-e"></a>
+
 | **Term** | **Explanation** |
 | --------- | --------------- |
 | **Mainstream OS** <a name="oop"></a> | Windows, Linux, Unix, OS-X |
