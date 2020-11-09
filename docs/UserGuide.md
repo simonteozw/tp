@@ -623,24 +623,24 @@ A: It is meant for you to add `contacts` that **may not be taking** the same mod
 
 | Command | Format | Example |
 | -- | -------- | -------- |
-| **add** | `M add m/MODULE_CODE n/NAME` | `M add m/CS1231S n/Discrete Structures` |
-| **edit**| `M edit MODULE_CODE [m/NEW_MODULE_CODE] [n/NAME]` | `M edit CS1231S m/CS1231` |
-| **delete** | `M delete MODULE_CODE` | `M CS1231` |
+| **add** | `M add m/CODE n/NAME` | `M add m/CS1231S n/Discrete Structures` |
+| **edit**| `M edit CODE [m/NEW_CODE] [n/NAME]` | `M edit CS1231S m/CS1231` |
+| **delete** | `M delete CODE` | `M CS1231` |
 
 ### Lesson <a name="lesson-commands"></a>
 
 | Command | Format | Example |
 | -- | ------ | ------ |
-| **add** | `L add m/MODULE_CODE t/TYPE d/DATE a/ADDRESS` | `L add m/CS2103T t/tutorial d/Wed 14:00-15:00 a/COM1` |
-| **edit** | `L edit INDEX [m/MODULE_CODE] [t/TYPE] [d/DATE] [a/ADDRESS]` | `L edit 1 a/LT17` |
+| **add** | `L add m/CODE t/TYPE d/DATE a/ADDRESS` | `L add m/CS2103T t/tutorial d/Wed 14:00-15:00 a/COM1` |
+| **edit** | `L edit INDEX [m/CODE] [t/TYPE] [d/DATE] [a/ADDRESS]` | `L edit 1 a/LT17` |
 | **delete** | `L delete INDEX` | `L delete 1` |
 
 ### Task <a name="task-commands"></a>
 
 | Command | Format | Example |
 | -- | ------ | ------ |
-| **add** | `T add n/NAME d/DATE [m/MODULE_CODE] [r/REMARK]` | `T add n/Assignment 1 d/20/11/2020 r/Focus on Chapters 1-3` |
-| **edit** | `T edit INDEX [n/NAME] [d/DATE] [m/MODULE_CODE] [r/REMARK]` | `T edit 1 n/Finish Assignment` |
+| **add** | `T add n/NAME d/DATE [m/CODE] [r/REMARK]` | `T add n/Assignment 1 d/20/11/2020 r/Focus on Chapters 1-3` |
+| **edit** | `T edit INDEX [n/NAME] [d/DATE] [m/CODE] [r/REMARK]` | `T edit 1 n/Finish Assignment` |
 | **delete** | `T delete INDEX` | `T delete 1` |
 
 ### Contact <a name="contact-commands"></a>
