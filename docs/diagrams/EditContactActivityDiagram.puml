@@ -1,0 +1,43 @@
+@startuml
+start
+:User enters edit contact command;
+
+'Since the beta syntax does not support placing the condition outside the
+'diamond we place it as the true branch instead.
+
+if () then ([valid command])
+    :Retrieve the last shown contact list;
+    if () then ([index provided is within range of last shown list])
+        if () then ([any fields are edited])
+            :Retrieve the contact at the given index;
+            :Create the edited contact;
+            if () then ([edited contact is different from contact to edit])
+            if () then ([edited contact does not exist in model])
+            :Replace contact to
+            edit with edited contact;
+            :Save updated contact list
+            to trackIter.json;
+            :Show success message;
+            else ([else])
+            :Show duplicate
+            contact error message;
+            endif
+            else ([else])
+            :Show contact is
+            unchanged message;
+            endif
+        else ([else])
+            :Show not edited
+             error message;
+        endif
+
+    else ([else])
+        :Show invalid contact
+        index error message;
+    endif
+else ([else])
+    :Shows invalid
+    command message;
+endif
+stop
+@enduml

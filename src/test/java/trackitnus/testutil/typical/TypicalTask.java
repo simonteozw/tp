@@ -15,6 +15,10 @@ public class TypicalTask {
         return Arrays.asList(SampleDataUtil.getSampleTasks());
     }
 
+    public static Task get(int index) {
+        return get().get(index);
+    }
+
     public static List<Task> getConst() { // the dates of tasks must be constant for JSON testing
         return Arrays.asList(
             new Task(new Name("Plan for Alex's birthday"), ParserUtil.parseValidDate("12/12/2020"),
@@ -39,7 +43,4 @@ public class TypicalTask {
                 "(deadline is at the end of reading week)"));
     }
 
-    public static Task get(int index) {
-        return get().get(index);
-    }
 }

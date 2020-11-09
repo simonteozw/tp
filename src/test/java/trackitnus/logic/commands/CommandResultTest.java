@@ -40,8 +40,8 @@ public class CommandResultTest {
 
         // edited module -> returns true
         assertTrue(commandResult.equals(new CommandResult("feedback", false, false,
-            new Module(new Code("AA0000"), new Name("not edited")), new Module(new Code("AA0000"), new Name("after " +
-            "edited")), "")));
+            new Module(new Code("AA0000"), new Name("not edited")),
+            new Module(new Code("AA0000"), new Name("after " + "edited")), "")));
 
         // deleted module -> returns true
         assertTrue(commandResult.equals(new CommandResult("feedback", false, false, null, null, "AA0000")));

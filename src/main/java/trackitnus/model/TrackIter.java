@@ -113,28 +113,28 @@ public final class TrackIter implements ReadOnlyTrackIter {
      * Adds a module to the app.
      * The module must not already exist in the app.
      */
-    public void addModule(Module p) {
-        modules.add(p);
+    public void addModule(Module module) {
+        modules.add(module);
     }
 
     /**
-     * Replaces the given module {@code target} in the list with {@code editedModule}.
-     * {@code target} must exist in the app.
+     * Replaces the given module {@code moduleToEdit} in the list with {@code editedModule}.
+     * {@code moduleToEdit} must exist in the app.
      * The module identity of {@code editedModule} must not
      * be the same as another existing module in the app.
      */
-    public void setModule(Module target, Module editedModule) {
+    public void setModule(Module moduleToEdit, Module editedModule) {
         requireNonNull(editedModule);
 
-        modules.setModule(target, editedModule);
+        modules.setModule(moduleToEdit, editedModule);
     }
 
     /**
-     * Removes {@code key} from this {@code TrackIter}.
-     * {@code key} must exist in the app.
+     * Removes {@code module} from this {@code TrackIter}.
+     * {@code module} must exist in the app.
      */
-    public void removeModule(Module key) {
-        modules.remove(key);
+    public void removeModule(Module module) {
+        modules.remove(module);
     }
 
     //=========== Contact ================================================================================
@@ -151,28 +151,28 @@ public final class TrackIter implements ReadOnlyTrackIter {
      * Adds a module to the app.
      * The module must not already exist in the app.
      */
-    public void addContact(Contact p) {
-        contacts.add(p);
+    public void addContact(Contact contact) {
+        contacts.add(contact);
     }
 
     /**
-     * Replaces the given contact {@code target} in the list with {@code editedContact}.
-     * {@code target} must exist in the app.
+     * Replaces the given contact {@code contactToEdit} in the list with {@code editedContact}.
+     * {@code contactToEdit} must exist in the app.
      * The contact identity of {@code editedContact} must not
      * be the same as another existing contact in the app.
      */
-    public void setContact(Contact target, Contact editedContact) {
+    public void setContact(Contact contactToEdit, Contact editedContact) {
         requireNonNull(editedContact);
 
-        contacts.setContact(target, editedContact);
+        contacts.setContact(contactToEdit, editedContact);
     }
 
     /**
-     * Removes {@code key} from this {@code TrackIter}.
-     * {@code key} must exist in the app.
+     * Removes {@code contact} from this {@code TrackIter}.
+     * {@code contact} must exist in the app.
      */
-    public void removeContact(Contact key) {
-        contacts.remove(key);
+    public void removeContact(Contact contact) {
+        contacts.remove(contact);
     }
 
 
@@ -190,28 +190,28 @@ public final class TrackIter implements ReadOnlyTrackIter {
      * Adds a task to the app.
      * The task must not already exist in the app.
      */
-    public void addTask(Task p) {
-        tasks.add(p);
+    public void addTask(Task task) {
+        tasks.add(task);
     }
 
     /**
-     * Replaces the given task {@code target} in the list with {@code editedTask}.
-     * {@code target} must exist in the app.
+     * Replaces the given task {@code taskToEdit} in the list with {@code editedTask}.
+     * {@code taskToEdit} must exist in the app.
      * The task identity of {@code editedTask} must not
      * be the same as another existing task in the app.
      */
-    public void setTask(Task target, Task editedTask) {
+    public void setTask(Task taskToEdit, Task editedTask) {
         requireNonNull(editedTask);
 
-        tasks.setTask(target, editedTask);
+        tasks.setTask(taskToEdit, editedTask);
     }
 
     /**
-     * Removes {@code key} from this {@code TrackIter}.
-     * {@code key} must exist in the app.
+     * Removes {@code task} from this {@code TrackIter}.
+     * {@code task} must exist in the app.
      */
-    public void removeTask(Task key) {
-        tasks.remove(key);
+    public void removeTask(Task task) {
+        tasks.remove(task);
     }
 
     //=========== Lesson ================================================================================
@@ -228,28 +228,28 @@ public final class TrackIter implements ReadOnlyTrackIter {
      * Adds a lesson to the app.
      * The lesson must not already exist in the app.
      */
-    public void addLesson(Lesson p) {
-        lessons.add(p);
+    public void addLesson(Lesson lesson) {
+        lessons.add(lesson);
     }
 
     /**
-     * Replaces the given lesson {@code target} in the list with {@code editedLesson}.
-     * {@code target} must exist in the app.
+     * Replaces the given lesson {@code lessonToEdit} in the list with {@code editedLesson}.
+     * {@code lessonToEdit} must exist in the app.
      * The lesson identity of {@code editedLesson} must not
      * be the same as another existing lesson in the app.
      */
-    public void setLesson(Lesson target, Lesson editedLesson) {
+    public void setLesson(Lesson lessonToEdit, Lesson editedLesson) {
         requireNonNull(editedLesson);
 
-        lessons.setLesson(target, editedLesson);
+        lessons.setLesson(lessonToEdit, editedLesson);
     }
 
     /**
-     * Removes {@code key} from this {@code TrackIter}.
-     * {@code key} must exist in the app.
+     * Removes {@code lesson} from this {@code TrackIter}.
+     * {@code lesson} must exist in the app.
      */
-    public void removeLesson(Lesson key) {
-        lessons.remove(key);
+    public void removeLesson(Lesson lesson) {
+        lessons.remove(lesson);
     }
 
     //// util methods
@@ -311,11 +311,7 @@ public final class TrackIter implements ReadOnlyTrackIter {
 
     @Override
     public String toString() {
-        return "TrackIter{" +
-            "contacts=" + contacts +
-            ", modules=" + modules +
-            ", tasks=" + tasks +
-            ", lessons=" + lessons +
-            '}';
+        return "TrackIter{" + "contacts=" + contacts + ", modules=" + modules + ", tasks=" + tasks + ", lessons="
+            + lessons + '}';
     }
 }

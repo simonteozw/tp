@@ -1,0 +1,14 @@
+@startuml
+start
+:User enters `C edit INDEX m/`;
+
+'Since the beta syntax does not support placing the condition outside the
+'diamond we place it as the true branch instead.
+
+:ArgumentMultimap checks that the phone number prefix "/p" is present;
+:ParserUtil parses the phone number and returns null;
+:EditContactDescriptor sets the phone number to null and sets isPhoneChanged to true;
+:EditContactCommand checks isPhoneChanged and confirms that user intends to remove the phone number;
+:EditContactCommand sets the edited contact's phone number field to null;
+stop
+@enduml

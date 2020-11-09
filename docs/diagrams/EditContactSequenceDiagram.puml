@@ -1,0 +1,49 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":EditContactCommand" as EditContactCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+participant "index:Index" as index MODEL_COLOR
+participant ":TrackIter" as TrackIter MODEL_COLOR
+end box
+
+[-> EditContactCommand : execute(m)
+activate EditContactCommand
+
+EditContactCommand -> Model : getFilteredContactList()
+activate Model
+
+Model --> EditContactCommand : lastShownList
+deactivate Model
+
+EditContactCommand -> index : getZeroBased()
+
+EditContactCommand -> EditContactCommand : createEditedContact(contactToEdit, editContactDescriptor)
+activate EditContactCommand
+EditContactCommand --> EditContactCommand : editedContact
+deactivate EditContactCommand
+
+EditContactCommand -> Model : setContact(contactToEdit, editedContact)
+activate Model
+
+Model -> TrackIter : setContact(contactToEdit, editedContact)
+
+
+deactivate Modelr
+
+create CommandResult
+EditContactCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> EditContactCommand : r
+deactivate CommandResult
+
+[<--EditContactCommand : r
+deactivate EditContactCommand
+
+@enduml

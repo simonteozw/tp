@@ -138,8 +138,6 @@ public class UniqueContactList implements Iterable<Contact> {
 
     @Override
     public String toString() {
-        return "UniqueContactList{" +
-            "internalList=" + internalList +
-            '}';
+        return "UniqueContactList{" + "internalList=" + internalList + '}';
     }
 }

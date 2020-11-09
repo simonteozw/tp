@@ -1,0 +1,44 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":DeleteContactCommand" as DeleteContactCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+participant "targetIndex:Index" as index MODEL_COLOR
+participant ":TrackIter" as TrackIter MODEL_COLOR
+end box
+
+[-> DeleteContactCommand : execute(m)
+activate DeleteContactCommand
+
+DeleteContactCommand -> Model : getFilteredContactList()
+activate Model
+
+Model --> DeleteContactCommand : lastShownList
+deactivate Model
+
+DeleteContactCommand -> index : getZeroBased()
+
+
+DeleteContactCommand -> Model : deleteContact(c)
+activate Model
+
+Model -> TrackIter : removeContact(c)
+
+deactivate Model
+
+create CommandResult
+DeleteContactCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> DeleteContactCommand : r
+deactivate CommandResult
+
+[<--DeleteContactCommand : r
+deactivate DeleteContactCommand
+
+@enduml
