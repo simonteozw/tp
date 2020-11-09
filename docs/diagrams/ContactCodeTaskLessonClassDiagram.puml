@@ -1,0 +1,42 @@
+@startuml
+!include style.puml
+skinparam classBackgroundColor MODEL_COLOR
+
+Class Module
+Module "1"-down->"1" Code
+Module -down->"1" Name
+
+Class Lesson
+Lesson -down->"1" Code
+Lesson -down->"1" Type
+Lesson -down->"1" Address
+Lesson -down->"1" LessonDateTime
+
+enum Type<<enumeration>>
+enum DayOfWeek<<enumeration>>
+
+Class LessonDateTime{
+    startTime : LocalTime
+    endTime :  LocalTime
+}
+
+LessonDateTime -down->"1" DayOfWeek
+
+Class Contact
+Contact -down->"1" Name
+Contact -down->"0..1" Phone
+Contact -down->"0..1" Email
+Contact -down->"*" Tag
+
+Class Task {
+date : LocalDate
+remark : String
+}
+
+Task -down->"1" Name
+Task -down->"0..1" Code
+
+show Task members
+show LessonDateTime members
+
+@enduml

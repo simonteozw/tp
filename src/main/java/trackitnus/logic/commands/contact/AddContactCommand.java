@@ -24,15 +24,15 @@ public final class AddContactCommand extends Command {
         + ": Adds a contact to the app.\n"
         + "Parameters: "
         + PREFIX_NAME + "NAME "
-        + PREFIX_PHONE + "PHONE "
-        + PREFIX_EMAIL + "EMAIL "
+        + "[" + PREFIX_PHONE + "PHONE] "
+        + "[" + PREFIX_EMAIL + "EMAIL] "
         + "[" + PREFIX_TAG + "TAG]...\n"
         + "Example: " + Contact.TYPE + " " + COMMAND_WORD + " "
         + PREFIX_NAME + "John Doe "
         + PREFIX_PHONE + "98765432 "
-        + PREFIX_EMAIL + "johnd@example.com "
-        + PREFIX_TAG + "friends "
-        + PREFIX_TAG + "owesMoney";
+        + PREFIX_EMAIL + "johndoe@gmail.com "
+        + PREFIX_TAG + "MA1101R "
+        + PREFIX_TAG + "TA";
 
     private final Contact toAdd;
 

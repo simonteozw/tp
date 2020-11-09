@@ -34,10 +34,10 @@ public final class EditTaskCommand extends Command {
         + "Parameters: INDEX (must be a positive integer) "
         + "[" + PREFIX_NAME + "NAME] "
         + "[" + PREFIX_DATE + "DATE] "
-        + "[" + PREFIX_CODE + "MODULE_CODE] "
+        + "[" + PREFIX_CODE + "CODE] "
         + "[" + PREFIX_REMARK + "REMARK]...\n"
         + "Example: " + Task.TYPE + " " + COMMAND_WORD + " 1 "
-        + PREFIX_REMARK + "New remark";
+        + PREFIX_REMARK + "Finish Assignment";
 
     private final Index index;
     private final EditTaskCommand.EditTaskDescriptor editTaskDescriptor;

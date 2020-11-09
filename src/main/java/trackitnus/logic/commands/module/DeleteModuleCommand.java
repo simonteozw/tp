@@ -22,8 +22,8 @@ public final class DeleteModuleCommand extends Command {
 
     public static final String MESSAGE_USAGE = Module.TYPE + " " + COMMAND_WORD
         + ": Deletes the module identified by the module code.\n"
-        + "Parameters: " + "MODULE_CODE (must be an existing code)\n"
-        + String.format("Example: %s %s CS1231S", Module.TYPE, COMMAND_WORD);
+        + "Parameters: " + "CODE (must be an existing code)\n"
+        + String.format("Example: %s %s CS1231", Module.TYPE, COMMAND_WORD);
 
     private final Code targetCode;
 

@@ -32,11 +32,11 @@ public final class EditModuleCommand extends Command {
         + "by the module code. "
         + "Existing values will be overwritten by the input values.\n"
         + "Parameters: "
-        + "MODULE_CODE "
-        + "[" + PREFIX_CODE + "NEW_MODULE_CODE] "
+        + "CODE "
+        + "[" + PREFIX_CODE + "NEW_CODE] "
         + "[" + PREFIX_NAME + "NAME]\n"
-        + String.format("Example: %s %s CS1231T %sCS1231S %sDiscrete Structures",
-        Module.TYPE, COMMAND_WORD, PREFIX_CODE, PREFIX_NAME);
+        + String.format("Example: %s %s CS1231S %sCS1231",
+        Module.TYPE, COMMAND_WORD, PREFIX_CODE);
 
     private final Code code;
     private final EditModuleDescriptor editModuleDescriptor;

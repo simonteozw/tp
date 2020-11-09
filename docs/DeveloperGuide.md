@@ -1,4 +1,4 @@
-# TrackIt@NUS - Developer Guide
+![Logo](images/UG/trackit-logo.png)
 
 By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 
@@ -14,19 +14,25 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     * 3.4. [Model Component](#model)
     * 3.5. [Storage Component](#storage)
     * 3.6. [Common Classes](#common)
+    * 3.7. [Code Design Considerations](#code-des-cons)
+    * 3.8. [Feature Design Considerations](#feat-des-cons)
 4. [**Implementation**](#implementation)
-    * 4.1. [Overview](#overview)
-        * 4.1.1. [Code Design Considerations](#code-des-cons)
-        * 4.1.2. [Feature Design Considerations](#feat-des-cons)
-    * 4.2. [Module Manager](#module-manager)
-    * 4.3. [Lesson Manager](#lesson-manager)
-    * 4.4. [Task Manager](#task-manager)
-        * 4.4.1 [Rationale](#task-manager-rationale)
-        * 4.4.2 [Current Implementation](#task-manager-implementation)
-        * 4.4.3 [Design Considerations](#task-manager-design)
-    * 4.5. [Contact Manager](#contact-manager)
-    * 4.6. [Logging](#logging)
-    * 4.7. [Configuration](#config)
+    * 4.1. [Module Manager](#module-manager)
+        * 4.1.1 [Current Implementation](#module-manager-implementation)
+    * 4.2. [Lesson Manager](#lesson-manager)
+        * 4.2.1 [Rationale](#lesson-manager-rationale)
+        * 4.2.2 [Current Implementation](#lesson-manager-implementation)
+    * 4.3. [Task Manager](#task-manager)
+        * 4.3.1 [Rationale](#task-manager-rationale)
+        * 4.3.2 [Current Implementation](#task-manager-implementation)
+        * 4.3.3 [Design Considerations](#task-manager-design)
+    * 4.4. [Contact Manager](#contact-manager)
+        * 4.4.1 [Rationale](#contact-manager-rationale)
+        * 4.4.2 [Current Implementation](#contact-manager-implementation)
+        * 4.4.3 [Design Considerations](#cotnact-manager-design)
+    * 4.5. [Logging](#logging)
+        * 4.5.1 [Loggin Levels](#logging-levels)
+    * 4.6. [Configuration](#config)
 5. [**Documentation**](#documentation)
 6. [**Testing**](#testing)
 7. [**Dev Ops**](#devops)<br><br>
@@ -168,7 +174,7 @@ The *Class Diagram* below shows how the components in the `Upcoming Tab` interac
 
 :information_source: All the `ListPanels` and `Cards` inherit from the abstract `UiPart` class.
 
-##### Responsibilities**
+##### **Responsibilities**
 The `Upcoming Tab` consists of a list of an `UpcomingSectionCard` for the Overdue section, 7 `UpcomingSectionDayCards` to represent each day of the next week, and finally another `UpcomingSectionCard` for the Future section. Each `UpcomingSectionCard` comprises of a `TaskPanel` and each `UpcomingSectionDayCard` comprises of a `TaskPanel` and a `LessonPanel`.
 
 #### **3.2.2. Module Tab** <a name="module-tab"></a>
@@ -237,15 +243,8 @@ The `Storage` component,
 
 The `commons` package contains classes used by multiple other components in the `trackitnus.commons` package.
 
---------------------------------------------------------------------------------------------------------------------
 
-## **4. Implementation** <a name="implementation"></a>
-
-This section describes some noteworthy details on how certain features are implemented.
-
-### **4.1. Overview** <a name="overview"></a>
-
-#### **4.1.1. Code Design Considerations** <a name="code-des-cons"></a>
+#### **3.7 Code Design Considerations** <a name="code-des-cons"></a>
 ----
 **All commands in TrackIt@NUS follow a similar execution flow.**
 
@@ -265,14 +264,21 @@ Another design challenge was how to manage our predicates. TrackIt@NUS makes use
  , contacts, and lessons. They can also view overdue tasks and future tasks (tasks where the deadline is more than a
   week away). To manage all these predicates, we had 2 options:
 
+
 |  | Pros | Cons |
 | ---- | ----- | ------- |
 | **Option 1 (current choice):** Extract each the predicates into their own unique class | Increases code maintainability and testability. Now as a developer you exactly where to find each predicate. Makes use of the DRY principle and improves abstraction because you no longer need to interact with the actual lambda or test function, simply call the predicate. | Makes code more verbose as each predicate can simply be declared using a single lambda. |
 | **Option2:** Declare each predicate using a single lambda in the ModelManager class. No predicate will have a class. | Makes code shorter and simpler to read. No need to create a class when you can simply declare a predicate with a lambda. | Need to duplicate such code when using ModelStubs for testing. This will violate the DRY principle. |
-----
+
+--------
+
 **All classes of Logic & Model at the same level will have similar structures**
 
-To elaborate on this, we will first take an example on some lowest-level classes of the codebase. They include `Email`, `Address`, `Code`, `Name` ....
+![ContactCodeTaskLessonClassDiagram](images/ContactCodeTaskLessonClassDiagram.png)
+
+The above diagram illustrates the structure of 4 classes: Module, Lesson, Contact and Task. 
+
+To elaborate on this design consideration, we will first take an example on some lowest-level classes They include `Email`, `Address`, `Code`, `Name` ....
 
 All of these classes share a similar structure as 2 classes `Address` and `Code` as below:
 ![CodeAndAddressClassDiagram](images/CodeAndAddressClassDiagram.png)
@@ -292,23 +298,155 @@ of classes of the same level, it's very easy for a developer to maintain others'
 A possible drawback of this uniform design is that it may not be the most appropriate design for each class, but for this project we believe this drawback doesn't apply.
 
 ----
+**Abstract all low-level logic to Model & Maintain a straight logic flow**
+
+To illustrate this design, please look at the following diagrams for 3 different possible implementation of getModuleContacts():
+
+![GetModuleContactBadSequenceDiagram](images/GetModuleContactBadSequenceDiagram.png)
+
+_The above diagram illustrate the possible design if the UI handles the low-level logic_
+
+
+![GetModuleContactMediumSequenceDiagram.png](images/GetModuleContactMediumSequenceDiagram.png)
+
+_The above diagram illustrate the possible design if the Logic handles the low-level logic_
+
+
+![GetModuleContactGoodSequenceDiagram](images/GetModuleContactGoodSequenceDiagram.png)
+
+_The above diagram illustrate the current design of the back-end_
+
+It is easy to see that the current design eliminates all cross-level calls. All methods calls are only in the form a class to itself or to the level right below it.
+This helps maintain an uniformed straight logic flow for all functions, which greatly improves maintainability and extensibility. Also, this design better follows the ModelViewController pattern (MVC) since the UI should only be in charged of displaying to users, 
+the Logic should only receive events and control the Model and the Model should be the place where all business logic takes place.
+ 
+**In this app, we have tried our very best to ensure almost all (if not all) logic calls follows this principle.**
 
 ----
 **Other code design rules applied**
 * A function/method should only do what it's expected to do (which should be inferable from its name), and in no ways should it surprise the caller.
+* Most code snippets that can be reused between classes will be abstracted out to the common Utility classes.
+* And design rules from the module's website: https://nus-cs2103-ay2021s1.github.io/website/se-book-adapted/chapters/codeQuality.html#code-quality
 
 ----
-#### **4.1.2. Feature Design Considerations** <a name="feat-des-cons"></a>
+#### **3.8. Feature Design Considerations** <a name="feat-des-cons"></a>
 
-### **4.2. Module Manager** <a name="module-manager"></a>
+The entire app follows a simple principle: the app should behave in the way most normal users expect it to behave. 
+
+Its behaviors should help users complete their intended tasks quickly and conveniently, but avoid getting in their way by forcing users to follow some strange constraints.
+
+The following section states some important feature design considerations the team has made during the development of the app
+
+----
+**When the module code is edited, all associated lessons/tasks/contact tags are edited as well**
+
+|  | Pros | Cons |
+| ---- | ----- | ------- |
+| **Option 1 (current choice):** Edit all related all associated lessons/tasks/contact tags| More **intuitive** to users, because it's **natural** to expect that when a module code is edited, its associated lessons/tasks are modified to still belong to the newly edited module and doesn't become "orphan" entities. For contacts, we believe that **most normal** users also expect the app to change the tag associated with the old code to the new code. | It increases coupling of the codebase, make it more prone to bugs |
+| **Option2:** Just edit the module code and leave other stuff untouched | Simplify the app's logic, decrease coupling and "possibly", give users more control over the app | **"Surprise"** most users with its **"unexpected"** behavior, and create some weird logic in the app (for example, where can a lesson/task be displayed if it doesn't belong to an existing module) |
+
+**After having considered all the pros & cons, we have decided to implement this feature so that the user can have the best possible User Experience!**
+
+----
+
+**When a module is deleted, all associated lessons/tasks are deleted but contacts are left untouched**
+
+This behavior of the app has been considered (and debated) thoroughly. The following are our rationale:
+* We believe it's rare that users need to delete a module (even if they entered the code or name wrongly, they can still edit those fields). So, if they have decided to delete a module, it is likely they have finished(or dropped) that module
+, so the app's expected behavior is to delete all the module's associated tasks/lessons.
+* Deleting a contact usually means the user no longer want to connect with that contact, which is rarely the case because it's almost always better to have more contacts so that one can seek help when necessary (or "just in case"). 
+Hence, we decided to give users full control over their contacts (even the to-be-deleted module's related tag will not be deleted, so that users can keep track of a contact's related modules).
+
+Similar to the previous module edit, one clear drawback of implementing this behavior is it will complicate the app's logic and make the app more bug-prone.
+
+**After having considered all the pros & cons, we have decided to implement this feature so that the user can have the best possible User Experience!**
+
+----
+
+**Allow users to use mouse to click on tabs**
+
+_This feature is one of the most debated features in our team._ 
+
+We are well aware of the module's constraints that the app must be optimized for CLI. 
+
+Yet, 5 todo-apps have been studied by our team (macOS's reminders, Microsoft To Do, Todoist, OmniFocus) and we found all of these apps only have one way to change tabs, and it is by clicking on them. 
+Although forcing users to use CLI to change tab can be easily implemented, it will make the app unintuitive to most users (except CLI gurus), and hence **cannot attract new users** to change to our new app from their old apps(of which they are so used to clicking on tabs). 
+
+Also, even for CLI gurus, typing something like `switch CS2030` to switch to a new tab while it can be done with just a single click is not something we think they will do. 
+
+One last reason is that we think it's very convenient for users to use mouse to click on various different tabs in during a short period to just get a sense of upcoming tasks & lessons and related contacts to help them. This "fast jump between tabs" cannot be done by CLI.
+
+----
+
+**Edit/Delete contacts/lessons/tasks by Index**
+
+|  | Pros | Cons |
+| ---- | ----- | ------- |
+| **Option 1 (current choice):** Use Index to edit/delete | Very "intuitive" for users, they can use the index being displayed to edit/delete the entity they need to | Cannot delete contacts from the upcoming tab. There is no concrete Id for tasks/lessons/contacts, theirs Ids (in this case: index) depends on their position in the current tab|
+| **Option2:** Assign each contact/lesson/task a concrete Id | Each entity is associated with only one Id, can edit/delete anywhere in the app | Force users to remember long sequences of Ids and hence create a mental burden everytime they want to edit/delete an entity |
+
+**We have chosen the 1st option to make users feel comfortable using our app**
+
+----
+**Unified command syntax**
+
+We have put in a lot of effort to make the command syntax unified, means that all commands have very similar syntax. They can be observed from the following tables:
+
+| Command | Format |
+| -- | -------- |
+| add module | `M add m/CODE n/NAME` | 
+| add lesson | `L add m/CODE t/TYPE d/DATE a/ADDRESS` | 
+| add task | `T add n/NAME d/DATE [m/CODE] [r/REMARK]` | 
+| add contact | `C add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]...` | 
+
+| Command | Format |
+| -- | -------- |
+| edit module | `M edit CODE [m/NEW_CODE] [n/NAME]` | 
+| edit lesson | `L edit INDEX [m/CODE] [t/TYPE] [d/DATE] [a/ADDRESS]` | 
+| edit task | `T edit INDEX [n/NAME] [d/DATE] [m/CODE] [r/REMARK]` | 
+| edit contact | `C edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...` |
+
+| Command | Format |
+| -- | -------- |
+| delete module | `M delete CODE` | 
+| delete lesson | `L delete INDEX` |
+| delete task | `T delete INDEX` | 
+| delete contact | `C delete INDEX` | 
+
+| Command | Format |
+| -- | -------- |
+| help | `help` |
+| exit | `exit` |
+
+This will relieve our users from the mental burden of having to remember different syntax for different commands. Although there are only 14 commands to get used to, having to remember all 14 of them will be a huge barrier for our new potential users and also, it will put an unnecessary mental burden on the users of our app.
+
+----
+
+**Other small feature considerations**
+
+|  | Rationale |
+| ---- | ----- |
+| No limit on length of phone number | We have looked at Android's and iOS's contact app and no app imposes limits on the length of phone number |
+| Only basic validation of email address | We believe that the app should only prevent user from accidentally entering phone number/name inside the email field (to provide additional convenience). It's challenging to valid the validity of email (need to check if the domain exists...) yet it's unnecessary since it's the user's own benefits to input valid emails |
+| Minimal restriction on lessons' time | We believe that the app should provide users full control over their schedule (for example overlapping lesson time) to cater to a wide range of different users' needs. Moreover, it's the user's own benefits to input maintain a correct lesson schedule |
+| Edit/Delete modules by code | Editing/Deleting modules is an action that users will rarely do (maybe a few times every semester). We believe the UI shouldn't be cluttered by some info that users will only need once every semester, so we have decided to omit the Index for modules to make the UI cleaner | 
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **4. Implementation** <a name="implementation"></a>
+
+This section describes some noteworthy details on how certain features are implemented.
+
+### 4.1 **Module Manager** <a name="module-manager"></a>
 
 TrackIt@NUS allows users to keep track of all modules that he/she is taking. Module (or more exactly module's code) is
- the link between Lesson, Task and Contact. The following diagram illustates their relationship:
+ the link between Lesson, Task and Contact. The following diagram illustrates their relationship:
  
 ![Module link](images/ModuleLink.png)
      
- :information_source: The module code needs to begin with 2-3 captial letters, then exactly 4 digits, then follows by
-  an optional captial letter. The module name must not be empty and doesn't contain character "/"
+ :information_source: The module code needs to begin with 2-3 capital letters, then exactly 4 digits, then follows by
+  an optional capital letter. The module name must not be empty and doesn't contain character "/"
       
  :information_source: modules are allowed to have the same name, as long as they have different codes
  
@@ -318,7 +456,7 @@ TrackIt@NUS allows users to keep track of all modules that he/she is taking. Mod
  * `M delete CS2030` to delete the CS2030 module
  
 
-#### Current Implementation
+#### 4.1.1 Current Implementation
 
 In this section, we will outline the key operations of the Module Manager, namely:
 * `AddModuleCommand`
@@ -343,14 +481,14 @@ In this section, we will use the following Activity Diagram to outline the parse
 ![Activity diagram for Add Module Command](images/AddModuleCommandActivityDiagram.png)
 
 When the user enters the `M add m/CODE n/NAME` command to add a new module, the user input command undergoes the same command parsing as described in 
-[Section 3.3 Logic Component](#33-logic-component). If the parse process is successful, a `AddModuleCommand` will be returned an its `execute` method will be called
+[Section 3.3 Logic Component](#33-logic-component). If the parse process is successful, a `AddModuleCommand` will be returned an its `execute` method will be called.
 
-The following steps will describe the execution of the `AddModuleCommand` in detail, assuming that no errors are encountered.
+The following steps will describe the execution of the `AddModuleCommand` in detail, assuming no errors are encountered.
 1. The `Model`'s `hasModule(code)` is called. If it returns `true`, a `CommandException` will be thrown.
 2. The `Model`'s `canAddMoreModule()` is called. If it returns `true`, a `CommandException` will be thrown.
 3. The `Model`'s `addModule()` is called to add the module from TrackIt
 4. The `Ui` component will detect this change and update the GUI.
-5. Assuming that the above steps are all successful, the `AddModuleCommand` will then create a `CommandResult` object and return the result.
+5. Assuming the above steps are all successful, the `AddModuleCommand` will then create a `CommandResult` object and return the result.
 
 The following Sequence Diagram will illustrate the above steps in greater detail :
 
@@ -361,9 +499,9 @@ In this section, we will use the following Activity Diagram to outline the parse
 ![Activity diagram for Delete Module Command](images/DeleteModuleCommandActivityDiagram.png)
 
 When the user enters the `M delete CODE` command to delete a module, the user input command undergoes the same command parsing as described in 
-[Section 3.3 Logic Component](#33-logic-component). If the parse process is successful, a `DeleteModuleCommand` will be returned an its `execute` method will be called
+[Section 3.3 Logic Component](#logic). If the parse process is successful, a `DeleteModuleCommand` will be returned an its `execute` method will be called.
 
-The following steps will describe the execution of the `DeleteModuleCommand` in detail, assuming that no errors are encountered.
+The following steps will describe the execution of the `DeleteModuleCommand` in detail, assuming no errors are encountered.
 1. The `Model`'s `getModule(code)` is called and it will return an Optional<Module> to delete. If the returned optional is empty, a `CommandException` will be thrown.
 2. The `Model`'s `getModuleTasks()` is called to get the list of tasks that are associated with the module. 
 3. For each task received from the above step, the `Model`'s `deleteTask()` will be called to delete the task from TrackIt
@@ -371,7 +509,7 @@ The following steps will describe the execution of the `DeleteModuleCommand` in 
 5. For each lesson received from the above step, the `Model`'s `deleteLesson()` will be called to delete the lesson from TrackIt
 7. The `Model`'s `deleteModule()` is called to delete the module from TrackIt
 8. The `Ui` component will detect this change and update the GUI.
-9. Assuming that the above steps are all successful, the `DeleteModuleCommand` will then create a `CommandResult` object and return the result.
+9. Assuming the above steps are all successful, the `DeleteModuleCommand` will then create a `CommandResult` object and return the result.
 
 The following Sequence Diagram will illustrate the above steps in greater detail :
 
@@ -382,9 +520,9 @@ In this section, we will use the following Activity Diagram to outline the parse
 ![Activity diagram for Edit Module Command](images/EditModuleCommandActivityDiagram.png)
 
 When the user enters the `M edit CODE` command to edit a module, the user input command undergoes the same command parsing as described in 
-[Section 3.3 Logic Component](#33-logic-component). If the parse process is successful, a `EditModuleCommand` will be returned an its `execute` method will be called
+[Section 3.3 Logic Component](#logic). If the parse process is successful, a `EditModuleCommand` will be returned an its `execute` method will be called.
 
-The following steps will describe the execution of the `EditModuleCommand` in detail, assuming that no errors are encountered.
+The following steps will describe the execution of the `EditModuleCommand` in detail, assuming no errors are encountered.
 1. The `Model`'s `getModule(code)` is called and it will return an Optional<Module> to edit. If the returned optional is empty, a `CommandException` will be thrown.
 2. The `Model`'s `createEditedModule` is called to create the new `editedModule` to replace the old `Module`
 3. If `editedModule` is equal to the old `Module`, a `CommandException` will be thrown.
@@ -398,13 +536,13 @@ The following steps will describe the execution of the `EditModuleCommand` in de
     6. For each contact in the above step, a `newContact` is created by deleting the old `code` from the set of tags and add in the new `code`, then `Model`'s `setContact()` is called to replace `oldContact` with `newContact`
 7. The `Model`'s `setModule()` is called to edit the module from TrackIt
 8. The `Ui` component will detect this change and update the GUI.
-9. Assuming that the above steps are all successful, the `EditModuleCommand` will then create a `CommandResult` object and return the result.
+9. Assuming the above steps are all successful, the `EditModuleCommand` will then create a `CommandResult` object and return the result.
 
 The following Sequence Diagram will illustrate the above steps in greater detail :
 
 ![Edit Module Sequence Diagram](images/EditModuleSequenceDiagram.png)
 
-### **4.3. Lesson Manager** <a name="lesson-manager"></a>
+### **4.2. Lesson Manager** <a name="lesson-manager"></a>
 
 TrackIt@NUS allows users to keep track of their weekly lessons. The lesson manager is one of TrackIt@NUS's basic components.
 
@@ -417,16 +555,16 @@ The common commands for the lesson manager include:
 TrackIt@NUS also gives users a better understanding of their lessons by allowing users to view lessons in certain 
 categories. Users can view lessons specific to a module and lessons on a specific day.
 
- #### Rationale
+#### 4.2.1 Rationale <a name="lesson-manager-rationale"></a>
  
- Lessons are an integral part of any student's day-to-day life. Hence, TrackIt@NUS includes a lesson manager for students to 
+Lessons are an integral part of any student's day-to-day life. Hence, TrackIt@NUS includes a lesson manager for students to 
  keep track of their lessons. Each lesson must belong to a unique module. When users click into a specific module tab, 
  they can see the lessons belonging to that module.
    
-:warning: The module must exist (i.e. there must be a module with the specified `MODULE_CODE`), otherwise, the `add` and
+:warning: The module must exist (i.e. there must be a module with the specified `CODE`), otherwise, the `add` and
  `edit` commands will not work.
  
- #### Current Implementation
+#### 4.2.2 Current Implementation <a name="lesson-manager-implementation"></a>
  
  In this section, we will outline the key operations of the Lesson Manager, namely:
  * `AddLessonCommand`
@@ -493,7 +631,7 @@ categories. Users can view lessons specific to a module and lessons on a specifi
  
  ![Get Module Lessons Sequence Diagram](images/GetModuleLessonsSequenceDiagram.png)
 
-### **Task Manager** <a name="task-manager"></a>
+### 4.3 **Task Manager** <a name="task-manager"></a>
 
 TrackIt@NUS allows users to keep track of his/her tasks. The task manager is one of TrackIt@NUS's basic components.
 
@@ -507,7 +645,7 @@ TrackIt@NUS also gives users a better understanding of their tasks by allowing u
  categories. Users can view overdue tasks, tasks on a specific day, future tasks (tasks that have deadlines more than
   a week away), and specific module tasks.
  
- #### 4.4.1 Rationale <a name="task-manager-rationale"><a/>
+#### 4.3.1 Rationale <a name="task-manager-rationale"><a/>
  
  Tasks are an integral part of any student's day-to-day life. Hence, TrackIt@NUS includes a task manager for students to 
  keep track of all their tasks. To better support NUS students, a task can either belong to a module or not. When
@@ -522,7 +660,7 @@ TrackIt@NUS also gives users a better understanding of their tasks by allowing u
  
 :bulb: To remove a task from a module, simply type `T edit INDEX m/` (use the `m/` prefix but leave the `CODE` parameter empty).
 
-#### 4.4.2 Current Implementation <a name="task-manager-implementation"><a/>
+#### 4.3.2 Current Implementation <a name="task-manager-implementation"><a/>
 
 In this section, we will outline the key operations of the Task Manager, namely:
 * `AddTaskCommand`
@@ -592,7 +730,7 @@ This is the sequence diagram of `getModuleTasks`.
 `getOverdueTasks`, `getDayUpcomingTasks`, and `getFutureTasks` are all implemented in very similar ways. In fact, the
  only differences are the predicates used.
 
-#### Design Considerations
+#### 4.3.3 Design Considerations <a name="task-manager-design"><a/>
 
 As mentioned, a task may or may not belong to a module. In the case it does not, we store the module code as
  null. A task also may or may not have a remark. In the case it does not, we store the remark as the empty
@@ -605,7 +743,7 @@ The original AB3 implementation of edit commands, which would default to the ori
  field was null, would not be sufficient. Hence, we added 2 additional boolean variables - `isRemarkChanged` and
   `isCodeChanged`, to know whether users wanted to remove the existing module code or remark.
  
-### **Contact Manager** <a name="contact-manager"></a>
+### 4.4 **Contact Manager** <a name="contact-manager"></a>
 
 TrackIt@NUS allows users to manage their contacts. The contact manager is one of TrackIt@NUS's basic components.
 
@@ -617,7 +755,7 @@ The common commands for the contact manager include:
  
 We will also elaborate on one more key operation that is used in the module tabs, namely `getModuleContacts`.
  
- #### Rationale
+#### 4.4.1 Rationale <a name="contact-manager-rationale"></a>
  
  Managing contacts is an essential part of any student's life. Hence, TrackIt@NUS includes a contact manager for students to 
  keep track of all their contacts. To better support NUS students, a contact can hold any number (can be 0) of tags. If a tag matches 
@@ -625,7 +763,7 @@ We will also elaborate on one more key operation that is used in the module tabs
     
 :bulb: To remove all tags from a contact, simply type `C edit INDEX t/` (use the `t/` prefix but do not provide any tag).
 
-#### Current Implementation
+#### 4.4.2 Current Implementation <a name="contact-manager-implementation"></a>
 
 In this section, we will outline the key operations of the Contact Manager, namely:
 * `AddContactCommand`
@@ -690,7 +828,7 @@ This is the sequence diagram of `getModuleContacts`.
 
 ![Get Module Contacts Sequence Diagram](images/GetModuleContactsSequenceDiagram.png)
 
-#### Design Considerations
+#### 4.4.2 Design Considerations <a name="contact-manager-design"></a>
 
 A number of fields in a contact (namely phone number and e-mail address) are optional. In the case they are not specified, 
  we store them as null. Similar to tasks, we wanted users to be able to remove any optional field simply by 
@@ -702,7 +840,7 @@ The original AB3 implementation of edit commands, which would default to the ori
  field was null, would not be sufficient. Hence, we added 2 additional boolean variables - `isPhoneChanged` and 
   `isEmailChanged`, to know whether users wanted to remove the existing phone number and/or e-mail address.
 
-### 4.6 **Logging** <a name="logging"></a>
+### 4.5 **Logging** <a name="logging"></a>
 
 * We are using `java.util.logging` package for logging.
 * The `LogsCenter` class is used to manage the logging levels and logging destinations
@@ -712,14 +850,14 @@ The original AB3 implementation of edit commands, which would default to the ori
  [Configuration](#config) for more info)
 * When choosing a level for a log message, follow the conventions stated below
 
-#### Logging Levels
+#### 4.5.1 Logging Levels <a name="logging-levels"></a>
 
 * `SEVERE`: A critical problem detected which may cause the termination of the application
 * `WARNING`: Can continue, but with caution
 * `INFO`: Information showing the noteworthy actions by the App
 * `FINE`: Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size
 
-### **4.7. Configuration** <a name="config"></a>
+### **4.6. Configuration** <a name="config"></a>
 
 Certain properties of the application can be controlled (e.g user preferences file location, logging level) through the configuration file (default: `config.json`).
 
@@ -1284,7 +1422,7 @@ Extensions:
 3.  A user should be able to easily see why their commands are invalid
 4.  The app should be able to run with or without internet connection
 5.  The app should not require user to install
-6.  Features implemented should be easily testable by manual testing, and possisble to be tested by automated testing.
+6.  Features implemented should be easily testable by manual testing, and possible to be tested by automated testing.
 7.  The UI of the app makes users comfortable using it
 8.  Users of the app find the app intuitive and easy to use
 9.  The app should be able to save data locally
@@ -1293,6 +1431,7 @@ Extensions:
 12. The app should not crash in the event of invalid user input
 
 ## **Appendix E: Glossary** <a name="appen-e"></a>
+
 | **Term** | **Explanation** |
 | --------- | --------------- |
 | **Mainstream OS** <a name="oop"></a> | Windows, Linux, Unix, OS-X |
@@ -1301,7 +1440,7 @@ Extensions:
 | **Facade Pattern** <a name="facade-p"></a> | A structural design pattern that provides a simplified (but limited) interface to a complex system of classes, library or framework. While decreasing the overall complexity of the application, it also helps to move unwanted dependencies to one place. |
 | **Command Pattern** <a name="command-p"></a>: | A Design Pattern that lets you encapsulate actions within Java classes. Of which, each class has an `execute()` method which is declared in the Command interface the class implements. |
 | **Command Line Interface (CLI)** <a name="cli"></a> | A text based user interface to view and manage computer files. |
-| **Graphical User Interface (GUI)** <a name="gui"></a> | A form of user interface that allows users to interact with electronic devices through graphical icons and audio indicator such as primary notation, instead of text-baed user interfaces. |
+| **Graphical User Interface (GUI)** <a name="gui"></a> | A form of user interface that allows users to interact with electronic devices through graphical icons and audio indicator such as primary notation, instead of text-based user interfaces. |
 | **JavaFX** <a name="javafx"></a> | A software platform for creating and delivering desktop applications, as well as rich Internet applications (RIAs) that can run across a wide variety of devices. |
 | **JavaScript Object Notation** <a name="json"></a> | A lightweight data-interchange format which is easily readable and writable. |
 | **Prefix** <a name="prefix"></a> | The term that comes before each parameter in the command. For example, the prefix in `n/NAME` is `n/`. |
@@ -1348,10 +1487,10 @@ Given below are instructions to test the app manually.
 1. Adding a lesson to a module:
     1. Prerequisites: 
         1. Arguments are valid and compulsory parameters are provided <br><br>
-        2. The module must exist (the module code must belong to a an existing module) <br><br>
+        2. The module must exist (the module code must belong to an existing module) <br><br>
         3. The type must be one of `lec/lecture`, `tut/tutorial`, `lab/laboratory`, `rec/recitation`, or `sec
         /sectional` <br><br>
-        4. The date provided must of the form `Day HH:mm-HH:mm` <br><br>
+        4. The date provided must have the form `Day HH:mm-HH:mm` <br><br>
         5. The start time of the date must be earlier than the end time <br><br>
         6. The address provided cannot be longer than 20 characters <br><br>
     2. Test Case: `L add m/CS1101S t/Lab d/Fri 16:00-18:00 a/COM1-0215` <br>
@@ -1379,7 +1518,7 @@ Given below are instructions to test the app manually.
 2. Adding a task to a module
     1. Prerequisites:
         1. Arguments are valid and compulsory parameters are provided <br><br>
-        2. The module must exist (the module code must belong to a an existing module) <br><br>
+        2. The module must exist (the module code must belong to an existing module) <br><br>
     2. Test Case: `T add n/Do Assignment d/12/12/2020 m/CS1101S` <br>
     Expected: Adds a task by the name `Do Assignment` to the `CS1101S` module <br><br>
     3. Test Case: `T add n/Do Tutorial d/12/12/2020 m/CS1101S r/Check first 3 questions` <br>
@@ -1424,9 +1563,9 @@ Given below are instructions to test the app manually.
 1. Editing a Lesson
     1. Prerequisites: 
         1. Arguments are valid and compulsory parameters are provided <br><br>
-        2. The module must exist (the module code must belong to a an existing module) <br><br>
+        2. The module must exist (the module code must belong to an existing module) <br><br>
         3. The type must be one of `lec/lecture`, `tut/tutorial`, `lab/laboratory`, `rec/recitation`, or `sec/sectional` <br><br>
-        4. The date provided must of the form `Day HH:mm-HH:mm` <br><br>
+        4. The date provided must have the form `Day HH:mm-HH:mm` <br><br>
         5. The start time of the date must be earlier than the end time <br><br>
         6. The address provided cannot be longer than 20 characters <br><br>
         7. The index provided must be a lesson index seen on the current window <br><br>
@@ -1454,7 +1593,7 @@ Given below are instructions to test the app manually.
     4. Test Case: `T edit -1` <br>
     Expected: An error message about the invalid task index is shown <br><br>
 2. Editing a Task to change or remove the module code
-    1. Prerequisites: The module must exist (the module code must belong to a an existing module) <br><br>
+    1. Prerequisites: The module must exist (the module code must belong to an existing module) <br><br>
     1. Test Case: `T edit 1 m/MA1101R` <br>
     Expected: The first task in the current window changes to belong to `MA1101R`, unless it originally belonged to
      `MA1101R` (in which case an error message is shown) <br><br>
@@ -1490,7 +1629,7 @@ Given below are instructions to test the app manually.
 ### Deleting a Module
 
 1. Deleting a Module
-    1. Prerequisites: The module must exist (the module code must belong to a an existing module) <br><br>
+    1. Prerequisites: The module must exist (the module code must belong to an existing module) <br><br>
     2. Test Case: `M delete CS2030S` <br>
     Expected: The module `CS2030S` is deleted <br><br>
     3. Test Case: `M delete cs2030s` <br>
@@ -1533,19 +1672,19 @@ Given below are instructions to test the app manually.
 
 1. Changes the tab
     1. Test Case: Click on the Upcoming tab <br>
-    Expected: Switches the Upcoming tab. Upcoming tab is highlighted in the sidebar <br><br>
+    Expected: Switches the Upcoming tab. The upcoming tab is highlighted in the sidebar <br><br>
     2. Test Case: Click on the Contacts tab <br>
     Expected: Switches to the Contacts tab. Contacts tab is highlighted in the sidebar <br><br>
     3. Test Case: Click on any of the module tabs <br>
     Expected: Switches to the module tab that was clicked. The specific module tab is highlighted in the sidebar <br><br>
     4. Test Case: Click on the Help tab <br>
-    Expected: Switches the Help tab. Help tab is highlighted in the sidebar
+    Expected: Switches the Help tab. Help tab is highlighted in the sidebar.
     
 ### Exiting the Program
 1. Exiting the Program
     1. Test Case: `exit` <br>
     Expectation: Exits the program <br><br>
-    2. Test Case: Click on the red cross on at the top left corner of TrackIt@NUS <br>
+    2. Test Case: Click on the red cross at the top left corner of TrackIt@NUS <br>
     Expectation: Exits the program
     
 
@@ -1560,3 +1699,5 @@ The team has put in a tremendous amount of effort to this project, with a single
 When we first start the project, we were quite surprised that the app must be optimized for CLI, which is not a
  common thing for most of the commercial apps nowadays
  
+--------------------------------------------------------------------------------------------------------------------
+![Logo](images/UG/trackit-footer.png)

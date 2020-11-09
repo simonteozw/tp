@@ -42,9 +42,8 @@ public final class EditContactCommand extends Command {
         + "[" + PREFIX_PHONE + "PHONE] "
         + "[" + PREFIX_EMAIL + "EMAIL] "
         + "[" + PREFIX_TAG + "TAG]...\n"
-        + "Example: " + Contact.TYPE + " " + COMMAND_WORD + " 1 "
-        + PREFIX_PHONE + "91234567 "
-        + PREFIX_EMAIL + "johndoe@example.com";
+        + "Example: " + Contact.TYPE + " " + COMMAND_WORD + " 2 "
+        + PREFIX_NAME + "Johnny Depp";
 
     private final Index index;
     private final EditContactDescriptor editContactDescriptor;
