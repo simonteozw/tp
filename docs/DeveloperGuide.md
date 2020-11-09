@@ -31,7 +31,7 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
         * 4.4.2 [Current Implementation](#contact-manager-implementation)
         * 4.4.3 [Design Considerations](#cotnact-manager-design)
     * 4.5. [Logging](#logging)
-        * 4.5.1 [Loggin Levels](#logging-levels)
+        * 4.5.1 [Logging Levels](#logging-levels)
     * 4.6. [Configuration](#config)
 5. [**Documentation**](#documentation)
 6. [**Testing**](#testing)
@@ -937,7 +937,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Navigation
 ```
 Use case: UC01 - Viewing the Upcoming tab
-Actor: User
 
 MSS:
    1.  User requests to go to the Upcoming tab
@@ -946,7 +945,6 @@ MSS:
 ```
 ```    
 Use case: UC02 - Viewing the Contacts tab
-Actor: User
 
 MSS:
    1.  User requests to go to the Contacts tab
@@ -955,7 +953,6 @@ MSS:
 ```
 ```
 Use case: UC03 - Viewing the Help tab
-Actor: User
 
 MSS:
    1.  User requests to view the help tab
@@ -964,7 +961,6 @@ MSS:
 ```
 ```
 Use case: UC04 - Going to a different tab
-Actor: User
 
 MSS:
    1.  User requests to go to a different tab
@@ -973,7 +969,6 @@ MSS:
 ```
 ```
 Use case: UC05 - Exiting the App
-Actor: User
 
 MSS:
    1.  User requests to exit the app
@@ -984,7 +979,6 @@ MSS:
 
 ```
 Use Case: UC06 - Adding a Module
-Actor: User
 
 Preconditions: Module must not already exist in the app.
 Guarantees: Updated module list with the requested module added.
@@ -1009,7 +1003,6 @@ Extensions
 ```
 ```
 Use Case: UC07 - Editing a Module
-Actor: User
 
 Preconditions: Module must exist in the app.
 Guarantees: Updated module list with the requested module edited.
@@ -1034,7 +1027,6 @@ Extensions:
 ```
 ```
 Use Case: UC08 - Deleting a Module
-Actor: User
 
 Preconditions: Module must exist in the app.
 Guarantees: Updated module list with the requested module removed.
@@ -1053,7 +1045,6 @@ Extensions:
 
 ```
 Use Case: UC09 - Adding a Lesson
-Actor: User
 
 Preconditions: Module must exist in the app.
 Guarantees: Updated lesson list with the requested lesson added.
@@ -1086,7 +1077,6 @@ Extensions:
 ```      
 ```
 Use Case: UC10 - Editing a Lesson
-Actor: User
 
 Preconditions: Lesson must exist in the app.
 Guarantees: Updated lesson list with the requested lesson edited.
@@ -1127,7 +1117,6 @@ Extensions
 ```
 ```
 Use Case: UC11 - Deleting a Lesson
-Actor: User
 
 Preconditions: Lesson must exist in the app.
 Guarantees: Updated lesson list with the requested lesson removed.
@@ -1138,16 +1127,15 @@ MSS:
    Use case ends.
   
 Extensions:  
-   1g. The requested lesson does not exist (provided index is invalid)
-      1g1. TrackIt@NUS shows an error message
+   1a. The requested lesson does not exist (provided index is invalid)
+      1a1. TrackIt@NUS shows an error message
       Use case resumes at step 1.
 ```
 ```
-Use Case: UC12 - View a module's lessons
-Actor: User
+Use Case: UC12 - View the lessons for a module
 
 Preconditions: Module must exist in the app.
-Guarantees: Show's all the module's lessons.
+Guarantees: Show all the module's lessons.
  
 MSS:
    1.  User views a module's page
@@ -1160,14 +1148,14 @@ Extensions
       Use case ends.
       
    1b. The given module does not have any lessons
-      1b1. TrackIt@NUS shows no lessons
+      1b1. Module page shows no lessons
       Use case resumes at step 1.
 ```
 ```
 Use Case: UC13 - View a certain day's lessons
-Actor: User
 
 Guarantees: Shows a certain day's lessons.
+
 MSS:
    1.  User views the Upcoming tab
    2.  TrackIt@NUS shows every day's lessons for the next week
@@ -1182,7 +1170,6 @@ Extensions:
 ### Task
 ```
 Use Case: UC14 - Adding a Task
-Actor: User
 
 Preconditions: Requested task does not currently exist in the app.
 Guarantees: Updated task list with the requested task added.
@@ -1208,11 +1195,9 @@ Extensions
 ```
 ```
 Use Case: UC15 - Adding a Task to a Module
-Actor: User
 
 Preconditions: Module must exist in the app.
 Guarantees: Updated task list with the requested task added.
-
 
 MSS:
    1.  User requests to add a task to a specific module
@@ -1234,14 +1219,13 @@ Extensions:
 ```
 ```
 Use Case: UC16 - Editing a Task
-Actor: User
 
 Preconditions: Task exists in the app.
 Guarantees: Updated task list with the requested task edited.
 
 MSS:
    1.  User requests to edit a task
-   2.  TrackIt@NUS edits he requested task
+   2.  TrackIt@NUS edits the requested task
    Use case ends.
     
 Extensions:
@@ -1258,10 +1242,9 @@ Extensions:
       Use case resumes at step 1.
 ```    
 ```
-Use Case: UC16 - Editing a Task to belong to another Module
-Actor: User
+Use Case: UC17 - Editing a Task to belong to another Module
 
-Preconditions: Module exists in the app.
+Preconditions: Task exists in the app, Module exists in the app.
 Guarantees: Updated task list with the requested task's module field changed.
 
 MSS:
@@ -1275,11 +1258,9 @@ Extensions:
       Use case resumes at step 1.
 ```
 ```
-Use Case: UC17 - Editing a Task not to belong to any Module
-Actor: User
+Use Case: UC18 - Editing a Task not to belong to any Module
 
 Preconditions: Task exists in the app.
-
 Guarantees: Updated task list with the requested task not belonging to any module.
 
 MSS:
@@ -1289,12 +1270,11 @@ MSS:
 
 Extensions:
    1a. The edited task already exists in the app
-      1c1. TrackIt@NUS shows an error message
+      1a1. TrackIt@NUS shows an error message
       Use case resumes at step 1.
 ```
 ```
-Use Case: UC17 - Deleting a Task
-Actor: User
+Use Case: UC19 - Deleting a Task
 
 Preconditions: Task exists in the app.
 Guarantees: Updated task list with the requested task removed.
@@ -1310,8 +1290,7 @@ Extensions:
       Use case resumes at step 1.
 ```        
 ```
-Use Case: UC18 - View a day's Tasks
-Actor: User
+Use Case: UC20 - View a day's Tasks
 
 Guarantees: Show's all that day's tasks.
 
@@ -1326,8 +1305,7 @@ Extensions:
       Use case ends.
 ```
 ```
-Use Case: UC19 - Viewing a Module's Task
-Actor: User
+Use Case: UC21 - Viewing a Module's Tasks
 
 Preconditions: Module exists in the app.
 Guarantees: Shows all the tasks that belong the specified module.
@@ -1348,8 +1326,7 @@ Extensions:
 ```
 ### Contact
 ```
-Use Case: UC20 - Adding a Contact
-Actor: User
+Use Case: UC22 - Adding a Contact
 
 Preconditions: Contact must not already exist in the app.
 Guarantees: Updated contact list with the requested contact added.
@@ -1361,7 +1338,7 @@ MSS:
   
 Extensions:  
    1a. The requested contact already exists in the app
-      1.a.1 TrackIt@NUS shows an error message
+      1a1. TrackIt@NUS shows an error message
       Use case resumes at step 1.
       
    1b. The provided name is invalid (wrong format)
@@ -1377,8 +1354,7 @@ Extensions:
       Use case resumes at step 1.
 ```     
 ```
-Use Case: UC21 - Editing a Contact
-Actor: User
+Use Case: UC23 - Editing a Contact
 
 Preconditions: Contact must exist in the app.
 Guarantees: Updated contact list with the requested contact edited.
@@ -1401,13 +1377,12 @@ Extensions:
       1c1. TrackIt@NUS shows an error message
       Use case resumes at step 1.
       
-   1c. The provided phone number is invalid (wrong format)
-      1c1. TrackIt@NUS shows an error message
+   1d. The provided phone number is invalid (wrong format)
+      1d1. TrackIt@NUS shows an error message
       Use case resumes at step 1.
 ```
 ```
-Use Case: UC22 - Deleting a Contact
-Actor: User
+Use Case: UC24 - Deleting a Contact
 
 Preconditions: Contact must exist in the app.
 Guarantees: Updated contact list with the requested contact removed.
@@ -1424,8 +1399,7 @@ Extensions:
       Use case resumes at step 1.
 ```
 ```
-Use Case: UC23 - View a Module's Contacts
-Actor: User
+Use Case: UC25 - View a Module's Contacts
 
 Preconditions: Module must exist in the app.
 Guarantees: Shows all contacts associated with the requested module
