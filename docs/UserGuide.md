@@ -100,12 +100,13 @@ There are many things you can use TrackIt@NUS for. We have structured this docum
 Since **TrackIt@NUS** is a *CLI* application, knowing how to use commands is important. The following section shows you how to interpret and use commands in the app. All commands follow similar formats as outlined below and examples will be provided to help you understand their usage. Examples of commands and their formats will be written in `code-blocks`.
 
 The table below explains some important technical terms. An example will be provided to help you visualize these terms.
+
 | **Technical Term** | **Explanation** |
-| ------------------ | --------------- |
+| --------- | --------------- |
 | Command type | Depending on whether you are dealing with a Module, Task, Lesson or Contact, the type is `M`, `T`, `L` or `C` respectively. |
 | Command word | The first word of the command. It determines the action the app should carry out. |
 | Parameter | The word or group of words following the command word. They are values given to a command to perform the specified action. |
-| Prefix | 	The word that at the start of a parameter. It distinguishes one parameter from another.|
+| Prefix | 	The word that at the start of a parameter. It distinguishes one parameter from another. |
 
 <br>Example: `M add m/CODE n/MODULE_NAME`<br>
 <br>Breakdown:<br>
@@ -132,7 +133,7 @@ You can specify the same parameter more than once in each command. Depending on 
  
  | **Parameter** | **Explanation** | **Example** |
  | -------------| ---------------- | ----------- |
- |Could be used multiple times| **All occurrences** will be used when executing the command|In the `add contact`command, you can create a contact with **multiple tags.**<br><br>You can input multiple tags by chaining them:<br>`t/CS1101S t/TA`<br><br>This will give a contact these tags.|
+ |Could be used multiple times| **All occurrences** will be used when executing the command|In the `add contact`command, you can create a contact with **multiple tags.**<br><br>You can input multiple tags by chaining them:<br>`t/CS1101S t/TA`<br><br>This will give a contact these tags. |
  | Can only be used once | Only the **last occurrence** will be used when executing the command. | On executing `M add m/CS2103T n/Favourite Mod n/Software Engineering`, you will create a module with the name `Software Engineering`, and the name `SE` will be ignored. | 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -210,10 +211,11 @@ Module is the first thing you need to create when you start using the app, becau
 
 ### 5.1.1 Module Command Parameters <a name="module-command-parameter"></a>
 Here are the parameters used in the Module feature:
+
 | **Parameter** | **Description** | **Example** |
-| --------------| ----------------| ----------- |
-| `CODE`| Refers to the unique code given to the module. | `CS2103T` |
-| `NAME`| Refers to the module name. | `Software Engineering` |
+| -------------- | ---------------- | ----------- |
+| `CODE` | Refers to the unique code given to the module. | `CS2103T` |
+| `NAME` | Refers to the module name. | `Software Engineering` |
 
 ### 5.1.2 Add a Module `M add` <a name="module-add"></a>
 
@@ -295,10 +297,11 @@ You can also perform commands on the lessons as explained below.
 
 ### 5.2.1 Lesson Command Parameters <a name="lesson-command-parameters"></a>
 Here are the parameters used in the Module feature:
+
 | **Parameter** | **Description** | **Example** |
 | --------------| ----------------| ----------- |
 | `INDEX` | Indicates the position of an item in a list. The specified `INDEX` must be **within the range** of the number of items in the list. | `1` refers to the first item in a list |
-| `CODE`| Refers to the unique code given to the module.<br><br>You can personalise this and give it your own code. However, we recommend you use the module’s official code. | `CS2103T` |
+| `CODE` | Refers to the unique code given to the module.<br><br>You can personalise this and give it your own code. However, we recommend you use the module’s official code. | `CS2103T` |
 | `TYPE` | Refers to the type of lesson.| `lecture`/`lec` - lecture<br>`tutorial`/`tut` - tutorial<br>`laboratory`/`lab` - laboratory<br>`recitation`/`rec` - recitation<br>`sectional`/`sec` - sectional |
 | `DATE` | Indicates the weekly timing of a lesson. Must be in `ddd H:mm-H:mm` and 24-hour time format. | `mon 12:00-14:00` |
 | `ADDRESS` | Indicates where a lesson is held.<br> :information_source: unfortunately, Zoom links are still not supported. Refer to [FAQ](#faq) for more details. | `COM1-0215` |
@@ -339,6 +342,7 @@ Format: `L edit INDEX [m/CODE] [t/TYPE] [d/DATE] [a/ADDRESS]`
 however, at least one parameter must be provided (i.e. `L edit 1` is not a valid command).
 
 Example: To change the lesson timing to 5pm-6pm, follow these instructions. 
+
 | **Parameter** | **Example** |
 |---------------|-|
 | `INDEX` | `1` |
@@ -386,6 +390,7 @@ You can also perform commands on the tasks as explained below.
 
 ### 5.3.1 Task Command Parameters <a name="task-command-parameters"></a>
 Here are the parameters used in the Task feature:
+
 | **Parameter** | **Description** | **Example** |
 | --------------| ----------------| ----------- |
 | `INDEX` | Indicates the position of an item in a list. The specified `INDEX` must be **within the range** of the number of items in the list. | `1` - refers to the first item in a list |
@@ -402,6 +407,7 @@ After a day of school you realise that you now have a few more tasks to complete
 Format: `T add n/NAME d/DATE [m/CODE] [r/REMARK]`
 
 Example: To add a task "MA1101R Assignment 1 due on 1 November 2020, covering Chapters 1-3" into TrackIt@NUS, follow these instructions.
+
 | **Parameter** | **Example** |
 | ------------- | - |
 | `NAME`| `Assignment 1` |
@@ -480,6 +486,7 @@ To view all contacts from all modules, as well as any contacts that are not asso
 
 ### 5.4.1 Contact Command Parameters <a name="contact-command-parameters"></a>
 Here are the parameters used in the Contact feature:
+
 | **Parameter** | **Description** | **Example** |
 | --------------| ----------------| ----------- |
 | `INDEX` | Indicates the position of an item in a list. The specified `INDEX` must be **within the range** of the number of items in the list. | `1` - refers to the first item in a list |
@@ -497,6 +504,7 @@ Format: `C add n/NAME [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]...`
 * Duplicate email addresses (2 or more contacts with the same email address) can exist within TrackIt@NUS, so please always ensure that you are entering the correct email address. 
 
 Examples: To add a new contact John Doe, your MA1101R TA, follow these instructions.
+
 | **Parameter** | **Example** |
 | ------------- | - |
 | `NAME`| `John Doe` |
@@ -524,6 +532,7 @@ however, at least one parameter must be provided (i.e. `C edit 1` is not a valid
 
 
 Example: To change John Doe's name to Johnny Depp, follow these instructions.
+
 | **Parameter** | **Example** |
 |---------------| - |
 | `INDEX` | `2` |
@@ -598,6 +607,7 @@ A: It is meant for you to add `contacts` that **may not be taking** the same mod
 
 
 ## 7. Glossary <a name="glossary"></a>
+
 | **Term** | **Explanation** |
 | -- | ----- |
 | Command Line Interface (CLI) | This refers to a **text-based** user interface to view and manage computer files. Click [here](https://en.wikipedia.org/wiki/Command-line_interface) for more information!|
