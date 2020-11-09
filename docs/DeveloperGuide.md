@@ -60,7 +60,7 @@ By combining these 4 core functions into a single app, we are able to deliver a 
 * View all contacts
 * View all module-specific contacts (i.e. Professors, TAs, friends in the same module)
 
-Any helps on the development of TrackIt@NUS would be greatly appreciated, and there are several ways to do so:
+Any help on the development of TrackIt@NUS would be greatly appreciated, and there are several ways to do so:
 
 * Contribute to the codebase of TrackIt@NUS by expanding the current set of features
 * Write new test cases to improve coverage
@@ -305,7 +305,7 @@ The entire app follows a simple principle: the app should behave in the way most
 
 Its behaviors should help users complete their intended tasks quickly and conveniently, but avoid getting in their way by forcing users to follow some strange constraints.
 
-The following section states some important feature design consideration the team has made during the development of the app
+The following section states some important feature design considerations the team has made during the development of the app
 
 ----
 **When the module code is edited, all associated lessons/tasks/contact tags are edited as well**
@@ -335,14 +335,14 @@ Similar to the previous module edit, one clear drawback of implementing this beh
 
 **Allow users to use mouse to click on tabs**
 
-_This feature is one of the most debated feature in our team._ 
+_This feature is one of the most debated features in our team._ 
 
 We are well aware of the module's constraints that the app must be optimized for CLI. 
 
 Yet, 5 todo-apps have been studied by our team (macOS's reminders, Microsoft To Do, Todoist, OmniFocus) and we found all of these apps only have one way to change tabs, and it is by clicking on them. 
-Although forcing users to use CLI to change tab can be easily implemented, it will make the app unintuitive to most users (except CLI guru), and hence **cannot attract new users** to change to our new app from their old apps(of which they are so used to clicking on tabs). 
+Although forcing users to use CLI to change tab can be easily implemented, it will make the app unintuitive to most users (except CLI gurus), and hence **cannot attract new users** to change to our new app from their old apps(of which they are so used to clicking on tabs). 
 
-Also, even for CLI guru, typing something like `switch CS2030` to switch to a new tab while it can be done with just a single click is not something we think they will do. 
+Also, even for CLI gurus, typing something like `switch CS2030` to switch to a new tab while it can be done with just a single click is not something we think they will do. 
 
 One last reason is that we think it's very convenient for users to use mouse to click on various different tabs in during a short period to just get a sense of upcoming tasks & lessons and related contacts to help them. This "fast jump between tabs" cannot be done by CLI.
 
@@ -391,7 +391,7 @@ We have put in a lot of effort to make the command syntax unified, means that al
 This will relieve our users from the mental burden of having to remember different syntax for different commands. Although there are only 14 commands to get used to, having to remember all 14 of them will be a huge barrier for our new potential users and also, it will put an unnecessary mental burden on the users of our app.
 
 ----
-**Other small feature consideration**
+**Other small feature considerations**
 |  | Rationale |
 | ---- | ----- |
 | No limit on length of phone number | We have looked at Android's and iOS's contact app and no app imposes limits on the length of phone number |
