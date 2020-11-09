@@ -610,28 +610,578 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `TrackIt@NUS` application and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Find the grading structure of a module**
+### Navigation
+
+**Use case: UC01 - Viewing the Upcoming tab**
 
 **MSS**
 
-1.  User requests to list the modules
-2.  TrackIt@NUS shows a list of all modules
-3.  User requests to find the grading structure of a module in the list
-4.  TrackIt@NUS shows the requested grading structure
+1.  User requests to go to the `Upcoming` tan
+2.  TrackIt@NUS switches to the `Upcoming` tab, showing all upcoming lessons and tasks
 
+    Use case ends.
+    
+**Use case: UC02 - Viewing the Contacts tab**
+
+**MSS**
+
+1.  User requests to go to the `Contacts` tab
+2.  TrackIt@NUS switches to the `Contacts` tab, showing all contacts
+
+    Use case ends.
+
+**Use case: UC03 - Viewing the Help tab**
+
+**MSS**
+
+1.  User requests to view the `help` tab
+2.  TrackIt@NUS opens the help window showing the list of commands and their explanations
+
+    Use case ends.
+
+**Use case: UC04 - Going to a different tab**
+
+**MSS**
+
+1.  User requests to go to a different tab
+2.  TrackIt@NUS switches to the requested tab
+
+    Use case ends.
+
+**Use case: UC05 - Exiting the App**
+
+**MSS**
+
+1.  User requests to exit the app
+2.  TrackIt@NUS closes the app window
+
+    Use case ends.
+    
+### Module
+
+**Use Case: UC06 - Adding a Module**
+
+**Preconditions:** Module must not already exist in the app.
+
+**Guarantees:** Updated module list with the requested module added.
+
+**MSS**
+
+1.  User requests to add a new module
+2.  TrackIt@NUS adds the requested module
+
+    Use case ends.
+    
+**Extensions**
+
+*   1.a. The given module code already exists in the app
+    *   1.a.1 TrackIt@NUS shows an error message
+    
+        Use case resumes at step 1.
+*   1.b. The given module code is invalid
+    *   1.b.1 TrackIt@NUS shows an error message
+    
+        Use case resumes at step 1.
+*   1.c. The given module name is invalid
+    *   1.c.1 TrackIt@NUS shows an error message
+    
+        Use case resumes at step 1.
+        
+**Use Case: UC07 - Editing a Module**
+
+**Preconditions:** Module must exist in the app.
+
+**Guarantees:** Updated module list with the requested module edited.
+
+**MSS**
+
+1.  User requests to edit an existing module
+2.  TrackIt@NUS replaces the original module with the edited one
+
+    Use case ends.
+    
+**Extensions**
+
+*   1.a. The given module code does not exist in the app
+    *   1.a.1 TrackIt@NUS shows an error message
+    
+        Use case resumes at step 1.
+*   1.b. The given module code is invalid
+    *   1.b.1 TrackIt@NUS shows an error message
+    
+        Use case resumes at step 1.
+*   1.c. The given module name is invalid
+    *   1.c.1 TrackIt@NUS shows an error message
+    
+        Use case resumes at step 1.
+    
+**Use Case: UC08 - Deleting a Module**
+
+**Preconditions:** Module must exist in the app.
+
+**Guarantees:** Updated module list with the requested module removed.
+
+**MSS**
+
+1.  User requests to delete an existing module
+2.  TrackIt@NUS deletes the module
+
+    Use case ends.
+    
+**Extensions**
+
+*   1.a. The given module does not exist in the app
+    *   1.a.1 TrackIt@NUS shows an error message
+    
+        Use case resumes at step 1.
+    
+    
+### Lesson
+
+**Use Case: UC09 - Adding a Lesson**
+
+**Preconditions:** Module must exist in the app.
+
+**Guarantees:** Updated lesson list with the requested lesson added.
+
+**MSS**
+
+1.  User requests to add a lesson
+2.  TrackIt@NUS adds the requested lesson
+    
+    Use case ends.
+    
+**Extensions**
+
+*   1.a. The given module code does not exist
+    *   1.a.1 TrackIt@NUS shows an error message
+        
+        Use case resumes at step 1.
+*   1.b. The given module code is invalid
+    *   1.b.1 TrackIt@NUS shows an error message
+            
+        Use case resumes at step 1.
+*   1.c. The given lesson already exists in the app
+    *   1.c.1 TrackIt@NUS shows an error message
+        
+        Use case resumes at step 1.
+*   1.d. The given start time is after the end time
+    *   1.d.1 TrackIt@NUS shows an error message
+            
+        Use case resumes at step 1.
+*   1.e. The given address is too long (> 20 characters)
+    *   1.e.1 TrackIt@NUS shows an error message
+        
+        Use case resumes at step 1.
+        
+
+**Use Case: UC10 - Editing a Lesson**
+
+**Preconditions:** Lesson must exist in the app.
+
+**Guarantees:** Updated lesson list with the requested lesson edited.
+
+**MSS**
+
+1.  User requests to edit a lesson
+2.  TrackIt@NUS replaces the original lesson with the edited lesson
+    
     Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+*   1.a. The given module code does not exist
+    *   1.a.1 TrackIt@NUS shows an error message
+        
+        Use case resumes at step 1.
+*   1.b. The given module code is invalid
+    *   1.b.1 TrackIt@NUS shows an error message
+            
+        Use case resumes at step 1.
+*   1.c. The given lesson already exists in the app
+    *   1.c.1 TrackIt@NUS shows an error message
+        
+        Use case resumes at step 1.
+*   1.d. The given start time is after the end time
+    *   1.d.1 TrackIt@NUS shows an error message
+            
+        Use case resumes at step 1.
+*   1.e. The given address is too long (> 20 characters)
+    *   1.e.1 TrackIt@NUS shows an error message
+        
+        Use case resumes at step 1.
+        
+*   1.f. No field is provided to edit
+    *   1.f.1 TrackIt@NUS shows an error message
+    
+        Use case resumes at step 1.
+        
+*   1.g. The requested lesson does not exist (provided index is invalid)
+    *   1.g.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
+         
+**Use Case: UC11 - Deleting a Lesson**
 
-  Use case ends.
+**Preconditions:** Lesson must exist in the app.
 
-* 3a. The given index (or module name) is invalid.
+**Guarantees:** Updated lesson list with the requested lesson removed.
+ 
+**MSS**
+ 
+1.  User requests to delete a lesson
+2.  TrackIt@NUS deletes the requested lesson
+     
+    Use case ends.
+  
+**Extensions**  
+        
+*   1.g. The requested lesson does not exist (provided index is invalid)
+    *   1.g.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
 
-    * 3a1. TrackIt@NUS shows an error message.
+**Use Case: UC12 - View a module's lessons**
 
-      Use case resumes at step 2.
+**Preconditions:** Module must exist in the app.
+
+**Guarantees:** Show's all the module's lessons.
+ 
+**MSS**
+
+1.  User views a module's page
+2.  TrackIt@NUS shows all the module's lessons
+
+    Use case ends.
+    
+**Extensions**
+
+*   1.a. The given module code does not exist
+    *   1.a.1 User cannot view the module's page
+        
+        Use case ends.
+*   1.b. The given module does not have any lessons
+    *   1.b.1 TrackIt@NUS shows no lessons
+    
+        Use case resumes at step 1.
+        
+**Use Case: UC13 - View a certain day's lessons**
+
+**Guarantees:** Shows a certain day's lessons.
+ 
+**MSS**
+
+1.  User views the `Upcoming` tab
+2.  TrackIt@NUS shows every day's lessons for the next week
+
+    Use case resumes at step 1.
+    
+**Extensions**
+
+*   1.a. The given day does not have any lessons
+    *   1.a.1 TrackIt@NUS shows no lessons for that day
+    
+        Use case ends.
+
+### Task
+
+**Use Case: UC14 - Adding a Task**
+
+**Preconditions:** Requested task does not currently exist in the app.
+
+**Guarantees:** Updated task list with the requested task added.
+
+**MSS**
+
+1.  User requests to add a task
+2.  TrackIt@NUS adds the requested task
+    
+    Use case ends.
+    
+**Extensions**
+
+*   1.a. The given task already exists in the app
+    *   1.c.1 TrackIt@NUS shows an error message
+        
+        Use case resumes at step 1.
+*   1.b. The given date is in the wrong format (must be in `dd/mm/yyyy`)
+    *   1.b.1 TrackIt@NUS shows an error message
+            
+        Use case resumes at step 1.
+*   1.c. The given name is invalid
+    *   1.c.1 TrackIt@NUS shows an error message
+            
+        Use case resumes at step 1.
+
+
+**Use Case: UC15 - Adding a Task to a Module**
+
+**Preconditions:** Module must exist in the app.
+
+**Guarantees:** Updated task list with the requested task added.
+
+
+**MSS**
+
+1.  User requests to add a task to a specific module
+2.  TrackIt@NUS adds the requested task to the specified module
+    
+    Use case ends.
+
+**Extensions**
+
+*   1.a. The given task already exists in the app
+    *   1.c.1 TrackIt@NUS shows an error message
+        
+        Use case resumes at step 1.
+*   1.b. The given module is in the wrong format
+    *   1.b.1 TrackIt@NUS shows an error message
+            
+        Use case resumes at step 1.
+*   1.c. The given name is invalid
+    *   1.c.1 TrackIt@NUS shows an error message
+            
+        Use case resumes at step 1.
+
+**Use Case: UC16 - Editing a Task**
+
+**Preconditions:** Task exists in the app.
+
+**Guarantees:** Updated task list with the requested task edited.
+
+**MSS**
+
+1.  User requests to edit a task
+2.  TrackIt@NUS edits he requested task
+    
+    Use case ends.
+    
+**Extensions**
+
+*   1.a. The edited task already exists in the app
+    *   1.a.1 TrackIt@NUS shows an error message
+        
+        Use case resumes at step 1.
+*   1.b. The given name is invalid
+    *   1.b.1 TrackIt@NUS shows an error message
+            
+        Use case resumes at step 1.
+*   1.c. The given date is in the wrong format
+    *   1.c.1 TrackIt@NUS shows an error message
+            
+        Use case resumes at step 1.
+    
+**Use Case: UC16 - Editing a Task to belong to another Module**
+
+**Preconditions:** Module exists in the app.
+
+**Guarantees:** Updated task list with the requested task's module field changed.
+
+
+**MSS**
+
+1.  User requests to change a task to another module
+2.  TrackIt@NUS moves the requested task to the specified module
+    
+    Use case ends.
+    
+**Extensions**
+
+*   1.a. The edited task already exists in the app
+    *   1.a.1 TrackIt@NUS shows an error message
+        
+        Use case resumes at step 1.
+
+**Use Case: UC17 - Editing a Task not to belong to any Module**
+
+**Preconditions:** Task exists in the app.
+
+**Guarantees:** Updated task list with the requested task not belonging to any module.
+
+
+**MSS**
+
+1.  User requests to remove the module field from the task
+2.  TrackIt@NUS removes the module field from the task
+    
+    Use case ends.
+
+**Extensions**
+
+*   1.a. The edited task already exists in the app
+    *   1.c.1 TrackIt@NUS shows an error message
+        
+        Use case resumes at step 1.
+        
+**Use Case: UC17 - Deleting a Task**
+
+**Preconditions:** Task exists in the app.
+
+**Guarantees:** Updated task list with the requested task removed.
+
+**MSS**
+
+1.  User requests to delete task
+2.  TrackIt@NUS deletes the requested task
+     
+    Use case ends.
+  
+**Extensions**  
+        
+*   1.a. The requested task does not exist (provided index is invalid)
+    *   1.a.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
+        
+**Use Case: UC18 - View a day's Tasks**
+
+**Guarantees:** Show's all that day's tasks.
+
+**MSS**
+
+1.  User views the `Upcoming` tab
+2.  TrackIt@NUS show every day's tasks for the next week
+     
+    Use case ends.
+  
+**Extensions**
+
+*   1.a. The given day does not have any tasks
+    *   1.a.1 TrackIt@NUS shows no tasks for that day
+    
+        Use case ends.
+
+**Use Case: UC19 - Viewing a Module's Task**
+
+**Preconditions:** Module exists in the app.
+
+**Guarantees:** Shows all the tasks that belong the specified module.
+
+**MSS**
+
+1.  User views the requested module's page
+2.  TrackIt@NUS shows all the tasks that belong to the specified module
+     
+    Use case ends.
+  
+**Extensions**  
+        
+*   1.a. The requested module does not exist
+    *   1.a.1 User cannot view the module's page
+     
+        Use case ends.
+*   1.b. The requested module does not have any tasks
+    *   1.b.1 TrackIt@NUS shows no tasks
+     
+        Use case ends.
+
+### Contact
+
+**Use Case: UC20 - Adding a Contact**
+
+**Preconditions:** Contact must not already exist in the app.
+
+**Guarantees:** Updated contact list with the requested contact added.
+
+**MSS**
+
+1.  User requests to add contact
+2.  TrackIt@NUS adds the requested contact
+     
+    Use case ends.
+  
+**Extensions**  
+        
+*   1.a. The requested contact already exists in the app
+    *   1.a.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
+*   1.b. The provided name is invalid (wrong format)
+    *   1.b.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
+*   1.c. The provided email is invalid (wrong format)
+    *   1.c.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
+*   1.c. The provided phone number is invalid (wrong format)
+    *   1.c.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
+        
+
+**Use Case: UC21 - Editing a Contact**
+
+**Preconditions:** Contact must exist in the app.
+
+**Guarantees:** Updated contact list with the requested contact edited.
+
+**MSS**
+
+1.  User requests to edit contact
+2.  TrackIt@NUS edit the requested contact
+     
+    Use case ends.
+  
+**Extensions**  
+        
+*   1.a. The edited contact already exists in the app
+    *   1.a.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
+*   1.b. The provided name is invalid (wrong format)
+    *   1.b.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
+*   1.c. The provided email is invalid (wrong format)
+    *   1.c.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
+*   1.c. The provided phone number is invalid (wrong format)
+    *   1.c.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
+
+**Use Case: UC22 - Deleting a Contact**
+
+**Preconditions:** Contact must exist in the app.
+
+**Guarantees:** Updated contact list with the requested contact removed.
+
+**MSS**
+
+1.  User requests to delete contact
+2.  TrackIt@NUS removes the requested contact
+     
+    Use case ends.
+  
+**Extensions**  
+        
+*   1.a. The requested contact does not exists in the app (index provided is invalid)
+    *   1.a.1 TrackIt@NUS shows an error message
+     
+        Use case resumes at step 1.
+
+
+**Use Case: UC23 - View a Module's Contacts**
+
+**Preconditions:** Module must exist in the app.
+
+**Guarantees:** Shows all contacts associated with the requested module
+
+**MSS**
+
+1.  User views any module page
+2.  TrackIt@NUS shows the module's contact
+     
+    Use case ends.
+  
+**Extensions**  
+        
+*   1.a. The requested module does not exist in the app 
+    *   1.a.1 User cannot view the module page
+     
+        Use case ends.
 
 ## **Appendix D: Non-Functional Requirements** <a name="appen-d"></a>
 
