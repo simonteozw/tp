@@ -36,7 +36,7 @@ import trackitnus.ui.UiManager;
  */
 public class MainApp extends Application {
 
-    public static final Version VERSION = new Version(0, 6, 0, true);
+    public static final Version VERSION = new Version(1, 3, 8, true);
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
