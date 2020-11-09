@@ -406,7 +406,94 @@ The following Sequence Diagram will illustrate the above steps in greater detail
 
 ### **4.3. Lesson Manager** <a name="lesson-manager"></a>
 
-### **4.4. Task Manager** <a name="task-manager"></a>
+TrackIt@NUS allows users to keep track of their weekly lessons. The lesson manager is one of TrackIt@NUS's basic components.
+
+The common commands for the lesson manager include:
+
+* `add` - Creates a new lesson
+* `edit` - Modifies an existing lesson
+* `delete` - Deletes an existing lesson
+
+TrackIt@NUS also gives users a better understanding of their lessons by allowing users to view lessons in certain 
+categories. Users can view lessons specific to a module and lessons on a specific day.
+
+ #### Rationale
+ 
+ Lessons are an integral part of any student's day-to-day life. Hence, TrackIt@NUS includes a lesson manager for students to 
+ keep track of their lessons. Each lesson must belong to a unique module. When users click into a specific module tab, 
+ they can see the lessons belonging to that module.
+   
+:warning: The module must exist (i.e. there must be a module with the specified `MODULE_CODE`), otherwise, the `add` and
+ `edit` commands will not work.
+ 
+ #### Current Implementation
+ 
+ In this section, we will outline the key operations of the Lesson Manager, namely:
+ * `AddLessonCommand`
+ * `DeleteLessonCommand`
+ * `EditLessonCommand`
+ 
+ We will also elaborate on one more key operation that is used in the module tabs, namely `getModuleLessons`.
+  
+ The `add`, `delete`, and `edit` commands are all implemented in similar ways. When executed they will:
+  * call on the relevant Model methods
+  * update the `UniqueLessonList` depending on the command
+  * Save the updated lesson list to `data/trackIter.json`
+  * return the relevant CommandResult message
+ 
+ The following steps will describe the execution of the `AddLessonCommand`, assuming no errors are encountered:
+ 
+ 1. When `AddLessonCommand` is executed, it will first call the model's `hasModule` method to ensure that the specified module exists
+ 2. Following this, it will call the model's `hasLesson` method to ensure that the lesson does not yet exist in the app
+ 3. If both checks pass, `AddLessonCommand` will call the model's `addLesson` method
+ 4. The model will then call the `addLesson` method of TrackIter, and adds the lesson to the app.
+ 
+ ![Add Lesson Activity Diagram](images/AddLessonActivityDiagram.png)
+ 
+ The following shows the sequence diagram of the `AddLessonCommand`.
+ 
+ ![Add Lesson Sequence Diagram](images/AddLessonSequenceDiagram.png)
+ 
+ The following steps will describe the execution of the `DeleteLessonCommand`, assuming no errors are encountered:
+ 
+ 1. When the `DeleteLessonCommand` is executed, it will first call the model's `getFilteredLessonList` method 
+ to determine the last shown list of lessons
+ 2. Then, it will call the index's `getZeroBased` method to find the zero-based index of the lesson it must delete
+ 3. Then, it will check if this index is within range
+ 4. If it is, it calls the model's `deleteLesson` method.
+ 5. The model will then call the `removeLesson` method of TrackIter, which deletes the lesson in question from the app.
+ 
+ ![Delete Lesson Activity Diagram](images/DeleteLessonActivityDiagram.png)
+ 
+ The following shows the sequence diagram of the `DeleteLessonCommand`.
+ 
+ ![Delete Lesson Sequence Diagram](images/DeleteLessonSequenceDiagram.png)
+ 
+ The following steps will describe the execution of the `EditLessonCommand`, assuming no errors are encountered:
+ 
+ 1. When the `EditLessonCommand` is executed, it will first call the model's `getFilteredLessonList` method to determine 
+ the last shown list of lessons
+ 2. Then, it will call the index's `getZeroBased` method to find the zero-based index of the lesson we must edit
+ 3. It will then check if the index is within range
+ 4. If it is, it calls the model's `setLesson` method
+ 5. The model will then call the `setLesson` method of TrackIter, which replaces the original lesson with the edited
+  version in the app.
+  
+ ![Edit Lesson Activity Diagram](images/EditLessonActivityDiagram.png)
+ 
+ The follow shows the sequence diagram of the `EditLessonCommand`.
+ 
+ ![Edit Lesson Sequence Diagram](images/EditLessonSequenceDiagram.png)
+ 
+ The `getModuleLessons` function takes in a Module Code and returns all lessons that belong to the specified module.
+  When `getModuleLessons` is called, it uses the `LessonHasCodePredicate` to update the lesson list in the app to only show
+  the lessons that belong to the specified module code.
+ 
+ This is the sequence diagram of `getModuleLessons`.
+ 
+ ![Get Module Lessons Sequence Diagram](images/GetModuleLessonsSequenceDiagram.png)
+
+### **Task Manager** <a name="task-manager"></a>
 
 TrackIt@NUS allows users to keep track of his/her tasks. The task manager is one of TrackIt@NUS's basic components.
 
@@ -424,16 +511,16 @@ TrackIt@NUS also gives users a better understanding of their tasks by allowing u
  
  Tasks are an integral part of any student's day-to-day life. Hence, TrackIt@NUS includes a task manager for students to 
  keep track of all their tasks. To better support NUS students, a task can either belong to a module or not. When
-  adding a task, users can choose to the include the `m/MODULE_CODE` parameter in order to add a task that belongs to
+  adding a task, users can choose to the include the `m/CODE` parameter in order to add a task that belongs to
    a module. When users click into a specific module tab, they can see the tasks belonging to each module.
     
 :information_source: A task does not have to belong a module. In this case, the module parameter of the task is
  simply treated as null and the task can only be viewed in the upcoming tab.
      
-:warning: The module must exist (i.e. there must be a module with the specified `MODULE_CODE`) otherwise the add and
+:warning: The module must exist (i.e. there must be a module with the specified `CODE`) otherwise the add and
  edit commands will not work.
  
-:bulb: To remove a task from a module, simply type `T edit INDEX m/` (use the `m/` prefix but leave the `MODULE_CODE` parameter empty).
+:bulb: To remove a task from a module, simply type `T edit INDEX m/` (use the `m/` prefix but leave the `CODE` parameter empty).
 
 #### 4.4.2 Current Implementation <a name="task-manager-implementation"><a/>
 
@@ -505,7 +592,7 @@ This is the sequence diagram of `getModuleTasks`.
 `getOverdueTasks`, `getDayUpcomingTasks`, and `getFutureTasks` are all implemented in very similar ways. In fact, the
  only differences are the predicates used.
 
-#### 4.4.3 Design Considerations <a name="task-manager-design"><a/>
+#### Design Considerations
 
 As mentioned, a task may or may not belong to a module. In the case it does not, we store the module code as
  null. A task also may or may not have a remark. In the case it does not, we store the remark as the empty
@@ -518,9 +605,104 @@ The original AB3 implementation of edit commands, which would default to the ori
  field was null, would not be sufficient. Hence, we added 2 additional boolean variables - `isRemarkChanged` and
   `isCodeChanged`, to know whether users wanted to remove the existing module code or remark.
  
-### **4.5. Contact Manager** <a name="contact-manager"></a>
+### **Contact Manager** <a name="contact-manager"></a>
 
-### **4.6. Logging** <a name="logging"></a>
+TrackIt@NUS allows users to manage their contacts. The contact manager is one of TrackIt@NUS's basic components.
+
+The common commands for the contact manager include:
+
+* `add` - Creates a new contact
+* `edit` - Modifies an existing contact
+* `delete` - Deletes an existing contact
+ 
+We will also elaborate on one more key operation that is used in the module tabs, namely `getModuleContacts`.
+ 
+ #### Rationale
+ 
+ Managing contacts is an essential part of any student's life. Hence, TrackIt@NUS includes a contact manager for students to 
+ keep track of all their contacts. To better support NUS students, a contact can hold any number (can be 0) of tags. If a tag matches 
+ an existing module code, editing/deleting the module will edit/delete the tag as well.
+    
+:bulb: To remove all tags from a contact, simply type `C edit INDEX t/` (use the `t/` prefix but do not provide any tag).
+
+#### Current Implementation
+
+In this section, we will outline the key operations of the Contact Manager, namely:
+* `AddContactCommand`
+* `DeleteContactCommand`
+* `EditContactCommand`
+ 
+The `add`, `delete`, and `edit` commands are all implemented in similar ways. When they are executed they will:
+ * call on the relevant Model methods
+ * update the `UniqueContactList` depending on the command
+ * Save the updated contact list to `data/trackIter.json`
+ * return the relevant CommandResult message
+
+The following steps will describe the execution of the `AddContactCommand`, assuming no errors are encountered:
+ 
+1. When `AddContactCommand` is executed, it will first call the model's `hasContact` method to ensure that the contact 
+does not yet exist in the app.
+2. If the check passes, `AddContactCommand` will call the model's `addContact` method.
+3. The model will then call the `addContact` method of TrackIter, and adds the contact to the app.
+
+![Add Contact Activity Diagram](images/AddContactActivityDiagram.png)
+
+The following shows the sequence diagram of the `AddContactCommand`.
+
+![Add Contact Sequence Diagram](images/AddContactSequenceDiagram.png)
+
+The following steps will describe the execution of the `DeleteContactCommand`, assuming no errors are encountered:
+
+1. When the `DeleteContactCommand` is executed, it will first call the model's `getFilteredContactList` method 
+to determine the last shown list of contacts.
+2. Then, it will call the index's `getZeroBased` method to find the zero-based index of the contact it must delete.
+3. Then, it will check if this index is within range.
+4. If it is, it calls the model's `deleteContact` method.
+5. The model will then call the `removeContact` method of TrackIter, which deletes the contact in question from the app.
+
+![Delete Contact Activity Diagram](images/DeleteContactActivityDiagram.png)
+
+The following shows the sequence diagram of the `DeleteContactCommand`.
+
+![Delete Contact Sequence Diagram](images/DeleteContactSequenceDiagram.png)
+
+The following steps will describe the execution of the `EditContactCommand`, assuming no errors are encountered:
+
+1. When the `EditContactCommand` is executed, it will first call the model's `getFilteredContactList` method 
+to determine the last shown list of contacts.
+2. Then, it will call the index's `getZeroBased` method to find the zero-based index of the contact we must edit.
+5. It will then check if the index is within range.
+6. If it is, it calls the model's `setContact` method.
+7. The model will then call the `setContact` method of TrackIter, which replaces the original contact with the edited
+ version in the app.
+ 
+![Edit Contact Command Activity Diagram](images/EditContactActivityDiagram.png)
+
+The follow shows the sequence diagram of the `EditContactCommand` assuming no errors are encountered.
+
+![Edit Contact Sequence Diagram](images/EditContactSequenceDiagram.png)
+
+The `getModuleContacts` function takes in a Module Code and returns all contacts that have a tag that matches the specified module.
+When `getModuleContacts` is called, it uses the `ContactHasTagPredicate` to update the contact list in the app to only show
+ the contacts that have the desired tag.
+
+This is the sequence diagram of `getModuleContacts`.
+
+![Get Module Contacts Sequence Diagram](images/GetModuleContactsSequenceDiagram.png)
+
+#### Design Considerations
+
+A number of fields in a contact (namely phone number and e-mail address) are optional. In the case they are not specified, 
+ we store them as null. Similar to tasks, we wanted users to be able to remove any optional field simply by 
+  specifying the `/p` or `/e` flag without providing a parameter.
+   
+![Remove Phone Number Activity Diagram](images/RemovePhoneNumberActivityDiagram.png)
+   
+The original AB3 implementation of edit commands, which would default to the original field if the edited
+ field was null, would not be sufficient. Hence, we added 2 additional boolean variables - `isPhoneChanged` and 
+  `isEmailChanged`, to know whether users wanted to remove the existing phone number and/or e-mail address.
+
+### 4.6 **Logging** <a name="logging"></a>
 
 * We are using `java.util.logging` package for logging.
 * The `LogsCenter` class is used to manage the logging levels and logging destinations
@@ -584,24 +766,28 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                                                   | So that I can…​                                                        |
 | -------- | -------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `* * *`  | new user             | be able to use the help command                                        | refer to instructions on what commands are available when I forget about them |
-| `* * *`  | student              | see an overview of the upcoming tasks I have                           | plan my schedule accordingly                                      |
-| `* * *`  | student              | see an overview of the upcoming lessons I have                         | easily see what lessons I have coming up                          |
-| `* * *`  | student              | see all the tasks I have for a certain module                          | organize my time better                                           |
-| `* * *`  | student              | see all the lessons I have for a certain module                        | organize my time more efficiently                                 |
-| `* * *`  | student              | have any lessons I add to be recurring                                 | not have to add lessons to my schedule every week                 |
+| `* * *`  | student              | get an overview of the upcoming tasks I have                           | plan my schedule for the day                                      |
+| `* * *`  | 'last-minute' student | have my tasks sorted in order of deadlines                            | prioritise which task to do first to not miss any deadlines       |
+| `* * *`  | student              | get the timings of my upcoming lessons                                 | avoid missing or coming late for my lessons                       |
+| `* * *`  | student              | get the timings of my upcoming lessons                                 | remind myself to complete the relevant tasks and necessary revision before lesson   |
+| `* * *`  | hardworking student  | track pending tasks of a specific module                               | plan the things to do while studying for that module              |
+| `* * *`  | student              | view the lessons I have for a specific module                          | make the necessary preparation and revision for that module       |
+| `* * *`  | lazy student         | include weekly recurring lessons                                       | save the trouble of adding the same lessons every week            |
+| `* * *`  | struggling student   | quickly access the contact information of my TA/Prof                   | easily contact them for help                                      |
 | `* * *`  | careless student     | edit the details of my tasks, modules, lessons and contacts            | rectify mistakes I made                                           |
 | `* * *`  | student              | delete any tasks when they are completed                               | focus better on the tasks that have yet to be completed           |
 | `* * *`  | student              | delete any contacts                                                    | no longer have details of contacts that I no longer need          |
 | `* * *`  | student              | delete any modules after I am done reading them                        | remove the relevant tasks and lessons that I no longer need       |
-| `* * *`  | struggling student   | quickly access the contact information of my TA/Prof                   | easily contact them for help                                      |
+| `* * `   | new user             | access a built-in help guide                                           | get familiarised to the commands that I can use quickly           |
+| `* * `   | forgetful user       | view the commands summary without referring to the user guide          | find the commands that I need quickly                             |
 | `* * `   | forgetful student    | group my friends by those that are taking the same modules as I am     | share resources or ask for help much more easily                  |
-| `* *`    | student              | assign priority ratings to my tasks                                    | know what has to be done first <br> (coming in v1.5)                                   | 
-| `* * `   | student              | receive a warning message when I try to add lessons that clash         | prevent clashes in my schedule <br> (coming in v1.5)              |
+| `* *`    | organised student    | assign priority ratings to my tasks                                    | know what has to be done first <br> (coming in v1.5)                                   | 
+| `* * `   | clumsy student       | receive a warning message when I try to add lessons that clash         | prevent clashes in my schedule <br> (coming in v1.5)              |
 | `*`      | student              | set biweekly or monthly recurring lessons                              | keep track of some lessons that may be biweekly or monthly <br> (coming in v1.5)        | 
 | `*`      | student              | edit a task's remarks without having to retype the entire remark        | make small changes much more easily <br> (coming in v1.5)        |
 | `*`      | student              | be able to sort my contacts by other parameters                         | find relevant contacts more easily <br> (coming in v1.5)         |
-| `*`      | user                 | switch between the different views using command line                   | view the information in the different views with greater ease <br> (coming in v1.5)   |
+| `*`      | design-centric user  | customise the colors tag of each module                                 | associate modules with the colours that I prefer <br> (coming in v1.5)         |
+| `*`      | active command line user | switch between the different views using command line                   | view the information in the different views with greater ease <br> (coming in v1.5)   |
 | `*`      | user                 | be able to set reminders that might not be related to a module          | make use of the calendar function to organize not just my school work but my own life |
 
 
@@ -1196,10 +1382,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 8.  Users of the app find the app intuitive and easy to use
 9.  The app should be able to save data locally
 10. The app should be for a single user i.e. (not a multi-user product).
-11. The app should be able to hold up to 150 modules/lessons/tasks/contacts in total without a noticeable sluggishness in performance for
- typical usage.
-12. The app should be able to start up sufficiently fast (<5s).
-13. The app should not crash in the event of invalid user input
+11. The app should be able to start up sufficiently fast (<5s).
+12. The app should not crash in the event of invalid user input
 
 ## **Appendix E: Glossary** <a name="appen-e"></a>
 | **Term** | **Explanation** |

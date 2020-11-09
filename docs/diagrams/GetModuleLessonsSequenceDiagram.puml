@@ -7,13 +7,13 @@ end box
 
 box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
-participant "p:TaskHasCodePredicate" as Pred MODEL_COLOR
+participant "p:LessonHasCodePredicate" as Pred MODEL_COLOR
 end box
 
 [-> LogicManager
 activate LogicManager
 
-LogicManager -> Model : getModuleTasks(code)
+LogicManager -> Model : getModuleLessons(code)
 activate Model
 
 create Pred
@@ -23,7 +23,7 @@ activate Pred
 Pred --> Model
 deactivate Pred
 
-Model -> Model : updateFilteredTaskList(p)
+Model -> Model : updateFilteredLessonList(p)
 activate Model
 
 deactivate Model

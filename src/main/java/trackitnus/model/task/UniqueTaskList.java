@@ -142,8 +142,6 @@ public class UniqueTaskList implements Iterable<Task> {
 
     @Override
     public String toString() {
-        return "UniqueTaskList{" +
-            "internalList=" + internalList +
-            '}';
+        return "UniqueTaskList{" + "internalList=" + internalList + '}';
     }
 }

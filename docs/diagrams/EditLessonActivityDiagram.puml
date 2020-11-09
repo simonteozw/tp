@@ -1,0 +1,48 @@
+@startuml
+start
+:User enters edit lesson command;
+
+'Since the beta syntax does not support placing the condition outside the
+'diamond we place it as the true branch instead.
+
+if () then ([valid command])
+    :Retrieve the last shown lesson list;
+    if () then ([index provided is within range of last shown list])
+        if () then ([any fields are edited])
+            :Retrieve the lesson at the given index;
+            :Create the edited lesson;
+            if () then ([edited lesson is different from lesson to edit])
+            if () then ([edited lesson does not exist in model])
+            if () then ([edited lesson has a valid module code])
+            :Replace lesson to
+            edit with edited lesson;
+            :Save updated lesson list
+            to trackIter.json;
+            :Show success message;
+            else ([else])
+            :Show invalid module
+            code error message;
+            endif
+            else ([else])
+            :Show duplicate
+            lesson error message;
+            endif
+            else ([else])
+            :Show lesson is
+            unchanged message;
+            endif
+        else ([else])
+            :Show not edited
+             error message;
+        endif
+
+    else ([else])
+        :Show invalid lesson
+        index error message;
+    endif
+else ([else])
+    :Shows invalid
+    command message;
+endif
+stop
+@enduml
