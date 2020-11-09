@@ -21,7 +21,7 @@ public final class DeleteLessonCommand extends Command {
         + "Parameters: "
         + "INDEX\n"
         + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
-        + "2\n";
+        + "1";
 
     private final Index targetIndex;
 

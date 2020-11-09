@@ -33,15 +33,12 @@ public final class EditLessonCommand extends Command {
         + " identified by the index number currently displayed on the screen."
         + " At least one of the details has to be specified.\n"
         + "Parameters: INDEX "
-        + "[" + PREFIX_CODE + "MODULE_CODE] "
+        + "[" + PREFIX_CODE + "CODE] "
         + "[" + PREFIX_TYPE + "TYPE] "
         + "[" + PREFIX_DATE + "DATE] "
         + "[" + PREFIX_ADDRESS + "ADDRESS]\n"
-        + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " 2 "
-        + PREFIX_CODE + "CS1101S "
-        + PREFIX_TYPE + "Lab "
-        + PREFIX_DATE + "Fri 16:00-18:00 "
-        + PREFIX_ADDRESS + "COM1-0215\n";
+        + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " 1 "
+        + PREFIX_ADDRESS + "LT17";
 
     private final Index index;
     private final EditLessonDescriptor editLessonDescriptor;
