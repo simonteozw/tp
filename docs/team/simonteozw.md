@@ -14,11 +14,32 @@ This portfolio aims to document the contributions that I have made to the **Trac
 
 ### Major Enhancement: Implemented Task Manager
 
+* **What it does:** It allows users to manage their tasks by adding, editing, and deleting tasks. It also allows
+ users to view tasks by date and by module.
+* **Justification:** Tasks are an integral part of any student's life. Hence, this feature is essential to the app
+, enabling students to keep track of all the tasks they have so far.
+* **Highlights:** The implementation was challenging and time consuming as it required understanding existing commands within Address Book 3.
+
 ### Major Enhancement: Implemented additional Storage classes
+
+* **What it does:** Building upon the original AB3, TrackIt@NUS also allows users to manage modules, tasks, and
+ lessons. Hence, additional storage classes were needed to ensure that all these different objects could be stored
+  safely in Json.
+* **Justification:** All these additional classes were necessary to enable users to manage their student lives in a
+ single app. Hence, they also needed to stored efficiently.
+* **Highlights:** The implementation was challenging because some the fields in these classes were optional. Hence
+, we had to store them as null. Because, we had to be very careful when writing our getters and setters so as to
+ minimise all instances of handling null objects and build good abstractions.
 
 ### Minor Enhancement: Added Test cases for Task Manager
 
+Because I was the one who implemented the Task Manager and all its related methods, I was responsible for writing the
+ test cases of the Task Manager as well.
+ 
 ### Minor Enhancement: Added Test cases for Storage classes
+
+Because I was the one who implemented the additional storage classes and all their related methods, I was responsible
+ for writing the test cases of those additional classes as well.
 
 ## Code Contributions
 
