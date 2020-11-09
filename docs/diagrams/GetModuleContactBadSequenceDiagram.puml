@@ -1,0 +1,56 @@
+
+
+@startuml
+!include style.puml
+
+box UI UI_COLOR_T1
+participant ":MainWindow" as MainWindow UI_COLOR
+end box
+
+box Logic LOGIC_COLOR_T1
+participant ":Logic" as Logic LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+participant "predicate:ContactHasTagPredicate" as ContactHasTagPredicate MODEL_COLOR
+end box
+
+[-> MainWindow : User click on a module tab
+
+activate MainWindow
+create ContactHasTagPredicate
+note over ContactHasTagPredicate
+predicate that returns true when if a contact
+is associated with a module
+end note
+MainWindow -> ContactHasTagPredicate : MODULE_CODE
+activate ContactHasTagPredicate
+ContactHasTagPredicate --> MainWindow : predicate
+deactivate ContactHasTagPredicate
+
+MainWindow -> Logic : updateFilteredContactList(predicate)
+activate Logic
+
+Logic -> Model : updateFilteredContactList(predicate)
+activate Model
+Model --> Logic
+deactivate Model
+Logic --> MainWindow
+deactivate Logic
+
+MainWindow -> Logic : getFilteredContactList()
+activate Logic
+Logic -> Model : getFilteredContactList()
+activate Model
+Model --> Logic
+deactivate Model
+Logic --> MainWindow
+deactivate Logic
+
+[<- MainWindow : display to User
+deactivate MainWindow
+
+@enduml
+
+
