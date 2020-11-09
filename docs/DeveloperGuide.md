@@ -21,6 +21,9 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     * 4.2. [Module Manager](#module-manager)
     * 4.3. [Lesson Manager](#lesson-manager)
     * 4.4. [Task Manager](#task-manager)
+        * 4.4.1 [Rationale](#task-manager-rationale)
+        * 4.4.2 [Current Implementation](#task-manager-implementation)
+        * 4.4.3 [Design Considerations](#task-manager-design)
     * 4.5. [Contact Manager](#contact-manager)
     * 4.6. [Logging](#logging)
     * 4.7. [Configuration](#config)
@@ -165,7 +168,7 @@ The *Class Diagram* below shows how the components in the `Upcoming Tab` interac
 
 :information_source: All the `ListPanels` and `Cards` inherit from the abstract `UiPart` class.
 
-##### **3.2.1.1 Responsibilities**
+##### Responsibilities**
 The `Upcoming Tab` consists of a list of an `UpcomingSectionCard` for the Overdue section, 7 `UpcomingSectionDayCards` to represent each day of the next week, and finally another `UpcomingSectionCard` for the Future section. Each `UpcomingSectionCard` comprises of a `TaskPanel` and each `UpcomingSectionDayCard` comprises of a `TaskPanel` and a `LessonPanel`.
 
 #### **3.2.2. Module Tab** <a name="module-tab"></a>
@@ -417,7 +420,7 @@ TrackIt@NUS also gives users a better understanding of their tasks by allowing u
  categories. Users can view overdue tasks, tasks on a specific day, future tasks (tasks that have deadlines more than
   a week away), and specific module tasks.
  
- #### Rationale
+ #### 4.4.1 Rationale <a name="task-manager-rationale"><a/>
  
  Tasks are an integral part of any student's day-to-day life. Hence, TrackIt@NUS includes a task manager for students to 
  keep track of all their tasks. To better support NUS students, a task can either belong to a module or not. When
@@ -432,7 +435,7 @@ TrackIt@NUS also gives users a better understanding of their tasks by allowing u
  
 :bulb: To remove a task from a module, simply type `T edit INDEX m/` (use the `m/` prefix but leave the `MODULE_CODE` parameter empty).
 
-#### Current Implementation
+#### 4.4.2 Current Implementation <a name="task-manager-implementation"><a/>
 
 In this section, we will outline the key operations of the Task Manager, namely:
 * `AddTaskCommand`
@@ -502,7 +505,7 @@ This is the sequence diagram of `getModuleTasks`.
 `getOverdueTasks`, `getDayUpcomingTasks`, and `getFutureTasks` are all implemented in very similar ways. In fact, the
  only differences are the predicates used.
 
-#### Design Considerations
+#### 4.4.3 Design Considerations <a name="task-manager-design"><a/>
 
 As mentioned, a task may or may not belong to a module. In the case it does not, we store the module code as
  null. A task also may or may not have a remark. In the case it does not, we store the remark as the empty
