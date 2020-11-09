@@ -1,6 +1,9 @@
 package trackitnus.logic.parser.module;
 
+import trackitnus.commons.core.Messages;
 import trackitnus.logic.commands.module.DeleteModuleCommand;
+import trackitnus.logic.parser.ArgumentMultimap;
+import trackitnus.logic.parser.ArgumentTokenizer;
 import trackitnus.logic.parser.Parser;
 import trackitnus.logic.parser.ParserUtil;
 import trackitnus.logic.parser.exceptions.ParseException;
@@ -17,6 +20,12 @@ public class DeleteModuleCommandParser implements Parser<DeleteModuleCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public DeleteModuleCommand parse(String args) throws ParseException {
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args);
+
+        if (argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                DeleteModuleCommand.MESSAGE_USAGE));
+        }
         Code code = ParserUtil.parseCode(args);
         return new DeleteModuleCommand(code);
     }
