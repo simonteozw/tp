@@ -31,7 +31,7 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
         * 4.4.2 [Current Implementation](#contact-manager-implementation)
         * 4.4.3 [Design Considerations](#cotnact-manager-design)
     * 4.5. [Logging](#logging)
-        * 4.5.1 [Loggin Levels](#logging-levels)
+        * 4.5.1 [Logging Levels](#logging-levels)
     * 4.6. [Configuration](#config)
 5. [**Documentation**](#documentation)
 6. [**Testing**](#testing)
