@@ -133,10 +133,7 @@ public final class EditModuleCommand extends Command {
 
     @Override
     public String toString() {
-        return "EditModuleCommand{" +
-            "code=" + code +
-            ", editModuleDescriptor=" + editModuleDescriptor +
-            '}';
+        return "EditModuleCommand{" + "code=" + code + ", editModuleDescriptor=" + editModuleDescriptor + '}';
     }
 
     /**
@@ -202,10 +199,7 @@ public final class EditModuleCommand extends Command {
 
         @Override
         public String toString() {
-            return "EditModuleDescriptor{" +
-                "code=" + code +
-                ", name=" + name +
-                '}';
+            return "EditModuleDescriptor{" + "code=" + code + ", name=" + name + '}';
         }
     }
 }

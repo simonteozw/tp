@@ -1,0 +1,49 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":EditLessonCommand" as EditLessonCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+participant "index:Index" as index MODEL_COLOR
+participant ":TrackIter" as TrackIter MODEL_COLOR
+end box
+
+[-> EditLessonCommand : execute(m)
+activate EditLessonCommand
+
+EditLessonCommand -> Model : getFilteredLessonList()
+activate Model
+
+Model --> EditLessonCommand : lastShownList
+deactivate Model
+
+EditLessonCommand -> index : getZeroBased()
+
+EditLessonCommand -> EditLessonCommand : createEditedLesson(lessonToEdit, editLessonDescriptor)
+activate EditLessonCommand
+EditLessonCommand --> EditLessonCommand : editedLesson
+deactivate EditLessonCommand
+
+EditLessonCommand -> Model : setLesson(lessonToEdit, editedLesson)
+activate Model
+
+Model -> TrackIter : setLesson(lessonToEdit, editedLesson)
+
+
+deactivate Model
+
+create CommandResult
+EditLessonCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> EditLessonCommand : r
+deactivate CommandResult
+
+[<--EditLessonCommand : r
+deactivate EditLessonCommand
+
+@enduml

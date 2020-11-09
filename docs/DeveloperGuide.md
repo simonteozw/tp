@@ -407,6 +407,93 @@ The following Sequence Diagram will illustrate the above steps in greater detail
 
 ### **Lesson Manager** <a name="lesson-manager"></a>
 
+TrackIt@NUS allows users to keep track of their weekly lessons. The lesson manager is one of TrackIt@NUS's basic components.
+
+The common commands for the lesson manager include:
+
+* `add` - Creates a new lesson
+* `edit` - Modifies an existing lesson
+* `delete` - Deletes an existing lesson
+
+TrackIt@NUS also gives users a better understanding of their lessons by allowing users to view lessons in certain 
+categories. Users can view lessons specific to a module and lessons on a specific day.
+
+ #### Rationale
+ 
+ Lessons are an integral part of any student's day-to-day life. Hence, TrackIt@NUS includes a lesson manager for students to 
+ keep track of their lessons. Each lesson must belong to a unique module. When users click into a specific module tab, 
+ they can see the lessons belonging to that module.
+   
+:warning: The module must exist (i.e. there must be a module with the specified `MODULE_CODE`), otherwise, the `add` and
+ `edit` commands will not work.
+ 
+ #### Current Implementation
+ 
+ In this section, we will outline the key operations of the Lesson Manager, namely:
+ * `AddLessonCommand`
+ * `DeleteLessonCommand`
+ * `EditLessonCommand`
+ 
+ We will also elaborate on one more key operation that is used in the module tabs, namely `getModuleLessons`.
+  
+ The `add`, `delete`, and `edit` commands are all implemented in similar ways. When executed they will:
+  * call on the relevant Model methods
+  * update the `UniqueLessonList` depending on the command
+  * Save the updated lesson list to `data/trackIter.json`
+  * return the relevant CommandResult message
+ 
+ The following steps will describe the execution of the `AddLessonCommand`, assuming no errors are encountered:
+ 
+ 1. When `AddLessonCommand` is executed, it will first call the model's `hasModule` method to ensure that the specified module exists
+ 2. Following this, it will call the model's `hasLesson` method to ensure that the lesson does not yet exist in the app
+ 3. If both checks pass, `AddLessonCommand` will call the model's `addLesson` method
+ 4. The model will then call the `addLesson` method of TrackIter, and adds the lesson to the app.
+ 
+ ![Add Lesson Activity Diagram](images/AddLessonActivityDiagram.png)
+ 
+ The following shows the sequence diagram of the `AddLessonCommand`.
+ 
+ ![Add Lesson Sequence Diagram](images/AddLessonSequenceDiagram.png)
+ 
+ The following steps will describe the execution of the `DeleteLessonCommand`, assuming no errors are encountered:
+ 
+ 1. When the `DeleteLessonCommand` is executed, it will first call the model's `getFilteredLessonList` method 
+ to determine the last shown list of lessons
+ 2. Then, it will call the index's `getZeroBased` method to find the zero-based index of the lesson it must delete
+ 3. Then, it will check if this index is within range
+ 4. If it is, it calls the model's `deleteLesson` method.
+ 5. The model will then call the `removeLesson` method of TrackIter, which deletes the lesson in question from the app.
+ 
+ ![Delete Lesson Activity Diagram](images/DeleteLessonActivityDiagram.png)
+ 
+ The following shows the sequence diagram of the `DeleteLessonCommand`.
+ 
+ ![Delete Lesson Sequence Diagram](images/DeleteLessonSequenceDiagram.png)
+ 
+ The following steps will describe the execution of the `EditLessonCommand`, assuming no errors are encountered:
+ 
+ 1. When the `EditLessonCommand` is executed, it will first call the model's `getFilteredLessonList` method to determine 
+ the last shown list of lessons
+ 2. Then, it will call the index's `getZeroBased` method to find the zero-based index of the lesson we must edit
+ 3. It will then check if the index is within range
+ 4. If it is, it calls the model's `setLesson` method
+ 5. The model will then call the `setLesson` method of TrackIter, which replaces the original lesson with the edited
+  version in the app.
+  
+ ![Edit Lesson Activity Diagram](images/EditLessonActivityDiagram.png)
+ 
+ The follow shows the sequence diagram of the `EditLessonCommand`.
+ 
+ ![Edit Lesson Sequence Diagram](images/EditLessonSequenceDiagram.png)
+ 
+ The `getModuleLessons` function takes in a Module Code and returns all lessons that belong to the specified module.
+  When `getModuleLessons` is called, it uses the `LessonHasCodePredicate` to update the lesson list in the app to only show
+  the lessons that belong to the specified module code.
+ 
+ This is the sequence diagram of `getModuleLessons`.
+ 
+ ![Get Module Lessons Sequence Diagram](images/GetModuleLessonsSequenceDiagram.png)
+
 ### **Task Manager** <a name="task-manager"></a>
 
 TrackIt@NUS allows users to keep track of his/her tasks. The task manager is one of TrackIt@NUS's basic components.
@@ -520,6 +607,101 @@ The original AB3 implementation of edit commands, which would default to the ori
   `isCodeChanged`, to know whether users wanted to remove the existing module code or remark.
  
 ### **Contact Manager** <a name="contact-manager"></a>
+
+TrackIt@NUS allows users to manage their contacts. The contact manager is one of TrackIt@NUS's basic components.
+
+The common commands for the contact manager include:
+
+* `add` - Creates a new contact
+* `edit` - Modifies an existing contact
+* `delete` - Deletes an existing contact
+ 
+We will also elaborate on one more key operation that is used in the module tabs, namely `getModuleContacts`.
+ 
+ #### Rationale
+ 
+ Managing contacts is an essential part of any student's life. Hence, TrackIt@NUS includes a contact manager for students to 
+ keep track of all their contacts. To better support NUS students, a contact can hold any number (can be 0) of tags. If a tag matches 
+ an existing module code, editing/deleting the module will edit/delete the tag as well.
+    
+:bulb: To remove all tags from a contact, simply type `C edit INDEX t/` (use the `t/` prefix but do not provide any tag).
+
+#### Current Implementation
+
+In this section, we will outline the key operations of the Contact Manager, namely:
+* `AddContactCommand`
+* `DeleteContactCommand`
+* `EditContactCommand`
+ 
+The `add`, `delete`, and `edit` commands are all implemented in similar ways. When they are executed they will:
+ * call on the relevant Model methods
+ * update the `UniqueContactList` depending on the command
+ * Save the updated contact list to `data/trackIter.json`
+ * return the relevant CommandResult message
+
+The following steps will describe the execution of the `AddContactCommand`, assuming no errors are encountered:
+ 
+1. When `AddContactCommand` is executed, it will first call the model's `hasContact` method to ensure that the contact 
+does not yet exist in the app.
+2. If the check passes, `AddContactCommand` will call the model's `addContact` method.
+3. The model will then call the `addContact` method of TrackIter, and adds the contact to the app.
+
+![Add Contact Activity Diagram](images/AddContactActivityDiagram.png)
+
+The following shows the sequence diagram of the `AddContactCommand`.
+
+![Add Contact Sequence Diagram](images/AddContactSequenceDiagram.png)
+
+The following steps will describe the execution of the `DeleteContactCommand`, assuming no errors are encountered:
+
+1. When the `DeleteContactCommand` is executed, it will first call the model's `getFilteredContactList` method 
+to determine the last shown list of contacts.
+2. Then, it will call the index's `getZeroBased` method to find the zero-based index of the contact it must delete.
+3. Then, it will check if this index is within range.
+4. If it is, it calls the model's `deleteContact` method.
+5. The model will then call the `removeContact` method of TrackIter, which deletes the contact in question from the app.
+
+![Delete Contact Activity Diagram](images/DeleteContactActivityDiagram.png)
+
+The following shows the sequence diagram of the `DeleteContactCommand`.
+
+![Delete Contact Sequence Diagram](images/DeleteContactSequenceDiagram.png)
+
+The following steps will describe the execution of the `EditContactCommand`, assuming no errors are encountered:
+
+1. When the `EditContactCommand` is executed, it will first call the model's `getFilteredContactList` method 
+to determine the last shown list of contacts.
+2. Then, it will call the index's `getZeroBased` method to find the zero-based index of the contact we must edit.
+5. It will then check if the index is within range.
+6. If it is, it calls the model's `setContact` method.
+7. The model will then call the `setContact` method of TrackIter, which replaces the original contact with the edited
+ version in the app.
+ 
+![Edit Contact Command Activity Diagram](images/EditContactActivityDiagram.png)
+
+The follow shows the sequence diagram of the `EditContactCommand` assuming no errors are encountered.
+
+![Edit Contact Sequence Diagram](images/EditContactSequenceDiagram.png)
+
+The `getModuleContacts` function takes in a Module Code and returns all contacts that have a tag that matches the specified module.
+When `getModuleContacts` is called, it uses the `ContactHasTagPredicate` to update the contact list in the app to only show
+ the contacts that have the desired tag.
+
+This is the sequence diagram of `getModuleContacts`.
+
+![Get Module Contacts Sequence Diagram](images/GetModuleContactsSequenceDiagram.png)
+
+#### Design Considerations
+
+A number of fields in a contact (namely phone number and e-mail address) are optional. In the case they are not specified, 
+ we store them as null. Similar to tasks, we wanted users to be able to remove any optional field simply by 
+  specifying the `/p` or `/e` flag without providing a parameter.
+   
+![Remove Phone Number Activity Diagram](images/RemovePhoneNumberActivityDiagram.png)
+   
+The original AB3 implementation of edit commands, which would default to the original field if the edited
+ field was null, would not be sufficient. Hence, we added 2 additional boolean variables - `isPhoneChanged` and 
+  `isEmailChanged`, to know whether users wanted to remove the existing phone number and/or e-mail address.
 
 ### **Logging** <a name="logging"></a>
 

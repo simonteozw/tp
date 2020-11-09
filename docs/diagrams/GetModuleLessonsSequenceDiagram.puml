@@ -1,0 +1,37 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+participant "p:LessonHasCodePredicate" as Pred MODEL_COLOR
+end box
+
+[-> LogicManager
+activate LogicManager
+
+LogicManager -> Model : getModuleLessons(code)
+activate Model
+
+create Pred
+Model -> Pred
+activate Pred
+
+Pred --> Model
+deactivate Pred
+
+Model -> Model : updateFilteredLessonList(p)
+activate Model
+
+deactivate Model
+
+Model --> LogicManager
+deactivate Model
+
+[<--LogicManager
+deactivate LogicManager
+
+@enduml

@@ -311,11 +311,7 @@ public final class TrackIter implements ReadOnlyTrackIter {
 
     @Override
     public String toString() {
-        return "TrackIter{" +
-            "contacts=" + contacts +
-            ", modules=" + modules +
-            ", tasks=" + tasks +
-            ", lessons=" + lessons +
-            '}';
+        return "TrackIter{" + "contacts=" + contacts + ", modules=" + modules + ", tasks=" + tasks + ", lessons="
+            + lessons + '}';
     }
 }

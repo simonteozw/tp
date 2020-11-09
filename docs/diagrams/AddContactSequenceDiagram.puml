@@ -1,0 +1,41 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":AddContactCommand" as AddContactCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+participant ":TrackIter" as TrackIter MODEL_COLOR
+end box
+
+[-> AddContactCommand : execute(m)
+activate AddContactCommand
+
+AddContactCommand -> Model : hasContact(c)
+activate Model
+
+Model -> TrackIter : hasContact(c)
+
+deactivate Model
+
+AddContactCommand -> Model : addContact(c)
+activate Model
+
+Model -> TrackIter : addContact(c)
+
+deactivate Model
+
+create CommandResult
+AddContactCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> AddContactCommand : r
+deactivate CommandResult
+
+[<--AddContactCommand : r
+deactivate AddContactCommand
+
+@enduml
