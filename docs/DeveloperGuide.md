@@ -273,7 +273,11 @@ Another design challenge was how to manage our predicates. TrackIt@NUS makes use
 ----
 **All classes of Logic & Model at the same level will have similar structures**
 
-To elaborate on this, we will first take an example on some lowest-level classes of the codebase. They include `Email`, `Address`, `Code`, `Name` ....
+![ContactCodeTaskLessonClassDiagram](images/ContactCodeTaskLessonClassDiagram.png)
+
+The above diagram illustrates the structure of 4 classes: Module, Lesson, Contact and Task. 
+
+To elaborate on this design consideration, we will first take an example on some lowest-level classes They include `Email`, `Address`, `Code`, `Name` ....
 
 All of these classes share a similar structure as 2 classes `Address` and `Code` as below:
 ![CodeAndAddressClassDiagram](images/CodeAndAddressClassDiagram.png)
@@ -293,10 +297,35 @@ of classes of the same level, it's very easy for a developer to maintain others'
 A possible drawback of this uniform design is that it may not be the most appropriate design for each class, but for this project we believe this drawback doesn't apply.
 
 ----
+**Abstract all low-level logic to Model & Maintain a straight logic flow**
+
+To illustrate this design, please look at the following diagrams for 3 different possible implementation of getModuleContacts():
+
+![GetModuleContactBadSequenceDiagram](images/GetModuleContactBadSequenceDiagram.png)
+
+_The above diagram illustrate the possible design if the UI handles the low-level logic_
+
+
+![GetModuleContactMediumSequenceDiagram.png](images/GetModuleContactMediumSequenceDiagram.png)
+
+_The above diagram illustrate the possible design if the Logic handles the low-level logic_
+
+
+![GetModuleContactGoodSequenceDiagram](images/GetModuleContactGoodSequenceDiagram.png)
+
+_The above diagram illustrate the current design of the back-end_
+
+It is easy to see that the current design eliminates all cross-level calls. All methods calls are only in the form a class to itself or to the level right below it.
+This helps maintain an uniformed straight logic flow for all functions, which greatly improves maintainability and extensibility. Also, this design better follows the ModelViewController pattern (MVC) since the UI should only be in charged of displaying to users, 
+the Logic should only receive events and control the Model and the Model should be the place where all business logic takes place.
+ 
+**In this app, we have tried our very best to ensure almost all (if not all) logic calls follows this principle.**
 
 ----
 **Other code design rules applied**
 * A function/method should only do what it's expected to do (which should be inferable from its name), and in no ways should it surprise the caller.
+* Most code snippets that can be reused between classes will be abstracted out to the common Utility classes.
+* And design rules from the module's website: https://nus-cs2103-ay2021s1.github.io/website/se-book-adapted/chapters/codeQuality.html#code-quality
 
 ----
 #### **Feature Design Considerations** <a name="feat-des-cons"></a>
