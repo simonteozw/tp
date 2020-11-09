@@ -632,7 +632,7 @@ A: It is meant for you to add `contacts` that **may not be taking** the same mod
 | -- | -------- | -------- |
 | **add** | `M add m/CODE n/NAME` | `M add m/CS1231S n/Discrete Structures` |
 | **edit**| `M edit CODE [m/NEW_CODE] [n/NAME]` | `M edit CS1231S m/CS1231` |
-| **delete** | `M delete CODE` | `M CS1231` |
+| **delete** | `M delete CODE` | `M delete CS1231` |
 
 ### Lesson <a name="lesson-commands"></a>
 
