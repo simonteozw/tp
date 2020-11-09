@@ -24,7 +24,7 @@ note over ContactHasTagPredicate
 predicate that returns true when if a contact
 is associated with a module
 end note
-MainWindow -> ContactHasTagPredicate : CODE
+MainWindow -> ContactHasTagPredicate : MODULE_CODE
 activate ContactHasTagPredicate
 ContactHasTagPredicate --> MainWindow : predicate
 deactivate ContactHasTagPredicate
