@@ -74,7 +74,7 @@ What are you waiting for? Head on to [Section 2, **Quick Start**](#quick-start) 
  are now on the main page of TrackIt@NUS.
 Note how the app contains some sample data. <br><br>
 
-![Ui](images/UG/Ui.png)
+![Ui](images/Ui.png)
 <br> _Figure 1 - GUI of TrackIt@NUS_
 
 At the bottom of the screen, type your command in the Command Box and press `Enter` on your keyboard to execute it
