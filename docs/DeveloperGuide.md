@@ -175,7 +175,7 @@ The *Class Diagram* below shows how the components in the `Upcoming Tab` interac
 
 :information_source: All the `ListPanels` and `Cards` inherit from the abstract `UiPart` class.
 
-##### Responsibilities**
+##### **Responsibilities**
 The `Upcoming Tab` consists of a list of an `UpcomingSectionCard` for the Overdue section, 7 `UpcomingSectionDayCards` to represent each day of the next week, and finally another `UpcomingSectionCard` for the Future section. Each `UpcomingSectionCard` comprises of a `TaskPanel` and each `UpcomingSectionDayCard` comprises of a `TaskPanel` and a `LessonPanel`.
 
 #### **3.2.2. Module Tab** <a name="module-tab"></a>
@@ -500,7 +500,7 @@ In this section, we will use the following Activity Diagram to outline the parse
 ![Activity diagram for Delete Module Command](images/DeleteModuleCommandActivityDiagram.png)
 
 When the user enters the `M delete CODE` command to delete a module, the user input command undergoes the same command parsing as described in 
-[Section 3.3 Logic Component](#33-logic-component). If the parse process is successful, a `DeleteModuleCommand` will be returned an its `execute` method will be called.
+[Section 3.3 Logic Component](#logic). If the parse process is successful, a `DeleteModuleCommand` will be returned an its `execute` method will be called.
 
 The following steps will describe the execution of the `DeleteModuleCommand` in detail, assuming no errors are encountered.
 1. The `Model`'s `getModule(code)` is called and it will return an Optional<Module> to delete. If the returned optional is empty, a `CommandException` will be thrown.
@@ -521,7 +521,7 @@ In this section, we will use the following Activity Diagram to outline the parse
 ![Activity diagram for Edit Module Command](images/EditModuleCommandActivityDiagram.png)
 
 When the user enters the `M edit CODE` command to edit a module, the user input command undergoes the same command parsing as described in 
-[Section 3.3 Logic Component](#33-logic-component). If the parse process is successful, a `EditModuleCommand` will be returned an its `execute` method will be called.
+[Section 3.3 Logic Component](#logic). If the parse process is successful, a `EditModuleCommand` will be returned an its `execute` method will be called.
 
 The following steps will describe the execution of the `EditModuleCommand` in detail, assuming no errors are encountered.
 1. The `Model`'s `getModule(code)` is called and it will return an Optional<Module> to edit. If the returned optional is empty, a `CommandException` will be thrown.
@@ -556,7 +556,7 @@ The common commands for the lesson manager include:
 TrackIt@NUS also gives users a better understanding of their lessons by allowing users to view lessons in certain 
 categories. Users can view lessons specific to a module and lessons on a specific day.
 
- #### 4.3.1 Rationale <a name="lesson-manager-rationale"></a>
+#### 4.3.1 Rationale <a name="lesson-manager-rationale"></a>
  
 Lessons are an integral part of any student's day-to-day life. Hence, TrackIt@NUS includes a lesson manager for students to 
  keep track of their lessons. Each lesson must belong to a unique module. When users click into a specific module tab, 
@@ -565,7 +565,7 @@ Lessons are an integral part of any student's day-to-day life. Hence, TrackIt@NU
 :warning: The module must exist (i.e. there must be a module with the specified `CODE`), otherwise, the `add` and
  `edit` commands will not work.
  
- #### 4.3.2 Current Implementation <a name="lesson-manager-implementation"></a>
+#### 4.3.2 Current Implementation <a name="lesson-manager-implementation"></a>
  
  In this section, we will outline the key operations of the Lesson Manager, namely:
  * `AddLessonCommand`
@@ -646,7 +646,7 @@ TrackIt@NUS also gives users a better understanding of their tasks by allowing u
  categories. Users can view overdue tasks, tasks on a specific day, future tasks (tasks that have deadlines more than
   a week away), and specific module tasks.
  
- #### 4.4.1 Rationale <a name="task-manager-rationale"><a/>
+#### 4.4.1 Rationale <a name="task-manager-rationale"><a/>
  
  Tasks are an integral part of any student's day-to-day life. Hence, TrackIt@NUS includes a task manager for students to 
  keep track of all their tasks. To better support NUS students, a task can either belong to a module or not. When
@@ -756,7 +756,7 @@ The common commands for the contact manager include:
  
 We will also elaborate on one more key operation that is used in the module tabs, namely `getModuleContacts`.
  
- #### 4.5.1 Rationale <a name="contact-manager-rationale"></a>
+#### 4.5.1 Rationale <a name="contact-manager-rationale"></a>
  
  Managing contacts is an essential part of any student's life. Hence, TrackIt@NUS includes a contact manager for students to 
  keep track of all their contacts. To better support NUS students, a contact can hold any number (can be 0) of tags. If a tag matches 

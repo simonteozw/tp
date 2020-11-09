@@ -1,4 +1,4 @@
-#TrackIt@NUS - Setting Up
+# TrackIt@NUS - Setting Up
 
 ## Prerequisites
 
