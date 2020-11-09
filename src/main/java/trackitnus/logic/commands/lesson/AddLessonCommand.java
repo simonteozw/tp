@@ -21,15 +21,15 @@ public final class AddLessonCommand extends Command {
     public static final String MESSAGE_USAGE = Lesson.TYPE + " " + COMMAND_WORD
         + ": Adds a lesson to the app.\n"
         + "Parameters: "
-        + PREFIX_CODE + "MODULE_CODE "
+        + PREFIX_CODE + "CODE "
         + PREFIX_TYPE + "TYPE "
         + PREFIX_DATE + "DATE "
         + PREFIX_ADDRESS + "ADDRESS\n"
         + "Example: " + Lesson.TYPE + " " + COMMAND_WORD + " "
-        + PREFIX_CODE + "CS1101S "
-        + PREFIX_TYPE + "Lab "
-        + PREFIX_DATE + "Fri 16:00-18:00 "
-        + PREFIX_ADDRESS + "COM1-0215\n";
+        + PREFIX_CODE + "CS2103T "
+        + PREFIX_TYPE + "tutorial "
+        + PREFIX_DATE + "Wed 14:00-15:00 "
+        + PREFIX_ADDRESS + "COM1";
 
     private final Lesson toAdd;
 

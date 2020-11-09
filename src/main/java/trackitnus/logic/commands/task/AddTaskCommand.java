@@ -23,12 +23,12 @@ public final class AddTaskCommand extends Command {
         + "Parameters: "
         + PREFIX_NAME + "NAME "
         + PREFIX_DATE + "DATE "
-        + "[" + PREFIX_CODE + "MODULE_CODE] "
+        + "[" + PREFIX_CODE + "CODE] "
         + "[" + PREFIX_REMARK + "REMARK]\n"
         + "Example: " + Task.TYPE + " " + COMMAND_WORD + " "
-        + PREFIX_NAME + "CS2103T Final "
-        + PREFIX_DATE + "22/12/2020 "
-        + PREFIX_REMARK + "Favourite module!";
+        + PREFIX_NAME + "Assignment 1 "
+        + PREFIX_DATE + "20/11/2020 "
+        + PREFIX_REMARK + "Focus on Chapters 1-3";
 
     private final Task toAdd;
 
