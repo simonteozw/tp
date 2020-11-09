@@ -144,13 +144,20 @@ This section gives you a **brief overview** of the **layout** of TrackIt@NUS, an
 ![Layout](images/UG/Layout.png)
 _Figure 2 - Layout of TrackIt@NUS_
 
-TrackIt@NUS is mainly divided into **four** carefully designed `tabs`:
+TrackIT@NUS's layout includes **4 main section**:
+*  `Side Panel` : This is where you can easily navigate between different tabs which will be displayed on `Current View`.
+*  `Current View` : This is where you see the display based on the current tab of the `Side Panel`.
+*  `Command Box` : This is where you type in your commands.
+*  `Result Display` : This is where the result message of your commands will show.
+
+Within the `Side Panel`, there are **4 carefully designed `tabs`** :
 * The `Upcoming tab` 
 * The `Contacts tab`
 * The various `Module tabs` 
 * The `Help tab`
 
-The `Side panel` on the left section allows you to **easily navigate** between the `tabs`. When you switch to a different `tab`, the new `tab` will be highlighted in **blue** in the `Side panel`. To run a command, simply type a command in the `Command box` and TrackIt@NUS will inform you about the outcome in the `Result display`.
+The `Side panel` on the left section allows you to **easily navigate** between the `tabs`. When you switch to a different `tab`, the new `tab` will be highlighted in **blue** in the `Side panel`.
+The `Current Display` will show the display of the new `tab`.
 
 ### 4.1 Upcoming Tab <a name="upcomingtab"></a>
 Built with a **clean UI**, the `Upcoming tab` is what you will see when you first run TrackIt@NUS! You get to see an **overview** of all your **upcoming lessons** for the week, as well as the **list of tasks that are due soon**. With the `Upcoming tab`, you don't have to worry about missing any lessons or deadlines anymore!
@@ -161,7 +168,7 @@ _Figure 3 - Layout of Upcoming Tab_
 In the `Upcoming tab`, there are **three** main `sections` arranged in **chronological order**:
 1. The `Overdue section` is colored &#x1F534; to **warn** you about the **incomplete tasks** that are **past their deadline**. These tasks will remain there until you delete them, so remember to complete them as soon as possible!
 
-2. The next seven `Daily sections` shows your daily **Lessons** and **Tasks** for the **next 7 days**. This is where you can start planning your schedule for the day.
+2. The next 7 `Daily sections` shows your daily **Lessons** and **Tasks** for the **next 7 days**. This is where you can start planning your schedule for the day.
 
 3. The `Future section` shows the **Tasks** that are only due **at least 7 days later**, so these are tasks that you don't have to worry too much about for now.
 
@@ -287,9 +294,9 @@ Lectures, tutorials, labs, lectures, lectures, recitations, lectures... Sometime
 
 While TrackIt@NUS can't do much to make those lessons disappear, it can, at the very least, make sure you won't miss any of them!
 
-To view all your lessons (classes) for the next week, simply click on the upcoming tab, which sorts your lessons by day, and you will see something like the screenshot below, with lessons in the red outline.
+To view all your lessons (classes) for the next week, simply click on the [Upcoming Tab](#upcomingtab), which sorts your lessons by day, and you will see something like the screenshot below, with lessons in the red outline.
 
-To view the lessons of a specific module, click on any of the module tabs and you will see something like the screenshot below, with lessons in the red outline.
+To view the lessons of a specific module, click on any of the [Module Tabs](#moduletabs) and you will see something like the screenshot below, with lessons in the red outline.
 
 :information_source: As of v1.4, only weekly lessons are supported. Biweekly and monthly lessons may be added in subsequent versions.
 
@@ -378,10 +385,10 @@ _Figure 12 - Example outcome of deleting a lesson_
 ## 5.3 Task <a name="task"></a> 
 
 Managing all your tasks can be so stressful! TrackIt@NUS helps alleviate that stress with our built-in Task Manager
-:information_source: To view all your tasks, simply click on the upcoming tab as shown below.
+:information_source: To view all your tasks, simply click on the [Upcoming Tab](#upcomingtab) as shown below.
 
 
-This sorts all your tasks by date. To view module-specific tasks, click on any of the module tabs as shown below.
+This sorts all your tasks by date. To view module-specific tasks, click on any of the [Module Tabs](#moduletabs) as shown below.
 
 
 :information_source: All module-specific tasks are shown in the upcoming tab, but not vice versa.
