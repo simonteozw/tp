@@ -1,4 +1,4 @@
-# TrackIt@NUS - Developer Guide
+![Logo](images/UG/trackit-logo.png)
 
 By: `Team W13-4` Since: `Aug 2020` License: `MIT`
 
@@ -1653,3 +1653,5 @@ The team has put in a tremendous amount of effort to this project, with a single
 When we first start the project, we were quite surprised that the app must be optimized for CLI, which is not a
  common thing for most of the commercial apps nowadays
  
+--------------------------------------------------------------------------------------------------------------------
+![Logo](images/UG/trackit-footer.png)
