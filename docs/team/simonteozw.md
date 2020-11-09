@@ -1,6 +1,6 @@
 # Simon Teo - Project Portfolio
 
-## Project: TrackIt@NUS
+## PROJECT: TrackIt@NUS
 
 This portfolio aims to document the contributions that I have made to the **TrackIt@NUS** project. The Github Link to
  **TrackIt@NUS** can be found [here](https://github.com/AY2021S1-CS2103T-W13-4/tp).
@@ -38,15 +38,34 @@ Because I was the one who implemented the Task Manager and all its related metho
  
 ### Minor Enhancement: Added Test cases for Storage classes
 
-Because I was the one who implemented the additional storage classes and all their related methods, I was responsible
+* Because I was the one who implemented the additional storage classes and all their related methods, I was responsible
  for writing the test cases of those additional classes as well.
 
 ## Code Contributions
 
-The code I contributed can be found [here](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=simonteozw&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=false).
+* The code I contributed can be found [here](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=simonteozw&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=false).
 
 ## Other Contributions
 
+#### Project Management
+
+* Contributed to 4 major [releases](https://github.com/AY2021S1-CS2103T-W13-4/tp/releases), from `v1.1` to `v1.4`.
+
+#### Enhancements to Existing Features
+
+* Involved in the morphing of the application from AB3 to TrackIt@NUS (Pull requests [#14](https://github.com/AY2021S1-CS2103T-W13-4/tp/pull/14) 
+and [#39](https://github.com/AY2021S1-CS2103T-W13-4/tp/pull/39))
+
+#### Community
+
+* Reviewed pull requests for others such as [#181](https://github.com/AY2021S1-CS2103T-W13-4/tp/pull/181), [#232
+](https://github.com/AY2021S1-CS2103T-W13-4/tp/pull/232), [#301](https://github.com/AY2021S1-CS2103T-W13-4/tp/pull/301).
+
+* Reported bugs for other teams such as [#205](https://github.com/AY2021S1-CS2103T-W17-1/tp/issues/205), [#209](https://github.com/AY2021S1-CS2103T-W17-1/tp/issues/209), 
+and [#212](https://github.com/AY2021S1-CS2103T-W17-1/tp/issues/212).
+
 ## Contributions to the User Guide
+
+
 
 ## Contributions to the Developer Guide
