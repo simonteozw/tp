@@ -12,6 +12,20 @@ This portfolio aims to document the contributions that I have made to the **Trac
 
 ## Summary of Contributions
 
+### Major Enhancement: Implemented Task Manager
+
+### Major Enhancement: Implemented additional Storage classes
+
+### Minor Enhancement: Added Test cases for Task Manager
+
+### Minor Enhancement: Added Test cases for Storage classes
+
+## Code Contributions
+
+The code I contributed can be found [here](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=simonteozw&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=false).
+
+## Other Contributions
+
 ## Contributions to the User Guide
 
 ## Contributions to the Developer Guide
