@@ -14,26 +14,25 @@ By: `Team W13-4` Since: `Aug 2020` License: `MIT`
     * 3.4. [Model Component](#model)
     * 3.5. [Storage Component](#storage)
     * 3.6. [Common Classes](#common)
+    * 3.7. [Code Design Considerations](#code-des-cons)
+    * 3.8. [Feature Design Considerations](#feat-des-cons)
 4. [**Implementation**](#implementation)
-    * 4.1. [Overview](#overview)
-        * 4.1.1. [Code Design Considerations](#code-des-cons)
-        * 4.1.2. [Feature Design Considerations](#feat-des-cons)
-    * 4.2. [Module Manager](#module-manager)
-        * 4.2.1 [Current Implementation](#module-manager-implementation)
-    * 4.3. [Lesson Manager](#lesson-manager)
-        * 4.3.1 [Rationale](#lesson-manager-rationale)
-        * 4.3.2 [Current Implementation](#lesson-manager-implementation)
-    * 4.4. [Task Manager](#task-manager)
-        * 4.4.1 [Rationale](#task-manager-rationale)
-        * 4.4.2 [Current Implementation](#task-manager-implementation)
-        * 4.4.3 [Design Considerations](#task-manager-design)
-    * 4.5. [Contact Manager](#contact-manager)
-        * 4.5.1 [Rationale](#contact-manager-rationale)
-        * 4.5.2 [Current Implementation](#contact-manager-implementation)
-        * 4.5.3 [Design Considerations](#cotnact-manager-design)
-    * 4.6. [Logging](#logging)
-        * 4.6.1 [Loggin Levels](#logging-levels)
-    * 4.7. [Configuration](#config)
+    * 4.1. [Module Manager](#module-manager)
+        * 4.1.1 [Current Implementation](#module-manager-implementation)
+    * 4.2. [Lesson Manager](#lesson-manager)
+        * 4.2.1 [Rationale](#lesson-manager-rationale)
+        * 4.2.2 [Current Implementation](#lesson-manager-implementation)
+    * 4.3. [Task Manager](#task-manager)
+        * 4.3.1 [Rationale](#task-manager-rationale)
+        * 4.3.2 [Current Implementation](#task-manager-implementation)
+        * 4.3.3 [Design Considerations](#task-manager-design)
+    * 4.4. [Contact Manager](#contact-manager)
+        * 4.4.1 [Rationale](#contact-manager-rationale)
+        * 4.4.2 [Current Implementation](#contact-manager-implementation)
+        * 4.4.3 [Design Considerations](#cotnact-manager-design)
+    * 4.5. [Logging](#logging)
+        * 4.5.1 [Loggin Levels](#logging-levels)
+    * 4.6. [Configuration](#config)
 5. [**Documentation**](#documentation)
 6. [**Testing**](#testing)
 7. [**Dev Ops**](#devops)<br><br>
@@ -175,7 +174,7 @@ The *Class Diagram* below shows how the components in the `Upcoming Tab` interac
 
 :information_source: All the `ListPanels` and `Cards` inherit from the abstract `UiPart` class.
 
-##### Responsibilities**
+##### **Responsibilities**
 The `Upcoming Tab` consists of a list of an `UpcomingSectionCard` for the Overdue section, 7 `UpcomingSectionDayCards` to represent each day of the next week, and finally another `UpcomingSectionCard` for the Future section. Each `UpcomingSectionCard` comprises of a `TaskPanel` and each `UpcomingSectionDayCard` comprises of a `TaskPanel` and a `LessonPanel`.
 
 #### **3.2.2. Module Tab** <a name="module-tab"></a>
@@ -244,15 +243,8 @@ The `Storage` component,
 
 The `commons` package contains classes used by multiple other components in the `trackitnus.commons` package.
 
---------------------------------------------------------------------------------------------------------------------
 
-## **4. Implementation** <a name="implementation"></a>
-
-This section describes some noteworthy details on how certain features are implemented.
-
-### **4.1. Overview** <a name="overview"></a>
-
-#### **4.1.1. Code Design Considerations** <a name="code-des-cons"></a>
+#### **3.7 Code Design Considerations** <a name="code-des-cons"></a>
 ----
 **All commands in TrackIt@NUS follow a similar execution flow.**
 
@@ -337,7 +329,7 @@ the Logic should only receive events and control the Model and the Model should 
 * And design rules from the module's website: https://nus-cs2103-ay2021s1.github.io/website/se-book-adapted/chapters/codeQuality.html#code-quality
 
 ----
-#### **4.1.2. Feature Design Considerations** <a name="feat-des-cons"></a>
+#### **3.8. Feature Design Considerations** <a name="feat-des-cons"></a>
 
 The entire app follows a simple principle: the app should behave in the way most normal users expect it to behave. 
 
@@ -439,7 +431,14 @@ This will relieve our users from the mental burden of having to remember differe
 | Minimal restriction on lessons' time | We believe that the app should provide users full control over their schedule (for example overlapping lesson time) to cater to a wide range of different users' needs. Moreover, it's the user's own benefits to input maintain a correct lesson schedule |
 | Edit/Delete modules by code | Editing/Deleting modules is an action that users will rarely do (maybe a few times every semester). We believe the UI shouldn't be cluttered by some info that users will only need once every semester, so we have decided to omit the Index for modules to make the UI cleaner | 
 
-### 4.2 **Module Manager** <a name="module-manager"></a>
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **4. Implementation** <a name="implementation"></a>
+
+This section describes some noteworthy details on how certain features are implemented.
+
+### 4.1 **Module Manager** <a name="module-manager"></a>
 
 TrackIt@NUS allows users to keep track of all modules that he/she is taking. Module (or more exactly module's code) is
  the link between Lesson, Task and Contact. The following diagram illustrates their relationship:
@@ -457,7 +456,7 @@ TrackIt@NUS allows users to keep track of all modules that he/she is taking. Mod
  * `M delete CS2030` to delete the CS2030 module
  
 
-#### 4.2.1 Current Implementation
+#### 4.1.1 Current Implementation
 
 In this section, we will outline the key operations of the Module Manager, namely:
 * `AddModuleCommand`
@@ -500,7 +499,7 @@ In this section, we will use the following Activity Diagram to outline the parse
 ![Activity diagram for Delete Module Command](images/DeleteModuleCommandActivityDiagram.png)
 
 When the user enters the `M delete CODE` command to delete a module, the user input command undergoes the same command parsing as described in 
-[Section 3.3 Logic Component](#33-logic-component). If the parse process is successful, a `DeleteModuleCommand` will be returned an its `execute` method will be called.
+[Section 3.3 Logic Component](#logic). If the parse process is successful, a `DeleteModuleCommand` will be returned an its `execute` method will be called.
 
 The following steps will describe the execution of the `DeleteModuleCommand` in detail, assuming no errors are encountered.
 1. The `Model`'s `getModule(code)` is called and it will return an Optional<Module> to delete. If the returned optional is empty, a `CommandException` will be thrown.
@@ -521,7 +520,7 @@ In this section, we will use the following Activity Diagram to outline the parse
 ![Activity diagram for Edit Module Command](images/EditModuleCommandActivityDiagram.png)
 
 When the user enters the `M edit CODE` command to edit a module, the user input command undergoes the same command parsing as described in 
-[Section 3.3 Logic Component](#33-logic-component). If the parse process is successful, a `EditModuleCommand` will be returned an its `execute` method will be called.
+[Section 3.3 Logic Component](#logic). If the parse process is successful, a `EditModuleCommand` will be returned an its `execute` method will be called.
 
 The following steps will describe the execution of the `EditModuleCommand` in detail, assuming no errors are encountered.
 1. The `Model`'s `getModule(code)` is called and it will return an Optional<Module> to edit. If the returned optional is empty, a `CommandException` will be thrown.
@@ -543,7 +542,7 @@ The following Sequence Diagram will illustrate the above steps in greater detail
 
 ![Edit Module Sequence Diagram](images/EditModuleSequenceDiagram.png)
 
-### **4.3. Lesson Manager** <a name="lesson-manager"></a>
+### **4.2. Lesson Manager** <a name="lesson-manager"></a>
 
 TrackIt@NUS allows users to keep track of their weekly lessons. The lesson manager is one of TrackIt@NUS's basic components.
 
@@ -556,7 +555,7 @@ The common commands for the lesson manager include:
 TrackIt@NUS also gives users a better understanding of their lessons by allowing users to view lessons in certain 
 categories. Users can view lessons specific to a module and lessons on a specific day.
 
- #### 4.3.1 Rationale <a name="lesson-manager-rationale"></a>
+#### 4.2.1 Rationale <a name="lesson-manager-rationale"></a>
  
 Lessons are an integral part of any student's day-to-day life. Hence, TrackIt@NUS includes a lesson manager for students to 
  keep track of their lessons. Each lesson must belong to a unique module. When users click into a specific module tab, 
@@ -565,7 +564,7 @@ Lessons are an integral part of any student's day-to-day life. Hence, TrackIt@NU
 :warning: The module must exist (i.e. there must be a module with the specified `CODE`), otherwise, the `add` and
  `edit` commands will not work.
  
- #### 4.3.2 Current Implementation <a name="lesson-manager-implementation"></a>
+#### 4.2.2 Current Implementation <a name="lesson-manager-implementation"></a>
  
  In this section, we will outline the key operations of the Lesson Manager, namely:
  * `AddLessonCommand`
@@ -632,7 +631,7 @@ Lessons are an integral part of any student's day-to-day life. Hence, TrackIt@NU
  
  ![Get Module Lessons Sequence Diagram](images/GetModuleLessonsSequenceDiagram.png)
 
-### 4.4 **Task Manager** <a name="task-manager"></a>
+### 4.3 **Task Manager** <a name="task-manager"></a>
 
 TrackIt@NUS allows users to keep track of his/her tasks. The task manager is one of TrackIt@NUS's basic components.
 
@@ -646,7 +645,7 @@ TrackIt@NUS also gives users a better understanding of their tasks by allowing u
  categories. Users can view overdue tasks, tasks on a specific day, future tasks (tasks that have deadlines more than
   a week away), and specific module tasks.
  
- #### 4.4.1 Rationale <a name="task-manager-rationale"><a/>
+#### 4.3.1 Rationale <a name="task-manager-rationale"><a/>
  
  Tasks are an integral part of any student's day-to-day life. Hence, TrackIt@NUS includes a task manager for students to 
  keep track of all their tasks. To better support NUS students, a task can either belong to a module or not. When
@@ -661,7 +660,7 @@ TrackIt@NUS also gives users a better understanding of their tasks by allowing u
  
 :bulb: To remove a task from a module, simply type `T edit INDEX m/` (use the `m/` prefix but leave the `CODE` parameter empty).
 
-#### 4.4.2 Current Implementation <a name="task-manager-implementation"><a/>
+#### 4.3.2 Current Implementation <a name="task-manager-implementation"><a/>
 
 In this section, we will outline the key operations of the Task Manager, namely:
 * `AddTaskCommand`
@@ -731,7 +730,7 @@ This is the sequence diagram of `getModuleTasks`.
 `getOverdueTasks`, `getDayUpcomingTasks`, and `getFutureTasks` are all implemented in very similar ways. In fact, the
  only differences are the predicates used.
 
-#### 4.4.3 Design Considerations <a name="task-manager-design"><a/>
+#### 4.3.3 Design Considerations <a name="task-manager-design"><a/>
 
 As mentioned, a task may or may not belong to a module. In the case it does not, we store the module code as
  null. A task also may or may not have a remark. In the case it does not, we store the remark as the empty
@@ -744,7 +743,7 @@ The original AB3 implementation of edit commands, which would default to the ori
  field was null, would not be sufficient. Hence, we added 2 additional boolean variables - `isRemarkChanged` and
   `isCodeChanged`, to know whether users wanted to remove the existing module code or remark.
  
-### 4.5 **Contact Manager** <a name="contact-manager"></a>
+### 4.4 **Contact Manager** <a name="contact-manager"></a>
 
 TrackIt@NUS allows users to manage their contacts. The contact manager is one of TrackIt@NUS's basic components.
 
@@ -756,7 +755,7 @@ The common commands for the contact manager include:
  
 We will also elaborate on one more key operation that is used in the module tabs, namely `getModuleContacts`.
  
- #### 4.5.1 Rationale <a name="contact-manager-rationale"></a>
+#### 4.4.1 Rationale <a name="contact-manager-rationale"></a>
  
  Managing contacts is an essential part of any student's life. Hence, TrackIt@NUS includes a contact manager for students to 
  keep track of all their contacts. To better support NUS students, a contact can hold any number (can be 0) of tags. If a tag matches 
@@ -764,7 +763,7 @@ We will also elaborate on one more key operation that is used in the module tabs
     
 :bulb: To remove all tags from a contact, simply type `C edit INDEX t/` (use the `t/` prefix but do not provide any tag).
 
-#### 4.5.2 Current Implementation <a name="contact-manager-implementation"></a>
+#### 4.4.2 Current Implementation <a name="contact-manager-implementation"></a>
 
 In this section, we will outline the key operations of the Contact Manager, namely:
 * `AddContactCommand`
@@ -829,7 +828,7 @@ This is the sequence diagram of `getModuleContacts`.
 
 ![Get Module Contacts Sequence Diagram](images/GetModuleContactsSequenceDiagram.png)
 
-#### 4.5.2 Design Considerations <a name="contact-manager-design"></a>
+#### 4.4.2 Design Considerations <a name="contact-manager-design"></a>
 
 A number of fields in a contact (namely phone number and e-mail address) are optional. In the case they are not specified, 
  we store them as null. Similar to tasks, we wanted users to be able to remove any optional field simply by 
@@ -841,7 +840,7 @@ The original AB3 implementation of edit commands, which would default to the ori
  field was null, would not be sufficient. Hence, we added 2 additional boolean variables - `isPhoneChanged` and 
   `isEmailChanged`, to know whether users wanted to remove the existing phone number and/or e-mail address.
 
-### 4.6 **Logging** <a name="logging"></a>
+### 4.5 **Logging** <a name="logging"></a>
 
 * We are using `java.util.logging` package for logging.
 * The `LogsCenter` class is used to manage the logging levels and logging destinations
@@ -851,14 +850,14 @@ The original AB3 implementation of edit commands, which would default to the ori
  [Configuration](#config) for more info)
 * When choosing a level for a log message, follow the conventions stated below
 
-#### 4.6.1 Logging Levels <a name="logging-levels"></a>
+#### 4.5.1 Logging Levels <a name="logging-levels"></a>
 
 * `SEVERE`: A critical problem detected which may cause the termination of the application
 * `WARNING`: Can continue, but with caution
 * `INFO`: Information showing the noteworthy actions by the App
 * `FINE`: Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size
 
-### **4.7. Configuration** <a name="config"></a>
+### **4.6. Configuration** <a name="config"></a>
 
 Certain properties of the application can be controlled (e.g user preferences file location, logging level) through the configuration file (default: `config.json`).
 
